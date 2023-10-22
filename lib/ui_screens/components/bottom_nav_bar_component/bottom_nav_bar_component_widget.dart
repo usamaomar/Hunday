@@ -66,7 +66,7 @@ class _BottomNavBarComponentWidgetState
               ),
             ),
             child: Container(
-              height: 50.0,
+              height: 60.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.only(
@@ -81,7 +81,7 @@ class _BottomNavBarComponentWidgetState
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  crossAxisAlignment: CrossAxisAlignment.end,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     InkWell(
                       splashColor: Colors.transparent,
