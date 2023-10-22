@@ -66,7 +66,7 @@ class _BottomNavBarComponentWidgetState
               ),
             ),
             child: Container(
-              height: 60.0,
+              height: 75.0,
               decoration: BoxDecoration(
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 borderRadius: BorderRadius.only(
