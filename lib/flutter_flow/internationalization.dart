@@ -947,6 +947,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الشروع في الخروج',
     },
   },
+  // Modal06BasicInformation
+  {
+    'p305q9up': {
+      'en': 'Error',
+      'ar': 'مشكلة في الخادم',
+    },
+    '5ayz050s': {
+      'en': 'Cancel',
+      'ar': 'انهاء',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {

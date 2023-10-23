@@ -3,8 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/edit_text_values/edit_text_values_widget.dart';
-import '/ui_screens/components/error_netwok_dialog_component/error_netwok_dialog_component_widget.dart';
 import '/ui_screens/components/forget_password_component/forget_password_component_widget.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -394,7 +394,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                   : FocusScope.of(context)
                                                       .unfocus(),
                                               child:
-                                                  ErrorNetwokDialogComponentWidget(
+                                                  Modal06BasicInformationWidget(
                                                 body: (_model.loginApiRes
                                                         ?.bodyText ??
                                                     ''),
