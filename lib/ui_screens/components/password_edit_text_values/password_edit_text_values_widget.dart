@@ -5,11 +5,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'reguler_edit_text_values_model.dart';
-export 'reguler_edit_text_values_model.dart';
+import 'password_edit_text_values_model.dart';
+export 'password_edit_text_values_model.dart';
 
-class RegulerEditTextValuesWidget extends StatefulWidget {
-  const RegulerEditTextValuesWidget({
+class PasswordEditTextValuesWidget extends StatefulWidget {
+  const PasswordEditTextValuesWidget({
     Key? key,
     required this.titleahint,
     this.isErrorColor,
@@ -19,13 +19,13 @@ class RegulerEditTextValuesWidget extends StatefulWidget {
   final Color? isErrorColor;
 
   @override
-  _RegulerEditTextValuesWidgetState createState() =>
-      _RegulerEditTextValuesWidgetState();
+  _PasswordEditTextValuesWidgetState createState() =>
+      _PasswordEditTextValuesWidgetState();
 }
 
-class _RegulerEditTextValuesWidgetState
-    extends State<RegulerEditTextValuesWidget> {
-  late RegulerEditTextValuesModel _model;
+class _PasswordEditTextValuesWidgetState
+    extends State<PasswordEditTextValuesWidget> {
+  late PasswordEditTextValuesModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -36,13 +36,13 @@ class _RegulerEditTextValuesWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RegulerEditTextValuesModel());
+    _model = createModel(context, () => PasswordEditTextValuesModel());
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController?.text = FFLocalizations.of(context).getText(
-            'em4dg915' /*  */,
+            '1afb5unb' /*  */,
           );
         }));
   }
@@ -84,7 +84,7 @@ class _RegulerEditTextValuesWidgetState
                           controller: _model.textController,
                           focusNode: _model.textFieldFocusNode,
                           textInputAction: TextInputAction.next,
-                          obscureText: false,
+                          obscureText: !_model.passwordVisibility,
                           decoration: InputDecoration(
                             labelStyle: FlutterFlowTheme.of(context)
                                 .titleSmall
@@ -104,6 +104,20 @@ class _RegulerEditTextValuesWidgetState
                             focusedBorder: InputBorder.none,
                             errorBorder: InputBorder.none,
                             focusedErrorBorder: InputBorder.none,
+                            suffixIcon: InkWell(
+                              onTap: () => setState(
+                                () => _model.passwordVisibility =
+                                    !_model.passwordVisibility,
+                              ),
+                              focusNode: FocusNode(skipTraversal: true),
+                              child: Icon(
+                                _model.passwordVisibility
+                                    ? Icons.visibility_outlined
+                                    : Icons.visibility_off_outlined,
+                                color: Color(0xFF092853),
+                                size: 20.0,
+                              ),
+                            ),
                           ),
                           style: FlutterFlowTheme.of(context).titleSmall,
                           validator: _model.textControllerValidator

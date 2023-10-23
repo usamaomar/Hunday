@@ -958,6 +958,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'انهاء',
     },
   },
+  // PasswordEditTextValues
+  {
+    'ey5qh8z2': {
+      'en': '',
+      'ar': '',
+    },
+    '1afb5unb': {
+      'en': '',
+      'ar': '',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {

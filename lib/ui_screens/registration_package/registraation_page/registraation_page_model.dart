@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/ui_screens/components/password_edit_text_values/password_edit_text_values_widget.dart';
 import '/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values_widget.dart';
 import '/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -28,6 +29,10 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
 
   bool localIsPasswordConfirme = false;
 
+  bool localPhoneNumberValid = false;
+
+  String localPhoneNumber = '';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -43,10 +48,10 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
   DateTime? datePicked;
-  // Model for RegulerEditTextValues component.
-  late RegulerEditTextValuesModel regulerEditTextValuesModel3;
-  // Model for RegulerEditTextValues component.
-  late RegulerEditTextValuesModel regulerEditTextValuesModel4;
+  // Model for PasswordEditTextValues component.
+  late PasswordEditTextValuesModel passwordEditTextValuesModel1;
+  // Model for PasswordEditTextValues component.
+  late PasswordEditTextValuesModel passwordEditTextValuesModel2;
   // State field(s) for Checkbox widget.
   bool? checkboxValue1;
   // State field(s) for Checkbox widget.
@@ -59,10 +64,10 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
         createModel(context, () => RegulerEditTextValuesModel());
     regulerEditTextValuesModel2 =
         createModel(context, () => RegulerEditTextValuesModel());
-    regulerEditTextValuesModel3 =
-        createModel(context, () => RegulerEditTextValuesModel());
-    regulerEditTextValuesModel4 =
-        createModel(context, () => RegulerEditTextValuesModel());
+    passwordEditTextValuesModel1 =
+        createModel(context, () => PasswordEditTextValuesModel());
+    passwordEditTextValuesModel2 =
+        createModel(context, () => PasswordEditTextValuesModel());
   }
 
   void dispose() {
@@ -72,8 +77,8 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
     textController?.dispose();
 
     regulerEditTextValuesModel2.dispose();
-    regulerEditTextValuesModel3.dispose();
-    regulerEditTextValuesModel4.dispose();
+    passwordEditTextValuesModel1.dispose();
+    passwordEditTextValuesModel2.dispose();
   }
 
   /// Action blocks are added here.

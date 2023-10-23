@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/ui_screens/components/password_edit_text_values/password_edit_text_values_widget.dart';
 import '/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values_widget.dart';
 import '/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -360,7 +361,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                       enText: 'Phone Number',
                                       arText: 'رقم الهاتف',
                                     ),
-                                    isErrorColor: Color(0x00FFFFFF),
+                                    isErrorColor: _model.localPhoneNumberValid
+                                        ? Color(0x00000000)
+                                        : FlutterFlowTheme.of(context).error,
                                   ),
                                 ),
                               ),
@@ -518,38 +521,64 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               30.0, 0.0, 30.0, 0.0),
-                          child: wrapWithModel(
-                            model: _model.regulerEditTextValuesModel3,
-                            updateCallback: () => setState(() {}),
-                            child: RegulerEditTextValuesWidget(
-                              titleahint:
-                                  FFLocalizations.of(context).getVariableText(
-                                enText: 'Password',
-                                arText: 'كلمة السر',
+                          child: ClipRRect(
+                            child: Container(
+                              decoration: BoxDecoration(),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: wrapWithModel(
+                                          model: _model
+                                              .passwordEditTextValuesModel1,
+                                          updateCallback: () => setState(() {}),
+                                          child: PasswordEditTextValuesWidget(
+                                            titleahint:
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                              enText: 'Password',
+                                              arText: 'كلمة السر',
+                                            ),
+                                            isErrorColor: _model
+                                                    .localIsPasswordConfirme
+                                                ? Color(0x00000000)
+                                                : FlutterFlowTheme.of(context)
+                                                    .error,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Expanded(
+                                        child: wrapWithModel(
+                                          model: _model
+                                              .passwordEditTextValuesModel2,
+                                          updateCallback: () => setState(() {}),
+                                          child: PasswordEditTextValuesWidget(
+                                            titleahint:
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                              enText: 'Confirm Password',
+                                              arText: 'الموافقة على كلمة السر',
+                                            ),
+                                            isErrorColor: _model
+                                                    .localIsPasswordConfirme
+                                                ? Color(0x00000000)
+                                                : FlutterFlowTheme.of(context)
+                                                    .error,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
-                              isErrorColor:
-                                  _model.localIsPasswordConfirme == false
-                                      ? FlutterFlowTheme.of(context).error
-                                      : Color(0x000FFFFF),
-                            ),
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 0.0, 30.0, 0.0),
-                          child: wrapWithModel(
-                            model: _model.regulerEditTextValuesModel4,
-                            updateCallback: () => setState(() {}),
-                            child: RegulerEditTextValuesWidget(
-                              titleahint:
-                                  FFLocalizations.of(context).getVariableText(
-                                enText: 'Confirm Password',
-                                arText: 'تأكيد كلمة السر',
-                              ),
-                              isErrorColor:
-                                  _model.localIsPasswordConfirme == false
-                                      ? FlutterFlowTheme.of(context).error
-                                      : Color(0x000FFFFF),
                             ),
                           ),
                         ),
@@ -560,81 +589,86 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Expanded(
-                                child: RichText(
-                                  textScaleFactor:
-                                      MediaQuery.of(context).textScaleFactor,
-                                  text: TextSpan(
-                                    children: [
-                                      TextSpan(
-                                        text: FFLocalizations.of(context)
-                                            .getVariableText(
-                                          enText:
-                                              'By creating this account, you acknowledge that you have read and understand the ',
-                                          arText:
-                                              'من خلال إنشاء هذا الحساب، فإنك تقر بأنك قد قرأت وفهمت',
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 5.0, 0.0, 0.0),
+                                  child: RichText(
+                                    textScaleFactor:
+                                        MediaQuery.of(context).textScaleFactor,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText:
+                                                'By creating this account, you acknowledge that you have read and understand the ',
+                                            arText:
+                                                'من خلال إنشاء هذا الحساب، فإنك تقر بأنك قد قرأت وفهمت',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Heebo Regular',
+                                                color: Colors.black,
+                                                fontSize: 13.0,
+                                                fontWeight: FontWeight.normal,
+                                                useGoogleFonts: false,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium
-                                            .override(
-                                              fontFamily: 'Heebo Regular',
-                                              color: Colors.black,
-                                              fontSize: 13.0,
-                                              fontWeight: FontWeight.normal,
-                                              useGoogleFonts: false,
-                                            ),
-                                      ),
-                                      TextSpan(
-                                        text: FFLocalizations.of(context)
-                                            .getVariableText(
-                                          enText: 'Terms of Use',
-                                          arText: 'شروط الاستخدام',
+                                        TextSpan(
+                                          text: FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'Terms of Use',
+                                            arText: 'شروط الاستخدام',
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .labelLarge
+                                              .override(
+                                                fontFamily: 'Heebo Regular',
+                                                color: Color(0xFF3D6398),
+                                                decoration:
+                                                    TextDecoration.underline,
+                                                useGoogleFonts: false,
+                                              ),
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .labelLarge
-                                            .override(
-                                              fontFamily: 'Heebo Regular',
-                                              color: Color(0xFF3D6398),
-                                              decoration:
-                                                  TextDecoration.underline,
-                                              useGoogleFonts: false,
-                                            ),
-                                      ),
-                                      TextSpan(
-                                        text: FFLocalizations.of(context)
-                                            .getVariableText(
-                                          enText: 'and',
-                                          arText: 'و',
+                                        TextSpan(
+                                          text: FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'and',
+                                            arText: 'و',
+                                          ),
+                                          style: TextStyle(
+                                            fontFamily: 'Heebo Regular',
+                                            color: Colors.black,
+                                            fontSize: 13.0,
+                                          ),
                                         ),
-                                        style: TextStyle(
-                                          fontFamily: 'Heebo Regular',
-                                          color: Colors.black,
-                                          fontSize: 13.0,
-                                        ),
-                                      ),
-                                      TextSpan(
-                                        text: FFLocalizations.of(context)
-                                            .getVariableText(
-                                          enText: ' Privacy Statement.',
-                                          arText: 'بيان الخصوصية.',
-                                        ),
-                                        style: TextStyle(
-                                          fontFamily: 'Heebo Regular',
-                                          color: Color(0xFF3D6398),
-                                          fontWeight: FontWeight.w500,
-                                          fontSize: 14.0,
-                                          decoration: TextDecoration.underline,
-                                        ),
-                                      )
-                                    ],
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.black,
-                                        ),
+                                        TextSpan(
+                                          text: FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: ' Privacy Statement.',
+                                            arText: 'بيان الخصوصية.',
+                                          ),
+                                          style: TextStyle(
+                                            fontFamily: 'Heebo Regular',
+                                            color: Color(0xFF3D6398),
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14.0,
+                                            decoration:
+                                                TextDecoration.underline,
+                                          ),
+                                        )
+                                      ],
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Colors.black,
+                                          ),
+                                    ),
+                                    textAlign: TextAlign.start,
+                                    maxLines: 10,
                                   ),
-                                  textAlign: TextAlign.start,
-                                  maxLines: 10,
                                 ),
                               ),
                             ],
@@ -802,26 +836,37 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                       setState(() {
                                         _model.localEmailIsValid = false;
                                       });
+                                      return;
                                     } else {
                                       if (functions.newCustomFunction(
                                           _model.textController.text)!) {
-                                        if ((_model.regulerEditTextValuesModel3.textController.text != null && _model.regulerEditTextValuesModel3.textController.text != '') &&
-                                            (_model.regulerEditTextValuesModel4
-                                                        .textController.text !=
-                                                    null &&
-                                                _model.regulerEditTextValuesModel4
-                                                        .textController.text !=
-                                                    '') &&
-                                            (_model.regulerEditTextValuesModel3
-                                                    .textController.text ==
-                                                _model
-                                                    .regulerEditTextValuesModel4
-                                                    .textController
-                                                    .text)) {
+                                        if (_model.passwordEditTextValuesModel1
+                                                .textController.text ==
+                                            _model.passwordEditTextValuesModel2
+                                                .textController.text) {
                                           setState(() {
                                             _model.localEmailIsValid = true;
                                             _model.localIsPasswordConfirme =
                                                 true;
+                                          });
+                                          setState(() {
+                                            _model.localPhoneNumber = functions
+                                                .checkNumberAndValidate(_model
+                                                    .regulerEditTextValuesModel2
+                                                    .textController
+                                                    .text);
+                                          });
+                                          if (functions.checkNumberCount(
+                                                  _model.localPhoneNumber) !=
+                                              true) {
+                                            setState(() {
+                                              _model.localPhoneNumberValid =
+                                                  false;
+                                            });
+                                            return;
+                                          }
+                                          setState(() {
+                                            _model.localPhoneNumberValid = true;
                                           });
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
@@ -858,11 +903,13 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                             _model.localIsPasswordConfirme =
                                                 false;
                                           });
+                                          return;
                                         }
                                       } else {
                                         setState(() {
                                           _model.localEmailIsValid = false;
                                         });
+                                        return;
                                       }
                                     }
                                   },

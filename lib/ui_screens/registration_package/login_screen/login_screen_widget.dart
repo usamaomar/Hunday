@@ -79,15 +79,14 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
             height: double.infinity,
             child: Stack(
               children: [
-                AnimatedContainer(
-                  duration: Duration(milliseconds: 360),
-                  curve: Curves.easeInOut,
+                Container(
                   width: double.infinity,
                   height: double.infinity,
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     image: DecorationImage(
                       fit: BoxFit.cover,
+                      alignment: AlignmentDirectional(0.00, -1.00),
                       image: Image.asset(
                         'assets/images/oness.png',
                       ).image,
@@ -95,267 +94,278 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                     shape: BoxShape.rectangle,
                   ),
                 ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                Stack(
                   children: [
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/images/Group_70060.svg',
-                          fit: BoxFit.fitWidth,
-                        ),
-                      ],
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 36.0, 0.0, 0.0),
-                      child: Row(
+                    Container(
+                      decoration: BoxDecoration(),
+                      child: Column(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'jhn8bmqs' /* Login */,
-                            ),
-                            style: TextStyle(
-                              fontFamily: 'Seagoe Ui Bold',
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30.0,
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/images/Group_70060.svg',
+                                fit: BoxFit.fitWidth,
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 36.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'jhn8bmqs' /* Login */,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: 'Seagoe Ui Bold',
+                                    color: Colors.black,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 30.0,
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'ia2zdqa6' /* Welcome to Hyundai */,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Text(
+                                  FFLocalizations.of(context).getText(
+                                    'ia2zdqa6' /* Welcome to Hyundai */,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: 'Seagoe Ui Bold',
+                                    color: Color(0xFF3D6398),
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ],
                             ),
-                            style: TextStyle(
-                              fontFamily: 'Seagoe Ui Bold',
-                              color: Color(0xFF3D6398),
-                              fontWeight: FontWeight.bold,
-                              fontSize: 16.0,
+                          ),
+                          Opacity(
+                            opacity: 0.9,
+                            child: wrapWithModel(
+                              model: _model.editTextValuesModel,
+                              updateCallback: () => setState(() {}),
+                              child: EditTextValuesWidget(
+                                titleahint:
+                                    FFLocalizations.of(context).getVariableText(
+                                  enText: 'Phone Number',
+                                  arText: 'رقم الهاتف',
+                                ),
+                                leadingIcon: Icon(
+                                  Icons.person,
+                                  color: Color(0xFFBBB5B5),
+                                ),
+                              ),
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Opacity(
-                      opacity: 0.9,
-                      child: wrapWithModel(
-                        model: _model.editTextValuesModel,
-                        updateCallback: () => setState(() {}),
-                        child: EditTextValuesWidget(
-                          titleahint:
-                              FFLocalizations.of(context).getVariableText(
-                            enText: 'Phone Number',
-                            arText: 'رقم الهاتف',
-                          ),
-                          leadingIcon: Icon(
-                            Icons.person,
-                            color: Color(0xFFBBB5B5),
-                          ),
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Opacity(
-                              opacity: 0.9,
-                              child: Card(
-                                clipBehavior: Clip.antiAliasWithSaveLayer,
-                                color: Color(0xE4FFFFFF),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 0.0, 10.0, 0.0),
-                                      child: FaIcon(
-                                        FontAwesomeIcons.lock,
-                                        color: Color(0xFFBBB5B5),
-                                        size: 24.0,
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                        ),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          child: TextFormField(
-                                            controller: _model.textController,
-                                            focusNode:
-                                                _model.textFieldFocusNode,
-                                            textCapitalization:
-                                                TextCapitalization.none,
-                                            textInputAction:
-                                                TextInputAction.next,
-                                            obscureText:
-                                                !_model.passwordVisibility,
-                                            decoration: InputDecoration(
-                                              labelStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily:
-                                                            'Heebo Regular',
-                                                        useGoogleFonts: false,
-                                                      ),
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'nf01u1yj' /* Password */,
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                30.0, 0.0, 30.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Opacity(
+                                    opacity: 0.9,
+                                    child: Card(
+                                      clipBehavior: Clip.antiAliasWithSaveLayer,
+                                      color: Color(0xE4FFFFFF),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            child: FaIcon(
+                                              FontAwesomeIcons.lock,
+                                              color: Color(0xFFBBB5B5),
+                                              size: 24.0,
+                                            ),
+                                          ),
+                                          Expanded(
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryBackground,
                                               ),
-                                              hintStyle: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodySmall
-                                                  .override(
-                                                    fontFamily: 'Heebo Regular',
-                                                    color: Color(0xFFAAAAAA),
-                                                    fontSize: 14.0,
-                                                    useGoogleFonts: false,
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 10.0, 0.0),
+                                                child: TextFormField(
+                                                  controller:
+                                                      _model.textController,
+                                                  focusNode:
+                                                      _model.textFieldFocusNode,
+                                                  textCapitalization:
+                                                      TextCapitalization.none,
+                                                  textInputAction:
+                                                      TextInputAction.next,
+                                                  obscureText: !_model
+                                                      .passwordVisibility,
+                                                  decoration: InputDecoration(
+                                                    labelStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Heebo Regular',
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                    hintText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'nf01u1yj' /* Password */,
+                                                    ),
+                                                    hintStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily:
+                                                              'Heebo Regular',
+                                                          color:
+                                                              Color(0xFFAAAAAA),
+                                                          fontSize: 14.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                    enabledBorder:
+                                                        InputBorder.none,
+                                                    focusedBorder:
+                                                        InputBorder.none,
+                                                    errorBorder:
+                                                        InputBorder.none,
+                                                    focusedErrorBorder:
+                                                        InputBorder.none,
+                                                    suffixIcon: InkWell(
+                                                      onTap: () => setState(
+                                                        () => _model
+                                                                .passwordVisibility =
+                                                            !_model
+                                                                .passwordVisibility,
+                                                      ),
+                                                      focusNode: FocusNode(
+                                                          skipTraversal: true),
+                                                      child: Icon(
+                                                        _model.passwordVisibility
+                                                            ? Icons
+                                                                .visibility_outlined
+                                                            : Icons
+                                                                .visibility_off_outlined,
+                                                        color:
+                                                            Color(0xFF092853),
+                                                        size: 20.0,
+                                                      ),
+                                                    ),
                                                   ),
-                                              enabledBorder: InputBorder.none,
-                                              focusedBorder: InputBorder.none,
-                                              errorBorder: InputBorder.none,
-                                              focusedErrorBorder:
-                                                  InputBorder.none,
-                                              suffixIcon: InkWell(
-                                                onTap: () => setState(
-                                                  () => _model
-                                                          .passwordVisibility =
-                                                      !_model
-                                                          .passwordVisibility,
-                                                ),
-                                                focusNode: FocusNode(
-                                                    skipTraversal: true),
-                                                child: Icon(
-                                                  _model.passwordVisibility
-                                                      ? Icons
-                                                          .visibility_outlined
-                                                      : Icons
-                                                          .visibility_off_outlined,
-                                                  color: Color(0xFF092853),
-                                                  size: 20.0,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .titleSmall,
+                                                  validator: _model
+                                                      .textControllerValidator
+                                                      .asValidator(context),
                                                 ),
                                               ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleSmall,
-                                            validator: _model
-                                                .textControllerValidator
-                                                .asValidator(context),
                                           ),
-                                        ),
+                                        ],
                                       ),
                                     ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 10.0, 0.0, 0.0),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    useSafeArea: true,
-                                    context: context,
-                                    builder: (context) {
-                                      return GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: Container(
-                                            height: 500.0,
-                                            child:
-                                                ForgetPasswordComponentWidget(),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
-                                },
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    '5uqvx4l6' /* Forgot Password? */,
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Heebo Regular',
-                                        color: Color(0xFF3D6398),
-                                        fontWeight: FontWeight.normal,
-                                        useGoogleFonts: false,
-                                      ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(30.0, 30.5, 30.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Expanded(
-                            child: Builder(
-                              builder: (context) => FFButtonWidget(
-                                onPressed: (_model.editTextValuesModel
-                                                .textController.text ==
-                                            '') &&
-                                        (_model.textController.text == null ||
-                                            _model.textController.text == '')
-                                    ? null
-                                    : () async {
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                40.0, 0.0, 40.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 10.0, 0.0, 0.0),
+                                    child: InkWell(
+                                      splashColor: Colors.transparent,
+                                      focusColor: Colors.transparent,
+                                      hoverColor: Colors.transparent,
+                                      highlightColor: Colors.transparent,
+                                      onTap: () async {
+                                        await showModalBottomSheet(
+                                          isScrollControlled: true,
+                                          backgroundColor: Colors.transparent,
+                                          useSafeArea: true,
+                                          context: context,
+                                          builder: (context) {
+                                            return GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: Padding(
+                                                padding:
+                                                    MediaQuery.viewInsetsOf(
+                                                        context),
+                                                child: Container(
+                                                  height: 500.0,
+                                                  child:
+                                                      ForgetPasswordComponentWidget(),
+                                                ),
+                                              ),
+                                            );
+                                          },
+                                        ).then((value) => safeSetState(() {}));
+                                      },
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '5uqvx4l6' /* Forgot Password? */,
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Heebo Regular',
+                                              color: Color(0xFF3D6398),
+                                              fontWeight: FontWeight.normal,
+                                              useGoogleFonts: false,
+                                            ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                30.0, 30.5, 30.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                Expanded(
+                                  child: Builder(
+                                    builder: (context) => FFButtonWidget(
+                                      onPressed: () async {
                                         var _shouldSetState = false;
                                         if ((_model.editTextValuesModel
                                                         .textController.text !=
@@ -544,101 +554,108 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
 
                                         if (_shouldSetState) setState(() {});
                                       },
-                                text: FFLocalizations.of(context).getText(
-                                  '4akeqapx' /* Login */,
-                                ),
-                                options: FFButtonOptions(
-                                  width: 130.0,
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).ahayundai,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.white,
+                                      text: FFLocalizations.of(context).getText(
+                                        '4akeqapx' /* Login */,
                                       ),
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                                      options: FFButtonOptions(
+                                        width: 130.0,
+                                        height: 40.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            0.0, 0.0, 0.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: FlutterFlowTheme.of(context)
+                                            .ahayundai,
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
+                                            ),
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                    ),
                                   ),
-                                  borderRadius: BorderRadius.circular(5.0),
-                                  disabledColor: FlutterFlowTheme.of(context)
-                                      .buttonDisabled,
                                 ),
-                              ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(30.0, 40.0, 30.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              setState(() {
-                                _model.isLoading = false;
-                              });
+                          Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                30.0, 40.0, 30.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    setState(() {
+                                      _model.isLoading = false;
+                                    });
 
-                              context.pushNamed(
-                                'registraationPage',
-                                extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
-                                    hasTransition: true,
-                                    transitionType:
-                                        PageTransitionType.leftToRight,
-                                  ),
-                                },
-                              );
-                            },
-                            child: RichText(
-                              textScaleFactor:
-                                  MediaQuery.of(context).textScaleFactor,
-                              text: TextSpan(
-                                children: [
-                                  TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'n5n9jw4q' /* Already have an account?   */,
-                                    ),
-                                    style: TextStyle(),
-                                  ),
-                                  TextSpan(
-                                    text: FFLocalizations.of(context).getText(
-                                      'auqle7ga' /* Sign Up */,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF092853),
-                                          fontWeight: FontWeight.bold,
+                                    context.pushNamed(
+                                      'registraationPage',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.leftToRight,
                                         ),
-                                    mouseCursor: SystemMouseCursors.click,
-                                    recognizer: TapGestureRecognizer()
-                                      ..onTap = () async {
-                                        context.pushNamed('registraationPage');
                                       },
-                                  )
-                                ],
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Heebo',
-                                      useGoogleFonts: false,
+                                    );
+                                  },
+                                  child: RichText(
+                                    textScaleFactor:
+                                        MediaQuery.of(context).textScaleFactor,
+                                    text: TextSpan(
+                                      children: [
+                                        TextSpan(
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'n5n9jw4q' /* Already have an account?   */,
+                                          ),
+                                          style: TextStyle(),
+                                        ),
+                                        TextSpan(
+                                          text: FFLocalizations.of(context)
+                                              .getText(
+                                            'auqle7ga' /* Sign Up */,
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'Poppins',
+                                                color: Color(0xFF092853),
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                          mouseCursor: SystemMouseCursors.click,
+                                          recognizer: TapGestureRecognizer()
+                                            ..onTap = () async {
+                                              context.pushNamed(
+                                                  'registraationPage');
+                                            },
+                                        )
+                                      ],
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Heebo',
+                                            useGoogleFonts: false,
+                                          ),
                                     ),
-                              ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
