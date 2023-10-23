@@ -44,13 +44,11 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
       setState(() {
         _model.localIsPasswordConfirme = true;
       });
-      setState(() {
-        _model.localEmailIsValid = true;
-        _model.localPhoneNumberValid = true;
-        _model.localNameValid = true;
-        _model.privacyOne = true;
-        _model.privacyTwo = true;
-      });
+      _model.localEmailIsValid = true;
+      _model.localPhoneNumberValid = true;
+      _model.localNameValid = true;
+      _model.privacyOne = true;
+      _model.privacyTwo = true;
     });
 
     _model.textController ??= TextEditingController();
@@ -875,10 +873,18 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                     } else {
                                       if (functions.newCustomFunction(
                                           _model.textController.text)!) {
-                                        if (_model.passwordEditTextValuesModel1
-                                                .textController.text ==
-                                            _model.passwordEditTextValuesModel2
-                                                .textController.text) {
+                                        if ((_model.passwordEditTextValuesModel1
+                                                        .textController.text !=
+                                                    null &&
+                                                _model.passwordEditTextValuesModel1
+                                                        .textController.text !=
+                                                    '') &&
+                                            (_model.passwordEditTextValuesModel1
+                                                    .textController.text ==
+                                                _model
+                                                    .passwordEditTextValuesModel2
+                                                    .textController
+                                                    .text)) {
                                           setState(() {
                                             _model.localEmailIsValid = true;
                                             _model.localIsPasswordConfirme =
