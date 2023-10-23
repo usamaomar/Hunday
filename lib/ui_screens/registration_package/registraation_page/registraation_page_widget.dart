@@ -84,9 +84,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: AnimatedContainer(
-          duration: Duration(milliseconds: 360),
-          curve: Curves.easeInOut,
+        body: Container(
           width: double.infinity,
           height: double.infinity,
           decoration: BoxDecoration(
