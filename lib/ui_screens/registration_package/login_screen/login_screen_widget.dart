@@ -3,7 +3,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/edit_text_values/edit_text_values_widget.dart';
+import '/ui_screens/components/error_netwok_dialog_component/error_netwok_dialog_component_widget.dart';
 import '/ui_screens/components/forget_password_component/forget_password_component_widget.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -342,42 +344,76 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Expanded(
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                var _shouldSetState = false;
-                                if ((_model.editTextValuesModel.textController
-                                                .text !=
-                                            null &&
-                                        _model.editTextValuesModel
-                                                .textController.text !=
-                                            '') &&
-                                    (_model.textController.text != null &&
-                                        _model.textController.text != '')) {
-                                  _model.loginApiRes = await LoginApiCall.call(
-                                    phone: _model.editTextValuesModel
-                                        .textController.text,
-                                    password: _model.textController.text,
-                                  );
-                                  _shouldSetState = true;
-                                  if ((_model.loginApiRes?.succeeded ?? true)) {
-                                    context.pushNamed('HomeScreen');
+                            child: Builder(
+                              builder: (context) => FFButtonWidget(
+                                onPressed: () async {
+                                  var _shouldSetState = false;
+                                  if ((_model.editTextValuesModel.textController
+                                                  .text !=
+                                              null &&
+                                          _model.editTextValuesModel
+                                                  .textController.text !=
+                                              '') &&
+                                      (_model.textController.text != null &&
+                                          _model.textController.text != '')) {
+                                    _model.loginApiRes =
+                                        await LoginApiCall.call(
+                                      phone: _model.editTextValuesModel
+                                          .textController.text,
+                                      password: _model.textController.text,
+                                    );
+                                    _shouldSetState = true;
+                                    if ((_model.loginApiRes?.succeeded ??
+                                        true)) {
+                                      context.pushNamed('HomeScreen');
 
-                                    if (_shouldSetState) setState(() {});
-                                    return;
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    } else {
+                                      await showAlignedDialog(
+                                        context: context,
+                                        isGlobal: true,
+                                        avoidOverflow: false,
+                                        targetAnchor:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        followerAnchor:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        builder: (dialogContext) {
+                                          return Material(
+                                            color: Colors.transparent,
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child:
+                                                  ErrorNetwokDialogComponentWidget(
+                                                body: (_model.loginApiRes
+                                                        ?.bodyText ??
+                                                    ''),
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      ).then((value) => setState(() {}));
+
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
                                   } else {
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
                                         return AlertDialog(
-                                          title: Text(
-                                              FFLocalizations.of(context)
-                                                  .getVariableText(
-                                            enText: 'Error',
-                                            arText: 'مشكلة بالخادم',
-                                          )),
-                                          content: Text(
-                                              (_model.loginApiRes?.bodyText ??
-                                                  '')),
+                                          title: Text('Dialog'),
+                                          content: Text('Add Missing Values'),
                                           actions: [
                                             TextButton(
                                               onPressed: () => Navigator.pop(
@@ -391,51 +427,32 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                     if (_shouldSetState) setState(() {});
                                     return;
                                   }
-                                } else {
-                                  await showDialog(
-                                    context: context,
-                                    builder: (alertDialogContext) {
-                                      return AlertDialog(
-                                        title: Text('Dialog'),
-                                        content: Text('Add Missing Values'),
-                                        actions: [
-                                          TextButton(
-                                            onPressed: () => Navigator.pop(
-                                                alertDialogContext),
-                                            child: Text('Ok'),
-                                          ),
-                                        ],
-                                      );
-                                    },
-                                  );
-                                  if (_shouldSetState) setState(() {});
-                                  return;
-                                }
 
-                                if (_shouldSetState) setState(() {});
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                '4akeqapx' /* Login */,
-                              ),
-                              options: FFButtonOptions(
-                                width: 130.0,
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).ahayundai,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                                  if (_shouldSetState) setState(() {});
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  '4akeqapx' /* Login */,
                                 ),
-                                borderRadius: BorderRadius.circular(5.0),
+                                options: FFButtonOptions(
+                                  width: 130.0,
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).ahayundai,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.white,
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
                               ),
                             ),
                           ),

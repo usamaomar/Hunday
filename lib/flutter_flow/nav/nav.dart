@@ -39,12 +39,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => HomeScreenWidget(),
+      errorBuilder: (context, state) => LoginScreenWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => HomeScreenWidget(),
+          builder: (context, _) => LoginScreenWidget(),
         ),
         FFRoute(
           name: 'loginScreen',
