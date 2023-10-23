@@ -349,175 +349,204 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           Expanded(
                             child: Builder(
                               builder: (context) => FFButtonWidget(
-                                onPressed: () async {
-                                  var _shouldSetState = false;
-                                  if ((_model.editTextValuesModel.textController
-                                                  .text !=
-                                              null &&
-                                          _model.editTextValuesModel
-                                                  .textController.text !=
-                                              '') &&
-                                      (_model.textController.text != null &&
-                                          _model.textController.text != '')) {
-                                    setState(() {
-                                      _model.phoneNumber = _model
-                                          .editTextValuesModel
-                                          .textController
-                                          .text;
-                                    });
-                                    setState(() {
-                                      _model.phoneNumber =
-                                          functions.checkNumberAndValidate(
-                                              _model.phoneNumber);
-                                    });
-                                    if (functions.checkNumberCount(
-                                            _model.phoneNumber) !=
-                                        true) {
-                                      ScaffoldMessenger.of(context)
-                                          .showSnackBar(
-                                        SnackBar(
-                                          content: Text(
-                                            FFLocalizations.of(context)
-                                                .getVariableText(
-                                              enText:
-                                                  'We need jordanian number',
-                                              arText: 'نحن بحاجة إلى رقم أردني',
-                                            ),
-                                            style: TextStyle(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                            ),
-                                          ),
-                                          duration:
-                                              Duration(milliseconds: 4000),
-                                          backgroundColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondary,
-                                        ),
-                                      );
-                                      if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-                                    _model.loginApiRes =
-                                        await LoginApiCall.call(
-                                      phone: _model.phoneNumber,
-                                      password: _model.textController.text,
-                                    );
-                                    _shouldSetState = true;
-                                    if ((_model.loginApiRes?.succeeded ??
-                                        true)) {
-                                      setState(() {
-                                        FFAppState().userModel =
-                                            UserModelStruct.fromMap(
-                                                (_model.loginApiRes?.jsonBody ??
-                                                    ''));
-                                      });
-                                      if (!(FFAppState().userModel.token !=
-                                              null &&
-                                          FFAppState().userModel.token != '')) {
-                                        await showDialog(
-                                          context: context,
-                                          builder: (alertDialogContext) {
-                                            return AlertDialog(
-                                              title: Text(
+                                onPressed: (_model.editTextValuesModel
+                                                    .textController.text ==
+                                                null ||
+                                            _model.editTextValuesModel
+                                                    .textController.text ==
+                                                '') &&
+                                        (_model.textController.text == null ||
+                                            _model.textController.text == '')
+                                    ? null
+                                    : () async {
+                                        var _shouldSetState = false;
+                                        if ((_model.editTextValuesModel
+                                                        .textController.text !=
+                                                    null &&
+                                                _model.editTextValuesModel
+                                                        .textController.text !=
+                                                    '') &&
+                                            (_model.textController.text !=
+                                                    null &&
+                                                _model.textController.text !=
+                                                    '')) {
+                                          setState(() {
+                                            _model.phoneNumber = _model
+                                                .editTextValuesModel
+                                                .textController
+                                                .text;
+                                          });
+                                          setState(() {
+                                            _model.phoneNumber = functions
+                                                .checkNumberAndValidate(
+                                                    _model.phoneNumber);
+                                          });
+                                          if (functions.checkNumberCount(
+                                                  _model.phoneNumber) !=
+                                              true) {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
                                                   FFLocalizations.of(context)
                                                       .getVariableText(
-                                                enText: 'Error',
-                                                arText: 'مشكلة خادم',
-                                              )),
-                                              content: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getVariableText(
-                                                enText: 'Bad Access',
-                                                arText: 'عملية دخول خاطئة',
-                                              )),
-                                              actions: [
-                                                TextButton(
-                                                  onPressed: () =>
-                                                      Navigator.pop(
-                                                          alertDialogContext),
-                                                  child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getVariableText(
-                                                    enText: 'Ok',
-                                                    arText: 'حسنا',
-                                                  )),
+                                                    enText:
+                                                        'We need jordanian number',
+                                                    arText:
+                                                        'نحن بحاجة إلى رقم أردني',
+                                                  ),
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .primaryText,
+                                                  ),
                                                 ),
-                                              ],
-                                            );
-                                          },
-                                        );
-                                        if (_shouldSetState) setState(() {});
-                                        return;
-                                      }
-
-                                      context.pushNamed('HomeScreen');
-
-                                      if (_shouldSetState) setState(() {});
-                                      return;
-                                    } else {
-                                      await showAlignedDialog(
-                                        context: context,
-                                        isGlobal: true,
-                                        avoidOverflow: false,
-                                        targetAnchor:
-                                            AlignmentDirectional(0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        followerAnchor:
-                                            AlignmentDirectional(0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        builder: (dialogContext) {
-                                          return Material(
-                                            color: Colors.transparent,
-                                            child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
-                                                      .unfocus(),
-                                              child:
-                                                  Modal06BasicInformationWidget(
-                                                body: (_model.loginApiRes
-                                                        ?.bodyText ??
-                                                    ''),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondary,
                                               ),
-                                            ),
+                                            );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                          _model.loginApiRes =
+                                              await LoginApiCall.call(
+                                            phone: _model.phoneNumber,
+                                            password:
+                                                _model.textController.text,
                                           );
-                                        },
-                                      ).then((value) => setState(() {}));
+                                          _shouldSetState = true;
+                                          if ((_model.loginApiRes?.succeeded ??
+                                              true)) {
+                                            setState(() {
+                                              FFAppState().userModel =
+                                                  UserModelStruct.fromMap(
+                                                      (_model.loginApiRes
+                                                              ?.jsonBody ??
+                                                          ''));
+                                            });
+                                            if (!(FFAppState()
+                                                        .userModel
+                                                        .token !=
+                                                    null &&
+                                                FFAppState().userModel.token !=
+                                                    '')) {
+                                              await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                      enText: 'Error',
+                                                      arText: 'مشكلة خادم',
+                                                    )),
+                                                    content: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                      enText: 'Bad Access',
+                                                      arText:
+                                                          'عملية دخول خاطئة',
+                                                    )),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText: 'Ok',
+                                                          arText: 'حسنا',
+                                                        )),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
 
-                                      if (_shouldSetState) setState(() {});
-                                      return;
-                                    }
-                                  } else {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text('Dialog'),
-                                          content: Text('Add Missing Values'),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text('Ok'),
-                                            ),
-                                          ],
-                                        );
+                                            context.pushNamed('HomeScreen');
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          } else {
+                                            await showAlignedDialog(
+                                              context: context,
+                                              isGlobal: true,
+                                              avoidOverflow: false,
+                                              targetAnchor:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              followerAnchor:
+                                                  AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(
+                                                          Directionality.of(
+                                                              context)),
+                                              builder: (dialogContext) {
+                                                return Material(
+                                                  color: Colors.transparent,
+                                                  child: GestureDetector(
+                                                    onTap: () => _model
+                                                            .unfocusNode
+                                                            .canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                            .requestFocus(_model
+                                                                .unfocusNode)
+                                                        : FocusScope.of(context)
+                                                            .unfocus(),
+                                                    child:
+                                                        Modal06BasicInformationWidget(
+                                                      body: (_model.loginApiRes
+                                                              ?.bodyText ??
+                                                          ''),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        } else {
+                                          await showDialog(
+                                            context: context,
+                                            builder: (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text('Dialog'),
+                                                content:
+                                                    Text('Add Missing Values'),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text('Ok'),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        }
+
+                                        if (_shouldSetState) setState(() {});
                                       },
-                                    );
-                                    if (_shouldSetState) setState(() {});
-                                    return;
-                                  }
-
-                                  if (_shouldSetState) setState(() {});
-                                },
                                 text: FFLocalizations.of(context).getText(
                                   '4akeqapx' /* Login */,
                                 ),
@@ -540,6 +569,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                     width: 1.0,
                                   ),
                                   borderRadius: BorderRadius.circular(5.0),
+                                  disabledColor: FlutterFlowTheme.of(context)
+                                      .buttonDisabled,
                                 ),
                               ),
                             ),
