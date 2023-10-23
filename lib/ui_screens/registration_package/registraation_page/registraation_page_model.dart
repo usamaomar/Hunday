@@ -33,6 +33,12 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
 
   String localPhoneNumber = '';
 
+  bool localNameValid = false;
+
+  bool privacyOne = false;
+
+  bool privacyTwo = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

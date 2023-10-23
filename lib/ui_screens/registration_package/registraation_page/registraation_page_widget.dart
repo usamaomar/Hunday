@@ -178,7 +178,12 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                 enText: 'Name',
                                 arText: 'الأسم',
                               ),
-                              isErrorColor: Colors.white,
+                              isErrorColor: valueOrDefault<Color>(
+                                _model.localNameValid == true
+                                    ? Color(0x00FFFFFF)
+                                    : FlutterFlowTheme.of(context).error,
+                                Color(0x000FFFFF),
+                              ),
                             ),
                           ),
                         ),
@@ -361,9 +366,12 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                       enText: 'Phone Number',
                                       arText: 'رقم الهاتف',
                                     ),
-                                    isErrorColor: _model.localPhoneNumberValid
-                                        ? Color(0x00000000)
-                                        : FlutterFlowTheme.of(context).error,
+                                    isErrorColor: valueOrDefault<Color>(
+                                      _model.localPhoneNumberValid == true
+                                          ? Color(0x00FFFFFF)
+                                          : FlutterFlowTheme.of(context).error,
+                                      Color(0x000FFFFF),
+                                    ),
                                   ),
                                 ),
                               ),
@@ -688,13 +696,24 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                     ),
                                   ),
                                   unselectedWidgetColor:
-                                      FlutterFlowTheme.of(context).accent2,
+                                      _model.privacyOne == true
+                                          ? FlutterFlowTheme.of(context).accent2
+                                          : FlutterFlowTheme.of(context).error,
                                 ),
                                 child: Checkbox(
                                   value: _model.checkboxValue1 ??= false,
                                   onChanged: (newValue) async {
                                     setState(() =>
                                         _model.checkboxValue1 = newValue!);
+                                    if (newValue!) {
+                                      setState(() {
+                                        _model.privacyOne = true;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        _model.privacyOne = false;
+                                      });
+                                    }
                                   },
                                   activeColor:
                                       FlutterFlowTheme.of(context).ahayundai,
@@ -750,7 +769,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                     ),
                                   ),
                                   unselectedWidgetColor:
-                                      FlutterFlowTheme.of(context).accent2,
+                                      _model.privacyTwo == true
+                                          ? FlutterFlowTheme.of(context).accent2
+                                          : FlutterFlowTheme.of(context).error,
                                 ),
                                 child: Checkbox(
                                   value: _model.checkboxValue2 ??= false,
@@ -868,6 +889,28 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                           setState(() {
                                             _model.localPhoneNumberValid = true;
                                           });
+                                          if (_model.regulerEditTextValuesModel1
+                                                      .textController.text !=
+                                                  null &&
+                                              _model.regulerEditTextValuesModel1
+                                                      .textController.text !=
+                                                  '') {
+                                            setState(() {
+                                              _model.localNameValid = true;
+                                            });
+                                            if ((_model.privacyOne == true) &&
+                                                (_model.privacyTwo == true)) {
+                                              setState(() {});
+                                            } else {
+                                              return;
+                                            }
+                                          } else {
+                                            setState(() {
+                                              _model.localNameValid = false;
+                                            });
+                                            return;
+                                          }
+
                                           await showModalBottomSheet(
                                             isScrollControlled: true,
                                             backgroundColor: Color(0x00FFFFFF),
