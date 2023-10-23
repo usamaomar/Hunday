@@ -112,7 +112,18 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                       if (shouldUpdate) setState(() {});
                     },
                     onEnded: () async {
-                      context.pushNamed('loginScreen');
+                      if (FFAppState().userModel.token != null &&
+                              FFAppState().userModel.token != ''
+                          ? true
+                          : false) {
+                        context.goNamed('HomeScreen');
+
+                        return;
+                      } else {
+                        context.goNamed('loginScreen');
+
+                        return;
+                      }
                     },
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).headlineSmall,
