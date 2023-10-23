@@ -965,6 +965,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // PhoneEditTextValues
+  {
+    'p6jmdg3b': {
+      'en': '',
+      'ar': '',
+    },
+    'jcuvrswu': {
+      'en': '',
+      'ar': '',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/password_edit_text_values/password_edit_text_values_widget.dart';
+import '/ui_screens/components/phone_edit_text_values/phone_edit_text_values_widget.dart';
 import '/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values_widget.dart';
 import '/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -39,19 +40,19 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
 
   bool privacyTwo = false;
 
-  String? localDateOfBirth;
+  String? localDateOfBirth = '  ';
 
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   // Model for RegulerEditTextValues component.
-  late RegulerEditTextValuesModel regulerEditTextValuesModel1;
+  late RegulerEditTextValuesModel regulerEditTextValuesModel;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-  // Model for RegulerEditTextValues component.
-  late RegulerEditTextValuesModel regulerEditTextValuesModel2;
+  // Model for PhoneEditTextValues component.
+  late PhoneEditTextValuesModel phoneEditTextValuesModel;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -68,10 +69,10 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
-    regulerEditTextValuesModel1 =
+    regulerEditTextValuesModel =
         createModel(context, () => RegulerEditTextValuesModel());
-    regulerEditTextValuesModel2 =
-        createModel(context, () => RegulerEditTextValuesModel());
+    phoneEditTextValuesModel =
+        createModel(context, () => PhoneEditTextValuesModel());
     passwordEditTextValuesModel1 =
         createModel(context, () => PasswordEditTextValuesModel());
     passwordEditTextValuesModel2 =
@@ -80,11 +81,11 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
 
   void dispose() {
     unfocusNode.dispose();
-    regulerEditTextValuesModel1.dispose();
+    regulerEditTextValuesModel.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
 
-    regulerEditTextValuesModel2.dispose();
+    phoneEditTextValuesModel.dispose();
     passwordEditTextValuesModel1.dispose();
     passwordEditTextValuesModel2.dispose();
   }

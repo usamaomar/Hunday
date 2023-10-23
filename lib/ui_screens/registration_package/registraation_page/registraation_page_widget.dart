@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/password_edit_text_values/password_edit_text_values_widget.dart';
+import '/ui_screens/components/phone_edit_text_values/phone_edit_text_values_widget.dart';
 import '/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values_widget.dart';
 import '/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -176,7 +177,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                           padding: EdgeInsetsDirectional.fromSTEB(
                               30.0, 30.0, 30.0, 5.0),
                           child: wrapWithModel(
-                            model: _model.regulerEditTextValuesModel1,
+                            model: _model.regulerEditTextValuesModel,
                             updateCallback: () => setState(() {}),
                             child: RegulerEditTextValuesWidget(
                               titleahint:
@@ -355,18 +356,18 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                             ],
                           ),
                         ),
-                        Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Expanded(
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    30.0, 5.0, 30.0, 0.0),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 0.0, 30.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Expanded(
                                 child: wrapWithModel(
-                                  model: _model.regulerEditTextValuesModel2,
+                                  model: _model.phoneEditTextValuesModel,
                                   updateCallback: () => setState(() {}),
-                                  child: RegulerEditTextValuesWidget(
+                                  child: PhoneEditTextValuesWidget(
                                     titleahint: FFLocalizations.of(context)
                                         .getVariableText(
                                       enText: 'Phone Number',
@@ -381,8 +382,8 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                   ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                         Row(
                           mainAxisSize: MainAxisSize.max,
@@ -796,6 +797,15 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                   onChanged: (newValue) async {
                                     setState(() =>
                                         _model.checkboxValue2 = newValue!);
+                                    if (newValue!) {
+                                      setState(() {
+                                        _model.privacyTwo = true;
+                                      });
+                                    } else {
+                                      setState(() {
+                                        _model.privacyTwo = false;
+                                      });
+                                    }
                                   },
                                   activeColor:
                                       FlutterFlowTheme.of(context).ahayundai,
@@ -899,7 +909,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                           setState(() {
                                             _model.localPhoneNumber = functions
                                                 .checkNumberAndValidate(_model
-                                                    .regulerEditTextValuesModel2
+                                                    .phoneEditTextValuesModel
                                                     .textController
                                                     .text);
                                           });
@@ -915,10 +925,10 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                           setState(() {
                                             _model.localPhoneNumberValid = true;
                                           });
-                                          if (_model.regulerEditTextValuesModel1
+                                          if (_model.regulerEditTextValuesModel
                                                       .textController.text !=
                                                   null &&
-                                              _model.regulerEditTextValuesModel1
+                                              _model.regulerEditTextValuesModel
                                                       .textController.text !=
                                                   '') {
                                             setState(() {
