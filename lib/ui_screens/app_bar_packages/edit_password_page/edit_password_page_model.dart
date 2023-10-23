@@ -14,7 +14,6 @@ import 'package:provider/provider.dart';
 class EditPasswordPageModel extends FlutterFlowModel<EditPasswordPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
   // State field(s) for TextField widget.
@@ -37,7 +36,6 @@ class EditPasswordPageModel extends FlutterFlowModel<EditPasswordPageWidget> {
   }
 
   void dispose() {
-    unfocusNode.dispose();
     hyndayAppBarModel.dispose();
     textFieldFocusNode1?.dispose();
     textController1?.dispose();

@@ -28,12 +28,7 @@ class SplashPageModel extends FlutterFlowModel<SplashPageWidget> {
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    timerController.timer.setPresetTime(
-      mSec: 6000,
-      add: false,
-    );
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     unfocusNode.dispose();
