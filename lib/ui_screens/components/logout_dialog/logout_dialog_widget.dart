@@ -66,7 +66,7 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(40.0, 50.0, 40.0, 50.0),
+            padding: EdgeInsetsDirectional.fromSTEB(40.0, 50.0, 40.0, 15.0),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
