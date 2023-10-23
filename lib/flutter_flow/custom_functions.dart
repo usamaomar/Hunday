@@ -47,3 +47,12 @@ bool checkNumberCount(String phoneNumber) {
   // Check if the phone number has exactly 10 digits
   return phoneNumber.length == 10;
 }
+
+String formatDateTimeDrop(DateTime dateTime) {
+  final DateFormat dateFormat = DateFormat('MM/dd/yyyy');
+
+  // Use the format method to format the DateTime object as a string
+  String formattedDate = dateFormat.format(dateTime);
+
+  return formattedDate;
+}

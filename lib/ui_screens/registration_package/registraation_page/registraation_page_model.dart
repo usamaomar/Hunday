@@ -39,6 +39,8 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
 
   bool privacyTwo = false;
 
+  String? localDateOfBirth;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

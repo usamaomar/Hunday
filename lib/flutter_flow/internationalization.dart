@@ -190,10 +190,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    'zp4c2w1f': {
-      'en': 'Date of Birth',
-      'ar': 'تاريخ الميلاد',
-    },
     'd8f3cwvn': {
       'en': 'Create Account',
       'ar': 'إنشاء حساب',

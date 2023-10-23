@@ -47,8 +47,12 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
       _model.localEmailIsValid = true;
       _model.localPhoneNumberValid = true;
       _model.localNameValid = true;
-      _model.privacyOne = true;
-      _model.privacyTwo = true;
+      setState(() {
+        _model.localDateOfBirth = FFLocalizations.of(context).getVariableText(
+          enText: 'Date of Birth',
+          arText: 'تاريخ الميلاد',
+        );
+      });
     });
 
     _model.textController ??= TextEditingController();
@@ -460,8 +464,8 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 await showDatePicker(
                                               context: context,
                                               initialDate: getCurrentTimestamp,
-                                              firstDate: getCurrentTimestamp,
-                                              lastDate: DateTime(2050),
+                                              firstDate: DateTime(1900),
+                                              lastDate: getCurrentTimestamp,
                                             );
 
                                             if (_datePickedDate != null) {
@@ -473,6 +477,11 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 );
                                               });
                                             }
+                                            setState(() {
+                                              _model.localDateOfBirth =
+                                                  functions.formatDateTimeDrop(
+                                                      _model.datePicked!);
+                                            });
                                           },
                                           child: Card(
                                             clipBehavior:
@@ -494,10 +503,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                       .fromSTEB(14.0, 14.0,
                                                           14.0, 14.0),
                                                   child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'zp4c2w1f' /* Date of Birth */,
-                                                    ),
+                                                    _model.localDateOfBirth!,
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
