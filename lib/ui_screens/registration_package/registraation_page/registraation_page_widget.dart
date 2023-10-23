@@ -99,7 +99,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                   decoration: BoxDecoration(
                     color: FlutterFlowTheme.of(context).secondaryBackground,
                     image: DecorationImage(
-                      fit: BoxFit.cover,
+                      fit: BoxFit.none,
                       image: Image.asset(
                         'assets/images/oness.png',
                       ).image,
