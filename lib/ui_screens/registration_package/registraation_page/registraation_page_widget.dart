@@ -84,803 +84,822 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: Image.asset(
-                'assets/images/oness.png',
-              ).image,
+        body: Padding(
+          padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                alignment: AlignmentDirectional(0.00, -1.00),
+                image: Image.asset(
+                  'assets/images/oness.png',
+                ).image,
+              ),
+              shape: BoxShape.rectangle,
             ),
-            shape: BoxShape.rectangle,
-          ),
-          child: Stack(
-            children: [
-              Container(
-                decoration: BoxDecoration(),
-                child: SingleChildScrollView(
-                  primary: false,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            SvgPicture.asset(
-                              'assets/images/Group_70060.svg',
-                              fit: BoxFit.none,
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 36.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'oba5wz92' /* Sign Up */,
+            child: Stack(
+              children: [
+                Container(
+                  decoration: BoxDecoration(),
+                  child: SingleChildScrollView(
+                    primary: false,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 50.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/images/Group_70060.svg',
+                                fit: BoxFit.none,
                               ),
-                              style: TextStyle(
-                                fontFamily: 'Seagoe Ui Bold',
-                                color: Colors.black,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 30.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'ui88c5fh' /* Welcome to Hyundai */,
-                              ),
-                              style: TextStyle(
-                                fontFamily: 'Seagoe Ui Bold',
-                                color: Color(0xFF3D6398),
-                                fontWeight: FontWeight.bold,
-                                fontSize: 16.0,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 30.0, 30.0, 5.0),
-                        child: wrapWithModel(
-                          model: _model.regulerEditTextValuesModel1,
-                          updateCallback: () => setState(() {}),
-                          child: RegulerEditTextValuesWidget(
-                            titleahint:
-                                FFLocalizations.of(context).getVariableText(
-                              enText: 'Name',
-                              arText: 'الأسم',
-                            ),
-                            isErrorColor: Colors.white,
+                            ],
                           ),
                         ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            35.0, 0.0, 35.0, 0.0),
-                        child: Stack(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xB8FFFEFE),
-                                borderRadius: BorderRadius.circular(3.0),
-                                border: Border.all(
-                                  color: valueOrDefault<Color>(
-                                    _model.localEmailIsValid == true
-                                        ? Color(0x00FFFFFF)
-                                        : FlutterFlowTheme.of(context).error,
-                                    Color(0x000FFFFF),
-                                  ),
-                                  width: 1.0,
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 36.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'oba5wz92' /* Sign Up */,
+                                ),
+                                style: TextStyle(
+                                  fontFamily: 'Seagoe Ui Bold',
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 30.0,
                                 ),
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 0.0, 5.0, 0.0),
-                                      child: TextFormField(
-                                        controller: _model.textController,
-                                        focusNode: _model.textFieldFocusNode,
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          isDense: true,
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            '6zaw2uxi' /* Email */,
-                                          ),
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall
-                                                  .override(
-                                                    fontFamily: 'Heebo',
-                                                    color: Color(0xFFAAAAAA),
-                                                    fontSize: 14.0,
-                                                    useGoogleFonts: false,
-                                                  ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0x00000000),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0x00000000),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0x00000000),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0x00000000),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                const BorderRadius.only(
-                                              topLeft: Radius.circular(4.0),
-                                              topRight: Radius.circular(4.0),
-                                            ),
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .titleSmall,
-                                        keyboardType:
-                                            TextInputType.emailAddress,
-                                        validator: _model
-                                            .textControllerValidator
-                                            .asValidator(context),
-                                      ),
-                                    ),
-                                  ),
-                                ],
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'ui88c5fh' /* Welcome to Hyundai */,
+                                ),
+                                style: TextStyle(
+                                  fontFamily: 'Seagoe Ui Bold',
+                                  color: Color(0xFF3D6398),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16.0,
+                                ),
                               ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 30.0, 30.0, 5.0),
+                          child: wrapWithModel(
+                            model: _model.regulerEditTextValuesModel1,
+                            updateCallback: () => setState(() {}),
+                            child: RegulerEditTextValuesWidget(
+                              titleahint:
+                                  FFLocalizations.of(context).getVariableText(
+                                enText: 'Name',
+                                arText: 'الأسم',
+                              ),
+                              isErrorColor: Colors.white,
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 15.0, 5.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  AlignedTooltip(
-                                    content: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 10.0, 5.0, 10.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'x9clt4nt' /* Invalid Email Address */,
-                                          ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyLarge
-                                              .override(
-                                                fontFamily: 'Poppins',
-                                                color:
-                                                    _model.localEmailIsValid ==
-                                                            true
-                                                        ? Color(0xFFD6D6D6)
-                                                        : FlutterFlowTheme.of(
-                                                                context)
-                                                            .error,
-                                                fontSize: 14.0,
-                                              ),
-                                        )),
-                                    offset: 4.0,
-                                    preferredDirection: AxisDirection.down,
-                                    borderRadius: BorderRadius.circular(8.0),
-                                    backgroundColor: Colors.white,
-                                    elevation: 4.0,
-                                    tailBaseWidth: 24.0,
-                                    tailLength: 12.0,
-                                    waitDuration: Duration(milliseconds: 100),
-                                    showDuration: Duration(milliseconds: 1500),
-                                    triggerMode: TooltipTriggerMode.tap,
-                                    child: Icon(
-                                      Icons.error,
-                                      color: _model.localEmailIsValid == true
-                                          ? Color(0xFFD6D6D6)
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              35.0, 0.0, 35.0, 0.0),
+                          child: Stack(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xB8FFFEFE),
+                                  borderRadius: BorderRadius.circular(3.0),
+                                  border: Border.all(
+                                    color: valueOrDefault<Color>(
+                                      _model.localEmailIsValid == true
+                                          ? Color(0x00FFFFFF)
                                           : FlutterFlowTheme.of(context).error,
-                                      size: 20.0,
+                                      Color(0x000FFFFF),
                                     ),
+                                    width: 1.0,
                                   ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  30.0, 5.0, 30.0, 0.0),
-                              child: wrapWithModel(
-                                model: _model.regulerEditTextValuesModel2,
-                                updateCallback: () => setState(() {}),
-                                child: RegulerEditTextValuesWidget(
-                                  titleahint: FFLocalizations.of(context)
-                                      .getVariableText(
-                                    enText: 'Phone Number',
-                                    arText: 'رقم الهاتف',
-                                  ),
-                                  isErrorColor: Color(0x00FFFFFF),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  30.0, 0.0, 30.0, 0.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Flexible(
-                                    child: Opacity(
-                                      opacity: 0.8,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Expanded(
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 5.0, 0.0),
-                                        child: FlutterFlowDropDown<String>(
-                                          controller: _model
-                                                  .dropDownValueController ??=
-                                              FormFieldController<String>(null),
-                                          options: [
-                                            FFLocalizations.of(context).getText(
-                                              '6a79dl98' /* Mail */,
+                                        child: TextFormField(
+                                          controller: _model.textController,
+                                          focusNode: _model.textFieldFocusNode,
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            isDense: true,
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '6zaw2uxi' /* Email */,
                                             ),
-                                            FFLocalizations.of(context).getText(
-                                              '8tmgnkrr' /* Femail */,
-                                            )
-                                          ],
-                                          onChanged: (val) => setState(
-                                              () => _model.dropDownValue = val),
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodyMedium,
-                                          hintText: FFLocalizations.of(context)
-                                              .getText(
-                                            '1ok3uuc1' /* Gender */,
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodySmall
+                                                    .override(
+                                                      fontFamily: 'Heebo',
+                                                      color: Color(0xFFAAAAAA),
+                                                      fontSize: 14.0,
+                                                      useGoogleFonts: false,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0x00000000),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  const BorderRadius.only(
+                                                topLeft: Radius.circular(4.0),
+                                                topRight: Radius.circular(4.0),
+                                              ),
+                                            ),
                                           ),
-                                          icon: Icon(
-                                            Icons.keyboard_arrow_down_rounded,
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryText,
-                                            size: 24.0,
-                                          ),
-                                          fillColor:
-                                              FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
-                                          elevation: 0.0,
-                                          borderColor: Colors.transparent,
-                                          borderWidth: 0.0,
-                                          borderRadius: 3.0,
-                                          margin:
+                                          style: FlutterFlowTheme.of(context)
+                                              .titleSmall,
+                                          keyboardType:
+                                              TextInputType.emailAddress,
+                                          validator: _model
+                                              .textControllerValidator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    5.0, 15.0, 5.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    AlignedTooltip(
+                                      content: Padding(
+                                          padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  10.0, 0.0, 10.0, 0.0),
-                                          hidesUnderline: true,
-                                          isSearchable: false,
-                                          isMultiSelect: false,
-                                        ),
+                                                  5.0, 10.0, 5.0, 10.0),
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'x9clt4nt' /* Invalid Email Address */,
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyLarge
+                                                .override(
+                                                  fontFamily: 'Poppins',
+                                                  color:
+                                                      _model.localEmailIsValid ==
+                                                              true
+                                                          ? Color(0xFFD6D6D6)
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                  fontSize: 14.0,
+                                                ),
+                                          )),
+                                      offset: 4.0,
+                                      preferredDirection: AxisDirection.down,
+                                      borderRadius: BorderRadius.circular(8.0),
+                                      backgroundColor: Colors.white,
+                                      elevation: 4.0,
+                                      tailBaseWidth: 24.0,
+                                      tailLength: 12.0,
+                                      waitDuration: Duration(milliseconds: 100),
+                                      showDuration:
+                                          Duration(milliseconds: 1500),
+                                      triggerMode: TooltipTriggerMode.tap,
+                                      child: Icon(
+                                        Icons.error,
+                                        color: _model.localEmailIsValid == true
+                                            ? Color(0xFFD6D6D6)
+                                            : FlutterFlowTheme.of(context)
+                                                .error,
+                                        size: 20.0,
                                       ),
                                     ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    30.0, 5.0, 30.0, 0.0),
+                                child: wrapWithModel(
+                                  model: _model.regulerEditTextValuesModel2,
+                                  updateCallback: () => setState(() {}),
+                                  child: RegulerEditTextValuesWidget(
+                                    titleahint: FFLocalizations.of(context)
+                                        .getVariableText(
+                                      enText: 'Phone Number',
+                                      arText: 'رقم الهاتف',
+                                    ),
+                                    isErrorColor: Color(0x00FFFFFF),
                                   ),
-                                  Flexible(
-                                    child: Opacity(
-                                      opacity: 0.8,
-                                      child: InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          final _datePickedDate =
-                                              await showDatePicker(
-                                            context: context,
-                                            initialDate: getCurrentTimestamp,
-                                            firstDate: getCurrentTimestamp,
-                                            lastDate: DateTime(2050),
-                                          );
-
-                                          if (_datePickedDate != null) {
-                                            safeSetState(() {
-                                              _model.datePicked = DateTime(
-                                                _datePickedDate.year,
-                                                _datePickedDate.month,
-                                                _datePickedDate.day,
-                                              );
-                                            });
-                                          }
-                                        },
-                                        child: Card(
-                                          clipBehavior:
-                                              Clip.antiAliasWithSaveLayer,
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          elevation: 0.0,
-                                          shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        14.0, 14.0, 14.0, 14.0),
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'zp4c2w1f' /* Date of Birth */,
-                                                  ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Heebo',
-                                                        color:
-                                                            Color(0xFF646464),
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    30.0, 0.0, 30.0, 0.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Flexible(
+                                      child: Opacity(
+                                        opacity: 0.8,
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  5.0, 0.0, 5.0, 0.0),
+                                          child: FlutterFlowDropDown<String>(
+                                            controller: _model
+                                                    .dropDownValueController ??=
+                                                FormFieldController<String>(
+                                                    null),
+                                            options: [
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '6a79dl98' /* Mail */,
                                               ),
-                                              FaIcon(
-                                                FontAwesomeIcons.calendarAlt,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 20.0,
-                                              ),
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '8tmgnkrr' /* Femail */,
+                                              )
                                             ],
+                                            onChanged: (val) => setState(() =>
+                                                _model.dropDownValue = val),
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium,
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '1ok3uuc1' /* Gender */,
+                                            ),
+                                            icon: Icon(
+                                              Icons.keyboard_arrow_down_rounded,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                            elevation: 0.0,
+                                            borderColor: Colors.transparent,
+                                            borderWidth: 0.0,
+                                            borderRadius: 3.0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    10.0, 0.0, 10.0, 0.0),
+                                            hidesUnderline: true,
+                                            isSearchable: false,
+                                            isMultiSelect: false,
                                           ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 0.0, 30.0, 0.0),
-                        child: wrapWithModel(
-                          model: _model.regulerEditTextValuesModel3,
-                          updateCallback: () => setState(() {}),
-                          child: RegulerEditTextValuesWidget(
-                            titleahint:
-                                FFLocalizations.of(context).getVariableText(
-                              enText: 'Password',
-                              arText: 'كلمة السر',
-                            ),
-                            isErrorColor:
-                                _model.localIsPasswordConfirme == false
-                                    ? FlutterFlowTheme.of(context).error
-                                    : Color(0x000FFFFF),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 0.0, 30.0, 0.0),
-                        child: wrapWithModel(
-                          model: _model.regulerEditTextValuesModel4,
-                          updateCallback: () => setState(() {}),
-                          child: RegulerEditTextValuesWidget(
-                            titleahint:
-                                FFLocalizations.of(context).getVariableText(
-                              enText: 'Confirm Password',
-                              arText: 'تأكيد كلمة السر',
-                            ),
-                            isErrorColor:
-                                _model.localIsPasswordConfirme == false
-                                    ? FlutterFlowTheme.of(context).error
-                                    : Color(0x000FFFFF),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            40.0, 0.0, 40.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Expanded(
-                              child: RichText(
-                                textScaleFactor:
-                                    MediaQuery.of(context).textScaleFactor,
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText:
-                                            'By creating this account, you acknowledge that you have read and understand the ',
-                                        arText:
-                                            'من خلال إنشاء هذا الحساب، فإنك تقر بأنك قد قرأت وفهمت',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Heebo Regular',
-                                            color: Colors.black,
-                                            fontSize: 13.0,
-                                            fontWeight: FontWeight.normal,
-                                            useGoogleFonts: false,
-                                          ),
-                                    ),
-                                    TextSpan(
-                                      text: FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText: 'Terms of Use',
-                                        arText: 'شروط الاستخدام',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelLarge
-                                          .override(
-                                            fontFamily: 'Heebo Regular',
-                                            color: Color(0xFF3D6398),
-                                            decoration:
-                                                TextDecoration.underline,
-                                            useGoogleFonts: false,
-                                          ),
-                                    ),
-                                    TextSpan(
-                                      text: FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText: 'and',
-                                        arText: 'و',
-                                      ),
-                                      style: TextStyle(
-                                        fontFamily: 'Heebo Regular',
-                                        color: Colors.black,
-                                        fontSize: 13.0,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText: ' Privacy Statement.',
-                                        arText: 'بيان الخصوصية.',
-                                      ),
-                                      style: TextStyle(
-                                        fontFamily: 'Heebo Regular',
-                                        color: Color(0xFF3D6398),
-                                        fontWeight: FontWeight.w500,
-                                        fontSize: 14.0,
-                                        decoration: TextDecoration.underline,
-                                      ),
-                                    )
-                                  ],
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.black,
-                                      ),
-                                ),
-                                textAlign: TextAlign.start,
-                                maxLines: 10,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 10.0, 30.0, 10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Theme(
-                              data: ThemeData(
-                                checkboxTheme: CheckboxThemeData(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.0),
-                                  ),
-                                ),
-                                unselectedWidgetColor:
-                                    FlutterFlowTheme.of(context).accent2,
-                              ),
-                              child: Checkbox(
-                                value: _model.checkboxValue1 ??= false,
-                                onChanged: (newValue) async {
-                                  setState(
-                                      () => _model.checkboxValue1 = newValue!);
-                                },
-                                activeColor:
-                                    FlutterFlowTheme.of(context).ahayundai,
-                                checkColor: Color(0xEBFFFFFF),
-                              ),
-                            ),
-                            Expanded(
-                              child: RichText(
-                                textScaleFactor:
-                                    MediaQuery.of(context).textScaleFactor,
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText:
-                                            'yes, I have read and consent to the terms and conditions',
-                                        arText:
-                                            'نعم، لقد قرأت الشروط والأحكام ووافقت عليها',
-                                      ),
-                                      style: TextStyle(
-                                        color: Color(0xFF000508),
-                                      ),
-                                    )
-                                  ],
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Heebo Regular',
-                                        color:
-                                            FlutterFlowTheme.of(context).white,
-                                        useGoogleFonts: false,
-                                      ),
-                                ),
-                                textAlign: TextAlign.start,
-                                maxLines: 2,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 10.0, 30.0, 10.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Theme(
-                              data: ThemeData(
-                                checkboxTheme: CheckboxThemeData(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(4.0),
-                                  ),
-                                ),
-                                unselectedWidgetColor:
-                                    FlutterFlowTheme.of(context).accent2,
-                              ),
-                              child: Checkbox(
-                                value: _model.checkboxValue2 ??= false,
-                                onChanged: (newValue) async {
-                                  setState(
-                                      () => _model.checkboxValue2 = newValue!);
-                                },
-                                activeColor:
-                                    FlutterFlowTheme.of(context).ahayundai,
-                                checkColor: Color(0xEBFFFFFF),
-                              ),
-                            ),
-                            Expanded(
-                              child: RichText(
-                                textScaleFactor:
-                                    MediaQuery.of(context).textScaleFactor,
-                                text: TextSpan(
-                                  children: [
-                                    TextSpan(
-                                      text: FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText: 'Receive',
-                                        arText: 'يستلم',
-                                      ),
-                                      style: TextStyle(
-                                        fontFamily: 'Heebo Regular',
-                                        color: Color(0xFF060000),
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText: ' News letters',
-                                        arText: 'النشرات الإخبارية',
-                                      ),
-                                      style: GoogleFonts.getFont(
-                                        'Open Sans',
-                                        color: Color(0xFF0F0000),
-                                        fontWeight: FontWeight.w900,
-                                        fontSize: 14.0,
-                                      ),
-                                    ),
-                                    TextSpan(
-                                      text: FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText: ' from Hyundai',
-                                        arText: 'من هيونداي',
-                                      ),
-                                      style: TextStyle(
-                                        fontFamily: 'Heebo Regular',
-                                        color: Color(0xFF020000),
-                                      ),
-                                    )
-                                  ],
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'Heebo Regular',
-                                        color: FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                        useGoogleFonts: false,
-                                      ),
-                                ),
-                                textAlign: TextAlign.start,
-                                maxLines: 3,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 30.5, 30.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Expanded(
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  if (_model.textController.text == null ||
-                                      _model.textController.text == '') {
-                                    setState(() {
-                                      _model.localEmailIsValid = false;
-                                    });
-                                  } else {
-                                    if (functions.newCustomFunction(
-                                        _model.textController.text)!) {
-                                      if ((_model.regulerEditTextValuesModel3.textController.text != null && _model.regulerEditTextValuesModel3.textController.text != '') &&
-                                          (_model.regulerEditTextValuesModel4
-                                                      .textController.text !=
-                                                  null &&
-                                              _model.regulerEditTextValuesModel4
-                                                      .textController.text !=
-                                                  '') &&
-                                          (_model.regulerEditTextValuesModel3
-                                                  .textController.text ==
-                                              _model.regulerEditTextValuesModel4
-                                                  .textController.text)) {
-                                        setState(() {
-                                          _model.localEmailIsValid = true;
-                                          _model.localIsPasswordConfirme = true;
-                                        });
-                                        await showModalBottomSheet(
-                                          isScrollControlled: true,
-                                          backgroundColor: Color(0x00FFFFFF),
-                                          isDismissible: false,
-                                          enableDrag: false,
-                                          useSafeArea: true,
-                                          context: context,
-                                          builder: (context) {
-                                            return GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
-                                                      .unfocus(),
-                                              child: Padding(
-                                                padding:
-                                                    MediaQuery.viewInsetsOf(
-                                                        context),
-                                                child: Container(
-                                                  height: 400.0,
-                                                  child:
-                                                      VerifyBottomDialogWidget(),
-                                                ),
-                                              ),
+                                    Flexible(
+                                      child: Opacity(
+                                        opacity: 0.8,
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            final _datePickedDate =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate: getCurrentTimestamp,
+                                              firstDate: getCurrentTimestamp,
+                                              lastDate: DateTime(2050),
                                             );
+
+                                            if (_datePickedDate != null) {
+                                              safeSetState(() {
+                                                _model.datePicked = DateTime(
+                                                  _datePickedDate.year,
+                                                  _datePickedDate.month,
+                                                  _datePickedDate.day,
+                                                );
+                                              });
+                                            }
                                           },
-                                        ).then((value) => safeSetState(() {}));
-                                      } else {
-                                        setState(() {
-                                          _model.localIsPasswordConfirme =
-                                              false;
-                                        });
-                                      }
-                                    } else {
+                                          child: Card(
+                                            clipBehavior:
+                                                Clip.antiAliasWithSaveLayer,
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            elevation: 0.0,
+                                            shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.max,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(14.0, 14.0,
+                                                          14.0, 14.0),
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'zp4c2w1f' /* Date of Birth */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Heebo',
+                                                          color:
+                                                              Color(0xFF646464),
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                                FaIcon(
+                                                  FontAwesomeIcons.calendarAlt,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
+                                                  size: 20.0,
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 0.0, 30.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.regulerEditTextValuesModel3,
+                            updateCallback: () => setState(() {}),
+                            child: RegulerEditTextValuesWidget(
+                              titleahint:
+                                  FFLocalizations.of(context).getVariableText(
+                                enText: 'Password',
+                                arText: 'كلمة السر',
+                              ),
+                              isErrorColor:
+                                  _model.localIsPasswordConfirme == false
+                                      ? FlutterFlowTheme.of(context).error
+                                      : Color(0x000FFFFF),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 0.0, 30.0, 0.0),
+                          child: wrapWithModel(
+                            model: _model.regulerEditTextValuesModel4,
+                            updateCallback: () => setState(() {}),
+                            child: RegulerEditTextValuesWidget(
+                              titleahint:
+                                  FFLocalizations.of(context).getVariableText(
+                                enText: 'Confirm Password',
+                                arText: 'تأكيد كلمة السر',
+                              ),
+                              isErrorColor:
+                                  _model.localIsPasswordConfirme == false
+                                      ? FlutterFlowTheme.of(context).error
+                                      : Color(0x000FFFFF),
+                            ),
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              40.0, 0.0, 40.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: RichText(
+                                  textScaleFactor:
+                                      MediaQuery.of(context).textScaleFactor,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText:
+                                              'By creating this account, you acknowledge that you have read and understand the ',
+                                          arText:
+                                              'من خلال إنشاء هذا الحساب، فإنك تقر بأنك قد قرأت وفهمت',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Heebo Regular',
+                                              color: Colors.black,
+                                              fontSize: 13.0,
+                                              fontWeight: FontWeight.normal,
+                                              useGoogleFonts: false,
+                                            ),
+                                      ),
+                                      TextSpan(
+                                        text: FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: 'Terms of Use',
+                                          arText: 'شروط الاستخدام',
+                                        ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .labelLarge
+                                            .override(
+                                              fontFamily: 'Heebo Regular',
+                                              color: Color(0xFF3D6398),
+                                              decoration:
+                                                  TextDecoration.underline,
+                                              useGoogleFonts: false,
+                                            ),
+                                      ),
+                                      TextSpan(
+                                        text: FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: 'and',
+                                          arText: 'و',
+                                        ),
+                                        style: TextStyle(
+                                          fontFamily: 'Heebo Regular',
+                                          color: Colors.black,
+                                          fontSize: 13.0,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: ' Privacy Statement.',
+                                          arText: 'بيان الخصوصية.',
+                                        ),
+                                        style: TextStyle(
+                                          fontFamily: 'Heebo Regular',
+                                          color: Color(0xFF3D6398),
+                                          fontWeight: FontWeight.w500,
+                                          fontSize: 14.0,
+                                          decoration: TextDecoration.underline,
+                                        ),
+                                      )
+                                    ],
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.black,
+                                        ),
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  maxLines: 10,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 10.0, 30.0, 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Theme(
+                                data: ThemeData(
+                                  checkboxTheme: CheckboxThemeData(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.0),
+                                    ),
+                                  ),
+                                  unselectedWidgetColor:
+                                      FlutterFlowTheme.of(context).accent2,
+                                ),
+                                child: Checkbox(
+                                  value: _model.checkboxValue1 ??= false,
+                                  onChanged: (newValue) async {
+                                    setState(() =>
+                                        _model.checkboxValue1 = newValue!);
+                                  },
+                                  activeColor:
+                                      FlutterFlowTheme.of(context).ahayundai,
+                                  checkColor: Color(0xEBFFFFFF),
+                                ),
+                              ),
+                              Expanded(
+                                child: RichText(
+                                  textScaleFactor:
+                                      MediaQuery.of(context).textScaleFactor,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText:
+                                              'yes, I have read and consent to the terms and conditions',
+                                          arText:
+                                              'نعم، لقد قرأت الشروط والأحكام ووافقت عليها',
+                                        ),
+                                        style: TextStyle(
+                                          color: Color(0xFF000508),
+                                        ),
+                                      )
+                                    ],
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Heebo Regular',
+                                          color: FlutterFlowTheme.of(context)
+                                              .white,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  maxLines: 2,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 10.0, 30.0, 10.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Theme(
+                                data: ThemeData(
+                                  checkboxTheme: CheckboxThemeData(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(4.0),
+                                    ),
+                                  ),
+                                  unselectedWidgetColor:
+                                      FlutterFlowTheme.of(context).accent2,
+                                ),
+                                child: Checkbox(
+                                  value: _model.checkboxValue2 ??= false,
+                                  onChanged: (newValue) async {
+                                    setState(() =>
+                                        _model.checkboxValue2 = newValue!);
+                                  },
+                                  activeColor:
+                                      FlutterFlowTheme.of(context).ahayundai,
+                                  checkColor: Color(0xEBFFFFFF),
+                                ),
+                              ),
+                              Expanded(
+                                child: RichText(
+                                  textScaleFactor:
+                                      MediaQuery.of(context).textScaleFactor,
+                                  text: TextSpan(
+                                    children: [
+                                      TextSpan(
+                                        text: FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: 'Receive',
+                                          arText: 'يستلم',
+                                        ),
+                                        style: TextStyle(
+                                          fontFamily: 'Heebo Regular',
+                                          color: Color(0xFF060000),
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: ' News letters',
+                                          arText: 'النشرات الإخبارية',
+                                        ),
+                                        style: GoogleFonts.getFont(
+                                          'Open Sans',
+                                          color: Color(0xFF0F0000),
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 14.0,
+                                        ),
+                                      ),
+                                      TextSpan(
+                                        text: FFLocalizations.of(context)
+                                            .getVariableText(
+                                          enText: ' from Hyundai',
+                                          arText: 'من هيونداي',
+                                        ),
+                                        style: TextStyle(
+                                          fontFamily: 'Heebo Regular',
+                                          color: Color(0xFF020000),
+                                        ),
+                                      )
+                                    ],
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Heebo Regular',
+                                          color: FlutterFlowTheme.of(context)
+                                              .primaryText,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                  textAlign: TextAlign.start,
+                                  maxLines: 3,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 30.5, 30.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Expanded(
+                                child: FFButtonWidget(
+                                  onPressed: () async {
+                                    if (_model.textController.text == null ||
+                                        _model.textController.text == '') {
                                       setState(() {
                                         _model.localEmailIsValid = false;
                                       });
+                                    } else {
+                                      if (functions.newCustomFunction(
+                                          _model.textController.text)!) {
+                                        if ((_model.regulerEditTextValuesModel3.textController.text != null && _model.regulerEditTextValuesModel3.textController.text != '') &&
+                                            (_model.regulerEditTextValuesModel4
+                                                        .textController.text !=
+                                                    null &&
+                                                _model.regulerEditTextValuesModel4
+                                                        .textController.text !=
+                                                    '') &&
+                                            (_model.regulerEditTextValuesModel3
+                                                    .textController.text ==
+                                                _model
+                                                    .regulerEditTextValuesModel4
+                                                    .textController
+                                                    .text)) {
+                                          setState(() {
+                                            _model.localEmailIsValid = true;
+                                            _model.localIsPasswordConfirme =
+                                                true;
+                                          });
+                                          await showModalBottomSheet(
+                                            isScrollControlled: true,
+                                            backgroundColor: Color(0x00FFFFFF),
+                                            isDismissible: false,
+                                            enableDrag: false,
+                                            useSafeArea: true,
+                                            context: context,
+                                            builder: (context) {
+                                              return GestureDetector(
+                                                onTap: () => _model.unfocusNode
+                                                        .canRequestFocus
+                                                    ? FocusScope.of(context)
+                                                        .requestFocus(
+                                                            _model.unfocusNode)
+                                                    : FocusScope.of(context)
+                                                        .unfocus(),
+                                                child: Padding(
+                                                  padding:
+                                                      MediaQuery.viewInsetsOf(
+                                                          context),
+                                                  child: Container(
+                                                    height: 400.0,
+                                                    child:
+                                                        VerifyBottomDialogWidget(),
+                                                  ),
+                                                ),
+                                              );
+                                            },
+                                          ).then(
+                                              (value) => safeSetState(() {}));
+                                        } else {
+                                          setState(() {
+                                            _model.localIsPasswordConfirme =
+                                                false;
+                                          });
+                                        }
+                                      } else {
+                                        setState(() {
+                                          _model.localEmailIsValid = false;
+                                        });
+                                      }
                                     }
-                                  }
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  'd8f3cwvn' /* Create Account */,
-                                ),
-                                options: FFButtonOptions(
-                                  height: 40.0,
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: FlutterFlowTheme.of(context).ahayundai,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .titleSmall
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Colors.white,
-                                      ),
-                                  borderSide: BorderSide(
-                                    color: Colors.transparent,
-                                    width: 1.0,
+                                  },
+                                  text: FFLocalizations.of(context).getText(
+                                    'd8f3cwvn' /* Create Account */,
                                   ),
-                                  borderRadius: BorderRadius.circular(5.0),
+                                  options: FFButtonOptions(
+                                    height: 40.0,
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 0.0, 0.0, 0.0),
+                                    color:
+                                        FlutterFlowTheme.of(context).ahayundai,
+                                    textStyle: FlutterFlowTheme.of(context)
+                                        .titleSmall
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Colors.white,
+                                        ),
+                                    borderSide: BorderSide(
+                                      color: Colors.transparent,
+                                      width: 1.0,
+                                    ),
+                                    borderRadius: BorderRadius.circular(5.0),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
-                      ),
-                    ].addToEnd(SizedBox(height: 55.0)),
+                      ].addToEnd(SizedBox(height: 55.0)),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
