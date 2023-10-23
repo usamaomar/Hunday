@@ -352,7 +352,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                 onPressed: (_model.editTextValuesModel
                                                 .textController.text ==
                                             '') &&
-                                        (_model.textController.text == '')
+                                        (_model.textController.text == '') &&
+                                        (_model.textController.text == null ||
+                                            _model.textController.text == '')
                                     ? null
                                     : () async {
                                         var _shouldSetState = false;
