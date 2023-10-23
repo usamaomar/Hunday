@@ -91,7 +91,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
             height: double.infinity,
             child: Stack(
               children: [
-                Container(
+                AnimatedContainer(
+                  duration: Duration(milliseconds: 360),
+                  curve: Curves.easeInOut,
                   width: double.infinity,
                   height: double.infinity,
                   decoration: BoxDecoration(
@@ -102,6 +104,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                         'assets/images/oness.png',
                       ).image,
                     ),
+                    shape: BoxShape.rectangle,
                   ),
                 ),
                 SingleChildScrollView(
