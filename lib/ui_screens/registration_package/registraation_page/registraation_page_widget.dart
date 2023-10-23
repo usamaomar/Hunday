@@ -406,11 +406,11 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                             options: [
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '6a79dl98' /* Mail */,
+                                                '6a79dl98' /* Male */,
                                               ),
                                               FFLocalizations.of(context)
                                                   .getText(
-                                                '8tmgnkrr' /* Femail */,
+                                                '8tmgnkrr' /* Female */,
                                               )
                                             ],
                                             onChanged: (val) => setState(() =>

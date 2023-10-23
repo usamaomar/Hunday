@@ -175,11 +175,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'عنوان البريد الإلكتروني غير صالح',
     },
     '6a79dl98': {
-      'en': 'Mail',
-      'ar': 'رجل',
+      'en': 'Male',
+      'ar': 'ذكر',
     },
     '8tmgnkrr': {
-      'en': 'Femail',
+      'en': 'Female',
       'ar': 'انثى',
     },
     '1ok3uuc1': {
