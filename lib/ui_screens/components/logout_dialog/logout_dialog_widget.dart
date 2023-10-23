@@ -1,3 +1,4 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -95,8 +96,14 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
                     Flexible(
                       child: FFButtonWidget(
                         onPressed: () async {
+                          _model.updatePage(() {
+                            FFAppState().userModel =
+                                UserModelStruct.fromSerializableMap(jsonDecode(
+                                    '{\"id\":\"0\",\"name\":\" \",\"email\":\" \",\"phone\":\" \",\"token\":\" \"}'));
+                          });
+
                           context.goNamed(
-                            'loginScreen',
+                            'splashPage',
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(
                                 hasTransition: true,
