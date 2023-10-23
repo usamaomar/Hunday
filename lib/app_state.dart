@@ -133,8 +133,8 @@ class FFAppState extends ChangeNotifier {
     _itemsShopList.insert(_index, _value);
   }
 
-  UserModelStruct _userModel = UserModelStruct.fromSerializableMap(jsonDecode(
-      '{\"id\":\"0\",\"name\":\" \",\"email\":\" \",\"phone\":\" \",\"token\":\" \"}'));
+  UserModelStruct _userModel =
+      UserModelStruct.fromSerializableMap(jsonDecode('{}'));
   UserModelStruct get userModel => _userModel;
   set userModel(UserModelStruct _value) {
     _userModel = _value;
