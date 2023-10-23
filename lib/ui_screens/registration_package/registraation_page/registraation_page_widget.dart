@@ -46,6 +46,10 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
       });
       setState(() {
         _model.localEmailIsValid = true;
+        _model.localPhoneNumberValid = true;
+        _model.localNameValid = true;
+        _model.privacyOne = true;
+        _model.privacyTwo = true;
       });
     });
 
@@ -600,82 +604,92 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 5.0, 0.0, 0.0),
-                                  child: RichText(
-                                    textScaleFactor:
-                                        MediaQuery.of(context).textScaleFactor,
-                                    text: TextSpan(
-                                      children: [
-                                        TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getVariableText(
-                                            enText:
-                                                'By creating this account, you acknowledge that you have read and understand the ',
-                                            arText:
-                                                'من خلال إنشاء هذا الحساب، فإنك تقر بأنك قد قرأت وفهمت',
+                                  child: InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      await launchURL(
+                                          'https://hyundai.completechaintech.com');
+                                    },
+                                    child: RichText(
+                                      textScaleFactor: MediaQuery.of(context)
+                                          .textScaleFactor,
+                                      text: TextSpan(
+                                        children: [
+                                          TextSpan(
+                                            text: FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText:
+                                                  'By creating this account, you acknowledge that you have read and understand the ',
+                                              arText:
+                                                  'من خلال إنشاء هذا الحساب، فإنك تقر بأنك قد قرأت وفهمت',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Heebo Regular',
+                                                  color: Colors.black,
+                                                  fontSize: 13.0,
+                                                  fontWeight: FontWeight.normal,
+                                                  useGoogleFonts: false,
+                                                ),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Heebo Regular',
-                                                color: Colors.black,
-                                                fontSize: 13.0,
-                                                fontWeight: FontWeight.normal,
-                                                useGoogleFonts: false,
-                                              ),
-                                        ),
-                                        TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getVariableText(
-                                            enText: 'Terms of Use',
-                                            arText: 'شروط الاستخدام',
+                                          TextSpan(
+                                            text: FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText: 'Terms of Use',
+                                              arText: 'شروط الاستخدام',
+                                            ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .labelLarge
+                                                .override(
+                                                  fontFamily: 'Heebo Regular',
+                                                  color: Color(0xFF3D6398),
+                                                  decoration:
+                                                      TextDecoration.underline,
+                                                  useGoogleFonts: false,
+                                                ),
                                           ),
-                                          style: FlutterFlowTheme.of(context)
-                                              .labelLarge
-                                              .override(
-                                                fontFamily: 'Heebo Regular',
-                                                color: Color(0xFF3D6398),
-                                                decoration:
-                                                    TextDecoration.underline,
-                                                useGoogleFonts: false,
-                                              ),
-                                        ),
-                                        TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getVariableText(
-                                            enText: 'and',
-                                            arText: 'و',
+                                          TextSpan(
+                                            text: FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText: 'and',
+                                              arText: 'و',
+                                            ),
+                                            style: TextStyle(
+                                              fontFamily: 'Heebo Regular',
+                                              color: Colors.black,
+                                              fontSize: 13.0,
+                                            ),
                                           ),
-                                          style: TextStyle(
-                                            fontFamily: 'Heebo Regular',
-                                            color: Colors.black,
-                                            fontSize: 13.0,
-                                          ),
-                                        ),
-                                        TextSpan(
-                                          text: FFLocalizations.of(context)
-                                              .getVariableText(
-                                            enText: ' Privacy Statement.',
-                                            arText: 'بيان الخصوصية.',
-                                          ),
-                                          style: TextStyle(
-                                            fontFamily: 'Heebo Regular',
-                                            color: Color(0xFF3D6398),
-                                            fontWeight: FontWeight.w500,
-                                            fontSize: 14.0,
-                                            decoration:
-                                                TextDecoration.underline,
-                                          ),
-                                        )
-                                      ],
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Colors.black,
-                                          ),
+                                          TextSpan(
+                                            text: FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText: ' Privacy Statement.',
+                                              arText: 'بيان الخصوصية.',
+                                            ),
+                                            style: TextStyle(
+                                              fontFamily: 'Heebo Regular',
+                                              color: Color(0xFF3D6398),
+                                              fontWeight: FontWeight.w500,
+                                              fontSize: 14.0,
+                                              decoration:
+                                                  TextDecoration.underline,
+                                            ),
+                                          )
+                                        ],
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.black,
+                                            ),
+                                      ),
+                                      textAlign: TextAlign.start,
+                                      maxLines: 10,
                                     ),
-                                    textAlign: TextAlign.start,
-                                    maxLines: 10,
                                   ),
                                 ),
                               ),
