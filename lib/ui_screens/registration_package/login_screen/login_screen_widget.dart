@@ -1,10 +1,12 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/edit_text_values/edit_text_values_widget.dart';
 import '/ui_screens/components/forget_password_component/forget_password_component_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -365,6 +367,52 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                     _shouldSetState = true;
                                     if ((_model.loginApiRes?.succeeded ??
                                         true)) {
+                                      setState(() {
+                                        FFAppState().userModel =
+                                            UserModelStruct.fromMap(
+                                                (_model.loginApiRes?.jsonBody ??
+                                                    ''));
+                                      });
+                                      if (!(FFAppState().userModel.token !=
+                                              null &&
+                                          FFAppState().userModel.token != '')) {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                enText: 'Error',
+                                                arText: 'مشكلة خادم',
+                                              )),
+                                              content: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                enText: 'Bad Access',
+                                                arText: 'عملية دخول خاطئة',
+                                              )),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getVariableText(
+                                                    enText: 'Ok',
+                                                    arText: 'حسنا',
+                                                  )),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
                                       context.pushNamed('HomeScreen');
 
                                       if (_shouldSetState) setState(() {});

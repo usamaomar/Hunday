@@ -1,10 +1,12 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/edit_text_values/edit_text_values_widget.dart';
 import '/ui_screens/components/forget_password_component/forget_password_component_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/backend/schema/structs/index.dart';
 import 'login_screen_widget.dart' show LoginScreenWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';

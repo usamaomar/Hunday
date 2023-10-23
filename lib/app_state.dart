@@ -17,12 +17,27 @@ class FFAppState extends ChangeNotifier {
     _instance = FFAppState._internal();
   }
 
-  Future initializePersistedState() async {}
+  Future initializePersistedState() async {
+    prefs = await SharedPreferences.getInstance();
+    _safeInit(() {
+      if (prefs.containsKey('ff_userModel')) {
+        try {
+          final serializedData = prefs.getString('ff_userModel') ?? '{}';
+          _userModel =
+              UserModelStruct.fromSerializableMap(jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
+  }
 
   void update(VoidCallback callback) {
     callback();
     notifyListeners();
   }
+
+  late SharedPreferences prefs;
 
   List<String> _textFromFrontDrivLisn = [];
   List<String> get textFromFrontDrivLisn => _textFromFrontDrivLisn;
@@ -116,6 +131,19 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInItemsShopList(
       int _index, ShopListItemModelStruct _value) {
     _itemsShopList.insert(_index, _value);
+  }
+
+  UserModelStruct _userModel = UserModelStruct.fromSerializableMap(jsonDecode(
+      '{\"id\":\"0\",\"name\":\" \",\"email\":\" \",\"phone\":\" \",\"token\":\" \"}'));
+  UserModelStruct get userModel => _userModel;
+  set userModel(UserModelStruct _value) {
+    _userModel = _value;
+    prefs.setString('ff_userModel', _value.serialize());
+  }
+
+  void updateUserModelStruct(Function(UserModelStruct) updateFn) {
+    updateFn(_userModel);
+    prefs.setString('ff_userModel', _userModel.serialize());
   }
 }
 
