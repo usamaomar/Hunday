@@ -96,11 +96,9 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
                     Flexible(
                       child: FFButtonWidget(
                         onPressed: () async {
-                          _model.updatePage(() {
-                            FFAppState().userModel =
-                                UserModelStruct.fromSerializableMap(jsonDecode(
-                                    '{\"id\":\"0\",\"name\":\" \",\"email\":\" \",\"phone\":\" \",\"token\":\" \"}'));
-                          });
+                          FFAppState().userModel =
+                              UserModelStruct.fromSerializableMap(jsonDecode(
+                                  '{\"id\":\"0\",\"name\":\" \",\"email\":\" \",\"phone\":\" \",\"token\":\" \"}'));
 
                           context.goNamed(
                             'splashPage',

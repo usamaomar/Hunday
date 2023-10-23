@@ -84,7 +84,6 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                           'https://lottie.host/b4e379f4-beb9-4ed4-9686-87f8e18dd09a/YmcSTeqvAH.json',
                           height: 150.0,
                           fit: BoxFit.cover,
-                          repeat: false,
                           animate: true,
                         ),
                       ),
@@ -113,9 +112,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                     },
                     onEnded: () async {
                       if (FFAppState().userModel.token != null &&
-                              FFAppState().userModel.token != ''
-                          ? true
-                          : false) {
+                          FFAppState().userModel.token != '') {
                         context.goNamed('HomeScreen');
 
                         return;
