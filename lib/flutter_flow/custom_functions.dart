@@ -22,3 +22,28 @@ bool? newCustomFunction2(
 ) {
   return currentTitle.contains(searchText);
 }
+
+String checkNumberAndValidate(String phoneNumber) {
+  phoneNumber = phoneNumber.replaceAll(RegExp(r'\D'), '');
+
+  // Check if the number starts with "00962" or "+962"
+  if (phoneNumber.startsWith("00962")) {
+    phoneNumber = phoneNumber.replaceFirst("00962", "0");
+  } else if (phoneNumber.startsWith("+962")) {
+    phoneNumber = phoneNumber.replaceFirst("+962", "0");
+  }
+
+  // If the number doesn't start with "0", add it
+  if (!phoneNumber.startsWith("0")) {
+    phoneNumber = "0$phoneNumber";
+  }
+
+  return phoneNumber;
+}
+
+bool checkNumberCount(String phoneNumber) {
+  phoneNumber = phoneNumber.replaceAll(RegExp(r'\D'), '');
+
+  // Check if the phone number has exactly 10 digits
+  return phoneNumber.length == 10;
+}

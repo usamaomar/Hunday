@@ -7,6 +7,7 @@ import '/ui_screens/components/edit_text_values/edit_text_values_widget.dart';
 import '/ui_screens/components/forget_password_component/forget_password_component_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'login_screen_widget.dart' show LoginScreenWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';
@@ -22,6 +23,8 @@ class LoginScreenModel extends FlutterFlowModel<LoginScreenWidget> {
   ///  Local state fields for this page.
 
   bool isLoading = false;
+
+  String phoneNumber = '';
 
   ///  State fields for stateful widgets in this page.
 

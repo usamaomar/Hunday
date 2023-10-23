@@ -7,6 +7,7 @@ import '/ui_screens/components/edit_text_values/edit_text_values_widget.dart';
 import '/ui_screens/components/forget_password_component/forget_password_component_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -358,10 +359,49 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                               '') &&
                                       (_model.textController.text != null &&
                                           _model.textController.text != '')) {
+                                    setState(() {
+                                      _model.phoneNumber = _model
+                                          .editTextValuesModel
+                                          .textController
+                                          .text;
+                                    });
+                                    setState(() {
+                                      _model.phoneNumber =
+                                          functions.checkNumberAndValidate(
+                                              _model.phoneNumber);
+                                    });
+                                    if (functions.checkNumberCount(
+                                            _model.phoneNumber) !=
+                                        true) {
+                                      ScaffoldMessenger.of(context)
+                                          .showSnackBar(
+                                        SnackBar(
+                                          content: Text(
+                                            FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText:
+                                                  'We need jordanian number',
+                                              arText: 'نحن بحاجة إلى رقم أردني',
+                                            ),
+                                            style: TextStyle(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                            ),
+                                          ),
+                                          duration:
+                                              Duration(milliseconds: 4000),
+                                          backgroundColor:
+                                              FlutterFlowTheme.of(context)
+                                                  .secondary,
+                                        ),
+                                      );
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
                                     _model.loginApiRes =
                                         await LoginApiCall.call(
-                                      phone: _model.editTextValuesModel
-                                          .textController.text,
+                                      phone: _model.phoneNumber,
                                       password: _model.textController.text,
                                     );
                                     _shouldSetState = true;
