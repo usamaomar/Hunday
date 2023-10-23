@@ -350,13 +350,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                             child: Builder(
                               builder: (context) => FFButtonWidget(
                                 onPressed: (_model.editTextValuesModel
-                                                    .textController.text ==
-                                                null ||
-                                            _model.editTextValuesModel
-                                                    .textController.text ==
-                                                '') &&
-                                        (_model.textController.text == null ||
-                                            _model.textController.text == '')
+                                                .textController.text ==
+                                            '') &&
+                                        (_model.textController.text == '')
                                     ? null
                                     : () async {
                                         var _shouldSetState = false;
