@@ -84,30 +84,26 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            child: Stack(
-              children: [
-                AnimatedContainer(
-                  duration: Duration(milliseconds: 360),
-                  curve: Curves.easeInOut,
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: BoxDecoration(
-                    color: FlutterFlowTheme.of(context).secondaryBackground,
-                    image: DecorationImage(
-                      fit: BoxFit.fitHeight,
-                      image: Image.asset(
-                        'assets/images/oness.png',
-                      ).image,
-                    ),
-                    shape: BoxShape.rectangle,
-                  ),
-                ),
-                SingleChildScrollView(
+        body: AnimatedContainer(
+          duration: Duration(milliseconds: 360),
+          curve: Curves.easeInOut,
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: Image.asset(
+                'assets/images/oness.png',
+              ).image,
+            ),
+            shape: BoxShape.rectangle,
+          ),
+          child: Stack(
+            children: [
+              Container(
+                decoration: BoxDecoration(),
+                child: SingleChildScrollView(
                   primary: false,
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -885,8 +881,8 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                     ].addToEnd(SizedBox(height: 55.0)),
                   ),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),
