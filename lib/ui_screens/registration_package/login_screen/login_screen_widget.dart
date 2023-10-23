@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -93,19 +94,15 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          SvgPicture.asset(
-                            'assets/images/Group_70060.svg',
-                            fit: BoxFit.fitWidth,
-                          ),
-                        ],
-                      ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/images/Group_70060.svg',
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ],
                     ),
                     Padding(
                       padding:
@@ -347,6 +344,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                           Expanded(
                             child: FFButtonWidget(
                               onPressed: () async {
+                                var _shouldSetState = false;
                                 if ((_model.editTextValuesModel.textController
                                                 .text !=
                                             null &&
@@ -355,7 +353,44 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                             '') &&
                                     (_model.textController.text != null &&
                                         _model.textController.text != '')) {
-                                  context.pushNamed('HomeScreen');
+                                  _model.loginApiRes = await LoginApiCall.call(
+                                    phone: _model.editTextValuesModel
+                                        .textController.text,
+                                    password: _model.textController.text,
+                                  );
+                                  _shouldSetState = true;
+                                  if ((_model.loginApiRes?.succeeded ?? true)) {
+                                    context.pushNamed('HomeScreen');
+
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText: 'Error',
+                                            arText: 'مشكلة بالخادم',
+                                          )),
+                                          content: Text(
+                                              (_model.loginApiRes?.bodyText ??
+                                                  '')),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text('Ok'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  }
                                 } else {
                                   await showDialog(
                                     context: context,
@@ -373,7 +408,11 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                       );
                                     },
                                   );
+                                  if (_shouldSetState) setState(() {});
+                                  return;
                                 }
+
+                                if (_shouldSetState) setState(() {});
                               },
                               text: FFLocalizations.of(context).getText(
                                 '4akeqapx' /* Login */,

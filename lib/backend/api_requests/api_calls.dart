@@ -47,6 +47,54 @@ class LoginCall {
   }
 }
 
+class LoginApiCall {
+  static Future<ApiCallResponse> call({
+    String? phone = '0777882330',
+    String? password = 'password',
+  }) async {
+    final ffApiRequestBody = '''
+{"phone":"${phone}","password":"${password}"}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'LoginApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/login',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic userJsonModel(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+      );
+  static dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$.id''',
+      );
+  static dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$.name''',
+      );
+  static dynamic email(dynamic response) => getJsonField(
+        response,
+        r'''$.email''',
+      );
+  static dynamic phone(dynamic response) => getJsonField(
+        response,
+        r'''$.phone''',
+      );
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.token''',
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
