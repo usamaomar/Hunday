@@ -114,7 +114,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'NewsDetailsPage',
           path: '/newsDetailsPage',
-          builder: (context, params) => NewsDetailsPageWidget(),
+          builder: (context, params) => NewsDetailsPageWidget(
+            itemIndex: params.getParam('itemIndex', ParamType.int),
+          ),
         ),
         FFRoute(
           name: 'EditPasswordPage',

@@ -96,6 +96,12 @@ class _NewsBottomSheetComponentWidgetState
                       onTap: () async {
                         context.pushNamed(
                           'NewsDetailsPage',
+                          queryParameters: {
+                            'itemIndex': serializeParam(
+                              listOfNewsItemsIndex,
+                              ParamType.int,
+                            ),
+                          }.withoutNulls,
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
                               hasTransition: true,

@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -12,7 +13,12 @@ import 'news_details_page_model.dart';
 export 'news_details_page_model.dart';
 
 class NewsDetailsPageWidget extends StatefulWidget {
-  const NewsDetailsPageWidget({Key? key}) : super(key: key);
+  const NewsDetailsPageWidget({
+    Key? key,
+    required this.itemIndex,
+  }) : super(key: key);
+
+  final int? itemIndex;
 
   @override
   _NewsDetailsPageWidgetState createState() => _NewsDetailsPageWidgetState();
@@ -106,10 +112,67 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                 topRight: Radius.circular(20.0),
                               ),
                             ),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [],
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 40.0, 10.0, 0.0),
+                              child: Column(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    functions
+                                        .newsFormatDateFunction(getJsonField(
+                                      FFAppState()
+                                          .newsModelJsonList[widget.itemIndex!],
+                                      r'''$.date''',
+                                    ).toString()),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'Poppins',
+                                          color: Color(0xFF4E4E4E),
+                                        ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 15.0, 0.0, 0.0),
+                                    child: Text(
+                                      getJsonField(
+                                        FFAppState().newsModelJsonList[
+                                            widget.itemIndex!],
+                                        r'''$.title''',
+                                      ).toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'HeeboBold',
+                                            color: Color(0xFF3D6398),
+                                            fontWeight: FontWeight.bold,
+                                            useGoogleFonts: false,
+                                          ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 15.0, 0.0, 0.0),
+                                    child: Text(
+                                      getJsonField(
+                                        FFAppState().newsModelJsonList[
+                                            widget.itemIndex!],
+                                        r'''$.description''',
+                                      ).toString(),
+                                      style: FlutterFlowTheme.of(context)
+                                          .labelMedium
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            fontSize: 14.0,
+                                            fontWeight: FontWeight.normal,
+                                          ),
+                                    ),
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ),
@@ -137,7 +200,11 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: Image.network(
-                                        'https://images.91wheels.com//assets/c_images/gallery/hyundai/venue/hyundai-venue-18-1655379504.jpg?w=900&q=90',
+                                        getJsonField(
+                                          FFAppState().newsModelJsonList[
+                                              widget.itemIndex!],
+                                          r'''$.full_main_image''',
+                                        ),
                                       ).image,
                                     ),
                                     borderRadius: BorderRadius.circular(20.0),
