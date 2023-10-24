@@ -7,6 +7,7 @@ import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component
 import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,6 +32,26 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HomeScreenModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.localTestAuth2 = await TestAuthUserApiCall.call(
+        token: getJsonField(
+          FFAppState().reservedUserModel,
+          r'''$.token''',
+        ).toString().toString(),
+      );
+      if ((_model.localTestAuth2?.succeeded ?? true)) {
+        return;
+      } else {
+        if (Navigator.of(context).canPop()) {
+          context.pop();
+        }
+        context.pushNamed('splashPage');
+
+        return;
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

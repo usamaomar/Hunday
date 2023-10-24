@@ -8,6 +8,7 @@ import '/ui_screens/components/list_of_string_items_component/list_of_string_ite
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'home_screen_widget.dart' show HomeScreenWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,6 +33,8 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (TestAuthUserApi)] action in HomeScreen widget.
+  ApiCallResponse? localTestAuth2;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
