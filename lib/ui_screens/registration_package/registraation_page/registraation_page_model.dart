@@ -1,8 +1,10 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/ui_screens/components/password_edit_text_values/password_edit_text_values_widget.dart';
 import '/ui_screens/components/phone_edit_text_values/phone_edit_text_values_widget.dart';
 import '/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values_widget.dart';
@@ -10,6 +12,7 @@ import '/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'registraation_page_widget.dart' show RegistraationPageWidget;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -42,6 +45,8 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
 
   String? localDateOfBirth = '  ';
 
+  dynamic userJsonModel;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -65,6 +70,8 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
   bool? checkboxValue1;
   // State field(s) for Checkbox widget.
   bool? checkboxValue2;
+  // Stores action output result for [Backend Call - API (RegisterApi)] action in Button widget.
+  ApiCallResponse? apiResult7h5;
 
   /// Initialization and disposal methods.
 

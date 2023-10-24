@@ -1,5 +1,8 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/backend/schema/structs/index.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -133,7 +136,31 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                         width: 400.0,
                         height: 100.0,
                         onDialogMarkerSelected: () async {
+                          var _shouldSetState = false;
+                          _model.localTestAuth = await TestAuthUserApiCall.call(
+                            token: getJsonField(
+                              FFAppState().reservedUserModel,
+                              r'''$.token''',
+                            ).toString(),
+                          );
+                          _shouldSetState = true;
+                          if ((_model.localTestAuth?.succeeded ?? true)) {
+                            setState(() {
+                              FFAppState().userModel = UserModelStruct.fromMap(
+                                  FFAppState().reservedUserModel);
+                            });
+                          } else {
+                            context.safePop();
+                            if (_shouldSetState) setState(() {});
+                            return;
+                          }
+
+                          if (Navigator.of(context).canPop()) {
+                            context.pop();
+                          }
                           context.pushNamed('HomeScreen');
+
+                          if (_shouldSetState) setState(() {});
                         },
                       ),
                     ),
@@ -147,18 +174,21 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      'r94ekdew' /* Didn't receive the code ? */,
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'HeeboBold',
-                          color: Color(0xFF092853),
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.bold,
-                          decoration: TextDecoration.underline,
-                          useGoogleFonts: false,
+                  Align(
+                    alignment: AlignmentDirectional(0.00, 0.00),
+                    child: Container(
+                      width: 350.0,
+                      height: 100.0,
+                      child: custom_widgets.TextCounterCustomWidget(
+                        width: 350.0,
+                        height: 100.0,
+                        recallText: FFLocalizations.of(context).getVariableText(
+                          enText: 'Didn\'t receive the code ?',
+                          arText: 'لم تتلق الرمز؟',
                         ),
+                        onRecallClicked: () async {},
+                      ),
+                    ),
                   ),
                 ],
               ),

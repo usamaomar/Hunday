@@ -95,6 +95,89 @@ class LoginApiCall {
       );
 }
 
+class RegisterApiCall {
+  static Future<ApiCallResponse> call({
+    String? phone = '',
+    String? password = '',
+    String? name = '',
+    String? gender = '',
+    String? lang = '',
+    String? email = '',
+    String? countryCode = 'JO',
+    String? date = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+"phone": "${phone}",
+"password": "${password}",
+"name": "${name}",
+"gender": "${gender}",
+"lang": "${lang}",
+"email": "${email}",
+"country_code": "JO",
+"date": "${date}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'RegisterApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/register',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic userJsonModel(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+      );
+  static dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$.id''',
+      );
+  static dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$.name''',
+      );
+  static dynamic email(dynamic response) => getJsonField(
+        response,
+        r'''$.email''',
+      );
+  static dynamic phone(dynamic response) => getJsonField(
+        response,
+        r'''$.phone''',
+      );
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.token''',
+      );
+}
+
+class TestAuthUserApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'TestAuthUserApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/test',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

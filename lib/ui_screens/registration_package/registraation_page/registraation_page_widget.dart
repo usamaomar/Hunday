@@ -1,14 +1,17 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/ui_screens/components/password_edit_text_values/password_edit_text_values_widget.dart';
 import '/ui_screens/components/phone_edit_text_values/phone_edit_text_values_widget.dart';
 import '/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values_widget.dart';
 import '/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -878,142 +881,241 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Expanded(
-                                child: FFButtonWidget(
-                                  onPressed: () async {
-                                    if (_model.textController.text == null ||
-                                        _model.textController.text == '') {
-                                      setState(() {
-                                        _model.localEmailIsValid = false;
-                                      });
-                                      return;
-                                    } else {
-                                      if (functions.newCustomFunction(
-                                          _model.textController.text)!) {
-                                        if ((_model.passwordEditTextValuesModel1
-                                                        .textController.text !=
-                                                    null &&
-                                                _model.passwordEditTextValuesModel1
-                                                        .textController.text !=
-                                                    '') &&
-                                            (_model.passwordEditTextValuesModel1
-                                                    .textController.text ==
-                                                _model
-                                                    .passwordEditTextValuesModel2
-                                                    .textController
-                                                    .text)) {
-                                          setState(() {
-                                            _model.localEmailIsValid = true;
-                                            _model.localIsPasswordConfirme =
-                                                true;
-                                          });
-                                          setState(() {
-                                            _model.localPhoneNumber = functions
-                                                .checkNumberAndValidate(_model
-                                                    .phoneEditTextValuesModel
-                                                    .textController
-                                                    .text);
-                                          });
-                                          if (functions.checkNumberCount(
-                                                  _model.localPhoneNumber) !=
-                                              true) {
-                                            setState(() {
-                                              _model.localPhoneNumberValid =
-                                                  false;
-                                            });
-                                            return;
-                                          }
-                                          setState(() {
-                                            _model.localPhoneNumberValid = true;
-                                          });
-                                          if (_model.regulerEditTextValuesModel
-                                                      .textController.text !=
-                                                  null &&
-                                              _model.regulerEditTextValuesModel
-                                                      .textController.text !=
-                                                  '') {
-                                            setState(() {
-                                              _model.localNameValid = true;
-                                            });
-                                            if ((_model.privacyOne == true) &&
-                                                (_model.privacyTwo == true)) {
-                                              setState(() {});
-                                            } else {
-                                              return;
-                                            }
-                                          } else {
-                                            setState(() {
-                                              _model.localNameValid = false;
-                                            });
-                                            return;
-                                          }
-
-                                          await showModalBottomSheet(
-                                            isScrollControlled: true,
-                                            backgroundColor: Color(0x00FFFFFF),
-                                            isDismissible: false,
-                                            enableDrag: false,
-                                            useSafeArea: true,
-                                            context: context,
-                                            builder: (context) {
-                                              return GestureDetector(
-                                                onTap: () => _model.unfocusNode
-                                                        .canRequestFocus
-                                                    ? FocusScope.of(context)
-                                                        .requestFocus(
-                                                            _model.unfocusNode)
-                                                    : FocusScope.of(context)
-                                                        .unfocus(),
-                                                child: Padding(
-                                                  padding:
-                                                      MediaQuery.viewInsetsOf(
-                                                          context),
-                                                  child: Container(
-                                                    height: 400.0,
-                                                    child:
-                                                        VerifyBottomDialogWidget(),
-                                                  ),
-                                                ),
-                                              );
-                                            },
-                                          ).then(
-                                              (value) => safeSetState(() {}));
-                                        } else {
-                                          setState(() {
-                                            _model.localIsPasswordConfirme =
-                                                false;
-                                          });
-                                          return;
-                                        }
-                                      } else {
+                                child: Builder(
+                                  builder: (context) => FFButtonWidget(
+                                    onPressed: () async {
+                                      var _shouldSetState = false;
+                                      if (_model.textController.text == null ||
+                                          _model.textController.text == '') {
                                         setState(() {
                                           _model.localEmailIsValid = false;
                                         });
+                                        if (_shouldSetState) setState(() {});
                                         return;
+                                      } else {
+                                        if (functions.newCustomFunction(
+                                            _model.textController.text)!) {
+                                          if ((_model.passwordEditTextValuesModel1
+                                                          .textController.text !=
+                                                      null &&
+                                                  _model.passwordEditTextValuesModel1
+                                                          .textController.text !=
+                                                      '') &&
+                                              (_model.passwordEditTextValuesModel1
+                                                      .textController.text ==
+                                                  _model
+                                                      .passwordEditTextValuesModel2
+                                                      .textController
+                                                      .text)) {
+                                            setState(() {
+                                              _model.localEmailIsValid = true;
+                                              _model.localIsPasswordConfirme =
+                                                  true;
+                                            });
+                                            setState(() {
+                                              _model.localPhoneNumber = functions
+                                                  .checkNumberAndValidate(_model
+                                                      .phoneEditTextValuesModel
+                                                      .textController
+                                                      .text);
+                                            });
+                                            if (functions.checkNumberCount(
+                                                    _model.localPhoneNumber) !=
+                                                true) {
+                                              setState(() {
+                                                _model.localPhoneNumberValid =
+                                                    false;
+                                              });
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                            setState(() {
+                                              _model.localPhoneNumberValid =
+                                                  true;
+                                            });
+                                            if (_model.regulerEditTextValuesModel
+                                                        .textController.text !=
+                                                    null &&
+                                                _model.regulerEditTextValuesModel
+                                                        .textController.text !=
+                                                    '') {
+                                              setState(() {
+                                                _model.localNameValid = true;
+                                              });
+                                              if ((_model.privacyOne == true) &&
+                                                  (_model.privacyTwo == true)) {
+                                                setState(() {});
+                                              } else {
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+
+                                              _model.apiResult7h5 =
+                                                  await RegisterApiCall.call(
+                                                phone: _model.localPhoneNumber,
+                                                name: _model
+                                                    .regulerEditTextValuesModel
+                                                    .textController
+                                                    .text,
+                                                password: _model
+                                                    .passwordEditTextValuesModel2
+                                                    .textController
+                                                    .text,
+                                                gender: _model.dropDownValue,
+                                                lang:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                                email:
+                                                    _model.textController.text,
+                                                countryCode: 'JO',
+                                                date: _model.localDateOfBirth,
+                                              );
+                                              _shouldSetState = true;
+                                              if ((_model.apiResult7h5
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                setState(() {
+                                                  FFAppState()
+                                                          .reservedUserModel =
+                                                      (_model.apiResult7h5
+                                                              ?.jsonBody ??
+                                                          '');
+                                                });
+                                              } else {
+                                                await showAlignedDialog(
+                                                  context: context,
+                                                  isGlobal: true,
+                                                  avoidOverflow: false,
+                                                  targetAnchor:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  followerAnchor:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  builder: (dialogContext) {
+                                                    return Material(
+                                                      color: Colors.transparent,
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child:
+                                                            Modal06BasicInformationWidget(
+                                                          body: (_model
+                                                                  .apiResult7h5
+                                                                  ?.bodyText ??
+                                                              ''),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            } else {
+                                              setState(() {
+                                                _model.localNameValid = false;
+                                              });
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+
+                                            await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor:
+                                                  Color(0x00FFFFFF),
+                                              isDismissible: false,
+                                              enableDrag: false,
+                                              useSafeArea: true,
+                                              context: context,
+                                              builder: (context) {
+                                                return GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child: Padding(
+                                                    padding:
+                                                        MediaQuery.viewInsetsOf(
+                                                            context),
+                                                    child: Container(
+                                                      height: 339.0,
+                                                      child:
+                                                          VerifyBottomDialogWidget(),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                            ).then(
+                                                (value) => safeSetState(() {}));
+                                          } else {
+                                            setState(() {
+                                              _model.localIsPasswordConfirme =
+                                                  false;
+                                            });
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        } else {
+                                          setState(() {
+                                            _model.localEmailIsValid = false;
+                                          });
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        }
                                       }
-                                    }
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    'd8f3cwvn' /* Create Account */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color:
-                                        FlutterFlowTheme.of(context).ahayundai,
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.white,
-                                        ),
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+
+                                      if (_shouldSetState) setState(() {});
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'd8f3cwvn' /* Create Account */,
                                     ),
-                                    borderRadius: BorderRadius.circular(5.0),
+                                    options: FFButtonOptions(
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 0.0, 0.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: FlutterFlowTheme.of(context)
+                                          .ahayundai,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Colors.white,
+                                          ),
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
                                   ),
                                 ),
                               ),

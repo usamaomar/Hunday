@@ -3,6 +3,7 @@ import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'flutter_flow/flutter_flow_util.dart';
+import 'dart:convert';
 
 class FFAppState extends ChangeNotifier {
   static FFAppState _instance = FFAppState._internal();
@@ -144,6 +145,12 @@ class FFAppState extends ChangeNotifier {
   void updateUserModelStruct(Function(UserModelStruct) updateFn) {
     updateFn(_userModel);
     prefs.setString('ff_userModel', _userModel.serialize());
+  }
+
+  dynamic _reservedUserModel;
+  dynamic get reservedUserModel => _reservedUserModel;
+  set reservedUserModel(dynamic _value) {
+    _reservedUserModel = _value;
   }
 }
 

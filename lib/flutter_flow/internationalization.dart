@@ -742,10 +742,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Check your sms and enter 4 digits code',
       'ar': 'تحقق من الرسائل القصيرة الخاصة بك وأدخل الرمز المكون من 4 أرقام',
     },
-    'r94ekdew': {
-      'en': 'Didn\'t receive the code ?',
-      'ar': 'لم تتلق الرمز؟',
-    },
   },
   // EditTextValuesPassword
   {
