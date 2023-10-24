@@ -178,10 +178,10 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                     alignment: AlignmentDirectional(0.00, 0.00),
                     child: Container(
                       width: 350.0,
-                      height: 100.0,
+                      height: 50.0,
                       child: custom_widgets.TextCounterCustomWidget(
                         width: 350.0,
-                        height: 100.0,
+                        height: 50.0,
                         recallText: FFLocalizations.of(context).getVariableText(
                           enText: 'Didn\'t receive the code ?',
                           arText: 'لم تتلق الرمز؟',
