@@ -205,25 +205,38 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                                     final imagesListItem =
                                                         imagesList[
                                                             imagesListIndex];
-                                                    return Container(
-                                                      width: 120.0,
-                                                      height: 95.0,
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        image: DecorationImage(
-                                                          fit: BoxFit.cover,
-                                                          image: Image.network(
-                                                            getJsonField(
-                                                              imagesListItem,
-                                                              r'''$.full_thumb_image''',
-                                                            ),
-                                                          ).image,
+                                                    return Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  15.0,
+                                                                  5.0,
+                                                                  15.0,
+                                                                  0.0),
+                                                      child: Container(
+                                                        width: 120.0,
+                                                        height: 95.0,
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .secondaryBackground,
+                                                          image:
+                                                              DecorationImage(
+                                                            fit: BoxFit.cover,
+                                                            image:
+                                                                Image.network(
+                                                              getJsonField(
+                                                                imagesListItem,
+                                                                r'''$.full_main_image''',
+                                                              ),
+                                                            ).image,
+                                                          ),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      15.0),
                                                         ),
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(15.0),
                                                       ),
                                                     );
                                                   },
@@ -243,7 +256,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.00, -0.28),
+                      alignment: AlignmentDirectional(0.00, -0.39),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             20.0, 0.0, 20.0, 0.0),
