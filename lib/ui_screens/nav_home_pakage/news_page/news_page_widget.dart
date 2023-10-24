@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/nav_home_pakage/news_bottom_sheet_component/news_bottom_sheet_component_widget.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -58,42 +57,11 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
       );
       if ((_model.apiResult44r?.succeeded ?? true)) {
         setState(() {
-          FFAppState().newsModelList = [];
-        });
-        setState(() {
-          _model.localModelNewsList = NewsApiCall.newsModelList(
+          FFAppState().newsModelJsonList = NewsApiCall.newsModelList(
             (_model.apiResult44r?.jsonBody ?? ''),
           )!
-              .map((e) =>
-                  e != null && e != '' ? NewsModelStruct.fromMap(e) : null)
-              .withoutNulls
               .toList()
-              .toList()
-              .cast<NewsModelStruct>();
-        });
-        FFAppState().update(() {
-          FFAppState().newsModelList = NewsApiCall.newsModelList(
-            (_model.apiResult44r?.jsonBody ?? ''),
-          )!
-              .map((e) => getJsonField(
-                            e,
-                            r'''$''',
-                          ) !=
-                          null &&
-                      getJsonField(
-                            e,
-                            r'''$''',
-                          ) !=
-                          ''
-                  ? NewsModelStruct.fromMap(getJsonField(
-                      e,
-                      r'''$''',
-                    ))
-                  : null)
-              .withoutNulls
-              .toList()
-              .toList()
-              .cast<NewsModelStruct>();
+              .cast<dynamic>();
         });
       }
     });

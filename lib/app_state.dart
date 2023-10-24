@@ -31,21 +31,6 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
-    _safeInit(() {
-      _newsModelList = prefs
-              .getStringList('ff_newsModelList')
-              ?.map((x) {
-                try {
-                  return NewsModelStruct.fromSerializableMap(jsonDecode(x));
-                } catch (e) {
-                  print("Can't decode persisted data type. Error: $e.");
-                  return null;
-                }
-              })
-              .withoutNulls
-              .toList() ??
-          _newsModelList;
-    });
   }
 
   void update(VoidCallback callback) {
@@ -168,45 +153,33 @@ class FFAppState extends ChangeNotifier {
     _reservedUserModel = _value;
   }
 
-  List<NewsModelStruct> _newsModelList = [];
-  List<NewsModelStruct> get newsModelList => _newsModelList;
-  set newsModelList(List<NewsModelStruct> _value) {
-    _newsModelList = _value;
-    prefs.setStringList(
-        'ff_newsModelList', _value.map((x) => x.serialize()).toList());
+  List<dynamic> _newsModelJsonList = [];
+  List<dynamic> get newsModelJsonList => _newsModelJsonList;
+  set newsModelJsonList(List<dynamic> _value) {
+    _newsModelJsonList = _value;
   }
 
-  void addToNewsModelList(NewsModelStruct _value) {
-    _newsModelList.add(_value);
-    prefs.setStringList(
-        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
+  void addToNewsModelJsonList(dynamic _value) {
+    _newsModelJsonList.add(_value);
   }
 
-  void removeFromNewsModelList(NewsModelStruct _value) {
-    _newsModelList.remove(_value);
-    prefs.setStringList(
-        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
+  void removeFromNewsModelJsonList(dynamic _value) {
+    _newsModelJsonList.remove(_value);
   }
 
-  void removeAtIndexFromNewsModelList(int _index) {
-    _newsModelList.removeAt(_index);
-    prefs.setStringList(
-        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
+  void removeAtIndexFromNewsModelJsonList(int _index) {
+    _newsModelJsonList.removeAt(_index);
   }
 
-  void updateNewsModelListAtIndex(
+  void updateNewsModelJsonListAtIndex(
     int _index,
-    NewsModelStruct Function(NewsModelStruct) updateFn,
+    dynamic Function(dynamic) updateFn,
   ) {
-    _newsModelList[_index] = updateFn(_newsModelList[_index]);
-    prefs.setStringList(
-        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
+    _newsModelJsonList[_index] = updateFn(_newsModelJsonList[_index]);
   }
 
-  void insertAtIndexInNewsModelList(int _index, NewsModelStruct _value) {
-    _newsModelList.insert(_index, _value);
-    prefs.setStringList(
-        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
+  void insertAtIndexInNewsModelJsonList(int _index, dynamic _value) {
+    _newsModelJsonList.insert(_index, _value);
   }
 }
 

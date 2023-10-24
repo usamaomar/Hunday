@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/nav_home_pakage/news_bottom_sheet_component/news_bottom_sheet_component_widget.dart';
-import '/backend/schema/structs/index.dart';
 import 'news_page_widget.dart' show NewsPageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

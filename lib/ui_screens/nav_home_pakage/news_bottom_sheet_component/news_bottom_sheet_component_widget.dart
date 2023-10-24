@@ -76,7 +76,7 @@ class _NewsBottomSheetComponentWidgetState
           child: Builder(
             builder: (context) {
               final listOfNewsItems =
-                  FFAppState().newsModelList.map((e) => e).toList();
+                  FFAppState().newsModelJsonList.map((e) => e).toList();
               return ListView.builder(
                 padding: EdgeInsets.zero,
                 scrollDirection: Axis.vertical,
@@ -130,7 +130,10 @@ class _NewsBottomSheetComponentWidgetState
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Hero(
-                                      tag: 'newsDetailsHero',
+                                      tag: getJsonField(
+                                        listOfNewsItemsItem,
+                                        r'''$.full_thumb_image''',
+                                      ),
                                       transitionOnUserGestures: true,
                                       child: ClipRRect(
                                         borderRadius:
@@ -140,7 +143,10 @@ class _NewsBottomSheetComponentWidgetState
                                               Duration(milliseconds: 0),
                                           fadeOutDuration:
                                               Duration(milliseconds: 0),
-                                          imageUrl: '',
+                                          imageUrl: getJsonField(
+                                            listOfNewsItemsItem,
+                                            r'''$.full_thumb_image''',
+                                          ),
                                           width: 150.0,
                                           height: double.infinity,
                                           fit: BoxFit.cover,
@@ -168,7 +174,10 @@ class _NewsBottomSheetComponentWidgetState
                                                 CrossAxisAlignment.start,
                                             children: [
                                               Text(
-                                                listOfNewsItemsItem.date,
+                                                getJsonField(
+                                                  listOfNewsItemsItem,
+                                                  r'''$.name''',
+                                                ).toString(),
                                                 textAlign: TextAlign.start,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -187,8 +196,10 @@ class _NewsBottomSheetComponentWidgetState
                                                     .fromSTEB(
                                                         0.0, 15.0, 0.0, 0.0),
                                                 child: Text(
-                                                  listOfNewsItemsItem
-                                                      .description,
+                                                  getJsonField(
+                                                    listOfNewsItemsItem,
+                                                    r'''$.description''',
+                                                  ).toString(),
                                                   textAlign: TextAlign.start,
                                                   maxLines: 2,
                                                   style: FlutterFlowTheme.of(
