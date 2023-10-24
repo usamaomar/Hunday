@@ -62,7 +62,7 @@ class _NewsBottomSheetComponentWidgetState
         child: Container(
           width: double.infinity,
           constraints: BoxConstraints(
-            maxHeight: 700.0,
+            maxHeight: 550.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).white,

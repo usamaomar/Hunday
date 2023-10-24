@@ -153,7 +153,10 @@ class FFAppState extends ChangeNotifier {
     _reservedUserModel = _value;
   }
 
-  List<NewsModelStruct> _newsModelList = [];
+  List<NewsModelStruct> _newsModelList = [
+    NewsModelStruct.fromSerializableMap(jsonDecode(
+        '{\"id\":\"0\",\"title_en\":\" \",\"title_ar\":\" \",\"description_en\":\" \",\"description_ar\":\" \",\"main_image\":\" \",\"thumb_image\":\" \",\"date\":\" \",\"status\":\"0\",\"created_at\":\" \",\"updated_at\":\" \",\"full_main_image\":\" \",\"full_thumb_image\":\" \",\"title\":\" \",\"description\":\" \"}'))
+  ];
   List<NewsModelStruct> get newsModelList => _newsModelList;
   set newsModelList(List<NewsModelStruct> _value) {
     _newsModelList = _value;
