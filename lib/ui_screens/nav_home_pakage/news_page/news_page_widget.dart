@@ -1,3 +1,5 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/nav_home_pakage/news_bottom_sheet_component/news_bottom_sheet_component_widget.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -47,6 +50,26 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => NewsPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResult44r = await NewsApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResult44r?.succeeded ?? true)) {
+        setState(() {
+          FFAppState().newsModelList = NewsApiCall.listOfNewsJson(
+            (_model.apiResult44r?.jsonBody ?? ''),
+          )!
+              .map((e) =>
+                  e != null && e != '' ? NewsModelStruct.fromMap(e) : null)
+              .withoutNulls
+              .toList()
+              .toList()
+              .cast<NewsModelStruct>();
+        });
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }

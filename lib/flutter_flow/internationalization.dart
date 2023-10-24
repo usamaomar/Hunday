@@ -831,15 +831,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // NewsBottomSheetComponent
   {
-    'ymdnt3l8': {
-      'en': '15 May 2023',
-      'ar': '',
-    },
-    'csuhrvmz': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt.',
-      'ar': '',
-    },
     'bj6c5d55': {
       'en': 'More',
       'ar': 'المزيد',
@@ -970,6 +961,48 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'jcuvrswu': {
       'en': '',
       'ar': '',
+    },
+  },
+  // NewsBottomSheetComponentLoading
+  {
+    'w0ul9775': {
+      'en': '',
+      'ar': '',
+    },
+    '48mrpk4y': {
+      'en':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt.',
+      'ar': '',
+    },
+    'ie2txc6w': {
+      'en': 'More',
+      'ar': 'المزيد',
+    },
+    'jfuvt7am': {
+      'en': '15 May 2023',
+      'ar': '',
+    },
+    's2s256ev': {
+      'en':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt.',
+      'ar': '',
+    },
+    'qlpynpqb': {
+      'en': 'More',
+      'ar': 'المزيد',
+    },
+    'zpvkykzr': {
+      'en': '15 May 2023',
+      'ar': '',
+    },
+    'cd833pnp': {
+      'en':
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt.',
+      'ar': '',
+    },
+    '4cajia55': {
+      'en': 'More',
+      'ar': 'المزيد',
     },
   },
   // Miscellaneous

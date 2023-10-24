@@ -152,6 +152,35 @@ class FFAppState extends ChangeNotifier {
   set reservedUserModel(dynamic _value) {
     _reservedUserModel = _value;
   }
+
+  List<NewsModelStruct> _newsModelList = [];
+  List<NewsModelStruct> get newsModelList => _newsModelList;
+  set newsModelList(List<NewsModelStruct> _value) {
+    _newsModelList = _value;
+  }
+
+  void addToNewsModelList(NewsModelStruct _value) {
+    _newsModelList.add(_value);
+  }
+
+  void removeFromNewsModelList(NewsModelStruct _value) {
+    _newsModelList.remove(_value);
+  }
+
+  void removeAtIndexFromNewsModelList(int _index) {
+    _newsModelList.removeAt(_index);
+  }
+
+  void updateNewsModelListAtIndex(
+    int _index,
+    NewsModelStruct Function(NewsModelStruct) updateFn,
+  ) {
+    _newsModelList[_index] = updateFn(_newsModelList[_index]);
+  }
+
+  void insertAtIndexInNewsModelList(int _index, NewsModelStruct _value) {
+    _newsModelList.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

@@ -62,7 +62,7 @@ class _NewsBottomSheetComponentWidgetState
         child: Container(
           width: double.infinity,
           constraints: BoxConstraints(
-            maxHeight: 500.0,
+            maxHeight: 700.0,
           ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).white,
@@ -73,137 +73,94 @@ class _NewsBottomSheetComponentWidgetState
               topRight: Radius.circular(25.0),
             ),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Flexible(
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 30.0, 30.0, 30.0),
-                  child: InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed(
-                        'NewsDetailsPage',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 0),
-                          ),
-                        },
-                      );
-                    },
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Flexible(
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(20.0),
-                            child: Container(
-                              constraints: BoxConstraints(
-                                maxHeight: 150.0,
-                              ),
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context)
-                                    .secondaryBackground,
-                                borderRadius: BorderRadius.circular(20.0),
-                                border: Border.all(
-                                  color: Color(0xFF3D6398),
-                                  width: 0.9,
+          child: Builder(
+            builder: (context) {
+              final listOfNewsItems =
+                  FFAppState().newsModelList.map((e) => e).toList();
+              return ListView.builder(
+                padding: EdgeInsets.zero,
+                scrollDirection: Axis.vertical,
+                itemCount: listOfNewsItems.length,
+                itemBuilder: (context, listOfNewsItemsIndex) {
+                  final listOfNewsItemsItem =
+                      listOfNewsItems[listOfNewsItemsIndex];
+                  return Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 10.0),
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'NewsDetailsPage',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(20.0),
+                              child: Container(
+                                constraints: BoxConstraints(
+                                  maxHeight: 150.0,
                                 ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Hero(
-                                    tag: 'newsDetailsHero',
-                                    transitionOnUserGestures: true,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(0.0),
-                                      child: CachedNetworkImage(
-                                        fadeInDuration:
-                                            Duration(milliseconds: 0),
-                                        fadeOutDuration:
-                                            Duration(milliseconds: 0),
-                                        imageUrl:
-                                            'https://images.91wheels.com//assets/c_images/gallery/hyundai/venue/hyundai-venue-18-1655379504.jpg?w=900&q=90',
-                                        width: 150.0,
-                                        height: double.infinity,
-                                        fit: BoxFit.cover,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .secondaryBackground,
+                                  borderRadius: BorderRadius.circular(20.0),
+                                  border: Border.all(
+                                    color: Color(0xFF3D6398),
+                                    width: 0.9,
+                                  ),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Hero(
+                                      tag: 'newsDetailsHero',
+                                      transitionOnUserGestures: true,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                        child: CachedNetworkImage(
+                                          fadeInDuration:
+                                              Duration(milliseconds: 0),
+                                          fadeOutDuration:
+                                              Duration(milliseconds: 0),
+                                          imageUrl: '',
+                                          width: 150.0,
+                                          height: double.infinity,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                  Flexible(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          15.0, 15.0, 15.0, 15.0),
-                                      child: SingleChildScrollView(
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'ymdnt3l8' /* 15 May 2023 */,
-                                              ),
-                                              textAlign: TextAlign.start,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'HeeboBold',
-                                                    color: Color(0xFF3D6398),
-                                                    fontSize: 10.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    useGoogleFonts: false,
-                                                  ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 15.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'csuhrvmz' /* Lorem ipsum dolor sit amet, co... */,
-                                                ),
-                                                textAlign: TextAlign.start,
-                                                maxLines: 2,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'HeeboBold',
-                                                          color: Colors.black,
-                                                          fontSize: 14.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                              ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 15.0, 0.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'bj6c5d55' /* More */,
-                                                ),
+                                    Flexible(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            15.0, 15.0, 15.0, 15.0),
+                                        child: SingleChildScrollView(
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                listOfNewsItemsItem.date,
                                                 textAlign: TextAlign.start,
                                                 style: FlutterFlowTheme.of(
                                                         context)
@@ -211,29 +168,75 @@ class _NewsBottomSheetComponentWidgetState
                                                     .override(
                                                       fontFamily: 'HeeboBold',
                                                       color: Color(0xFF3D6398),
-                                                      fontSize: 14.0,
+                                                      fontSize: 10.0,
                                                       fontWeight:
                                                           FontWeight.bold,
                                                       useGoogleFonts: false,
                                                     ),
                                               ),
-                                            ),
-                                          ],
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 15.0, 0.0, 0.0),
+                                                child: Text(
+                                                  listOfNewsItemsItem
+                                                      .description,
+                                                  textAlign: TextAlign.start,
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'HeeboBold',
+                                                        color: Colors.black,
+                                                        fontSize: 14.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                              ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 15.0, 0.0, 0.0),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'bj6c5d55' /* More */,
+                                                  ),
+                                                  textAlign: TextAlign.start,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'HeeboBold',
+                                                        color:
+                                                            Color(0xFF3D6398),
+                                                        fontSize: 14.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ),
-              ),
-            ],
+                  );
+                },
+              );
+            },
           ),
         ),
       ),

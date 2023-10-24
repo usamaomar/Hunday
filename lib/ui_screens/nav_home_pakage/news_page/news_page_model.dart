@@ -1,3 +1,5 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -5,6 +7,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/nav_home_pakage/news_bottom_sheet_component/news_bottom_sheet_component_widget.dart';
+import '/backend/schema/structs/index.dart';
 import 'news_page_widget.dart' show NewsPageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -18,6 +21,8 @@ class NewsPageModel extends FlutterFlowModel<NewsPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (NewsApi)] action in NewsPage widget.
+  ApiCallResponse? apiResult44r;
   // Model for NewsBottomSheetComponent component.
   late NewsBottomSheetComponentModel newsBottomSheetComponentModel;
   // Model for HyndayAppBar component.

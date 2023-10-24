@@ -178,6 +178,32 @@ class TestAuthUserApiCall {
   }
 }
 
+class NewsApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'NewsApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/news',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic listOfNewsJson(dynamic response) => getJsonField(
+        response,
+        r'''$.news.data''',
+        true,
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
