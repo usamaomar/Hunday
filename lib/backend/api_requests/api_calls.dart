@@ -197,10 +197,14 @@ class NewsApiCall {
     );
   }
 
-  static dynamic listOfNewsJson(dynamic response) => getJsonField(
+  static dynamic newsModelList(dynamic response) => getJsonField(
         response,
-        r'''$.news.data''',
+        r'''$.news.data[:]''',
         true,
+      );
+  static dynamic list(dynamic response) => getJsonField(
+        response,
+        r'''$''',
       );
 }
 
