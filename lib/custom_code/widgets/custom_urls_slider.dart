@@ -51,7 +51,7 @@ class _CustomUrlsSliderState extends State<CustomUrlsSlider> {
       child: CarouselSlider(
         options: CarouselOptions(
           autoPlay: true,
-          aspectRatio: 1.5,
+          aspectRatio: 0.5,
           enlargeCenterPage: true,
         ),
         items: imageSliders(),
@@ -81,7 +81,7 @@ class _CustomUrlsSliderState extends State<CustomUrlsSlider> {
                         item,
                         fit: BoxFit.cover,
                         width: box.maxWidth * 5.4,
-                        height: box.maxHeight * 0.75,
+                        height: box.maxHeight * 0.65,
                       ),
                     ],
                   )),
