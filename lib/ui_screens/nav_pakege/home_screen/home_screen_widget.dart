@@ -231,7 +231,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                       _model.isLoading = true;
                                     });
                                     _model.listOfValues =
-                                        await TestUsaaCall.call();
+                                        await NewsApiCall.call(
+                                      token: FFAppState().userModel.token,
+                                    );
                                     setState(() {
                                       FFAppState().textFromFrontDrivLisn =
                                           (_model.listOfValues?.jsonBody ?? '')

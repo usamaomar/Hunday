@@ -39,7 +39,7 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
 
-  // Stores action output result for [Backend Call - API (testUsaa)] action in Column widget.
+  // Stores action output result for [Backend Call - API (NewsApi)] action in Column widget.
   ApiCallResponse? listOfValues;
   // Model for BottomNavBarComponent component.
   late BottomNavBarComponentModel bottomNavBarComponentModel;

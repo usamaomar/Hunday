@@ -8,45 +8,6 @@ export 'api_manager.dart' show ApiCallResponse;
 
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
-class TestUsaaCall {
-  static Future<ApiCallResponse> call() async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'testUsaa',
-      apiUrl: 'http://demo7178634.mockable.io/usamates',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {
-        'key': "AIzaSyBwpUhdbfj4YkgSRdulbHoZq2-vlAE7530",
-      },
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-
-  static dynamic listOfDrivingCard(dynamic response) => getJsonField(
-        response,
-        r'''$''',
-      );
-}
-
-class LoginCall {
-  static Future<ApiCallResponse> call() async {
-    return ApiManager.instance.makeApiCall(
-      callName: 'Login',
-      apiUrl: 'http://192.168.1.142:8000/api/osama',
-      callType: ApiCallType.GET,
-      headers: {},
-      params: {},
-      returnBody: true,
-      encodeBodyUtf8: false,
-      decodeUtf8: false,
-      cache: false,
-    );
-  }
-}
-
 class LoginApiCall {
   static Future<ApiCallResponse> call({
     String? phone = '0777882330',
@@ -188,6 +149,7 @@ class NewsApiCall {
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
       },
       params: {},
       returnBody: true,
@@ -201,10 +163,6 @@ class NewsApiCall {
         response,
         r'''$.news.data[:]''',
         true,
-      );
-  static dynamic list(dynamic response) => getJsonField(
-        response,
-        r'''$''',
       );
 }
 
