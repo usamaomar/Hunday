@@ -122,7 +122,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                         Expanded(
                           child: custom_widgets.CustomUrlsSlider(
                             width: double.infinity,
-                            height: 550.0,
+                            height: double.infinity,
                           ),
                         ),
                       ],

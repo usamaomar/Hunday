@@ -63,6 +63,7 @@ class _CustomUrlsSliderState extends State<CustomUrlsSlider> {
     return (imageSlidersList ?? []).map((item) {
       return LayoutBuilder(builder: (context, box) {
         return Container(
+          height: widget.height,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             color: Colors.grey[200],
