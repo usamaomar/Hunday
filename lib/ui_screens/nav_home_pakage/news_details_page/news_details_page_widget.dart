@@ -114,10 +114,10 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 40.0, 10.0, 0.0),
+                                  10.0, 0.0, 10.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
@@ -169,6 +169,70 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                             fontSize: 14.0,
                                             fontWeight: FontWeight.normal,
                                           ),
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        1.0, 0.0, 1.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Expanded(
+                                          child: Container(
+                                            width: 100.0,
+                                            height: 100.0,
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                            ),
+                                            child: Builder(
+                                              builder: (context) {
+                                                final imagesList = FFAppState()
+                                                    .newsModelJsonList
+                                                    .map((e) => e)
+                                                    .toList();
+                                                return ListView.builder(
+                                                  padding: EdgeInsets.zero,
+                                                  shrinkWrap: true,
+                                                  scrollDirection:
+                                                      Axis.horizontal,
+                                                  itemCount: imagesList.length,
+                                                  itemBuilder: (context,
+                                                      imagesListIndex) {
+                                                    final imagesListItem =
+                                                        imagesList[
+                                                            imagesListIndex];
+                                                    return Container(
+                                                      width: 120.0,
+                                                      height: 95.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        image: DecorationImage(
+                                                          fit: BoxFit.cover,
+                                                          image: Image.network(
+                                                            getJsonField(
+                                                              imagesListItem,
+                                                              r'''$.full_thumb_image''',
+                                                            ),
+                                                          ).image,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(15.0),
+                                                      ),
+                                                    );
+                                                  },
+                                                );
+                                              },
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ],
