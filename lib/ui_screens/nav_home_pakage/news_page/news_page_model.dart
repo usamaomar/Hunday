@@ -18,6 +18,21 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class NewsPageModel extends FlutterFlowModel<NewsPageWidget> {
+  ///  Local state fields for this page.
+
+  List<NewsModelStruct> localModelNewsList = [];
+  void addToLocalModelNewsList(NewsModelStruct item) =>
+      localModelNewsList.add(item);
+  void removeFromLocalModelNewsList(NewsModelStruct item) =>
+      localModelNewsList.remove(item);
+  void removeAtIndexFromLocalModelNewsList(int index) =>
+      localModelNewsList.removeAt(index);
+  void insertAtIndexInLocalModelNewsList(int index, NewsModelStruct item) =>
+      localModelNewsList.insert(index, item);
+  void updateLocalModelNewsListAtIndex(
+          int index, Function(NewsModelStruct) updateFn) =>
+      localModelNewsList[index] = updateFn(localModelNewsList[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

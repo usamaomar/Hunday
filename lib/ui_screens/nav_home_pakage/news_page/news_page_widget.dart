@@ -57,6 +57,20 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
         token: FFAppState().userModel.token,
       );
       if ((_model.apiResult44r?.succeeded ?? true)) {
+        setState(() {
+          FFAppState().newsModelList = [];
+        });
+        setState(() {
+          _model.localModelNewsList = NewsApiCall.newsModelList(
+            (_model.apiResult44r?.jsonBody ?? ''),
+          )!
+              .map((e) =>
+                  e != null && e != '' ? NewsModelStruct.fromMap(e) : null)
+              .withoutNulls
+              .toList()
+              .toList()
+              .cast<NewsModelStruct>();
+        });
         FFAppState().update(() {
           FFAppState().newsModelList = NewsApiCall.newsModelList(
             (_model.apiResult44r?.jsonBody ?? ''),

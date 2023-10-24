@@ -31,6 +31,21 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      _newsModelList = prefs
+              .getStringList('ff_newsModelList')
+              ?.map((x) {
+                try {
+                  return NewsModelStruct.fromSerializableMap(jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _newsModelList;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -153,25 +168,30 @@ class FFAppState extends ChangeNotifier {
     _reservedUserModel = _value;
   }
 
-  List<NewsModelStruct> _newsModelList = [
-    NewsModelStruct.fromSerializableMap(jsonDecode(
-        '{\"id\":\"0\",\"title_en\":\" \",\"title_ar\":\" \",\"description_en\":\" \",\"description_ar\":\" \",\"main_image\":\" \",\"thumb_image\":\" \",\"date\":\" \",\"status\":\"0\",\"created_at\":\" \",\"updated_at\":\" \",\"full_main_image\":\" \",\"full_thumb_image\":\" \",\"title\":\" \",\"description\":\" \"}'))
-  ];
+  List<NewsModelStruct> _newsModelList = [];
   List<NewsModelStruct> get newsModelList => _newsModelList;
   set newsModelList(List<NewsModelStruct> _value) {
     _newsModelList = _value;
+    prefs.setStringList(
+        'ff_newsModelList', _value.map((x) => x.serialize()).toList());
   }
 
   void addToNewsModelList(NewsModelStruct _value) {
     _newsModelList.add(_value);
+    prefs.setStringList(
+        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
   }
 
   void removeFromNewsModelList(NewsModelStruct _value) {
     _newsModelList.remove(_value);
+    prefs.setStringList(
+        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
   }
 
   void removeAtIndexFromNewsModelList(int _index) {
     _newsModelList.removeAt(_index);
+    prefs.setStringList(
+        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
   }
 
   void updateNewsModelListAtIndex(
@@ -179,10 +199,14 @@ class FFAppState extends ChangeNotifier {
     NewsModelStruct Function(NewsModelStruct) updateFn,
   ) {
     _newsModelList[_index] = updateFn(_newsModelList[_index]);
+    prefs.setStringList(
+        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
   }
 
   void insertAtIndexInNewsModelList(int _index, NewsModelStruct _value) {
     _newsModelList.insert(_index, _value);
+    prefs.setStringList(
+        'ff_newsModelList', _newsModelList.map((x) => x.serialize()).toList());
   }
 }
 
