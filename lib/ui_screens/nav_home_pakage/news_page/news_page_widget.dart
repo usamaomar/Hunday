@@ -61,8 +61,21 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
           FFAppState().newsModelList = NewsApiCall.newsModelList(
             (_model.apiResult44r?.jsonBody ?? ''),
           )!
-              .map((e) =>
-                  e != null && e != '' ? NewsModelStruct.fromMap(e) : null)
+              .map((e) => getJsonField(
+                            e,
+                            r'''$''',
+                          ) !=
+                          null &&
+                      getJsonField(
+                            e,
+                            r'''$''',
+                          ) !=
+                          ''
+                  ? NewsModelStruct.fromMap(getJsonField(
+                      e,
+                      r'''$''',
+                    ))
+                  : null)
               .withoutNulls
               .toList()
               .toList()

@@ -144,6 +144,14 @@ class _NewsBottomSheetComponentWidgetState
                                           width: 150.0,
                                           height: double.infinity,
                                           fit: BoxFit.cover,
+                                          errorWidget:
+                                              (context, error, stackTrace) =>
+                                                  Image.asset(
+                                            'assets/images/error_image.png',
+                                            width: 150.0,
+                                            height: double.infinity,
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
