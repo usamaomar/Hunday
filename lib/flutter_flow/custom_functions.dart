@@ -56,3 +56,13 @@ String formatDateTimeDrop(DateTime dateTime) {
 
   return formattedDate;
 }
+
+String newsFormatDateFunction(String inputDate) {
+  DateTime parsedDate = DateTime.parse(inputDate);
+
+  final outputFormat = DateFormat('d MMM y');
+
+  String formattedDate = outputFormat.format(parsedDate);
+
+  return formattedDate;
+}
