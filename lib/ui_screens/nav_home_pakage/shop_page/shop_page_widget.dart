@@ -63,7 +63,6 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Colors.white,
         body: Padding(
           padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
           child: Container(

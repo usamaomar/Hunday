@@ -181,6 +181,65 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInNewsModelJsonList(int _index, dynamic _value) {
     _newsModelJsonList.insert(_index, _value);
   }
+
+  List<dynamic> _sharedLocationsJsonList = [];
+  List<dynamic> get sharedLocationsJsonList => _sharedLocationsJsonList;
+  set sharedLocationsJsonList(List<dynamic> _value) {
+    _sharedLocationsJsonList = _value;
+  }
+
+  void addToSharedLocationsJsonList(dynamic _value) {
+    _sharedLocationsJsonList.add(_value);
+  }
+
+  void removeFromSharedLocationsJsonList(dynamic _value) {
+    _sharedLocationsJsonList.remove(_value);
+  }
+
+  void removeAtIndexFromSharedLocationsJsonList(int _index) {
+    _sharedLocationsJsonList.removeAt(_index);
+  }
+
+  void updateSharedLocationsJsonListAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _sharedLocationsJsonList[_index] =
+        updateFn(_sharedLocationsJsonList[_index]);
+  }
+
+  void insertAtIndexInSharedLocationsJsonList(int _index, dynamic _value) {
+    _sharedLocationsJsonList.insert(_index, _value);
+  }
+
+  List<bool> _listOfOpendItems = [];
+  List<bool> get listOfOpendItems => _listOfOpendItems;
+  set listOfOpendItems(List<bool> _value) {
+    _listOfOpendItems = _value;
+  }
+
+  void addToListOfOpendItems(bool _value) {
+    _listOfOpendItems.add(_value);
+  }
+
+  void removeFromListOfOpendItems(bool _value) {
+    _listOfOpendItems.remove(_value);
+  }
+
+  void removeAtIndexFromListOfOpendItems(int _index) {
+    _listOfOpendItems.removeAt(_index);
+  }
+
+  void updateListOfOpendItemsAtIndex(
+    int _index,
+    bool Function(bool) updateFn,
+  ) {
+    _listOfOpendItems[_index] = updateFn(_listOfOpendItems[_index]);
+  }
+
+  void insertAtIndexInListOfOpendItems(int _index, bool _value) {
+    _listOfOpendItems.insert(_index, _value);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

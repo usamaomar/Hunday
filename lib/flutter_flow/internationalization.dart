@@ -699,6 +699,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // LocationPage
+  {
+    'shs8tnad': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // Fild
   {
     '12neuu73': {

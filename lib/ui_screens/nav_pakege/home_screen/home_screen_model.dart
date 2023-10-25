@@ -6,6 +6,7 @@ import '/flutter_flow/upload_data.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_screen_widget.dart' show HomeScreenWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -35,6 +36,8 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (TestAuthUserApi)] action in HomeScreen widget.
   ApiCallResponse? localTestAuth2;
+  // Stores action output result for [Backend Call - API (LocationApi)] action in HomeScreen widget.
+  ApiCallResponse? locationsApiResponce;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));

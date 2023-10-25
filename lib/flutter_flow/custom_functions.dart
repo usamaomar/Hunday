@@ -66,3 +66,39 @@ String newsFormatDateFunction(String inputDate) {
 
   return formattedDate;
 }
+
+String linkToWhatsApp(String phone) {
+  return "https://wa.me/$phone";
+}
+
+String formatTimeRange(
+  String openFrom,
+  String openTo,
+) {
+  DateFormat inputFormat = DateFormat('HH:mm');
+  DateFormat outputFormat = DateFormat('h:mm a');
+  DateTime fromTime = inputFormat.parse(openFrom);
+  DateTime toTime = inputFormat.parse(openTo);
+
+  // Format the times into strings in "h:mm a" format.
+  String formattedFrom = outputFormat.format(fromTime);
+  String formattedTo = outputFormat.format(toTime);
+
+  return '$formattedFrom - $formattedTo';
+}
+
+List<bool> addFalseValuesToList(int size) {
+  List<bool> resultList = List.generate(size, (index) => index == 0);
+  return resultList;
+}
+
+List<bool> updateAtIndexAndClearOthers(
+  List<bool> boolList,
+  int index,
+) {
+  List<bool> updatedList = List<bool>.filled(boolList.length, false);
+  if (index >= 0 && index < boolList.length) {
+    updatedList[index] = !boolList[index];
+  }
+  return updatedList;
+}

@@ -114,7 +114,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                             ),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
+                                  20.0, 0.0, 20.0, 0.0),
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -132,6 +132,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                         .override(
                                           fontFamily: 'Poppins',
                                           color: Color(0xFF4E4E4E),
+                                          fontSize: 10.0,
                                         ),
                                   ),
                                   Padding(
@@ -153,27 +154,47 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                           ),
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 15.0, 0.0, 0.0),
-                                    child: Text(
-                                      getJsonField(
-                                        FFAppState().newsModelJsonList[
-                                            widget.itemIndex!],
-                                        r'''$.description''',
-                                      ).toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            fontSize: 14.0,
-                                            fontWeight: FontWeight.normal,
+                                  Container(
+                                    width: double.infinity,
+                                    height: 100.0,
+                                    decoration: BoxDecoration(
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                    ),
+                                    child: SingleChildScrollView(
+                                      child: Column(
+                                        mainAxisSize: MainAxisSize.max,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 15.0, 0.0, 0.0),
+                                            child: Text(
+                                              getJsonField(
+                                                FFAppState().newsModelJsonList[
+                                                    widget.itemIndex!],
+                                                r'''$.description''',
+                                              ).toString(),
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .labelMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 14.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
+                                            ),
                                           ),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        1.0, 0.0, 1.0, 0.0),
+                                        1.0, 0.0, 1.0, 20.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.min,
                                       mainAxisAlignment:
@@ -209,9 +230,9 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  15.0,
+                                                                  10.0,
                                                                   5.0,
-                                                                  15.0,
+                                                                  10.0,
                                                                   0.0),
                                                       child: InkWell(
                                                         splashColor:
@@ -228,21 +249,19 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                                             queryParameters: {
                                                               'itemIndex':
                                                                   serializeParam(
-                                                                widget
-                                                                    .itemIndex,
+                                                                imagesListIndex,
                                                                 ParamType.int,
                                                               ),
                                                             }.withoutNulls,
                                                           );
                                                         },
                                                         child: Container(
-                                                          width: 120.0,
+                                                          width: 110.0,
                                                           height: 95.0,
                                                           decoration:
                                                               BoxDecoration(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .secondaryBackground,
+                                                            color: Color(
+                                                                0xFFF5F0F0),
                                                             image:
                                                                 DecorationImage(
                                                               fit: BoxFit.cover,
@@ -257,7 +276,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                                             borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        15.0),
+                                                                        20.0),
                                                           ),
                                                         ),
                                                       ),
@@ -282,7 +301,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                       alignment: AlignmentDirectional(0.00, -0.39),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 0.0, 20.0, 0.0),
+                            40.0, 0.0, 40.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -295,8 +314,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                                     maxHeight: 250.0,
                                   ),
                                   decoration: BoxDecoration(
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
+                                    color: Color(0xFFF5F0F0),
                                     image: DecorationImage(
                                       fit: BoxFit.cover,
                                       image: Image.network(
@@ -342,11 +360,6 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget> {
                           ),
                         ),
                       ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [],
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.max,

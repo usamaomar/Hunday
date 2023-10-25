@@ -49,9 +49,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
     return Align(
       alignment: AlignmentDirectional(0.00, 1.00),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 10.0),
+        padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
         child: Container(
-          width: double.infinity,
           height: 700.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).white,
@@ -64,7 +63,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
           ),
           child: SingleChildScrollView(
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Flexible(
@@ -145,9 +144,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                 Flexible(
                   child: Container(
                     height: 500.0,
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
+                    decoration: BoxDecoration(),
                     child: Builder(
                       builder: (context) {
                         final seedCartList = List.generate(

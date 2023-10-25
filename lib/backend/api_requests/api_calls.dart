@@ -166,6 +166,33 @@ class NewsApiCall {
       );
 }
 
+class LocationApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'LocationApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/location',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic apiLocationsJsonList(dynamic response) => getJsonField(
+        response,
+        r'''$.locations.data''',
+        true,
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
