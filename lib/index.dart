@@ -43,3 +43,5 @@ export '/ui_screens/nav_home_pakage/item_details_page/item_details_page_widget.d
     show ItemDetailsPageWidget;
 export '/ui_screens/nav_home_pakage/location_page/location_page_widget.dart'
     show LocationPageWidget;
+export '/ui_screens/nav_home_pakage/offers_page/offers_page_widget.dart'
+    show OffersPageWidget;

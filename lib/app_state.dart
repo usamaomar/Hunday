@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'flutter_flow/request_manager.dart';
 import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -240,6 +241,21 @@ class FFAppState extends ChangeNotifier {
   void insertAtIndexInListOfOpendItems(int _index, bool _value) {
     _listOfOpendItems.insert(_index, _value);
   }
+
+  final _localsManager = FutureRequestManager<ApiCallResponse>();
+  Future<ApiCallResponse> locals({
+    String? uniqueQueryKey,
+    bool? overrideCache,
+    required Future<ApiCallResponse> Function() requestFn,
+  }) =>
+      _localsManager.performRequest(
+        uniqueQueryKey: uniqueQueryKey,
+        overrideCache: overrideCache,
+        requestFn: requestFn,
+      );
+  void clearLocalsCache() => _localsManager.clear();
+  void clearLocalsCacheKey(String? uniqueKey) =>
+      _localsManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {

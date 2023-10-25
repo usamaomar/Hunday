@@ -554,47 +554,57 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                   color: Color(0xFFAFC3E1),
                                 ),
                               ),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        20.0, 20.0, 20.0, 8.0),
-                                    child: SvgPicture.asset(
-                                      'assets/images/Group_72070.svg',
-                                      width: 100.0,
-                                      height: 40.0,
-                                      fit: BoxFit.scaleDown,
-                                    ),
-                                  ),
-                                  Divider(
-                                    thickness: 1.0,
-                                    indent: 25.0,
-                                    endIndent: 25.0,
-                                    color: FlutterFlowTheme.of(context).accent4,
-                                  ),
-                                  Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        flex: 1,
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'xifs34ig' /* Monthly offers */,
-                                          ),
-                                          textAlign: TextAlign.center,
-                                          style: FlutterFlowTheme.of(context)
-                                              .bodyMedium
-                                              .override(
-                                                fontFamily: 'Seagoe Ui Bold',
-                                                color: Colors.white,
-                                                useGoogleFonts: false,
-                                              ),
-                                        ),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  context.pushNamed('OffersPage');
+                                },
+                                child: Column(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          20.0, 20.0, 20.0, 8.0),
+                                      child: SvgPicture.asset(
+                                        'assets/images/Group_72070.svg',
+                                        width: 100.0,
+                                        height: 40.0,
+                                        fit: BoxFit.scaleDown,
                                       ),
-                                    ],
-                                  ),
-                                ],
+                                    ),
+                                    Divider(
+                                      thickness: 1.0,
+                                      indent: 25.0,
+                                      endIndent: 25.0,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent4,
+                                    ),
+                                    Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Expanded(
+                                          flex: 1,
+                                          child: Text(
+                                            FFLocalizations.of(context).getText(
+                                              'xifs34ig' /* Monthly offers */,
+                                            ),
+                                            textAlign: TextAlign.center,
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Seagoe Ui Bold',
+                                                  color: Colors.white,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
                               ),
                             ),
                             Container(

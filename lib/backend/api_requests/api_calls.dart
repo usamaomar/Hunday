@@ -193,6 +193,33 @@ class LocationApiCall {
       );
 }
 
+class OfferApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'OfferApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/offer',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic apiListOffersJson(dynamic response) => getJsonField(
+        response,
+        r'''$.offers.data''',
+        true,
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
