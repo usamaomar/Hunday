@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -400,46 +401,130 @@ class _MoreComponentWidgetState extends State<MoreComponentWidget> {
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: SvgPicture.asset(
-                      'assets/images/Group_72272.svg',
-                      fit: BoxFit.cover,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      await actions.navigateToLinkString(
+                        getJsonField(
+                          FFAppState().socialMediaSharedJson,
+                          r'''$.twitter''',
+                        ).toString(),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Group_72272.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
-                    child: SvgPicture.asset(
-                      'assets/images/Group_72275.svg',
-                      fit: BoxFit.cover,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      await actions.navigateToLinkString(
+                        getJsonField(
+                          FFAppState().socialMediaSharedJson,
+                          r'''$.linkedin''',
+                        ).toString(),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Group_72275.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(0.0),
-                    child: SvgPicture.asset(
-                      'assets/images/Group_72276.svg',
-                      fit: BoxFit.cover,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      await actions.navigateToLinkString(
+                        getJsonField(
+                          FFAppState().socialMediaSharedJson,
+                          r'''$.facebook''',
+                        ).toString(),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Group_72276.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(0.0),
-                    child: SvgPicture.asset(
-                      'assets/images/Group_72278.svg',
-                      fit: BoxFit.cover,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      await actions.navigateToLinkString(
+                        getJsonField(
+                          FFAppState().socialMediaSharedJson,
+                          r'''$.instagram''',
+                        ).toString(),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Group_72278.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(0.0),
-                    child: SvgPicture.asset(
-                      'assets/images/Group_72887.svg',
-                      fit: BoxFit.cover,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      await actions.navigateToLinkString(
+                        getJsonField(
+                          FFAppState().socialMediaSharedJson,
+                          r'''$.whatsapp''',
+                        ).toString(),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Group_72887.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(0.0),
-                    child: SvgPicture.asset(
-                      'assets/images/Group_72271.svg',
-                      fit: BoxFit.cover,
+                  InkWell(
+                    splashColor: Colors.transparent,
+                    focusColor: Colors.transparent,
+                    hoverColor: Colors.transparent,
+                    highlightColor: Colors.transparent,
+                    onTap: () async {
+                      await actions.navigateToLinkString(
+                        getJsonField(
+                          FFAppState().socialMediaSharedJson,
+                          r'''$.youtube''',
+                        ).toString(),
+                      );
+                    },
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Group_72271.svg',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ],

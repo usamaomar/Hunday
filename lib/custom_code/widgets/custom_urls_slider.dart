@@ -16,32 +16,36 @@ class CustomUrlsSlider extends StatefulWidget {
     Key? key,
     this.width,
     this.height,
+    required this.listOfImages,
+    required this.listOfTitles,
   }) : super(key: key);
 
   final double? width;
   final double? height;
+  final List<String> listOfImages;
+  final List<String> listOfTitles;
 
   @override
   _CustomUrlsSliderState createState() => _CustomUrlsSliderState();
 }
 
 class _CustomUrlsSliderState extends State<CustomUrlsSlider> {
-  List<String>? imageSlidersList;
-  List<String>? imageSlidersText;
+  // List<String>? imageSlidersList;
+  // List<String>? imageSlidersText;
   @override
   void initState() {
-    imageSlidersList = [
-      'https://carwow-uk-wp-3.imgix.net/18015-MC20BluInfinito-scaled-e1666008987698.jpg',
-      'https://www.supercars.net/blog/wp-content/uploads/2022/08/Supercars-with-Incredible-Six-Cylinder-Engines-Header-Image-MC20.jpg',
-      'https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/1-maserati-mc20-2022-uk-first-drive-review-lead.jpg',
-      'https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/1-ferrari-296-gtb-top-10.jpg'
-    ];
-    imageSlidersText = [
-      'Car 1',
-      'Car 2',
-      'Car 3',
-      'Car 4',
-    ];
+    // imageSlidersList = [
+    //   'https://carwow-uk-wp-3.imgix.net/18015-MC20BluInfinito-scaled-e1666008987698.jpg',
+    //   'https://www.supercars.net/blog/wp-content/uploads/2022/08/Supercars-with-Incredible-Six-Cylinder-Engines-Header-Image-MC20.jpg',
+    //   'https://www.autocar.co.uk/sites/autocar.co.uk/files/images/car-reviews/first-drives/legacy/1-maserati-mc20-2022-uk-first-drive-review-lead.jpg',
+    //   'https://www.autocar.co.uk/sites/autocar.co.uk/files/styles/gallery_slide/public/images/car-reviews/first-drives/legacy/1-ferrari-296-gtb-top-10.jpg'
+    // ];
+    // imageSlidersText = [
+    //   'Car 1',
+    //   'Car 2',
+    //   'Car 3',
+    //   'Car 4',
+    // ];
     super.initState();
   }
 
@@ -61,7 +65,7 @@ class _CustomUrlsSliderState extends State<CustomUrlsSlider> {
   }
 
   List<Widget> imageSliders() {
-    return (imageSlidersList ?? []).map((item) {
+    return (widget.listOfImages ?? []).map((item) {
       return LayoutBuilder(builder: (context, box) {
         return Container(
           height: widget.height,
@@ -94,7 +98,7 @@ class _CustomUrlsSliderState extends State<CustomUrlsSlider> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      imageSlidersText?[0] ?? '',
+                      widget.listOfTitles?[0] ?? '',
                       style:
                           const TextStyle(fontSize: 18, color: Colors.black87),
                     ),

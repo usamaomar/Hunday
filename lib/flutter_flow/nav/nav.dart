@@ -162,6 +162,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'OffersPage',
           path: '/offersPage',
           builder: (context, params) => OffersPageWidget(),
+        ),
+        FFRoute(
+          name: 'OffersDetailsPage',
+          path: '/offersDetailsPage',
+          builder: (context, params) => OffersDetailsPageWidget(
+            itemIndex: params.getParam('itemIndex', ParamType.int),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -36,6 +37,8 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (TestAuthUserApi)] action in HomeScreen widget.
   ApiCallResponse? localTestAuth2;
+  // Stores action output result for [Backend Call - API (SocialMediaApi)] action in HomeScreen widget.
+  ApiCallResponse? socialMediaOut;
   // Stores action output result for [Backend Call - API (LocationApi)] action in HomeScreen widget.
   ApiCallResponse? locationsApiResponce;
   bool isDataUploading = false;

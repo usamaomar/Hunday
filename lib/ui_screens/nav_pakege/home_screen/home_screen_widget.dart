@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -42,6 +43,17 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           r'''$.token''',
         ).toString().toString(),
       );
+      _model.socialMediaOut = await SocialMediaApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.socialMediaOut?.succeeded ?? true)) {
+        setState(() {
+          FFAppState().socialMediaSharedJson =
+              SocialMediaApiCall.socialMediaJsonObject(
+            (_model.socialMediaOut?.jsonBody ?? ''),
+          );
+        });
+      }
       _model.locationsApiResponce = await LocationApiCall.call(
         token: FFAppState().userModel.token,
       );
@@ -62,6 +74,31 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         });
       }
       if ((_model.localTestAuth2?.succeeded ?? true)) {
+        setState(() {
+          FFAppState().updateUserModelStruct(
+            (e) => e
+              ..language = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.language''',
+              ).toString().toString()
+              ..date = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.date''',
+              ).toString().toString()
+              ..name = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.name''',
+              ).toString().toString()
+              ..email = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.email''',
+              ).toString().toString()
+              ..phone = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.phone''',
+              ).toString().toString(),
+          );
+        });
         return;
       } else {
         if (Navigator.of(context).canPop()) {
@@ -138,9 +175,45 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Expanded(
-                        child: custom_widgets.CustomUrlsSlider(
-                          width: double.infinity,
-                          height: double.infinity,
+                        child: FutureBuilder<ApiCallResponse>(
+                          future: SliderApiCall.call(
+                            token: FFAppState().userModel.token,
+                          ),
+                          builder: (context, snapshot) {
+                            // Customize what your widget looks like when it's loading.
+                            if (!snapshot.hasData) {
+                              return Center(
+                                child: SizedBox(
+                                  width: 50.0,
+                                  height: 50.0,
+                                  child: SpinKitDualRing(
+                                    color: Color(0xFF092853),
+                                    size: 50.0,
+                                  ),
+                                ),
+                              );
+                            }
+                            final customUrlsSliderSliderApiResponse =
+                                snapshot.data!;
+                            return custom_widgets.CustomUrlsSlider(
+                              width: double.infinity,
+                              height: double.infinity,
+                              listOfImages: (SliderApiCall.listOfStringUrls(
+                                customUrlsSliderSliderApiResponse.jsonBody,
+                              ) as List)
+                                  .map<String>((s) => s.toString())
+                                  .toList()!
+                                  .map((e) => e.toString())
+                                  .toList(),
+                              listOfTitles: (SliderApiCall.listOfTitles(
+                                customUrlsSliderSliderApiResponse.jsonBody,
+                              ) as List)
+                                  .map<String>((s) => s.toString())
+                                  .toList()!
+                                  .map((e) => e.toString())
+                                  .toList(),
+                            );
+                          },
                         ),
                       ),
                     ],
@@ -507,8 +580,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           20.0, 20.0, 20.0, 8.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Group_70554.svg',
+                                      child: Image.asset(
+                                        'assets/images/Group_70552@2x.png',
                                         width: 100.0,
                                         height: 40.0,
                                         fit: BoxFit.scaleDown,

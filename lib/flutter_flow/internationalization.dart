@@ -708,7 +708,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OffersPage
   {
-    'b1g2ydmn': {
+    '9zgu400x': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // OffersDetailsPage
+  {
+    'hhq2yqr3': {
+      'en': 'Share',
+      'ar': 'مشاركة',
+    },
+    'bk4hy5iw': {
+      'en': 'Share',
+      'ar': 'مشاركة',
+    },
+    'a8s2x5fj': {
       'en': 'Home',
       'ar': '',
     },

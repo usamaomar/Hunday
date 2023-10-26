@@ -12,11 +12,21 @@ class UserModelStruct extends BaseStruct {
     String? phone,
     String? token,
     int? id,
+    String? gender,
+    String? countryCode,
+    String? date,
+    String? language,
+    String? profilePhotoUrl,
   })  : _name = name,
         _email = email,
         _phone = phone,
         _token = token,
-        _id = id;
+        _id = id,
+        _gender = gender,
+        _countryCode = countryCode,
+        _date = date,
+        _language = language,
+        _profilePhotoUrl = profilePhotoUrl;
 
   // "name" field.
   String? _name;
@@ -49,12 +59,47 @@ class UserModelStruct extends BaseStruct {
   void incrementId(int amount) => _id = id + amount;
   bool hasId() => _id != null;
 
+  // "gender" field.
+  String? _gender;
+  String get gender => _gender ?? '';
+  set gender(String? val) => _gender = val;
+  bool hasGender() => _gender != null;
+
+  // "country_code" field.
+  String? _countryCode;
+  String get countryCode => _countryCode ?? '';
+  set countryCode(String? val) => _countryCode = val;
+  bool hasCountryCode() => _countryCode != null;
+
+  // "date" field.
+  String? _date;
+  String get date => _date ?? '';
+  set date(String? val) => _date = val;
+  bool hasDate() => _date != null;
+
+  // "language" field.
+  String? _language;
+  String get language => _language ?? '';
+  set language(String? val) => _language = val;
+  bool hasLanguage() => _language != null;
+
+  // "profile_photo_url" field.
+  String? _profilePhotoUrl;
+  String get profilePhotoUrl => _profilePhotoUrl ?? '';
+  set profilePhotoUrl(String? val) => _profilePhotoUrl = val;
+  bool hasProfilePhotoUrl() => _profilePhotoUrl != null;
+
   static UserModelStruct fromMap(Map<String, dynamic> data) => UserModelStruct(
         name: data['name'] as String?,
         email: data['email'] as String?,
         phone: data['phone'] as String?,
         token: data['token'] as String?,
         id: castToType<int>(data['id']),
+        gender: data['gender'] as String?,
+        countryCode: data['country_code'] as String?,
+        date: data['date'] as String?,
+        language: data['language'] as String?,
+        profilePhotoUrl: data['profile_photo_url'] as String?,
       );
 
   static UserModelStruct? maybeFromMap(dynamic data) =>
@@ -66,6 +111,11 @@ class UserModelStruct extends BaseStruct {
         'phone': _phone,
         'token': _token,
         'id': _id,
+        'gender': _gender,
+        'country_code': _countryCode,
+        'date': _date,
+        'language': _language,
+        'profile_photo_url': _profilePhotoUrl,
       }.withoutNulls;
 
   @override
@@ -89,6 +139,26 @@ class UserModelStruct extends BaseStruct {
         'id': serializeParam(
           _id,
           ParamType.int,
+        ),
+        'gender': serializeParam(
+          _gender,
+          ParamType.String,
+        ),
+        'country_code': serializeParam(
+          _countryCode,
+          ParamType.String,
+        ),
+        'date': serializeParam(
+          _date,
+          ParamType.String,
+        ),
+        'language': serializeParam(
+          _language,
+          ParamType.String,
+        ),
+        'profile_photo_url': serializeParam(
+          _profilePhotoUrl,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -119,6 +189,31 @@ class UserModelStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        gender: deserializeParam(
+          data['gender'],
+          ParamType.String,
+          false,
+        ),
+        countryCode: deserializeParam(
+          data['country_code'],
+          ParamType.String,
+          false,
+        ),
+        date: deserializeParam(
+          data['date'],
+          ParamType.String,
+          false,
+        ),
+        language: deserializeParam(
+          data['language'],
+          ParamType.String,
+          false,
+        ),
+        profilePhotoUrl: deserializeParam(
+          data['profile_photo_url'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -131,12 +226,27 @@ class UserModelStruct extends BaseStruct {
         email == other.email &&
         phone == other.phone &&
         token == other.token &&
-        id == other.id;
+        id == other.id &&
+        gender == other.gender &&
+        countryCode == other.countryCode &&
+        date == other.date &&
+        language == other.language &&
+        profilePhotoUrl == other.profilePhotoUrl;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([name, email, phone, token, id]);
+  int get hashCode => const ListEquality().hash([
+        name,
+        email,
+        phone,
+        token,
+        id,
+        gender,
+        countryCode,
+        date,
+        language,
+        profilePhotoUrl
+      ]);
 }
 
 UserModelStruct createUserModelStruct({
@@ -145,6 +255,11 @@ UserModelStruct createUserModelStruct({
   String? phone,
   String? token,
   int? id,
+  String? gender,
+  String? countryCode,
+  String? date,
+  String? language,
+  String? profilePhotoUrl,
 }) =>
     UserModelStruct(
       name: name,
@@ -152,4 +267,9 @@ UserModelStruct createUserModelStruct({
       phone: phone,
       token: token,
       id: id,
+      gender: gender,
+      countryCode: countryCode,
+      date: date,
+      language: language,
+      profilePhotoUrl: profilePhotoUrl,
     );

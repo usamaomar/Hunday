@@ -242,6 +242,41 @@ class FFAppState extends ChangeNotifier {
     _listOfOpendItems.insert(_index, _value);
   }
 
+  List<dynamic> _listOfPublicOffers = [];
+  List<dynamic> get listOfPublicOffers => _listOfPublicOffers;
+  set listOfPublicOffers(List<dynamic> _value) {
+    _listOfPublicOffers = _value;
+  }
+
+  void addToListOfPublicOffers(dynamic _value) {
+    _listOfPublicOffers.add(_value);
+  }
+
+  void removeFromListOfPublicOffers(dynamic _value) {
+    _listOfPublicOffers.remove(_value);
+  }
+
+  void removeAtIndexFromListOfPublicOffers(int _index) {
+    _listOfPublicOffers.removeAt(_index);
+  }
+
+  void updateListOfPublicOffersAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _listOfPublicOffers[_index] = updateFn(_listOfPublicOffers[_index]);
+  }
+
+  void insertAtIndexInListOfPublicOffers(int _index, dynamic _value) {
+    _listOfPublicOffers.insert(_index, _value);
+  }
+
+  dynamic _socialMediaSharedJson;
+  dynamic get socialMediaSharedJson => _socialMediaSharedJson;
+  set socialMediaSharedJson(dynamic _value) {
+    _socialMediaSharedJson = _value;
+  }
+
   final _localsManager = FutureRequestManager<ApiCallResponse>();
   Future<ApiCallResponse> locals({
     String? uniqueQueryKey,
