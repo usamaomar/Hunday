@@ -277,6 +277,12 @@ class FFAppState extends ChangeNotifier {
     _socialMediaSharedJson = _value;
   }
 
+  bool _isDarkMode = false;
+  bool get isDarkMode => _isDarkMode;
+  set isDarkMode(bool _value) {
+    _isDarkMode = _value;
+  }
+
   final _localsManager = FutureRequestManager<ApiCallResponse>();
   Future<ApiCallResponse> locals({
     String? uniqueQueryKey,
