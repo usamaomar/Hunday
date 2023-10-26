@@ -11,6 +11,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:provider/provider.dart';
 
 class SettingsPageModel extends FlutterFlowModel<SettingsPageWidget> {
@@ -24,6 +25,7 @@ class SettingsPageModel extends FlutterFlowModel<SettingsPageWidget> {
   bool? switchValue1;
   // State field(s) for Switch widget.
   bool? switchValue2;
+  bool allowsBes = false;
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
   // Model for BottomNavBarComponent component.
