@@ -102,3 +102,12 @@ List<bool> updateAtIndexAndClearOthers(
   }
   return updatedList;
 }
+
+String formatPhoneNumber(String input) {
+  String countryCode = "+962";
+  String firstPart = input.substring(0, 3);
+  String secondPart = input.substring(3, 6);
+  String thirdPart = input.substring(6, 9);
+
+  return '$countryCode $firstPart $secondPart $thirdPart';
+}

@@ -293,14 +293,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // MyProfilePage
   {
-    '0ohm33pl': {
-      'en': 'Hello World',
-      'ar': '',
-    },
-    'nl6y0xw3': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     'g8y2etl1': {
       'en': 'Personal Information',
       'ar': 'معلومات شخصية',

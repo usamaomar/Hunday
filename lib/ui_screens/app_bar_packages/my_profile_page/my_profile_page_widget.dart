@@ -6,6 +6,7 @@ import '/ui_screens/app_bar_packages/my_orders_and_appointments_component/my_ord
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/logout_dialog/logout_dialog_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -128,11 +129,11 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                   children: [
                                     Column(
                                       mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          FFLocalizations.of(context).getText(
-                                            '0ohm33pl' /* Hello World */,
-                                          ),
+                                          FFAppState().userModel.name,
                                           style: FlutterFlowTheme.of(context)
                                               .bodyMedium
                                               .override(
@@ -149,9 +150,8 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                               EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 5.0, 0.0, 0.0),
                                           child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'nl6y0xw3' /* Hello World */,
-                                            ),
+                                            functions.formatPhoneNumber(
+                                                FFAppState().userModel.phone),
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
