@@ -38,10 +38,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.localTestAuth2 = await TestAuthUserApiCall.call(
-        token: getJsonField(
-          FFAppState().reservedUserModel,
-          r'''$.token''',
-        ).toString().toString(),
+        token: FFAppState().userModel.token,
       );
       _model.socialMediaOut = await SocialMediaApiCall.call(
         token: FFAppState().userModel.token,
