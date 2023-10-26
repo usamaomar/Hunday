@@ -114,9 +114,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        '9ejopl6e' /* Hello World */,
-                                      ),
+                                      FFAppState().userModel.name,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

@@ -316,10 +316,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // PersonalInformationPage
   {
-    '699uzk7o': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     'wc6fd6q0': {
       'en': 'Personal Information',
       'ar': 'معلومات شخصية',
@@ -328,25 +324,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Name',
       'ar': 'الاسم',
     },
-    'r5zd3dci': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     '479vu35o': {
       'en': 'Email',
       'ar': 'البريد الألكتروني',
     },
-    'yltvde3s': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     'z7ln3s0h': {
       'en': 'Phone Number',
       'ar': 'رقم الهاتف',
-    },
-    'l5fzgiqe': {
-      'en': 'Hello World',
-      'ar': '',
     },
     'tl9k7w8d': {
       'en': 'Home',
@@ -355,10 +339,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // EditProfilePage
   {
-    '9ejopl6e': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     '0ot0fqwj': {
       'en': 'Edit Profile',
       'ar': 'تعديل الملف الشخصي',
@@ -444,10 +424,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // EditPasswordPage
   {
-    'd2rnxfkh': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     'bfuzctld': {
       'en': 'Edit Password',
       'ar': 'تعديل كلمة السر',

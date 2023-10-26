@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -106,9 +107,7 @@ class _PersonalInformationPageWidgetState
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
-                                    FFLocalizations.of(context).getText(
-                                      '699uzk7o' /* Hello World */,
-                                    ),
+                                    FFAppState().userModel.name,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
@@ -234,9 +233,7 @@ class _PersonalInformationPageWidgetState
                                       ),
                                     ),
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        'r5zd3dci' /* Hello World */,
-                                      ),
+                                      FFAppState().userModel.name,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -289,9 +286,7 @@ class _PersonalInformationPageWidgetState
                                       ),
                                     ),
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        'yltvde3s' /* Hello World */,
-                                      ),
+                                      FFAppState().userModel.email,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(
@@ -344,9 +339,8 @@ class _PersonalInformationPageWidgetState
                                       ),
                                     ),
                                     Text(
-                                      FFLocalizations.of(context).getText(
-                                        'l5fzgiqe' /* Hello World */,
-                                      ),
+                                      functions.formatPhoneNumber(
+                                          FFAppState().userModel.phone),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

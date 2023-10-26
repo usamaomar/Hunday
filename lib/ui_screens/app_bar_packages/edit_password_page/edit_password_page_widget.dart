@@ -108,9 +108,7 @@ class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Text(
-                                    FFLocalizations.of(context).getText(
-                                      'd2rnxfkh' /* Hello World */,
-                                    ),
+                                    FFAppState().userModel.name,
                                     style: FlutterFlowTheme.of(context)
                                         .bodyMedium
                                         .override(
