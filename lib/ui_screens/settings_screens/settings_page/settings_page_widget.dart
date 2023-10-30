@@ -131,7 +131,6 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                                                 maxHeight: 202.0,
                                               ),
                                               decoration: BoxDecoration(
-                                                color: Color(0xFFF5F0F0),
                                                 borderRadius:
                                                     BorderRadius.circular(20.0),
                                                 border: Border.all(
@@ -148,7 +147,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                                                   'assets/images/tucson-nx4-fmc-highlights-4th-generation-tucson-poised-to-set-new-record-pc@2x.png',
                                                   width: 300.0,
                                                   height: 200.0,
-                                                  fit: BoxFit.cover,
+                                                  fit: BoxFit.contain,
                                                 ),
                                               ),
                                             ),
