@@ -98,7 +98,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                             child: Container(
                               width: double.infinity,
                               constraints: BoxConstraints(
-                                maxHeight: 415.0,
+                                maxHeight: 450.0,
                               ),
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).white,
@@ -876,41 +876,51 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, -0.45),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              20.0, 0.0, 20.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Flexible(
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(20.0),
-                                  child: Container(
-                                    constraints: BoxConstraints(
-                                      maxHeight: 250.0,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                      image: DecorationImage(
-                                        fit: BoxFit.cover,
-                                        image: Image.network(
-                                          'https://images.91wheels.com//assets/c_images/gallery/hyundai/venue/hyundai-venue-18-1655379504.jpg?w=900&q=90',
-                                        ).image,
-                                      ),
+                        alignment: AlignmentDirectional(0.00, 1.00),
+                        child: Container(
+                          constraints: BoxConstraints(
+                            maxHeight: 470.0,
+                          ),
+                          decoration: BoxDecoration(),
+                          child: Align(
+                            alignment: AlignmentDirectional(0.00, -3.00),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  20.0, 0.0, 20.0, 0.0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Flexible(
+                                    child: ClipRRect(
                                       borderRadius: BorderRadius.circular(20.0),
-                                      border: Border.all(
-                                        color:
-                                            FlutterFlowTheme.of(context).white,
-                                        width: 2.0,
+                                      child: Container(
+                                        constraints: BoxConstraints(
+                                          maxHeight: 250.0,
+                                        ),
+                                        decoration: BoxDecoration(
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryBackground,
+                                          image: DecorationImage(
+                                            fit: BoxFit.cover,
+                                            image: Image.network(
+                                              'https://images.91wheels.com//assets/c_images/gallery/hyundai/venue/hyundai-venue-18-1655379504.jpg?w=900&q=90',
+                                            ).image,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(20.0),
+                                          border: Border.all(
+                                            color: FlutterFlowTheme.of(context)
+                                                .white,
+                                            width: 2.0,
+                                          ),
+                                        ),
                                       ),
                                     ),
                                   ),
-                                ),
+                                ],
                               ),
-                            ],
+                            ),
                           ),
                         ),
                       ),
