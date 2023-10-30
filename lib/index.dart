@@ -1,5 +1,5 @@
 // Export pages
-export '/ui_screens/registration_package/login_screen/login_screen_widget.dart'
+export '/ui_screens/login_screen/login_screen_widget.dart'
     show LoginScreenWidget;
 export '/ui_screens/registration_package/registraation_page/registraation_page_widget.dart'
     show RegistraationPageWidget;

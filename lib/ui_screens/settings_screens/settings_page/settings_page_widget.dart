@@ -83,7 +83,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                     alignment: AlignmentDirectional(0.00, 1.00),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 200.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
                       child: Container(
                         decoration: BoxDecoration(),
                         child: Column(
