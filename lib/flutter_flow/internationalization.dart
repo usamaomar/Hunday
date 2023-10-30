@@ -344,15 +344,15 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تعديل الملف الشخصي',
     },
     '4wy32pc5': {
-      'en': 'Hello',
+      'en': '',
       'ar': 'البحث...',
     },
     'gyvl0k6r': {
-      'en': 'Hello',
+      'en': '',
       'ar': 'البحث...',
     },
     '9ug6mtde': {
-      'en': 'Hello',
+      'en': '',
       'ar': 'البحث...',
     },
     'xbberk0c': {

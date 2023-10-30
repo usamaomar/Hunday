@@ -29,11 +29,14 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
     super.initState();
     _model = createModel(context, () => EditProfilePageModel());
 
-    _model.textController1 ??= TextEditingController();
+    _model.textController1 ??=
+        TextEditingController(text: FFAppState().userModel.name);
     _model.textFieldFocusNode1 ??= FocusNode();
-    _model.textController2 ??= TextEditingController();
+    _model.textController2 ??=
+        TextEditingController(text: FFAppState().userModel.email);
     _model.textFieldFocusNode2 ??= FocusNode();
-    _model.textController3 ??= TextEditingController();
+    _model.textController3 ??=
+        TextEditingController(text: FFAppState().userModel.phone);
     _model.textFieldFocusNode3 ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -209,11 +212,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               isDense: true,
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '4wy32pc5' /* Hello */,
-                                              ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium,
@@ -311,11 +309,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               isDense: true,
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'gyvl0k6r' /* Hello */,
-                                              ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium,
@@ -413,11 +406,6 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                             obscureText: false,
                                             decoration: InputDecoration(
                                               isDense: true,
-                                              labelText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '9ug6mtde' /* Hello */,
-                                              ),
                                               labelStyle:
                                                   FlutterFlowTheme.of(context)
                                                       .labelMedium,
