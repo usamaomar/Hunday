@@ -78,9 +78,10 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(5.0, 400.0, 5.0, 5.0),
                     child: Material(
                       color: Colors.transparent,
                       elevation: 15.0,
@@ -94,9 +95,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                       ),
                       child: Container(
                         width: double.infinity,
-                        constraints: BoxConstraints(
-                          maxHeight: 600.0,
-                        ),
+                        height: double.infinity,
                         decoration: BoxDecoration(
                           color: FlutterFlowTheme.of(context).white,
                           borderRadius: BorderRadius.only(
@@ -676,10 +675,10 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget> {
                   ],
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, -0.30),
+                  alignment: AlignmentDirectional(0.00, 0.00),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 250.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.center,
