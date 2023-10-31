@@ -41,7 +41,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 500.ms,
-          begin: Offset(0.0, 550.0),
+          begin: Offset(0.0, 600.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -101,221 +101,6 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
               children: [
                 Stack(
                   children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                        child: Material(
-                          color: Colors.transparent,
-                          elevation: 15.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              bottomLeft: Radius.circular(0.0),
-                              bottomRight: Radius.circular(0.0),
-                              topLeft: Radius.circular(20.0),
-                              topRight: Radius.circular(20.0),
-                            ),
-                          ),
-                          child: Container(
-                            width: double.infinity,
-                            constraints: BoxConstraints(
-                              maxHeight: 400.0,
-                            ),
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context).white,
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(0.0),
-                                bottomRight: Radius.circular(0.0),
-                                topLeft: Radius.circular(20.0),
-                                topRight: Radius.circular(20.0),
-                              ),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  20.0, 0.0, 20.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    functions
-                                        .newsFormatDateFunction(getJsonField(
-                                      FFAppState()
-                                          .newsModelJsonList[widget.itemIndex!],
-                                      r'''$.date''',
-                                    ).toString()),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Color(0xFF4E4E4E),
-                                          fontSize: 10.0,
-                                        ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 15.0, 0.0, 0.0),
-                                    child: Text(
-                                      getJsonField(
-                                        FFAppState().newsModelJsonList[
-                                            widget.itemIndex!],
-                                        r'''$.title''',
-                                      ).toString(),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'HeeboBold',
-                                            color: Color(0xFF3D6398),
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: false,
-                                          ),
-                                    ),
-                                  ),
-                                  Container(
-                                    width: double.infinity,
-                                    height: 100.0,
-                                    decoration: BoxDecoration(
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryBackground,
-                                    ),
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 15.0, 0.0, 0.0),
-                                            child: Text(
-                                              getJsonField(
-                                                FFAppState().newsModelJsonList[
-                                                    widget.itemIndex!],
-                                                r'''$.description''',
-                                              ).toString(),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                      ),
-                                            ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        1.0, 0.0, 1.0, 20.0),
-                                    child: Row(
-                                      mainAxisSize: MainAxisSize.min,
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.center,
-                                      children: [
-                                        Expanded(
-                                          child: Container(
-                                            width: 100.0,
-                                            height: 100.0,
-                                            decoration: BoxDecoration(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
-                                            child: Builder(
-                                              builder: (context) {
-                                                final imagesList = FFAppState()
-                                                    .newsModelJsonList
-                                                    .map((e) => e)
-                                                    .toList();
-                                                return ListView.builder(
-                                                  padding: EdgeInsets.zero,
-                                                  shrinkWrap: true,
-                                                  scrollDirection:
-                                                      Axis.horizontal,
-                                                  itemCount: imagesList.length,
-                                                  itemBuilder: (context,
-                                                      imagesListIndex) {
-                                                    final imagesListItem =
-                                                        imagesList[
-                                                            imagesListIndex];
-                                                    return Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  5.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: InkWell(
-                                                        splashColor:
-                                                            Colors.transparent,
-                                                        focusColor:
-                                                            Colors.transparent,
-                                                        hoverColor:
-                                                            Colors.transparent,
-                                                        highlightColor:
-                                                            Colors.transparent,
-                                                        onTap: () async {
-                                                          context.pushNamed(
-                                                            'NewsDetailsPage',
-                                                            queryParameters: {
-                                                              'itemIndex':
-                                                                  serializeParam(
-                                                                imagesListIndex,
-                                                                ParamType.int,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
-                                                        },
-                                                        child: Container(
-                                                          width: 110.0,
-                                                          height: 95.0,
-                                                          decoration:
-                                                              BoxDecoration(
-                                                            color: Color(
-                                                                0xFFF5F0F0),
-                                                            image:
-                                                                DecorationImage(
-                                                              fit: BoxFit.cover,
-                                                              image:
-                                                                  Image.network(
-                                                                getJsonField(
-                                                                  imagesListItem,
-                                                                  r'''$.full_main_image''',
-                                                                ),
-                                                              ).image,
-                                                            ),
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        20.0),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    );
-                                                  },
-                                                );
-                                              },
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
                     Align(
                       alignment: AlignmentDirectional(0.00, 1.00),
                       child: Container(
@@ -385,7 +170,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                   ),
                                                   width: 300.0,
                                                   height: 200.0,
-                                                  fit: BoxFit.contain,
+                                                  fit: BoxFit.cover,
                                                 ),
                                               ),
                                             ),
@@ -598,7 +383,9 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                             ],
                                           ),
                                         ),
-                                      ].addToEnd(SizedBox(height: 60.0)),
+                                      ]
+                                          .addToStart(SizedBox(height: 15.0))
+                                          .addToEnd(SizedBox(height: 60.0)),
                                     ),
                                   ),
                                 ),
