@@ -250,7 +250,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'About App',
       'ar': 'حول التطبيق',
     },
-    'dyuiu29k': {
+    's2jkoquf': {
       'en':
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt. Aenean eu elit et nunc scelerisque rutrum in sed tellus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nam nec eleifend est, in euismod felis. Sed pulvinar risus quis felis sodales, a faucibus leo iaculis. Quisque vitae mauris ut mi semper volutpat.',
       'ar': '',
@@ -687,11 +687,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // OffersDetailsPage
   {
-    'hhq2yqr3': {
+    'g6x2pbik': {
       'en': 'Share',
       'ar': 'مشاركة',
     },
-    'bk4hy5iw': {
+    'guoi6rgz': {
       'en': 'Share',
       'ar': 'مشاركة',
     },
