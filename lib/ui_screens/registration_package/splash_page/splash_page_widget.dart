@@ -113,11 +113,17 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                     onEnded: () async {
                       if (FFAppState().userModel.token != null &&
                           FFAppState().userModel.token != '') {
-                        context.goNamed('HomeScreen');
+                        if (Navigator.of(context).canPop()) {
+                          context.pop();
+                        }
+                        context.pushNamed('HomeScreen');
 
                         return;
                       } else {
-                        context.goNamed('loginScreen');
+                        if (Navigator.of(context).canPop()) {
+                          context.pop();
+                        }
+                        context.pushNamed('loginScreen');
 
                         return;
                       }

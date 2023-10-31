@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -68,7 +67,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           );
         });
       } else {
-        await actions.clearAllDate();
+        setState(() {
+          FFAppState().userModel =
+              UserModelStruct.fromSerializableMap(jsonDecode('{}'));
+        });
         if (Navigator.of(context).canPop()) {
           context.pop();
         }
@@ -105,6 +107,31 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               ).length)
               .toList()
               .cast<bool>();
+        });
+      }
+      _model.apiResultSlider = await SliderApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResultSlider?.succeeded ?? true)) {
+        setState(() {
+          _model.listOfImagesSlider = (SliderApiCall.listOfStringUrls(
+            (_model.apiResultSlider?.jsonBody ?? ''),
+          ) as List)
+              .map<String>((s) => s.toString())
+              .toList()!
+              .map((e) => e.toString())
+              .toList()
+              .toList()
+              .cast<String>();
+          _model.listOfTestList = (SliderApiCall.listOfTitles(
+            (_model.apiResultSlider?.jsonBody ?? ''),
+          ) as List)
+              .map<String>((s) => s.toString())
+              .toList()!
+              .map((e) => e.toString())
+              .toList()
+              .toList()
+              .cast<String>();
         });
       }
     });
@@ -174,45 +201,11 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                     crossAxisAlignment: CrossAxisAlignment.stretch,
                     children: [
                       Expanded(
-                        child: FutureBuilder<ApiCallResponse>(
-                          future: SliderApiCall.call(
-                            token: FFAppState().userModel.token,
-                          ),
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitDualRing(
-                                    color: Color(0xFF092853),
-                                    size: 50.0,
-                                  ),
-                                ),
-                              );
-                            }
-                            final customUrlsSliderSliderApiResponse =
-                                snapshot.data!;
-                            return custom_widgets.CustomUrlsSlider(
-                              width: double.infinity,
-                              height: double.infinity,
-                              listOfImages: (SliderApiCall.listOfStringUrls(
-                                customUrlsSliderSliderApiResponse.jsonBody,
-                              ) as List)
-                                  .map<String>((s) => s.toString())
-                                  .toList()!
-                                  .map((e) => e.toString())
-                                  .toList(),
-                              listOfTitles: (SliderApiCall.listOfTitles(
-                                customUrlsSliderSliderApiResponse.jsonBody,
-                              ) as List)
-                                  .map<String>((s) => s.toString())
-                                  .toList()!
-                                  .map((e) => e.toString())
-                                  .toList(),
-                            );
-                          },
+                        child: custom_widgets.CustomUrlsSlider(
+                          width: double.infinity,
+                          height: double.infinity,
+                          listOfImages: _model.listOfImagesSlider,
+                          listOfTitles: _model.listOfTestList,
                         ),
                       ),
                     ],

@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_screen_widget.dart' show HomeScreenWidget;
@@ -33,6 +32,27 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
 
   bool isLoading = false;
 
+  List<String> listOfImagesSlider = [];
+  void addToListOfImagesSlider(String item) => listOfImagesSlider.add(item);
+  void removeFromListOfImagesSlider(String item) =>
+      listOfImagesSlider.remove(item);
+  void removeAtIndexFromListOfImagesSlider(int index) =>
+      listOfImagesSlider.removeAt(index);
+  void insertAtIndexInListOfImagesSlider(int index, String item) =>
+      listOfImagesSlider.insert(index, item);
+  void updateListOfImagesSliderAtIndex(int index, Function(String) updateFn) =>
+      listOfImagesSlider[index] = updateFn(listOfImagesSlider[index]);
+
+  List<String> listOfTestList = [];
+  void addToListOfTestList(String item) => listOfTestList.add(item);
+  void removeFromListOfTestList(String item) => listOfTestList.remove(item);
+  void removeAtIndexFromListOfTestList(int index) =>
+      listOfTestList.removeAt(index);
+  void insertAtIndexInListOfTestList(int index, String item) =>
+      listOfTestList.insert(index, item);
+  void updateListOfTestListAtIndex(int index, Function(String) updateFn) =>
+      listOfTestList[index] = updateFn(listOfTestList[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -42,6 +62,8 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   ApiCallResponse? socialMediaOut;
   // Stores action output result for [Backend Call - API (LocationApi)] action in HomeScreen widget.
   ApiCallResponse? locationsApiResponce;
+  // Stores action output result for [Backend Call - API (SliderApi)] action in HomeScreen widget.
+  ApiCallResponse? apiResultSlider;
   bool isDataUploading = false;
   FFUploadedFile uploadedLocalFile =
       FFUploadedFile(bytes: Uint8List.fromList([]));
