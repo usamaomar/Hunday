@@ -35,7 +35,7 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 500.ms,
-          begin: Offset(0.0, 650.0),
+          begin: Offset(0.0, 600.0),
           end: Offset(0.0, 0.0),
         ),
       ],

@@ -111,14 +111,13 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                       if (shouldUpdate) setState(() {});
                     },
                     onEnded: () async {
+                      context.safePop();
                       if (FFAppState().userModel.token != null &&
                           FFAppState().userModel.token != '') {
                         if (Navigator.of(context).canPop()) {
                           context.pop();
                         }
                         context.pushNamed('HomeScreen');
-
-                        return;
                       } else {
                         if (Navigator.of(context).canPop()) {
                           context.pop();
@@ -127,6 +126,8 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
 
                         return;
                       }
+
+                      context.safePop();
                     },
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).headlineSmall,

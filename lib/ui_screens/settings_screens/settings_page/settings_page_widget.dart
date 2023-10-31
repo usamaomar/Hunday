@@ -38,7 +38,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 500.ms,
-          begin: Offset(0.0, 600.0),
+          begin: Offset(0.0, 550.0),
           end: Offset(0.0, 0.0),
         ),
       ],
