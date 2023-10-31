@@ -129,6 +129,7 @@ class TestAuthUserApiCall {
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
       },
       params: {},
       returnBody: true,
