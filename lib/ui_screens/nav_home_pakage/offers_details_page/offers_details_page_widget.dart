@@ -164,7 +164,7 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                               ),
                                               width: 300.0,
                                               height: 200.0,
-                                              fit: BoxFit.contain,
+                                              fit: BoxFit.fill,
                                             ),
                                           ),
                                         ),
@@ -188,11 +188,11 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
+                                    20.0, 0.0, 20.0, 60.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                      MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Container(

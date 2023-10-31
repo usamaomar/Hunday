@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -40,6 +41,42 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
       _model.localTestAuth2 = await TestAuthUserApiCall.call(
         token: FFAppState().userModel.token,
       );
+      if ((_model.localTestAuth2?.succeeded ?? true)) {
+        setState(() {
+          FFAppState().updateUserModelStruct(
+            (e) => e
+              ..language = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.language''',
+              ).toString().toString()
+              ..date = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.date''',
+              ).toString().toString()
+              ..name = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.name''',
+              ).toString().toString()
+              ..email = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.email''',
+              ).toString().toString()
+              ..phone = getJsonField(
+                (_model.localTestAuth2?.jsonBody ?? ''),
+                r'''$.phone''',
+              ).toString().toString(),
+          );
+        });
+      } else {
+        await actions.clearAllDate();
+        if (Navigator.of(context).canPop()) {
+          context.pop();
+        }
+        context.pushNamed('splashPage');
+
+        return;
+      }
+
       _model.socialMediaOut = await SocialMediaApiCall.call(
         token: FFAppState().userModel.token,
       );
@@ -69,41 +106,6 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               .toList()
               .cast<bool>();
         });
-      }
-      if ((_model.localTestAuth2?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().updateUserModelStruct(
-            (e) => e
-              ..language = getJsonField(
-                (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.language''',
-              ).toString().toString()
-              ..date = getJsonField(
-                (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.date''',
-              ).toString().toString()
-              ..name = getJsonField(
-                (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.name''',
-              ).toString().toString()
-              ..email = getJsonField(
-                (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.email''',
-              ).toString().toString()
-              ..phone = getJsonField(
-                (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.phone''',
-              ).toString().toString(),
-          );
-        });
-        return;
-      } else {
-        if (Navigator.of(context).canPop()) {
-          context.pop();
-        }
-        context.pushNamed('splashPage');
-
-        return;
       }
     });
 
