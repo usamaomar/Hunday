@@ -336,7 +336,7 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                                       FFLocalizations.of(
                                                               context)
                                                           .getText(
-                                                        'znxr4f0n' /* Lorem ipsum dolor sit amet, co... */,
+                                                        'dyuiu29k' /* Lorem ipsum dolor sit amet, co... */,
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(
