@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -123,45 +124,83 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
               ),
             ),
             Row(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Expanded(
-                  child: Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(100.0, 10.0, 100.0, 0.0),
                     child: Container(
-                      width: 400.0,
-                      height: 100.0,
-                      child: custom_widgets.CustomPinCodeWidget(
-                        width: 400.0,
-                        height: 100.0,
-                        onDialogMarkerSelected: () async {
+                      decoration: BoxDecoration(),
+                      child: PinCodeTextField(
+                        autoDisposeControllers: false,
+                        appContext: context,
+                        length: 4,
+                        textStyle: FlutterFlowTheme.of(context).bodyLarge,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        enableActiveFill: false,
+                        autoFocus: false,
+                        enablePinAutofill: true,
+                        errorTextSpace: 16.0,
+                        showCursor: true,
+                        cursorColor: FlutterFlowTheme.of(context).primaryText,
+                        obscureText: false,
+                        keyboardType: TextInputType.number,
+                        pinTheme: PinTheme(
+                          fieldHeight: 34.0,
+                          fieldWidth: 34.0,
+                          borderWidth: 2.0,
+                          borderRadius: BorderRadius.circular(5.0),
+                          shape: PinCodeFieldShape.box,
+                          activeColor: FlutterFlowTheme.of(context).primaryText,
+                          inactiveColor: FlutterFlowTheme.of(context).alternate,
+                          selectedColor: FlutterFlowTheme.of(context).primary,
+                          activeFillColor:
+                              FlutterFlowTheme.of(context).primaryText,
+                          inactiveFillColor:
+                              FlutterFlowTheme.of(context).alternate,
+                          selectedFillColor:
+                              FlutterFlowTheme.of(context).primary,
+                        ),
+                        controller: _model.pinCodeController,
+                        onChanged: (_) {},
+                        onCompleted: (_) async {
                           var _shouldSetState = false;
-                          _model.localTestAuth = await TestAuthUserApiCall.call(
-                            token: getJsonField(
+                          _model.apiResultpqp =
+                              await GetVerifiedCodeApiCall.call(
+                            phone: getJsonField(
                               FFAppState().reservedUserModel,
-                              r'''$.token''',
+                              r'''$.phone''',
                             ).toString(),
+                            verifiedCode: _model.pinCodeController!.text,
                           );
                           _shouldSetState = true;
-                          if ((_model.localTestAuth?.succeeded ?? true)) {
+                          if ((_model.apiResultpqp?.succeeded ?? true)) {
                             setState(() {
                               FFAppState().userModel = UserModelStruct.fromMap(
                                   FFAppState().reservedUserModel);
                             });
+                            setState(() {
+                              FFAppState().updateUserModelStruct(
+                                (e) => e
+                                  ..token = GetVerifiedCodeApiCall.token(
+                                    (_model.apiResultpqp?.jsonBody ?? ''),
+                                  ).toString(),
+                              );
+                            });
+
+                            context.goNamed('HomeScreen');
                           } else {
-                            context.safePop();
                             if (_shouldSetState) setState(() {});
                             return;
                           }
 
-                          if (Navigator.of(context).canPop()) {
-                            context.pop();
-                          }
-                          context.pushNamed('HomeScreen');
-
                           if (_shouldSetState) setState(() {});
                         },
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        validator: _model.pinCodeControllerValidator
+                            .asValidator(context),
                       ),
                     ),
                   ),

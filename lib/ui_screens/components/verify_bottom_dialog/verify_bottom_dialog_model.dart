@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/backend/schema/structs/index.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
+import 'package:pin_code_fields/pin_code_fields.dart';
 import 'verify_bottom_dialog_widget.dart' show VerifyBottomDialogWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -15,14 +16,21 @@ class VerifyBottomDialogModel
     extends FlutterFlowModel<VerifyBottomDialogWidget> {
   ///  State fields for stateful widgets in this component.
 
-  // Stores action output result for [Backend Call - API (TestAuthUserApi)] action in CustomPinCodeWidget widget.
-  ApiCallResponse? localTestAuth;
+  // State field(s) for PinCode widget.
+  TextEditingController? pinCodeController;
+  String? Function(BuildContext, String?)? pinCodeControllerValidator;
+  // Stores action output result for [Backend Call - API (GetVerifiedCodeApi)] action in PinCode widget.
+  ApiCallResponse? apiResultpqp;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    pinCodeController = TextEditingController();
+  }
 
-  void dispose() {}
+  void dispose() {
+    pinCodeController?.dispose();
+  }
 
   /// Action blocks are added here.
 

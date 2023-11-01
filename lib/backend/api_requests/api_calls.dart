@@ -145,6 +145,38 @@ class GetMobileNumberCall {
   }
 }
 
+class GetVerifiedCodeApiCall {
+  static Future<ApiCallResponse> call({
+    String? phone = '',
+    String? verifiedCode = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "phone": "${phone}",
+  "verified_code": "${verifiedCode}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetVerifiedCodeApi',
+      apiUrl:
+          'https://hyundai.completechaintech.com/api/forgetPassword/getVerifiedCode',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.token''',
+      );
+}
+
 class TestAuthUserApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
