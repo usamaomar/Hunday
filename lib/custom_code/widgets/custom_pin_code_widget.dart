@@ -44,7 +44,7 @@ class _CustomPinCodeWidgetState extends State<CustomPinCodeWidget> {
             // clearAll is NOT required, you can delete it
             // takes any widget, so you can implement your design
             onCompleted: (String value) {
-              widget.onDialogMarkerSelected?.call();
+              widget.onDialogMarkerSelected?.call(value);
             },
             onEditing: (bool value) {},
           )

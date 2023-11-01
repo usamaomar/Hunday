@@ -96,7 +96,7 @@ class RegisterApiCall {
 
   static dynamic userJsonModel(dynamic response) => getJsonField(
         response,
-        r'''$''',
+        r'''$.user''',
       );
   static dynamic id(dynamic response) => getJsonField(
         response,
@@ -118,6 +118,31 @@ class RegisterApiCall {
         response,
         r'''$.token''',
       );
+}
+
+class GetMobileNumberCall {
+  static Future<ApiCallResponse> call({
+    String? phone = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+"phone": "${phone}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetMobileNumber',
+      apiUrl:
+          'https://hyundai.completechaintech.com/api/forgetPassword/getMobileNumber',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
 }
 
 class TestAuthUserApiCall {

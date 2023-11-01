@@ -986,6 +986,101 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                         ''),
                                                   );
                                                 });
+                                                _model.apiResultjcw =
+                                                    await GetMobileNumberCall
+                                                        .call(
+                                                  phone: getJsonField(
+                                                    FFAppState()
+                                                        .reservedUserModel,
+                                                    r'''$.phone''',
+                                                  ).toString(),
+                                                );
+                                                _shouldSetState = true;
+                                                if ((_model.apiResultjcw
+                                                        ?.succeeded ??
+                                                    true)) {
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    enableDrag: false,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child: Container(
+                                                            height: 500.0,
+                                                            child:
+                                                                VerifyBottomDialogWidget(),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      safeSetState(() {}));
+                                                } else {
+                                                  await showAlignedDialog(
+                                                    context: context,
+                                                    isGlobal: true,
+                                                    avoidOverflow: false,
+                                                    targetAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    followerAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    builder: (dialogContext) {
+                                                      return Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child:
+                                                              Modal06BasicInformationWidget(
+                                                            body: (_model
+                                                                    .apiResult7h5
+                                                                    ?.bodyText ??
+                                                                ''),
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                }
                                               } else {
                                                 await showAlignedDialog(
                                                   context: context,
@@ -1042,39 +1137,6 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 setState(() {});
                                               return;
                                             }
-
-                                            await showModalBottomSheet(
-                                              isScrollControlled: true,
-                                              backgroundColor:
-                                                  Color(0x00FFFFFF),
-                                              isDismissible: false,
-                                              enableDrag: false,
-                                              useSafeArea: true,
-                                              context: context,
-                                              builder: (context) {
-                                                return GestureDetector(
-                                                  onTap: () => _model
-                                                          .unfocusNode
-                                                          .canRequestFocus
-                                                      ? FocusScope.of(context)
-                                                          .requestFocus(_model
-                                                              .unfocusNode)
-                                                      : FocusScope.of(context)
-                                                          .unfocus(),
-                                                  child: Padding(
-                                                    padding:
-                                                        MediaQuery.viewInsetsOf(
-                                                            context),
-                                                    child: Container(
-                                                      height: 339.0,
-                                                      child:
-                                                          VerifyBottomDialogWidget(),
-                                                    ),
-                                                  ),
-                                                );
-                                              },
-                                            ).then(
-                                                (value) => safeSetState(() {}));
                                           } else {
                                             setState(() {
                                               _model.localIsPasswordConfirme =
