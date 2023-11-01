@@ -1,28 +1,27 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/ui_screens/components/verify_forget_password_bottom_dialog/verify_forget_password_bottom_dialog_widget.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'forget_password_component_model.dart';
-export 'forget_password_component_model.dart';
+import 'reset_password_component_model.dart';
+export 'reset_password_component_model.dart';
 
-class ForgetPasswordComponentWidget extends StatefulWidget {
-  const ForgetPasswordComponentWidget({Key? key}) : super(key: key);
+class ResetPasswordComponentWidget extends StatefulWidget {
+  const ResetPasswordComponentWidget({Key? key}) : super(key: key);
 
   @override
-  _ForgetPasswordComponentWidgetState createState() =>
-      _ForgetPasswordComponentWidgetState();
+  _ResetPasswordComponentWidgetState createState() =>
+      _ResetPasswordComponentWidgetState();
 }
 
-class _ForgetPasswordComponentWidgetState
-    extends State<ForgetPasswordComponentWidget> {
-  late ForgetPasswordComponentModel _model;
+class _ResetPasswordComponentWidgetState
+    extends State<ResetPasswordComponentWidget> {
+  late ResetPasswordComponentModel _model;
 
   @override
   void setState(VoidCallback callback) {
@@ -33,10 +32,12 @@ class _ForgetPasswordComponentWidgetState
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => ForgetPasswordComponentModel());
+    _model = createModel(context, () => ResetPasswordComponentModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    _model.textController1 ??= TextEditingController();
+    _model.textFieldFocusNode1 ??= FocusNode();
+    _model.textController2 ??= TextEditingController();
+    _model.textFieldFocusNode2 ??= FocusNode();
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -73,28 +74,13 @@ class _ForgetPasswordComponentWidgetState
               padding: EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
               child: Text(
                 FFLocalizations.of(context).getText(
-                  '50yxbv27' /* Forget Password */,
+                  'nqo6qsgz' /* Forget Password */,
                 ),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'HeeboBold',
                   fontWeight: FontWeight.bold,
                   fontSize: 25.0,
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(57.0, 15.0, 57.0, 0.0),
-              child: Text(
-                FFLocalizations.of(context).getText(
-                  '621mrpxx' /* You will receive a code on you... */,
-                ),
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontFamily: 'Heebo Regular',
-                  color: Color(0xFF092853),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16.0,
                 ),
               ),
             ),
@@ -108,13 +94,13 @@ class _ForgetPasswordComponentWidgetState
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
                   child: TextFormField(
-                    controller: _model.textController,
-                    focusNode: _model.textFieldFocusNode,
+                    controller: _model.textController1,
+                    focusNode: _model.textFieldFocusNode1,
                     obscureText: false,
                     decoration: InputDecoration(
                       labelStyle: FlutterFlowTheme.of(context).labelMedium,
                       hintText: FFLocalizations.of(context).getText(
-                        'utqibc5w' /* Phone Number */,
+                        'yq2npxjx' /* New Password */,
                       ),
                       hintStyle:
                           FlutterFlowTheme.of(context).labelMedium.override(
@@ -136,7 +122,50 @@ class _ForgetPasswordComponentWidgetState
                     keyboardType: const TextInputType.numberWithOptions(
                         signed: true, decimal: true),
                     validator:
-                        _model.textControllerValidator.asValidator(context),
+                        _model.textController1Validator.asValidator(context),
+                  ),
+                ),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: FlutterFlowTheme.of(context).secondaryBackground,
+                  borderRadius: BorderRadius.circular(4.0),
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(8.0, 0.0, 8.0, 0.0),
+                  child: TextFormField(
+                    controller: _model.textController2,
+                    focusNode: _model.textFieldFocusNode2,
+                    obscureText: false,
+                    decoration: InputDecoration(
+                      labelStyle: FlutterFlowTheme.of(context).labelMedium,
+                      hintText: FFLocalizations.of(context).getText(
+                        'oqqu4z0b' /* Confirm New Password */,
+                      ),
+                      hintStyle:
+                          FlutterFlowTheme.of(context).labelMedium.override(
+                                fontFamily: 'Poppins',
+                                color: Color(0xFF81787A),
+                                fontSize: 14.0,
+                              ),
+                      enabledBorder: InputBorder.none,
+                      focusedBorder: InputBorder.none,
+                      errorBorder: InputBorder.none,
+                      focusedErrorBorder: InputBorder.none,
+                      filled: true,
+                      fillColor: Color(0x000FFFFF),
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0xFF092853),
+                        ),
+                    keyboardType: const TextInputType.numberWithOptions(
+                        signed: true, decimal: true),
+                    validator:
+                        _model.textController2Validator.asValidator(context),
                   ),
                 ),
               ),
@@ -153,28 +182,23 @@ class _ForgetPasswordComponentWidgetState
                           EdgeInsetsDirectional.fromSTEB(80.0, 0.0, 80.0, 0.0),
                       child: FFButtonWidget(
                         onPressed: () async {
-                          _model.apiResultrqt = await GetMobileNumberCall.call(
-                            phone: functions.formatPhoneNumber(
-                                functions.checkNumberAndValidate(
-                                    _model.textController.text)),
+                          var _shouldSetState = false;
+                          _model.apiResetPassword =
+                              await ChangePasswordApiCall.call(
+                            password: _model.textController1.text,
+                            passwordConfirmation: _model.textController2.text,
+                            token: FFAppState().userModel.token,
                           );
-                          if ((_model.apiResultrqt?.succeeded ?? true)) {
-                            await showModalBottomSheet(
-                              isScrollControlled: true,
-                              backgroundColor: Colors.transparent,
-                              enableDrag: false,
-                              context: context,
-                              builder: (context) {
-                                return Padding(
-                                  padding: MediaQuery.viewInsetsOf(context),
-                                  child: Container(
-                                    height: 500.0,
-                                    child:
-                                        VerifyForgetPasswordBottomDialogWidget(),
-                                  ),
-                                );
-                              },
-                            ).then((value) => safeSetState(() {}));
+                          _shouldSetState = true;
+                          if ((_model.apiResetPassword?.succeeded ?? true)) {
+                            setState(() {
+                              FFAppState().userModel =
+                                  UserModelStruct.fromSerializableMap(
+                                      jsonDecode('{}'));
+                              FFAppState().reservedUserModel = null;
+                            });
+
+                            context.goNamed('loginScreen');
                           } else {
                             await showDialog(
                               context: context,
@@ -186,7 +210,8 @@ class _ForgetPasswordComponentWidgetState
                                     arText: 'مشكلة خادم',
                                   )),
                                   content: Text(
-                                      (_model.apiResultrqt?.bodyText ?? '')),
+                                      (_model.apiResetPassword?.bodyText ??
+                                          '')),
                                   actions: [
                                     TextButton(
                                       onPressed: () =>
@@ -201,12 +226,14 @@ class _ForgetPasswordComponentWidgetState
                                 );
                               },
                             );
+                            if (_shouldSetState) setState(() {});
+                            return;
                           }
 
-                          setState(() {});
+                          if (_shouldSetState) setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(
-                          '902lootp' /* Send */,
+                          'hzhy9oyu' /* Save */,
                         ),
                         options: FFButtonOptions(
                           width: 115.0,

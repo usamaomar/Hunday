@@ -120,8 +120,6 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
 
                         return;
                       }
-
-                      context.safePop();
                     },
                     textAlign: TextAlign.start,
                     style: FlutterFlowTheme.of(context).headlineSmall,

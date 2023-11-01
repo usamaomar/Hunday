@@ -1006,6 +1006,44 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'المزيد',
     },
   },
+  // VerifyForgetPasswordBottomDialog
+  {
+    'x13100ln': {
+      'en': 'Forget Password',
+      'ar': 'نسيت كلمة المرور',
+    },
+    'ae0t356p': {
+      'en': 'Check your sms and enter 4 digits code',
+      'ar': 'تحقق من الرسائل القصيرة الخاصة بك وأدخل الرمز المكون من 4 أرقام',
+    },
+  },
+  // resetPasswordComponent
+  {
+    'nqo6qsgz': {
+      'en': 'Forget Password',
+      'ar': 'نسيت كلمة السر',
+    },
+    'jqb0n3kk': {
+      'en': '',
+      'ar': '',
+    },
+    'yq2npxjx': {
+      'en': 'New Password',
+      'ar': 'كلمة المرور الجديدة',
+    },
+    '48pczr00': {
+      'en': '',
+      'ar': '',
+    },
+    'oqqu4z0b': {
+      'en': 'Confirm New Password',
+      'ar': 'تأكيد كلمة المرور الجديدة',
+    },
+    'hzhy9oyu': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {

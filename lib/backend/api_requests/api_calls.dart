@@ -177,6 +177,42 @@ class GetVerifiedCodeApiCall {
       );
 }
 
+class ChangePasswordApiCall {
+  static Future<ApiCallResponse> call({
+    String? passwordConfirmation = '',
+    String? password = '',
+    String? token = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "password": "${password}",
+  "password_confirmation": "${passwordConfirmation}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'ChangePasswordApi',
+      apiUrl:
+          'https://hyundai.completechaintech.com/api/forgetPassword/changePassword',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.token''',
+      );
+}
+
 class TestAuthUserApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',

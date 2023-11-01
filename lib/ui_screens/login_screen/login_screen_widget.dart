@@ -320,6 +320,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                         await showModalBottomSheet(
                                           isScrollControlled: true,
                                           backgroundColor: Colors.transparent,
+                                          enableDrag: false,
                                           useSafeArea: true,
                                           context: context,
                                           builder: (context) {
