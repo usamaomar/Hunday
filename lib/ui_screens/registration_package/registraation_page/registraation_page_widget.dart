@@ -1022,7 +1022,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                               .viewInsetsOf(
                                                                   context),
                                                           child: Container(
-                                                            height: 500.0,
+                                                            height: 400.0,
                                                             child:
                                                                 VerifyBottomDialogWidget(),
                                                           ),

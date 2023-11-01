@@ -21,6 +21,8 @@ class VerifyBottomDialogModel
   String? Function(BuildContext, String?)? pinCodeControllerValidator;
   // Stores action output result for [Backend Call - API (GetVerifiedCodeApi)] action in PinCode widget.
   ApiCallResponse? apiResultpqp;
+  // Stores action output result for [Backend Call - API (GetMobileNumber)] action in TextCounterCustomWidget widget.
+  ApiCallResponse? apiResultjcw;
 
   /// Initialization and disposal methods.
 

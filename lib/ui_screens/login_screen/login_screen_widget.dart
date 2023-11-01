@@ -490,11 +490,8 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 setState(() {});
                                               return;
                                             }
-                                            if (Navigator.of(context)
-                                                .canPop()) {
-                                              context.pop();
-                                            }
-                                            context.pushNamed('HomeScreen');
+
+                                            context.goNamed('HomeScreen');
 
                                             if (_shouldSetState)
                                               setState(() {});

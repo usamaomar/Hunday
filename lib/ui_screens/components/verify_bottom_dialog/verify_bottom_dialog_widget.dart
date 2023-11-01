@@ -139,7 +139,7 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                         length: 4,
                         textStyle: FlutterFlowTheme.of(context).bodyLarge,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        enableActiveFill: false,
+                        enableActiveFill: true,
                         autoFocus: false,
                         enablePinAutofill: true,
                         errorTextSpace: 16.0,
@@ -153,15 +153,12 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                           borderWidth: 2.0,
                           borderRadius: BorderRadius.circular(5.0),
                           shape: PinCodeFieldShape.box,
-                          activeColor: FlutterFlowTheme.of(context).primaryText,
-                          inactiveColor: FlutterFlowTheme.of(context).alternate,
-                          selectedColor: FlutterFlowTheme.of(context).primary,
-                          activeFillColor:
-                              FlutterFlowTheme.of(context).primaryText,
-                          inactiveFillColor:
-                              FlutterFlowTheme.of(context).alternate,
-                          selectedFillColor:
-                              FlutterFlowTheme.of(context).primary,
+                          activeColor: FlutterFlowTheme.of(context).white,
+                          inactiveColor: FlutterFlowTheme.of(context).white,
+                          selectedColor: FlutterFlowTheme.of(context).white,
+                          activeFillColor: FlutterFlowTheme.of(context).white,
+                          inactiveFillColor: FlutterFlowTheme.of(context).white,
+                          selectedFillColor: FlutterFlowTheme.of(context).white,
                         ),
                         controller: _model.pinCodeController,
                         onChanged: (_) {},
@@ -225,7 +222,16 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                           enText: 'Didn\'t receive the code ?',
                           arText: 'لم تتلق الرمز؟',
                         ),
-                        onRecallClicked: () async {},
+                        onRecallClicked: () async {
+                          _model.apiResultjcw = await GetMobileNumberCall.call(
+                            phone: getJsonField(
+                              FFAppState().reservedUserModel,
+                              r'''$.phone''',
+                            ).toString(),
+                          );
+
+                          setState(() {});
+                        },
                       ),
                     ),
                   ),
