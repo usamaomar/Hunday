@@ -71,12 +71,13 @@ class RegisterApiCall {
 {
 "phone": "${phone}",
 "password": "${password}",
+"name_en": "${name}",
 "name": "${name}",
 "gender": "${gender}",
 "lang": "${lang}",
 "email": "${email}",
 "country_code": "JO",
-"date": "${date}"
+"bod": "${date}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RegisterApi',
