@@ -979,9 +979,12 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 setState(() {
                                                   FFAppState()
                                                           .reservedUserModel =
-                                                      (_model.apiResult7h5
-                                                              ?.jsonBody ??
-                                                          '');
+                                                      RegisterApiCall
+                                                          .userJsonModel(
+                                                    (_model.apiResult7h5
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                  );
                                                 });
                                               } else {
                                                 await showAlignedDialog(
