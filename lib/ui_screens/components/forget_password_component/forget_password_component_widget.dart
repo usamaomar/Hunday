@@ -154,9 +154,8 @@ class _ForgetPasswordComponentWidgetState
                       child: FFButtonWidget(
                         onPressed: () async {
                           _model.apiResultrqt = await GetMobileNumberCall.call(
-                            phone: functions.formatPhoneNumber(
-                                functions.checkNumberAndValidate(
-                                    _model.textController.text)),
+                            phone: functions
+                                .formatPhoneNumber(_model.textController.text),
                           );
                           if ((_model.apiResultrqt?.succeeded ?? true)) {
                             await showModalBottomSheet(
