@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/verify_forget_password_bottom_dialog/verify_forget_password_bottom_dialog_widget.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'forget_password_component_widget.dart'
     show ForgetPasswordComponentWidget;
 import 'package:flutter/material.dart';
