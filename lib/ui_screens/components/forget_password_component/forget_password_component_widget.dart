@@ -156,9 +156,10 @@ class _ForgetPasswordComponentWidgetState
                             phone: _model.textController.text,
                           );
                           if ((_model.apiResultrqt?.succeeded ?? true)) {
-                            await showModalBottomSheet(
+                            showModalBottomSheet(
                               isScrollControlled: true,
                               backgroundColor: Colors.transparent,
+                              barrierColor: Color(0x00FFFFFF),
                               enableDrag: false,
                               context: context,
                               builder: (context) {
