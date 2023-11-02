@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/ui_screens/components/reset_password_component/reset_password_component_widget.dart';
 import '/backend/schema/structs/index.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:pin_code_fields/pin_code_fields.dart';

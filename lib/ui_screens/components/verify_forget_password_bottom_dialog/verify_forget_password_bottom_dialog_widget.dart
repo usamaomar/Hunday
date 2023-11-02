@@ -2,6 +2,7 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/ui_screens/components/reset_password_component/reset_password_component_widget.dart';
 import '/backend/schema/structs/index.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -180,20 +181,29 @@ class _VerifyForgetPasswordBottomDialogWidgetState
                           if ((_model.apiResultpqp?.succeeded ?? true)) {
                             setState(() {
                               FFAppState().userModel = UserModelStruct.fromMap(
-                                  FFAppState().reservedUserModel);
-                            });
-                            setState(() {
-                              FFAppState().updateUserModelStruct(
-                                (e) => e
-                                  ..token = GetVerifiedCodeApiCall.token(
-                                    (_model.apiResultpqp?.jsonBody ?? ''),
-                                  ).toString(),
-                              );
+                                  (_model.apiResultpqp?.jsonBody ?? ''));
                             });
                           } else {
                             if (_shouldSetState) setState(() {});
                             return;
                           }
+
+                          showModalBottomSheet(
+                            isScrollControlled: true,
+                            backgroundColor: Color(0x00FFFFFF),
+                            barrierColor: Color(0x00FFFFFF),
+                            enableDrag: false,
+                            context: context,
+                            builder: (context) {
+                              return Padding(
+                                padding: MediaQuery.viewInsetsOf(context),
+                                child: Container(
+                                  height: 500.0,
+                                  child: ResetPasswordComponentWidget(),
+                                ),
+                              );
+                            },
+                          ).then((value) => safeSetState(() {}));
 
                           if (_shouldSetState) setState(() {});
                         },
