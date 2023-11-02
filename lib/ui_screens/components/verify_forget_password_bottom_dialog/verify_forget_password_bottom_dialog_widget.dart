@@ -14,7 +14,12 @@ import 'verify_forget_password_bottom_dialog_model.dart';
 export 'verify_forget_password_bottom_dialog_model.dart';
 
 class VerifyForgetPasswordBottomDialogWidget extends StatefulWidget {
-  const VerifyForgetPasswordBottomDialogWidget({Key? key}) : super(key: key);
+  const VerifyForgetPasswordBottomDialogWidget({
+    Key? key,
+    required this.phoneNumber,
+  }) : super(key: key);
+
+  final String? phoneNumber;
 
   @override
   _VerifyForgetPasswordBottomDialogWidgetState createState() =>
@@ -168,10 +173,7 @@ class _VerifyForgetPasswordBottomDialogWidgetState
                           var _shouldSetState = false;
                           _model.apiResultpqp =
                               await GetVerifiedCodeApiCall.call(
-                            phone: getJsonField(
-                              FFAppState().reservedUserModel,
-                              r'''$.phone''',
-                            ).toString(),
+                            phone: widget.phoneNumber,
                             verifiedCode: _model.pinCodeController!.text,
                           );
                           _shouldSetState = true;

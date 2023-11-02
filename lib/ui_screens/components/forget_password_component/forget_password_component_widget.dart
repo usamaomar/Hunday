@@ -168,7 +168,9 @@ class _ForgetPasswordComponentWidgetState
                                   child: Container(
                                     height: 500.0,
                                     child:
-                                        VerifyForgetPasswordBottomDialogWidget(),
+                                        VerifyForgetPasswordBottomDialogWidget(
+                                      phoneNumber: _model.textController.text,
+                                    ),
                                   ),
                                 );
                               },
