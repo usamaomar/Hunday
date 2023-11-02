@@ -16,7 +16,6 @@ import 'package:provider/provider.dart';
 class CarModelDetailsModel extends FlutterFlowModel<CarModelDetailsWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
   // Model for BottomNavBarComponent component.
@@ -31,7 +30,6 @@ class CarModelDetailsModel extends FlutterFlowModel<CarModelDetailsWidget> {
   }
 
   void dispose() {
-    unfocusNode.dispose();
     hyndayAppBarModel.dispose();
     bottomNavBarComponentModel.dispose();
   }

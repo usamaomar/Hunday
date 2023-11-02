@@ -87,162 +87,152 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
 
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: SafeArea(
-          top: true,
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
-            child: Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  fit: BoxFit.cover,
-                  image: Image.asset(
-                    'assets/images/Group_70639@2x.png',
-                  ).image,
-                ),
-              ),
-              child: Container(
-                width: double.infinity,
-                height: double.infinity,
-                child: Stack(
-                  children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
-                      child: Container(
-                        constraints: BoxConstraints(
-                          maxHeight: 600.0,
-                        ),
-                        decoration: BoxDecoration(),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
+    return Scaffold(
+      key: scaffoldKey,
+      body: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: Image.asset(
+                'assets/images/Group_70639@2x.png',
+              ).image,
+            ),
+          ),
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0.00, 1.00),
+                  child: Container(
+                    constraints: BoxConstraints(
+                      maxHeight: 600.0,
+                    ),
+                    decoration: BoxDecoration(),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Stack(
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           children: [
-                            Stack(
-                              alignment: AlignmentDirectional(0.0, 1.0),
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 0.0, 5.0, 0.0),
-                                  child: Container(
-                                    width: double.infinity,
-                                    height: 70.0,
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFFC1D6EF),
-                                      borderRadius: BorderRadius.only(
-                                        bottomLeft: Radius.circular(0.0),
-                                        bottomRight: Radius.circular(0.0),
-                                        topLeft: Radius.circular(20.0),
-                                        topRight: Radius.circular(20.0),
-                                      ),
-                                    ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  5.0, 0.0, 5.0, 0.0),
+                              child: Container(
+                                width: double.infinity,
+                                height: 70.0,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFFC1D6EF),
+                                  borderRadius: BorderRadius.only(
+                                    bottomLeft: Radius.circular(0.0),
+                                    bottomRight: Radius.circular(0.0),
+                                    topLeft: Radius.circular(20.0),
+                                    topRight: Radius.circular(20.0),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Flexible(
+                              ),
+                            ),
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              crossAxisAlignment: CrossAxisAlignment.end,
+                              children: [
+                                Flexible(
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(0.0),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius:
+                                            BorderRadius.circular(0.0),
+                                      ),
                                       child: ClipRRect(
                                         borderRadius:
                                             BorderRadius.circular(0.0),
-                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                          ),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                            child: Image.asset(
-                                              'assets/images/the-new-sonata-dn8-2023-quater-view@2x.png',
-                                              fit: BoxFit.cover,
-                                            ),
-                                          ),
+                                        child: Image.asset(
+                                          'assets/images/the-new-sonata-dn8-2023-quater-view@2x.png',
+                                          fit: BoxFit.cover,
                                         ),
                                       ),
                                     ),
-                                  ],
-                                ).animateOnPageLoad(
-                                    animationsMap['rowOnPageLoadAnimation']!),
+                                  ),
+                                ),
                               ],
-                            ),
-                            Expanded(
+                            ).animateOnPageLoad(
+                                animationsMap['rowOnPageLoadAnimation']!),
+                          ],
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                5.0, 0.0, 5.0, 5.0),
+                            child: Container(
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFC1D6EF),
+                                borderRadius: BorderRadius.circular(0.0),
+                              ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 0.0, 5.0, 5.0),
-                                child: Container(
-                                  width: double.infinity,
-                                  decoration: BoxDecoration(
-                                    color: Color(0xFFC1D6EF),
-                                    borderRadius: BorderRadius.circular(0.0),
+                                    5.0, 0.0, 5.0, 0.0),
+                                child: ListView(
+                                  padding: EdgeInsets.fromLTRB(
+                                    0,
+                                    0,
+                                    0,
+                                    60.0,
                                   ),
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 0.0, 5.0, 0.0),
-                                    child: ListView(
-                                      padding: EdgeInsets.fromLTRB(
-                                        0,
-                                        0,
-                                        0,
-                                        60.0,
-                                      ),
-                                      shrinkWrap: true,
-                                      scrollDirection: Axis.vertical,
-                                      children: [],
-                                    ),
-                                  ),
+                                  shrinkWrap: true,
+                                  scrollDirection: Axis.vertical,
+                                  children: [],
                                 ),
                               ),
                             ),
-                          ],
+                          ),
                         ),
-                      ).animateOnPageLoad(
-                          animationsMap['containerOnPageLoadAnimation']!),
+                      ],
+                    ),
+                  ).animateOnPageLoad(
+                      animationsMap['containerOnPageLoadAnimation']!),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Column(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        wrapWithModel(
+                          model: _model.hyndayAppBarModel,
+                          updateCallback: () => setState(() {}),
+                          child: HyndayAppBarWidget(
+                            appBarTitle:
+                                FFLocalizations.of(context).getVariableText(
+                              enText: 'Car model',
+                              arText: 'موديلات السيارات',
+                            ),
+                            isMyProfileOpend: false,
+                          ),
+                        ),
+                      ],
                     ),
                     Column(
                       mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            wrapWithModel(
-                              model: _model.hyndayAppBarModel,
-                              updateCallback: () => setState(() {}),
-                              child: HyndayAppBarWidget(
-                                appBarTitle:
-                                    FFLocalizations.of(context).getVariableText(
-                                  enText: 'Car model',
-                                  arText: 'موديلات السيارات',
-                                ),
-                                isMyProfileOpend: false,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            wrapWithModel(
-                              model: _model.bottomNavBarComponentModel,
-                              updateCallback: () => setState(() {}),
-                              child: BottomNavBarComponentWidget(),
-                            ),
-                          ],
+                        wrapWithModel(
+                          model: _model.bottomNavBarComponentModel,
+                          updateCallback: () => setState(() {}),
+                          child: BottomNavBarComponentWidget(),
                         ),
                       ],
                     ),
                   ],
                 ),
-              ),
+              ],
             ),
           ),
         ),

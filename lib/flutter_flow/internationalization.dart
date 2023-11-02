@@ -678,7 +678,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CarModelDetails
   {
-    '150t00v4': {
+    'xwc2e0jj': {
       'en': 'Home',
       'ar': '',
     },
