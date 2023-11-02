@@ -183,6 +183,7 @@ class _VerifyForgetPasswordBottomDialogWidgetState
                               FFAppState().userModel = UserModelStruct.fromMap(
                                   (_model.apiResultpqp?.jsonBody ?? ''));
                             });
+                            Navigator.pop(context);
                           } else {
                             if (_shouldSetState) setState(() {});
                             return;

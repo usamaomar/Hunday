@@ -17,17 +17,22 @@ class ResetPasswordComponentModel
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode1;
   TextEditingController? textController1;
+  late bool passwordVisibility1;
   String? Function(BuildContext, String?)? textController1Validator;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode2;
   TextEditingController? textController2;
+  late bool passwordVisibility2;
   String? Function(BuildContext, String?)? textController2Validator;
   // Stores action output result for [Backend Call - API (ChangePasswordApi)] action in Button widget.
   ApiCallResponse? apiResetPassword;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {}
+  void initState(BuildContext context) {
+    passwordVisibility1 = false;
+    passwordVisibility2 = false;
+  }
 
   void dispose() {
     textFieldFocusNode1?.dispose();

@@ -262,30 +262,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CarModelPage
   {
-    'cxyuija2': {
-      'en': 'Cars',
-      'ar': 'السيارات',
-    },
-    '71z93xod': {
-      'en': 'Eco',
-      'ar': 'اقتصادي',
-    },
-    'gesaeqw3': {
-      'en': 'N/N line',
-      'ar': 'خط ن/ن',
-    },
-    'diczt8ma': {
-      'en': 'SUV',
-      'ar': 'صالون',
-    },
-    '6ftlbrpx': {
-      'en': 'MPV',
-      'ar': 'باص',
-    },
-    'h3edsz3s': {
-      'en': 'Commercial',
-      'ar': 'تجاري',
-    },
     '9ybgd254': {
       'en': 'Home',
       'ar': '',
@@ -696,6 +672,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مشاركة',
     },
     'a8s2x5fj': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // CarModelDetails
+  {
+    '150t00v4': {
       'en': 'Home',
       'ar': '',
     },

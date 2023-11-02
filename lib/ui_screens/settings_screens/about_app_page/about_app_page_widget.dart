@@ -104,7 +104,7 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                           alignment: AlignmentDirectional(0.00, 1.00),
                           child: Container(
                             constraints: BoxConstraints(
-                              maxHeight: 650.0,
+                              maxHeight: 600.0,
                             ),
                             decoration: BoxDecoration(),
                             child: Column(

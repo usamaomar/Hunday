@@ -169,6 +169,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => OffersDetailsPageWidget(
             itemIndex: params.getParam('itemIndex', ParamType.int),
           ),
+        ),
+        FFRoute(
+          name: 'CarModelDetails',
+          path: '/carModelDetails',
+          builder: (context, params) => CarModelDetailsWidget(
+            itemIndex: params.getParam('itemIndex', ParamType.int),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

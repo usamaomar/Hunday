@@ -373,6 +373,33 @@ class SliderApiCall {
       );
 }
 
+class CarModelsApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'CarModelsApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/carModel',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic carModelList(dynamic response) => getJsonField(
+        response,
+        r'''$.carModel.data''',
+        true,
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

@@ -47,3 +47,5 @@ export '/ui_screens/nav_home_pakage/offers_page/offers_page_widget.dart'
     show OffersPageWidget;
 export '/ui_screens/nav_home_pakage/offers_details_page/offers_details_page_widget.dart'
     show OffersDetailsPageWidget;
+export '/ui_screens/nav_home_pakage/car_model_details/car_model_details_widget.dart'
+    show CarModelDetailsWidget;

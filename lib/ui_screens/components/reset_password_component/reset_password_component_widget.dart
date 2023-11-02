@@ -96,7 +96,8 @@ class _ResetPasswordComponentWidgetState
                   child: TextFormField(
                     controller: _model.textController1,
                     focusNode: _model.textFieldFocusNode1,
-                    obscureText: false,
+                    textInputAction: TextInputAction.next,
+                    obscureText: !_model.passwordVisibility1,
                     decoration: InputDecoration(
                       labelStyle: FlutterFlowTheme.of(context).labelMedium,
                       hintText: FFLocalizations.of(context).getText(
@@ -114,13 +115,25 @@ class _ResetPasswordComponentWidgetState
                       focusedErrorBorder: InputBorder.none,
                       filled: true,
                       fillColor: Color(0x000FFFFF),
+                      suffixIcon: InkWell(
+                        onTap: () => setState(
+                          () => _model.passwordVisibility1 =
+                              !_model.passwordVisibility1,
+                        ),
+                        focusNode: FocusNode(skipTraversal: true),
+                        child: Icon(
+                          _model.passwordVisibility1
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: FlutterFlowTheme.of(context).lineColor,
+                          size: 22.0,
+                        ),
+                      ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Poppins',
                           color: Color(0xFF092853),
                         ),
-                    keyboardType: const TextInputType.numberWithOptions(
-                        signed: true, decimal: true),
                     validator:
                         _model.textController1Validator.asValidator(context),
                   ),
@@ -139,7 +152,7 @@ class _ResetPasswordComponentWidgetState
                   child: TextFormField(
                     controller: _model.textController2,
                     focusNode: _model.textFieldFocusNode2,
-                    obscureText: false,
+                    obscureText: !_model.passwordVisibility2,
                     decoration: InputDecoration(
                       labelStyle: FlutterFlowTheme.of(context).labelMedium,
                       hintText: FFLocalizations.of(context).getText(
@@ -157,13 +170,25 @@ class _ResetPasswordComponentWidgetState
                       focusedErrorBorder: InputBorder.none,
                       filled: true,
                       fillColor: Color(0x000FFFFF),
+                      suffixIcon: InkWell(
+                        onTap: () => setState(
+                          () => _model.passwordVisibility2 =
+                              !_model.passwordVisibility2,
+                        ),
+                        focusNode: FocusNode(skipTraversal: true),
+                        child: Icon(
+                          _model.passwordVisibility2
+                              ? Icons.visibility_outlined
+                              : Icons.visibility_off_outlined,
+                          color: FlutterFlowTheme.of(context).lineColor,
+                          size: 22.0,
+                        ),
+                      ),
                     ),
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Poppins',
                           color: Color(0xFF092853),
                         ),
-                    keyboardType: const TextInputType.numberWithOptions(
-                        signed: true, decimal: true),
                     validator:
                         _model.textController2Validator.asValidator(context),
                   ),
@@ -197,8 +222,36 @@ class _ResetPasswordComponentWidgetState
                                       jsonDecode('{}'));
                               FFAppState().reservedUserModel = null;
                             });
-
-                            context.goNamed('loginScreen');
+                            Navigator.pop(context);
+                            await showDialog(
+                              context: context,
+                              builder: (alertDialogContext) {
+                                return AlertDialog(
+                                  title: Text(FFLocalizations.of(context)
+                                      .getVariableText(
+                                    enText: 'Rest Password',
+                                    arText: 'تعيين كلمة المرور',
+                                  )),
+                                  content: Text(FFLocalizations.of(context)
+                                      .getVariableText(
+                                    enText: 'Your password is reset , log in ',
+                                    arText:
+                                        'تم اعادة تعيين كلمة المرور قم بتسجيل الدخول ',
+                                  )),
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () =>
+                                          Navigator.pop(alertDialogContext),
+                                      child: Text(FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText: 'Ok',
+                                        arText: 'حسنا',
+                                      )),
+                                    ),
+                                  ],
+                                );
+                              },
+                            );
                           } else {
                             await showDialog(
                               context: context,

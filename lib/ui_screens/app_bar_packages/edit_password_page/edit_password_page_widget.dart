@@ -1,3 +1,5 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -58,7 +60,6 @@ class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).white,
       body: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
         child: Stack(
@@ -376,8 +377,98 @@ class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
                               FFButtonWidget(
-                                onPressed: () {
-                                  print('Button pressed ...');
+                                onPressed: () async {
+                                  var _shouldSetState = false;
+                                  _model.apiResetPasswordInter =
+                                      await ChangePasswordApiCall.call(
+                                    password: _model.textController1.text,
+                                    passwordConfirmation:
+                                        _model.textController2.text,
+                                    token: FFAppState().userModel.token,
+                                  );
+                                  _shouldSetState = true;
+                                  if ((_model
+                                          .apiResetPasswordInter?.succeeded ??
+                                      true)) {
+                                    setState(() {
+                                      FFAppState().userModel =
+                                          UserModelStruct.fromSerializableMap(
+                                              jsonDecode('{}'));
+                                      FFAppState().reservedUserModel = null;
+                                    });
+
+                                    context.goNamed('loginScreen');
+
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText: 'Rest Password',
+                                            arText: 'تعيين كلمة المرور',
+                                          )),
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText:
+                                                'Your password is reset , log in ',
+                                            arText:
+                                                'تم اعادة تعيين كلمة المرور قم بتسجيل الدخول ',
+                                          )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                  } else {
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText: 'Error',
+                                            arText: 'مشكلة خادم',
+                                          )),
+                                          content: Text(getJsonField(
+                                            (_model.apiResetPasswordInter
+                                                    ?.jsonBody ??
+                                                ''),
+                                            r'''$''',
+                                          ).toString()),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    if (_shouldSetState) setState(() {});
+                                    return;
+                                  }
+
+                                  if (_shouldSetState) setState(() {});
                                 },
                                 text: FFLocalizations.of(context).getText(
                                   'vuuexi7y' /* Save */,

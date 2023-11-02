@@ -1,9 +1,11 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,6 +29,29 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CarModelPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultzn4 = await CarModelsApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResultzn4?.succeeded ?? true)) {
+        setState(() {
+          _model.listOfCarModels = CarModelsApiCall.carModelList(
+            (_model.apiResultzn4?.jsonBody ?? ''),
+          )!
+              .toList()
+              .cast<dynamic>();
+        });
+        setState(() {
+          _model.listOfCarModels = CarModelsApiCall.carModelList(
+            (_model.apiResultzn4?.jsonBody ?? ''),
+          )!
+              .toList()
+              .cast<dynamic>();
+        });
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -87,8 +112,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                     isMyProfileOpend: false,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 250.0, 0.0, 0.0),
+                Expanded(
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     crossAxisAlignment: CrossAxisAlignment.end,
@@ -97,296 +121,109 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                         flex: 1,
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 20.0, 30.0, 40.0),
-                          child: GridView(
-                            padding: EdgeInsets.zero,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3,
-                              crossAxisSpacing: 10.0,
-                              mainAxisSpacing: 10.0,
-                              childAspectRatio: 0.75,
-                            ),
-                            shrinkWrap: true,
-                            scrollDirection: Axis.vertical,
-                            children: [
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0x93FFFEFE),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 10.0,
-                                        color: Color(0x93FFFEFE),
-                                        offset: Offset(0.0, 2.0),
-                                        spreadRadius: 0.0,
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'cxyuija2' /* Cars */,
-                                          ),
-                                          style: TextStyle(
-                                            fontFamily: 'HeeboBold',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.asset(
-                                            'assets/images/the-new-sonata-dn8-2023-quater-view.png',
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
+                              30.0, 20.0, 30.0, 20.0),
+                          child: Builder(
+                            builder: (context) {
+                              final gridOfCarModelsItem =
+                                  _model.listOfCarModels.map((e) => e).toList();
+                              return GridView.builder(
+                                padding: EdgeInsets.zero,
+                                gridDelegate:
+                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: 3,
+                                  crossAxisSpacing: 10.0,
+                                  mainAxisSpacing: 10.0,
+                                  childAspectRatio: 0.75,
                                 ),
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0x93FFFEFE),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 10.0,
-                                        color: Color(0x93FFFEFE),
-                                        offset: Offset(0.0, 2.0),
-                                        spreadRadius: 0.0,
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '71z93xod' /* Eco */,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: gridOfCarModelsItem.length,
+                                itemBuilder:
+                                    (context, gridOfCarModelsItemIndex) {
+                                  final gridOfCarModelsItemItem =
+                                      gridOfCarModelsItem[
+                                          gridOfCarModelsItemIndex];
+                                  return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'CarModelDetails',
+                                        queryParameters: {
+                                          'itemIndex': serializeParam(
+                                            gridOfCarModelsItemIndex,
+                                            ParamType.int,
                                           ),
-                                          style: TextStyle(
-                                            fontFamily: 'HeeboBold',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16.0,
+                                        }.withoutNulls,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.fade,
+                                            duration: Duration(milliseconds: 0),
                                           ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: ClipRRect(
+                                        },
+                                      );
+                                    },
+                                    child: ClipRRect(
+                                      borderRadius: BorderRadius.circular(15.0),
+                                      child: Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0x93FFFEFE),
+                                          boxShadow: [
+                                            BoxShadow(
+                                              blurRadius: 10.0,
+                                              color: Color(0x93FFFEFE),
+                                              offset: Offset(0.0, 2.0),
+                                              spreadRadius: 0.0,
+                                            )
+                                          ],
                                           borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.asset(
-                                            'assets/images/the-all-new-kona-sx2-quater-view.png',
-                                            fit: BoxFit.contain,
-                                          ),
+                                              BorderRadius.circular(15.0),
+                                        ),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      0.0, 10.0, 0.0, 0.0),
+                                              child: Text(
+                                                getJsonField(
+                                                  gridOfCarModelsItemItem,
+                                                  r'''$.full_name''',
+                                                ).toString(),
+                                                maxLines: 1,
+                                                style: TextStyle(
+                                                  fontFamily: 'HeeboBold',
+                                                  fontWeight: FontWeight.bold,
+                                                  fontSize: 16.0,
+                                                ),
+                                              ),
+                                            ),
+                                            Expanded(
+                                              child: ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(0.0),
+                                                child: Image.network(
+                                                  getJsonField(
+                                                    gridOfCarModelsItemItem,
+                                                    r'''$.full_image''',
+                                                  ),
+                                                  fit: BoxFit.contain,
+                                                ),
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0x93FFFEFE),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 10.0,
-                                        color: Color(0x93FFFEFE),
-                                        offset: Offset(0.0, 2.0),
-                                        spreadRadius: 0.0,
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'gesaeqw3' /* N/N line */,
-                                          ),
-                                          style: TextStyle(
-                                            fontFamily: 'HeeboBold',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.asset(
-                                            'assets/images/veloster-jsn-quater-view-blue.png',
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0x93FFFEFE),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 10.0,
-                                        color: Color(0x93FFFEFE),
-                                        offset: Offset(0.0, 2.0),
-                                        spreadRadius: 0.0,
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'diczt8ma' /* SUV */,
-                                          ),
-                                          style: TextStyle(
-                                            fontFamily: 'HeeboBold',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.asset(
-                                            'assets/images/the-new-palisade-lx2-pe-quater-view-480x260.png',
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0x93FFFEFE),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 10.0,
-                                        color: Color(0x93FFFEFE),
-                                        offset: Offset(0.0, 2.0),
-                                        spreadRadius: 0.0,
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            '6ftlbrpx' /* MPV */,
-                                          ),
-                                          style: TextStyle(
-                                            fontFamily: 'HeeboBold',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.asset(
-                                            'assets/images/staria-us4-fmc-quater-view-thumb.png',
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(15.0),
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0x93FFFEFE),
-                                    boxShadow: [
-                                      BoxShadow(
-                                        blurRadius: 10.0,
-                                        color: Color(0x93FFFEFE),
-                                        offset: Offset(0.0, 2.0),
-                                        spreadRadius: 0.0,
-                                      )
-                                    ],
-                                    borderRadius: BorderRadius.circular(15.0),
-                                  ),
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0.0, 10.0, 0.0, 0.0),
-                                        child: Text(
-                                          FFLocalizations.of(context).getText(
-                                            'h3edsz3s' /* Commercial */,
-                                          ),
-                                          style: TextStyle(
-                                            fontFamily: 'HeeboBold',
-                                            fontWeight: FontWeight.bold,
-                                            fontSize: 16.0,
-                                          ),
-                                        ),
-                                      ),
-                                      Expanded(
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              BorderRadius.circular(0.0),
-                                          child: Image.asset(
-                                            'assets/images/h-100-pe2-quarter-view-white.png',
-                                            fit: BoxFit.contain,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
                           ),
                         ),
                       ),

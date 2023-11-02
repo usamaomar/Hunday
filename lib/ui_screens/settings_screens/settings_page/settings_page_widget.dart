@@ -35,10 +35,10 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
       trigger: AnimationTrigger.onPageLoad,
       effects: [
         MoveEffect(
-          curve: Curves.easeInOut,
+          curve: Curves.linear,
           delay: 100.ms,
           duration: 500.ms,
-          begin: Offset(0.0, 550.0),
+          begin: Offset(0.0, 800.0),
           end: Offset(0.0, 0.0),
         ),
       ],
@@ -102,7 +102,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                     alignment: AlignmentDirectional(0.00, 1.00),
                     child: Container(
                       constraints: BoxConstraints(
-                        maxHeight: 650.0,
+                        maxHeight: 600.0,
                       ),
                       decoration: BoxDecoration(),
                       child: Column(
