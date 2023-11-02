@@ -89,7 +89,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
               image: DecorationImage(
                 fit: BoxFit.cover,
                 image: Image.asset(
-                  'assets/images/Group_70639@2x.png',
+                  'assets/images/mapss.png',
                 ).image,
               ),
             ),

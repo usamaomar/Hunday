@@ -49,3 +49,5 @@ export '/ui_screens/nav_home_pakage/offers_details_page/offers_details_page_widg
     show OffersDetailsPageWidget;
 export '/ui_screens/nav_home_pakage/car_model_details/car_model_details_widget.dart'
     show CarModelDetailsWidget;
+export '/ui_screens/nav_home_pakage/car_model_details_more/car_model_details_more_widget.dart'
+    show CarModelDetailsMoreWidget;

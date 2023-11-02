@@ -678,7 +678,46 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CarModelDetails
   {
-    'xwc2e0jj': {
+    'd75dh9y9': {
+      'en': 'Details',
+      'ar': 'تفاصيل',
+    },
+    'qhwrowev': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // CarModelDetailsMore
+  {
+    'tyo1q7nl': {
+      'en': 'Parts Shop',
+      'ar': 'اقسام المحل',
+    },
+    'daqdqubi': {
+      'en': 'Services',
+      'ar': 'خدمات',
+    },
+    'cjeshmsr': {
+      'en': 'Car model',
+      'ar': 'متجر قطع ',
+    },
+    'qjt5bf8n': {
+      'en': 'Description',
+      'ar': 'وصف',
+    },
+    'tcjczaa0': {
+      'en': 'Specifications >>',
+      'ar': 'المواصفات >>',
+    },
+    'sj7f1zjw': {
+      'en': 'Catalog',
+      'ar': 'فهرس',
+    },
+    'hw8gasge': {
+      'en': 'Book a test drive',
+      'ar': 'احجز تجربة قيادة',
+    },
+    'yjokpnbb': {
       'en': 'Home',
       'ar': '',
     },

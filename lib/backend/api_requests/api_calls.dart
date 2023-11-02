@@ -400,6 +400,36 @@ class CarModelsApiCall {
       );
 }
 
+class GetCarsApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? id = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'GetCarsApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/carModel/${id}/cars',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic listOfCars(dynamic response) => getJsonField(
+        response,
+        r'''$.cars''',
+        true,
+      );
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

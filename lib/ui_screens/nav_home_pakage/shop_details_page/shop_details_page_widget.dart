@@ -8,7 +8,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'shop_details_page_model.dart';
@@ -93,8 +92,8 @@ class _ShopDetailsPageWidgetState extends State<ShopDetailsPageWidget> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: SvgPicture.asset(
-                  'assets/images/Group_70639.svg',
+                child: Image.asset(
+                  'assets/images/mapss.png',
                   width: double.infinity,
                   height: double.infinity,
                   fit: BoxFit.cover,

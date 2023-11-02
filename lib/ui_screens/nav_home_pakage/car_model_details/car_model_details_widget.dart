@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,10 +18,10 @@ export 'car_model_details_model.dart';
 class CarModelDetailsWidget extends StatefulWidget {
   const CarModelDetailsWidget({
     Key? key,
-    required this.itemIndex,
+    required this.carJsonItem,
   }) : super(key: key);
 
-  final int? itemIndex;
+  final dynamic carJsonItem;
 
   @override
   _CarModelDetailsWidgetState createState() => _CarModelDetailsWidgetState();
@@ -51,8 +52,8 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
         MoveEffect(
           curve: Curves.easeInOut,
           delay: 0.ms,
-          duration: 1530.ms,
-          begin: Offset(400.0, 0.0),
+          duration: 1000.ms,
+          begin: Offset(600.0, 0.0),
           end: Offset(100.0, 0.0),
         ),
       ],
@@ -63,6 +64,26 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => CarModelDetailsModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResulthju = await GetCarsApiCall.call(
+        token: FFAppState().userModel.token,
+        id: getJsonField(
+          widget.carJsonItem,
+          r'''$.id''',
+        ).toString().toString(),
+      );
+      if ((_model.apiResulthju?.succeeded ?? true)) {
+        setState(() {
+          _model.listOfCarsModel = GetCarsApiCall.listOfCars(
+            (_model.apiResulthju?.jsonBody ?? ''),
+          )!
+              .toList()
+              .cast<dynamic>();
+        });
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -98,7 +119,7 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
             image: DecorationImage(
               fit: BoxFit.cover,
               image: Image.asset(
-                'assets/images/Group_70639@2x.png',
+                'assets/images/mapss.png',
               ).image,
             ),
           ),
@@ -179,16 +200,214 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 5.0, 0.0),
-                                child: ListView(
-                                  padding: EdgeInsets.fromLTRB(
-                                    0,
-                                    0,
-                                    0,
-                                    60.0,
-                                  ),
-                                  shrinkWrap: true,
-                                  scrollDirection: Axis.vertical,
-                                  children: [],
+                                child: Builder(
+                                  builder: (context) {
+                                    final listOfLocalCars =
+                                        _model.listOfCarsModel.toList();
+                                    return ListView.builder(
+                                      padding: EdgeInsets.fromLTRB(
+                                        0,
+                                        0,
+                                        0,
+                                        60.0,
+                                      ),
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      itemCount: listOfLocalCars.length,
+                                      itemBuilder:
+                                          (context, listOfLocalCarsIndex) {
+                                        final listOfLocalCarsItem =
+                                            listOfLocalCars[
+                                                listOfLocalCarsIndex];
+                                        return Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  20.0, 0.0, 20.0, 0.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              context.pushNamed(
+                                                'CarModelDetailsMore',
+                                                queryParameters: {
+                                                  'carJsonItem': serializeParam(
+                                                    getJsonField(
+                                                      listOfLocalCarsItem,
+                                                      r'''$''',
+                                                    ),
+                                                    ParamType.JSON,
+                                                  ),
+                                                }.withoutNulls,
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                        PageTransitionType.fade,
+                                                    duration: Duration(
+                                                        milliseconds: 0),
+                                                  ),
+                                                },
+                                              );
+                                            },
+                                            child: Card(
+                                              clipBehavior:
+                                                  Clip.antiAliasWithSaveLayer,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              elevation: 1.0,
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(25.0),
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    20.0,
+                                                                    15.0,
+                                                                    20.0,
+                                                                    0.0),
+                                                        child: Text(
+                                                          getJsonField(
+                                                            listOfLocalCarsItem,
+                                                            r'''$.full_name''',
+                                                          ).toString(),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'HeeboBold',
+                                                                color: Color(
+                                                                    0xFF092853),
+                                                                fontSize: 18.0,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .bold,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    20.0,
+                                                                    0.0,
+                                                                    0.0,
+                                                                    30.0),
+                                                        child: ClipRRect(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      0.0),
+                                                          child: Image.network(
+                                                            getJsonField(
+                                                              listOfLocalCarsItem,
+                                                              r'''$.full_image''',
+                                                            ),
+                                                            width: 125.0,
+                                                            height: 125.0,
+                                                            fit: BoxFit.contain,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        children: [
+                                                          Container(
+                                                            width: 100.0,
+                                                            height: 35.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: Color(
+                                                                  0xFF3D6398),
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .only(
+                                                                bottomLeft: Radius
+                                                                    .circular(
+                                                                        20.0),
+                                                                bottomRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                                topLeft: Radius
+                                                                    .circular(
+                                                                        20.0),
+                                                                topRight: Radius
+                                                                    .circular(
+                                                                        0.0),
+                                                              ),
+                                                            ),
+                                                            child: Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'd75dh9y9' /* Details */,
+                                                                  ),
+                                                                  textAlign:
+                                                                      TextAlign
+                                                                          .center,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        color: FlutterFlowTheme.of(context)
+                                                                            .white,
+                                                                        fontWeight:
+                                                                            FontWeight.w600,
+                                                                      ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    );
+                                  },
                                 ),
                               ),
                             ),

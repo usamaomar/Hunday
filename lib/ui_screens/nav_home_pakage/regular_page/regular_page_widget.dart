@@ -70,8 +70,8 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
             children: [
               ClipRRect(
                 borderRadius: BorderRadius.circular(8.0),
-                child: SvgPicture.asset(
-                  'assets/images/Group_70639.svg',
+                child: Image.asset(
+                  'assets/images/mapss.png',
                   width: double.infinity,
                   height: double.infinity,
                   fit: BoxFit.cover,

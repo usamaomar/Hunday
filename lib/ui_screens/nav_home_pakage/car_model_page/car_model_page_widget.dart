@@ -152,9 +152,12 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                       context.pushNamed(
                                         'CarModelDetails',
                                         queryParameters: {
-                                          'itemIndex': serializeParam(
-                                            gridOfCarModelsItemIndex,
-                                            ParamType.int,
+                                          'carJsonItem': serializeParam(
+                                            getJsonField(
+                                              gridOfCarModelsItemItem,
+                                              r'''$''',
+                                            ),
+                                            ParamType.JSON,
                                           ),
                                         }.withoutNulls,
                                         extra: <String, dynamic>{
@@ -195,6 +198,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                                   gridOfCarModelsItemItem,
                                                   r'''$.full_name''',
                                                 ).toString(),
+                                                textAlign: TextAlign.center,
                                                 maxLines: 1,
                                                 style: TextStyle(
                                                   fontFamily: 'HeeboBold',
