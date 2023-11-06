@@ -188,12 +188,8 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                     borderRadius: BorderRadius.circular(0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: Color(0xFFC1D6EF),
                                         borderRadius:
                                             BorderRadius.circular(0.0),
-                                        border: Border.all(
-                                          color: Color(0xFFC1D6EF),
-                                        ),
                                       ),
                                       child: ClipRRect(
                                         borderRadius:
@@ -505,11 +501,10 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                         child:
                                                             CarDeteailsComponentsWidget(
                                                           carDetailsModel:
-                                                              GetCarDetailsApiCall
-                                                                  .detailsModel(
-                                                            (_model.apiResultrr9
-                                                                    ?.jsonBody ??
-                                                                ''),
+                                                              getJsonField(
+                                                            _model
+                                                                .detailsJsonObject,
+                                                            r'''$''',
                                                           ),
                                                         ),
                                                       ),
