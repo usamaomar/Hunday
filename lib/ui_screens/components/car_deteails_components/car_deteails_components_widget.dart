@@ -161,14 +161,28 @@ class _CarDeteailsComponentsWidgetState
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 15.0, 0.0),
-                            child: Icon(
-                              Icons.do_not_disturb_on_rounded,
-                              color: Color(0xFF092853),
-                              size: 24.0,
-                            ),
+                          Stack(
+                            children: [
+                              if (FFAppState().listOfCatalogOpendBool[0])
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 15.0, 0.0),
+                                  child: Icon(
+                                    Icons.do_not_disturb_on_rounded,
+                                    color: Color(0xFF092853),
+                                    size: 24.0,
+                                  ),
+                                ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: Icon(
+                                  Icons.add_circle_rounded,
+                                  color: Color(0xFF092853),
+                                  size: 24.0,
+                                ),
+                              ),
+                            ],
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -266,14 +280,28 @@ class _CarDeteailsComponentsWidgetState
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 15.0, 0.0),
-                            child: Icon(
-                              Icons.do_not_disturb_on_rounded,
-                              color: Color(0xFF092853),
-                              size: 24.0,
-                            ),
+                          Stack(
+                            children: [
+                              if (FFAppState().listOfCatalogOpendBool[1])
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 15.0, 0.0),
+                                  child: Icon(
+                                    Icons.do_not_disturb_on_rounded,
+                                    color: Color(0xFF092853),
+                                    size: 24.0,
+                                  ),
+                                ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: Icon(
+                                  Icons.add_circle_rounded,
+                                  color: Color(0xFF092853),
+                                  size: 24.0,
+                                ),
+                              ),
+                            ],
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -369,14 +397,28 @@ class _CarDeteailsComponentsWidgetState
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 15.0, 0.0),
-                            child: Icon(
-                              Icons.do_not_disturb_on_rounded,
-                              color: Color(0xFF092853),
-                              size: 24.0,
-                            ),
+                          Stack(
+                            children: [
+                              if (FFAppState().listOfCatalogOpendBool[2])
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 15.0, 0.0),
+                                  child: Icon(
+                                    Icons.do_not_disturb_on_rounded,
+                                    color: Color(0xFF092853),
+                                    size: 24.0,
+                                  ),
+                                ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: Icon(
+                                  Icons.add_circle_rounded,
+                                  color: Color(0xFF092853),
+                                  size: 24.0,
+                                ),
+                              ),
+                            ],
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
@@ -473,14 +515,28 @@ class _CarDeteailsComponentsWidgetState
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 0.0, 15.0, 0.0),
-                            child: Icon(
-                              Icons.do_not_disturb_on_rounded,
-                              color: Color(0xFF092853),
-                              size: 24.0,
-                            ),
+                          Stack(
+                            children: [
+                              if (FFAppState().listOfCatalogOpendBool[3])
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 15.0, 0.0),
+                                  child: Icon(
+                                    Icons.do_not_disturb_on_rounded,
+                                    color: Color(0xFF092853),
+                                    size: 24.0,
+                                  ),
+                                ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: Icon(
+                                  Icons.add_circle_rounded,
+                                  color: Color(0xFF092853),
+                                  size: 24.0,
+                                ),
+                              ),
+                            ],
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
