@@ -40,6 +40,7 @@ class _PasswordEditTextValuesWidgetState
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController?.text = FFLocalizations.of(context).getText(
             '1afb5unb' /*  */,

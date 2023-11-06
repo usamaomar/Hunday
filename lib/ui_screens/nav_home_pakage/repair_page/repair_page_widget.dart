@@ -53,6 +53,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??= TextEditingController();
     _model.textFieldFocusNode2 ??= FocusNode();
 

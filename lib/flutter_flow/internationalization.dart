@@ -1066,6 +1066,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يحفظ',
     },
   },
+  // carDeteailsComponents
+  {
+    'hbpd88lb': {
+      'en': 'Technical Presentation',
+      'ar': 'العرض الفني',
+    },
+    'khvo8lsz': {
+      'en': 'Performance',
+      'ar': 'أداء',
+    },
+    'dlppqu44': {
+      'en': 'Performance',
+      'ar': 'أداء',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {

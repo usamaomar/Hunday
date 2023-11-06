@@ -39,6 +39,7 @@ class _PhoneEditTextValuesWidgetState extends State<PhoneEditTextValuesWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController?.text = FFLocalizations.of(context).getText(
             'jcuvrswu' /*  */,

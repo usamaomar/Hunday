@@ -61,6 +61,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
           _model.textController?.text = FFLocalizations.of(context).getText(
             's7fl3d67' /*  */,

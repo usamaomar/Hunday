@@ -32,12 +32,15 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
     _model.textController1 ??=
         TextEditingController(text: FFAppState().userModel.name);
     _model.textFieldFocusNode1 ??= FocusNode();
+
     _model.textController2 ??=
         TextEditingController(text: FFAppState().userModel.email);
     _model.textFieldFocusNode2 ??= FocusNode();
+
     _model.textController3 ??=
         TextEditingController(text: FFAppState().userModel.phone);
     _model.textFieldFocusNode3 ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 

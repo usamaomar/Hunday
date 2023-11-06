@@ -4,9 +4,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
+import '/ui_screens/components/car_deteails_components/car_deteails_components_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import 'car_model_details_more_widget.dart' show CarModelDetailsMoreWidget;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -30,10 +32,14 @@ class CarModelDetailsMoreModel
   void updateListOfCarsModelAtIndex(int index, Function(dynamic) updateFn) =>
       listOfCarsModel[index] = updateFn(listOfCarsModel[index]);
 
+  dynamic detailsJsonObject;
+
   ///  State fields for stateful widgets in this page.
 
   // Stores action output result for [Backend Call - API (GetCarsApi)] action in CarModelDetailsMore widget.
   ApiCallResponse? apiResulthju;
+  // Stores action output result for [Backend Call - API (GetCarDetailsApi)] action in CarModelDetailsMore widget.
+  ApiCallResponse? apiResultrr9;
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
   // Model for BottomNavBarComponent component.
