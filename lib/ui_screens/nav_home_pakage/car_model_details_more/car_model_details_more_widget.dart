@@ -417,54 +417,68 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                         ],
                                       ),
                                     ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          30.0, 0.0, 30.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            FFLocalizations.of(context).getText(
-                                              'qjt5bf8n' /* Description */,
+                                    if (getJsonField(
+                                          widget.carJsonItem,
+                                          r'''$.full_description''',
+                                        ) !=
+                                        null)
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            30.0, 0.0, 30.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'qjt5bf8n' /* Description */,
+                                              ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'HeeboBold',
+                                                    color: Color(0xFF212427),
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    useGoogleFonts: false,
+                                                  ),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'HeeboBold',
-                                                  color: Color(0xFF212427),
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ],
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          30.0, 15.0, 30.0, 0.0),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Text(
-                                            getJsonField(
-                                              widget.carJsonItem,
-                                              r'''$.full_description''',
-                                            ).toString(),
-                                            maxLines: 2,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Heebo Regular',
-                                                  color: Color(0xFF212427),
-                                                  fontSize: 14.0,
-                                                  fontWeight: FontWeight.normal,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                        ],
+                                    if (getJsonField(
+                                          widget.carJsonItem,
+                                          r'''$.full_description''',
+                                        ) !=
+                                        null)
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            30.0, 15.0, 30.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Text(
+                                              getJsonField(
+                                                widget.carJsonItem,
+                                                r'''$.full_description''',
+                                              ).toString(),
+                                              maxLines: 2,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Heebo Regular',
+                                                    color: Color(0xFF212427),
+                                                    fontSize: 14.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    useGoogleFonts: false,
+                                                  ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           30.0, 15.0, 30.0, 0.0),

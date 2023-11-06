@@ -47,6 +47,13 @@ class _CarDeteailsComponentsWidgetState
         ).toString().toString(),
         FFLocalizations.of(context).languageCode,
       );
+      _model.listOfSafty = await actions.carDetialsAction(
+        getJsonField(
+          widget.carDetailsModel,
+          r'''$.safty''',
+        ).toString().toString(),
+        FFLocalizations.of(context).languageCode,
+      );
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -170,13 +177,100 @@ class _CarDeteailsComponentsWidgetState
                           borderRadius: BorderRadius.circular(0.0),
                         ),
                         child: Row(
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisSize: MainAxisSize.min,
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 15.0, 15.0, 15.0),
                               child: Text(
                                 performancesItem,
+                                maxLines: 2,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Heebo Regular',
+                                      color: Color(0xFF363636),
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.normal,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(0.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFFE3E3E3),
+                  borderRadius: BorderRadius.circular(0.0),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      child: Icon(
+                        Icons.do_not_disturb_on_rounded,
+                        color: Color(0xFF092853),
+                        size: 24.0,
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'lc6uwna8' /* Safety */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'HeeboBold',
+                              color: Color(0xFF092853),
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              useGoogleFonts: false,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+            Builder(
+              builder: (context) {
+                final safty = _model.listOfSafty!.map((e) => e).toList();
+                return ListView.builder(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: safty.length,
+                  itemBuilder: (context, saftyIndex) {
+                    final saftyItem = safty[saftyIndex];
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: saftyIndex == 0
+                              ? Color(0xFFF9F9F9)
+                              : Color(0xFFF1F1F1),
+                          borderRadius: BorderRadius.circular(0.0),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 15.0, 15.0, 15.0),
+                              child: Text(
+                                saftyItem,
+                                maxLines: 2,
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
                                     .override(
