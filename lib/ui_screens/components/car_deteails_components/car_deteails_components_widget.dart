@@ -112,10 +112,11 @@ class _CarDeteailsComponentsWidgetState
                   ),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 0.0, 15.0),
+                            15.0, 15.0, 15.0, 15.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'hbpd88lb' /* Technical Presentation */,
@@ -128,6 +129,24 @@ class _CarDeteailsComponentsWidgetState
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),
+                        ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            15.0, 15.0, 15.0, 15.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.safePop();
+                          },
+                          child: Icon(
+                            Icons.close,
+                            color: FlutterFlowTheme.of(context).white,
+                            size: 24.0,
+                          ),
                         ),
                       ),
                     ],

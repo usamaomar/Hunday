@@ -114,3 +114,15 @@ String formatPhoneNumber(String input) {
 
   return '$countryCode $firstPart $secondPart $thirdPart';
 }
+
+String getNameByLanguge(
+  String englishName,
+  String arabicName,
+  String languge,
+) {
+  if (languge == 'ar') {
+    return arabicName.toString();
+  } else {
+    return englishName.toString();
+  }
+}

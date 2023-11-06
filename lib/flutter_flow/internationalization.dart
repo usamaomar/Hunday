@@ -689,18 +689,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // CarModelDetailsMore
   {
-    'tyo1q7nl': {
-      'en': 'Parts Shop',
-      'ar': 'اقسام المحل',
-    },
-    'daqdqubi': {
-      'en': 'Services',
-      'ar': 'خدمات',
-    },
-    'cjeshmsr': {
-      'en': 'Car model',
-      'ar': 'متجر قطع ',
-    },
     'qjt5bf8n': {
       'en': 'Description',
       'ar': 'وصف',

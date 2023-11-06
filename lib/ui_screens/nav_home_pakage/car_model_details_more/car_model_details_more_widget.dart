@@ -7,6 +7,7 @@ import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component
 import '/ui_screens/components/car_deteails_components/car_deteails_components_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -15,6 +16,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'car_model_details_more_model.dart';
 export 'car_model_details_more_model.dart';
@@ -279,11 +281,21 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                     Expanded(
                                                       flex: 1,
                                                       child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'tyo1q7nl' /* Parts Shop */,
-                                                        ),
+                                                        functions
+                                                            .getNameByLanguge(
+                                                                getJsonField(
+                                                                  widget
+                                                                      .carJsonItem,
+                                                                  r'''$.engine_capacity_ar''',
+                                                                ).toString(),
+                                                                getJsonField(
+                                                                  widget
+                                                                      .carJsonItem,
+                                                                  r'''$.engine_capacity_en''',
+                                                                ).toString(),
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode),
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: FlutterFlowTheme
@@ -334,11 +346,21 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                     Expanded(
                                                       flex: 1,
                                                       child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'daqdqubi' /* Services */,
-                                                        ),
+                                                        functions
+                                                            .getNameByLanguge(
+                                                                getJsonField(
+                                                                  widget
+                                                                      .carJsonItem,
+                                                                  r'''$.battery_type_ar''',
+                                                                ).toString(),
+                                                                getJsonField(
+                                                                  widget
+                                                                      .carJsonItem,
+                                                                  r'''$.battery_type_en''',
+                                                                ).toString(),
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode),
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: FlutterFlowTheme
@@ -389,11 +411,21 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                     Expanded(
                                                       flex: 1,
                                                       child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'cjeshmsr' /* Car model */,
-                                                        ),
+                                                        functions
+                                                            .getNameByLanguge(
+                                                                getJsonField(
+                                                                  widget
+                                                                      .carJsonItem,
+                                                                  r'''$.fuel_type.name_ar''',
+                                                                ).toString(),
+                                                                getJsonField(
+                                                                  widget
+                                                                      .carJsonItem,
+                                                                  r'''$.fuel_type.name_en''',
+                                                                ).toString(),
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode),
                                                         textAlign:
                                                             TextAlign.center,
                                                         style: FlutterFlowTheme
@@ -614,16 +646,12 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                                   10.0,
                                                                   0.0,
                                                                   10.0),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                        child: Image.asset(
-                                                          'assets/images/Group_72207@2x.png',
-                                                          width: 40.0,
-                                                          height: 30.0,
-                                                          fit: BoxFit.cover,
-                                                        ),
+                                                      child: Lottie.network(
+                                                        'https://lottie.host/3290845a-665d-44a3-a235-9cd29b35372f/SUYNvZ7Ti2.json',
+                                                        width: 40.0,
+                                                        height: 30.0,
+                                                        fit: BoxFit.contain,
+                                                        animate: true,
                                                       ),
                                                     ),
                                                     Padding(
