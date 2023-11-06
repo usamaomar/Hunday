@@ -17,6 +17,10 @@ class CarDeteailsComponentsModel
   List<String>? listOfPerformance;
   // Stores action output result for [Custom Action - carDetialsAction] action in carDeteailsComponents widget.
   List<String>? listOfSafty;
+  // Stores action output result for [Custom Action - carDetialsAction] action in carDeteailsComponents widget.
+  List<String>? listOfInterior;
+  // Stores action output result for [Custom Action - carDetialsAction] action in carDeteailsComponents widget.
+  List<String>? listOfExterior;
 
   /// Initialization and disposal methods.
 

@@ -1080,6 +1080,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Safety',
       'ar': 'أمان',
     },
+    'vhxcox48': {
+      'en': 'Interior',
+      'ar': 'الداخلية',
+    },
+    'ekqa9og1': {
+      'en': 'Exterior',
+      'ar': 'الخارج',
+    },
   },
   // Miscellaneous
   {

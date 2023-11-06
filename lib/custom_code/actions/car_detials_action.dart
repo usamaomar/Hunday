@@ -12,7 +12,7 @@ import 'dart:convert';
 
 List<String> carDetialsAction(String jsonObject, String languge) {
   List<String> stringArray = [];
-  if (jsonObject == null) {
+  if (jsonObject == 'null') {
     return stringArray;
   }
   Map<String, dynamic> jsonData = json.decode(jsonObject);
