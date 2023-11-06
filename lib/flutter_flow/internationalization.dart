@@ -1083,6 +1083,14 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Test Drive',
       'ar': 'اختبار القيادة',
     },
+    'k71uebj4': {
+      'en': 'Name',
+      'ar': 'اسم',
+    },
+    'wgndoaog': {
+      'en': 'Name',
+      'ar': 'اسم',
+    },
   },
   // Miscellaneous
   {

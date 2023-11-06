@@ -1,5 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -47,43 +48,91 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
 
     return Container(
       height: 500.0,
-      decoration: BoxDecoration(),
-      child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
-        child: ClipRRect(
-          borderRadius: BorderRadius.circular(20.0),
-          child: BackdropFilter(
-            filter: ImageFilter.blur(
-              sigmaX: 2.0,
-              sigmaY: 2.0,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              children: [
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text(
-                        FFLocalizations.of(context).getText(
-                          'smmv6dor' /* Test Drive */,
-                        ),
-                        style: FlutterFlowTheme.of(context).bodyMedium,
-                      ),
-                      Icon(
-                        Icons.close_rounded,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 24.0,
-                      ),
-                    ],
-                  ),
-                ),
-              ],
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20.0),
+      ),
+      child: Stack(
+        children: [
+          Opacity(
+            opacity: 0.3,
+            child: Container(
+              width: double.infinity,
+              height: 500.0,
+              decoration: BoxDecoration(
+                color: FlutterFlowTheme.of(context).white,
+                borderRadius: BorderRadius.circular(20.0),
+              ),
             ),
           ),
-        ),
+          Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+            child: BackdropFilter(
+              filter: ImageFilter.blur(
+                sigmaX: 2.0,
+                sigmaY: 2.0,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'smmv6dor' /* Test Drive */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
+                                    fontFamily: 'HeeboBold',
+                                    color: Color(0xFF092853),
+                                    fontSize: 16.0,
+                                    fontWeight: FontWeight.bold,
+                                    useGoogleFonts: false,
+                                  ),
+                        ),
+                        Icon(
+                          Icons.close_rounded,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 24.0,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    thickness: 1.0,
+                    color: Color(0xFF3D6398),
+                  ),
+                  wrapWithModel(
+                    model: _model.regulerEditTextValuesModel1,
+                    updateCallback: () => setState(() {}),
+                    child: RegulerEditTextValuesWidget(
+                      titleahint: FFLocalizations.of(context).getText(
+                        'k71uebj4' /* Name */,
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
+                    child: wrapWithModel(
+                      model: _model.regulerEditTextValuesModel2,
+                      updateCallback: () => setState(() {}),
+                      child: RegulerEditTextValuesWidget(
+                        titleahint: FFLocalizations.of(context).getText(
+                          'wgndoaog' /* Name */,
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
