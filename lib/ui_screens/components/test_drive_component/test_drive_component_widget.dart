@@ -45,39 +45,43 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20.0),
-        child: BackdropFilter(
-          filter: ImageFilter.blur(
-            sigmaX: 2.0,
-            sigmaY: 2.0,
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                child: Row(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      FFLocalizations.of(context).getText(
-                        'smmv6dor' /* Test Drive */,
+    return Container(
+      height: 500.0,
+      decoration: BoxDecoration(),
+      child: Padding(
+        padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: 2.0,
+              sigmaY: 2.0,
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        FFLocalizations.of(context).getText(
+                          'smmv6dor' /* Test Drive */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium,
-                    ),
-                    Icon(
-                      Icons.close_rounded,
-                      color: FlutterFlowTheme.of(context).secondaryText,
-                      size: 24.0,
-                    ),
-                  ],
+                      Icon(
+                        Icons.close_rounded,
+                        color: FlutterFlowTheme.of(context).secondaryText,
+                        size: 24.0,
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
