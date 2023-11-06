@@ -283,6 +283,35 @@ class FFAppState extends ChangeNotifier {
     _isDarkMode = _value;
   }
 
+  List<bool> _listOfCatalogOpendBool = [true, false, false, false];
+  List<bool> get listOfCatalogOpendBool => _listOfCatalogOpendBool;
+  set listOfCatalogOpendBool(List<bool> _value) {
+    _listOfCatalogOpendBool = _value;
+  }
+
+  void addToListOfCatalogOpendBool(bool _value) {
+    _listOfCatalogOpendBool.add(_value);
+  }
+
+  void removeFromListOfCatalogOpendBool(bool _value) {
+    _listOfCatalogOpendBool.remove(_value);
+  }
+
+  void removeAtIndexFromListOfCatalogOpendBool(int _index) {
+    _listOfCatalogOpendBool.removeAt(_index);
+  }
+
+  void updateListOfCatalogOpendBoolAtIndex(
+    int _index,
+    bool Function(bool) updateFn,
+  ) {
+    _listOfCatalogOpendBool[_index] = updateFn(_listOfCatalogOpendBool[_index]);
+  }
+
+  void insertAtIndexInListOfCatalogOpendBool(int _index, bool _value) {
+    _listOfCatalogOpendBool.insert(_index, _value);
+  }
+
   final _localsManager = FutureRequestManager<ApiCallResponse>();
   Future<ApiCallResponse> locals({
     String? uniqueQueryKey,
