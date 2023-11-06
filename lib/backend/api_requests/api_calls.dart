@@ -437,7 +437,7 @@ class GetCarDetailsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetCarDetailsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/car/${id}/',
+      apiUrl: 'https://hyundai.completechaintech.com/api/car/${id}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',

@@ -45,7 +45,7 @@ class _CarDeteailsComponentsWidgetState
           widget.carDetailsModel,
           r'''$.performance''',
         ).toString().toString(),
-        'ar',
+        FFLocalizations.of(context).languageCode,
       );
     });
 
@@ -63,140 +63,141 @@ class _CarDeteailsComponentsWidgetState
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return Container(
-      decoration: BoxDecoration(),
-      child: Column(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          ClipRRect(
-            borderRadius: BorderRadius.only(
-              bottomLeft: Radius.circular(0.0),
-              bottomRight: Radius.circular(0.0),
-              topLeft: Radius.circular(20.0),
-              topRight: Radius.circular(20.0),
-            ),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xFF5584BC),
-                borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(0.0),
-                  bottomRight: Radius.circular(0.0),
-                  topLeft: Radius.circular(20.0),
-                  topRight: Radius.circular(20.0),
+    return Padding(
+      padding: EdgeInsetsDirectional.fromSTEB(35.0, 0.0, 35.0, 0.0),
+      child: Container(
+        decoration: BoxDecoration(),
+        child: Column(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            ClipRRect(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(0.0),
+                bottomRight: Radius.circular(0.0),
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0),
+              ),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFF5584BC),
+                  borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(0.0),
+                    bottomRight: Radius.circular(0.0),
+                    topLeft: Radius.circular(20.0),
+                    topRight: Radius.circular(20.0),
+                  ),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 0.0, 15.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'hbpd88lb' /* Technical Presentation */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'HeeboBold',
+                              color: FlutterFlowTheme.of(context).white,
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              useGoogleFonts: false,
+                            ),
+                      ),
+                    ),
+                  ],
                 ),
               ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 0.0, 15.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'hbpd88lb' /* Technical Presentation */,
-                      ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'HeeboBold',
-                            color: FlutterFlowTheme.of(context).white,
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                            useGoogleFonts: false,
-                          ),
-                    ),
-                  ),
-                ],
-              ),
             ),
-          ),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(0.0),
-            child: Container(
-              decoration: BoxDecoration(
-                color: Color(0xFFE3E3E3),
-                borderRadius: BorderRadius.circular(0.0),
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-                    child: Icon(
-                      Icons.do_not_disturb_on_rounded,
-                      color: Color(0xFF092853),
-                      size: 24.0,
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
-                    child: Text(
-                      FFLocalizations.of(context).getText(
-                        'khvo8lsz' /* Performance */,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(0.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Color(0xFFE3E3E3),
+                  borderRadius: BorderRadius.circular(0.0),
+                ),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                      child: Icon(
+                        Icons.do_not_disturb_on_rounded,
+                        color: Color(0xFF092853),
+                        size: 24.0,
                       ),
-                      style: FlutterFlowTheme.of(context).bodyMedium.override(
-                            fontFamily: 'HeeboBold',
-                            color: Color(0xFF092853),
-                            fontSize: 16.0,
-                            fontWeight: FontWeight.bold,
-                            useGoogleFonts: false,
-                          ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          Builder(
-            builder: (context) {
-              final performances =
-                  _model.listOfPerformance!.map((e) => e).toList();
-              return ListView.builder(
-                padding: EdgeInsets.zero,
-                shrinkWrap: true,
-                scrollDirection: Axis.vertical,
-                itemCount: performances.length,
-                itemBuilder: (context, performancesIndex) {
-                  final performancesItem = performances[performancesIndex];
-                  return ClipRRect(
-                    borderRadius: BorderRadius.circular(0.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: performancesIndex == 0
-                            ? Color(0xFFF9F9F9)
-                            : Color(0xFFF1F1F1),
-                        borderRadius: BorderRadius.circular(0.0),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 15.0, 15.0, 15.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'dlppqu44' /* Performance */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Heebo Regular',
-                                    color: Color(0xFF363636),
-                                    fontSize: 14.0,
-                                    fontWeight: FontWeight.normal,
-                                    useGoogleFonts: false,
-                                  ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 15.0),
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'khvo8lsz' /* Performance */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'HeeboBold',
+                              color: Color(0xFF092853),
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              useGoogleFonts: false,
                             ),
-                          ),
-                        ],
                       ),
                     ),
-                  );
-                },
-              );
-            },
-          ),
-        ],
+                  ],
+                ),
+              ),
+            ),
+            Builder(
+              builder: (context) {
+                final performances =
+                    _model.listOfPerformance!.map((e) => e).toList();
+                return ListView.builder(
+                  padding: EdgeInsets.zero,
+                  shrinkWrap: true,
+                  scrollDirection: Axis.vertical,
+                  itemCount: performances.length,
+                  itemBuilder: (context, performancesIndex) {
+                    final performancesItem = performances[performancesIndex];
+                    return ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: performancesIndex == 0
+                              ? Color(0xFFF9F9F9)
+                              : Color(0xFFF1F1F1),
+                          borderRadius: BorderRadius.circular(0.0),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  15.0, 15.0, 15.0, 15.0),
+                              child: Text(
+                                performancesItem,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Heebo Regular',
+                                      color: Color(0xFF363636),
+                                      fontSize: 14.0,
+                                      fontWeight: FontWeight.normal,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

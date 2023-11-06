@@ -1076,10 +1076,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Performance',
       'ar': 'أداء',
     },
-    'dlppqu44': {
-      'en': 'Performance',
-      'ar': 'أداء',
-    },
   },
   // Miscellaneous
   {

@@ -81,7 +81,9 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
       );
       if ((_model.apiResultrr9?.succeeded ?? true)) {
         setState(() {
-          _model.detailsJsonObject = (_model.apiResultrr9?.jsonBody ?? '');
+          _model.detailsJsonObject = GetCarDetailsApiCall.detailsModel(
+            (_model.apiResultrr9?.jsonBody ?? ''),
+          );
         });
       } else {
         await showDialog(
