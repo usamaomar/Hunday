@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/car_deteails_components/car_deteails_components_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/test_drive_component/test_drive_component_widget.dart';
 import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -284,14 +285,14 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                         functions
                                                             .getNameByLanguge(
                                                                 getJsonField(
-                                                                  widget
-                                                                      .carJsonItem,
-                                                                  r'''$.engine_capacity_ar''',
+                                                                  _model
+                                                                      .detailsJsonObject,
+                                                                  r'''$.engine_capacity_en''',
                                                                 ).toString(),
                                                                 getJsonField(
-                                                                  widget
-                                                                      .carJsonItem,
-                                                                  r'''$.engine_capacity_en''',
+                                                                  _model
+                                                                      .detailsJsonObject,
+                                                                  r'''$.engine_capacity_ar''',
                                                                 ).toString(),
                                                                 FFLocalizations.of(
                                                                         context)
@@ -349,14 +350,14 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                         functions
                                                             .getNameByLanguge(
                                                                 getJsonField(
-                                                                  widget
-                                                                      .carJsonItem,
-                                                                  r'''$.battery_type_ar''',
+                                                                  _model
+                                                                      .detailsJsonObject,
+                                                                  r'''$.battery_type_en''',
                                                                 ).toString(),
                                                                 getJsonField(
-                                                                  widget
-                                                                      .carJsonItem,
-                                                                  r'''$.battery_type_en''',
+                                                                  _model
+                                                                      .detailsJsonObject,
+                                                                  r'''$.battery_type_ar''',
                                                                 ).toString(),
                                                                 FFLocalizations.of(
                                                                         context)
@@ -414,14 +415,14 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                         functions
                                                             .getNameByLanguge(
                                                                 getJsonField(
-                                                                  widget
-                                                                      .carJsonItem,
-                                                                  r'''$.fuel_type.name_ar''',
+                                                                  _model
+                                                                      .detailsJsonObject,
+                                                                  r'''$.fuel_type.name_en''',
                                                                 ).toString(),
                                                                 getJsonField(
-                                                                  widget
-                                                                      .carJsonItem,
-                                                                  r'''$.fuel_type.name_en''',
+                                                                  _model
+                                                                      .detailsJsonObject,
+                                                                  r'''$.fuel_type.name_ar''',
                                                                 ).toString(),
                                                                 FFLocalizations.of(
                                                                         context)
@@ -449,38 +450,31 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                         ],
                                       ),
                                     ),
-                                    if (getJsonField(
-                                          widget.carJsonItem,
-                                          r'''$.full_description''',
-                                        ) !=
-                                        null)
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            30.0, 0.0, 30.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'qjt5bf8n' /* Description */,
-                                              ),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'HeeboBold',
-                                                    color: Color(0xFF212427),
-                                                    fontSize: 16.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    useGoogleFonts: false,
-                                                  ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          30.0, 0.0, 30.0, 0.0),
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Text(
+                                            FFLocalizations.of(context).getText(
+                                              'qjt5bf8n' /* Description */,
                                             ),
-                                          ],
-                                        ),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'HeeboBold',
+                                                  color: Color(0xFF212427),
+                                                  fontSize: 16.0,
+                                                  fontWeight: FontWeight.bold,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ],
                                       ),
+                                    ),
                                     if (getJsonField(
-                                          widget.carJsonItem,
+                                          _model.detailsJsonObject,
                                           r'''$.full_description''',
                                         ) !=
                                         null)
@@ -492,7 +486,7 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                           children: [
                                             Text(
                                               getJsonField(
-                                                widget.carJsonItem,
+                                                _model.detailsJsonObject,
                                                 r'''$.full_description''',
                                               ).toString(),
                                               maxLines: 2,
@@ -700,63 +694,103 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                     ''),
                                                 r'''$.test_drive''',
                                               ))
-                                            Material(
-                                              color: Colors.transparent,
-                                              elevation: 2.0,
-                                              shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(10.0),
-                                              ),
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  10.0,
-                                                                  0.0,
-                                                                  10.0),
-                                                      child: ClipRRect(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(0.0),
-                                                        child: Image.asset(
-                                                          'assets/images/Group_72207@2x.png',
-                                                          width: 40.0,
-                                                          height: 30.0,
-                                                          fit: BoxFit.cover,
+                                            Builder(
+                                              builder: (context) => InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  await showAlignedDialog(
+                                                    context: context,
+                                                    isGlobal: true,
+                                                    avoidOverflow: false,
+                                                    targetAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    followerAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    builder: (dialogContext) {
+                                                      return Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: Container(
+                                                          height: 500.0,
+                                                          child:
+                                                              TestDriveComponentWidget(),
                                                         ),
-                                                      ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+                                                },
+                                                child: Material(
+                                                  color: Colors.transparent,
+                                                  elevation: 2.0,
+                                                  shape: RoundedRectangleBorder(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                  ),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              10.0),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  20.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'hw8gasge' /* Book a test drive */,
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0),
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        0.0),
+                                                            child: Image.asset(
+                                                              'assets/images/Group_72207@2x.png',
+                                                              width: 40.0,
+                                                              height: 30.0,
+                                                              fit: BoxFit.cover,
+                                                            ),
+                                                          ),
                                                         ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      20.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            FFLocalizations.of(
                                                                     context)
+                                                                .getText(
+                                                              'hw8gasge' /* Book a test drive */,
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .bodyMedium
                                                                 .override(
                                                                   fontFamily:
@@ -769,9 +803,11 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                                   useGoogleFonts:
                                                                       false,
                                                                 ),
-                                                      ),
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
+                                                  ),
                                                 ),
                                               ),
                                             ),

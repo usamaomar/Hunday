@@ -1077,6 +1077,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الخارج',
     },
   },
+  // testDriveComponent
+  {
+    'smmv6dor': {
+      'en': 'Test Drive',
+      'ar': 'اختبار القيادة',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {
