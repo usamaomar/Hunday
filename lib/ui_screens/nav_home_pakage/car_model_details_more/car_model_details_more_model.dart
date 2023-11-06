@@ -36,8 +36,6 @@ class CarModelDetailsMoreModel
 
   ///  State fields for stateful widgets in this page.
 
-  // Stores action output result for [Backend Call - API (GetCarsApi)] action in CarModelDetailsMore widget.
-  ApiCallResponse? apiResulthju;
   // Stores action output result for [Backend Call - API (GetCarDetailsApi)] action in CarModelDetailsMore widget.
   ApiCallResponse? apiResultrr9;
   // Model for HyndayAppBar component.

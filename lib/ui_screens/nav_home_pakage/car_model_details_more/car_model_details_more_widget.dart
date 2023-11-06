@@ -72,22 +72,6 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.apiResulthju = await GetCarsApiCall.call(
-        token: FFAppState().userModel.token,
-        id: getJsonField(
-          widget.carJsonItem,
-          r'''$.id''',
-        ).toString().toString(),
-      );
-      if ((_model.apiResulthju?.succeeded ?? true)) {
-        setState(() {
-          _model.listOfCarsModel = GetCarsApiCall.listOfCars(
-            (_model.apiResulthju?.jsonBody ?? ''),
-          )!
-              .toList()
-              .cast<dynamic>();
-        });
-      }
       _model.apiResultrr9 = await GetCarDetailsApiCall.call(
         token: FFAppState().userModel.token,
         id: getJsonField(
@@ -99,6 +83,22 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
         setState(() {
           _model.detailsJsonObject = (_model.apiResultrr9?.jsonBody ?? '');
         });
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('error'),
+              content: Text((_model.apiResultrr9?.bodyText ?? '')),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
       }
     });
 
