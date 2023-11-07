@@ -430,7 +430,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget> {
                     ],
                   ),
                 ),
-              ],
+              ].addToEnd(SizedBox(height: 55.0)),
             ),
           ),
         ),

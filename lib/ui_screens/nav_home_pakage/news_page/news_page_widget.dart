@@ -95,47 +95,51 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).white,
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(
-            color: FlutterFlowTheme.of(context).secondaryBackground,
-            image: DecorationImage(
-              fit: BoxFit.cover,
-              image: Image.asset(
-                'assets/images/Mask_Group_70057.png',
-              ).image,
+        body: SafeArea(
+          top: true,
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+              image: DecorationImage(
+                fit: BoxFit.cover,
+                image: Image.asset(
+                  'assets/images/Mask_Group_70057.png',
+                ).image,
+              ),
             ),
-          ),
-          child: Stack(
-            children: [
-              Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
-                child: wrapWithModel(
-                  model: _model.newsBottomSheetComponentModel,
-                  updateCallback: () => setState(() {}),
-                  child: NewsBottomSheetComponentWidget(),
-                ).animateOnPageLoad(animationsMap[
-                    'newsBottomSheetComponentOnPageLoadAnimation']!),
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  wrapWithModel(
-                    model: _model.hyndayAppBarModel,
+            child: Stack(
+              children: [
+                Align(
+                  alignment: AlignmentDirectional(0.00, 1.00),
+                  child: wrapWithModel(
+                    model: _model.newsBottomSheetComponentModel,
                     updateCallback: () => setState(() {}),
-                    child: HyndayAppBarWidget(
-                      appBarTitle: FFLocalizations.of(context).getVariableText(
-                        enText: 'News',
-                        arText: 'الاخبار',
+                    child: NewsBottomSheetComponentWidget(),
+                  ).animateOnPageLoad(animationsMap[
+                      'newsBottomSheetComponentOnPageLoadAnimation']!),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    wrapWithModel(
+                      model: _model.hyndayAppBarModel,
+                      updateCallback: () => setState(() {}),
+                      child: HyndayAppBarWidget(
+                        appBarTitle:
+                            FFLocalizations.of(context).getVariableText(
+                          enText: 'News',
+                          arText: 'الاخبار',
+                        ),
+                        isMyProfileOpend: false,
                       ),
-                      isMyProfileOpend: false,
                     ),
-                  ),
-                ],
-              ),
-            ],
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
