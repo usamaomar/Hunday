@@ -63,6 +63,7 @@ class _MorePageWidgetState extends State<MorePageWidget> {
           top: true,
           child: Container(
             width: double.infinity,
+            height: double.infinity,
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).white,
               borderRadius: BorderRadius.only(
@@ -74,491 +75,487 @@ class _MorePageWidgetState extends State<MorePageWidget> {
             ),
             child: Padding(
               padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          FFLocalizations.of(context).getText(
-                            'p6oewnbh' /* Menu */,
+              child: SingleChildScrollView(
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            FFLocalizations.of(context).getText(
+                              'p6oewnbh' /* Menu */,
+                            ),
+                            style: TextStyle(
+                              fontFamily: 'HeeboBold',
+                              color: Color(0xFF092853),
+                              fontWeight: FontWeight.w600,
+                              fontSize: 20.0,
+                            ),
                           ),
-                          style: TextStyle(
-                            fontFamily: 'HeeboBold',
-                            color: Color(0xFF092853),
-                            fontWeight: FontWeight.w600,
-                            fontSize: 20.0,
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 1.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF092853),
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'MyProfilePage',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.person,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 30.0,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'gn9dd2uh' /* My Profile */,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: 'Heebo Regular',
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
-                        InkWell(
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 0.5,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF8C8D8E),
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'MyOrderPage',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.fact_check,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 30.0,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'zsl2n2ki' /* My Orders */,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: 'Heebo Regular',
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 0.5,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF8C8D8E),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: [
+                            FaIcon(
+                              FontAwesomeIcons.calendarCheck,
+                              color: FlutterFlowTheme.of(context).secondaryText,
+                              size: 30.0,
+                            ),
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  10.0, 0.0, 10.0, 0.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'f87dmor3' /* My Appointment */,
+                                ),
+                                style: TextStyle(
+                                  fontFamily: 'Heebo Regular',
+                                  fontSize: 16.0,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 0.5,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF8C8D8E),
+                        ),
+                      ),
+                    ),
+                    Container(
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).secondaryBackground,
+                      ),
+                      child: Padding(
+                        padding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                        child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            Navigator.pop(context);
+                            context.pushNamed('AboutAppPage');
                           },
-                          child: Icon(
-                            Icons.close,
-                            color: Color(0xFF3D6398),
-                            size: 24.0,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 1.0,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF092853),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed(
-                        'MyProfilePage',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 0),
-                          ),
-                        },
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.person,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 30.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'gn9dd2uh' /* My Profile */,
-                                ),
-                                style: TextStyle(
-                                  fontFamily: 'Heebo Regular',
-                                  fontSize: 16.0,
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.feedback,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 30.0,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'g406osl6' /* About App */,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: 'Heebo Regular',
+                                    fontSize: 16.0,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 0.5,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF8C8D8E),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed(
-                        'MyOrderPage',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 0),
+                            ],
                           ),
-                        },
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.fact_check,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 30.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'zsl2n2ki' /* My Orders */,
-                                ),
-                                style: TextStyle(
-                                  fontFamily: 'Heebo Regular',
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                            ),
-                          ],
                         ),
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 0.5,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF8C8D8E),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Padding(
+                    Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 0.5,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF8C8D8E),
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
+                          'SettingsPage',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.settings,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 30.0,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    '2jxn0p4u' /* Settings */,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: 'Heebo Regular',
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 0.5,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF8C8D8E),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(60.0, 25.0, 60.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 6.0,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFC1D6EF),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          FaIcon(
-                            FontAwesomeIcons.calendarCheck,
-                            color: FlutterFlowTheme.of(context).secondaryText,
-                            size: 30.0,
-                          ),
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                10.0, 0.0, 10.0, 0.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'f87dmor3' /* My Appointment */,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await actions.navigateToLinkString(
+                                getJsonField(
+                                  FFAppState().socialMediaSharedJson,
+                                  r'''$.twitter''',
+                                ).toString(),
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: SvgPicture.asset(
+                                'assets/images/Group_72272.svg',
+                                fit: BoxFit.cover,
                               ),
-                              style: TextStyle(
-                                fontFamily: 'Heebo Regular',
-                                fontSize: 16.0,
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await actions.navigateToLinkString(
+                                getJsonField(
+                                  FFAppState().socialMediaSharedJson,
+                                  r'''$.linkedin''',
+                                ).toString(),
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(8.0),
+                              child: SvgPicture.asset(
+                                'assets/images/Group_72275.svg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await actions.navigateToLinkString(
+                                getJsonField(
+                                  FFAppState().socialMediaSharedJson,
+                                  r'''$.facebook''',
+                                ).toString(),
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: SvgPicture.asset(
+                                'assets/images/Group_72276.svg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await actions.navigateToLinkString(
+                                getJsonField(
+                                  FFAppState().socialMediaSharedJson,
+                                  r'''$.instagram''',
+                                ).toString(),
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: SvgPicture.asset(
+                                'assets/images/Group_72278.svg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await actions.navigateToLinkString(
+                                getJsonField(
+                                  FFAppState().socialMediaSharedJson,
+                                  r'''$.whatsapp''',
+                                ).toString(),
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: SvgPicture.asset(
+                                'assets/images/Group_72887.svg',
+                                fit: BoxFit.cover,
+                              ),
+                            ),
+                          ),
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              await actions.navigateToLinkString(
+                                getJsonField(
+                                  FFAppState().socialMediaSharedJson,
+                                  r'''$.youtube''',
+                                ).toString(),
+                              );
+                            },
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(0.0),
+                              child: SvgPicture.asset(
+                                'assets/images/Group_72271.svg',
+                                fit: BoxFit.cover,
                               ),
                             ),
                           ),
                         ],
                       ),
                     ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 0.5,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF8C8D8E),
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                      child: InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed('AboutAppPage');
-                        },
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.feedback,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 30.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'g406osl6' /* About App */,
-                                ),
-                                style: TextStyle(
-                                  fontFamily: 'Heebo Regular',
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 0.5,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF8C8D8E),
-                      ),
-                    ),
-                  ),
-                  InkWell(
-                    splashColor: Colors.transparent,
-                    focusColor: Colors.transparent,
-                    hoverColor: Colors.transparent,
-                    highlightColor: Colors.transparent,
-                    onTap: () async {
-                      context.pushNamed(
-                        'SettingsPage',
-                        extra: <String, dynamic>{
-                          kTransitionInfoKey: TransitionInfo(
-                            hasTransition: true,
-                            transitionType: PageTransitionType.fade,
-                            duration: Duration(milliseconds: 0),
-                          ),
-                        },
-                      );
-                    },
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.settings,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 30.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  '2jxn0p4u' /* Settings */,
-                                ),
-                                style: TextStyle(
-                                  fontFamily: 'Heebo Regular',
-                                  fontSize: 16.0,
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 0.5,
-                      decoration: BoxDecoration(
-                        color: Color(0xFF8C8D8E),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(60.0, 25.0, 60.0, 0.0),
-                    child: Container(
-                      width: double.infinity,
-                      height: 6.0,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFC1D6EF),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await actions.navigateToLinkString(
-                              getJsonField(
-                                FFAppState().socialMediaSharedJson,
-                                r'''$.twitter''',
-                              ).toString(),
-                            );
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Group_72272.svg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await actions.navigateToLinkString(
-                              getJsonField(
-                                FFAppState().socialMediaSharedJson,
-                                r'''$.linkedin''',
-                              ).toString(),
-                            );
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(8.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Group_72275.svg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await actions.navigateToLinkString(
-                              getJsonField(
-                                FFAppState().socialMediaSharedJson,
-                                r'''$.facebook''',
-                              ).toString(),
-                            );
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Group_72276.svg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await actions.navigateToLinkString(
-                              getJsonField(
-                                FFAppState().socialMediaSharedJson,
-                                r'''$.instagram''',
-                              ).toString(),
-                            );
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Group_72278.svg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await actions.navigateToLinkString(
-                              getJsonField(
-                                FFAppState().socialMediaSharedJson,
-                                r'''$.whatsapp''',
-                              ).toString(),
-                            );
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Group_72887.svg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                        InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            await actions.navigateToLinkString(
-                              getJsonField(
-                                FFAppState().socialMediaSharedJson,
-                                r'''$.youtube''',
-                              ).toString(),
-                            );
-                          },
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(0.0),
-                            child: SvgPicture.asset(
-                              'assets/images/Group_72271.svg',
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),

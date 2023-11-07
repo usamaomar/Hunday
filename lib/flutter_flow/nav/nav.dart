@@ -142,7 +142,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'SettingsPage',
           path: '/settingsPage',
-          builder: (context, params) => SettingsPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: SettingsPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'MaintenancePage',
@@ -172,7 +175,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'LocationPage',
           path: '/locationPage',
-          builder: (context, params) => LocationPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: LocationPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'OffersPage',

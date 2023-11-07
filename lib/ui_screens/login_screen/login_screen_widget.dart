@@ -670,7 +670,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                               ],
                             ),
                           ),
-                        ],
+                        ].addToEnd(SizedBox(height: 55.0)),
                       ),
                     ),
                   ],

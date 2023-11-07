@@ -178,7 +178,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
             ),
             child: Column(
               mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Row(
                   mainAxisSize: MainAxisSize.max,
