@@ -53,3 +53,9 @@ export '/ui_screens/nav_home_pakage/car_model_details_more/car_model_details_mor
     show CarModelDetailsMoreWidget;
 export '/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart'
     show CarModelDetailsMoreWithSliederWidget;
+export '/ui_screens/nav_pakege/chat_page/chat_page_widget.dart'
+    show ChatPageWidget;
+export '/ui_screens/nav_pakege/cart_page/cart_page_widget.dart'
+    show CartPageWidget;
+export '/ui_screens/nav_pakege/more_page/more_page_widget.dart'
+    show MorePageWidget;

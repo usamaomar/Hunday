@@ -225,6 +225,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'News',
       'ar': 'الاخبار',
     },
+    'x8otlfzl': {
+      'en': '',
+      'ar': '',
+    },
   },
   // ShopPage
   {
@@ -731,6 +735,33 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '6vo4oqd8': {
       'en': 'Home',
       'ar': '',
+    },
+  },
+  // MorePage
+  {
+    'p6oewnbh': {
+      'en': 'Menu',
+      'ar': 'القائمة',
+    },
+    'gn9dd2uh': {
+      'en': 'My Profile',
+      'ar': 'ملف الشخصي',
+    },
+    'zsl2n2ki': {
+      'en': 'My Orders',
+      'ar': 'طلباتي',
+    },
+    'f87dmor3': {
+      'en': 'My Appointment',
+      'ar': 'مواعيدي',
+    },
+    'g406osl6': {
+      'en': 'About App',
+      'ar': 'عن التطبيق',
+    },
+    '2jxn0p4u': {
+      'en': 'Settings',
+      'ar': 'اعدادات',
     },
   },
   // Fild

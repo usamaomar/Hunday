@@ -54,12 +54,20 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'registraationPage',
           path: '/registraationPage',
-          builder: (context, params) => RegistraationPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: RegistraationPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'HomeScreen',
           path: '/homeScreen',
-          builder: (context, params) => HomeScreenWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'HomeScreen')
+              : NavBarPage(
+                  initialPage: 'HomeScreen',
+                  page: HomeScreenWidget(),
+                ),
         ),
         FFRoute(
           name: 'ShopPage',
@@ -74,7 +82,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'CarPage',
           path: '/carPage',
-          builder: (context, params) => CarPageWidget(),
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'CarPage')
+              : NavBarPage(
+                  initialPage: 'CarPage',
+                  page: CarPageWidget(),
+                ),
         ),
         FFRoute(
           name: 'AboutAppPage',
@@ -114,8 +127,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'NewsDetailsPage',
           path: '/newsDetailsPage',
-          builder: (context, params) => NewsDetailsPageWidget(
-            itemIndex: params.getParam('itemIndex', ParamType.int),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: NewsDetailsPageWidget(
+              itemIndex: params.getParam('itemIndex', ParamType.int),
+            ),
           ),
         ),
         FFRoute(
@@ -190,6 +206,36 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => CarModelDetailsMoreWithSliederWidget(
             carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
           ),
+        ),
+        FFRoute(
+          name: 'ChatPage',
+          path: '/chatPage',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'ChatPage')
+              : NavBarPage(
+                  initialPage: 'ChatPage',
+                  page: ChatPageWidget(),
+                ),
+        ),
+        FFRoute(
+          name: 'CartPage',
+          path: '/cartPage',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'CartPage')
+              : NavBarPage(
+                  initialPage: 'CartPage',
+                  page: CartPageWidget(),
+                ),
+        ),
+        FFRoute(
+          name: 'MorePage',
+          path: '/morePage',
+          builder: (context, params) => params.isEmpty
+              ? NavBarPage(initialPage: 'MorePage')
+              : NavBarPage(
+                  initialPage: 'MorePage',
+                  page: MorePageWidget(),
+                ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

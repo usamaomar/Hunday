@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -70,19 +69,13 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
 
   // Stores action output result for [Backend Call - API (NewsApi)] action in Column widget.
   ApiCallResponse? listOfValues;
-  // Model for BottomNavBarComponent component.
-  late BottomNavBarComponentModel bottomNavBarComponentModel;
 
   /// Initialization and disposal methods.
 
-  void initState(BuildContext context) {
-    bottomNavBarComponentModel =
-        createModel(context, () => BottomNavBarComponentModel());
-  }
+  void initState(BuildContext context) {}
 
   void dispose() {
     unfocusNode.dispose();
-    bottomNavBarComponentModel.dispose();
   }
 
   /// Action blocks are added here.

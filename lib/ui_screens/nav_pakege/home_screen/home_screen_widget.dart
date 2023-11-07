@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/upload_data.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -165,8 +164,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
+        backgroundColor: Color(0xFFAFC3E1),
+        body: SafeArea(
+          top: true,
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -747,11 +747,6 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       ),
                     ),
                   ],
-                ),
-                wrapWithModel(
-                  model: _model.bottomNavBarComponentModel,
-                  updateCallback: () => setState(() {}),
-                  child: BottomNavBarComponentWidget(),
                 ),
               ],
             ),

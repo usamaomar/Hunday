@@ -6,25 +6,25 @@ import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'car_page_model.dart';
-export 'car_page_model.dart';
+import 'cart_page_model.dart';
+export 'cart_page_model.dart';
 
-class CarPageWidget extends StatefulWidget {
-  const CarPageWidget({Key? key}) : super(key: key);
+class CartPageWidget extends StatefulWidget {
+  const CartPageWidget({Key? key}) : super(key: key);
 
   @override
-  _CarPageWidgetState createState() => _CarPageWidgetState();
+  _CartPageWidgetState createState() => _CartPageWidgetState();
 }
 
-class _CarPageWidgetState extends State<CarPageWidget> {
-  late CarPageModel _model;
+class _CartPageWidgetState extends State<CartPageWidget> {
+  late CartPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => CarPageModel());
+    _model = createModel(context, () => CartPageModel());
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -56,10 +56,12 @@ class _CarPageWidgetState extends State<CarPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.end,
-          children: [],
+        body: SafeArea(
+          top: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            children: [],
+          ),
         ),
       ),
     );
