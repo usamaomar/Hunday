@@ -229,28 +229,88 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              context.pushNamed(
-                                                'CarModelDetailsMore',
-                                                queryParameters: {
-                                                  'carJsonItem': serializeParam(
-                                                    getJsonField(
-                                                      listOfLocalCarsItem,
-                                                      r'''$''',
-                                                    ),
-                                                    ParamType.JSON,
-                                                  ),
-                                                }.withoutNulls,
-                                                extra: <String, dynamic>{
-                                                  kTransitionInfoKey:
-                                                      TransitionInfo(
-                                                    hasTransition: true,
-                                                    transitionType:
-                                                        PageTransitionType.fade,
-                                                    duration: Duration(
-                                                        milliseconds: 0),
-                                                  ),
-                                                },
+                                              var _shouldSetState = false;
+                                              _model.responceFromGetCarDetails =
+                                                  await GetCarDetailsApiCall
+                                                      .call(
+                                                token: FFAppState()
+                                                    .userModel
+                                                    .token,
+                                                id: getJsonField(
+                                                  listOfLocalCarsItem,
+                                                  r'''$.id''',
+                                                ).toString(),
                                               );
+                                              _shouldSetState = true;
+                                              if ((_model
+                                                      .responceFromGetCarDetails
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                if (GetCarDetailsApiCall
+                                                        .carsSlider(
+                                                      (_model.responceFromGetCarDetails
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ).length >
+                                                    0) {
+                                                  context.pushNamed(
+                                                    'CarModelDetailsMoreWithSlieder',
+                                                    queryParameters: {
+                                                      'carJsonItem':
+                                                          serializeParam(
+                                                        getJsonField(
+                                                          widget.carJsonItem,
+                                                          r'''$''',
+                                                        ),
+                                                        ParamType.JSON,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      kTransitionInfoKey:
+                                                          TransitionInfo(
+                                                        hasTransition: true,
+                                                        transitionType:
+                                                            PageTransitionType
+                                                                .fade,
+                                                        duration: Duration(
+                                                            milliseconds: 0),
+                                                      ),
+                                                    },
+                                                  );
+                                                } else {
+                                                  context.pushNamed(
+                                                    'CarModelDetailsMore',
+                                                    queryParameters: {
+                                                      'carJsonItem':
+                                                          serializeParam(
+                                                        getJsonField(
+                                                          listOfLocalCarsItem,
+                                                          r'''$''',
+                                                        ),
+                                                        ParamType.JSON,
+                                                      ),
+                                                    }.withoutNulls,
+                                                    extra: <String, dynamic>{
+                                                      kTransitionInfoKey:
+                                                          TransitionInfo(
+                                                        hasTransition: true,
+                                                        transitionType:
+                                                            PageTransitionType
+                                                                .fade,
+                                                        duration: Duration(
+                                                            milliseconds: 0),
+                                                      ),
+                                                    },
+                                                  );
+                                                }
+                                              } else {
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+
+                                              if (_shouldSetState)
+                                                setState(() {});
                                             },
                                             child: Card(
                                               clipBehavior:

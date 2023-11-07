@@ -461,6 +461,11 @@ class GetCarDetailsApiCall {
         response,
         r'''$.car.performance''',
       );
+  static dynamic carsSlider(dynamic response) => getJsonField(
+        response,
+        r'''$.car.car_sliders''',
+        true,
+      );
 }
 
 class ApiPagingParams {

@@ -183,6 +183,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           builder: (context, params) => CarModelDetailsMoreWidget(
             carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
           ),
+        ),
+        FFRoute(
+          name: 'CarModelDetailsMoreWithSlieder',
+          path: '/carModelDetailsMoreWithSlieder',
+          builder: (context, params) => CarModelDetailsMoreWithSliederWidget(
+            carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

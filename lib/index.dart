@@ -51,3 +51,5 @@ export '/ui_screens/nav_home_pakage/car_model_details/car_model_details_widget.d
     show CarModelDetailsWidget;
 export '/ui_screens/nav_home_pakage/car_model_details_more/car_model_details_more_widget.dart'
     show CarModelDetailsMoreWidget;
+export '/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart'
+    show CarModelDetailsMoreWithSliederWidget;

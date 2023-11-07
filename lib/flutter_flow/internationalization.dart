@@ -710,6 +710,29 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // CarModelDetailsMoreWithSlieder
+  {
+    'z1s82dpt': {
+      'en': 'Description',
+      'ar': 'وصف',
+    },
+    '9rfbujwq': {
+      'en': 'Specifications >>',
+      'ar': 'المواصفات >>',
+    },
+    'ca7jaj1r': {
+      'en': 'Catalog',
+      'ar': 'فهرس',
+    },
+    'kgthw2vc': {
+      'en': 'Book a test drive',
+      'ar': 'احجز تجربة قيادة',
+    },
+    '6vo4oqd8': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // Fild
   {
     '12neuu73': {
