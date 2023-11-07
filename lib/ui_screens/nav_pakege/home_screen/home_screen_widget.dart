@@ -3,10 +3,9 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
-import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -194,47 +193,147 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                     ),
                   ],
                 ),
-                Expanded(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(
-                        child: custom_widgets.CustomUrlsSlider(
-                          width: double.infinity,
-                          height: double.infinity,
-                          listOfImages: _model.listOfImagesSlider,
-                          listOfTitles: _model.listOfTestList,
+                ClipRRect(
+                  child: Container(
+                    decoration: BoxDecoration(),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Builder(
+                            builder: (context) {
+                              final listOfPaths =
+                                  SliderApiCall.listOfStringUrls(
+                                        (_model.apiResultSlider?.jsonBody ??
+                                            ''),
+                                      )?.toList() ??
+                                      [];
+                              return Container(
+                                width: double.infinity,
+                                height: 300.0,
+                                child: CarouselSlider.builder(
+                                  itemCount: listOfPaths.length,
+                                  itemBuilder: (context, listOfPathsIndex, _) {
+                                    final listOfPathsItem =
+                                        listOfPaths[listOfPathsIndex];
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 0.0, 30.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            child: CachedNetworkImage(
+                                              fadeInDuration:
+                                                  Duration(milliseconds: 200),
+                                              fadeOutDuration:
+                                                  Duration(milliseconds: 200),
+                                              imageUrl: getJsonField(
+                                                listOfPathsItem,
+                                                r'''$''',
+                                              ),
+                                              width: double.infinity,
+                                              height: 250.0,
+                                              fit: BoxFit.cover,
+                                            ),
+                                          ),
+                                        ),
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    30.0, 10.0, 30.0, 10.0),
+                                            child: Text(
+                                              (SliderApiCall.listOfTitles(
+                                                (_model.apiResultSlider
+                                                        ?.jsonBody ??
+                                                    ''),
+                                              ) as List)
+                                                  .map<String>(
+                                                      (s) => s.toString())
+                                                  .toList()[listOfPathsIndex]
+                                                  .toString(),
+                                              textAlign: TextAlign.center,
+                                              maxLines: 2,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Heebo',
+                                                        color:
+                                                            Color(0xFF212427),
+                                                        fontSize: 16.0,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                  carouselController:
+                                      _model.carouselController ??=
+                                          CarouselController(),
+                                  options: CarouselOptions(
+                                    initialPage: min(1, listOfPaths.length - 1),
+                                    viewportFraction: 1.0,
+                                    disableCenter: true,
+                                    enlargeCenterPage: true,
+                                    enlargeFactor: 1.0,
+                                    enableInfiniteScroll: true,
+                                    scrollDirection: Axis.horizontal,
+                                    autoPlay: true,
+                                    autoPlayAnimationDuration:
+                                        Duration(milliseconds: 1000),
+                                    autoPlayInterval:
+                                        Duration(milliseconds: (1000 + 1000)),
+                                    autoPlayCurve: Curves.linear,
+                                    pauseAutoPlayInFiniteScroll: true,
+                                    onPageChanged: (index, _) =>
+                                        _model.carouselCurrentIndex = index,
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Flexible(
                   flex: 1,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Expanded(
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              0.0, 10.0, 0.0, 0.0),
-                          child: Container(
-                            height: 1.0,
-                            decoration: BoxDecoration(
-                              color: Color(0xFF3D6398),
-                              border: Border.all(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                0.0, 10.0, 0.0, 0.0),
+                            child: Container(
+                              height: 1.0,
+                              decoration: BoxDecoration(
                                 color: Color(0xFF3D6398),
-                                width: 1.0,
+                                border: Border.all(
+                                  color: Color(0xFF3D6398),
+                                  width: 1.0,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 Row(
@@ -270,88 +369,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                 focusColor: Colors.transparent,
                                 hoverColor: Colors.transparent,
                                 highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  final selectedMedia = await selectMedia(
-                                    multiImage: false,
-                                  );
-                                  if (selectedMedia != null &&
-                                      selectedMedia.every((m) =>
-                                          validateFileFormat(
-                                              m.storagePath, context))) {
-                                    setState(
-                                        () => _model.isDataUploading = true);
-                                    var selectedUploadedFiles =
-                                        <FFUploadedFile>[];
-
-                                    try {
-                                      selectedUploadedFiles = selectedMedia
-                                          .map((m) => FFUploadedFile(
-                                                name: m.storagePath
-                                                    .split('/')
-                                                    .last,
-                                                bytes: m.bytes,
-                                                height: m.dimensions?.height,
-                                                width: m.dimensions?.width,
-                                                blurHash: m.blurHash,
-                                              ))
-                                          .toList();
-                                    } finally {
-                                      _model.isDataUploading = false;
-                                    }
-                                    if (selectedUploadedFiles.length ==
-                                        selectedMedia.length) {
-                                      setState(() {
-                                        _model.uploadedLocalFile =
-                                            selectedUploadedFiles.first;
-                                      });
-                                    } else {
-                                      setState(() {});
-                                      return;
-                                    }
-                                  }
-
-                                  setState(() {
-                                    _model.isLoading = true;
-                                  });
-                                  _model.listOfValues = await NewsApiCall.call(
-                                    token: FFAppState().userModel.token,
-                                  );
-                                  setState(() {
-                                    FFAppState().textFromFrontDrivLisn =
-                                        (_model.listOfValues?.jsonBody ?? '')
-                                            .toList()
-                                            .cast<String>();
-                                  });
-                                  setState(() {
-                                    _model.isLoading = false;
-                                  });
-                                  await showModalBottomSheet(
-                                    isScrollControlled: true,
-                                    backgroundColor: Colors.transparent,
-                                    context: context,
-                                    builder: (context) {
-                                      return GestureDetector(
-                                        onTap: () => _model
-                                                .unfocusNode.canRequestFocus
-                                            ? FocusScope.of(context)
-                                                .requestFocus(
-                                                    _model.unfocusNode)
-                                            : FocusScope.of(context).unfocus(),
-                                        child: Padding(
-                                          padding:
-                                              MediaQuery.viewInsetsOf(context),
-                                          child: Container(
-                                            height: double.infinity,
-                                            child:
-                                                ListOfStringItemsComponentWidget(),
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  ).then((value) => safeSetState(() {}));
-
-                                  setState(() {});
-                                },
+                                onTap: () async {},
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [

@@ -145,19 +145,7 @@ class _MaintenancePageWidgetState extends State<MaintenancePageWidget> {
                                     focusColor: Colors.transparent,
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed(
-                                        'RegularPage',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.fade,
-                                            duration: Duration(milliseconds: 0),
-                                          ),
-                                        },
-                                      );
-                                    },
+                                    onTap: () async {},
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(15.0),
                                       child: Container(
@@ -238,19 +226,7 @@ class _MaintenancePageWidgetState extends State<MaintenancePageWidget> {
                                     focusColor: Colors.transparent,
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed(
-                                        'RepairPage',
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.fade,
-                                            duration: Duration(milliseconds: 0),
-                                          ),
-                                        },
-                                      );
-                                    },
+                                    onTap: () async {},
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(15.0),
                                       child: Container(

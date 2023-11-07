@@ -3,11 +3,10 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
-import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
-import '/custom_code/widgets/index.dart' as custom_widgets;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_screen_widget.dart' show HomeScreenWidget;
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -63,12 +62,10 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   ApiCallResponse? locationsApiResponce;
   // Stores action output result for [Backend Call - API (SliderApi)] action in HomeScreen widget.
   ApiCallResponse? apiResultSlider;
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
+  // State field(s) for Carousel widget.
+  CarouselController? carouselController;
 
-  // Stores action output result for [Backend Call - API (NewsApi)] action in Column widget.
-  ApiCallResponse? listOfValues;
+  int carouselCurrentIndex = 1;
 
   /// Initialization and disposal methods.
 
