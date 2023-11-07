@@ -1,7 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'edit_profile_page_widget.dart' show EditProfilePageWidget;
 import 'package:easy_debounce/easy_debounce.dart';
@@ -29,15 +28,11 @@ class EditProfilePageModel extends FlutterFlowModel<EditProfilePageWidget> {
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
-  // Model for BottomNavBarComponent component.
-  late BottomNavBarComponentModel bottomNavBarComponentModel;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {
     hyndayAppBarModel = createModel(context, () => HyndayAppBarModel());
-    bottomNavBarComponentModel =
-        createModel(context, () => BottomNavBarComponentModel());
   }
 
   void dispose() {
@@ -51,8 +46,6 @@ class EditProfilePageModel extends FlutterFlowModel<EditProfilePageWidget> {
 
     textFieldFocusNode3?.dispose();
     textController3?.dispose();
-
-    bottomNavBarComponentModel.dispose();
   }
 
   /// Action blocks are added here.

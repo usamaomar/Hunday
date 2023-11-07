@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
@@ -82,9 +81,9 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
+        backgroundColor: FlutterFlowTheme.of(context).white,
+        body: SafeArea(
+          top: true,
           child: Container(
             width: double.infinity,
             height: double.infinity,
@@ -127,6 +126,10 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(20.0),
                                         topRight: Radius.circular(20.0),
+                                      ),
+                                      border: Border.all(
+                                        color:
+                                            FlutterFlowTheme.of(context).white,
                                       ),
                                     ),
                                   ),
@@ -185,12 +188,15 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                             Expanded(
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    5.0, 0.0, 5.0, 5.0),
+                                    5.0, 0.0, 5.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
                                   decoration: BoxDecoration(
                                     color: FlutterFlowTheme.of(context).white,
                                     borderRadius: BorderRadius.circular(0.0),
+                                    border: Border.all(
+                                      color: FlutterFlowTheme.of(context).white,
+                                    ),
                                   ),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
@@ -416,16 +422,6 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                             ),
                             isMyProfileOpend: false,
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        wrapWithModel(
-                          model: _model.bottomNavBarComponentModel,
-                          updateCallback: () => setState(() {}),
-                          child: BottomNavBarComponentWidget(),
                         ),
                       ],
                     ),

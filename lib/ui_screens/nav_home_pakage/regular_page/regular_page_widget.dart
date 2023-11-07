@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -64,9 +63,9 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
+        backgroundColor: FlutterFlowTheme.of(context).white,
+        body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               ClipRRect(
@@ -608,23 +607,6 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                           ),
                           isMyProfileOpend: false,
                         ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: wrapWithModel(
-                              model: _model.bottomNavBarComponentModel,
-                              updateCallback: () => setState(() {}),
-                              child: BottomNavBarComponentWidget(),
-                            ),
-                          ),
-                        ],
                       ),
                     ],
                   ),

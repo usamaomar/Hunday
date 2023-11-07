@@ -15,7 +15,6 @@ import 'package:provider/provider.dart';
 class SplashPageModel extends FlutterFlowModel<SplashPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // State field(s) for Timer widget.
   int timerMilliseconds = 6000;
   String timerValue = StopWatchTimer.getDisplayTime(
@@ -31,7 +30,6 @@ class SplashPageModel extends FlutterFlowModel<SplashPageWidget> {
   void initState(BuildContext context) {}
 
   void dispose() {
-    unfocusNode.dispose();
     timerController.dispose();
   }
 

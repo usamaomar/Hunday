@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -110,8 +109,9 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
 
     return Scaffold(
       key: scaffoldKey,
-      body: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
+      backgroundColor: FlutterFlowTheme.of(context).white,
+      body: SafeArea(
+        top: true,
         child: Container(
           width: double.infinity,
           height: double.infinity,
@@ -496,16 +496,6 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                             ),
                             isMyProfileOpend: false,
                           ),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        wrapWithModel(
-                          model: _model.bottomNavBarComponentModel,
-                          updateCallback: () => setState(() {}),
-                          child: BottomNavBarComponentWidget(),
                         ),
                       ],
                     ),

@@ -72,7 +72,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'ShopPage',
           path: '/shopPage',
-          builder: (context, params) => ShopPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: ShopPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'splashPage',
@@ -92,37 +95,58 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'AboutAppPage',
           path: '/aboutAppPage',
-          builder: (context, params) => AboutAppPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: AboutAppPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'CarModelPage',
           path: '/carModelPage',
-          builder: (context, params) => CarModelPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: CarModelPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'MyProfilePage',
           path: '/myProfilePage',
-          builder: (context, params) => MyProfilePageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: MyProfilePageWidget(),
+          ),
         ),
         FFRoute(
           name: 'PersonalInformationPage',
           path: '/personalInformationPage',
-          builder: (context, params) => PersonalInformationPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: PersonalInformationPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'EditProfilePage',
           path: '/editProfilePage',
-          builder: (context, params) => EditProfilePageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: EditProfilePageWidget(),
+          ),
         ),
         FFRoute(
           name: 'MyOrderPage',
           path: '/myOrderPage',
-          builder: (context, params) => MyOrderPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: MyOrderPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'NewsPage',
           path: '/newsPage',
-          builder: (context, params) => NewsPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: NewsPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'NewsDetailsPage',
@@ -137,7 +161,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'EditPasswordPage',
           path: '/editPasswordPage',
-          builder: (context, params) => EditPasswordPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: EditPasswordPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'SettingsPage',
@@ -150,27 +177,42 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'MaintenancePage',
           path: '/maintenancePage',
-          builder: (context, params) => MaintenancePageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: MaintenancePageWidget(),
+          ),
         ),
         FFRoute(
           name: 'RegularPage',
           path: '/regularPage',
-          builder: (context, params) => RegularPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: RegularPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'RepairPage',
           path: '/repairPage',
-          builder: (context, params) => RepairPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: RepairPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'ShopDetailsPage',
           path: '/shopDetailsPage',
-          builder: (context, params) => ShopDetailsPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: ShopDetailsPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'ItemDetailsPage',
           path: '/itemDetailsPage',
-          builder: (context, params) => ItemDetailsPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: ItemDetailsPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'LocationPage',
@@ -183,7 +225,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'OffersPage',
           path: '/offersPage',
-          builder: (context, params) => OffersPageWidget(),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: OffersPageWidget(),
+          ),
         ),
         FFRoute(
           name: 'OffersDetailsPage',
@@ -195,22 +240,31 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'CarModelDetails',
           path: '/carModelDetails',
-          builder: (context, params) => CarModelDetailsWidget(
-            carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: CarModelDetailsWidget(
+              carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+            ),
           ),
         ),
         FFRoute(
           name: 'CarModelDetailsMore',
           path: '/carModelDetailsMore',
-          builder: (context, params) => CarModelDetailsMoreWidget(
-            carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: CarModelDetailsMoreWidget(
+              carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+            ),
           ),
         ),
         FFRoute(
           name: 'CarModelDetailsMoreWithSlieder',
           path: '/carModelDetailsMoreWithSlieder',
-          builder: (context, params) => CarModelDetailsMoreWithSliederWidget(
-            carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: CarModelDetailsMoreWithSliederWidget(
+              carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+            ),
           ),
         ),
         FFRoute(

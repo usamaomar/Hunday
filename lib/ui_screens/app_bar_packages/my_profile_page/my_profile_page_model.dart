@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/app_bar_packages/my_orders_and_appointments_component/my_orders_and_appointments_component_widget.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/logout_dialog/logout_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -26,8 +25,6 @@ class MyProfilePageModel extends FlutterFlowModel<MyProfilePageWidget> {
   // Model for MyOrdersAndAppointmentsComponent component.
   late MyOrdersAndAppointmentsComponentModel
       myOrdersAndAppointmentsComponentModel;
-  // Model for BottomNavBarComponent component.
-  late BottomNavBarComponentModel bottomNavBarComponentModel;
 
   /// Initialization and disposal methods.
 
@@ -35,15 +32,12 @@ class MyProfilePageModel extends FlutterFlowModel<MyProfilePageWidget> {
     hyndayAppBarModel = createModel(context, () => HyndayAppBarModel());
     myOrdersAndAppointmentsComponentModel =
         createModel(context, () => MyOrdersAndAppointmentsComponentModel());
-    bottomNavBarComponentModel =
-        createModel(context, () => BottomNavBarComponentModel());
   }
 
   void dispose() {
     unfocusNode.dispose();
     hyndayAppBarModel.dispose();
     myOrdersAndAppointmentsComponentModel.dispose();
-    bottomNavBarComponentModel.dispose();
   }
 
   /// Action blocks are added here.

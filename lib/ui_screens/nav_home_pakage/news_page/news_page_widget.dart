@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/nav_home_pakage/news_bottom_sheet_component/news_bottom_sheet_component_widget.dart';
 import 'package:flutter/material.dart';
@@ -95,57 +94,48 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
-          child: Container(
-            width: double.infinity,
-            height: double.infinity,
-            decoration: BoxDecoration(
-              color: FlutterFlowTheme.of(context).secondaryBackground,
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: Image.asset(
-                  'assets/images/Mask_Group_70057.png',
-                ).image,
+        backgroundColor: FlutterFlowTheme.of(context).white,
+        body: Container(
+          width: double.infinity,
+          height: double.infinity,
+          decoration: BoxDecoration(
+            color: FlutterFlowTheme.of(context).secondaryBackground,
+            image: DecorationImage(
+              fit: BoxFit.cover,
+              image: Image.asset(
+                'assets/images/Mask_Group_70057.png',
+              ).image,
+            ),
+          ),
+          child: Stack(
+            children: [
+              Align(
+                alignment: AlignmentDirectional(0.00, 1.00),
+                child: wrapWithModel(
+                  model: _model.newsBottomSheetComponentModel,
+                  updateCallback: () => setState(() {}),
+                  child: NewsBottomSheetComponentWidget(),
+                ).animateOnPageLoad(animationsMap[
+                    'newsBottomSheetComponentOnPageLoadAnimation']!),
               ),
-            ),
-            child: Stack(
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(0.00, 0.90),
-                  child: wrapWithModel(
-                    model: _model.newsBottomSheetComponentModel,
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  wrapWithModel(
+                    model: _model.hyndayAppBarModel,
                     updateCallback: () => setState(() {}),
-                    child: NewsBottomSheetComponentWidget(),
-                  ).animateOnPageLoad(animationsMap[
-                      'newsBottomSheetComponentOnPageLoadAnimation']!),
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    wrapWithModel(
-                      model: _model.hyndayAppBarModel,
-                      updateCallback: () => setState(() {}),
-                      child: HyndayAppBarWidget(
-                        appBarTitle:
-                            FFLocalizations.of(context).getVariableText(
-                          enText: 'News',
-                          arText: 'الاخبار',
-                        ),
-                        isMyProfileOpend: false,
+                    child: HyndayAppBarWidget(
+                      appBarTitle: FFLocalizations.of(context).getVariableText(
+                        enText: 'News',
+                        arText: 'الاخبار',
                       ),
+                      isMyProfileOpend: false,
                     ),
-                    wrapWithModel(
-                      model: _model.bottomNavBarComponentModel,
-                      updateCallback: () => setState(() {}),
-                      child: BottomNavBarComponentWidget(),
-                    ),
-                  ],
-                ),
-              ],
-            ),
+                  ),
+                ],
+              ),
+            ],
           ),
         ),
       ),

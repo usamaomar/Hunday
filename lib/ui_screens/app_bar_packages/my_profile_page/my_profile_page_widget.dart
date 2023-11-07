@@ -3,7 +3,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/app_bar_packages/my_orders_and_appointments_component/my_orders_and_appointments_component_widget.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/logout_dialog/logout_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -81,8 +80,8 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).white,
-        body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
+        body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               Column(
@@ -526,21 +525,13 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                 ],
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 0.90),
+                alignment: AlignmentDirectional(0.00, 1.00),
                 child: wrapWithModel(
                   model: _model.myOrdersAndAppointmentsComponentModel,
                   updateCallback: () => setState(() {}),
                   child: MyOrdersAndAppointmentsComponentWidget(),
                 ).animateOnPageLoad(animationsMap[
                     'myOrdersAndAppointmentsComponentOnPageLoadAnimation']!),
-              ),
-              Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
-                child: wrapWithModel(
-                  model: _model.bottomNavBarComponentModel,
-                  updateCallback: () => setState(() {}),
-                  child: BottomNavBarComponentWidget(),
-                ),
               ),
             ],
           ),

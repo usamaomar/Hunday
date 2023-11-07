@@ -55,7 +55,7 @@ class _CartPageWidgetState extends State<CartPageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).white,
         body: SafeArea(
           top: true,
           child: Column(

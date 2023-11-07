@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -76,15 +75,16 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        body: Container(
-          width: double.infinity,
-          height: double.infinity,
-          decoration: BoxDecoration(),
-          child: Stack(
-            children: [
-              Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
-                child: Container(
+        backgroundColor: FlutterFlowTheme.of(context).white,
+        body: SafeArea(
+          top: true,
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(),
+            child: Stack(
+              children: [
+                Container(
                   width: double.infinity,
                   height: double.infinity,
                   decoration: BoxDecoration(
@@ -379,24 +379,14 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                 ),
                               ],
                             ),
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                wrapWithModel(
-                                  model: _model.bottomNavBarComponentModel,
-                                  updateCallback: () => setState(() {}),
-                                  child: BottomNavBarComponentWidget(),
-                                ),
-                              ],
-                            ),
                           ],
                         ),
                       ],
                     ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),

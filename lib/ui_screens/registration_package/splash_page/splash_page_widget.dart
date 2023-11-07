@@ -58,77 +58,71 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
 
     context.watch<FFAppState>();
 
-    return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
-      child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Stack(
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.min,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Expanded(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Lottie.network(
-                          'https://lottie.host/b4e379f4-beb9-4ed4-9686-87f8e18dd09a/YmcSTeqvAH.json',
-                          height: 150.0,
-                          fit: BoxFit.cover,
-                          animate: true,
-                        ),
+    return Scaffold(
+      key: scaffoldKey,
+      body: Stack(
+        children: [
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Expanded(
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Expanded(
+                      flex: 1,
+                      child: Lottie.network(
+                        'https://lottie.host/b4e379f4-beb9-4ed4-9686-87f8e18dd09a/YmcSTeqvAH.json',
+                        height: 150.0,
+                        fit: BoxFit.cover,
+                        animate: true,
                       ),
-                    ],
-                  ),
-                ),
-              ],
-            ),
-            Stack(
-              children: [
-                Opacity(
-                  opacity: 0.0,
-                  child: FlutterFlowTimer(
-                    initialTime: _model.timerMilliseconds,
-                    getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
-                      value,
-                      hours: false,
-                      milliSecond: false,
                     ),
-                    controller: _model.timerController,
-                    updateStateInterval: Duration(milliseconds: 1000),
-                    onChanged: (value, displayTime, shouldUpdate) {
-                      _model.timerMilliseconds = value;
-                      _model.timerValue = displayTime;
-                      if (shouldUpdate) setState(() {});
-                    },
-                    onEnded: () async {
-                      context.safePop();
-                      if (FFAppState().userModel.token != null &&
-                          FFAppState().userModel.token != '') {
-                        context.goNamed('HomeScreen');
-                      } else {
-                        context.goNamed('loginScreen');
-
-                        return;
-                      }
-                    },
-                    textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).headlineSmall,
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+            ],
+          ),
+          Stack(
+            children: [
+              Opacity(
+                opacity: 0.0,
+                child: FlutterFlowTimer(
+                  initialTime: _model.timerMilliseconds,
+                  getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
+                    value,
+                    hours: false,
+                    milliSecond: false,
+                  ),
+                  controller: _model.timerController,
+                  updateStateInterval: Duration(milliseconds: 1000),
+                  onChanged: (value, displayTime, shouldUpdate) {
+                    _model.timerMilliseconds = value;
+                    _model.timerValue = displayTime;
+                    if (shouldUpdate) setState(() {});
+                  },
+                  onEnded: () async {
+                    context.safePop();
+                    if (FFAppState().userModel.token != null &&
+                        FFAppState().userModel.token != '') {
+                      context.goNamed('HomeScreen');
+                    } else {
+                      context.goNamed('loginScreen');
+
+                      return;
+                    }
+                  },
+                  textAlign: TextAlign.start,
+                  style: FlutterFlowTheme.of(context).headlineSmall,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

@@ -2,7 +2,6 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/shop_list_item_component/shop_list_item_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -43,8 +42,6 @@ class ShopPageModel extends FlutterFlowModel<ShopPageWidget> {
   // Models for ShopListItemComponent dynamic component.
   late FlutterFlowDynamicModels<ShopListItemComponentModel>
       shopListItemComponentModels;
-  // Model for BottomNavBarComponent component.
-  late BottomNavBarComponentModel bottomNavBarComponentModel;
 
   /// Initialization and disposal methods.
 
@@ -52,8 +49,6 @@ class ShopPageModel extends FlutterFlowModel<ShopPageWidget> {
     hyndayAppBarModel = createModel(context, () => HyndayAppBarModel());
     shopListItemComponentModels =
         FlutterFlowDynamicModels(() => ShopListItemComponentModel());
-    bottomNavBarComponentModel =
-        createModel(context, () => BottomNavBarComponentModel());
   }
 
   void dispose() {
@@ -63,7 +58,6 @@ class ShopPageModel extends FlutterFlowModel<ShopPageWidget> {
     textController?.dispose();
 
     shopListItemComponentModels.dispose();
-    bottomNavBarComponentModel.dispose();
   }
 
   /// Action blocks are added here.

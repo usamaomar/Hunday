@@ -2,7 +2,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/add_component_shoping_details/add_component_shoping_details_widget.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -85,9 +84,9 @@ class _ShopDetailsPageWidgetState extends State<ShopDetailsPageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-        body: Padding(
-          padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
+        backgroundColor: FlutterFlowTheme.of(context).white,
+        body: SafeArea(
+          top: true,
           child: Stack(
             children: [
               ClipRRect(
@@ -117,23 +116,6 @@ class _ShopDetailsPageWidgetState extends State<ShopDetailsPageWidget> {
                           ),
                           isMyProfileOpend: false,
                         ),
-                      ),
-                    ],
-                  ),
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        children: [
-                          Expanded(
-                            child: wrapWithModel(
-                              model: _model.bottomNavBarComponentModel,
-                              updateCallback: () => setState(() {}),
-                              child: BottomNavBarComponentWidget(),
-                            ),
-                          ),
-                        ],
                       ),
                     ],
                   ),

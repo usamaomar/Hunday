@@ -2,7 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/ui_screens/components/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -97,7 +96,7 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
         // Customize what your widget looks like when it's loading.
         if (!snapshot.hasData) {
           return Scaffold(
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+            backgroundColor: FlutterFlowTheme.of(context).white,
             body: Center(
               child: SizedBox(
                 width: 50.0,
@@ -117,9 +116,9 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
               : FocusScope.of(context).unfocus(),
           child: Scaffold(
             key: scaffoldKey,
-            backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
-            body: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 33.0, 0.0, 0.0),
+            backgroundColor: FlutterFlowTheme.of(context).white,
+            body: SafeArea(
+              top: true,
               child: Container(
                 width: double.infinity,
                 height: double.infinity,
@@ -346,11 +345,6 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
                               },
                             ),
                           ),
-                        ),
-                        wrapWithModel(
-                          model: _model.bottomNavBarComponentModel,
-                          updateCallback: () => setState(() {}),
-                          child: BottomNavBarComponentWidget(),
                         ),
                       ],
                     ),
