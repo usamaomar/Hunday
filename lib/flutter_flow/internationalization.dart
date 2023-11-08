@@ -158,6 +158,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Welcome to Hyundai',
       'ar': 'مرحبا بكم في هيونداي',
     },
+    'rj0wbgbg': {
+      'en': 'at least begin with letter',
+      'ar': 'على الأقل تبدأ بالحرف',
+    },
     'z0kh61i4': {
       'en': '',
       'ar': '',
@@ -174,6 +178,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Invalid Email Address',
       'ar': 'عنوان البريد الإلكتروني غير صالح',
     },
+    'ylfefilo': {
+      'en': 'Invalid Phone Number',
+      'ar': 'رقم الهاتف غير صحيح',
+    },
     '6a79dl98': {
       'en': 'Male',
       'ar': 'ذكر',
@@ -189,6 +197,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '8fg3dd47': {
       'en': 'Search for an item...',
       'ar': '',
+    },
+    'sxhbvk0f': {
+      'en': 'Password Mismatch',
+      'ar': 'عدم تطابق كلمة المرور',
     },
     'd8f3cwvn': {
       'en': 'Create Account',

@@ -312,6 +312,64 @@ class FFAppState extends ChangeNotifier {
     _listOfCatalogOpendBool.insert(_index, _value);
   }
 
+  List<dynamic> _slidersImageList = [];
+  List<dynamic> get slidersImageList => _slidersImageList;
+  set slidersImageList(List<dynamic> _value) {
+    _slidersImageList = _value;
+  }
+
+  void addToSlidersImageList(dynamic _value) {
+    _slidersImageList.add(_value);
+  }
+
+  void removeFromSlidersImageList(dynamic _value) {
+    _slidersImageList.remove(_value);
+  }
+
+  void removeAtIndexFromSlidersImageList(int _index) {
+    _slidersImageList.removeAt(_index);
+  }
+
+  void updateSlidersImageListAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _slidersImageList[_index] = updateFn(_slidersImageList[_index]);
+  }
+
+  void insertAtIndexInSlidersImageList(int _index, dynamic _value) {
+    _slidersImageList.insert(_index, _value);
+  }
+
+  List<dynamic> _slidersTitlesList = [];
+  List<dynamic> get slidersTitlesList => _slidersTitlesList;
+  set slidersTitlesList(List<dynamic> _value) {
+    _slidersTitlesList = _value;
+  }
+
+  void addToSlidersTitlesList(dynamic _value) {
+    _slidersTitlesList.add(_value);
+  }
+
+  void removeFromSlidersTitlesList(dynamic _value) {
+    _slidersTitlesList.remove(_value);
+  }
+
+  void removeAtIndexFromSlidersTitlesList(int _index) {
+    _slidersTitlesList.removeAt(_index);
+  }
+
+  void updateSlidersTitlesListAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _slidersTitlesList[_index] = updateFn(_slidersTitlesList[_index]);
+  }
+
+  void insertAtIndexInSlidersTitlesList(int _index, dynamic _value) {
+    _slidersTitlesList.insert(_index, _value);
+  }
+
   final _localsManager = FutureRequestManager<ApiCallResponse>();
   Future<ApiCallResponse> locals({
     String? uniqueQueryKey,

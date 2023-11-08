@@ -182,22 +182,90 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
                                 30.0, 30.0, 30.0, 5.0),
-                            child: wrapWithModel(
-                              model: _model.regulerEditTextValuesModel,
-                              updateCallback: () => setState(() {}),
-                              child: RegulerEditTextValuesWidget(
-                                titleahint:
-                                    FFLocalizations.of(context).getVariableText(
-                                  enText: 'Name',
-                                  arText: 'الأسم',
+                            child: Stack(
+                              children: [
+                                wrapWithModel(
+                                  model: _model.regulerEditTextValuesModel,
+                                  updateCallback: () => setState(() {}),
+                                  child: RegulerEditTextValuesWidget(
+                                    titleahint: FFLocalizations.of(context)
+                                        .getVariableText(
+                                      enText: 'Name',
+                                      arText: 'الأسم',
+                                    ),
+                                    isErrorColor: valueOrDefault<Color>(
+                                      _model.localNameValid == true
+                                          ? Color(0x00FFFFFF)
+                                          : FlutterFlowTheme.of(context).error,
+                                      Color(0x000FFFFF),
+                                    ),
+                                  ),
                                 ),
-                                isErrorColor: valueOrDefault<Color>(
-                                  _model.localNameValid == true
-                                      ? Color(0x00FFFFFF)
-                                      : FlutterFlowTheme.of(context).error,
-                                  Color(0x000FFFFF),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      5.0, 15.0, 5.0, 0.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
+                                    children: [
+                                      if (_model.localNameValid == false)
+                                        AlignedTooltip(
+                                          content: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      5.0, 10.0, 5.0, 10.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'rj0wbgbg' /* at least begin with letter */,
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyLarge
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: _model
+                                                                  .localNameValid ==
+                                                              true
+                                                          ? Color(0xFFD6D6D6)
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      fontSize: 14.0,
+                                                    ),
+                                              )),
+                                          offset: 4.0,
+                                          preferredDirection:
+                                              AxisDirection.down,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          backgroundColor: Colors.white,
+                                          elevation: 4.0,
+                                          tailBaseWidth: 24.0,
+                                          tailLength: 12.0,
+                                          waitDuration:
+                                              Duration(milliseconds: 100),
+                                          showDuration:
+                                              Duration(milliseconds: 1500),
+                                          triggerMode: TooltipTriggerMode.tap,
+                                          child: Icon(
+                                            Icons.error,
+                                            color: valueOrDefault<Color>(
+                                              _model.localNameValid == true
+                                                  ? Color(0xFFD6D6D6)
+                                                  : FlutterFlowTheme.of(context)
+                                                      .error,
+                                              Color(0x3EFFFFFF),
+                                            ),
+                                            size: 20.0,
+                                          ),
+                                        ),
+                                    ],
+                                  ),
                                 ),
-                              ),
+                              ],
                             ),
                           ),
                           Padding(
@@ -322,54 +390,58 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                     crossAxisAlignment:
                                         CrossAxisAlignment.center,
                                     children: [
-                                      AlignedTooltip(
-                                        content: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 10.0, 5.0, 10.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'x9clt4nt' /* Invalid Email Address */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyLarge
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: _model
-                                                                    .localEmailIsValid ==
-                                                                true
-                                                            ? Color(0xFFD6D6D6)
-                                                            : FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error,
-                                                        fontSize: 14.0,
-                                                      ),
-                                            )),
-                                        offset: 4.0,
-                                        preferredDirection: AxisDirection.down,
-                                        borderRadius:
-                                            BorderRadius.circular(8.0),
-                                        backgroundColor: Colors.white,
-                                        elevation: 4.0,
-                                        tailBaseWidth: 24.0,
-                                        tailLength: 12.0,
-                                        waitDuration:
-                                            Duration(milliseconds: 100),
-                                        showDuration:
-                                            Duration(milliseconds: 1500),
-                                        triggerMode: TooltipTriggerMode.tap,
-                                        child: Icon(
-                                          Icons.error,
-                                          color:
+                                      if (_model.localEmailIsValid == false)
+                                        AlignedTooltip(
+                                          content: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      5.0, 10.0, 5.0, 10.0),
+                                              child: Text(
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'x9clt4nt' /* Invalid Email Address */,
+                                                ),
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyLarge
+                                                    .override(
+                                                      fontFamily: 'Poppins',
+                                                      color: _model
+                                                                  .localEmailIsValid ==
+                                                              true
+                                                          ? Color(0xFFD6D6D6)
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      fontSize: 14.0,
+                                                    ),
+                                              )),
+                                          offset: 4.0,
+                                          preferredDirection:
+                                              AxisDirection.down,
+                                          borderRadius:
+                                              BorderRadius.circular(8.0),
+                                          backgroundColor: Colors.white,
+                                          elevation: 4.0,
+                                          tailBaseWidth: 24.0,
+                                          tailLength: 12.0,
+                                          waitDuration:
+                                              Duration(milliseconds: 100),
+                                          showDuration:
+                                              Duration(milliseconds: 1500),
+                                          triggerMode: TooltipTriggerMode.tap,
+                                          child: Icon(
+                                            Icons.error,
+                                            color: valueOrDefault<Color>(
                                               _model.localEmailIsValid == true
                                                   ? Color(0xFFD6D6D6)
                                                   : FlutterFlowTheme.of(context)
                                                       .error,
-                                          size: 20.0,
+                                              Color(0x3EFFFFFF),
+                                            ),
+                                            size: 20.0,
+                                          ),
                                         ),
-                                      ),
                                     ],
                                   ),
                                 ),
@@ -384,23 +456,110 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Expanded(
-                                  child: wrapWithModel(
-                                    model: _model.phoneEditTextValuesModel,
-                                    updateCallback: () => setState(() {}),
-                                    child: PhoneEditTextValuesWidget(
-                                      titleahint: FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText: 'Phone Number',
-                                        arText: 'رقم الهاتف',
+                                  child: Stack(
+                                    children: [
+                                      wrapWithModel(
+                                        model: _model.phoneEditTextValuesModel,
+                                        updateCallback: () => setState(() {}),
+                                        child: PhoneEditTextValuesWidget(
+                                          titleahint:
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                            enText: 'Phone Number',
+                                            arText: 'رقم الهاتف',
+                                          ),
+                                          isErrorColor: valueOrDefault<Color>(
+                                            _model.localPhoneNumberValid == true
+                                                ? Color(0x00FFFFFF)
+                                                : FlutterFlowTheme.of(context)
+                                                    .error,
+                                            Color(0x000FFFFF),
+                                          ),
+                                        ),
                                       ),
-                                      isErrorColor: valueOrDefault<Color>(
-                                        _model.localPhoneNumberValid == true
-                                            ? Color(0x00FFFFFF)
-                                            : FlutterFlowTheme.of(context)
-                                                .error,
-                                        Color(0x000FFFFF),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 15.0, 10.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            if (_model.localPhoneNumberValid ==
+                                                false)
+                                              Align(
+                                                alignment: AlignmentDirectional(
+                                                    1.00, 0.00),
+                                                child: AlignedTooltip(
+                                                  content: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  5.0,
+                                                                  10.0,
+                                                                  5.0,
+                                                                  10.0),
+                                                      child: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                          'ylfefilo' /* Invalid Phone Number */,
+                                                        ),
+                                                        style: FlutterFlowTheme
+                                                                .of(context)
+                                                            .bodyLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              color: _model
+                                                                          .localPhoneNumberValid ==
+                                                                      true
+                                                                  ? Color(
+                                                                      0x3EFFFFFF)
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .error,
+                                                              fontSize: 14.0,
+                                                            ),
+                                                      )),
+                                                  offset: 4.0,
+                                                  preferredDirection:
+                                                      AxisDirection.down,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  backgroundColor: Colors.white,
+                                                  elevation: 4.0,
+                                                  tailBaseWidth: 24.0,
+                                                  tailLength: 12.0,
+                                                  waitDuration: Duration(
+                                                      milliseconds: 100),
+                                                  showDuration: Duration(
+                                                      milliseconds: 1500),
+                                                  triggerMode:
+                                                      TooltipTriggerMode.tap,
+                                                  child: Icon(
+                                                    Icons.error,
+                                                    color:
+                                                        valueOrDefault<Color>(
+                                                      _model.localPhoneNumberValid ==
+                                                              true
+                                                          ? Color(0x3EFFFFFF)
+                                                          : FlutterFlowTheme.of(
+                                                                  context)
+                                                              .error,
+                                                      Color(0x3EFFFFFF),
+                                                    ),
+                                                    size: 20.0,
+                                                  ),
+                                                ),
+                                              ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
+                                    ],
                                   ),
                                 ),
                               ],
@@ -501,6 +660,49 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                   );
                                                 });
                                               }
+                                              if (!functions.is18YearsOrOlder(
+                                                  _model.datePicked!
+                                                      .secondsSinceEpoch)) {
+                                                await showDialog(
+                                                  context: context,
+                                                  builder:
+                                                      (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                        enText: 'Error',
+                                                        arText: 'خطأ',
+                                                      )),
+                                                      content: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                        enText:
+                                                            'Your age must be over 18 ',
+                                                        arText:
+                                                            'يجب أن يكون عمرك أكبر من 18 عامًا',
+                                                      )),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                            enText: 'ok',
+                                                            arText: 'حسنا',
+                                                          )),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
+                                                );
+                                                return;
+                                              }
                                               setState(() {
                                                 _model.localDateOfBirth =
                                                     functions
@@ -579,24 +781,126 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                       mainAxisSize: MainAxisSize.max,
                                       children: [
                                         Expanded(
-                                          child: wrapWithModel(
-                                            model: _model
-                                                .passwordEditTextValuesModel1,
-                                            updateCallback: () =>
-                                                setState(() {}),
-                                            child: PasswordEditTextValuesWidget(
-                                              titleahint:
-                                                  FFLocalizations.of(context)
-                                                      .getVariableText(
-                                                enText: 'Password',
-                                                arText: 'كلمة السر',
+                                          child: Stack(
+                                            children: [
+                                              wrapWithModel(
+                                                model: _model
+                                                    .passwordEditTextValuesModel1,
+                                                updateCallback: () =>
+                                                    setState(() {}),
+                                                child:
+                                                    PasswordEditTextValuesWidget(
+                                                  titleahint:
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getVariableText(
+                                                    enText: 'Password',
+                                                    arText: 'كلمة السر',
+                                                  ),
+                                                  isErrorColor: _model
+                                                          .localIsPasswordConfirme
+                                                      ? Color(0x00000000)
+                                                      : FlutterFlowTheme.of(
+                                                              context)
+                                                          .error,
+                                                ),
                                               ),
-                                              isErrorColor: _model
-                                                      .localIsPasswordConfirme
-                                                  ? Color(0x00000000)
-                                                  : FlutterFlowTheme.of(context)
-                                                      .error,
-                                            ),
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        4.0, 18.0, 4.0, 0.0),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.end,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.end,
+                                                  children: [
+                                                    if (_model
+                                                            .localIsPasswordConfirme ==
+                                                        false)
+                                                      Align(
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                1.00, 0.00),
+                                                        child: AlignedTooltip(
+                                                          content: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          5.0,
+                                                                          10.0,
+                                                                          5.0,
+                                                                          10.0),
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'sxhbvk0f' /* Password Mismatch */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyLarge
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Poppins',
+                                                                      color: _model.localIsPasswordConfirme ==
+                                                                              true
+                                                                          ? Color(
+                                                                              0x3EFFFFFF)
+                                                                          : FlutterFlowTheme.of(context)
+                                                                              .error,
+                                                                      fontSize:
+                                                                          14.0,
+                                                                    ),
+                                                              )),
+                                                          offset: 4.0,
+                                                          preferredDirection:
+                                                              AxisDirection
+                                                                  .down,
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                          backgroundColor:
+                                                              Colors.white,
+                                                          elevation: 4.0,
+                                                          tailBaseWidth: 24.0,
+                                                          tailLength: 12.0,
+                                                          waitDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      100),
+                                                          showDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      1500),
+                                                          triggerMode:
+                                                              TooltipTriggerMode
+                                                                  .tap,
+                                                          child: Icon(
+                                                            Icons.error,
+                                                            color:
+                                                                valueOrDefault<
+                                                                    Color>(
+                                                              _model.localIsPasswordConfirme ==
+                                                                      true
+                                                                  ? Color(
+                                                                      0x3EFFFFFF)
+                                                                  : FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .error,
+                                                              Color(0x3EFFFFFF),
+                                                            ),
+                                                            size: 20.0,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                  ],
+                                                ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                       ],
@@ -827,25 +1131,14 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                             BorderRadius.circular(4.0),
                                       ),
                                     ),
-                                    unselectedWidgetColor: _model.privacyTwo ==
-                                            true
-                                        ? FlutterFlowTheme.of(context).accent2
-                                        : FlutterFlowTheme.of(context).error,
+                                    unselectedWidgetColor:
+                                        FlutterFlowTheme.of(context).accent2,
                                   ),
                                   child: Checkbox(
                                     value: _model.checkboxValue2 ??= false,
                                     onChanged: (newValue) async {
                                       setState(() =>
                                           _model.checkboxValue2 = newValue!);
-                                      if (newValue!) {
-                                        setState(() {
-                                          _model.privacyTwo = true;
-                                        });
-                                      } else {
-                                        setState(() {
-                                          _model.privacyTwo = false;
-                                        });
-                                      }
                                     },
                                     activeColor:
                                         FlutterFlowTheme.of(context).ahayundai,
@@ -984,12 +1277,47 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 setState(() {
                                                   _model.localNameValid = true;
                                                 });
-                                                if ((_model.privacyOne ==
-                                                        true) &&
-                                                    (_model.privacyTwo ==
-                                                        true)) {
+                                                if (_model.privacyOne == true) {
                                                   setState(() {});
                                                 } else {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder:
+                                                        (alertDialogContext) {
+                                                      return AlertDialog(
+                                                        title: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText: 'Error',
+                                                          arText: 'خطأ',
+                                                        )),
+                                                        content: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText:
+                                                              'Check Privacy and policy',
+                                                          arText:
+                                                              'تحقق من الخصوصية والسياسة',
+                                                        )),
+                                                        actions: [
+                                                          TextButton(
+                                                            onPressed: () =>
+                                                                Navigator.pop(
+                                                                    alertDialogContext),
+                                                            child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText: 'ok',
+                                                              arText: 'حسنا',
+                                                            )),
+                                                          ),
+                                                        ],
+                                                      );
+                                                    },
+                                                  );
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;

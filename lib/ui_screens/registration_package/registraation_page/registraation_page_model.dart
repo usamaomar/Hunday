@@ -41,8 +41,6 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
 
   bool privacyOne = false;
 
-  bool privacyTwo = false;
-
   String? localDateOfBirth = '  ';
 
   dynamic userJsonModel;

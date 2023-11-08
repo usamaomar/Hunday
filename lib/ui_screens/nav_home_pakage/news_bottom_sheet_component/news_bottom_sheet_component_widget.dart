@@ -207,7 +207,7 @@ class _NewsBottomSheetComponentWidgetState
                                                 child: Text(
                                                   getJsonField(
                                                     listOfNewsItemsItem,
-                                                    r'''$.description''',
+                                                    r'''$.title''',
                                                   ).toString(),
                                                   textAlign: TextAlign.start,
                                                   maxLines: 2,

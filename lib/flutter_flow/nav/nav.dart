@@ -54,10 +54,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: 'registraationPage',
           path: '/registraationPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: RegistraationPageWidget(),
-          ),
+          builder: (context, params) => RegistraationPageWidget(),
         ),
         FFRoute(
           name: 'HomeScreen',

@@ -126,3 +126,18 @@ String getNameByLanguge(
     return englishName.toString();
   }
 }
+
+bool is18YearsOrOlder(int timestampInSeconds) {
+  DateTime birthDate =
+      DateTime.fromMillisecondsSinceEpoch(timestampInSeconds * 1000);
+
+  // Calculate the current date.
+  DateTime currentDate = DateTime.now();
+
+  // Calculate the minimum date that is 18 years ago from the current date.
+  DateTime minAgeDate = currentDate
+      .subtract(Duration(days: 18 * 365)); // Approximation of 18 years
+
+  // Compare the birthDate with the minimum age date.
+  return birthDate.isBefore(minAgeDate);
+}

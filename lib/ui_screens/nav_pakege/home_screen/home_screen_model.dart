@@ -18,38 +18,7 @@ import 'package:provider/provider.dart';
 class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   ///  Local state fields for this page.
 
-  List<String> itemsImagesList = [];
-  void addToItemsImagesList(String item) => itemsImagesList.add(item);
-  void removeFromItemsImagesList(String item) => itemsImagesList.remove(item);
-  void removeAtIndexFromItemsImagesList(int index) =>
-      itemsImagesList.removeAt(index);
-  void insertAtIndexInItemsImagesList(int index, String item) =>
-      itemsImagesList.insert(index, item);
-  void updateItemsImagesListAtIndex(int index, Function(String) updateFn) =>
-      itemsImagesList[index] = updateFn(itemsImagesList[index]);
-
   bool isLoading = false;
-
-  List<String> listOfImagesSlider = [];
-  void addToListOfImagesSlider(String item) => listOfImagesSlider.add(item);
-  void removeFromListOfImagesSlider(String item) =>
-      listOfImagesSlider.remove(item);
-  void removeAtIndexFromListOfImagesSlider(int index) =>
-      listOfImagesSlider.removeAt(index);
-  void insertAtIndexInListOfImagesSlider(int index, String item) =>
-      listOfImagesSlider.insert(index, item);
-  void updateListOfImagesSliderAtIndex(int index, Function(String) updateFn) =>
-      listOfImagesSlider[index] = updateFn(listOfImagesSlider[index]);
-
-  List<String> listOfTestList = [];
-  void addToListOfTestList(String item) => listOfTestList.add(item);
-  void removeFromListOfTestList(String item) => listOfTestList.remove(item);
-  void removeAtIndexFromListOfTestList(int index) =>
-      listOfTestList.removeAt(index);
-  void insertAtIndexInListOfTestList(int index, String item) =>
-      listOfTestList.insert(index, item);
-  void updateListOfTestListAtIndex(int index, Function(String) updateFn) =>
-      listOfTestList[index] = updateFn(listOfTestList[index]);
 
   ///  State fields for stateful widgets in this page.
 
