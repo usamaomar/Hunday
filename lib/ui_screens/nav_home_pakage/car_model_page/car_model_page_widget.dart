@@ -120,7 +120,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                         flex: 1,
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 20.0, 30.0, 20.0),
+                              30.0, 20.0, 30.0, 50.0),
                           child: Builder(
                             builder: (context) {
                               final gridOfCarModelsItem =

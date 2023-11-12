@@ -387,13 +387,11 @@ class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {
                                         ),
                                         style: TextStyle(
                                           color: FlutterFlowTheme.of(context)
-                                              .primaryText,
+                                              .white,
                                         ),
                                       ),
                                       duration: Duration(milliseconds: 4000),
-                                      backgroundColor:
-                                          FlutterFlowTheme.of(context)
-                                              .secondary,
+                                      backgroundColor: Color(0xFFC1D6EF),
                                     ),
                                   );
                                   if (_shouldSetState) setState(() {});
