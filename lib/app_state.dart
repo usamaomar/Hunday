@@ -376,6 +376,36 @@ class FFAppState extends ChangeNotifier {
     _password = _value;
   }
 
+  List<dynamic> _listOfCarsModelAppState = [];
+  List<dynamic> get listOfCarsModelAppState => _listOfCarsModelAppState;
+  set listOfCarsModelAppState(List<dynamic> _value) {
+    _listOfCarsModelAppState = _value;
+  }
+
+  void addToListOfCarsModelAppState(dynamic _value) {
+    _listOfCarsModelAppState.add(_value);
+  }
+
+  void removeFromListOfCarsModelAppState(dynamic _value) {
+    _listOfCarsModelAppState.remove(_value);
+  }
+
+  void removeAtIndexFromListOfCarsModelAppState(int _index) {
+    _listOfCarsModelAppState.removeAt(_index);
+  }
+
+  void updateListOfCarsModelAppStateAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _listOfCarsModelAppState[_index] =
+        updateFn(_listOfCarsModelAppState[_index]);
+  }
+
+  void insertAtIndexInListOfCarsModelAppState(int _index, dynamic _value) {
+    _listOfCarsModelAppState.insert(_index, _value);
+  }
+
   final _localsManager = FutureRequestManager<ApiCallResponse>();
   Future<ApiCallResponse> locals({
     String? uniqueQueryKey,

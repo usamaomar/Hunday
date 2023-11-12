@@ -260,6 +260,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // CarPage
+  {
+    '4zgsyvj7': {
+      'en': 'No content to show',
+      'ar': 'لا يوجد محتوى لعرضه',
+    },
+  },
   // AboutAppPage
   {
     'ccaswkvd': {
@@ -747,6 +754,20 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '6vo4oqd8': {
       'en': 'Home',
       'ar': '',
+    },
+  },
+  // ChatPage
+  {
+    'y2ok92y7': {
+      'en': 'No content to show',
+      'ar': 'لا يوجد محتوى لعرضه',
+    },
+  },
+  // CartPage
+  {
+    'wj7mlkzj': {
+      'en': 'No content to show',
+      'ar': 'لا يوجد محتوى لعرضه',
     },
   },
   // MorePage

@@ -31,6 +31,12 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      if (FFAppState().listOfCarsModelAppState.length <= 0) {
+        setState(() {
+          _model.listOfCarModels =
+              FFAppState().listOfCarsModelAppState.toList().cast<dynamic>();
+        });
+      }
       _model.apiResultzn4 = await CarModelsApiCall.call(
         token: FFAppState().userModel.token,
       );

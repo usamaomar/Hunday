@@ -58,14 +58,26 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).white,
         body: SafeArea(
           top: true,
-          child: Column(
+          child: Row(
             mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Container(
-                height: 100.0,
-                decoration: BoxDecoration(
-                  color: FlutterFlowTheme.of(context).white,
-                ),
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    FFLocalizations.of(context).getText(
+                      'y2ok92y7' /* No content to show */,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Heebo Regular',
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w200,
+                          useGoogleFonts: false,
+                        ),
+                  ),
+                ],
               ),
             ],
           ),
