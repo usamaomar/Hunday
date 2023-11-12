@@ -111,19 +111,15 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
             ),
             child: Stack(
               children: [
-                if (NewsApiCall.newsModelList(
-                      (_model.apiResult44r?.jsonBody ?? ''),
-                    ).length >
-                    0)
-                  Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
-                    child: wrapWithModel(
-                      model: _model.newsBottomSheetComponentModel,
-                      updateCallback: () => setState(() {}),
-                      child: NewsBottomSheetComponentWidget(),
-                    ).animateOnPageLoad(animationsMap[
-                        'newsBottomSheetComponentOnPageLoadAnimation']!),
-                  ),
+                Align(
+                  alignment: AlignmentDirectional(0.00, 1.00),
+                  child: wrapWithModel(
+                    model: _model.newsBottomSheetComponentModel,
+                    updateCallback: () => setState(() {}),
+                    child: NewsBottomSheetComponentWidget(),
+                  ).animateOnPageLoad(animationsMap[
+                      'newsBottomSheetComponentOnPageLoadAnimation']!),
+                ),
                 Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
