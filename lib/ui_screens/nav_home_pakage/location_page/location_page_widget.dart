@@ -503,7 +503,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                               child: Text(
                                                                                 getJsonField(
                                                                                   locationListItem,
-                                                                                  r'''$.whatsapp_phone''',
+                                                                                  r'''$.whatsapp_phone_number''',
                                                                                 ).toString(),
                                                                                 style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                       fontFamily: 'Heebo Regular',
@@ -553,11 +553,11 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                                   functions.formatTimeRange(
                                                                                       getJsonField(
                                                                                         locationListItem,
-                                                                                        r'''$.open_from''',
+                                                                                        r'''$.start_time''',
                                                                                       ).toString(),
                                                                                       getJsonField(
                                                                                         locationListItem,
-                                                                                        r'''$.open_to''',
+                                                                                        r'''$.end_time''',
                                                                                       ).toString()),
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Heebo Regular',

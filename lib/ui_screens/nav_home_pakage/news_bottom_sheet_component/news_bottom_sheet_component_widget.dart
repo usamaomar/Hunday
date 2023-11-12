@@ -112,12 +112,13 @@ class _NewsBottomSheetComponentWidgetState
                         );
                       },
                       child: Row(
-                        mainAxisSize: MainAxisSize.min,
+                        mainAxisSize: MainAxisSize.max,
                         children: [
                           Flexible(
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(20.0),
                               child: Container(
+                                width: double.infinity,
                                 constraints: BoxConstraints(
                                   maxHeight: 150.0,
                                 ),
@@ -139,7 +140,7 @@ class _NewsBottomSheetComponentWidgetState
                                     Hero(
                                       tag: getJsonField(
                                         listOfNewsItemsItem,
-                                        r'''$.full_thumb_image''',
+                                        r'''$.full_listing_image''',
                                       ),
                                       transitionOnUserGestures: true,
                                       child: ClipRRect(
@@ -152,7 +153,7 @@ class _NewsBottomSheetComponentWidgetState
                                               Duration(milliseconds: 0),
                                           imageUrl: getJsonField(
                                             listOfNewsItemsItem,
-                                            r'''$.full_thumb_image''',
+                                            r'''$.full_listing_image''',
                                           ),
                                           width: 150.0,
                                           height: double.infinity,

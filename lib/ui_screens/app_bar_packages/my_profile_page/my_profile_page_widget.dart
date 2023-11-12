@@ -163,67 +163,59 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
                     children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 30.0, 30.0, 0.0),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed(
-                              'PersonalInformationPage',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                ),
-                              },
-                            );
-                          },
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 5.0, 0.0, 10.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Icon(
-                                      Icons.person,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 24.0,
-                                    ),
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          10.0, 0.0, 10.0, 0.0),
-                                      child: Text(
-                                        FFLocalizations.of(context).getText(
-                                          'g8y2etl1' /* Personal Information */,
-                                        ),
-                                        style: GoogleFonts.getFont(
-                                          'Poppins',
-                                          color: Color(0xFF092853),
-                                          fontWeight: FontWeight.bold,
-                                          fontSize: 16.0,
+                      Opacity(
+                        opacity: 0.5,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 30.0, 30.0, 0.0),
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {},
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 5.0, 0.0, 10.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Icon(
+                                        Icons.person,
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryText,
+                                        size: 24.0,
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            10.0, 0.0, 10.0, 0.0),
+                                        child: Text(
+                                          FFLocalizations.of(context).getText(
+                                            'g8y2etl1' /* Personal Information */,
+                                          ),
+                                          style: GoogleFonts.getFont(
+                                            'Poppins',
+                                            color: Color(0xFF092853),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16.0,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Container(
-                                width: double.infinity,
-                                height: 0.5,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF85BAF9),
+                                Container(
+                                  width: double.infinity,
+                                  height: 0.5,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFF85BAF9),
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
@@ -291,50 +283,53 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                           ),
                         ),
                       ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 15.0, 30.0, 0.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 5.0, 0.0, 10.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                children: [
-                                  Icon(
-                                    Icons.directions_car,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 10.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        '1808e521' /* My Vehicles */,
-                                      ),
-                                      style: GoogleFonts.getFont(
-                                        'Poppins',
-                                        color: Color(0xFF092853),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.0,
+                      Opacity(
+                        opacity: 0.5,
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 15.0, 30.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 5.0, 0.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Icon(
+                                      Icons.directions_car,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 10.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          '1808e521' /* My Vehicles */,
+                                        ),
+                                        style: GoogleFonts.getFont(
+                                          'Poppins',
+                                          color: Color(0xFF092853),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16.0,
+                                        ),
                                       ),
                                     ),
-                                  ),
-                                ],
+                                  ],
+                                ),
                               ),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              height: 0.5,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF85BAF9),
+                              Container(
+                                width: double.infinity,
+                                height: 0.5,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF85BAF9),
+                                ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                       Builder(
@@ -447,15 +442,16 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
-                      child: wrapWithModel(
-                        model: _model.myOrdersAndAppointmentsComponentModel,
-                        updateCallback: () => setState(() {}),
-                        child: MyOrdersAndAppointmentsComponentWidget(),
-                      ).animateOnPageLoad(animationsMap[
-                          'myOrdersAndAppointmentsComponentOnPageLoadAnimation']!),
-                    ),
+                    if (false)
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 1.00),
+                        child: wrapWithModel(
+                          model: _model.myOrdersAndAppointmentsComponentModel,
+                          updateCallback: () => setState(() {}),
+                          child: MyOrdersAndAppointmentsComponentWidget(),
+                        ).animateOnPageLoad(animationsMap[
+                            'myOrdersAndAppointmentsComponentOnPageLoadAnimation']!),
+                      ),
                   ],
                 ),
               ),

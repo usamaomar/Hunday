@@ -169,7 +169,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                     FFAppState()
                                                             .newsModelJsonList[
                                                         widget.itemIndex!],
-                                                    r'''$.full_main_image''',
+                                                    r'''$.full_listing_image''',
                                                   ),
                                                   width: 300.0,
                                                   height: 200.0,
@@ -368,7 +368,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                                         .network(
                                                                       getJsonField(
                                                                         imagesListItem,
-                                                                        r'''$.full_main_image''',
+                                                                        r'''$.full_listing_image''',
                                                                       ),
                                                                     ).image,
                                                                   ),
