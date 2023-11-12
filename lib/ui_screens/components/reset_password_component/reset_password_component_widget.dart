@@ -224,6 +224,12 @@ class _ResetPasswordComponentWidgetState
                                       jsonDecode('{}'));
                               FFAppState().reservedUserModel = null;
                             });
+                            setState(() {
+                              FFAppState().password =
+                                  (_model.textFieldFocusNode2?.hasFocus ??
+                                          false)
+                                      .toString();
+                            });
                             Navigator.pop(context);
                             await showDialog(
                               context: context,

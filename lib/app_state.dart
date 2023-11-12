@@ -370,6 +370,12 @@ class FFAppState extends ChangeNotifier {
     _slidersTitlesList.insert(_index, _value);
   }
 
+  String _password = '';
+  String get password => _password;
+  set password(String _value) {
+    _password = _value;
+  }
+
   final _localsManager = FutureRequestManager<ApiCallResponse>();
   Future<ApiCallResponse> locals({
     String? uniqueQueryKey,

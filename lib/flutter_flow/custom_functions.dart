@@ -141,3 +141,7 @@ bool is18YearsOrOlder(int timestampInSeconds) {
   // Compare the birthDate with the minimum age date.
   return birthDate.isBefore(minAgeDate);
 }
+
+bool charsCount(String text) {
+  return text.length >= 6;
+}

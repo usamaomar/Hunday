@@ -480,14 +480,20 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                                   ?.jsonBody ??
                                                               ''));
                                                 });
-                                                if (!(FFAppState()
+                                                if (FFAppState()
                                                             .userModel
                                                             .token !=
                                                         null &&
                                                     FFAppState()
                                                             .userModel
                                                             .token !=
-                                                        '')) {
+                                                        '') {
+                                                  setState(() {
+                                                    FFAppState().password =
+                                                        _model.textController
+                                                            .text;
+                                                  });
+                                                } else {
                                                   await showDialog(
                                                     context: context,
                                                     builder:

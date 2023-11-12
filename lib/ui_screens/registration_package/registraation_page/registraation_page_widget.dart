@@ -1279,6 +1279,53 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 });
                                                 if (_model.privacyOne == true) {
                                                   setState(() {});
+                                                  if (functions.charsCount(_model
+                                                          .passwordEditTextValuesModel2
+                                                          .textController
+                                                          .text) !=
+                                                      true) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                            enText: 'Error',
+                                                            arText: 'خطأ',
+                                                          )),
+                                                          content: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                            enText:
+                                                                'Password should be over 6 digits',
+                                                            arText:
+                                                                'يجب أن تكون كلمة المرور أكثر من 6 أرقام',
+                                                          )),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getVariableText(
+                                                                enText: 'ok',
+                                                                arText: 'حسنا',
+                                                              )),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                    if (_shouldSetState)
+                                                      setState(() {});
+                                                    return;
+                                                  }
                                                 } else {
                                                   await showDialog(
                                                     context: context,
@@ -1357,6 +1404,12 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                               ?.jsonBody ??
                                                           ''),
                                                     );
+                                                  });
+                                                  setState(() {
+                                                    FFAppState().password = _model
+                                                        .passwordEditTextValuesModel2
+                                                        .textController
+                                                        .text;
                                                   });
                                                   _model.apiResultjcw =
                                                       await GetMobileNumberCall

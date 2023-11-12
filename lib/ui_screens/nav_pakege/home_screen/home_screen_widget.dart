@@ -161,8 +161,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           child: Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
-                colors: [Color(0xFFAFC3E1), Color(0x00FFFFFF)],
-                stops: [0.0, 1.0],
+                colors: [
+                  Color(0xFFC1D6EF),
+                  FlutterFlowTheme.of(context).white,
+                  FlutterFlowTheme.of(context).white,
+                  FlutterFlowTheme.of(context).white
+                ],
+                stops: [0.0, 1.0, 1.0, 1.0],
                 begin: AlignmentDirectional(0.0, -1.0),
                 end: AlignmentDirectional(0, 1.0),
               ),
@@ -275,10 +280,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'Heebo',
+                                                          fontFamily:
+                                                              'HeeboBold',
                                                           color:
                                                               Color(0xFF212427),
                                                           fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
                                                           useGoogleFonts: false,
                                                         ),
                                                   ),
@@ -367,407 +375,471 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                           shrinkWrap: true,
                           scrollDirection: Axis.vertical,
                           children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFF3D6398),
-                                borderRadius: BorderRadius.circular(15.0),
-                                border: Border.all(
-                                  color: Color(0xFFAFC3E1),
+                            Material(
+                              color: Colors.transparent,
+                              elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(19.0),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF3D6398),
+                                  borderRadius: BorderRadius.circular(19.0),
+                                  border: Border.all(
+                                    color: Color(0xFFAFC3E1),
+                                  ),
+                                ),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {},
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 8.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: SvgPicture.asset(
+                                            'assets/images/Group_70549.svg',
+                                            width: 100.0,
+                                            height: 40.0,
+                                            fit: BoxFit.scaleDown,
+                                          ),
+                                        ),
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        indent: 25.0,
+                                        endIndent: 25.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '0pq4i1m3' /* Parts Shop */,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {},
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 8.0),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
+                            ),
+                            Material(
+                              color: Colors.transparent,
+                              elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(19.0),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF3D6398),
+                                  borderRadius: BorderRadius.circular(19.0),
+                                  border: Border.all(
+                                    color: Color(0xFFAFC3E1),
+                                  ),
+                                ),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'MaintenancePage',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
+                                        ),
+                                      },
+                                    );
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 8.0),
                                         child: SvgPicture.asset(
-                                          'assets/images/Group_70549.svg',
+                                          'assets/images/Group_70550.svg',
                                           width: 100.0,
                                           height: 40.0,
                                           fit: BoxFit.scaleDown,
                                         ),
                                       ),
-                                    ),
-                                    Divider(
-                                      thickness: 1.0,
-                                      indent: 25.0,
-                                      endIndent: 25.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent4,
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '0pq4i1m3' /* Parts Shop */,
+                                      Divider(
+                                        thickness: 1.0,
+                                        indent: 25.0,
+                                        endIndent: 25.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '8io5q1kq' /* Services */,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
                                             ),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Seagoe Ui Bold',
-                                                  color: Colors.white,
-                                                  useGoogleFonts: false,
-                                                ),
                                           ),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFF3D6398),
-                                borderRadius: BorderRadius.circular(15.0),
-                                border: Border.all(
-                                  color: Color(0xFFAFC3E1),
-                                ),
+                            Material(
+                              color: Colors.transparent,
+                              elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(19.0),
                               ),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'MaintenancePage',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 0),
-                                      ),
-                                    },
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 8.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Group_70550.svg',
-                                        width: 100.0,
-                                        height: 40.0,
-                                        fit: BoxFit.scaleDown,
-                                      ),
-                                    ),
-                                    Divider(
-                                      thickness: 1.0,
-                                      indent: 25.0,
-                                      endIndent: 25.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent4,
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '8io5q1kq' /* Services */,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Seagoe Ui Bold',
-                                                  color: Colors.white,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF3D6398),
+                                  borderRadius: BorderRadius.circular(19.0),
+                                  border: Border.all(
+                                    color: Color(0xFFAFC3E1),
+                                  ),
+                                ),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'CarModelPage',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
                                         ),
-                                      ],
-                                    ),
-                                  ],
+                                      },
+                                    );
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 8.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/Group_70551.svg',
+                                          width: 100.0,
+                                          height: 40.0,
+                                          fit: BoxFit.scaleDown,
+                                        ),
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        indent: 25.0,
+                                        endIndent: 25.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'qts15g7r' /* Car model */,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFF3D6398),
-                                borderRadius: BorderRadius.circular(15.0),
-                                border: Border.all(
-                                  color: Color(0xFFAFC3E1),
-                                ),
+                            Material(
+                              color: Colors.transparent,
+                              elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(19.0),
                               ),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'CarModelPage',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 0),
-                                      ),
-                                    },
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 8.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Group_70551.svg',
-                                        width: 100.0,
-                                        height: 40.0,
-                                        fit: BoxFit.scaleDown,
-                                      ),
-                                    ),
-                                    Divider(
-                                      thickness: 1.0,
-                                      indent: 25.0,
-                                      endIndent: 25.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent4,
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'qts15g7r' /* Car model */,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Seagoe Ui Bold',
-                                                  color: Colors.white,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF3D6398),
+                                  borderRadius: BorderRadius.circular(19.0),
+                                  border: Border.all(
+                                    color: Color(0xFFAFC3E1),
+                                  ),
+                                ),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'LocationPage',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
                                         ),
-                                      ],
-                                    ),
-                                  ],
+                                      },
+                                    );
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 8.0),
+                                        child: Image.asset(
+                                          'assets/images/Group_70552@2x.png',
+                                          width: 100.0,
+                                          height: 40.0,
+                                          fit: BoxFit.scaleDown,
+                                        ),
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        indent: 25.0,
+                                        endIndent: 25.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '2xlj2tf9' /* Locations */,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFF3D6398),
-                                borderRadius: BorderRadius.circular(15.0),
-                                border: Border.all(
-                                  color: Color(0xFFAFC3E1),
-                                ),
+                            Material(
+                              color: Colors.transparent,
+                              elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(19.0),
                               ),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'LocationPage',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 0),
-                                      ),
-                                    },
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 8.0),
-                                      child: Image.asset(
-                                        'assets/images/Group_70552@2x.png',
-                                        width: 100.0,
-                                        height: 40.0,
-                                        fit: BoxFit.scaleDown,
-                                      ),
-                                    ),
-                                    Divider(
-                                      thickness: 1.0,
-                                      indent: 25.0,
-                                      endIndent: 25.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent4,
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              '2xlj2tf9' /* Locations */,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Seagoe Ui Bold',
-                                                  color: Colors.white,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF3D6398),
+                                  borderRadius: BorderRadius.circular(19.0),
+                                  border: Border.all(
+                                    color: Color(0xFFAFC3E1),
+                                  ),
+                                ),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed('OffersPage');
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 8.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/Group_72070.svg',
+                                          width: 100.0,
+                                          height: 40.0,
+                                          fit: BoxFit.scaleDown,
                                         ),
-                                      ],
-                                    ),
-                                  ],
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        indent: 25.0,
+                                        endIndent: 25.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'xifs34ig' /* Monthly offers */,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFF3D6398),
-                                borderRadius: BorderRadius.circular(15.0),
-                                border: Border.all(
-                                  color: Color(0xFFAFC3E1),
-                                ),
+                            Material(
+                              color: Colors.transparent,
+                              elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(19.0),
                               ),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('OffersPage');
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 8.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Group_72070.svg',
-                                        width: 100.0,
-                                        height: 40.0,
-                                        fit: BoxFit.scaleDown,
-                                      ),
-                                    ),
-                                    Divider(
-                                      thickness: 1.0,
-                                      indent: 25.0,
-                                      endIndent: 25.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent4,
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'xifs34ig' /* Monthly offers */,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Seagoe Ui Bold',
-                                                  color: Colors.white,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF3D6398),
+                                  borderRadius: BorderRadius.circular(19.0),
+                                  border: Border.all(
+                                    color: Color(0xFFAFC3E1),
+                                  ),
+                                ),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed(
+                                      'NewsPage',
+                                      extra: <String, dynamic>{
+                                        kTransitionInfoKey: TransitionInfo(
+                                          hasTransition: true,
+                                          transitionType:
+                                              PageTransitionType.fade,
+                                          duration: Duration(milliseconds: 0),
                                         ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                color: Color(0xFF3D6398),
-                                borderRadius: BorderRadius.circular(15.0),
-                                border: Border.all(
-                                  color: Color(0xFFAFC3E1),
-                                ),
-                              ),
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed(
-                                    'NewsPage',
-                                    extra: <String, dynamic>{
-                                      kTransitionInfoKey: TransitionInfo(
-                                        hasTransition: true,
-                                        transitionType: PageTransitionType.fade,
-                                        duration: Duration(milliseconds: 0),
-                                      ),
-                                    },
-                                  );
-                                },
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 20.0, 20.0, 8.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Group_70554.svg',
-                                        width: 100.0,
-                                        height: 40.0,
-                                        fit: BoxFit.scaleDown,
-                                      ),
-                                    ),
-                                    Divider(
-                                      thickness: 1.0,
-                                      indent: 25.0,
-                                      endIndent: 25.0,
-                                      color:
-                                          FlutterFlowTheme.of(context).accent4,
-                                    ),
-                                    Row(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Expanded(
-                                          flex: 1,
-                                          child: Text(
-                                            FFLocalizations.of(context).getText(
-                                              'rncq54oc' /* News */,
-                                            ),
-                                            textAlign: TextAlign.center,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Seagoe Ui Bold',
-                                                  color: Colors.white,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
+                                      },
+                                    );
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 8.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/Group_70554.svg',
+                                          width: 100.0,
+                                          height: 40.0,
+                                          fit: BoxFit.scaleDown,
                                         ),
-                                      ],
-                                    ),
-                                  ],
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        indent: 25.0,
+                                        endIndent: 25.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                'rncq54oc' /* News */,
+                                              ),
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),
