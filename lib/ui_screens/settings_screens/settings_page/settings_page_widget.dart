@@ -101,7 +101,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                     alignment: AlignmentDirectional(0.00, 1.00),
                     child: Container(
                       constraints: BoxConstraints(
-                        maxHeight: 600.0,
+                        maxHeight: 500.0,
                       ),
                       decoration: BoxDecoration(),
                       child: Column(

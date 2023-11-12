@@ -168,7 +168,7 @@ class _ForgetPasswordComponentWidgetState
                                 return Padding(
                                   padding: MediaQuery.viewInsetsOf(context),
                                   child: Container(
-                                    height: 500.0,
+                                    height: 400.0,
                                     child:
                                         VerifyForgetPasswordBottomDialogWidget(
                                       phoneNumber: _model.textController.text,

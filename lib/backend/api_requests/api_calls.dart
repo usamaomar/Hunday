@@ -261,6 +261,35 @@ class NewsApiCall {
       );
 }
 
+class DetailsNewsApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? id = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'DetailsNewsApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/news/${id}',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic details(dynamic response) => getJsonField(
+        response,
+        r'''$..details''',
+      );
+}
+
 class LocationApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
@@ -369,6 +398,21 @@ class SliderApiCall {
   static dynamic listOfTitles(dynamic response) => getJsonField(
         response,
         r'''$.slider.data[:].title''',
+        true,
+      );
+  static dynamic listSliderItems(dynamic response) => getJsonField(
+        response,
+        r'''$.slider.data''',
+        true,
+      );
+  static dynamic sloganenItems(dynamic response) => getJsonField(
+        response,
+        r'''$.slider.data[:].slogan_en''',
+        true,
+      );
+  static dynamic sloganarItems(dynamic response) => getJsonField(
+        response,
+        r'''$.slider.data[:].slogan_ar''',
         true,
       );
 }

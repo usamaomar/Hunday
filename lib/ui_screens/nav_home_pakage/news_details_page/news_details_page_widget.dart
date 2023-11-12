@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -51,6 +52,17 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => NewsDetailsPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.responses = await DetailsNewsApiCall.call(
+        token: FFAppState().userModel.token,
+        id: FFAppState().newsModelJsonList[widget.itemIndex!].toString(),
+      );
+      if ((_model.responses?.succeeded ?? true)) {
+        setState(() {});
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -261,12 +273,22 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                       .fromSTEB(
                                                           0.0, 15.0, 0.0, 0.0),
                                                   child: Text(
-                                                    getJsonField(
-                                                      FFAppState()
-                                                              .newsModelJsonList[
-                                                          widget.itemIndex!],
-                                                      r'''$.description''',
-                                                    ).toString(),
+                                                    functions.getNameByLanguge(
+                                                        getJsonField(
+                                                          (_model.responses
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.details.description_en''',
+                                                        ).toString(),
+                                                        getJsonField(
+                                                          (_model.responses
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.details.description_ar''',
+                                                        ).toString(),
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .languageCode),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium

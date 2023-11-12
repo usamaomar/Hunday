@@ -199,7 +199,7 @@ class _VerifyForgetPasswordBottomDialogWidgetState
                               return Padding(
                                 padding: MediaQuery.viewInsetsOf(context),
                                 child: Container(
-                                  height: 500.0,
+                                  height: 400.0,
                                   child: ResetPasswordComponentWidget(),
                                 ),
                               );

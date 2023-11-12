@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -17,6 +18,8 @@ class NewsDetailsPageModel extends FlutterFlowModel<NewsDetailsPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  // Stores action output result for [Backend Call - API (DetailsNewsApi)] action in NewsDetailsPage widget.
+  ApiCallResponse? responses;
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
 

@@ -108,9 +108,9 @@ String formatPhoneNumber(String input) {
     return input;
   }
   String countryCode = "+962";
-  String firstPart = input.substring(0, 3);
-  String secondPart = input.substring(3, 6);
-  String thirdPart = input.substring(6, 9);
+  String firstPart = input.substring(0, 4);
+  String secondPart = input.substring(4, 7);
+  String thirdPart = input.substring(7, 10);
 
   return '$countryCode $firstPart $secondPart $thirdPart';
 }

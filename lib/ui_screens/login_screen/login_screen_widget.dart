@@ -361,7 +361,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                         MediaQuery.viewInsetsOf(
                                                             context),
                                                     child: Container(
-                                                      height: 500.0,
+                                                      height: 400.0,
                                                       child:
                                                           ForgetPasswordComponentWidget(),
                                                     ),

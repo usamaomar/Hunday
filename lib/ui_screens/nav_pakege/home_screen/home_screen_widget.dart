@@ -243,10 +243,32 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                       .fromSTEB(30.0, 10.0,
                                                           30.0, 10.0),
                                                   child: Text(
-                                                    FFAppState()
-                                                        .slidersTitlesList[
-                                                            listOfPathsIndex]
-                                                        .toString(),
+                                                    functions.getNameByLanguge(
+                                                        (SliderApiCall
+                                                                .sloganenItems(
+                                                          (_model.apiResultSlider
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        ) as List)
+                                                            .map<String>((s) =>
+                                                                s.toString())
+                                                            .toList()[
+                                                                listOfPathsIndex]
+                                                            .toString(),
+                                                        (SliderApiCall
+                                                                .sloganarItems(
+                                                          (_model.apiResultSlider
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                        ) as List)
+                                                            .map<String>((s) =>
+                                                                s.toString())
+                                                            .toList()[
+                                                                listOfPathsIndex]
+                                                            .toString(),
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .languageCode),
                                                     textAlign: TextAlign.center,
                                                     maxLines: 2,
                                                     style: FlutterFlowTheme.of(
