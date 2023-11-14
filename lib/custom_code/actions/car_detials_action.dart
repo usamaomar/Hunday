@@ -10,9 +10,12 @@ import 'package:flutter/material.dart';
 
 import 'dart:convert';
 
-List<String> carDetialsAction(String jsonObject, String languge) {
+List<String> carDetialsAction(String? jsonObject, String languge) {
   List<String> stringArray = [];
-  if (jsonObject == 'null') {
+  if (jsonObject == 'null' ||
+      jsonObject == null ||
+      jsonObject.isEmpty ||
+      jsonObject == "-") {
     return stringArray;
   }
   Map<String, dynamic> jsonData = json.decode(jsonObject);

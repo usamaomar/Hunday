@@ -48,7 +48,28 @@ class _CarDeteailsComponentsWidgetState
       );
       if ((_model.apiResultCarDeteails?.succeeded ?? true)) {
         setState(() {
-          _model.carModel = (_model.apiResultCarDeteails?.jsonBody ?? '');
+          _model.carModel = getJsonField(
+            (_model.apiResultCarDeteails?.jsonBody ?? ''),
+            r'''$.car''',
+          );
+        });
+        setState(() {
+          _model.exterior = getJsonField(
+            _model.carModel,
+            r'''$.performance''',
+          ).toString().toString();
+          _model.interiors = getJsonField(
+            _model.carModel,
+            r'''$.interior''',
+          ).toString().toString();
+          _model.safety = getJsonField(
+            _model.carModel,
+            r'''$.safty''',
+          ).toString().toString();
+          _model.performance = getJsonField(
+            _model.carModel,
+            r'''$.exterior''',
+          ).toString().toString();
         });
       } else {
         await showDialog(
@@ -70,33 +91,46 @@ class _CarDeteailsComponentsWidgetState
       }
 
       _model.listOfPerformance = await actions.carDetialsAction(
-        getJsonField(
-          _model.carModel,
-          r'''$.performance''',
-        ).toString().toString(),
+        valueOrDefault<String>(
+          _model.performance,
+          '-',
+        ),
         FFLocalizations.of(context).languageCode,
       );
+      setState(() {
+        _model.listOfPerformances =
+            _model.listOfPerformance!.toList().cast<String>();
+      });
       _model.listOfSafty = await actions.carDetialsAction(
-        getJsonField(
-          _model.carModel,
-          r'''$.safty''',
-        ).toString().toString(),
+        valueOrDefault<String>(
+          _model.safety,
+          '-',
+        ),
         FFLocalizations.of(context).languageCode,
       );
+      setState(() {
+        _model.listOfSafety = _model.listOfSafty!.toList().cast<String>();
+      });
       _model.listOfInterior = await actions.carDetialsAction(
-        getJsonField(
-          _model.carModel,
-          r'''$.interior''',
-        ).toString().toString(),
+        valueOrDefault<String>(
+          _model.interiors,
+          '-',
+        ),
         FFLocalizations.of(context).languageCode,
       );
+      setState(() {
+        _model.listOfInteriors = _model.listOfInterior!.toList().cast<String>();
+      });
       _model.listOfExterior = await actions.carDetialsAction(
-        getJsonField(
-          _model.carModel,
-          r'''$.exterior''',
-        ).toString().toString(),
+        valueOrDefault<String>(
+          _model.exterior,
+          '-',
+        ),
         FFLocalizations.of(context).languageCode,
       );
+      setState(() {
+        _model.listOfExteriors = _model.listOfExterior!.toList().cast<String>();
+      });
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -258,8 +292,7 @@ class _CarDeteailsComponentsWidgetState
               if (FFAppState().listOfCatalogOpendBool[0] == true)
                 Builder(
                   builder: (context) {
-                    final performances =
-                        _model.listOfPerformance!.map((e) => e).toList();
+                    final performances = _model.listOfPerformances.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
@@ -377,7 +410,7 @@ class _CarDeteailsComponentsWidgetState
               if (FFAppState().listOfCatalogOpendBool[1] == true)
                 Builder(
                   builder: (context) {
-                    final safty = _model.listOfSafty!.map((e) => e).toList();
+                    final safty = _model.listOfSafety.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
@@ -494,8 +527,7 @@ class _CarDeteailsComponentsWidgetState
               if (FFAppState().listOfCatalogOpendBool[2] == true)
                 Builder(
                   builder: (context) {
-                    final interior =
-                        _model.listOfInterior!.map((e) => e).toList();
+                    final interior = _model.listOfInteriors.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
@@ -612,8 +644,7 @@ class _CarDeteailsComponentsWidgetState
               if (FFAppState().listOfCatalogOpendBool[3] == true)
                 Builder(
                   builder: (context) {
-                    final performances =
-                        _model.listOfExterior!.map((e) => e).toList();
+                    final performances = _model.listOfExteriors.toList();
                     return ListView.builder(
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
