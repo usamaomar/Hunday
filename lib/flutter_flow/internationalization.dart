@@ -797,6 +797,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'اعدادات',
     },
   },
+  // CarModelDetailsPdfViewr
+  {
+    'wmsoocl8': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // Fild
   {
     '12neuu73': {

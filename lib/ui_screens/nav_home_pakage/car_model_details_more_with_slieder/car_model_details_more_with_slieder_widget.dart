@@ -556,12 +556,11 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                         height: 500.0,
                                                         child:
                                                             CarDeteailsComponentsWidget(
-                                                          carDetailsModel:
+                                                          carJsonId:
                                                               getJsonField(
-                                                            _model
-                                                                .detailsJsonObject,
-                                                            r'''$''',
-                                                          ),
+                                                            widget.carJsonItem,
+                                                            r'''$.id''',
+                                                          ).toString(),
                                                         ),
                                                       ),
                                                     );

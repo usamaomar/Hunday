@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -12,8 +13,14 @@ import 'package:provider/provider.dart';
 
 class CarDeteailsComponentsModel
     extends FlutterFlowModel<CarDeteailsComponentsWidget> {
+  ///  Local state fields for this component.
+
+  dynamic carModel;
+
   ///  State fields for stateful widgets in this component.
 
+  // Stores action output result for [Backend Call - API (GetCarDetailsApi)] action in carDeteailsComponents widget.
+  ApiCallResponse? apiResultCarDeteails;
   // Stores action output result for [Custom Action - carDetialsAction] action in carDeteailsComponents widget.
   List<String>? listOfPerformance;
   // Stores action output result for [Custom Action - carDetialsAction] action in carDeteailsComponents widget.

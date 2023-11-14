@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/custom_code/actions/index.dart' as actions;
@@ -14,10 +15,10 @@ export 'car_deteails_components_model.dart';
 class CarDeteailsComponentsWidget extends StatefulWidget {
   const CarDeteailsComponentsWidget({
     Key? key,
-    required this.carDetailsModel,
+    required this.carJsonId,
   }) : super(key: key);
 
-  final dynamic carDetailsModel;
+  final String? carJsonId;
 
   @override
   _CarDeteailsComponentsWidgetState createState() =>
@@ -41,30 +42,57 @@ class _CarDeteailsComponentsWidgetState
 
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultCarDeteails = await GetCarDetailsApiCall.call(
+        token: FFAppState().userModel.token,
+        id: widget.carJsonId,
+      );
+      if ((_model.apiResultCarDeteails?.succeeded ?? true)) {
+        setState(() {
+          _model.carModel = (_model.apiResultCarDeteails?.jsonBody ?? '');
+        });
+      } else {
+        await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text('error'),
+              content: Text((_model.apiResultCarDeteails?.bodyText ?? '')),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text('Ok'),
+                ),
+              ],
+            );
+          },
+        );
+        return;
+      }
+
       _model.listOfPerformance = await actions.carDetialsAction(
         getJsonField(
-          widget.carDetailsModel,
+          _model.carModel,
           r'''$.performance''',
         ).toString().toString(),
         FFLocalizations.of(context).languageCode,
       );
       _model.listOfSafty = await actions.carDetialsAction(
         getJsonField(
-          widget.carDetailsModel,
+          _model.carModel,
           r'''$.safty''',
         ).toString().toString(),
         FFLocalizations.of(context).languageCode,
       );
       _model.listOfInterior = await actions.carDetialsAction(
         getJsonField(
-          widget.carDetailsModel,
+          _model.carModel,
           r'''$.interior''',
         ).toString().toString(),
         FFLocalizations.of(context).languageCode,
       );
       _model.listOfExterior = await actions.carDetialsAction(
         getJsonField(
-          widget.carDetailsModel,
+          _model.carModel,
           r'''$.exterior''',
         ).toString().toString(),
         FFLocalizations.of(context).languageCode,

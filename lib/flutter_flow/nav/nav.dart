@@ -293,6 +293,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   initialPage: 'MorePage',
                   page: MorePageWidget(),
                 ),
+        ),
+        FFRoute(
+          name: 'CarModelDetailsPdfViewr',
+          path: '/carModelDetailsPdfViewr',
+          builder: (context, params) => NavBarPage(
+            initialPage: '',
+            page: CarModelDetailsPdfViewrWidget(
+              pdfLink: params.getParam('pdfLink', ParamType.String),
+            ),
+          ),
         )
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );

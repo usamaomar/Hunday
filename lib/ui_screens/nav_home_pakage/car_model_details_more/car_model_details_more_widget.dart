@@ -5,7 +5,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/car_deteails_components/car_deteails_components_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
@@ -543,12 +542,11 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                         height: 500.0,
                                                         child:
                                                             CarDeteailsComponentsWidget(
-                                                          carDetailsModel:
+                                                          carJsonId:
                                                               getJsonField(
-                                                            _model
-                                                                .detailsJsonObject,
-                                                            r'''$''',
-                                                          ),
+                                                            widget.carJsonItem,
+                                                            r'''$.id''',
+                                                          ).toString(),
                                                         ),
                                                       ),
                                                     );
@@ -606,11 +604,17 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              await actions.navigateToLink(
-                                                getJsonField(
-                                                  widget.carJsonItem,
-                                                  r'''$.full_catalog''',
-                                                ).toString(),
+                                              context.pushNamed(
+                                                'CarModelDetailsPdfViewr',
+                                                queryParameters: {
+                                                  'pdfLink': serializeParam(
+                                                    getJsonField(
+                                                      widget.carJsonItem,
+                                                      r'''$.full_catalog''',
+                                                    ).toString(),
+                                                    ParamType.String,
+                                                  ),
+                                                }.withoutNulls,
                                               );
                                             },
                                             child: Material(

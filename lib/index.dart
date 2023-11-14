@@ -59,3 +59,5 @@ export '/ui_screens/nav_pakege/cart_page/cart_page_widget.dart'
     show CartPageWidget;
 export '/ui_screens/nav_pakege/more_page/more_page_widget.dart'
     show MorePageWidget;
+export '/ui_screens/nav_home_pakage/car_model_details_pdf_viewr/car_model_details_pdf_viewr_widget.dart'
+    show CarModelDetailsPdfViewrWidget;
