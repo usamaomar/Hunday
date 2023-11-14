@@ -173,48 +173,41 @@ class _MoreComponentWidgetState extends State<MoreComponentWidget> {
               focusColor: Colors.transparent,
               hoverColor: Colors.transparent,
               highlightColor: Colors.transparent,
-              onTap: () async {
-                context.pushNamed(
-                  'MyOrderPage',
-                  extra: <String, dynamic>{
-                    kTransitionInfoKey: TransitionInfo(
-                      hasTransition: true,
-                      transitionType: PageTransitionType.fade,
-                      duration: Duration(milliseconds: 0),
-                    ),
-                  },
-                );
-              },
+              onTap: () async {},
               child: Container(
                 decoration: BoxDecoration(
                   color: FlutterFlowTheme.of(context).secondaryBackground,
                 ),
-                child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.fact_check,
-                        color: FlutterFlowTheme.of(context).secondaryText,
-                        size: 30.0,
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
-                        child: Text(
-                          FFLocalizations.of(context).getText(
-                            'jehjp69y' /* My Orders */,
-                          ),
-                          style: TextStyle(
-                            fontFamily: 'Heebo Regular',
-                            fontSize: 16.0,
+                child: Opacity(
+                  opacity: 0.5,
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.fact_check,
+                          color: FlutterFlowTheme.of(context).secondaryText,
+                          size: 30.0,
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              10.0, 0.0, 10.0, 0.0),
+                          child: Text(
+                            FFLocalizations.of(context).getText(
+                              'jehjp69y' /* My Orders */,
+                            ),
+                            style: TextStyle(
+                              fontFamily: 'Heebo Regular',
+                              fontSize: 16.0,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),

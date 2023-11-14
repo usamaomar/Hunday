@@ -56,28 +56,31 @@ class _CarPageWidgetState extends State<CarPageWidget> {
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).white,
-        body: Row(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  FFLocalizations.of(context).getText(
-                    '4zgsyvj7' /* No content to show */,
+        body: SafeArea(
+          top: true,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    FFLocalizations.of(context).getText(
+                      '4zgsyvj7' /* No content to show */,
+                    ),
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Heebo Regular',
+                          fontSize: 16.0,
+                          fontWeight: FontWeight.w200,
+                          useGoogleFonts: false,
+                        ),
                   ),
-                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                        fontFamily: 'Heebo Regular',
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.w200,
-                        useGoogleFonts: false,
-                      ),
-                ),
-              ],
-            ),
-          ],
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );

@@ -467,19 +467,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                   focusColor: Colors.transparent,
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    context.pushNamed(
-                                      'MaintenancePage',
-                                      extra: <String, dynamic>{
-                                        kTransitionInfoKey: TransitionInfo(
-                                          hasTransition: true,
-                                          transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
-                                        ),
-                                      },
-                                    );
-                                  },
+                                  onTap: () async {},
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
