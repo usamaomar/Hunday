@@ -101,6 +101,13 @@ class _NewsBottomSheetComponentWidgetState
                               listOfNewsItemsIndex,
                               ParamType.int,
                             ),
+                            'itemId': serializeParam(
+                              getJsonField(
+                                listOfNewsItemsItem,
+                                r'''$.id''',
+                              ).toString(),
+                              ParamType.String,
+                            ),
                           }.withoutNulls,
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(

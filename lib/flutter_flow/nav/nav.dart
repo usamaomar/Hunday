@@ -152,6 +152,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             initialPage: '',
             page: NewsDetailsPageWidget(
               itemIndex: params.getParam('itemIndex', ParamType.int),
+              itemId: params.getParam('itemId', ParamType.String),
             ),
           ),
         ),

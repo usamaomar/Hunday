@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -336,6 +337,8 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                     onChanged: (val) async {
                                                       setState(() => _model
                                                           .dropDownValue = val);
+                                                      var _shouldSetState =
+                                                          false;
                                                       if (_model
                                                               .dropDownValue ==
                                                           FFLocalizations.of(
@@ -352,7 +355,39 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                             context, 'ar');
                                                       }
 
-                                                      setState(() {});
+                                                      _model.updateResponse =
+                                                          await UpdateUserApiCall
+                                                              .call(
+                                                        email: FFAppState()
+                                                            .userModel
+                                                            .email,
+                                                        bod: FFAppState()
+                                                            .userModel
+                                                            .date,
+                                                        token: FFAppState()
+                                                            .userModel
+                                                            .token,
+                                                        phone: FFAppState()
+                                                            .userModel
+                                                            .phone,
+                                                        lang:
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .languageCode,
+                                                      );
+                                                      _shouldSetState = true;
+                                                      if ((_model.updateResponse
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        setState(() {});
+                                                      } else {
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                        return;
+                                                      }
+
+                                                      if (_shouldSetState)
+                                                        setState(() {});
                                                     },
                                                     textStyle:
                                                         FlutterFlowTheme.of(

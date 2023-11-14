@@ -145,3 +145,23 @@ bool is18YearsOrOlder(int timestampInSeconds) {
 bool charsCount(String text) {
   return text.length >= 6;
 }
+
+List<String> convertNullLists(List<String> list) {
+  if (list == null) {
+    return [];
+  } else {
+    return list;
+  }
+}
+
+dynamic getSettingByKey(
+  String? key,
+  List<dynamic> responseList,
+) {
+  for (var setting in responseList) {
+    if (setting['option_key'] == key) {
+      return setting;
+    }
+  }
+  return null; // Return null if not found
+}

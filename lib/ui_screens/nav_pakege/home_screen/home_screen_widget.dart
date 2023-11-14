@@ -77,13 +77,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         return;
       }
 
-      _model.socialMediaOut = await SocialMediaApiCall.call(
+      _model.socialMediaOut = await SettingApiCall.call(
         token: FFAppState().userModel.token,
       );
       if ((_model.socialMediaOut?.succeeded ?? true)) {
         setState(() {
           FFAppState().socialMediaSharedJson =
-              SocialMediaApiCall.socialMediaJsonObject(
+              SettingApiCall.socialMediaJsonObject(
             (_model.socialMediaOut?.jsonBody ?? ''),
           );
         });

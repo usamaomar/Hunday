@@ -213,6 +213,45 @@ class ChangePasswordApiCall {
       );
 }
 
+class UpdateUserApiCall {
+  static Future<ApiCallResponse> call({
+    String? email = '',
+    String? bod = '',
+    String? token = '',
+    String? phone = '',
+    String? lang = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "email": "${email}",
+  "bod": "${bod}",
+  "phone": "${phone}",
+  "lang": "${lang}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'UpdateUserApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/user',
+      callType: ApiCallType.PUT,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.token''',
+      );
+}
+
 class TestAuthUserApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
@@ -288,6 +327,10 @@ class DetailsNewsApiCall {
         response,
         r'''$..details''',
       );
+  static dynamic description(dynamic response) => getJsonField(
+        response,
+        r'''$.details.description''',
+      );
 }
 
 class LocationApiCall {
@@ -344,13 +387,13 @@ class OfferApiCall {
       );
 }
 
-class SocialMediaApiCall {
+class SettingApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
   }) async {
     return ApiManager.instance.makeApiCall(
-      callName: 'SocialMediaApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/social-media',
+      callName: 'SettingApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/setting',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',

@@ -610,7 +610,7 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                   'pdfLink': serializeParam(
                                                     getJsonField(
                                                       _model.detailsJsonObject,
-                                                      r'''$.car.full_catalog''',
+                                                      r'''$.full_catalog''',
                                                     ).toString(),
                                                     ParamType.String,
                                                   ),

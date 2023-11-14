@@ -25,7 +25,7 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (TestAuthUserApi)] action in HomeScreen widget.
   ApiCallResponse? localTestAuth2;
-  // Stores action output result for [Backend Call - API (SocialMediaApi)] action in HomeScreen widget.
+  // Stores action output result for [Backend Call - API (SettingApi)] action in HomeScreen widget.
   ApiCallResponse? socialMediaOut;
   // Stores action output result for [Backend Call - API (LocationApi)] action in HomeScreen widget.
   ApiCallResponse? locationsApiResponce;

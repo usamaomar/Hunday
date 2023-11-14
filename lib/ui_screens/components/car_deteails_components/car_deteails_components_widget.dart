@@ -223,7 +223,11 @@ class _CarDeteailsComponentsWidgetState
                     borderRadius: BorderRadius.circular(0.0),
                   ),
                   child: Visibility(
-                    visible: _model.listOfPerformance!.length > 0,
+                    visible: functions
+                            .convertNullLists(
+                                _model.listOfPerformances.toList())
+                            .length >
+                        0,
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -341,7 +345,10 @@ class _CarDeteailsComponentsWidgetState
                     borderRadius: BorderRadius.circular(0.0),
                   ),
                   child: Visibility(
-                    visible: _model.listOfSafty!.length > 0,
+                    visible: functions
+                            .convertNullLists(_model.listOfSafety.toList())
+                            .length >
+                        0,
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -458,7 +465,10 @@ class _CarDeteailsComponentsWidgetState
                     borderRadius: BorderRadius.circular(0.0),
                   ),
                   child: Visibility(
-                    visible: _model.listOfInterior!.length > 0,
+                    visible: functions
+                            .convertNullLists(_model.listOfInteriors.toList())
+                            .length >
+                        0,
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -575,7 +585,10 @@ class _CarDeteailsComponentsWidgetState
                     borderRadius: BorderRadius.circular(0.0),
                   ),
                   child: Visibility(
-                    visible: _model.listOfExterior!.length > 0,
+                    visible: functions
+                            .convertNullLists(_model.listOfExteriors.toList())
+                            .length >
+                        0,
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,

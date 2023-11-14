@@ -19,9 +19,11 @@ class NewsDetailsPageWidget extends StatefulWidget {
   const NewsDetailsPageWidget({
     Key? key,
     required this.itemIndex,
+    required this.itemId,
   }) : super(key: key);
 
   final int? itemIndex;
+  final String? itemId;
 
   @override
   _NewsDetailsPageWidgetState createState() => _NewsDetailsPageWidgetState();
@@ -57,7 +59,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.responses = await DetailsNewsApiCall.call(
         token: FFAppState().userModel.token,
-        id: FFAppState().newsModelJsonList[widget.itemIndex!].toString(),
+        id: widget.itemId,
       );
       if ((_model.responses?.succeeded ?? true)) {
         setState(() {});
@@ -273,22 +275,12 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                       .fromSTEB(
                                                           0.0, 15.0, 0.0, 0.0),
                                                   child: Text(
-                                                    functions.getNameByLanguge(
-                                                        getJsonField(
-                                                          (_model.responses
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                          r'''$.details.description_en''',
-                                                        ).toString(),
-                                                        getJsonField(
-                                                          (_model.responses
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                          r'''$.details.description_ar''',
-                                                        ).toString(),
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .languageCode),
+                                                    DetailsNewsApiCall
+                                                        .description(
+                                                      (_model.responses
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                    ).toString(),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .labelMedium
@@ -371,6 +363,15 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                                       imagesListIndex,
                                                                       ParamType
                                                                           .int,
+                                                                    ),
+                                                                    'itemId':
+                                                                        serializeParam(
+                                                                      getJsonField(
+                                                                        imagesListItem,
+                                                                        r'''$.id''',
+                                                                      ).toString(),
+                                                                      ParamType
+                                                                          .String,
                                                                     ),
                                                                   }.withoutNulls,
                                                                 );
