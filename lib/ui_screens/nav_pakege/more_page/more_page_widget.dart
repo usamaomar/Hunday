@@ -441,6 +441,22 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                                             .toList())
                                     .toString(),
                               );
+                              await showDialog(
+                                context: context,
+                                builder: (alertDialogContext) {
+                                  return AlertDialog(
+                                    content: Text(
+                                        '${functions.getSettingByKey('twitter', FFAppState().socialMediaJsonObject.toList()).toString()}----'),
+                                    actions: [
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.pop(alertDialogContext),
+                                        child: Text('Ok'),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
                             },
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
