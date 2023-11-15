@@ -271,12 +271,6 @@ class FFAppState extends ChangeNotifier {
     _listOfPublicOffers.insert(_index, _value);
   }
 
-  dynamic _socialMediaSharedJson;
-  dynamic get socialMediaSharedJson => _socialMediaSharedJson;
-  set socialMediaSharedJson(dynamic _value) {
-    _socialMediaSharedJson = _value;
-  }
-
   bool _isDarkMode = false;
   bool get isDarkMode => _isDarkMode;
   set isDarkMode(bool _value) {
@@ -404,6 +398,35 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInListOfCarsModelAppState(int _index, dynamic _value) {
     _listOfCarsModelAppState.insert(_index, _value);
+  }
+
+  List<dynamic> _socialMediaJsonObject = [];
+  List<dynamic> get socialMediaJsonObject => _socialMediaJsonObject;
+  set socialMediaJsonObject(List<dynamic> _value) {
+    _socialMediaJsonObject = _value;
+  }
+
+  void addToSocialMediaJsonObject(dynamic _value) {
+    _socialMediaJsonObject.add(_value);
+  }
+
+  void removeFromSocialMediaJsonObject(dynamic _value) {
+    _socialMediaJsonObject.remove(_value);
+  }
+
+  void removeAtIndexFromSocialMediaJsonObject(int _index) {
+    _socialMediaJsonObject.removeAt(_index);
+  }
+
+  void updateSocialMediaJsonObjectAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _socialMediaJsonObject[_index] = updateFn(_socialMediaJsonObject[_index]);
+  }
+
+  void insertAtIndexInSocialMediaJsonObject(int _index, dynamic _value) {
+    _socialMediaJsonObject.insert(_index, _value);
   }
 
   final _localsManager = FutureRequestManager<ApiCallResponse>();

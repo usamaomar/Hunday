@@ -1,6 +1,5 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/ui_screens/nav_home_pakage/more_component/more_component_widget.dart';
 import '/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart';
 import '/ui_screens/nav_pakege/chat_component/chat_component_widget.dart';
 import 'bottom_nav_bar_component_widget.dart' show BottomNavBarComponentWidget;

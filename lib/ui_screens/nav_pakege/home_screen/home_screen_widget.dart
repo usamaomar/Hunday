@@ -82,10 +82,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
       );
       if ((_model.socialMediaOut?.succeeded ?? true)) {
         setState(() {
-          FFAppState().socialMediaSharedJson =
+          FFAppState().socialMediaJsonObject =
               SettingApiCall.socialMediaJsonObject(
             (_model.socialMediaOut?.jsonBody ?? ''),
-          );
+          )!
+                  .toList()
+                  .cast<dynamic>();
         });
       }
       _model.locationsApiResponce = await LocationApiCall.call(

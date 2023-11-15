@@ -896,33 +896,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // MoreComponent
-  {
-    'ikpluwo0': {
-      'en': 'Menu',
-      'ar': 'القائمة',
-    },
-    'moam4zvn': {
-      'en': 'My Profile',
-      'ar': 'ملف الشخصي',
-    },
-    'jehjp69y': {
-      'en': 'My Orders',
-      'ar': 'طلباتي',
-    },
-    'iwtrcuj4': {
-      'en': 'My Appointment',
-      'ar': 'مواعيدي',
-    },
-    'm4tr6t7y': {
-      'en': 'About App',
-      'ar': 'عن التطبيق',
-    },
-    'y8s6wc5j': {
-      'en': 'Settings',
-      'ar': 'اعدادات',
-    },
-  },
   // MyOrdersAndAppointmentsComponent
   {
     'i3kbyih3': {

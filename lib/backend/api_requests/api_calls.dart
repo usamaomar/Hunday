@@ -409,7 +409,8 @@ class SettingApiCall {
 
   static dynamic socialMediaJsonObject(dynamic response) => getJsonField(
         response,
-        r'''$.socialmedia''',
+        r'''$.settings''',
+        true,
       );
 }
 

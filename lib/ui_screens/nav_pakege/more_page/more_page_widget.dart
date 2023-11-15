@@ -436,11 +436,9 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                                 functions
                                     .getSettingByKey(
                                         'twitter',
-                                        getJsonField(
-                                          FFAppState().socialMediaSharedJson,
-                                          r'''$.settings''',
-                                          true,
-                                        )!)
+                                        FFAppState()
+                                            .socialMediaJsonObject
+                                            .toList())
                                     .toString(),
                               );
                             },
@@ -459,10 +457,13 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await actions.navigateToLinkString(
-                                getJsonField(
-                                  FFAppState().socialMediaSharedJson,
-                                  r'''$.linkedin''',
-                                ).toString(),
+                                functions
+                                    .getSettingByKey(
+                                        'linkedin',
+                                        FFAppState()
+                                            .socialMediaJsonObject
+                                            .toList())
+                                    .toString(),
                               );
                             },
                             child: ClipRRect(
@@ -480,10 +481,13 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await actions.navigateToLinkString(
-                                getJsonField(
-                                  FFAppState().socialMediaSharedJson,
-                                  r'''$.facebook''',
-                                ).toString(),
+                                functions
+                                    .getSettingByKey(
+                                        'facebook',
+                                        FFAppState()
+                                            .socialMediaJsonObject
+                                            .toList())
+                                    .toString(),
                               );
                             },
                             child: ClipRRect(
@@ -501,10 +505,13 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await actions.navigateToLinkString(
-                                getJsonField(
-                                  FFAppState().socialMediaSharedJson,
-                                  r'''$.instagram''',
-                                ).toString(),
+                                functions
+                                    .getSettingByKey(
+                                        'instagram',
+                                        FFAppState()
+                                            .socialMediaJsonObject
+                                            .toList())
+                                    .toString(),
                               );
                             },
                             child: ClipRRect(
@@ -522,10 +529,13 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await actions.navigateToLinkString(
-                                getJsonField(
-                                  FFAppState().socialMediaSharedJson,
-                                  r'''$.whatsapp''',
-                                ).toString(),
+                                functions
+                                    .getSettingByKey(
+                                        'whatsapp',
+                                        FFAppState()
+                                            .socialMediaJsonObject
+                                            .toList())
+                                    .toString(),
                               );
                             },
                             child: ClipRRect(
@@ -543,10 +553,13 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                             highlightColor: Colors.transparent,
                             onTap: () async {
                               await actions.navigateToLinkString(
-                                getJsonField(
-                                  FFAppState().socialMediaSharedJson,
-                                  r'''$.youtube''',
-                                ).toString(),
+                                functions
+                                    .getSettingByKey(
+                                        'youtube',
+                                        FFAppState()
+                                            .socialMediaJsonObject
+                                            .toList())
+                                    .toString(),
                               );
                             },
                             child: ClipRRect(
