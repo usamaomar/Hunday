@@ -691,8 +691,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مشاركة',
     },
     'guoi6rgz': {
-      'en': 'Share',
-      'ar': 'مشاركة',
+      'en': 'Call Now',
+      'ar': 'اتصل الان',
     },
     'a8s2x5fj': {
       'en': 'Home',

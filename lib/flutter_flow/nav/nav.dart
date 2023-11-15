@@ -232,7 +232,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'OffersDetailsPage',
           path: '/offersDetailsPage',
           builder: (context, params) => OffersDetailsPageWidget(
-            itemIndex: params.getParam('itemIndex', ParamType.int),
+            id: params.getParam('id', ParamType.String),
           ),
         ),
         FFRoute(

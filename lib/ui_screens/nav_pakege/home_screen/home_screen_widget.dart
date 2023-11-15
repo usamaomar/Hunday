@@ -93,9 +93,6 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
       _model.locationsApiResponce = await LocationApiCall.call(
         token: FFAppState().userModel.token,
       );
-      setState(() {
-        FFAppState().sliderList = [];
-      });
       if ((_model.locationsApiResponce?.succeeded ?? true)) {
         setState(() {
           FFAppState().sharedLocationsJsonList =
@@ -204,118 +201,120 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        Expanded(
-                          child: Builder(
-                            builder: (context) {
-                              final sliderSlideList = FFAppState()
-                                  .sliderList
-                                  .map((e) => e)
-                                  .toList();
-                              return Container(
-                                width: double.infinity,
-                                child: CarouselSlider.builder(
-                                  itemCount: sliderSlideList.length,
-                                  itemBuilder:
-                                      (context, sliderSlideListIndex, _) {
-                                    final sliderSlideListItem =
-                                        sliderSlideList[sliderSlideListIndex];
-                                    return Column(
-                                      mainAxisSize: MainAxisSize.min,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  30.0, 0.0, 30.0, 0.0),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
-                                            child: CachedNetworkImage(
-                                              fadeInDuration:
-                                                  Duration(milliseconds: 200),
-                                              fadeOutDuration:
-                                                  Duration(milliseconds: 200),
-                                              imageUrl: getJsonField(
-                                                sliderSlideListItem,
-                                                r'''$.full_image''',
+                        if (FFAppState().sliderList.length > 0)
+                          Expanded(
+                            child: Builder(
+                              builder: (context) {
+                                final sliderSlideList = FFAppState()
+                                    .sliderList
+                                    .map((e) => e)
+                                    .toList();
+                                return Container(
+                                  width: double.infinity,
+                                  child: CarouselSlider.builder(
+                                    itemCount: sliderSlideList.length,
+                                    itemBuilder:
+                                        (context, sliderSlideListIndex, _) {
+                                      final sliderSlideListItem =
+                                          sliderSlideList[sliderSlideListIndex];
+                                      return Column(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children: [
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    30.0, 0.0, 30.0, 0.0),
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              child: CachedNetworkImage(
+                                                fadeInDuration:
+                                                    Duration(milliseconds: 200),
+                                                fadeOutDuration:
+                                                    Duration(milliseconds: 200),
+                                                imageUrl: getJsonField(
+                                                  sliderSlideListItem,
+                                                  r'''$.full_image''',
+                                                ),
+                                                width: double.infinity,
+                                                height: 150.0,
+                                                fit: BoxFit.cover,
                                               ),
-                                              width: double.infinity,
-                                              height: 150.0,
-                                              fit: BoxFit.cover,
                                             ),
                                           ),
-                                        ),
-                                        Expanded(
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.min,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.center,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        30.0, 10.0, 30.0, 10.0),
-                                                child: Text(
-                                                  functions.getNameByLanguge(
-                                                      getJsonField(
-                                                        sliderSlideListItem,
-                                                        r'''$.slogan_en''',
-                                                      ).toString(),
-                                                      getJsonField(
-                                                        sliderSlideListItem,
-                                                        r'''$.slogan_en''',
-                                                      ).toString(),
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .languageCode),
-                                                  textAlign: TextAlign.center,
-                                                  maxLines: 2,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'HeeboBold',
-                                                        color:
-                                                            Color(0xFF212427),
-                                                        fontSize: 16.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                          Expanded(
+                                            child: Row(
+                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(30.0, 10.0,
+                                                          30.0, 10.0),
+                                                  child: Text(
+                                                    functions.getNameByLanguge(
+                                                        getJsonField(
+                                                          sliderSlideListItem,
+                                                          r'''$.slogan_en''',
+                                                        ).toString(),
+                                                        getJsonField(
+                                                          sliderSlideListItem,
+                                                          r'''$.slogan_en''',
+                                                        ).toString(),
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .languageCode),
+                                                    textAlign: TextAlign.center,
+                                                    maxLines: 2,
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'HeeboBold',
+                                                          color:
+                                                              Color(0xFF212427),
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
-                                      ],
-                                    );
-                                  },
-                                  carouselController:
-                                      _model.carouselController ??=
-                                          CarouselController(),
-                                  options: CarouselOptions(
-                                    initialPage:
-                                        min(1, sliderSlideList.length - 1),
-                                    viewportFraction: 1.0,
-                                    disableCenter: true,
-                                    enlargeCenterPage: true,
-                                    enlargeFactor: 1.0,
-                                    enableInfiniteScroll: true,
-                                    scrollDirection: Axis.horizontal,
-                                    autoPlay: true,
-                                    autoPlayAnimationDuration:
-                                        Duration(milliseconds: 1000),
-                                    autoPlayInterval:
-                                        Duration(milliseconds: (1000 + 1000)),
-                                    autoPlayCurve: Curves.linear,
-                                    pauseAutoPlayInFiniteScroll: true,
-                                    onPageChanged: (index, _) =>
-                                        _model.carouselCurrentIndex = index,
+                                        ],
+                                      );
+                                    },
+                                    carouselController:
+                                        _model.carouselController ??=
+                                            CarouselController(),
+                                    options: CarouselOptions(
+                                      initialPage:
+                                          min(1, sliderSlideList.length - 1),
+                                      viewportFraction: 1.0,
+                                      disableCenter: true,
+                                      enlargeCenterPage: true,
+                                      enlargeFactor: 1.0,
+                                      enableInfiniteScroll: true,
+                                      scrollDirection: Axis.horizontal,
+                                      autoPlay: true,
+                                      autoPlayAnimationDuration:
+                                          Duration(milliseconds: 1000),
+                                      autoPlayInterval:
+                                          Duration(milliseconds: (1000 + 1000)),
+                                      autoPlayCurve: Curves.linear,
+                                      pauseAutoPlayInFiniteScroll: true,
+                                      onPageChanged: (index, _) =>
+                                          _model.carouselCurrentIndex = index,
+                                    ),
                                   ),
-                                ),
-                              );
-                            },
+                                );
+                              },
+                            ),
                           ),
-                        ),
                       ],
                     ),
                   ),

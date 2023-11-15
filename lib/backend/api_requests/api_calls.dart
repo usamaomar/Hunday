@@ -390,6 +390,35 @@ class OfferApiCall {
       );
 }
 
+class OfferDetailsApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? id = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'OfferDetailsApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/offer/${id}',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic offerJsonModel(dynamic response) => getJsonField(
+        response,
+        r'''$.offer''',
+      );
+}
+
 class SettingApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',

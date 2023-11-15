@@ -1,8 +1,11 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/custom_code/actions/index.dart' as actions;
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -11,16 +14,18 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'offers_details_page_model.dart';
 export 'offers_details_page_model.dart';
 
 class OffersDetailsPageWidget extends StatefulWidget {
   const OffersDetailsPageWidget({
     Key? key,
-    required this.itemIndex,
+    required this.id,
   }) : super(key: key);
 
-  final int? itemIndex;
+  final String? id;
 
   @override
   _OffersDetailsPageWidgetState createState() =>
@@ -52,6 +57,21 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => OffersDetailsPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultn4l = await OfferDetailsApiCall.call(
+        token: FFAppState().userModel.token,
+        id: widget.id,
+      );
+      if ((_model.apiResultn4l?.succeeded ?? true)) {
+        setState(() {
+          _model.localJson = OfferDetailsApiCall.offerJsonModel(
+            (_model.apiResultn4l?.jsonBody ?? ''),
+          );
+        });
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -126,6 +146,10 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                     topLeft: Radius.circular(20.0),
                                     topRight: Radius.circular(20.0),
                                   ),
+                                  border: Border.all(
+                                    color: FlutterFlowTheme.of(context).white,
+                                    width: 1.0,
+                                  ),
                                 ),
                               ),
                             ),
@@ -158,8 +182,7 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                                 BorderRadius.circular(8.0),
                                             child: Image.network(
                                               getJsonField(
-                                                FFAppState().listOfPublicOffers[
-                                                    widget.itemIndex!],
+                                                _model.localJson,
                                                 r'''$.full_image_node''',
                                               ),
                                               width: 300.0,
@@ -185,6 +208,10 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                               decoration: BoxDecoration(
                                 color: FlutterFlowTheme.of(context).white,
                                 borderRadius: BorderRadius.circular(0.0),
+                                border: Border.all(
+                                  color: FlutterFlowTheme.of(context).white,
+                                  width: 1.0,
+                                ),
                               ),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
@@ -220,12 +247,21 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                                             .fromSTEB(0.0, 15.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      getJsonField(
-                                                        FFAppState()
-                                                                .listOfPublicOffers[
-                                                            widget.itemIndex!],
-                                                        r'''$.offer_title''',
-                                                      ).toString(),
+                                                      functions
+                                                          .getNameByLanguge(
+                                                              getJsonField(
+                                                                _model
+                                                                    .localJson,
+                                                                r'''$.name_en''',
+                                                              ).toString(),
+                                                              getJsonField(
+                                                                _model
+                                                                    .localJson,
+                                                                r'''$.name_ar''',
+                                                              ).toString(),
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode),
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -247,12 +283,21 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                                             .fromSTEB(0.0, 15.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      getJsonField(
-                                                        FFAppState()
-                                                                .listOfPublicOffers[
-                                                            widget.itemIndex!],
-                                                        r'''$.description''',
-                                                      ).toString(),
+                                                      functions
+                                                          .getNameByLanguge(
+                                                              getJsonField(
+                                                                _model
+                                                                    .localJson,
+                                                                r'''$.description_en''',
+                                                              ).toString(),
+                                                              getJsonField(
+                                                                _model
+                                                                    .localJson,
+                                                                r'''$.description_ar''',
+                                                              ).toString(),
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .languageCode),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -303,145 +348,223 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                                     MainAxisAlignment
                                                         .spaceAround,
                                                 children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      color: Color(0xFF092853),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      15.0,
-                                                                      10.0,
-                                                                      0.0,
-                                                                      10.0),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        0.0),
-                                                            child: SvgPicture
-                                                                .asset(
-                                                              'assets/images/Group_72215.svg',
-                                                              width: 20.0,
-                                                              height: 20.0,
-                                                              fit: BoxFit.cover,
-                                                            ),
-                                                          ),
+                                                  Builder(
+                                                    builder: (context) =>
+                                                        InkWell(
+                                                      splashColor:
+                                                          Colors.transparent,
+                                                      focusColor:
+                                                          Colors.transparent,
+                                                      hoverColor:
+                                                          Colors.transparent,
+                                                      highlightColor:
+                                                          Colors.transparent,
+                                                      onTap: () async {
+                                                        await Share.share(
+                                                          '${getJsonField(
+                                                            _model.localJson,
+                                                            r'''$.full_image''',
+                                                          ).toString()}${getJsonField(
+                                                            _model.localJson,
+                                                            r'''$.full_name''',
+                                                          ).toString()}',
+                                                          sharePositionOrigin:
+                                                              getWidgetBoundingBox(
+                                                                  context),
+                                                        );
+                                                      },
+                                                      child: Container(
+                                                        decoration:
+                                                            BoxDecoration(
+                                                          color:
+                                                              Color(0xFF092853),
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      5.0),
                                                         ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      20.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'g6x2pbik' /* Share */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Heebo Regular',
-                                                                  color: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .white,
-                                                                  useGoogleFonts:
-                                                                      false,
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          15.0,
+                                                                          10.0,
+                                                                          0.0,
+                                                                          10.0),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            0.0),
+                                                                child:
+                                                                    SvgPicture
+                                                                        .asset(
+                                                                  'assets/images/Group_72215.svg',
+                                                                  width: 20.0,
+                                                                  height: 20.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
                                                                 ),
-                                                          ),
+                                                              ),
+                                                            ),
+                                                            Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          20.0,
+                                                                          0.0),
+                                                              child: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getText(
+                                                                  'g6x2pbik' /* Share */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Heebo Regular',
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .white,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
                                                   ),
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      color: Color(0xFFC1D6EF),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              5.0),
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      15.0,
-                                                                      10.0,
-                                                                      0.0,
-                                                                      10.0),
-                                                          child: ClipRRect(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      await launchUrl(Uri(
+                                                        scheme: 'tel',
+                                                        path: functions
+                                                            .getSettingByKey(
+                                                                'Phone_Number',
+                                                                FFAppState()
+                                                                    .socialMediaJsonObject
+                                                                    .toList())
+                                                            .toString(),
+                                                      ));
+                                                    },
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0xFFC1D6EF),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0),
+                                                            child: ClipRRect(
+                                                              borderRadius:
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          0.0),
+                                                              child: SvgPicture
+                                                                  .asset(
+                                                                'assets/images/Group_72282.svg',
+                                                                width: 20.0,
+                                                                height: 20.0,
+                                                                fit: BoxFit
+                                                                    .cover,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        20.0,
                                                                         0.0),
-                                                            child: SvgPicture
-                                                                .asset(
-                                                              'assets/images/Group_72282.svg',
-                                                              width: 20.0,
-                                                              height: 20.0,
-                                                              fit: BoxFit.cover,
+                                                            child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'guoi6rgz' /* Call Now */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'HeeboBold',
+                                                                    color: Color(
+                                                                        0xFF092853),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    useGoogleFonts:
+                                                                        false,
+                                                                  ),
                                                             ),
                                                           ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsetsDirectional
-                                                                  .fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      20.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              'guoi6rgz' /* Share */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'HeeboBold',
-                                                                  color: Color(
-                                                                      0xFF092853),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                          ),
-                                                        ),
-                                                      ],
+                                                        ],
+                                                      ),
                                                     ),
                                                   ),
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: SvgPicture.asset(
-                                                      'assets/images/Group_72890.svg',
-                                                      width: 40.0,
-                                                      height: 40.0,
-                                                      fit: BoxFit.cover,
+                                                  InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      await actions
+                                                          .navigateToLinkString(
+                                                        functions
+                                                            .getSettingByKey(
+                                                                'whatsapp',
+                                                                FFAppState()
+                                                                    .socialMediaJsonObject
+                                                                    .toList())
+                                                            .toString(),
+                                                      );
+                                                    },
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      child: SvgPicture.asset(
+                                                        'assets/images/Group_72890.svg',
+                                                        width: 40.0,
+                                                        height: 40.0,
+                                                        fit: BoxFit.cover,
+                                                      ),
                                                     ),
                                                   ),
                                                 ],

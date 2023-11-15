@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'flutter_flow/request_manager.dart';
 import '/backend/schema/structs/index.dart';
 import 'backend/api_requests/api_manager.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -422,21 +421,6 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList(
         'ff_sliderList', _sliderList.map((x) => jsonEncode(x)).toList());
   }
-
-  final _localsManager = FutureRequestManager<ApiCallResponse>();
-  Future<ApiCallResponse> locals({
-    String? uniqueQueryKey,
-    bool? overrideCache,
-    required Future<ApiCallResponse> Function() requestFn,
-  }) =>
-      _localsManager.performRequest(
-        uniqueQueryKey: uniqueQueryKey,
-        overrideCache: overrideCache,
-        requestFn: requestFn,
-      );
-  void clearLocalsCache() => _localsManager.clear();
-  void clearLocalsCacheKey(String? uniqueKey) =>
-      _localsManager.clearRequest(uniqueKey);
 }
 
 LatLng? _latLngFromString(String? val) {
