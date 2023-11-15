@@ -39,272 +39,274 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => SplashPageWidget(),
+      errorBuilder: (context, state) => NavBarPage(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => SplashPageWidget(),
-        ),
-        FFRoute(
-          name: 'loginScreen',
-          path: '/loginScreen',
-          builder: (context, params) => LoginScreenWidget(),
-        ),
-        FFRoute(
-          name: 'registraationPage',
-          path: '/registraationPage',
-          builder: (context, params) => RegistraationPageWidget(),
-        ),
-        FFRoute(
-          name: 'HomeScreen',
-          path: '/homeScreen',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'HomeScreen')
-              : NavBarPage(
-                  initialPage: 'HomeScreen',
-                  page: HomeScreenWidget(),
-                ),
-        ),
-        FFRoute(
-          name: 'ShopPage',
-          path: '/shopPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: ShopPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'splashPage',
-          path: '/splashPage',
-          builder: (context, params) => SplashPageWidget(),
-        ),
-        FFRoute(
-          name: 'CarPage',
-          path: '/carPage',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'CarPage')
-              : NavBarPage(
-                  initialPage: 'CarPage',
-                  page: CarPageWidget(),
-                ),
-        ),
-        FFRoute(
-          name: 'AboutAppPage',
-          path: '/aboutAppPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: AboutAppPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'CarModelPage',
-          path: '/carModelPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: CarModelPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'MyProfilePage',
-          path: '/myProfilePage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: MyProfilePageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'PersonalInformationPage',
-          path: '/personalInformationPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: PersonalInformationPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'EditProfilePage',
-          path: '/editProfilePage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: EditProfilePageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'MyOrderPage',
-          path: '/myOrderPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: MyOrderPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'NewsPage',
-          path: '/newsPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: NewsPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'NewsDetailsPage',
-          path: '/newsDetailsPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: NewsDetailsPageWidget(
-              itemIndex: params.getParam('itemIndex', ParamType.int),
-              itemId: params.getParam('itemId', ParamType.String),
+          builder: (context, _) => NavBarPage(),
+          routes: [
+            FFRoute(
+              name: 'loginScreen',
+              path: 'loginScreen',
+              builder: (context, params) => LoginScreenWidget(),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'EditPasswordPage',
-          path: '/editPasswordPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: EditPasswordPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'SettingsPage',
-          path: '/settingsPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: SettingsPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'MaintenancePage',
-          path: '/maintenancePage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: MaintenancePageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'RegularPage',
-          path: '/regularPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: RegularPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'RepairPage',
-          path: '/repairPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: RepairPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'ShopDetailsPage',
-          path: '/shopDetailsPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: ShopDetailsPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'ItemDetailsPage',
-          path: '/itemDetailsPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: ItemDetailsPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'LocationPage',
-          path: '/locationPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: LocationPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'OffersPage',
-          path: '/offersPage',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: OffersPageWidget(),
-          ),
-        ),
-        FFRoute(
-          name: 'OffersDetailsPage',
-          path: '/offersDetailsPage',
-          builder: (context, params) => OffersDetailsPageWidget(
-            id: params.getParam('id', ParamType.String),
-          ),
-        ),
-        FFRoute(
-          name: 'CarModelDetails',
-          path: '/carModelDetails',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: CarModelDetailsWidget(
-              carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+            FFRoute(
+              name: 'registraationPage',
+              path: 'registraationPage',
+              builder: (context, params) => RegistraationPageWidget(),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'CarModelDetailsMore',
-          path: '/carModelDetailsMore',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: CarModelDetailsMoreWidget(
-              carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+            FFRoute(
+              name: 'HomeScreen',
+              path: 'homeScreen',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'HomeScreen')
+                  : NavBarPage(
+                      initialPage: 'HomeScreen',
+                      page: HomeScreenWidget(),
+                    ),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'CarModelDetailsMoreWithSlieder',
-          path: '/carModelDetailsMoreWithSlieder',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: CarModelDetailsMoreWithSliederWidget(
-              carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+            FFRoute(
+              name: 'ShopPage',
+              path: 'shopPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: ShopPageWidget(),
+              ),
             ),
-          ),
-        ),
-        FFRoute(
-          name: 'ChatPage',
-          path: '/chatPage',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'ChatPage')
-              : NavBarPage(
-                  initialPage: 'ChatPage',
-                  page: ChatPageWidget(),
+            FFRoute(
+              name: 'splashPage',
+              path: 'splashPage',
+              builder: (context, params) => SplashPageWidget(),
+            ),
+            FFRoute(
+              name: 'CarPage',
+              path: 'carPage',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'CarPage')
+                  : NavBarPage(
+                      initialPage: 'CarPage',
+                      page: CarPageWidget(),
+                    ),
+            ),
+            FFRoute(
+              name: 'AboutAppPage',
+              path: 'aboutAppPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: AboutAppPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'CarModelPage',
+              path: 'carModelPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: CarModelPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'MyProfilePage',
+              path: 'myProfilePage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: MyProfilePageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'PersonalInformationPage',
+              path: 'personalInformationPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: PersonalInformationPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'EditProfilePage',
+              path: 'editProfilePage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: EditProfilePageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'MyOrderPage',
+              path: 'myOrderPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: MyOrderPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'NewsPage',
+              path: 'newsPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: NewsPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'NewsDetailsPage',
+              path: 'newsDetailsPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: NewsDetailsPageWidget(
+                  itemIndex: params.getParam('itemIndex', ParamType.int),
+                  itemId: params.getParam('itemId', ParamType.String),
                 ),
-        ),
-        FFRoute(
-          name: 'CartPage',
-          path: '/cartPage',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'CartPage')
-              : NavBarPage(
-                  initialPage: 'CartPage',
-                  page: CartPageWidget(),
-                ),
-        ),
-        FFRoute(
-          name: 'MorePage',
-          path: '/morePage',
-          builder: (context, params) => params.isEmpty
-              ? NavBarPage(initialPage: 'MorePage')
-              : NavBarPage(
-                  initialPage: 'MorePage',
-                  page: MorePageWidget(),
-                ),
-        ),
-        FFRoute(
-          name: 'CarModelDetailsPdfViewr',
-          path: '/carModelDetailsPdfViewr',
-          builder: (context, params) => NavBarPage(
-            initialPage: '',
-            page: CarModelDetailsPdfViewrWidget(
-              pdfLink: params.getParam('pdfLink', ParamType.String),
+              ),
             ),
-          ),
-        )
+            FFRoute(
+              name: 'EditPasswordPage',
+              path: 'editPasswordPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: EditPasswordPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'SettingsPage',
+              path: 'settingsPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: SettingsPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'MaintenancePage',
+              path: 'maintenancePage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: MaintenancePageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'RegularPage',
+              path: 'regularPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: RegularPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'RepairPage',
+              path: 'repairPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: RepairPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'ShopDetailsPage',
+              path: 'shopDetailsPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: ShopDetailsPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'ItemDetailsPage',
+              path: 'itemDetailsPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: ItemDetailsPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'LocationPage',
+              path: 'locationPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: LocationPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'OffersPage',
+              path: 'offersPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: OffersPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'OffersDetailsPage',
+              path: 'offersDetailsPage',
+              builder: (context, params) => OffersDetailsPageWidget(
+                id: params.getParam('id', ParamType.String),
+              ),
+            ),
+            FFRoute(
+              name: 'CarModelDetails',
+              path: 'carModelDetails',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: CarModelDetailsWidget(
+                  carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'CarModelDetailsMore',
+              path: 'carModelDetailsMore',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: CarModelDetailsMoreWidget(
+                  carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'CarModelDetailsMoreWithSlieder',
+              path: 'carModelDetailsMoreWithSlieder',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: CarModelDetailsMoreWithSliederWidget(
+                  carJsonItem: params.getParam('carJsonItem', ParamType.JSON),
+                ),
+              ),
+            ),
+            FFRoute(
+              name: 'ChatPage',
+              path: 'chatPage',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'ChatPage')
+                  : NavBarPage(
+                      initialPage: 'ChatPage',
+                      page: ChatPageWidget(),
+                    ),
+            ),
+            FFRoute(
+              name: 'CartPage',
+              path: 'cartPage',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'CartPage')
+                  : NavBarPage(
+                      initialPage: 'CartPage',
+                      page: CartPageWidget(),
+                    ),
+            ),
+            FFRoute(
+              name: 'MorePage',
+              path: 'morePage',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'MorePage')
+                  : NavBarPage(
+                      initialPage: 'MorePage',
+                      page: MorePageWidget(),
+                    ),
+            ),
+            FFRoute(
+              name: 'CarModelDetailsPdfViewr',
+              path: 'carModelDetailsPdfViewr',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: CarModelDetailsPdfViewrWidget(
+                  pdfLink: params.getParam('pdfLink', ParamType.String),
+                ),
+              ),
+            )
+          ].map((r) => r.toRoute(appStateNotifier)).toList(),
+        ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
     );
 

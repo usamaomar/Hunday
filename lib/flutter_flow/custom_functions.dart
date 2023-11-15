@@ -183,3 +183,11 @@ dynamic getSettingByKey(
   }
   return null; // Return null if not found
 }
+
+dynamic nullConverter(dynamic param) {
+  if (param != null) {
+    return param;
+  } else {
+    return "-";
+  }
+}

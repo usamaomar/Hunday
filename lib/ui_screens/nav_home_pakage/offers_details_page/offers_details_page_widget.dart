@@ -123,7 +123,7 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                   alignment: AlignmentDirectional(0.00, 1.00),
                   child: Container(
                     constraints: BoxConstraints(
-                      maxHeight: 650.0,
+                      maxHeight: 500.0,
                     ),
                     decoration: BoxDecoration(),
                     child: Column(
@@ -181,10 +181,11 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                             borderRadius:
                                                 BorderRadius.circular(8.0),
                                             child: Image.network(
-                                              getJsonField(
+                                              functions
+                                                  .nullConverter(getJsonField(
                                                 _model.localJson,
                                                 r'''$.full_image_node''',
-                                              ),
+                                              ))!,
                                               width: 300.0,
                                               height: 200.0,
                                               fit: BoxFit.cover,
@@ -361,13 +362,7 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         await Share.share(
-                                                          '${getJsonField(
-                                                            _model.localJson,
-                                                            r'''$.full_image''',
-                                                          ).toString()}${getJsonField(
-                                                            _model.localJson,
-                                                            r'''$.full_name''',
-                                                          ).toString()}',
+                                                          'hyundai://hyundai.com${GoRouter.of(context).location}',
                                                           sharePositionOrigin:
                                                               getWidgetBoundingBox(
                                                                   context),
