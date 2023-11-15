@@ -1,9 +1,15 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,6 +33,19 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => EditProfilePageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.textController1?.text = FFAppState().userModel.name;
+      });
+      setState(() {
+        _model.textController2?.text = FFAppState().userModel.email;
+      });
+      setState(() {
+        _model.textController3?.text = FFAppState().userModel.phone;
+      });
+    });
 
     _model.textController1 ??=
         TextEditingController(text: FFAppState().userModel.name);
@@ -479,32 +498,291 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FFButtonWidget(
-                                  onPressed: () {
-                                    print('Button pressed ...');
-                                  },
-                                  text: FFLocalizations.of(context).getText(
-                                    'xbberk0c' /* Save */,
-                                  ),
-                                  options: FFButtonOptions(
-                                    height: 40.0,
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        35.0, 0.0, 35.0, 0.0),
-                                    iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 0.0, 0.0),
-                                    color: Color(0xFF092853),
-                                    textStyle: FlutterFlowTheme.of(context)
-                                        .titleSmall
-                                        .override(
-                                          fontFamily: 'Poppins',
-                                          color: Colors.white,
-                                        ),
-                                    elevation: 3.0,
-                                    borderSide: BorderSide(
-                                      color: Colors.transparent,
-                                      width: 1.0,
+                                Builder(
+                                  builder: (context) => FFButtonWidget(
+                                    onPressed: () async {
+                                      var _shouldSetState = false;
+                                      if (_model.textController1.text != null &&
+                                          _model.textController1.text != '') {
+                                        if (_model.textController2.text !=
+                                                null &&
+                                            _model.textController2.text != '') {
+                                          if (functions.newCustomFunction(
+                                              _model.textController2.text)!) {
+                                            setState(() {
+                                              _model.localPhoneNumber =
+                                                  _model.textController3.text;
+                                            });
+                                            setState(() {
+                                              _model.localPhoneNumber =
+                                                  functions
+                                                      .checkNumberAndValidate(
+                                                          _model.textController3
+                                                              .text);
+                                            });
+                                            if (functions.checkNumberCount(
+                                                _model.localPhoneNumber)) {
+                                              _model.updateDataApi =
+                                                  await UpdateUserApiCall.call(
+                                                email:
+                                                    _model.textController2.text,
+                                                bod:
+                                                    FFAppState().userModel.date,
+                                                token: FFAppState()
+                                                    .userModel
+                                                    .token,
+                                                phone: FFAppState()
+                                                    .userModel
+                                                    .phone,
+                                                name:
+                                                    _model.textController1.text,
+                                                lang:
+                                                    FFLocalizations.of(context)
+                                                        .languageCode,
+                                              );
+                                              _shouldSetState = true;
+                                              if ((_model.updateDataApi
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                FFAppState().update(() {
+                                                  FFAppState()
+                                                      .updateUserModelStruct(
+                                                    (e) => e
+                                                      ..name = _model
+                                                          .textController1.text
+                                                      ..email = _model
+                                                          .textController2.text,
+                                                  );
+                                                });
+                                                if (_model.localPhoneNumber !=
+                                                    FFAppState()
+                                                        .userModel
+                                                        .phone) {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                          enText:
+                                                              'Data has been updated correctly',
+                                                          arText:
+                                                              'تم تحديث البيانات بشكل صحيح',
+                                                        ),
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .white,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
+                                                          Color(0xFFC1D6EF),
+                                                    ),
+                                                  );
+                                                  if (_shouldSetState)
+                                                    setState(() {});
+                                                  return;
+                                                }
+                                              } else {
+                                                await showAlignedDialog(
+                                                  context: context,
+                                                  isGlobal: true,
+                                                  avoidOverflow: false,
+                                                  targetAnchor:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  followerAnchor:
+                                                      AlignmentDirectional(
+                                                              0.0, 0.0)
+                                                          .resolve(
+                                                              Directionality.of(
+                                                                  context)),
+                                                  builder: (dialogContext) {
+                                                    return Material(
+                                                      color: Colors.transparent,
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child:
+                                                            Modal06BasicInformationWidget(
+                                                          body: (_model
+                                                                  .updateDataApi
+                                                                  ?.bodyText ??
+                                                              ''),
+                                                        ),
+                                                      ),
+                                                    );
+                                                  },
+                                                ).then(
+                                                    (value) => setState(() {}));
+
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
+                                              }
+                                            } else {
+                                              ScaffoldMessenger.of(context)
+                                                  .showSnackBar(
+                                                SnackBar(
+                                                  content: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                      enText:
+                                                          'You must enter valid phone number',
+                                                      arText:
+                                                          'يجب عليك إدخال بريد رقم هاتف صحيح',
+                                                    ),
+                                                    style: TextStyle(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .white,
+                                                    ),
+                                                  ),
+                                                  duration: Duration(
+                                                      milliseconds: 4000),
+                                                  backgroundColor:
+                                                      Color(0xFFC1D6EF),
+                                                ),
+                                              );
+                                              if (_shouldSetState)
+                                                setState(() {});
+                                              return;
+                                            }
+                                          } else {
+                                            ScaffoldMessenger.of(context)
+                                                .showSnackBar(
+                                              SnackBar(
+                                                content: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                    enText:
+                                                        'You must enter valid email',
+                                                    arText:
+                                                        'يجب عليك إدخال بريد إلكتروني صالح',
+                                                  ),
+                                                  style: TextStyle(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .white,
+                                                  ),
+                                                ),
+                                                duration: Duration(
+                                                    milliseconds: 4000),
+                                                backgroundColor:
+                                                    Color(0xFFC1D6EF),
+                                              ),
+                                            );
+                                            if (_shouldSetState)
+                                              setState(() {});
+                                            return;
+                                          }
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            SnackBar(
+                                              content: Text(
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                                  enText:
+                                                      'You must enter valid email',
+                                                  arText:
+                                                      'يجب عليك إدخال بريد إلكتروني صالح',
+                                                ),
+                                                style: TextStyle(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .white,
+                                                ),
+                                              ),
+                                              duration:
+                                                  Duration(milliseconds: 4000),
+                                              backgroundColor:
+                                                  Color(0xFFC1D6EF),
+                                            ),
+                                          );
+                                          if (_shouldSetState) setState(() {});
+                                          return;
+                                        }
+                                      } else {
+                                        ScaffoldMessenger.of(context)
+                                            .showSnackBar(
+                                          SnackBar(
+                                            content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText:
+                                                    'Name (at least begin with letter )',
+                                                arText:
+                                                    'الاسم (على الأقل يبدأ بحرف)',
+                                              ),
+                                              style: TextStyle(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .white,
+                                              ),
+                                            ),
+                                            duration:
+                                                Duration(milliseconds: 4000),
+                                            backgroundColor: Color(0xFFC1D6EF),
+                                          ),
+                                        );
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+
+                                      if (_shouldSetState) setState(() {});
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      'xbberk0c' /* Save */,
                                     ),
-                                    borderRadius: BorderRadius.circular(5.0),
+                                    options: FFButtonOptions(
+                                      height: 40.0,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          35.0, 0.0, 35.0, 0.0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0.0, 0.0, 0.0, 0.0),
+                                      color: (_model.textController1.text !=
+                                                      null &&
+                                                  _model.textController1.text !=
+                                                      '') &&
+                                              (_model.textController2.text !=
+                                                      null &&
+                                                  _model.textController2.text !=
+                                                      '') &&
+                                              (_model.textController3.text !=
+                                                      null &&
+                                                  _model.textController3.text !=
+                                                      '')
+                                          ? Color(0xFF092853)
+                                          : Color(0xFFF3F3F3),
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Poppins',
+                                            color: Colors.white,
+                                          ),
+                                      elevation: 3.0,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
                                   ),
                                 ),
                               ],

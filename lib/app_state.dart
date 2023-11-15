@@ -32,6 +32,17 @@ class FFAppState extends ChangeNotifier {
         }
       }
     });
+    _safeInit(() {
+      _sliderList = prefs.getStringList('ff_sliderList')?.map((x) {
+            try {
+              return jsonDecode(x);
+            } catch (e) {
+              print("Can't decode persisted json. Error: $e.");
+              return {};
+            }
+          }).toList() ??
+          _sliderList;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -306,64 +317,6 @@ class FFAppState extends ChangeNotifier {
     _listOfCatalogOpendBool.insert(_index, _value);
   }
 
-  List<dynamic> _slidersImageList = [];
-  List<dynamic> get slidersImageList => _slidersImageList;
-  set slidersImageList(List<dynamic> _value) {
-    _slidersImageList = _value;
-  }
-
-  void addToSlidersImageList(dynamic _value) {
-    _slidersImageList.add(_value);
-  }
-
-  void removeFromSlidersImageList(dynamic _value) {
-    _slidersImageList.remove(_value);
-  }
-
-  void removeAtIndexFromSlidersImageList(int _index) {
-    _slidersImageList.removeAt(_index);
-  }
-
-  void updateSlidersImageListAtIndex(
-    int _index,
-    dynamic Function(dynamic) updateFn,
-  ) {
-    _slidersImageList[_index] = updateFn(_slidersImageList[_index]);
-  }
-
-  void insertAtIndexInSlidersImageList(int _index, dynamic _value) {
-    _slidersImageList.insert(_index, _value);
-  }
-
-  List<dynamic> _slidersTitlesList = [];
-  List<dynamic> get slidersTitlesList => _slidersTitlesList;
-  set slidersTitlesList(List<dynamic> _value) {
-    _slidersTitlesList = _value;
-  }
-
-  void addToSlidersTitlesList(dynamic _value) {
-    _slidersTitlesList.add(_value);
-  }
-
-  void removeFromSlidersTitlesList(dynamic _value) {
-    _slidersTitlesList.remove(_value);
-  }
-
-  void removeAtIndexFromSlidersTitlesList(int _index) {
-    _slidersTitlesList.removeAt(_index);
-  }
-
-  void updateSlidersTitlesListAtIndex(
-    int _index,
-    dynamic Function(dynamic) updateFn,
-  ) {
-    _slidersTitlesList[_index] = updateFn(_slidersTitlesList[_index]);
-  }
-
-  void insertAtIndexInSlidersTitlesList(int _index, dynamic _value) {
-    _slidersTitlesList.insert(_index, _value);
-  }
-
   String _password = '';
   String get password => _password;
   set password(String _value) {
@@ -427,6 +380,47 @@ class FFAppState extends ChangeNotifier {
 
   void insertAtIndexInSocialMediaJsonObject(int _index, dynamic _value) {
     _socialMediaJsonObject.insert(_index, _value);
+  }
+
+  List<dynamic> _sliderList = [];
+  List<dynamic> get sliderList => _sliderList;
+  set sliderList(List<dynamic> _value) {
+    _sliderList = _value;
+    prefs.setStringList(
+        'ff_sliderList', _value.map((x) => jsonEncode(x)).toList());
+  }
+
+  void addToSliderList(dynamic _value) {
+    _sliderList.add(_value);
+    prefs.setStringList(
+        'ff_sliderList', _sliderList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeFromSliderList(dynamic _value) {
+    _sliderList.remove(_value);
+    prefs.setStringList(
+        'ff_sliderList', _sliderList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void removeAtIndexFromSliderList(int _index) {
+    _sliderList.removeAt(_index);
+    prefs.setStringList(
+        'ff_sliderList', _sliderList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void updateSliderListAtIndex(
+    int _index,
+    dynamic Function(dynamic) updateFn,
+  ) {
+    _sliderList[_index] = updateFn(_sliderList[_index]);
+    prefs.setStringList(
+        'ff_sliderList', _sliderList.map((x) => jsonEncode(x)).toList());
+  }
+
+  void insertAtIndexInSliderList(int _index, dynamic _value) {
+    _sliderList.insert(_index, _value);
+    prefs.setStringList(
+        'ff_sliderList', _sliderList.map((x) => jsonEncode(x)).toList());
   }
 
   final _localsManager = FutureRequestManager<ApiCallResponse>();

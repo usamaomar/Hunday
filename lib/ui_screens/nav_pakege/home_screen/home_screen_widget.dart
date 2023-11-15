@@ -93,6 +93,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
       _model.locationsApiResponce = await LocationApiCall.call(
         token: FFAppState().userModel.token,
       );
+      setState(() {
+        FFAppState().sliderList = [];
+      });
       if ((_model.locationsApiResponce?.succeeded ?? true)) {
         setState(() {
           FFAppState().sharedLocationsJsonList =
@@ -108,22 +111,23 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               .toList()
               .cast<bool>();
         });
+        setState(() {
+          _model.listOfJsons = FFAppState().sliderList.toList().cast<dynamic>();
+        });
       }
       _model.apiResultSlider = await SliderApiCall.call(
         token: FFAppState().userModel.token,
       );
       if ((_model.apiResultSlider?.succeeded ?? true)) {
         setState(() {
-          FFAppState().slidersImageList = SliderApiCall.listOfStringUrls(
+          FFAppState().sliderList = SliderApiCall.listSliderItems(
             (_model.apiResultSlider?.jsonBody ?? ''),
           )!
               .toList()
               .cast<dynamic>();
-          FFAppState().slidersTitlesList = SliderApiCall.listOfTitles(
-            (_model.apiResultSlider?.jsonBody ?? ''),
-          )!
-              .toList()
-              .cast<dynamic>();
+        });
+        setState(() {
+          _model.listOfJsons = FFAppState().sliderList.toList().cast<dynamic>();
         });
       }
     });
@@ -200,132 +204,118 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        if (FFAppState().slidersImageList.length > 0)
-                          Expanded(
-                            child: Builder(
-                              builder: (context) {
-                                final listOfPaths =
-                                    FFAppState().slidersImageList.toList();
-                                return Container(
-                                  width: double.infinity,
-                                  child: CarouselSlider.builder(
-                                    itemCount: listOfPaths.length,
-                                    itemBuilder:
-                                        (context, listOfPathsIndex, _) {
-                                      final listOfPathsItem =
-                                          listOfPaths[listOfPathsIndex];
-                                      return Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 0.0, 30.0, 0.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(5.0),
-                                              child: CachedNetworkImage(
-                                                fadeInDuration:
-                                                    Duration(milliseconds: 200),
-                                                fadeOutDuration:
-                                                    Duration(milliseconds: 200),
-                                                imageUrl: getJsonField(
-                                                  listOfPathsItem,
-                                                  r'''$''',
-                                                ),
-                                                width: double.infinity,
-                                                height: 150.0,
-                                                fit: BoxFit.cover,
+                        Expanded(
+                          child: Builder(
+                            builder: (context) {
+                              final sliderSlideList = FFAppState()
+                                  .sliderList
+                                  .map((e) => e)
+                                  .toList();
+                              return Container(
+                                width: double.infinity,
+                                child: CarouselSlider.builder(
+                                  itemCount: sliderSlideList.length,
+                                  itemBuilder:
+                                      (context, sliderSlideListIndex, _) {
+                                    final sliderSlideListItem =
+                                        sliderSlideList[sliderSlideListIndex];
+                                    return Column(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 0.0, 30.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            child: CachedNetworkImage(
+                                              fadeInDuration:
+                                                  Duration(milliseconds: 200),
+                                              fadeOutDuration:
+                                                  Duration(milliseconds: 200),
+                                              imageUrl: getJsonField(
+                                                sliderSlideListItem,
+                                                r'''$.full_image''',
                                               ),
+                                              width: double.infinity,
+                                              height: 150.0,
+                                              fit: BoxFit.cover,
                                             ),
                                           ),
-                                          Expanded(
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(30.0, 10.0,
-                                                          30.0, 10.0),
-                                                  child: Text(
-                                                    functions.getNameByLanguge(
-                                                        (SliderApiCall
-                                                                .sloganenItems(
-                                                          (_model.apiResultSlider
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        ) as List)
-                                                            .map<String>((s) =>
-                                                                s.toString())
-                                                            .toList()[
-                                                                listOfPathsIndex]
-                                                            .toString(),
-                                                        (SliderApiCall
-                                                                .sloganarItems(
-                                                          (_model.apiResultSlider
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                        ) as List)
-                                                            .map<String>((s) =>
-                                                                s.toString())
-                                                            .toList()[
-                                                                listOfPathsIndex]
-                                                            .toString(),
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .languageCode),
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 2,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'HeeboBold',
-                                                          color:
-                                                              Color(0xFF212427),
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                                  ),
+                                        ),
+                                        Expanded(
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: [
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        30.0, 10.0, 30.0, 10.0),
+                                                child: Text(
+                                                  functions.getNameByLanguge(
+                                                      getJsonField(
+                                                        sliderSlideListItem,
+                                                        r'''$.slogan_en''',
+                                                      ).toString(),
+                                                      getJsonField(
+                                                        sliderSlideListItem,
+                                                        r'''$.slogan_en''',
+                                                      ).toString(),
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .languageCode),
+                                                  textAlign: TextAlign.center,
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'HeeboBold',
+                                                        color:
+                                                            Color(0xFF212427),
+                                                        fontSize: 16.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: false,
+                                                      ),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
-                                        ],
-                                      );
-                                    },
-                                    carouselController:
-                                        _model.carouselController ??=
-                                            CarouselController(),
-                                    options: CarouselOptions(
-                                      initialPage:
-                                          min(1, listOfPaths.length - 1),
-                                      viewportFraction: 1.0,
-                                      disableCenter: true,
-                                      enlargeCenterPage: true,
-                                      enlargeFactor: 1.0,
-                                      enableInfiniteScroll: true,
-                                      scrollDirection: Axis.horizontal,
-                                      autoPlay: true,
-                                      autoPlayAnimationDuration:
-                                          Duration(milliseconds: 1000),
-                                      autoPlayInterval:
-                                          Duration(milliseconds: (1000 + 1000)),
-                                      autoPlayCurve: Curves.linear,
-                                      pauseAutoPlayInFiniteScroll: true,
-                                      onPageChanged: (index, _) =>
-                                          _model.carouselCurrentIndex = index,
-                                    ),
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                  carouselController:
+                                      _model.carouselController ??=
+                                          CarouselController(),
+                                  options: CarouselOptions(
+                                    initialPage:
+                                        min(1, sliderSlideList.length - 1),
+                                    viewportFraction: 1.0,
+                                    disableCenter: true,
+                                    enlargeCenterPage: true,
+                                    enlargeFactor: 1.0,
+                                    enableInfiniteScroll: true,
+                                    scrollDirection: Axis.horizontal,
+                                    autoPlay: true,
+                                    autoPlayAnimationDuration:
+                                        Duration(milliseconds: 1000),
+                                    autoPlayInterval:
+                                        Duration(milliseconds: (1000 + 1000)),
+                                    autoPlayCurve: Curves.linear,
+                                    pauseAutoPlayInFiniteScroll: true,
+                                    onPageChanged: (index, _) =>
+                                        _model.carouselCurrentIndex = index,
                                   ),
-                                );
-                              },
-                            ),
+                                ),
+                              );
+                            },
                           ),
+                        ),
                       ],
                     ),
                   ),
@@ -545,8 +535,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         kTransitionInfoKey: TransitionInfo(
                                           hasTransition: true,
                                           transitionType:
-                                              PageTransitionType.fade,
-                                          duration: Duration(milliseconds: 0),
+                                              PageTransitionType.bottomToTop,
+                                          duration: Duration(milliseconds: 500),
                                         ),
                                       },
                                     );

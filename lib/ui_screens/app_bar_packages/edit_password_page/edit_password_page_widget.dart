@@ -512,9 +512,6 @@ class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {
                                       color: Colors.white,
                                     ),
                                 elevation: 3.0,
-                                borderSide: BorderSide(
-                                  width: 1.0,
-                                ),
                                 borderRadius: BorderRadius.circular(5.0),
                               ),
                             ),

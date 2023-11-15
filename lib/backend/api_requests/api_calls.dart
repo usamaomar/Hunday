@@ -220,13 +220,16 @@ class UpdateUserApiCall {
     String? token = '',
     String? phone = '',
     String? lang = '',
+    String? name = '',
   }) async {
     final ffApiRequestBody = '''
 {
   "email": "${email}",
   "bod": "${bod}",
   "phone": "${phone}",
-  "lang": "${lang}"
+  "lang": "${lang}",
+  "name_en": "${name}",
+  "name_ar": "${name}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'UpdateUserApi',

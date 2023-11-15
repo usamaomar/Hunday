@@ -41,6 +41,24 @@ String checkNumberAndValidate(String phoneNumber) {
   return phoneNumber;
 }
 
+bool checkNumberAndValidateIf(String phoneNumber) {
+  phoneNumber = phoneNumber.replaceAll(RegExp(r'\D'), '');
+
+  // Check if the number starts with "00962" or "+962"
+  if (phoneNumber.startsWith("00962")) {
+    return false;
+  } else if (phoneNumber.startsWith("+962")) {
+    return false;
+  }
+
+  // If the number doesn't start with "0", add it
+  if (!phoneNumber.startsWith("0")) {
+    return false;
+  }
+
+  return false;
+}
+
 bool checkNumberCount(String phoneNumber) {
   phoneNumber = phoneNumber.replaceAll(RegExp(r'\D'), '');
 
@@ -160,7 +178,7 @@ dynamic getSettingByKey(
 ) {
   for (var setting in responseList) {
     if (setting['option_key'] == key) {
-      return setting;
+      return setting['option_value'];
     }
   }
   return null; // Return null if not found

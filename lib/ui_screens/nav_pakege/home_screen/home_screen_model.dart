@@ -20,6 +20,15 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
 
   bool isLoading = false;
 
+  List<dynamic> listOfJsons = [];
+  void addToListOfJsons(dynamic item) => listOfJsons.add(item);
+  void removeFromListOfJsons(dynamic item) => listOfJsons.remove(item);
+  void removeAtIndexFromListOfJsons(int index) => listOfJsons.removeAt(index);
+  void insertAtIndexInListOfJsons(int index, dynamic item) =>
+      listOfJsons.insert(index, item);
+  void updateListOfJsonsAtIndex(int index, Function(dynamic) updateFn) =>
+      listOfJsons[index] = updateFn(listOfJsons[index]);
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
