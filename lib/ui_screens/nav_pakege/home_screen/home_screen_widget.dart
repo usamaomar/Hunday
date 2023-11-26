@@ -71,10 +71,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           FFAppState().userModel =
               UserModelStruct.fromSerializableMap(jsonDecode('{}'));
         });
-        if (Navigator.of(context).canPop()) {
-          context.pop();
-        }
-        context.pushNamed(
+
+        context.goNamed(
           'splashPage',
           extra: <String, dynamic>{
             kTransitionInfoKey: TransitionInfo(

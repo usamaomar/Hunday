@@ -106,7 +106,6 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                     if (shouldUpdate) setState(() {});
                   },
                   onEnded: () async {
-                    context.safePop();
                     if (FFAppState().userModel.token != null &&
                         FFAppState().userModel.token != '') {
                       context.goNamed('HomeScreen');

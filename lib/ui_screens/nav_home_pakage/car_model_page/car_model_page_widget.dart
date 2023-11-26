@@ -236,6 +236,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                                           gridOfCarModelsItemItem,
                                                           r'''$.full_image''',
                                                         ),
+                                                        width: 85.0,
                                                         fit: BoxFit.contain,
                                                       ),
                                                     ),
