@@ -1398,11 +1398,11 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                   setState(() {
                                                     FFAppState()
                                                             .reservedUserModel =
-                                                        RegisterApiCall
-                                                            .userJsonModel(
+                                                        getJsonField(
                                                       (_model.apiResult7h5
                                                               ?.jsonBody ??
                                                           ''),
+                                                      r'''$.user''',
                                                     );
                                                   });
                                                   setState(() {

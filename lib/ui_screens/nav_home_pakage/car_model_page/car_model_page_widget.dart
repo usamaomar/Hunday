@@ -232,7 +232,10 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                                           BorderRadius.circular(
                                                               0.0),
                                                       child: Image.network(
-                                                        '',
+                                                        getJsonField(
+                                                          gridOfCarModelsItemItem,
+                                                          r'''$.full_image''',
+                                                        ),
                                                         fit: BoxFit.contain,
                                                       ),
                                                     ),

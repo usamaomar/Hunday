@@ -476,9 +476,12 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 setState(() {
                                                   FFAppState().userModel =
                                                       UserModelStruct.fromMap(
-                                                          (_model.loginApiRes
-                                                                  ?.jsonBody ??
-                                                              ''));
+                                                          getJsonField(
+                                                    (_model.loginApiRes
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.user''',
+                                                  ));
                                                 });
                                                 if (FFAppState()
                                                             .userModel

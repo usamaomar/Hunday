@@ -363,7 +363,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                             .email,
                                                         bod: FFAppState()
                                                             .userModel
-                                                            .date,
+                                                            .bod,
                                                         token: FFAppState()
                                                             .userModel
                                                             .token,

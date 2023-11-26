@@ -531,7 +531,7 @@ class CarModelsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'CarModelsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/carModel',
+      apiUrl: 'https://hyundai.completechaintech.com/api/carCategory',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -547,7 +547,7 @@ class CarModelsApiCall {
 
   static dynamic carModelList(dynamic response) => getJsonField(
         response,
-        r'''$.carModels.data''',
+        r'''$.carCategories.data''',
         true,
       );
 }
@@ -559,7 +559,8 @@ class GetCarsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetCarsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/carModel/${id}/cars',
+      apiUrl:
+          'https://hyundai.completechaintech.com/api/carCategory/${id}/cars',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',

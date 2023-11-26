@@ -388,8 +388,7 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                                       0.0),
                                                           child: Image.network(
                                                             getJsonField(
-                                                              widget
-                                                                  .carJsonItem,
+                                                              listOfLocalCarsItem,
                                                               r'''$.full_image''',
                                                             ),
                                                             width: 125.0,

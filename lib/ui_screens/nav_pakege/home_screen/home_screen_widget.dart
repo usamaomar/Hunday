@@ -48,7 +48,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 (_model.localTestAuth2?.jsonBody ?? ''),
                 r'''$.language''',
               ).toString().toString()
-              ..date = getJsonField(
+              ..bod = getJsonField(
                 (_model.localTestAuth2?.jsonBody ?? ''),
                 r'''$.date''',
               ).toString().toString()

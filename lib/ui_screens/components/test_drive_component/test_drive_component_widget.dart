@@ -60,6 +60,7 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
       child: Container(
         height: 400.0,
         decoration: BoxDecoration(
+          color: FlutterFlowTheme.of(context).white,
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: Stack(
@@ -114,10 +115,20 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                                     useGoogleFonts: false,
                                   ),
                             ),
-                            Icon(
-                              Icons.close_rounded,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 24.0,
+                            InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                Navigator.pop(context);
+                              },
+                              child: Icon(
+                                Icons.close_rounded,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 24.0,
+                              ),
                             ),
                           ],
                         ),
@@ -259,7 +270,7 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                                 decoration: InputDecoration(
                                   labelText:
                                       FFLocalizations.of(context).getText(
-                                    '2cld7qli' /* Mobile */,
+                                    '2cld7qli' /* Notes */,
                                   ),
                                   labelStyle: FlutterFlowTheme.of(context)
                                       .labelMedium
@@ -297,9 +308,9 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                           Theme(
                             data: ThemeData(
                               checkboxTheme: CheckboxThemeData(
-                                visualDensity: VisualDensity.compact,
+                                visualDensity: VisualDensity.standard,
                                 materialTapTargetSize:
-                                    MaterialTapTargetSize.shrinkWrap,
+                                    MaterialTapTargetSize.padded,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(4.0),
                                 ),
@@ -308,7 +319,7 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                                   FlutterFlowTheme.of(context).secondaryText,
                             ),
                             child: Checkbox(
-                              value: _model.checkboxValue ??= true,
+                              value: _model.checkboxValue ??= false,
                               onChanged: (newValue) async {
                                 setState(
                                     () => _model.checkboxValue = newValue!);
@@ -319,7 +330,7 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                           ),
                           Text(
                             FFLocalizations.of(context).getText(
-                              '1s87izjp' /* You will be contacted by our r... */,
+                              '1s87izjp' /* You will be contacted */,
                             ),
                             style: FlutterFlowTheme.of(context).bodyMedium,
                           ),
@@ -329,8 +340,8 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                         padding:
                             EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                         child: FFButtonWidget(
-                          onPressed: () {
-                            print('Button pressed ...');
+                          onPressed: () async {
+                            Navigator.pop(context);
                           },
                           text: FFLocalizations.of(context).getText(
                             '4nqcrahs' /* Send */,

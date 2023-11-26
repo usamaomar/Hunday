@@ -526,8 +526,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                   await UpdateUserApiCall.call(
                                                 email:
                                                     _model.textController2.text,
-                                                bod:
-                                                    FFAppState().userModel.date,
+                                                bod: FFAppState().userModel.bod,
                                                 token: FFAppState()
                                                     .userModel
                                                     .token,

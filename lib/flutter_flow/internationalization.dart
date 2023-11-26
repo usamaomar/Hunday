@@ -1282,12 +1282,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'متحرك',
     },
     '2cld7qli': {
-      'en': 'Mobile',
-      'ar': 'متحرك',
+      'en': 'Notes',
+      'ar': 'ملحوظات',
     },
     '1s87izjp': {
-      'en': 'You will be contacted by our representatives',
-      'ar': '',
+      'en': 'You will be contacted',
+      'ar': 'سيتم الاتصال بك',
     },
     '4nqcrahs': {
       'en': 'Send',

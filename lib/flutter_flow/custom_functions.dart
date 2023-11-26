@@ -191,3 +191,19 @@ dynamic nullConverter(dynamic param) {
     return "-";
   }
 }
+
+List<String> specifcationsFunction(
+  dynamic json,
+  String? lang,
+  String? attrs,
+) {
+  List<String> result = [];
+
+  for (var performance in json) {
+    if (lang != null && performance['${attrs}_$lang'] != null) {
+      result.add(performance['${attrs}_$lang']);
+    }
+  }
+
+  return result;
+}

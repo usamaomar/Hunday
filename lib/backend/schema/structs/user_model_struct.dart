@@ -14,7 +14,7 @@ class UserModelStruct extends BaseStruct {
     int? id,
     String? gender,
     String? countryCode,
-    String? date,
+    String? bod,
     String? language,
     String? profilePhotoUrl,
   })  : _name = name,
@@ -24,7 +24,7 @@ class UserModelStruct extends BaseStruct {
         _id = id,
         _gender = gender,
         _countryCode = countryCode,
-        _date = date,
+        _bod = bod,
         _language = language,
         _profilePhotoUrl = profilePhotoUrl;
 
@@ -71,11 +71,11 @@ class UserModelStruct extends BaseStruct {
   set countryCode(String? val) => _countryCode = val;
   bool hasCountryCode() => _countryCode != null;
 
-  // "date" field.
-  String? _date;
-  String get date => _date ?? '';
-  set date(String? val) => _date = val;
-  bool hasDate() => _date != null;
+  // "bod" field.
+  String? _bod;
+  String get bod => _bod ?? '';
+  set bod(String? val) => _bod = val;
+  bool hasBod() => _bod != null;
 
   // "language" field.
   String? _language;
@@ -97,7 +97,7 @@ class UserModelStruct extends BaseStruct {
         id: castToType<int>(data['id']),
         gender: data['gender'] as String?,
         countryCode: data['country_code'] as String?,
-        date: data['date'] as String?,
+        bod: data['bod'] as String?,
         language: data['language'] as String?,
         profilePhotoUrl: data['profile_photo_url'] as String?,
       );
@@ -113,7 +113,7 @@ class UserModelStruct extends BaseStruct {
         'id': _id,
         'gender': _gender,
         'country_code': _countryCode,
-        'date': _date,
+        'bod': _bod,
         'language': _language,
         'profile_photo_url': _profilePhotoUrl,
       }.withoutNulls;
@@ -148,8 +148,8 @@ class UserModelStruct extends BaseStruct {
           _countryCode,
           ParamType.String,
         ),
-        'date': serializeParam(
-          _date,
+        'bod': serializeParam(
+          _bod,
           ParamType.String,
         ),
         'language': serializeParam(
@@ -199,8 +199,8 @@ class UserModelStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        date: deserializeParam(
-          data['date'],
+        bod: deserializeParam(
+          data['bod'],
           ParamType.String,
           false,
         ),
@@ -229,7 +229,7 @@ class UserModelStruct extends BaseStruct {
         id == other.id &&
         gender == other.gender &&
         countryCode == other.countryCode &&
-        date == other.date &&
+        bod == other.bod &&
         language == other.language &&
         profilePhotoUrl == other.profilePhotoUrl;
   }
@@ -243,7 +243,7 @@ class UserModelStruct extends BaseStruct {
         id,
         gender,
         countryCode,
-        date,
+        bod,
         language,
         profilePhotoUrl
       ]);
@@ -257,7 +257,7 @@ UserModelStruct createUserModelStruct({
   int? id,
   String? gender,
   String? countryCode,
-  String? date,
+  String? bod,
   String? language,
   String? profilePhotoUrl,
 }) =>
@@ -269,7 +269,7 @@ UserModelStruct createUserModelStruct({
       id: id,
       gender: gender,
       countryCode: countryCode,
-      date: date,
+      bod: bod,
       language: language,
       profilePhotoUrl: profilePhotoUrl,
     );

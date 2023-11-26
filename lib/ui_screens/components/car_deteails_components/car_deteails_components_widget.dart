@@ -1,7 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -53,24 +52,6 @@ class _CarDeteailsComponentsWidgetState
             r'''$.car''',
           );
         });
-        setState(() {
-          _model.exterior = getJsonField(
-            _model.carModel,
-            r'''$.performance''',
-          ).toString().toString();
-          _model.interiors = getJsonField(
-            _model.carModel,
-            r'''$.interior''',
-          ).toString().toString();
-          _model.safety = getJsonField(
-            _model.carModel,
-            r'''$.safty''',
-          ).toString().toString();
-          _model.performance = getJsonField(
-            _model.carModel,
-            r'''$.exterior''',
-          ).toString().toString();
-        });
       } else {
         await showDialog(
           context: context,
@@ -90,46 +71,53 @@ class _CarDeteailsComponentsWidgetState
         return;
       }
 
-      _model.listOfPerformance = await actions.carDetialsAction(
-        valueOrDefault<String>(
-          _model.performance,
-          '-',
-        ),
-        FFLocalizations.of(context).languageCode,
-      );
       setState(() {
-        _model.listOfPerformances =
-            _model.listOfPerformance!.toList().cast<String>();
+        _model.listOfPerformances = functions
+            .specifcationsFunction(
+                getJsonField(
+                  _model.carModel,
+                  r'''$.performance''',
+                ),
+                FFLocalizations.of(context).languageCode,
+                'performance')
+            .toList()
+            .cast<String>();
       });
-      _model.listOfSafty = await actions.carDetialsAction(
-        valueOrDefault<String>(
-          _model.safety,
-          '-',
-        ),
-        FFLocalizations.of(context).languageCode,
-      );
       setState(() {
-        _model.listOfSafety = _model.listOfSafty!.toList().cast<String>();
+        _model.listOfSafety = functions
+            .specifcationsFunction(
+                getJsonField(
+                  _model.carModel,
+                  r'''$.safety''',
+                ),
+                FFLocalizations.of(context).languageCode,
+                'safety')
+            .toList()
+            .cast<String>();
       });
-      _model.listOfInterior = await actions.carDetialsAction(
-        valueOrDefault<String>(
-          _model.interiors,
-          '-',
-        ),
-        FFLocalizations.of(context).languageCode,
-      );
       setState(() {
-        _model.listOfInteriors = _model.listOfInterior!.toList().cast<String>();
+        _model.listOfInteriors = functions
+            .specifcationsFunction(
+                getJsonField(
+                  _model.carModel,
+                  r'''$.interior''',
+                ),
+                FFLocalizations.of(context).languageCode,
+                'interior')
+            .toList()
+            .cast<String>();
       });
-      _model.listOfExterior = await actions.carDetialsAction(
-        valueOrDefault<String>(
-          _model.exterior,
-          '-',
-        ),
-        FFLocalizations.of(context).languageCode,
-      );
       setState(() {
-        _model.listOfExteriors = _model.listOfExterior!.toList().cast<String>();
+        _model.listOfExteriors = functions
+            .specifcationsFunction(
+                getJsonField(
+                  _model.carModel,
+                  r'''$.exterior''',
+                ),
+                FFLocalizations.of(context).languageCode,
+                'exterior')
+            .toList()
+            .cast<String>();
       });
     });
 

@@ -17,7 +17,7 @@ export '/ui_screens/nav_home_pakage/car_model_page/car_model_page_widget.dart'
     show CarModelPageWidget;
 export '/ui_screens/app_bar_packages/my_profile_page/my_profile_page_widget.dart'
     show MyProfilePageWidget;
-export '/ui_screens/app_bar_packages/personal_information_page/personal_information_page_widget.dart'
+export '/ui_screens/personal_information_page/personal_information_page_widget.dart'
     show PersonalInformationPageWidget;
 export '/ui_screens/app_bar_packages/edit_profile_page/edit_profile_page_widget.dart'
     show EditProfilePageWidget;

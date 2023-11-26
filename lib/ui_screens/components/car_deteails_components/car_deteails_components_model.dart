@@ -1,7 +1,6 @@
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/custom_code/actions/index.dart' as actions;
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'car_deteails_components_widget.dart' show CarDeteailsComponentsWidget;
 import 'package:flutter/material.dart';
@@ -16,14 +15,6 @@ class CarDeteailsComponentsModel
   ///  Local state fields for this component.
 
   dynamic carModel;
-
-  String exterior = '-';
-
-  String interiors = '-';
-
-  String safety = '-';
-
-  String performance = '-';
 
   List<String> listOfExteriors = [];
   void addToListOfExteriors(String item) => listOfExteriors.add(item);
@@ -69,14 +60,6 @@ class CarDeteailsComponentsModel
 
   // Stores action output result for [Backend Call - API (GetCarDetailsApi)] action in carDeteailsComponents widget.
   ApiCallResponse? apiResultCarDeteails;
-  // Stores action output result for [Custom Action - carDetialsAction] action in carDeteailsComponents widget.
-  List<String>? listOfPerformance;
-  // Stores action output result for [Custom Action - carDetialsAction] action in carDeteailsComponents widget.
-  List<String>? listOfSafty;
-  // Stores action output result for [Custom Action - carDetialsAction] action in carDeteailsComponents widget.
-  List<String>? listOfInterior;
-  // Stores action output result for [Custom Action - carDetialsAction] action in carDeteailsComponents widget.
-  List<String>? listOfExterior;
 
   /// Initialization and disposal methods.
 

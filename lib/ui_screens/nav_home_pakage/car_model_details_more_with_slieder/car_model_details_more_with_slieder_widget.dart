@@ -507,7 +507,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                             Text(
                                               getJsonField(
                                                 _model.detailsJsonObject,
-                                                r'''$.full_description''',
+                                                r'''$.description''',
                                               ).toString(),
                                               maxLines: 2,
                                               style: FlutterFlowTheme.of(
@@ -863,7 +863,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                           child: HyndayAppBarWidget(
                             appBarTitle: getJsonField(
                               widget.carJsonItem,
-                              r'''$.full_name''',
+                              r'''$.name''',
                             ).toString(),
                             isMyProfileOpend: false,
                           ),
