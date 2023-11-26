@@ -202,8 +202,10 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                     5.0, 0.0, 5.0, 0.0),
                                 child: Builder(
                                   builder: (context) {
-                                    final listOfLocalCars =
-                                        _model.listOfCarsModel.toList();
+                                    final listOfLocalCars = _model
+                                        .listOfCarsModel
+                                        .map((e) => e)
+                                        .toList();
                                     return ListView.builder(
                                       padding: EdgeInsets.fromLTRB(
                                         0,
@@ -343,7 +345,7 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                         child: Text(
                                                           getJsonField(
                                                             listOfLocalCarsItem,
-                                                            r'''$.full_name''',
+                                                            r'''$.name''',
                                                           ).toString(),
                                                           style: FlutterFlowTheme
                                                                   .of(context)
@@ -386,7 +388,8 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                                       0.0),
                                                           child: Image.network(
                                                             getJsonField(
-                                                              listOfLocalCarsItem,
+                                                              widget
+                                                                  .carJsonItem,
                                                               r'''$.full_image''',
                                                             ),
                                                             width: 125.0,

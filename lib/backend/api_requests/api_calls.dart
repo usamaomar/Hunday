@@ -577,7 +577,7 @@ class GetCarsApiCall {
 
   static dynamic listOfCars(dynamic response) => getJsonField(
         response,
-        r'''$.cars''',
+        r'''$.cars.data''',
         true,
       );
 }

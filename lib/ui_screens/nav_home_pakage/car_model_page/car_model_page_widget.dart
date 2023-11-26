@@ -208,13 +208,13 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                                   Padding(
                                                     padding:
                                                         EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                20.0,
-                                                                10.0,
-                                                                20.0,
-                                                                0.0),
+                                                            .fromSTEB(0.0, 10.0,
+                                                                0.0, 0.0),
                                                     child: Text(
-                                                      '${gridOfCarModelsItemItem.toString()}',
+                                                      getJsonField(
+                                                        gridOfCarModelsItemItem,
+                                                        r'''$.name''',
+                                                      ).toString(),
                                                       textAlign:
                                                           TextAlign.center,
                                                       maxLines: 1,
@@ -232,10 +232,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                                           BorderRadius.circular(
                                                               0.0),
                                                       child: Image.network(
-                                                        getJsonField(
-                                                          gridOfCarModelsItemItem,
-                                                          r'''$.full_image''',
-                                                        ),
+                                                        '',
                                                         fit: BoxFit.contain,
                                                       ),
                                                     ),
