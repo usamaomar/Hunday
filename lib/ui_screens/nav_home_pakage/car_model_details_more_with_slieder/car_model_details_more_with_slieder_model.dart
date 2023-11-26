@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/car_deteails_components/car_deteails_components_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/test_drive_component/test_drive_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'car_model_details_more_with_slieder_widget.dart'
     show CarModelDetailsMoreWithSliederWidget;

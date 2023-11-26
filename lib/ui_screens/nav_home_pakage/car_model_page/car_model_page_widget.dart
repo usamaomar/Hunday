@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -41,13 +42,6 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
         token: FFAppState().userModel.token,
       );
       if ((_model.apiResultzn4?.succeeded ?? true)) {
-        setState(() {
-          _model.listOfCarModels = CarModelsApiCall.carModelList(
-            (_model.apiResultzn4?.jsonBody ?? ''),
-          )!
-              .toList()
-              .cast<dynamic>();
-        });
         setState(() {
           _model.listOfCarModels = CarModelsApiCall.carModelList(
             (_model.apiResultzn4?.jsonBody ?? ''),
@@ -148,86 +142,110 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                   final gridOfCarModelsItemItem =
                                       gridOfCarModelsItem[
                                           gridOfCarModelsItemIndex];
-                                  return InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      context.pushNamed(
-                                        'CarModelDetails',
-                                        queryParameters: {
-                                          'carJsonItem': serializeParam(
-                                            getJsonField(
-                                              gridOfCarModelsItemItem,
-                                              r'''$''',
-                                            ),
-                                            ParamType.JSON,
-                                          ),
-                                        }.withoutNulls,
-                                        extra: <String, dynamic>{
-                                          kTransitionInfoKey: TransitionInfo(
-                                            hasTransition: true,
-                                            transitionType:
-                                                PageTransitionType.fade,
-                                            duration: Duration(milliseconds: 0),
-                                          ),
-                                        },
-                                      );
-                                    },
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(15.0),
-                                      child: Container(
-                                        decoration: BoxDecoration(
-                                          color: Color(0x93FFFEFE),
-                                          boxShadow: [
-                                            BoxShadow(
-                                              blurRadius: 10.0,
-                                              color: Color(0x93FFFEFE),
-                                              offset: Offset(0.0, 2.0),
-                                              spreadRadius: 0.0,
-                                            )
-                                          ],
+                                  return Align(
+                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    child: Stack(
+                                      children: [
+                                        ClipRRect(
                                           borderRadius:
-                                              BorderRadius.circular(15.0),
-                                        ),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      0.0, 10.0, 0.0, 0.0),
-                                              child: Text(
-                                                getJsonField(
-                                                  gridOfCarModelsItemItem,
-                                                  r'''$.full_name''',
-                                                ).toString(),
-                                                textAlign: TextAlign.center,
-                                                maxLines: 1,
-                                                style: TextStyle(
-                                                  fontFamily: 'HeeboBold',
-                                                  fontWeight: FontWeight.bold,
-                                                  fontSize: 16.0,
-                                                ),
-                                              ),
+                                              BorderRadius.circular(0.0),
+                                          child: BackdropFilter(
+                                            filter: ImageFilter.blur(
+                                              sigmaX: 5.0,
+                                              sigmaY: 5.0,
                                             ),
-                                            Expanded(
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Image.network(
+                                          ),
+                                        ),
+                                        InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            context.pushNamed(
+                                              'CarModelDetails',
+                                              queryParameters: {
+                                                'carJsonItem': serializeParam(
                                                   getJsonField(
                                                     gridOfCarModelsItemItem,
-                                                    r'''$.full_image''',
+                                                    r'''$''',
                                                   ),
-                                                  fit: BoxFit.contain,
+                                                  ParamType.JSON,
                                                 ),
+                                              }.withoutNulls,
+                                              extra: <String, dynamic>{
+                                                kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                  hasTransition: true,
+                                                  transitionType:
+                                                      PageTransitionType.fade,
+                                                  duration:
+                                                      Duration(milliseconds: 0),
+                                                ),
+                                              },
+                                            );
+                                          },
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(15.0),
+                                            child: Container(
+                                              decoration: BoxDecoration(
+                                                color: Color(0x74FFFEFE),
+                                                boxShadow: [
+                                                  BoxShadow(
+                                                    blurRadius: 10.0,
+                                                    color: Color(0x80FFFEFE),
+                                                    offset: Offset(0.0, 2.0),
+                                                    spreadRadius: 0.0,
+                                                  )
+                                                ],
+                                                borderRadius:
+                                                    BorderRadius.circular(15.0),
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                20.0,
+                                                                10.0,
+                                                                20.0,
+                                                                0.0),
+                                                    child: Text(
+                                                      '${gridOfCarModelsItemItem.toString()}',
+                                                      textAlign:
+                                                          TextAlign.center,
+                                                      maxLines: 1,
+                                                      style: TextStyle(
+                                                        fontFamily: 'HeeboBold',
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        fontSize: 16.0,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Expanded(
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: Image.network(
+                                                        getJsonField(
+                                                          gridOfCarModelsItemItem,
+                                                          r'''$.full_image''',
+                                                        ),
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      ),
+                                      ],
                                     ),
                                   );
                                 },

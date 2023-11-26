@@ -889,6 +889,129 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'رخصة المركبة',
     },
   },
+  // ListOfStringItemsComponent
+  {
+    'ni09c8q4': {
+      'en': 'Owner Name',
+      'ar': 'اسم المالك',
+    },
+    'to0sa4cw': {
+      'en': '',
+      'ar': '',
+    },
+    'mcl5jxqb': {
+      'en': 'Address',
+      'ar': 'عنوان',
+    },
+    '2kcb6rjt': {
+      'en': '',
+      'ar': '',
+    },
+    '6xtulesf': {
+      'en': 'Car Type',
+      'ar': 'نوع السيارة',
+    },
+    'j8fz13eu': {
+      'en': 'Option 1',
+      'ar': '',
+    },
+    'u8smlxxg': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    '5r2w1sdp': {
+      'en': 'Car Type',
+      'ar': 'نوع السيارة',
+    },
+    'hbc49vtj': {
+      'en': 'Option 1',
+      'ar': '',
+    },
+    '043onftn': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'wokz9wj7': {
+      'en': 'Car Color',
+      'ar': 'لون السيارة',
+    },
+    'dfqt325v': {
+      'en': '',
+      'ar': '',
+    },
+    'fgn805t4': {
+      'en': 'Year of Manufacturing',
+      'ar': 'سنة التصنيع',
+    },
+    'qveofh35': {
+      'en': 'Registered Until',
+      'ar': 'مسجل حتى',
+    },
+    'inti40rk': {
+      'en': 'Plate Number',
+      'ar': 'رقم لوحة',
+    },
+    'o2hm26dg': {
+      'en': '',
+      'ar': '',
+    },
+    'f7qr92bp': {
+      'en': 'Registration Number',
+      'ar': 'رقم التسجيل',
+    },
+    'edmm0k4l': {
+      'en': '',
+      'ar': '',
+    },
+    'py8x535l': {
+      'en': 'VIN Number',
+      'ar': 'رقم المركبة',
+    },
+    'ydf9otge': {
+      'en': '',
+      'ar': '',
+    },
+    'nwqbaqum': {
+      'en': 'Engine Number',
+      'ar': 'رقم المحرك',
+    },
+    'sb3bt8mg': {
+      'en': '',
+      'ar': '',
+    },
+    'g1uqeq5j': {
+      'en': 'Engine Cpacity',
+      'ar': 'سعة المحرك',
+    },
+    '188vcdas': {
+      'en': '',
+      'ar': '',
+    },
+    'acbq9clz': {
+      'en': 'Fule Type',
+      'ar': 'نوع فول',
+    },
+    'c1jll0cs': {
+      'en': 'Option 1',
+      'ar': '',
+    },
+    'vw2ha60o': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'op6qsa7d': {
+      'en': 'Insurance Company',
+      'ar': 'شركة التأمين',
+    },
+    '1894vfo9': {
+      'en': '',
+      'ar': '',
+    },
+    'ndp3se3p': {
+      'en': 'Save',
+      'ar': 'حفظ',
+    },
+  },
   // HyndayAppBar
   {
     'nn9je08c': {
@@ -1150,13 +1273,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Test Drive',
       'ar': 'اختبار القيادة',
     },
-    'k71uebj4': {
+    'zy6luwtl': {
       'en': 'Name',
       'ar': 'اسم',
     },
-    'wgndoaog': {
-      'en': 'Name',
-      'ar': 'اسم',
+    'j8gvjivm': {
+      'en': 'Mobile',
+      'ar': 'متحرك',
+    },
+    '2cld7qli': {
+      'en': 'Mobile',
+      'ar': 'متحرك',
+    },
+    '1s87izjp': {
+      'en': 'You will be contacted by our representatives',
+      'ar': '',
+    },
+    '4nqcrahs': {
+      'en': 'Send',
+      'ar': 'يرسل',
     },
   },
   // Miscellaneous

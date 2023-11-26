@@ -259,8 +259,10 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                       'carJsonItem':
                                                           serializeParam(
                                                         getJsonField(
-                                                          widget.carJsonItem,
-                                                          r'''$''',
+                                                          (_model.responceFromGetCarDetails
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.car''',
                                                         ),
                                                         ParamType.JSON,
                                                       ),

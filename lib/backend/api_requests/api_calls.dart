@@ -213,6 +213,38 @@ class ChangePasswordApiCall {
       );
 }
 
+class LicenseScanApiCall {
+  static Future<ApiCallResponse> call({
+    String? firstImage = '',
+    String? secondImage = '',
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'licenseScanApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/vehicle/licenseScan',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'first_image': firstImage,
+        'second_image': secondImage,
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.token''',
+      );
+}
+
 class UpdateUserApiCall {
   static Future<ApiCallResponse> call({
     String? email = '',
@@ -261,7 +293,7 @@ class TestAuthUserApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'TestAuthUserApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/test',
+      apiUrl: 'https://hyundai.completechaintech.com/api/myProfile',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -515,7 +547,7 @@ class CarModelsApiCall {
 
   static dynamic carModelList(dynamic response) => getJsonField(
         response,
-        r'''$.carModel.data''',
+        r'''$.carModels.data''',
         true,
       );
 }

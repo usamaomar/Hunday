@@ -3,6 +3,8 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/flutter_flow/upload_data.dart';
+import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_screen_widget.dart' show HomeScreenWidget;
 import 'package:cached_network_image/cached_network_image.dart';
@@ -29,6 +31,10 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   void updateListOfJsonsAtIndex(int index, Function(dynamic) updateFn) =>
       listOfJsons[index] = updateFn(listOfJsons[index]);
 
+  String firstImage = 'false';
+
+  String secondImage = 'false';
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -44,6 +50,13 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   CarouselController? carouselController;
 
   int carouselCurrentIndex = 1;
+
+  bool isDataUploading = false;
+  FFUploadedFile uploadedLocalFile =
+      FFUploadedFile(bytes: Uint8List.fromList([]));
+
+  // Stores action output result for [Backend Call - API (licenseScanApi)] action in Column widget.
+  ApiCallResponse? licenseScanResponse;
 
   /// Initialization and disposal methods.
 

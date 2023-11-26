@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/car_deteails_components/car_deteails_components_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/test_drive_component/test_drive_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -145,10 +146,10 @@ class _CarModelDetailsMoreWithSliederWidgetState
                           EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                       child: Builder(
                         builder: (context) {
-                          final listOfImages = GetCarDetailsApiCall.carsSlider(
-                                (_model.apiResultrr9?.jsonBody ?? ''),
-                              )?.map((e) => e).toList()?.toList() ??
-                              [];
+                          final listOfImages = getJsonField(
+                            widget.carJsonItem,
+                            r'''$.car_sliders''',
+                          ).toList();
                           return Container(
                             width: double.infinity,
                             height: 300.0,
@@ -160,7 +161,13 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                 return ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.network(
-                                    listOfImagesItem,
+                                    'http://hyundai.completechaintech.com/storage/model/${getJsonField(
+                                      widget.carJsonItem,
+                                      r'''$.car''',
+                                    ).toString()}/${getJsonField(
+                                      listOfImagesItem,
+                                      r'''$.image''',
+                                    ).toString()}',
                                     width: 300.0,
                                     height: 200.0,
                                     fit: BoxFit.cover,
@@ -622,7 +629,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                 queryParameters: {
                                                   'pdfLink': serializeParam(
                                                     getJsonField(
-                                                      widget.carJsonItem,
+                                                      _model.detailsJsonObject,
                                                       r'''$.full_catalog''',
                                                     ).toString(),
                                                     ParamType.String,
@@ -712,15 +719,44 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                     ''),
                                                 r'''$.test_drive''',
                                               ))
-                                            Opacity(
-                                              opacity: 0.5,
-                                              child: InkWell(
+                                            Builder(
+                                              builder: (context) => InkWell(
                                                 splashColor: Colors.transparent,
                                                 focusColor: Colors.transparent,
                                                 hoverColor: Colors.transparent,
                                                 highlightColor:
                                                     Colors.transparent,
-                                                onTap: () async {},
+                                                onTap: () async {
+                                                  await showAlignedDialog(
+                                                    context: context,
+                                                    isGlobal: true,
+                                                    avoidOverflow: false,
+                                                    targetAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    followerAnchor:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    builder: (dialogContext) {
+                                                      return Material(
+                                                        color:
+                                                            Colors.transparent,
+                                                        child: Container(
+                                                          height: 500.0,
+                                                          child:
+                                                              TestDriveComponentWidget(),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+                                                },
                                                 child: Material(
                                                   color: Colors.transparent,
                                                   elevation: 2.0,
