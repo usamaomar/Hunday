@@ -99,8 +99,10 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
                           FFAppState().userModel =
                               UserModelStruct.fromSerializableMap(
                                   jsonDecode('{}'));
-
-                          context.goNamed(
+                          if (Navigator.of(context).canPop()) {
+                            context.pop();
+                          }
+                          context.pushNamed(
                             'splashPage',
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(

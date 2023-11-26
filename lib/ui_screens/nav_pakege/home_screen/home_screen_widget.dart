@@ -46,23 +46,23 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
             (e) => e
               ..language = getJsonField(
                 (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.language''',
+                r'''$.user.language''',
               ).toString().toString()
               ..bod = getJsonField(
                 (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.date''',
+                r'''$.user.bod''',
               ).toString().toString()
               ..name = getJsonField(
                 (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.name''',
+                r'''$.user.name''',
               ).toString().toString()
               ..email = getJsonField(
                 (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.email''',
+                r'''$.user.email''',
               ).toString().toString()
               ..phone = getJsonField(
                 (_model.localTestAuth2?.jsonBody ?? ''),
-                r'''$.phone''',
+                r'''$.user.phone''',
               ).toString().toString(),
           );
         });
@@ -74,7 +74,16 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         if (Navigator.of(context).canPop()) {
           context.pop();
         }
-        context.pushNamed('splashPage');
+        context.pushNamed(
+          'splashPage',
+          extra: <String, dynamic>{
+            kTransitionInfoKey: TransitionInfo(
+              hasTransition: true,
+              transitionType: PageTransitionType.fade,
+              duration: Duration(milliseconds: 0),
+            ),
+          },
+        );
 
         return;
       }
