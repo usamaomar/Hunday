@@ -113,8 +113,6 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                       context.goNamed('HomeScreen');
                     } else {
                       context.goNamed('loginScreen');
-
-                      return;
                     }
                   },
                   textAlign: TextAlign.start,
