@@ -539,7 +539,24 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                   return;
                                                 }
 
-                                                context.goNamed('HomeScreen');
+                                                if (Navigator.of(context)
+                                                    .canPop()) {
+                                                  context.pop();
+                                                }
+                                                context.pushNamed(
+                                                  'HomeScreen',
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                          PageTransitionType
+                                                              .fade,
+                                                      duration: Duration(
+                                                          milliseconds: 0),
+                                                    ),
+                                                  },
+                                                );
 
                                                 if (_shouldSetState)
                                                   setState(() {});

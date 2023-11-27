@@ -71,18 +71,6 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           FFAppState().userModel =
               UserModelStruct.fromSerializableMap(jsonDecode('{}'));
         });
-
-        context.goNamed(
-          'splashPage',
-          extra: <String, dynamic>{
-            kTransitionInfoKey: TransitionInfo(
-              hasTransition: true,
-              transitionType: PageTransitionType.fade,
-              duration: Duration(milliseconds: 0),
-            ),
-          },
-        );
-
         return;
       }
 

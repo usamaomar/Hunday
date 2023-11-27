@@ -187,7 +187,16 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                               );
                             });
 
-                            context.goNamed('HomeScreen');
+                            context.goNamed(
+                              'HomeScreen',
+                              extra: <String, dynamic>{
+                                kTransitionInfoKey: TransitionInfo(
+                                  hasTransition: true,
+                                  transitionType: PageTransitionType.fade,
+                                  duration: Duration(milliseconds: 0),
+                                ),
+                              },
+                            );
                           } else {
                             if (_shouldSetState) setState(() {});
                             return;
