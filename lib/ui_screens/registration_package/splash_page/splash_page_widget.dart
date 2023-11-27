@@ -113,12 +113,15 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                         context.pop();
                       }
                       context.pushNamed('HomeScreen');
+
+                      Navigator.pop(context);
                     } else {
                       if (Navigator.of(context).canPop()) {
                         context.pop();
                       }
                       context.pushNamed('loginScreen');
 
+                      Navigator.pop(context);
                       return;
                     }
                   },
