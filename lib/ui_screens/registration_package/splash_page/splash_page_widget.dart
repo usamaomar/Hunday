@@ -107,7 +107,6 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                   },
                   onEnded: () async {
                     _model.timerController.onStopTimer();
-                    Navigator.pop(context);
                     if (FFAppState().userModel.token != null &&
                         FFAppState().userModel.token != '') {
                       context.goNamed('HomeScreen');
