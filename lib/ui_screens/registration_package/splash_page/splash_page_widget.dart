@@ -106,22 +106,14 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                     if (shouldUpdate) setState(() {});
                   },
                   onEnded: () async {
+                    context.safePop();
                     _model.timerController.onStopTimer();
                     if (FFAppState().userModel.token != null &&
                         FFAppState().userModel.token != '') {
-                      if (Navigator.of(context).canPop()) {
-                        context.pop();
-                      }
-                      context.pushNamed('HomeScreen');
-
-                      context.safePop();
+                      context.goNamed('HomeScreen');
                     } else {
-                      if (Navigator.of(context).canPop()) {
-                        context.pop();
-                      }
-                      context.pushNamed('loginScreen');
+                      context.goNamed('loginScreen');
 
-                      context.safePop();
                       return;
                     }
                   },
