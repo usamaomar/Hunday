@@ -186,8 +186,10 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                                   ).toString(),
                               );
                             });
-
-                            context.goNamed(
+                            if (Navigator.of(context).canPop()) {
+                              context.pop();
+                            }
+                            context.pushNamed(
                               'HomeScreen',
                               extra: <String, dynamic>{
                                 kTransitionInfoKey: TransitionInfo(
