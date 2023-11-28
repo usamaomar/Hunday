@@ -421,6 +421,18 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList(
         'ff_sliderList', _sliderList.map((x) => jsonEncode(x)).toList());
   }
+
+  dynamic _firstImage;
+  dynamic get firstImage => _firstImage;
+  set firstImage(dynamic _value) {
+    _firstImage = _value;
+  }
+
+  dynamic _secendImage;
+  dynamic get secendImage => _secendImage;
+  set secendImage(dynamic _value) {
+    _secendImage = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {

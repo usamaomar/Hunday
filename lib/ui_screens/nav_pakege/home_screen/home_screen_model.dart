@@ -3,10 +3,10 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/upload_data.dart';
-import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
+import '/ui_screens/components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_screen_widget.dart' show HomeScreenWidget;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -50,13 +50,6 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   CarouselController? carouselController;
 
   int carouselCurrentIndex = 1;
-
-  bool isDataUploading = false;
-  FFUploadedFile uploadedLocalFile =
-      FFUploadedFile(bytes: Uint8List.fromList([]));
-
-  // Stores action output result for [Backend Call - API (licenseScanApi)] action in Column widget.
-  ApiCallResponse? licenseScanResponse;
 
   /// Initialization and disposal methods.
 

@@ -215,8 +215,8 @@ class ChangePasswordApiCall {
 
 class LicenseScanApiCall {
   static Future<ApiCallResponse> call({
-    String? firstImage = '',
-    String? secondImage = '',
+    FFUploadedFile? firstImage,
+    FFUploadedFile? secondImage,
     String? token = '',
   }) async {
     return ApiManager.instance.makeApiCall(
@@ -238,11 +238,6 @@ class LicenseScanApiCall {
       cache: false,
     );
   }
-
-  static dynamic token(dynamic response) => getJsonField(
-        response,
-        r'''$.token''',
-      );
 }
 
 class UpdateUserApiCall {

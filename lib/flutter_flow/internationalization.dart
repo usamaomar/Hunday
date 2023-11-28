@@ -1294,6 +1294,21 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يرسل',
     },
   },
+  // ScanComponentAleart
+  {
+    'eutzet15': {
+      'en': 'Forget Password',
+      'ar': 'نسيت كلمة السر',
+    },
+    '0qhubzil': {
+      'en': 'Scan By Camra',
+      'ar': 'المسح بواسطة كامرا',
+    },
+    'b0wr6uc1': {
+      'en': 'Select from galary',
+      'ar': 'اختر من الوساط',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {
