@@ -163,7 +163,10 @@ class _ScannedCardAnimationComponentWidgetState
                       ).then((value) => setState(() {}));
                     },
                     textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).headlineSmall,
+                    style: FlutterFlowTheme.of(context).headlineSmall.override(
+                          fontFamily: 'Poppins',
+                          color: Color(0x60FFFFFF),
+                        ),
                   ),
                 ),
               ],

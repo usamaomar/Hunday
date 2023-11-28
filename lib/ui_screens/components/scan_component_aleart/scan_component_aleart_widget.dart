@@ -123,6 +123,7 @@ class _ScanComponentAleartWidgetState extends State<ScanComponentAleartWidget> {
                           _model.outLoads = await LicenseScanApiCall.call(
                             firstImage: _model.uploadedLocalFiles[0],
                             secondImage: _model.uploadedLocalFiles[1],
+                            token: FFAppState().userModel.token,
                           );
                           if ((_model.outLoads?.succeeded ?? true)) {
                             ScaffoldMessenger.of(context).showSnackBar(
