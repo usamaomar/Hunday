@@ -80,7 +80,7 @@ class _ListOfStringItemsComponentWidgetState
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Container(
-          width: 370.0,
+          width: 340.0,
           decoration: BoxDecoration(),
           child: Padding(
             padding: EdgeInsetsDirectional.fromSTEB(0.0, 55.0, 0.0, 0.0),
