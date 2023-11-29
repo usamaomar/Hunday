@@ -106,7 +106,6 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                     if (shouldUpdate) setState(() {});
                   },
                   onEnded: () async {
-                    context.safePop();
                     _model.timerController.onStopTimer();
                     if (FFAppState().userModel.token != null &&
                         FFAppState().userModel.token != '') {
