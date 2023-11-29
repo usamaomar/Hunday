@@ -384,7 +384,7 @@ class _ListOfStringItemsComponentWidgetState
                                   ],
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue1 = val),
-                                  width: 300.0,
+                                  width: 270.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   icon: Icon(
@@ -446,7 +446,7 @@ class _ListOfStringItemsComponentWidgetState
                                   ],
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue2 = val),
-                                  width: 300.0,
+                                  width: 270.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   icon: Icon(
@@ -1164,7 +1164,7 @@ class _ListOfStringItemsComponentWidgetState
                                   ],
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue3 = val),
-                                  width: 300.0,
+                                  width: 270.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
                                   icon: Icon(
