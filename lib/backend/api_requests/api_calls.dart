@@ -240,6 +240,42 @@ class LicenseScanApiCall {
   }
 }
 
+class TestDriveApiCall {
+  static Future<ApiCallResponse> call({
+    String? date = '',
+    String? time = '',
+    String? token = '',
+    String? note = '',
+    String? status = '',
+    int? carModelId,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "car_model_id": ${carModelId},
+  "date": "${date}",
+  "time": "${time}",
+  "note": "${note}",
+  "status": "${status}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'testDriveApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/testDrive/store',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class UpdateUserApiCall {
   static Future<ApiCallResponse> call({
     String? email = '',
