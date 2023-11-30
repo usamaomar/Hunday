@@ -71,14 +71,14 @@ class _ListOfStringItemsComponentWidgetState
         _model.carCategoriesList = functions
             .fromJsonToCategoriesList(getJsonField(
               widget.jsonData,
-              r'''$.carCategories[:]''',
+              r'''$.carCategories''',
             ))
             .toList()
             .cast<CarCategoriesStruct>();
         _model.fuelTypesList = functions
             .fromJsonToFuelTypeModelList(getJsonField(
               widget.jsonData,
-              r'''$.fuelTypes[:]''',
+              r'''$.fuelTypes''',
             ))
             .toList()
             .cast<FuelTypeModelStruct>();
