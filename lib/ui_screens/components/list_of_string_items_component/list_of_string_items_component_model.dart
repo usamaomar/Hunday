@@ -1,11 +1,15 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'list_of_string_items_component_widget.dart'
     show ListOfStringItemsComponentWidget;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,6 +17,47 @@ import 'package:provider/provider.dart';
 
 class ListOfStringItemsComponentModel
     extends FlutterFlowModel<ListOfStringItemsComponentWidget> {
+  ///  Local state fields for this component.
+
+  CarInfoModelStruct? carInfoLocalModel;
+  void updateCarInfoLocalModelStruct(Function(CarInfoModelStruct) updateFn) =>
+      updateFn(carInfoLocalModel ??= CarInfoModelStruct());
+
+  List<CarModelStruct> carModelList = [];
+  void addToCarModelList(CarModelStruct item) => carModelList.add(item);
+  void removeFromCarModelList(CarModelStruct item) => carModelList.remove(item);
+  void removeAtIndexFromCarModelList(int index) => carModelList.removeAt(index);
+  void insertAtIndexInCarModelList(int index, CarModelStruct item) =>
+      carModelList.insert(index, item);
+  void updateCarModelListAtIndex(
+          int index, Function(CarModelStruct) updateFn) =>
+      carModelList[index] = updateFn(carModelList[index]);
+
+  List<CarCategoriesStruct> carCategoriesList = [];
+  void addToCarCategoriesList(CarCategoriesStruct item) =>
+      carCategoriesList.add(item);
+  void removeFromCarCategoriesList(CarCategoriesStruct item) =>
+      carCategoriesList.remove(item);
+  void removeAtIndexFromCarCategoriesList(int index) =>
+      carCategoriesList.removeAt(index);
+  void insertAtIndexInCarCategoriesList(int index, CarCategoriesStruct item) =>
+      carCategoriesList.insert(index, item);
+  void updateCarCategoriesListAtIndex(
+          int index, Function(CarCategoriesStruct) updateFn) =>
+      carCategoriesList[index] = updateFn(carCategoriesList[index]);
+
+  List<FuelTypeModelStruct> fuelTypesList = [];
+  void addToFuelTypesList(FuelTypeModelStruct item) => fuelTypesList.add(item);
+  void removeFromFuelTypesList(FuelTypeModelStruct item) =>
+      fuelTypesList.remove(item);
+  void removeAtIndexFromFuelTypesList(int index) =>
+      fuelTypesList.removeAt(index);
+  void insertAtIndexInFuelTypesList(int index, FuelTypeModelStruct item) =>
+      fuelTypesList.insert(index, item);
+  void updateFuelTypesListAtIndex(
+          int index, Function(FuelTypeModelStruct) updateFn) =>
+      fuelTypesList[index] = updateFn(fuelTypesList[index]);
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.

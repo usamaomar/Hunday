@@ -207,3 +207,27 @@ List<String> specifcationsFunction(
 
   return result;
 }
+
+List<CarModelStruct> fromJsonToModelList(dynamic jsonBody) {
+  return jsonBody
+      .map((e) => e != null && e != '' ? CarModelStruct.fromMap(e) : null)
+      .toList()
+      .toList()
+      .cast<CarModelStruct>();
+}
+
+List<CarCategoriesStruct> fromJsonToCategoriesList(dynamic jsonObject) {
+  return jsonObject
+      .map((e) => e != null && e != '' ? CarCategoriesStruct.fromMap(e) : null)
+      .toList()
+      .toList()
+      .cast<CarCategoriesStruct>();
+}
+
+List<FuelTypeModelStruct> fromJsonToFuelTypeModelList(dynamic jsonObject) {
+  return jsonObject
+      .map((e) => e != null && e != '' ? CarCategoriesStruct.fromMap(e) : null)
+      .toList()
+      .toList()
+      .cast<CarCategoriesStruct>();
+}

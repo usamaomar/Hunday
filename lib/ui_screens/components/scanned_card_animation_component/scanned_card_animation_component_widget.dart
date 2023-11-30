@@ -1,15 +1,14 @@
 import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/ui_screens/components/scan_component_aleart/scan_component_aleart_widget.dart';
-import 'package:stop_watch_timer/stop_watch_timer.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import '/ui_screens/components/from_galler_card/from_galler_card_widget.dart';
+import '/ui_screens/components/scan_now_card/scan_now_card_widget.dart';
+import 'dart:ui';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 import 'package:provider/provider.dart';
 import 'scanned_card_animation_component_model.dart';
 export 'scanned_card_animation_component_model.dart';
@@ -37,11 +36,6 @@ class _ScannedCardAnimationComponentWidgetState
     super.initState();
     _model = createModel(context, () => ScannedCardAnimationComponentModel());
 
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.timerController.onStartTimer();
-    });
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -57,121 +51,180 @@ class _ScannedCardAnimationComponentWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(15.0, 15.0, 15.0, 15.0),
+      padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
       child: Container(
-        height: 450.0,
+        height: 250.0,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Color(0x81FFFFFF),
+          borderRadius: BorderRadius.circular(20.0),
         ),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            Container(
-              width: double.infinity,
-              height: 50.0,
-              decoration: BoxDecoration(
-                color: Color(0xFF3D6398),
-              ),
-              child: Row(
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: 30.0,
+              sigmaY: 30.0,
+            ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+              child: Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      'fn1vr72f' /* Vehicle License */,
+                  Flexible(
+                    child: Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+                      child: Container(
+                        decoration: BoxDecoration(),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Expanded(
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  '3z8i1b9g' /* Unleash possibilities with our... */,
+                                ),
+                                textAlign: TextAlign.center,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'HeeboBold',
+                                      color: Color(0xFF092853),
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.bold,
+                                      useGoogleFonts: false,
+                                    ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
                     ),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      fontFamily: 'HeeboBold',
-                      color: FlutterFlowTheme.of(context).white,
-                      fontWeight: FontWeight.normal,
-                      fontSize: 16.0,
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Builder(
+                            builder: (context) => FFButtonWidget(
+                              onPressed: () async {
+                                await showAlignedDialog(
+                                  context: context,
+                                  isGlobal: true,
+                                  avoidOverflow: false,
+                                  targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
+                                  followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
+                                  builder: (dialogContext) {
+                                    return Material(
+                                      color: Colors.transparent,
+                                      child: ScanNowCardWidget(),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
+
+                                Navigator.pop(context);
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '69fe1ieu' /* Scan Now */,
+                              ),
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Color(0x00FFFFFF),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'HeeboBold',
+                                      color: Color(0xFF092853),
+                                      fontWeight: FontWeight.bold,
+                                      useGoogleFonts: false,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: Color(0xFF3D6398),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Builder(
+                            builder: (context) => FFButtonWidget(
+                              onPressed: () async {
+                                await showAlignedDialog(
+                                  context: context,
+                                  isGlobal: true,
+                                  avoidOverflow: false,
+                                  targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
+                                  followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                      .resolve(Directionality.of(context)),
+                                  builder: (dialogContext) {
+                                    return Material(
+                                      color: Colors.transparent,
+                                      child: FromGallerCardWidget(),
+                                    );
+                                  },
+                                ).then((value) => setState(() {}));
+
+                                Navigator.pop(context);
+                              },
+                              text: FFLocalizations.of(context).getText(
+                                '3vcezyv0' /* Choose from Gallery */,
+                              ),
+                              options: FFButtonOptions(
+                                height: 40.0,
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    24.0, 0.0, 24.0, 0.0),
+                                iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 0.0, 0.0, 0.0),
+                                color: Color(0x00FFFFFF),
+                                textStyle: FlutterFlowTheme.of(context)
+                                    .titleSmall
+                                    .override(
+                                      fontFamily: 'HeeboBold',
+                                      color: Color(0xFF092853),
+                                      fontWeight: FontWeight.bold,
+                                      useGoogleFonts: false,
+                                    ),
+                                elevation: 0.0,
+                                borderSide: BorderSide(
+                                  color: Color(0xFF3D6398),
+                                  width: 1.0,
+                                ),
+                                borderRadius: BorderRadius.circular(8.0),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
-            Stack(
-              children: [
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Expanded(
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
-                        child: ClipRRect(
-                          child: Container(
-                            width: double.infinity,
-                            constraints: BoxConstraints(
-                              maxWidth: double.infinity,
-                            ),
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                            ),
-                            child: Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
-                              child: Lottie.asset(
-                                'assets/lottie_animations/board2.json',
-                                width: 370.0,
-                                height: 250.0,
-                                fit: BoxFit.fill,
-                                animate: true,
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                Builder(
-                  builder: (context) => FlutterFlowTimer(
-                    initialTime: _model.timerMilliseconds,
-                    getDisplayTime: (value) => StopWatchTimer.getDisplayTime(
-                      value,
-                      hours: false,
-                      milliSecond: false,
-                    ),
-                    controller: _model.timerController,
-                    updateStateInterval: Duration(milliseconds: 1000),
-                    onChanged: (value, displayTime, shouldUpdate) {
-                      _model.timerMilliseconds = value;
-                      _model.timerValue = displayTime;
-                      if (shouldUpdate) setState(() {});
-                    },
-                    onEnded: () async {
-                      Navigator.pop(context);
-                      await showAlignedDialog(
-                        context: context,
-                        isGlobal: true,
-                        avoidOverflow: false,
-                        targetAnchor: AlignmentDirectional(0.0, 0.0)
-                            .resolve(Directionality.of(context)),
-                        followerAnchor: AlignmentDirectional(0.0, 0.0)
-                            .resolve(Directionality.of(context)),
-                        builder: (dialogContext) {
-                          return Material(
-                            color: Colors.transparent,
-                            child: Container(
-                              height: 450.0,
-                              child: ScanComponentAleartWidget(),
-                            ),
-                          );
-                        },
-                      ).then((value) => setState(() {}));
-                    },
-                    textAlign: TextAlign.start,
-                    style: FlutterFlowTheme.of(context).headlineSmall.override(
-                          fontFamily: 'Poppins',
-                          color: Color(0x60FFFFFF),
-                        ),
-                  ),
-                ),
-              ],
-            ),
-          ],
+          ),
         ),
       ),
     );

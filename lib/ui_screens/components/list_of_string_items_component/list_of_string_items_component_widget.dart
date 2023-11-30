@@ -1,9 +1,13 @@
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -12,7 +16,12 @@ import 'list_of_string_items_component_model.dart';
 export 'list_of_string_items_component_model.dart';
 
 class ListOfStringItemsComponentWidget extends StatefulWidget {
-  const ListOfStringItemsComponentWidget({Key? key}) : super(key: key);
+  const ListOfStringItemsComponentWidget({
+    Key? key,
+    required this.jsonData,
+  }) : super(key: key);
+
+  final dynamic jsonData;
 
   @override
   _ListOfStringItemsComponentWidgetState createState() =>
@@ -33,6 +42,48 @@ class _ListOfStringItemsComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ListOfStringItemsComponentModel());
+
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      setState(() {
+        _model.carInfoLocalModel = getJsonField(
+                      widget.jsonData,
+                      r'''$.info''',
+                    ) !=
+                    null &&
+                getJsonField(
+                      widget.jsonData,
+                      r'''$.info''',
+                    ) !=
+                    ''
+            ? CarInfoModelStruct.fromMap(getJsonField(
+                widget.jsonData,
+                r'''$.info''',
+              ))
+            : null;
+        _model.carModelList = functions
+            .fromJsonToModelList(getJsonField(
+              widget.jsonData,
+              r'''$.carModels''',
+            ))
+            .toList()
+            .cast<CarModelStruct>();
+        _model.carCategoriesList = functions
+            .fromJsonToCategoriesList(getJsonField(
+              widget.jsonData,
+              r'''$.carCategories[:]''',
+            ))
+            .toList()
+            .cast<CarCategoriesStruct>();
+        _model.fuelTypesList = functions
+            .fromJsonToFuelTypeModelList(getJsonField(
+              widget.jsonData,
+              r'''$.fuelTypes[:]''',
+            ))
+            .toList()
+            .cast<FuelTypeModelStruct>();
+      });
+    });
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
@@ -377,11 +428,9 @@ class _ListOfStringItemsComponentWidgetState
                                   controller:
                                       _model.dropDownValueController1 ??=
                                           FormFieldController<String>(null),
-                                  options: [
-                                    FFLocalizations.of(context).getText(
-                                      'j8fz13eu' /* Option 1 */,
-                                    )
-                                  ],
+                                  options: _model.carModelList
+                                      .map((e) => e.name)
+                                      .toList(),
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue1 = val),
                                   width: 270.0,
@@ -419,7 +468,7 @@ class _ListOfStringItemsComponentWidgetState
                                 0.0, 10.0, 0.0, 10.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
-                                '5r2w1sdp' /* Car Type */,
+                                '5r2w1sdp' /* Car Catedory */,
                               ),
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
@@ -439,11 +488,9 @@ class _ListOfStringItemsComponentWidgetState
                                   controller:
                                       _model.dropDownValueController2 ??=
                                           FormFieldController<String>(null),
-                                  options: [
-                                    FFLocalizations.of(context).getText(
-                                      'hbc49vtj' /* Option 1 */,
-                                    )
-                                  ],
+                                  options: _model.carCategoriesList
+                                      .map((e) => e.name)
+                                      .toList(),
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue2 = val),
                                   width: 270.0,
@@ -1157,11 +1204,9 @@ class _ListOfStringItemsComponentWidgetState
                                   controller:
                                       _model.dropDownValueController3 ??=
                                           FormFieldController<String>(null),
-                                  options: [
-                                    FFLocalizations.of(context).getText(
-                                      'c1jll0cs' /* Option 1 */,
-                                    )
-                                  ],
+                                  options: _model.fuelTypesList
+                                      .map((e) => e.name)
+                                      .toList(),
                                   onChanged: (val) => setState(
                                       () => _model.dropDownValue3 = val),
                                   width: 270.0,

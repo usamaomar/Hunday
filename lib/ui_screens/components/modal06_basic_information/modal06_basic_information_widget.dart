@@ -55,147 +55,153 @@ class _Modal06BasicInformationWidgetState
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 0.0),
       child: Container(
-        width: double.infinity,
-        height: double.infinity,
+        height: 350.0,
         decoration: BoxDecoration(),
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Align(
-              alignment: AlignmentDirectional(0.00, 0.00),
-              child: Container(
-                width: double.infinity,
-                constraints: BoxConstraints(
-                  maxWidth: 700.0,
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      blurRadius: 12.0,
-                      color: Color(0x33000000),
-                      offset: Offset(0.0, 5.0),
-                    )
-                  ],
-                  borderRadius: BorderRadius.circular(16.0),
-                ),
-                child: Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
-                        child: Row(
+        child: Align(
+          alignment: AlignmentDirectional(0.00, 0.00),
+          child: Container(
+            width: double.infinity,
+            constraints: BoxConstraints(
+              maxWidth: 700.0,
+            ),
+            decoration: BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 12.0,
+                  color: Color(0x33000000),
+                  offset: Offset(0.0, 5.0),
+                )
+              ],
+              borderRadius: BorderRadius.circular(16.0),
+            ),
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 12.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                FFLocalizations.of(context).getText(
+                                  'p305q9up' /* Error */,
+                                ),
+                                style: FlutterFlowTheme.of(context)
+                                    .headlineLarge
+                                    .override(
+                                      fontFamily: 'Outfit',
+                                      color: Color(0xFF14181B),
+                                      fontSize: 32.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        FlutterFlowIconButton(
+                          borderColor: Colors.transparent,
+                          borderRadius: 30.0,
+                          borderWidth: 1.0,
+                          buttonSize: 44.0,
+                          icon: Icon(
+                            Icons.close_rounded,
+                            color: Color(0xFF57636C),
+                            size: 24.0,
+                          ),
+                          onPressed: () async {
+                            Navigator.pop(context);
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      decoration: BoxDecoration(),
+                      child: SingleChildScrollView(
+                        child: Column(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            Expanded(
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    FFLocalizations.of(context).getText(
-                                      'p305q9up' /* Error */,
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 8.0, 0.0, 0.0),
+                              child: Text(
+                                valueOrDefault<String>(
+                                  widget.body,
+                                  'Error',
+                                ),
+                                maxLines: 10,
+                                style: FlutterFlowTheme.of(context)
+                                    .labelLarge
+                                    .override(
+                                      fontFamily: 'Plus Jakarta Sans',
+                                      color: Color(0xFF57636C),
+                                      fontSize: 16.0,
+                                      fontWeight: FontWeight.w500,
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .headlineLarge
-                                        .override(
-                                          fontFamily: 'Outfit',
-                                          color: Color(0xFF14181B),
-                                          fontSize: 32.0,
-                                          fontWeight: FontWeight.w600,
-                                        ),
-                                  ),
-                                ],
                               ),
-                            ),
-                            FlutterFlowIconButton(
-                              borderColor: Colors.transparent,
-                              borderRadius: 30.0,
-                              borderWidth: 1.0,
-                              buttonSize: 44.0,
-                              icon: Icon(
-                                Icons.close_rounded,
-                                color: Color(0xFF57636C),
-                                size: 24.0,
-                              ),
-                              onPressed: () async {
-                                Navigator.pop(context);
-                              },
                             ),
                           ],
                         ),
                       ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 8.0, 0.0, 0.0),
-                        child: Text(
-                          widget.body!,
-                          maxLines: 10,
-                          style:
-                              FlutterFlowTheme.of(context).labelLarge.override(
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 12.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 16.0, 0.0),
+                          child: FFButtonWidget(
+                            onPressed: () async {
+                              Navigator.pop(context);
+                            },
+                            text: FFLocalizations.of(context).getText(
+                              '5ayz050s' /* Cancel */,
+                            ),
+                            options: FFButtonOptions(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  24.0, 24.0, 24.0, 24.0),
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 0.0, 0.0, 0.0),
+                              color: Colors.white,
+                              textStyle: FlutterFlowTheme.of(context)
+                                  .labelLarge
+                                  .override(
                                     fontFamily: 'Plus Jakarta Sans',
                                     color: Color(0xFF57636C),
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.w500,
                                   ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 20.0, 0.0, 12.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 0.0, 16.0, 0.0),
-                              child: FFButtonWidget(
-                                onPressed: () async {
-                                  Navigator.pop(context);
-                                },
-                                text: FFLocalizations.of(context).getText(
-                                  '5ayz050s' /* Cancel */,
-                                ),
-                                options: FFButtonOptions(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      24.0, 24.0, 24.0, 24.0),
-                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
-                                  color: Colors.white,
-                                  textStyle: FlutterFlowTheme.of(context)
-                                      .labelLarge
-                                      .override(
-                                        fontFamily: 'Plus Jakarta Sans',
-                                        color: Color(0xFF57636C),
-                                        fontSize: 16.0,
-                                        fontWeight: FontWeight.w500,
-                                      ),
-                                  elevation: 0.0,
-                                  borderSide: BorderSide(
-                                    color: Color(0xFFE0E3E7),
-                                    width: 2.0,
-                                  ),
-                                  borderRadius: BorderRadius.circular(12.0),
-                                ),
+                              elevation: 0.0,
+                              borderSide: BorderSide(
+                                color: Color(0xFFE0E3E7),
+                                width: 2.0,
                               ),
+                              borderRadius: BorderRadius.circular(12.0),
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

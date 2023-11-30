@@ -97,26 +97,33 @@ class _ErrorNetwokDialogComponentWidgetState
                         ),
                       ],
                     ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Expanded(
-                          child: Text(
-                            widget.body!,
-                            textAlign: TextAlign.center,
-                            maxLines: 5,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'HeeboBold',
-                                  color: Color(0xFF092853),
-                                  fontSize: 12.0,
-                                  fontWeight: FontWeight.normal,
-                                  useGoogleFonts: false,
+                    SingleChildScrollView(
+                      child: Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Row(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Expanded(
+                                child: Text(
+                                  widget.body!,
+                                  textAlign: TextAlign.center,
+                                  maxLines: 5,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'HeeboBold',
+                                        color: Color(0xFF092853),
+                                        fontSize: 12.0,
+                                        fontWeight: FontWeight.normal,
+                                        useGoogleFonts: false,
+                                      ),
                                 ),
+                              ),
+                            ],
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                     Row(
                       mainAxisSize: MainAxisSize.max,

@@ -884,9 +884,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ScannedCardAnimationComponent
   {
-    'fn1vr72f': {
-      'en': 'Vehicle License',
-      'ar': 'رخصة المركبة',
+    '3z8i1b9g': {
+      'en':
+          'Unleash possibilities with our app - seamlessly scan both sides of your driving license!',
+      'ar':
+          'أطلق العنان للإمكانيات من خلال تطبيقنا - قم بمسح جانبي رخصة القيادة الخاصة بك بسلاسة!',
+    },
+    '69fe1ieu': {
+      'en': 'Scan Now',
+      'ar': 'إفحص الآن',
+    },
+    '3vcezyv0': {
+      'en': 'Choose from Gallery',
+      'ar': 'اختر من المعرض',
     },
   },
   // ListOfStringItemsComponent
@@ -920,8 +930,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     '5r2w1sdp': {
-      'en': 'Car Type',
-      'ar': 'نوع السيارة',
+      'en': 'Car Catedory',
+      'ar': 'فئة السيارة',
     },
     'hbc49vtj': {
       'en': 'Option 1',
@@ -1294,19 +1304,58 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'يرسل',
     },
   },
-  // ScanComponentAleart
+  // ScanNowCard
   {
-    'eutzet15': {
-      'en': 'Forget Password',
-      'ar': 'نسيت كلمة السر',
+    '2doxlyqt': {
+      'en': 'Scan Now',
+      'ar': 'إفحص الآن',
     },
-    '0qhubzil': {
-      'en': 'Scan By Camra',
-      'ar': 'المسح بواسطة كامرا',
+    'f8ub7r14': {
+      'en': 'Front Face',
+      'ar': 'الوجه الأمامي',
     },
-    'b0wr6uc1': {
-      'en': 'Select from galary',
-      'ar': 'اختر من الوساط',
+    '4mxuj11u': {
+      'en': 'Scan',
+      'ar': 'مسح',
+    },
+    '6unw2udt': {
+      'en': 'Back Face',
+      'ar': 'الوجه الخلفي',
+    },
+    '7gkzwtaa': {
+      'en': 'Scan',
+      'ar': 'مسح',
+    },
+    '2ksh7kyf': {
+      'en': 'Save',
+      'ar': 'يحفظ',
+    },
+  },
+  // FromGallerCard
+  {
+    's4gh60ui': {
+      'en': 'Choose from Gallery',
+      'ar': 'اختر من المعرض',
+    },
+    'vp1op5ww': {
+      'en': 'Front Face',
+      'ar': 'الوجه الأمامي',
+    },
+    'ssqteoc6': {
+      'en': 'Choose File',
+      'ar': 'اختر ملف',
+    },
+    'a029ysp7': {
+      'en': 'Back Face',
+      'ar': 'الوجه الخلفي',
+    },
+    's0cyrb39': {
+      'en': 'Choose File',
+      'ar': 'اختر ملف',
+    },
+    '2l3ucgna': {
+      'en': 'Save',
+      'ar': 'يحفظ',
     },
   },
   // Miscellaneous

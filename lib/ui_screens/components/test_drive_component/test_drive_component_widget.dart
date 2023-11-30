@@ -56,324 +56,294 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+      padding: EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 15.0),
       child: Container(
-        height: 400.0,
         decoration: BoxDecoration(
-          color: FlutterFlowTheme.of(context).white,
+          color: Color(0x81FFFFFF),
           borderRadius: BorderRadius.circular(20.0),
         ),
-        child: Stack(
-          children: [
-            Container(
-              width: double.infinity,
-              height: double.infinity,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20.0),
-              ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20.0),
+          child: BackdropFilter(
+            filter: ImageFilter.blur(
+              sigmaX: 30.0,
+              sigmaY: 30.0,
             ),
-            Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: double.infinity,
-                  decoration: BoxDecoration(),
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(
-                        sigmaX: 20.0,
-                        sigmaY: 10.0,
-                      ),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding:
-                      EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              FFLocalizations.of(context).getText(
-                                'smmv6dor' /* Test Drive */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(20.0, 15.0, 20.0, 0.0),
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          FFLocalizations.of(context).getText(
+                            'smmv6dor' /* Test Drive */,
+                          ),
+                          style:
+                              FlutterFlowTheme.of(context).bodyMedium.override(
                                     fontFamily: 'HeeboBold',
                                     color: Color(0xFF092853),
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.bold,
                                     useGoogleFonts: false,
                                   ),
-                            ),
-                            InkWell(
-                              splashColor: Colors.transparent,
-                              focusColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                Navigator.pop(context);
-                              },
-                              child: Icon(
-                                Icons.close_rounded,
-                                color:
-                                    FlutterFlowTheme.of(context).secondaryText,
-                                size: 24.0,
-                              ),
-                            ),
-                          ],
                         ),
-                      ),
-                      Divider(
-                        thickness: 1.0,
-                        color: Color(0xFF3D6398),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: Material(
-                          color: Colors.transparent,
-                          elevation: 2.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Container(
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 0.0),
-                              child: TextFormField(
-                                controller: _model.textController1,
-                                focusNode: _model.textFieldFocusNode1,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'zy6luwtl' /* Name */,
-                                  ),
-                                  labelStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF81787A),
-                                      ),
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Heebo',
-                                        fontWeight: FontWeight.normal,
-                                        useGoogleFonts: false,
-                                      ),
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  focusedErrorBorder: InputBorder.none,
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.textController1Validator
-                                    .asValidator(context),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: Material(
-                          color: Colors.transparent,
-                          elevation: 2.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Container(
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 0.0),
-                              child: TextFormField(
-                                controller: _model.textController2,
-                                focusNode: _model.textFieldFocusNode2,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    'j8gvjivm' /* Mobile */,
-                                  ),
-                                  labelStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF81787A),
-                                      ),
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Heebo',
-                                        fontWeight: FontWeight.normal,
-                                        useGoogleFonts: false,
-                                      ),
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  focusedErrorBorder: InputBorder.none,
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                validator: _model.textController2Validator
-                                    .asValidator(context),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: Material(
-                          color: Colors.transparent,
-                          elevation: 2.0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(5.0),
-                          ),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              borderRadius: BorderRadius.circular(5.0),
-                            ),
-                            child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  8.0, 0.0, 8.0, 0.0),
-                              child: TextFormField(
-                                controller: _model.textController3,
-                                focusNode: _model.textFieldFocusNode3,
-                                obscureText: false,
-                                decoration: InputDecoration(
-                                  labelText:
-                                      FFLocalizations.of(context).getText(
-                                    '2cld7qli' /* Notes */,
-                                  ),
-                                  labelStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Poppins',
-                                        color: Color(0xFF81787A),
-                                      ),
-                                  hintStyle: FlutterFlowTheme.of(context)
-                                      .labelMedium
-                                      .override(
-                                        fontFamily: 'Heebo',
-                                        fontWeight: FontWeight.normal,
-                                        useGoogleFonts: false,
-                                      ),
-                                  enabledBorder: InputBorder.none,
-                                  focusedBorder: InputBorder.none,
-                                  errorBorder: InputBorder.none,
-                                  focusedErrorBorder: InputBorder.none,
-                                ),
-                                style: FlutterFlowTheme.of(context).bodyMedium,
-                                textAlign: TextAlign.start,
-                                maxLines: 4,
-                                keyboardType: TextInputType.multiline,
-                                validator: _model.textController3Validator
-                                    .asValidator(context),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Theme(
-                            data: ThemeData(
-                              checkboxTheme: CheckboxThemeData(
-                                visualDensity: VisualDensity.standard,
-                                materialTapTargetSize:
-                                    MaterialTapTargetSize.padded,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(4.0),
-                                ),
-                              ),
-                              unselectedWidgetColor:
-                                  FlutterFlowTheme.of(context).secondaryText,
-                            ),
-                            child: Checkbox(
-                              value: _model.checkboxValue ??= false,
-                              onChanged: (newValue) async {
-                                setState(
-                                    () => _model.checkboxValue = newValue!);
-                              },
-                              activeColor: FlutterFlowTheme.of(context).primary,
-                              checkColor: FlutterFlowTheme.of(context).info,
-                            ),
-                          ),
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              '1s87izjp' /* You will be contacted */,
-                            ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
-                          ),
-                        ],
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                        child: FFButtonWidget(
-                          onPressed: () async {
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
                             Navigator.pop(context);
                           },
-                          text: FFLocalizations.of(context).getText(
-                            '4nqcrahs' /* Send */,
-                          ),
-                          options: FFButtonOptions(
-                            height: 40.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                24.0, 0.0, 24.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 0.0, 0.0, 0.0),
-                            color: FlutterFlowTheme.of(context).ahayundai,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Poppins',
-                                  color: Colors.white,
-                                ),
-                            elevation: 3.0,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1.0,
-                            ),
-                            borderRadius: BorderRadius.circular(8.0),
+                          child: Icon(
+                            Icons.close_rounded,
+                            color: FlutterFlowTheme.of(context).secondaryText,
+                            size: 24.0,
                           ),
                         ),
+                      ],
+                    ),
+                  ),
+                  Divider(
+                    thickness: 1.0,
+                    color: Color(0xFF3D6398),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Container(
+                        height: 40.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: TextFormField(
+                            controller: _model.textController1,
+                            focusNode: _model.textFieldFocusNode1,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: FFLocalizations.of(context).getText(
+                                'zy6luwtl' /* Name */,
+                              ),
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF81787A),
+                                  ),
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Heebo',
+                                    fontWeight: FontWeight.normal,
+                                    useGoogleFonts: false,
+                                  ),
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              focusedErrorBorder: InputBorder.none,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            validator: _model.textController1Validator
+                                .asValidator(context),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Container(
+                        height: 40.0,
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: TextFormField(
+                            controller: _model.textController2,
+                            focusNode: _model.textFieldFocusNode2,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: FFLocalizations.of(context).getText(
+                                'j8gvjivm' /* Mobile */,
+                              ),
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF81787A),
+                                  ),
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Heebo',
+                                    fontWeight: FontWeight.normal,
+                                    useGoogleFonts: false,
+                                  ),
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              focusedErrorBorder: InputBorder.none,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            validator: _model.textController2Validator
+                                .asValidator(context),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 2.0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              8.0, 0.0, 8.0, 0.0),
+                          child: TextFormField(
+                            controller: _model.textController3,
+                            focusNode: _model.textFieldFocusNode3,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              labelText: FFLocalizations.of(context).getText(
+                                '2cld7qli' /* Notes */,
+                              ),
+                              labelStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Poppins',
+                                    color: Color(0xFF81787A),
+                                  ),
+                              hintStyle: FlutterFlowTheme.of(context)
+                                  .labelMedium
+                                  .override(
+                                    fontFamily: 'Heebo',
+                                    fontWeight: FontWeight.normal,
+                                    useGoogleFonts: false,
+                                  ),
+                              enabledBorder: InputBorder.none,
+                              focusedBorder: InputBorder.none,
+                              errorBorder: InputBorder.none,
+                              focusedErrorBorder: InputBorder.none,
+                            ),
+                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            textAlign: TextAlign.start,
+                            maxLines: 4,
+                            keyboardType: TextInputType.multiline,
+                            validator: _model.textController3Validator
+                                .asValidator(context),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Theme(
+                        data: ThemeData(
+                          checkboxTheme: CheckboxThemeData(
+                            visualDensity: VisualDensity.standard,
+                            materialTapTargetSize: MaterialTapTargetSize.padded,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(4.0),
+                            ),
+                          ),
+                          unselectedWidgetColor:
+                              FlutterFlowTheme.of(context).secondaryText,
+                        ),
+                        child: Checkbox(
+                          value: _model.checkboxValue ??= false,
+                          onChanged: (newValue) async {
+                            setState(() => _model.checkboxValue = newValue!);
+                          },
+                          activeColor: FlutterFlowTheme.of(context).primary,
+                          checkColor: FlutterFlowTheme.of(context).info,
+                        ),
+                      ),
+                      Text(
+                        FFLocalizations.of(context).getText(
+                          '1s87izjp' /* You will be contacted */,
+                        ),
+                        style: FlutterFlowTheme.of(context).bodyMedium,
                       ),
                     ],
                   ),
-                ),
-              ],
+                  Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
+                    child: FFButtonWidget(
+                      onPressed: () async {
+                        Navigator.pop(context);
+                      },
+                      text: FFLocalizations.of(context).getText(
+                        '4nqcrahs' /* Send */,
+                      ),
+                      options: FFButtonOptions(
+                        height: 40.0,
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            24.0, 0.0, 24.0, 0.0),
+                        iconPadding:
+                            EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+                        color: FlutterFlowTheme.of(context).ahayundai,
+                        textStyle:
+                            FlutterFlowTheme.of(context).titleSmall.override(
+                                  fontFamily: 'Poppins',
+                                  color: Colors.white,
+                                ),
+                        elevation: 3.0,
+                        borderSide: BorderSide(
+                          color: Colors.transparent,
+                          width: 1.0,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
+          ),
         ),
       ),
     );

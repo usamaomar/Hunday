@@ -5,36 +5,22 @@ import '/backend/schema/util/schema_util.dart';
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class CarModelStruct extends BaseStruct {
-  CarModelStruct({
-    String? fullName,
-    String? fullImage,
+class CarCategoriesStruct extends BaseStruct {
+  CarCategoriesStruct({
     int? id,
     String? nameEn,
     String? nameAr,
+    String? image,
     int? status,
-    String? modelCode,
+    String? fullImage,
     String? name,
-  })  : _fullName = fullName,
-        _fullImage = fullImage,
-        _id = id,
+  })  : _id = id,
         _nameEn = nameEn,
         _nameAr = nameAr,
+        _image = image,
         _status = status,
-        _modelCode = modelCode,
+        _fullImage = fullImage,
         _name = name;
-
-  // "fullName" field.
-  String? _fullName;
-  String get fullName => _fullName ?? '';
-  set fullName(String? val) => _fullName = val;
-  bool hasFullName() => _fullName != null;
-
-  // "fullImage" field.
-  String? _fullImage;
-  String get fullImage => _fullImage ?? '';
-  set fullImage(String? val) => _fullImage = val;
-  bool hasFullImage() => _fullImage != null;
 
   // "id" field.
   int? _id;
@@ -55,6 +41,12 @@ class CarModelStruct extends BaseStruct {
   set nameAr(String? val) => _nameAr = val;
   bool hasNameAr() => _nameAr != null;
 
+  // "image" field.
+  String? _image;
+  String get image => _image ?? '';
+  set image(String? val) => _image = val;
+  bool hasImage() => _image != null;
+
   // "status" field.
   int? _status;
   int get status => _status ?? 0;
@@ -62,11 +54,11 @@ class CarModelStruct extends BaseStruct {
   void incrementStatus(int amount) => _status = status + amount;
   bool hasStatus() => _status != null;
 
-  // "model_code" field.
-  String? _modelCode;
-  String get modelCode => _modelCode ?? '';
-  set modelCode(String? val) => _modelCode = val;
-  bool hasModelCode() => _modelCode != null;
+  // "full_image" field.
+  String? _fullImage;
+  String get fullImage => _fullImage ?? '';
+  set fullImage(String? val) => _fullImage = val;
+  bool hasFullImage() => _fullImage != null;
 
   // "name" field.
   String? _name;
@@ -74,41 +66,32 @@ class CarModelStruct extends BaseStruct {
   set name(String? val) => _name = val;
   bool hasName() => _name != null;
 
-  static CarModelStruct fromMap(Map<String, dynamic> data) => CarModelStruct(
-        fullName: data['fullName'] as String?,
-        fullImage: data['fullImage'] as String?,
+  static CarCategoriesStruct fromMap(Map<String, dynamic> data) =>
+      CarCategoriesStruct(
         id: castToType<int>(data['id']),
         nameEn: data['name_en'] as String?,
         nameAr: data['name_ar'] as String?,
+        image: data['image'] as String?,
         status: castToType<int>(data['status']),
-        modelCode: data['model_code'] as String?,
+        fullImage: data['full_image'] as String?,
         name: data['name'] as String?,
       );
 
-  static CarModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CarModelStruct.fromMap(data) : null;
+  static CarCategoriesStruct? maybeFromMap(dynamic data) =>
+      data is Map<String, dynamic> ? CarCategoriesStruct.fromMap(data) : null;
 
   Map<String, dynamic> toMap() => {
-        'fullName': _fullName,
-        'fullImage': _fullImage,
         'id': _id,
         'name_en': _nameEn,
         'name_ar': _nameAr,
+        'image': _image,
         'status': _status,
-        'model_code': _modelCode,
+        'full_image': _fullImage,
         'name': _name,
       }.withoutNulls;
 
   @override
   Map<String, dynamic> toSerializableMap() => {
-        'fullName': serializeParam(
-          _fullName,
-          ParamType.String,
-        ),
-        'fullImage': serializeParam(
-          _fullImage,
-          ParamType.String,
-        ),
         'id': serializeParam(
           _id,
           ParamType.int,
@@ -121,12 +104,16 @@ class CarModelStruct extends BaseStruct {
           _nameAr,
           ParamType.String,
         ),
+        'image': serializeParam(
+          _image,
+          ParamType.String,
+        ),
         'status': serializeParam(
           _status,
           ParamType.int,
         ),
-        'model_code': serializeParam(
-          _modelCode,
+        'full_image': serializeParam(
+          _fullImage,
           ParamType.String,
         ),
         'name': serializeParam(
@@ -135,18 +122,8 @@ class CarModelStruct extends BaseStruct {
         ),
       }.withoutNulls;
 
-  static CarModelStruct fromSerializableMap(Map<String, dynamic> data) =>
-      CarModelStruct(
-        fullName: deserializeParam(
-          data['fullName'],
-          ParamType.String,
-          false,
-        ),
-        fullImage: deserializeParam(
-          data['fullImage'],
-          ParamType.String,
-          false,
-        ),
+  static CarCategoriesStruct fromSerializableMap(Map<String, dynamic> data) =>
+      CarCategoriesStruct(
         id: deserializeParam(
           data['id'],
           ParamType.int,
@@ -162,13 +139,18 @@ class CarModelStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        image: deserializeParam(
+          data['image'],
+          ParamType.String,
+          false,
+        ),
         status: deserializeParam(
           data['status'],
           ParamType.int,
           false,
         ),
-        modelCode: deserializeParam(
-          data['model_code'],
+        fullImage: deserializeParam(
+          data['full_image'],
           ParamType.String,
           false,
         ),
@@ -180,43 +162,40 @@ class CarModelStruct extends BaseStruct {
       );
 
   @override
-  String toString() => 'CarModelStruct(${toMap()})';
+  String toString() => 'CarCategoriesStruct(${toMap()})';
 
   @override
   bool operator ==(Object other) {
-    return other is CarModelStruct &&
-        fullName == other.fullName &&
-        fullImage == other.fullImage &&
+    return other is CarCategoriesStruct &&
         id == other.id &&
         nameEn == other.nameEn &&
         nameAr == other.nameAr &&
+        image == other.image &&
         status == other.status &&
-        modelCode == other.modelCode &&
+        fullImage == other.fullImage &&
         name == other.name;
   }
 
   @override
   int get hashCode => const ListEquality()
-      .hash([fullName, fullImage, id, nameEn, nameAr, status, modelCode, name]);
+      .hash([id, nameEn, nameAr, image, status, fullImage, name]);
 }
 
-CarModelStruct createCarModelStruct({
-  String? fullName,
-  String? fullImage,
+CarCategoriesStruct createCarCategoriesStruct({
   int? id,
   String? nameEn,
   String? nameAr,
+  String? image,
   int? status,
-  String? modelCode,
+  String? fullImage,
   String? name,
 }) =>
-    CarModelStruct(
-      fullName: fullName,
-      fullImage: fullImage,
+    CarCategoriesStruct(
       id: id,
       nameEn: nameEn,
       nameAr: nameAr,
+      image: image,
       status: status,
-      modelCode: modelCode,
+      fullImage: fullImage,
       name: name,
     );
