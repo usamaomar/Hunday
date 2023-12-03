@@ -1,13 +1,16 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'list_of_string_items_component_widget.dart'
     show ListOfStringItemsComponentWidget;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -76,6 +79,12 @@ class ListOfStringItemsComponentModel
 
   String registeredUntil = '';
 
+  String selectedStringCarModel = '';
+
+  String selectedStringCarCategory = '';
+
+  String selectedStringFuelType = '';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.
@@ -125,6 +134,8 @@ class ListOfStringItemsComponentModel
   FocusNode? textFieldcompnyFocusNode;
   TextEditingController? textFieldcompnyController;
   String? Function(BuildContext, String?)? textFieldcompnyControllerValidator;
+  // Stores action output result for [Backend Call - API (StoreVehicleApi)] action in Button widget.
+  ApiCallResponse? apiResult4m8;
 
   /// Initialization and disposal methods.
 

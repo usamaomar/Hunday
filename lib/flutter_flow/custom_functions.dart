@@ -231,3 +231,12 @@ List<FuelTypeModelStruct> fromJsonToFuelTypeModelList(dynamic jsonObject) {
       .toList()
       .cast<FuelTypeModelStruct>();
 }
+
+String convertDateFormat(String inputDate) {
+  DateTime dateTime = DateFormat("dd/MM/yyyy").parse(inputDate);
+
+  // Format the DateTime object to the desired output format
+  String outputDate = DateFormat("dd-MM-yyyy").format(dateTime);
+
+  return outputDate;
+}

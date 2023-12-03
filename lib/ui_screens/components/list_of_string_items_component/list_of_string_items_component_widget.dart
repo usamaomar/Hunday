@@ -1,11 +1,14 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -122,7 +125,11 @@ class _ListOfStringItemsComponentWidgetState
         _model.textFieldcompnyController?.text =
             _model.carInfoLocalModel!.insuranceCompany;
       });
-      setState(() {});
+      setState(() {
+        _model.selectedStringCarModel = _model.selectedCarModel!.name;
+        _model.selectedStringCarCategory = _model.selectedCarCategories!.name;
+        _model.selectedStringFuelType = _model.selectedFuelType!.name;
+      });
     });
 
     _model.textController1 ??= TextEditingController();
@@ -476,6 +483,7 @@ class _ListOfStringItemsComponentWidgetState
                                   width: 270.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
+                                  hintText: _model.selectedStringCarModel,
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -527,10 +535,7 @@ class _ListOfStringItemsComponentWidgetState
                                 FlutterFlowDropDown<String>(
                                   controller:
                                       _model.dropDownValueController2 ??=
-                                          FormFieldController<String>(
-                                    _model.dropDownValue2 ??=
-                                        _model.selectedCarCategories?.name,
-                                  ),
+                                          FormFieldController<String>(null),
                                   options: _model.carCategoriesList
                                       .map((e) => e.name)
                                       .toList(),
@@ -1388,10 +1393,7 @@ class _ListOfStringItemsComponentWidgetState
                                 FlutterFlowDropDown<String>(
                                   controller:
                                       _model.dropDownValueController3 ??=
-                                          FormFieldController<String>(
-                                    _model.dropDownValue3 ??=
-                                        _model.selectedFuelType?.name,
-                                  ),
+                                          FormFieldController<String>(null),
                                   options: _model.fuelTypesList
                                       .map((e) => e.name)
                                       .toList(),
@@ -1522,32 +1524,90 @@ class _ListOfStringItemsComponentWidgetState
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                context.pushNamed('ShopPage');
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'ndp3se3p' /* Save */,
-                              ),
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    24.0, 0.0, 24.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).ahayundai,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                                elevation: 3.0,
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                            Builder(
+                              builder: (context) => FFButtonWidget(
+                                onPressed: () async {
+                                  _model.apiResult4m8 =
+                                      await StoreVehicleApiCall.call(
+                                    token: FFAppState().userModel.token,
+                                    ownerName: _model.textController1.text,
+                                    address: _model.textController2.text,
+                                    carType: _model.selectedCarModel?.name,
+                                    carModelId:
+                                        _model.selectedCarModel?.id?.toString(),
+                                    carCategoryId: _model
+                                        .selectedCarCategories?.id
+                                        ?.toString(),
+                                    color: _model.textController3.text,
+                                    yearOfManufacturing:
+                                        _model.yearOfManufacturingString,
+                                    registeredUntil:
+                                        functions.convertDateFormat(
+                                            _model.registeredUntil),
+                                    plateNumber: _model.textController4.text,
+                                    registrationNumber:
+                                        _model.textController5.text,
+                                    vinNumber: _model.textController6.text,
+                                    engineNumber: _model.textController7.text,
+                                    engineCapacity:
+                                        _model.textFieldCapacityController.text,
+                                    insuranceCompany:
+                                        _model.textFieldcompnyController.text,
+                                    fuelTypeId:
+                                        _model.selectedFuelType?.id?.toString(),
+                                  );
+                                  if ((_model.apiResult4m8?.succeeded ??
+                                      true)) {
+                                    context.pushNamed('ShopPage');
+                                  } else {
+                                    await showAlignedDialog(
+                                      context: context,
+                                      isGlobal: true,
+                                      avoidOverflow: false,
+                                      targetAnchor: AlignmentDirectional(
+                                              0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      followerAnchor: AlignmentDirectional(
+                                              0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
+                                      builder: (dialogContext) {
+                                        return Material(
+                                          color: Colors.transparent,
+                                          child: Modal06BasicInformationWidget(
+                                            body: (_model
+                                                    .apiResult4m8?.bodyText ??
+                                                ''),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => setState(() {}));
+                                  }
+
+                                  setState(() {});
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'ndp3se3p' /* Save */,
                                 ),
-                                borderRadius: BorderRadius.circular(8.0),
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      24.0, 0.0, 24.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).ahayundai,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.white,
+                                      ),
+                                  elevation: 3.0,
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8.0),
+                                ),
                               ),
                             ),
                           ],
