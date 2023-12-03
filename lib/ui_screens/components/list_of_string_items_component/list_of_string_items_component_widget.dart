@@ -467,10 +467,7 @@ class _ListOfStringItemsComponentWidgetState
                                 FlutterFlowDropDown<String>(
                                   controller:
                                       _model.dropDownValueController1 ??=
-                                          FormFieldController<String>(
-                                    _model.dropDownValue1 ??=
-                                        _model.selectedCarModel?.name,
-                                  ),
+                                          FormFieldController<String>(null),
                                   options: _model.carModelList
                                       .map((e) => e.name)
                                       .toList(),
@@ -761,7 +758,7 @@ class _ListOfStringItemsComponentWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5.0, 5.0, 5.0, 5.0),
                                     child: Text(
-                                      '',
+                                      _model.yearOfManufacturingString,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
@@ -885,7 +882,7 @@ class _ListOfStringItemsComponentWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5.0, 5.0, 5.0, 5.0),
                                     child: Text(
-                                      '',
+                                      _model.registeredUntil,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                     ),
