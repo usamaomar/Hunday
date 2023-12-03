@@ -8,6 +8,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'list_of_string_items_component_widget.dart'
     show ListOfStringItemsComponentWidget;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -71,6 +72,10 @@ class ListOfStringItemsComponentModel
   void updateSelectedFuelTypeStruct(Function(FuelTypeModelStruct) updateFn) =>
       updateFn(selectedFuelType ??= FuelTypeModelStruct());
 
+  String yearOfManufacturingString = '';
+
+  String registeredUntil = '';
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.
@@ -91,6 +96,8 @@ class ListOfStringItemsComponentModel
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;
   String? Function(BuildContext, String?)? textController3Validator;
+  DateTime? datePicked1;
+  DateTime? datePicked2;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode4;
   TextEditingController? textController4;

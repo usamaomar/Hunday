@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -96,27 +97,30 @@ class _ListOfStringItemsComponentWidgetState
         _model.textController3?.text = _model.carInfoLocalModel!.color;
       });
       setState(() {
-        _model.textController4?.text =
+        _model.yearOfManufacturingString =
             _model.carInfoLocalModel!.yearOfManufacturing;
+        _model.registeredUntil = _model.carInfoLocalModel!.registeredUntil;
+      });
+      setState(() {
+        _model.textController4?.text = _model.carInfoLocalModel!.plateNumber;
       });
       setState(() {
         _model.textController5?.text =
-            _model.carInfoLocalModel!.registeredUntil;
-      });
-      setState(() {
-        _model.textController6?.text = _model.carInfoLocalModel!.plateNumber;
-      });
-      setState(() {
-        _model.textController7?.text =
             _model.carInfoLocalModel!.registrationNumber;
       });
       setState(() {
+        _model.textController6?.text = _model.carInfoLocalModel!.vinNumber;
+      });
+      setState(() {
+        _model.textController7?.text = _model.carInfoLocalModel!.engineNumber;
+      });
+      setState(() {
         _model.textFieldCapacityController?.text =
-            _model.carInfoLocalModel!.vinNumber;
+            _model.carInfoLocalModel!.engineCapacity;
       });
       setState(() {
         _model.textFieldcompnyController?.text =
-            _model.carInfoLocalModel!.engineNumber;
+            _model.carInfoLocalModel!.insuranceCompany;
       });
       setState(() {});
     });
@@ -463,7 +467,10 @@ class _ListOfStringItemsComponentWidgetState
                                 FlutterFlowDropDown<String>(
                                   controller:
                                       _model.dropDownValueController1 ??=
-                                          FormFieldController<String>(null),
+                                          FormFieldController<String>(
+                                    _model.dropDownValue1 ??=
+                                        _model.selectedCarModel?.name,
+                                  ),
                                   options: _model.carModelList
                                       .map((e) => e.name)
                                       .toList(),
@@ -523,7 +530,10 @@ class _ListOfStringItemsComponentWidgetState
                                 FlutterFlowDropDown<String>(
                                   controller:
                                       _model.dropDownValueController2 ??=
-                                          FormFieldController<String>(null),
+                                          FormFieldController<String>(
+                                    _model.dropDownValue2 ??=
+                                        _model.selectedCarCategories?.name,
+                                  ),
                                   options: _model.carCategoriesList
                                       .map((e) => e.name)
                                       .toList(),
@@ -665,38 +675,108 @@ class _ListOfStringItemsComponentWidgetState
                                   ),
                             ),
                           ),
-                          Container(
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5.0),
-                              border: Border.all(
-                                color: Color(0xFFE1E1E1),
-                                width: 1.0,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              // yearOfManufacturing
+                              final _datePicked1Date = await showDatePicker(
+                                context: context,
+                                initialDate: getCurrentTimestamp,
+                                firstDate: getCurrentTimestamp,
+                                lastDate: DateTime(2050),
+                                builder: (context, child) {
+                                  return wrapInMaterialDatePickerTheme(
+                                    context,
+                                    child!,
+                                    headerBackgroundColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    headerForegroundColor:
+                                        FlutterFlowTheme.of(context).info,
+                                    headerTextStyle:
+                                        FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 32.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                    pickerBackgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                    pickerForegroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                    selectedDateTimeBackgroundColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    selectedDateTimeForegroundColor:
+                                        FlutterFlowTheme.of(context).white,
+                                    actionButtonForegroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                    iconSize: 24.0,
+                                  );
+                                },
+                              );
+
+                              if (_datePicked1Date != null) {
+                                safeSetState(() {
+                                  _model.datePicked1 = DateTime(
+                                    _datePicked1Date.year,
+                                    _datePicked1Date.month,
+                                    _datePicked1Date.day,
+                                  );
+                                });
+                              }
+                              setState(() {
+                                _model.yearOfManufacturingString =
+                                    valueOrDefault<String>(
+                                  dateTimeFormat(
+                                    'yyyy',
+                                    _model.datePicked1,
+                                    locale: FFLocalizations.of(context)
+                                        .languageCode,
+                                  ),
+                                  'yyyy',
+                                );
+                              });
+                            },
+                            child: Container(
+                              height: 40.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.0),
+                                border: Border.all(
+                                  color: Color(0xFFE1E1E1),
+                                  width: 1.0,
+                                ),
                               ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 5.0, 5.0, 5.0),
-                                  child: Text(
-                                    '',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 5.0, 5.0, 5.0),
+                                    child: Text(
+                                      '',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 5.0, 5.0, 5.0),
-                                  child: Icon(
-                                    Icons.calendar_month,
-                                    color: Color(0xFF092853),
-                                    size: 24.0,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 5.0, 5.0, 5.0),
+                                    child: Icon(
+                                      Icons.calendar_month,
+                                      color: Color(0xFF092853),
+                                      size: 24.0,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -720,38 +800,107 @@ class _ListOfStringItemsComponentWidgetState
                                   ),
                             ),
                           ),
-                          Container(
-                            height: 40.0,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(5.0),
-                              border: Border.all(
-                                color: Color(0xFFE1E1E1),
-                                width: 1.0,
+                          InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              // RegisterdUntil
+                              final _datePicked2Date = await showDatePicker(
+                                context: context,
+                                initialDate: getCurrentTimestamp,
+                                firstDate: getCurrentTimestamp,
+                                lastDate: DateTime(2050),
+                                builder: (context, child) {
+                                  return wrapInMaterialDatePickerTheme(
+                                    context,
+                                    child!,
+                                    headerBackgroundColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    headerForegroundColor:
+                                        FlutterFlowTheme.of(context).info,
+                                    headerTextStyle:
+                                        FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 32.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
+                                    pickerBackgroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                    pickerForegroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                    selectedDateTimeBackgroundColor:
+                                        FlutterFlowTheme.of(context).primary,
+                                    selectedDateTimeForegroundColor:
+                                        FlutterFlowTheme.of(context).white,
+                                    actionButtonForegroundColor:
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
+                                    iconSize: 24.0,
+                                  );
+                                },
+                              );
+
+                              if (_datePicked2Date != null) {
+                                safeSetState(() {
+                                  _model.datePicked2 = DateTime(
+                                    _datePicked2Date.year,
+                                    _datePicked2Date.month,
+                                    _datePicked2Date.day,
+                                  );
+                                });
+                              }
+                              setState(() {
+                                _model.registeredUntil = valueOrDefault<String>(
+                                  dateTimeFormat(
+                                    'yMd',
+                                    _model.datePicked2,
+                                    locale: FFLocalizations.of(context)
+                                        .languageCode,
+                                  ),
+                                  'dd/MM/yyyy',
+                                );
+                              });
+                            },
+                            child: Container(
+                              height: 40.0,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(5.0),
+                                border: Border.all(
+                                  color: Color(0xFFE1E1E1),
+                                  width: 1.0,
+                                ),
                               ),
-                            ),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 5.0, 5.0, 5.0),
-                                  child: Text(
-                                    '',
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 5.0, 5.0, 5.0),
+                                    child: Text(
+                                      '',
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium,
+                                    ),
                                   ),
-                                ),
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 5.0, 5.0, 5.0),
-                                  child: Icon(
-                                    Icons.calendar_month,
-                                    color: Color(0xFF092853),
-                                    size: 24.0,
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 5.0, 5.0, 5.0),
+                                    child: Icon(
+                                      Icons.calendar_month,
+                                      color: Color(0xFF092853),
+                                      size: 24.0,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         ],
@@ -1242,7 +1391,10 @@ class _ListOfStringItemsComponentWidgetState
                                 FlutterFlowDropDown<String>(
                                   controller:
                                       _model.dropDownValueController3 ??=
-                                          FormFieldController<String>(null),
+                                          FormFieldController<String>(
+                                    _model.dropDownValue3 ??=
+                                        _model.selectedFuelType?.name,
+                                  ),
                                   options: _model.fuelTypesList
                                       .map((e) => e.name)
                                       .toList(),

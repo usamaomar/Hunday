@@ -226,8 +226,8 @@ List<CarCategoriesStruct> fromJsonToCategoriesList(dynamic jsonObject) {
 
 List<FuelTypeModelStruct> fromJsonToFuelTypeModelList(dynamic jsonObject) {
   return jsonObject
-      .map((e) => e != null && e != '' ? CarCategoriesStruct.fromMap(e) : null)
+      .map((e) => e != null && e != '' ? FuelTypeModelStruct.fromMap(e) : null)
       .toList()
       .toList()
-      .cast<CarCategoriesStruct>();
+      .cast<FuelTypeModelStruct>();
 }
