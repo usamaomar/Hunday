@@ -58,6 +58,19 @@ class ListOfStringItemsComponentModel
           int index, Function(FuelTypeModelStruct) updateFn) =>
       fuelTypesList[index] = updateFn(fuelTypesList[index]);
 
+  CarModelStruct? selectedCarModel;
+  void updateSelectedCarModelStruct(Function(CarModelStruct) updateFn) =>
+      updateFn(selectedCarModel ??= CarModelStruct());
+
+  CarCategoriesStruct? selectedCarCategories;
+  void updateSelectedCarCategoriesStruct(
+          Function(CarCategoriesStruct) updateFn) =>
+      updateFn(selectedCarCategories ??= CarCategoriesStruct());
+
+  FuelTypeModelStruct? selectedFuelType;
+  void updateSelectedFuelTypeStruct(Function(FuelTypeModelStruct) updateFn) =>
+      updateFn(selectedFuelType ??= FuelTypeModelStruct());
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.
@@ -94,17 +107,17 @@ class ListOfStringItemsComponentModel
   FocusNode? textFieldFocusNode7;
   TextEditingController? textController7;
   String? Function(BuildContext, String?)? textController7Validator;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode8;
-  TextEditingController? textController8;
-  String? Function(BuildContext, String?)? textController8Validator;
+  // State field(s) for TextFieldCapacity widget.
+  FocusNode? textFieldCapacityFocusNode;
+  TextEditingController? textFieldCapacityController;
+  String? Function(BuildContext, String?)? textFieldCapacityControllerValidator;
   // State field(s) for DropDown widget.
   String? dropDownValue3;
   FormFieldController<String>? dropDownValueController3;
-  // State field(s) for TextField widget.
-  FocusNode? textFieldFocusNode9;
-  TextEditingController? textController9;
-  String? Function(BuildContext, String?)? textController9Validator;
+  // State field(s) for TextFieldcompny widget.
+  FocusNode? textFieldcompnyFocusNode;
+  TextEditingController? textFieldcompnyController;
+  String? Function(BuildContext, String?)? textFieldcompnyControllerValidator;
 
   /// Initialization and disposal methods.
 
@@ -132,11 +145,11 @@ class ListOfStringItemsComponentModel
     textFieldFocusNode7?.dispose();
     textController7?.dispose();
 
-    textFieldFocusNode8?.dispose();
-    textController8?.dispose();
+    textFieldCapacityFocusNode?.dispose();
+    textFieldCapacityController?.dispose();
 
-    textFieldFocusNode9?.dispose();
-    textController9?.dispose();
+    textFieldcompnyFocusNode?.dispose();
+    textFieldcompnyController?.dispose();
   }
 
   /// Action blocks are added here.

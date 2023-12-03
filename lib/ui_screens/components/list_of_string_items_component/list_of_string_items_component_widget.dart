@@ -82,7 +82,43 @@ class _ListOfStringItemsComponentWidgetState
             ))
             .toList()
             .cast<FuelTypeModelStruct>();
+        _model.selectedCarModel = _model.carModelList[0];
+        _model.selectedCarCategories = _model.carCategoriesList[0];
+        _model.selectedFuelType = _model.fuelTypesList[0];
       });
+      setState(() {
+        _model.textController1?.text = _model.carInfoLocalModel!.ownerName;
+      });
+      setState(() {
+        _model.textController2?.text = _model.carInfoLocalModel!.address;
+      });
+      setState(() {
+        _model.textController3?.text = _model.carInfoLocalModel!.color;
+      });
+      setState(() {
+        _model.textController4?.text =
+            _model.carInfoLocalModel!.yearOfManufacturing;
+      });
+      setState(() {
+        _model.textController5?.text =
+            _model.carInfoLocalModel!.registeredUntil;
+      });
+      setState(() {
+        _model.textController6?.text = _model.carInfoLocalModel!.plateNumber;
+      });
+      setState(() {
+        _model.textController7?.text =
+            _model.carInfoLocalModel!.registrationNumber;
+      });
+      setState(() {
+        _model.textFieldCapacityController?.text =
+            _model.carInfoLocalModel!.vinNumber;
+      });
+      setState(() {
+        _model.textFieldcompnyController?.text =
+            _model.carInfoLocalModel!.engineNumber;
+      });
+      setState(() {});
     });
 
     _model.textController1 ??= TextEditingController();
@@ -106,11 +142,11 @@ class _ListOfStringItemsComponentWidgetState
     _model.textController7 ??= TextEditingController();
     _model.textFieldFocusNode7 ??= FocusNode();
 
-    _model.textController8 ??= TextEditingController();
-    _model.textFieldFocusNode8 ??= FocusNode();
+    _model.textFieldCapacityController ??= TextEditingController();
+    _model.textFieldCapacityFocusNode ??= FocusNode();
 
-    _model.textController9 ??= TextEditingController();
-    _model.textFieldFocusNode9 ??= FocusNode();
+    _model.textFieldcompnyController ??= TextEditingController();
+    _model.textFieldcompnyFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -1111,8 +1147,10 @@ class _ListOfStringItemsComponentWidgetState
                               children: [
                                 Expanded(
                                   child: TextFormField(
-                                    controller: _model.textController8,
-                                    focusNode: _model.textFieldFocusNode8,
+                                    controller:
+                                        _model.textFieldCapacityController,
+                                    focusNode:
+                                        _model.textFieldCapacityFocusNode,
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -1166,7 +1204,8 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
-                                    validator: _model.textController8Validator
+                                    validator: _model
+                                        .textFieldCapacityControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -1262,8 +1301,9 @@ class _ListOfStringItemsComponentWidgetState
                               children: [
                                 Expanded(
                                   child: TextFormField(
-                                    controller: _model.textController9,
-                                    focusNode: _model.textFieldFocusNode9,
+                                    controller:
+                                        _model.textFieldcompnyController,
+                                    focusNode: _model.textFieldcompnyFocusNode,
                                     autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
@@ -1317,7 +1357,8 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
-                                    validator: _model.textController9Validator
+                                    validator: _model
+                                        .textFieldcompnyControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
