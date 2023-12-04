@@ -604,46 +604,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // ShopDetailsPage
-  {
-    'rbt2tj0m': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
   // ItemDetailsPage
   {
-    'bl2mr8ak': {
-      'en': 'PAD KIT-FRONT DISC BRAKE',
-      'ar': 'طقم الوسادة - فرامل قرصية أمامية',
-    },
-    '6t7jzuzr': {
-      'en': '120 JOD',
-      'ar': '',
-    },
     'ck6fuofr': {
       'en': 'Weight (Kg)',
       'ar': 'الوزن (كجم)',
-    },
-    'fkbtevu6': {
-      'en': 'Hello World',
-      'ar': '',
     },
     '83ihzfx7': {
       'en': 'Length (mm)',
       'ar': 'الطول (مم)',
     },
-    'tgg8xfth': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     'h86tnhha': {
       'en': 'Width (mm)',
       'ar': 'العرض (مم)',
-    },
-    '8c8pu3iz': {
-      'en': 'Hello World',
-      'ar': '',
     },
     'km3ujc8c': {
       'en': 'Model Year',
@@ -656,10 +629,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'awj659y0': {
       'en': 'Model',
       'ar': 'نموذج',
-    },
-    'pzpi2gmd': {
-      'en': 'Hello World',
-      'ar': '',
     },
     'lcbpx0vq': {
       'en': 'Add to Cart',
@@ -1065,43 +1034,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    'rnsf887s': {
-      'en': 'Year of Creation',
-      'ar': 'سنة الصناعة',
-    },
-    '0au1tekg': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     '3q1ra16p': {
-      'en': '120 JOD',
-      'ar': '',
-    },
-    'hsc8lstq': {
-      'en': '120 JOD',
-      'ar': '',
-    },
-    'a7f00p9c': {
-      'en': 'Hello World',
-      'ar': '',
-    },
-    'ydtf5ub3': {
-      'en': '120 JOD',
-      'ar': '',
-    },
-    'drmqqt3s': {
-      'en': 'Hello World',
-      'ar': '',
-    },
-    'cnl8yg44': {
-      'en': '120 JOD',
-      'ar': '',
-    },
-    '4e6w7poy': {
-      'en': 'Hello World',
-      'ar': '',
-    },
-    'jyb1rr1q': {
       'en': '120 JOD',
       'ar': '',
     },

@@ -56,7 +56,7 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
       child: Container(
         height: 270.0,
         decoration: BoxDecoration(
-          color: Color(0x81FFFFFF),
+          color: Color(0xACFFFFFF),
           borderRadius: BorderRadius.circular(20.0),
         ),
         child: ClipRRect(
@@ -124,129 +124,139 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).white,
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 0.0,
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 5.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'vp1op5ww' /* Front Face */,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).white,
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 5.0, 10.0, 5.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'vp1op5ww' /* Front Face */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Heebo Regular',
+                                    color: Color(0xFF81787A),
+                                    fontWeight: FontWeight.w500,
+                                    useGoogleFonts: false,
+                                  ),
                             ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'Heebo Regular',
-                                  color: Color(0xFF81787A),
-                                  fontWeight: FontWeight.w500,
-                                  useGoogleFonts: false,
-                                ),
-                          ),
-                          Stack(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            children: [
-                              if (_model.isFrontAdded == false)
+                            Stack(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              children: [
+                                if (_model.isFrontAdded == false)
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 5.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        final selectedFiles = await selectFiles(
+                                          multiFile: false,
+                                        );
+                                        if (selectedFiles != null) {
+                                          setState(() =>
+                                              _model.isDataUploading1 = true);
+                                          var selectedUploadedFiles =
+                                              <FFUploadedFile>[];
+
+                                          try {
+                                            selectedUploadedFiles =
+                                                selectedFiles
+                                                    .map((m) => FFUploadedFile(
+                                                          name: m.storagePath
+                                                              .split('/')
+                                                              .last,
+                                                          bytes: m.bytes,
+                                                        ))
+                                                    .toList();
+                                          } finally {
+                                            _model.isDataUploading1 = false;
+                                          }
+                                          if (selectedUploadedFiles.length ==
+                                              selectedFiles.length) {
+                                            setState(() {
+                                              _model.uploadedLocalFile1 =
+                                                  selectedUploadedFiles.first;
+                                            });
+                                          } else {
+                                            setState(() {});
+                                            return;
+                                          }
+                                        }
+
+                                        setState(() {
+                                          _model.frontFaceImage =
+                                              _model.uploadedLocalFile1;
+                                        });
+                                        setState(() {
+                                          _model.isFrontAdded = true;
+                                        });
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        'ssqteoc6' /* Choose File */,
+                                      ),
+                                      options: FFButtonOptions(
+                                        height: 30.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Color(0xFF646464),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
+                                              fontSize: 13.0,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                    ),
+                                  ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 5.0, 0.0, 5.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      final selectedFiles = await selectFiles(
-                                        multiFile: false,
-                                      );
-                                      if (selectedFiles != null) {
-                                        setState(() =>
-                                            _model.isDataUploading1 = true);
-                                        var selectedUploadedFiles =
-                                            <FFUploadedFile>[];
-
-                                        try {
-                                          selectedUploadedFiles = selectedFiles
-                                              .map((m) => FFUploadedFile(
-                                                    name: m.storagePath
-                                                        .split('/')
-                                                        .last,
-                                                    bytes: m.bytes,
-                                                  ))
-                                              .toList();
-                                        } finally {
-                                          _model.isDataUploading1 = false;
-                                        }
-                                        if (selectedUploadedFiles.length ==
-                                            selectedFiles.length) {
-                                          setState(() {
-                                            _model.uploadedLocalFile1 =
-                                                selectedUploadedFiles.first;
-                                          });
-                                        } else {
-                                          setState(() {});
-                                          return;
-                                        }
-                                      }
-
-                                      setState(() {
-                                        _model.frontFaceImage =
-                                            _model.uploadedLocalFile1;
-                                      });
-                                      setState(() {
-                                        _model.isFrontAdded = true;
-                                      });
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      'ssqteoc6' /* Choose File */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0xFF646464),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Colors.white,
-                                            fontSize: 13.0,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(5.0),
-                                    ),
-                                  ),
-                                ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 10.0, 0.0, 10.0),
-                                child: Container(
-                                  decoration: BoxDecoration(),
-                                  child: Visibility(
-                                    visible: _model.isFrontAdded == true,
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Path_76223.svg',
-                                        height: 20.0,
-                                        fit: BoxFit.cover,
+                                      0.0, 10.0, 0.0, 10.0),
+                                  child: Container(
+                                    decoration: BoxDecoration(),
+                                    child: Visibility(
+                                      visible: _model.isFrontAdded == true,
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/Path_76223.svg',
+                                          height: 20.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
                                     ),
                                   ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -254,129 +264,139 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                 Padding(
                   padding:
                       EdgeInsetsDirectional.fromSTEB(15.0, 10.0, 15.0, 0.0),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      color: FlutterFlowTheme.of(context).white,
+                  child: Material(
+                    color: Colors.transparent,
+                    elevation: 0.0,
+                    shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5.0),
                     ),
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 5.0),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.max,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            FFLocalizations.of(context).getText(
-                              'a029ysp7' /* Back Face */,
-                            ),
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'HeeboBold',
-                                  color: Color(0xFF81787A),
-                                  fontWeight: FontWeight.w500,
-                                  useGoogleFonts: false,
-                                ),
-                          ),
-                          Stack(
-                            alignment: AlignmentDirectional(0.0, 0.0),
-                            children: [
-                              if (_model.isBackAdded == false)
-                                Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 5.0, 0.0, 5.0),
-                                  child: FFButtonWidget(
-                                    onPressed: () async {
-                                      final selectedFiles = await selectFiles(
-                                        multiFile: false,
-                                      );
-                                      if (selectedFiles != null) {
-                                        setState(() =>
-                                            _model.isDataUploading2 = true);
-                                        var selectedUploadedFiles =
-                                            <FFUploadedFile>[];
-
-                                        try {
-                                          selectedUploadedFiles = selectedFiles
-                                              .map((m) => FFUploadedFile(
-                                                    name: m.storagePath
-                                                        .split('/')
-                                                        .last,
-                                                    bytes: m.bytes,
-                                                  ))
-                                              .toList();
-                                        } finally {
-                                          _model.isDataUploading2 = false;
-                                        }
-                                        if (selectedUploadedFiles.length ==
-                                            selectedFiles.length) {
-                                          setState(() {
-                                            _model.uploadedLocalFile2 =
-                                                selectedUploadedFiles.first;
-                                          });
-                                        } else {
-                                          setState(() {});
-                                          return;
-                                        }
-                                      }
-
-                                      setState(() {
-                                        _model.backFaceImage =
-                                            _model.uploadedLocalFile2;
-                                      });
-                                      setState(() {
-                                        _model.isBackAdded = true;
-                                      });
-                                    },
-                                    text: FFLocalizations.of(context).getText(
-                                      's0cyrb39' /* Choose File */,
-                                    ),
-                                    options: FFButtonOptions(
-                                      height: 30.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          24.0, 0.0, 24.0, 0.0),
-                                      iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              0.0, 0.0, 0.0, 0.0),
-                                      color: Color(0xFF646464),
-                                      textStyle: FlutterFlowTheme.of(context)
-                                          .titleSmall
-                                          .override(
-                                            fontFamily: 'Poppins',
-                                            color: Colors.white,
-                                            fontSize: 13.0,
-                                          ),
-                                      elevation: 3.0,
-                                      borderSide: BorderSide(
-                                        color: Colors.transparent,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.circular(5.0),
-                                    ),
-                                  ),
-                                ),
-                              Container(
-                                decoration: BoxDecoration(),
-                                child: Visibility(
-                                  visible: _model.isBackAdded == true,
-                                  child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 10.0, 0.0, 10.0),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: SvgPicture.asset(
-                                        'assets/images/Path_76223.svg',
-                                        height: 20.0,
-                                        fit: BoxFit.cover,
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme.of(context).white,
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            10.0, 5.0, 10.0, 5.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              FFLocalizations.of(context).getText(
+                                'a029ysp7' /* Back Face */,
                               ),
-                            ],
-                          ),
-                        ],
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'HeeboBold',
+                                    color: Color(0xFF81787A),
+                                    fontWeight: FontWeight.w500,
+                                    useGoogleFonts: false,
+                                  ),
+                            ),
+                            Stack(
+                              alignment: AlignmentDirectional(0.0, 0.0),
+                              children: [
+                                if (_model.isBackAdded == false)
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        0.0, 5.0, 0.0, 5.0),
+                                    child: FFButtonWidget(
+                                      onPressed: () async {
+                                        final selectedFiles = await selectFiles(
+                                          multiFile: false,
+                                        );
+                                        if (selectedFiles != null) {
+                                          setState(() =>
+                                              _model.isDataUploading2 = true);
+                                          var selectedUploadedFiles =
+                                              <FFUploadedFile>[];
+
+                                          try {
+                                            selectedUploadedFiles =
+                                                selectedFiles
+                                                    .map((m) => FFUploadedFile(
+                                                          name: m.storagePath
+                                                              .split('/')
+                                                              .last,
+                                                          bytes: m.bytes,
+                                                        ))
+                                                    .toList();
+                                          } finally {
+                                            _model.isDataUploading2 = false;
+                                          }
+                                          if (selectedUploadedFiles.length ==
+                                              selectedFiles.length) {
+                                            setState(() {
+                                              _model.uploadedLocalFile2 =
+                                                  selectedUploadedFiles.first;
+                                            });
+                                          } else {
+                                            setState(() {});
+                                            return;
+                                          }
+                                        }
+
+                                        setState(() {
+                                          _model.backFaceImage =
+                                              _model.uploadedLocalFile2;
+                                        });
+                                        setState(() {
+                                          _model.isBackAdded = true;
+                                        });
+                                      },
+                                      text: FFLocalizations.of(context).getText(
+                                        's0cyrb39' /* Choose File */,
+                                      ),
+                                      options: FFButtonOptions(
+                                        height: 30.0,
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            24.0, 0.0, 24.0, 0.0),
+                                        iconPadding:
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                0.0, 0.0, 0.0, 0.0),
+                                        color: Color(0xFF646464),
+                                        textStyle: FlutterFlowTheme.of(context)
+                                            .titleSmall
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              color: Colors.white,
+                                              fontSize: 13.0,
+                                            ),
+                                        elevation: 3.0,
+                                        borderSide: BorderSide(
+                                          color: Colors.transparent,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius:
+                                            BorderRadius.circular(5.0),
+                                      ),
+                                    ),
+                                  ),
+                                Container(
+                                  decoration: BoxDecoration(),
+                                  child: Visibility(
+                                    visible: _model.isBackAdded == true,
+                                    child: Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0.0, 10.0, 0.0, 10.0),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/Path_76223.svg',
+                                          height: 20.0,
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),

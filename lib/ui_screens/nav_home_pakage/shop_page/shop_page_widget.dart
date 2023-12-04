@@ -1,7 +1,8 @@
-import '/backend/schema/structs/index.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/ui_screens/components/add_component_shoping_details/add_component_shoping_details_widget.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/shop_list_item_component/shop_list_item_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -10,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:infinite_scroll_pagination/infinite_scroll_pagination.dart';
 import 'package:provider/provider.dart';
 import 'shop_page_model.dart';
 export 'shop_page_model.dart';
@@ -169,59 +171,135 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
                   ),
                 ),
                 Expanded(
-                  child: Builder(
-                    builder: (context) {
-                      final listItems =
-                          FFAppState().itemsShopList.toList().take(50).toList();
-                      return ListView.builder(
-                        padding: EdgeInsets.zero,
-                        primary: false,
-                        shrinkWrap: true,
-                        scrollDirection: Axis.vertical,
-                        itemCount: listItems.length,
-                        itemBuilder: (context, listItemsIndex) {
-                          final listItemsItem = listItems[listItemsIndex];
-                          return Container(
-                            decoration: BoxDecoration(),
-                            child: Visibility(
-                              visible: functions.newCustomFunction2(
-                                      _model.textController.text,
-                                      listItemsItem.title) ??
-                                  true,
-                              child: InkWell(
-                                splashColor: Colors.transparent,
-                                focusColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  context.pushNamed('ShopDetailsPage');
-                                },
-                                child: wrapWithModel(
-                                  model: _model.shopListItemComponentModels
-                                      .getModel(
-                                    listItemsIndex.toString(),
-                                    listItemsIndex,
+                  child: PagedListView<ApiPagingParams, dynamic>(
+                    pagingController: _model.setListViewController(
+                      (nextPageMarker) => PartsCategoryApiCall.call(
+                        token: FFAppState().userModel.token,
+                        page: valueOrDefault<int>(
+                          nextPageMarker.nextPageNumber,
+                          -1,
+                        ),
+                      ),
+                    ),
+                    padding: EdgeInsets.zero,
+                    primary: false,
+                    reverse: false,
+                    scrollDirection: Axis.vertical,
+                    builderDelegate: PagedChildBuilderDelegate<dynamic>(
+                      // Customize what your widget looks like when it's loading the first page.
+                      firstPageProgressIndicatorBuilder: (_) => Center(
+                        child: SizedBox(
+                          width: 40.0,
+                          height: 40.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).white,
+                            ),
+                          ),
+                        ),
+                      ),
+                      // Customize what your widget looks like when it's loading another page.
+                      newPageProgressIndicatorBuilder: (_) => Center(
+                        child: SizedBox(
+                          width: 40.0,
+                          height: 40.0,
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                              FlutterFlowTheme.of(context).white,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                      itemBuilder: (context, _, listLocsIndex) {
+                        final listLocsItem = _model
+                            .listViewPagingController!.itemList![listLocsIndex];
+                        return Container(
+                          decoration: BoxDecoration(),
+                          child: Visibility(
+                            visible: functions.newCustomFunction2(
+                                    _model.textController.text,
+                                    getJsonField(
+                                      listLocsItem,
+                                      r'''$.name''',
+                                    ).toString()) ??
+                                true,
+                            child: InkWell(
+                              splashColor: Colors.transparent,
+                              focusColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                showModalBottomSheet(
+                                  isScrollControlled: true,
+                                  backgroundColor: Colors.transparent,
+                                  barrierColor: Color(0x00FFFFFF),
+                                  isDismissible: false,
+                                  enableDrag: false,
+                                  useSafeArea: true,
+                                  context: context,
+                                  builder: (context) {
+                                    return GestureDetector(
+                                      onTap: () => _model
+                                              .unfocusNode.canRequestFocus
+                                          ? FocusScope.of(context)
+                                              .requestFocus(_model.unfocusNode)
+                                          : FocusScope.of(context).unfocus(),
+                                      child: Padding(
+                                        padding:
+                                            MediaQuery.viewInsetsOf(context),
+                                        child: Container(
+                                          height: double.infinity,
+                                          child:
+                                              AddComponentShopingDetailsWidget(
+                                            partId: getJsonField(
+                                              listLocsItem,
+                                              r'''$.id''',
+                                            ),
+                                            titleh: getJsonField(
+                                              listLocsItem,
+                                              r'''$.name''',
+                                            ).toString(),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) => safeSetState(() {}));
+                              },
+                              child: wrapWithModel(
+                                model:
+                                    _model.shopListItemComponentModels.getModel(
+                                  listLocsIndex.toString(),
+                                  listLocsIndex,
+                                ),
+                                updateCallback: () => setState(() {}),
+                                child: ShopListItemComponentWidget(
+                                  key: Key(
+                                    'Key4aq_${listLocsIndex.toString()}',
                                   ),
-                                  updateCallback: () => setState(() {}),
-                                  child: ShopListItemComponentWidget(
-                                    key: Key(
-                                      'Key4aq_${listItemsIndex.toString()}',
+                                  title: getJsonField(
+                                    listLocsItem,
+                                    r'''$.name''',
+                                  ).toString(),
+                                  description: getJsonField(
+                                    listLocsItem,
+                                    r'''$.description''',
+                                  ).toString(),
+                                  imagePath: valueOrDefault<String>(
+                                    getJsonField(
+                                      listLocsItem,
+                                      r'''$.full_icon''',
                                     ),
-                                    title: 'Filter',
-                                    description:
-                                        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra',
-                                    imagePath: valueOrDefault<String>(
-                                      listItemsItem.imageUrl,
-                                      'https://cdn-icons-png.flaticon.com/512/1505/1505516.png',
-                                    ),
+                                    'https://cdn-icons-png.flaticon.com/512/1505/1505516.png',
                                   ),
                                 ),
                               ),
                             ),
-                          );
-                        },
-                      );
-                    },
+                          ),
+                        );
+                      },
+                    ),
                   ),
                 ),
               ],

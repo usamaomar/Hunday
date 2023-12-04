@@ -133,6 +133,14 @@ String formatPhoneNumber(String input) {
   return '$countryCode $firstPart $secondPart $thirdPart';
 }
 
+List<MyVehicleModelStruct> fromJsonArrayToMyVycalesList(dynamic jsonObject) {
+  return jsonObject
+      .map((e) => e != null && e != '' ? MyVehicleModelStruct.fromMap(e) : null)
+      .toList()
+      .toList()
+      .cast<MyVehicleModelStruct>();
+}
+
 String getNameByLanguge(
   String englishName,
   String arabicName,
@@ -236,7 +244,34 @@ String convertDateFormat(String inputDate) {
   DateTime dateTime = DateFormat("dd/MM/yyyy").parse(inputDate);
 
   // Format the DateTime object to the desired output format
-  String outputDate = DateFormat("dd-MM-yyyy").format(dateTime);
+  String outputDate = DateFormat("yyyy-MM-dd").format(dateTime);
 
   return outputDate;
+}
+
+List<PartCategoryModelStruct> convertFromJsonToPartCategoryList(
+    dynamic jsonObject) {
+  return jsonObject
+      .map((e) =>
+          e != null && e != '' ? PartCategoryModelStruct.fromMap(e) : null)
+      .toList()
+      .toList()
+      .cast<PartCategoryModelStruct>();
+}
+
+List<PartModelStruct> fromJsonArrayToPartModelList(dynamic jsonObject) {
+  return jsonObject
+      .map((e) => e != null && e != '' ? PartModelStruct.fromMap(e) : null)
+      .toList()
+      .toList()
+      .cast<PartModelStruct>();
+}
+
+MyVehicleModelStruct getSelectedVehicle(
+  String platenumber,
+  List<MyVehicleModelStruct> listOfVehicle,
+) {
+  MyVehicleModelStruct vehicle =
+      listOfVehicle.firstWhere((c) => c.plateNumber == platenumber);
+  return vehicle;
 }

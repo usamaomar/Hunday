@@ -3,6 +3,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/random_data_util.dart' as random_data;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -32,6 +33,9 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
     super.initState();
     _model = createModel(context, () => CartBottomSheetModel());
 
+    // On component load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {});
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -51,7 +55,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 5.0, 0.0),
         child: Container(
-          height: 700.0,
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).white,
             borderRadius: BorderRadius.only(
@@ -522,7 +525,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                         ],
                       ),
                     ),
-                  ],
+                  ].addToEnd(SizedBox(height: 30.0)),
                 ),
               ],
             ),

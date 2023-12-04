@@ -3,9 +3,7 @@ import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/ui_screens/components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -253,47 +251,34 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                               ),
                                             ),
                                           ),
-                                          Expanded(
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(30.0, 10.0,
-                                                          30.0, 10.0),
-                                                  child: Text(
-                                                    functions.getNameByLanguge(
-                                                        getJsonField(
-                                                          sliderSlideListItem,
-                                                          r'''$.slogan_en''',
-                                                        ).toString(),
-                                                        getJsonField(
-                                                          sliderSlideListItem,
-                                                          r'''$.slogan_en''',
-                                                        ).toString(),
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .languageCode),
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 2,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'HeeboBold',
-                                                          color:
-                                                              Color(0xFF212427),
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                          Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    30.0, 10.0, 30.0, 10.0),
+                                            child: Text(
+                                              functions.getNameByLanguge(
+                                                  getJsonField(
+                                                    sliderSlideListItem,
+                                                    r'''$.slogan_en''',
+                                                  ).toString(),
+                                                  getJsonField(
+                                                    sliderSlideListItem,
+                                                    r'''$.slogan_en''',
+                                                  ).toString(),
+                                                  FFLocalizations.of(context)
+                                                      .languageCode),
+                                              textAlign: TextAlign.center,
+                                              maxLines: 2,
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'HeeboBold',
+                                                    color: Color(0xFF212427),
+                                                    fontSize: 16.0,
+                                                    fontWeight: FontWeight.bold,
+                                                    useGoogleFonts: false,
                                                   ),
-                                                ),
-                                              ],
                                             ),
                                           ),
                                         ],
@@ -391,95 +376,63 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                     color: Color(0xFFAFC3E1),
                                   ),
                                 ),
-                                child: Builder(
-                                  builder: (context) => InkWell(
-                                    splashColor: Colors.transparent,
-                                    focusColor: Colors.transparent,
-                                    hoverColor: Colors.transparent,
-                                    highlightColor: Colors.transparent,
-                                    onTap: () async {
-                                      await showAlignedDialog(
-                                        barrierColor: Colors.transparent,
-                                        context: context,
-                                        isGlobal: true,
-                                        avoidOverflow: false,
-                                        targetAnchor:
-                                            AlignmentDirectional(0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        followerAnchor:
-                                            AlignmentDirectional(0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        builder: (dialogContext) {
-                                          return Material(
-                                            color: Colors.transparent,
-                                            child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
-                                                      .unfocus(),
-                                              child:
-                                                  ScannedCardAnimationComponentWidget(),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => setState(() {}));
-                                    },
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 20.0, 20.0, 8.0),
-                                          child: ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(0.0),
-                                            child: SvgPicture.asset(
-                                              'assets/images/Group_70549.svg',
-                                              width: 100.0,
-                                              height: 40.0,
-                                              fit: BoxFit.scaleDown,
-                                            ),
+                                child: InkWell(
+                                  splashColor: Colors.transparent,
+                                  focusColor: Colors.transparent,
+                                  hoverColor: Colors.transparent,
+                                  highlightColor: Colors.transparent,
+                                  onTap: () async {
+                                    context.pushNamed('ShopPage');
+                                  },
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 20.0, 20.0, 8.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: SvgPicture.asset(
+                                            'assets/images/Group_70549.svg',
+                                            width: 100.0,
+                                            height: 40.0,
+                                            fit: BoxFit.scaleDown,
                                           ),
                                         ),
-                                        Divider(
-                                          thickness: 1.0,
-                                          indent: 25.0,
-                                          endIndent: 25.0,
-                                          color: FlutterFlowTheme.of(context)
-                                              .accent4,
-                                        ),
-                                        Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          children: [
-                                            Expanded(
-                                              flex: 1,
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '0pq4i1m3' /* Parts Shop */,
-                                                ),
-                                                textAlign: TextAlign.center,
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Seagoe Ui Bold',
-                                                          color: Colors.white,
-                                                          useGoogleFonts: false,
-                                                        ),
+                                      ),
+                                      Divider(
+                                        thickness: 1.0,
+                                        indent: 25.0,
+                                        endIndent: 25.0,
+                                        color: FlutterFlowTheme.of(context)
+                                            .accent4,
+                                      ),
+                                      Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            flex: 1,
+                                            child: Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '0pq4i1m3' /* Parts Shop */,
                                               ),
+                                              textAlign: TextAlign.center,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
                                             ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
+                                          ),
+                                        ],
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),

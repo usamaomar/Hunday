@@ -37,8 +37,6 @@ export '/ui_screens/nav_home_pakage/regular_page/regular_page_widget.dart'
     show RegularPageWidget;
 export '/ui_screens/nav_home_pakage/repair_page/repair_page_widget.dart'
     show RepairPageWidget;
-export '/ui_screens/nav_home_pakage/shop_details_page/shop_details_page_widget.dart'
-    show ShopDetailsPageWidget;
 export '/ui_screens/nav_home_pakage/item_details_page/item_details_page_widget.dart'
     show ItemDetailsPageWidget;
 export '/ui_screens/nav_home_pakage/location_page/location_page_widget.dart'

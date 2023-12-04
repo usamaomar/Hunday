@@ -197,19 +197,14 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'ShopDetailsPage',
-              path: 'shopDetailsPage',
-              builder: (context, params) => NavBarPage(
-                initialPage: '',
-                page: ShopDetailsPageWidget(),
-              ),
-            ),
-            FFRoute(
               name: 'ItemDetailsPage',
               path: 'itemDetailsPage',
               builder: (context, params) => NavBarPage(
                 initialPage: '',
-                page: ItemDetailsPageWidget(),
+                page: ItemDetailsPageWidget(
+                  jsonObject: params.getParam('jsonObject', ParamType.JSON),
+                  titleHeader: params.getParam('titleHeader', ParamType.String),
+                ),
               ),
             ),
             FFRoute(

@@ -332,6 +332,57 @@ class StoreVehicleApiCall {
   }
 }
 
+class AddToCartApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    int? partId,
+    int? quantity,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "part_id": ${partId},
+  "quantity": ${quantity}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'AddToCartApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/myCart',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class GetMyCartApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getMyCartApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/myCart',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class UpdateUserApiCall {
   static Future<ApiCallResponse> call({
     String? email = '',
@@ -706,6 +757,107 @@ class GetCarDetailsApiCall {
         r'''$.car.car_sliders''',
         true,
       );
+}
+
+class PartsCategoryApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    int? page,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'PartsCategoryApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/partsCategory',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+        'page': page,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic detailsModel(dynamic response) => getJsonField(
+        response,
+        r'''$.car''',
+      );
+  static dynamic performanceModel(dynamic response) => getJsonField(
+        response,
+        r'''$.car.performance''',
+      );
+  static dynamic carsSlider(dynamic response) => getJsonField(
+        response,
+        r'''$.car.car_sliders''',
+        true,
+      );
+}
+
+class PartsApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    int? id,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'PartsApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/part/${id}',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+        'id': id,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic detailsModel(dynamic response) => getJsonField(
+        response,
+        r'''$.car''',
+      );
+  static dynamic performanceModel(dynamic response) => getJsonField(
+        response,
+        r'''$.car.performance''',
+      );
+  static dynamic carsSlider(dynamic response) => getJsonField(
+        response,
+        r'''$.car.car_sliders''',
+        true,
+      );
+}
+
+class VehicleApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'VehicleApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/vehicle',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
 }
 
 class ApiPagingParams {

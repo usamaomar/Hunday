@@ -712,7 +712,7 @@ class _ListOfStringItemsComponentWidgetState
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
                                     selectedDateTimeBackgroundColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                        FlutterFlowTheme.of(context).secondary,
                                     selectedDateTimeForegroundColor:
                                         FlutterFlowTheme.of(context).white,
                                     actionButtonForegroundColor:
@@ -837,7 +837,7 @@ class _ListOfStringItemsComponentWidgetState
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
                                     selectedDateTimeBackgroundColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                        FlutterFlowTheme.of(context).secondary,
                                     selectedDateTimeForegroundColor:
                                         FlutterFlowTheme.of(context).white,
                                     actionButtonForegroundColor:
