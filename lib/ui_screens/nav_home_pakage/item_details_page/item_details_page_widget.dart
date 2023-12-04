@@ -241,7 +241,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 20.0, 0.0),
+                                                    5.0, 0.0, 5.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
                                                 _model.localMyPart?.weight,
@@ -321,7 +321,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 20.0, 0.0),
+                                                    5.0, 0.0, 5.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
                                                 _model.localMyPart?.length,
@@ -402,7 +402,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 20.0, 0.0),
+                                                    5.0, 0.0, 5.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
                                                 _model.localMyPart?.width,
@@ -482,7 +482,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 20.0, 0.0),
+                                                    5.0, 0.0, 5.0, 0.0),
                                             child: Text(
                                               FFLocalizations.of(context)
                                                   .getText(
@@ -572,7 +572,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 0.0, 20.0, 0.0),
+                                                    5.0, 0.0, 5.0, 0.0),
                                             child: Text(
                                               valueOrDefault<String>(
                                                 _model.localMyPart?.partNumber,
@@ -718,7 +718,9 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(
-                            _model.localMyPart!.fullImage,
+                            _model.localMyPart != null
+                                ? _model.localMyPart!.fullImage
+                                : ' ',
                             width: 300.0,
                             height: 200.0,
                             fit: BoxFit.cover,
