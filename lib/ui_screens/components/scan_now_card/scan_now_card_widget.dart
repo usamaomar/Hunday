@@ -145,28 +145,34 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                           if (_model.isFrontFaceAdded == false)
                             FFButtonWidget(
                               onPressed: () async {
-                                final selectedFiles = await selectFiles(
-                                  multiFile: false,
+                                final selectedMedia = await selectMedia(
+                                  multiImage: false,
                                 );
-                                if (selectedFiles != null) {
+                                if (selectedMedia != null &&
+                                    selectedMedia.every((m) =>
+                                        validateFileFormat(
+                                            m.storagePath, context))) {
                                   setState(
                                       () => _model.isDataUploading1 = true);
                                   var selectedUploadedFiles =
                                       <FFUploadedFile>[];
 
                                   try {
-                                    selectedUploadedFiles = selectedFiles
+                                    selectedUploadedFiles = selectedMedia
                                         .map((m) => FFUploadedFile(
                                               name:
                                                   m.storagePath.split('/').last,
                                               bytes: m.bytes,
+                                              height: m.dimensions?.height,
+                                              width: m.dimensions?.width,
+                                              blurHash: m.blurHash,
                                             ))
                                         .toList();
                                   } finally {
                                     _model.isDataUploading1 = false;
                                   }
                                   if (selectedUploadedFiles.length ==
-                                      selectedFiles.length) {
+                                      selectedMedia.length) {
                                     setState(() {
                                       _model.uploadedLocalFile1 =
                                           selectedUploadedFiles.first;
@@ -256,28 +262,34 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                           if (_model.isBackImageAdedd == false)
                             FFButtonWidget(
                               onPressed: () async {
-                                final selectedFiles = await selectFiles(
-                                  multiFile: false,
+                                final selectedMedia = await selectMedia(
+                                  multiImage: false,
                                 );
-                                if (selectedFiles != null) {
+                                if (selectedMedia != null &&
+                                    selectedMedia.every((m) =>
+                                        validateFileFormat(
+                                            m.storagePath, context))) {
                                   setState(
                                       () => _model.isDataUploading2 = true);
                                   var selectedUploadedFiles =
                                       <FFUploadedFile>[];
 
                                   try {
-                                    selectedUploadedFiles = selectedFiles
+                                    selectedUploadedFiles = selectedMedia
                                         .map((m) => FFUploadedFile(
                                               name:
                                                   m.storagePath.split('/').last,
                                               bytes: m.bytes,
+                                              height: m.dimensions?.height,
+                                              width: m.dimensions?.width,
+                                              blurHash: m.blurHash,
                                             ))
                                         .toList();
                                   } finally {
                                     _model.isDataUploading2 = false;
                                   }
                                   if (selectedUploadedFiles.length ==
-                                      selectedFiles.length) {
+                                      selectedMedia.length) {
                                     setState(() {
                                       _model.uploadedLocalFile2 =
                                           selectedUploadedFiles.first;
