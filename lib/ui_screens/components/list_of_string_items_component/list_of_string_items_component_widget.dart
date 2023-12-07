@@ -597,7 +597,6 @@ class _ListOfStringItemsComponentWidgetState
                                   child: TextFormField(
                                     controller: _model.textController3,
                                     focusNode: _model.textFieldFocusNode3,
-                                    autofocus: true,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:

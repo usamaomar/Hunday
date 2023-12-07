@@ -401,8 +401,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                             10.0),
                                                                     child:
                                                                         Container(
-                                                                      width:
-                                                                          75.0,
                                                                       height:
                                                                           30.0,
                                                                       decoration:
@@ -427,32 +425,40 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                             0.00,
                                                                             0.00),
                                                                         child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.min,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.center,
-                                                                          children: [
-                                                                            Text(
-                                                                              '${(seedCartListItem.part.specialPrice == null) || (seedCartListItem.part.specialPrice == 0.0) ? '${seedCartListItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15.0,
+                                                                              0.0,
+                                                                              15.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.min,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.center,
+                                                                            children: [
+                                                                              Text(
+                                                                                '${(seedCartListItem.part.specialPrice == null) || (seedCartListItem.part.specialPrice == 0.0) ? '${seedCartListItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                    enText: 'JOD',
+                                                                                    arText: 'دينار',
+                                                                                  )}' : '${seedCartListItem.part.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                    enText: 'JOD',
+                                                                                    arText: 'دينار',
+                                                                                  )}'} ${FFLocalizations.of(context).getVariableText(
                                                                                   enText: 'JOD',
                                                                                   arText: 'دينار',
-                                                                                )}' : '${seedCartListItem.part.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                  enText: 'JOD',
-                                                                                  arText: 'دينار',
-                                                                                )}'} ${FFLocalizations.of(context).getVariableText(
-                                                                                enText: 'JOD',
-                                                                                arText: 'دينار',
-                                                                              )}',
-                                                                              textAlign: TextAlign.center,
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Poppins',
-                                                                                    color: FlutterFlowTheme.of(context).white,
-                                                                                    fontSize: 12.0,
-                                                                                    fontWeight: FontWeight.w600,
-                                                                                  ),
-                                                                            ),
-                                                                          ],
+                                                                                )}',
+                                                                                textAlign: TextAlign.center,
+                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                      fontFamily: 'Poppins',
+                                                                                      color: FlutterFlowTheme.of(context).white,
+                                                                                      fontSize: 12.0,
+                                                                                      fontWeight: FontWeight.normal,
+                                                                                    ),
+                                                                              ),
+                                                                            ],
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
