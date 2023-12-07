@@ -610,7 +610,6 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                             await AddToCartApiCall.call(
                                           token: FFAppState().userModel.token,
                                           partId: _model.localMyPart?.id,
-                                          quantity: 1,
                                         );
                                         if ((_model.apiResulto0l?.succeeded ??
                                             true)) {
@@ -624,7 +623,9 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                                 padding:
                                                     MediaQuery.viewInsetsOf(
                                                         context),
-                                                child: CartBottomSheetWidget(),
+                                                child: CartBottomSheetWidget(
+                                                  isComponentView: true,
+                                                ),
                                               );
                                             },
                                           ).then(

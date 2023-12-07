@@ -130,6 +130,7 @@ class _ListOfStringItemsComponentWidgetState
         _model.selectedStringCarCategory = _model.selectedCarCategories!.name;
         _model.selectedStringFuelType = _model.selectedFuelType!.name;
       });
+      setState(() {});
     });
 
     _model.textController1 ??= TextEditingController();
@@ -1559,6 +1560,8 @@ class _ListOfStringItemsComponentWidgetState
                                   if ((_model.apiResult4m8?.succeeded ??
                                       true)) {
                                     context.pushNamed('ShopPage');
+
+                                    Navigator.pop(context);
                                   } else {
                                     await showAlignedDialog(
                                       context: context,

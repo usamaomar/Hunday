@@ -1,3 +1,5 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +7,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -50,11 +55,26 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
     super.initState();
     _model = createModel(context, () => RepairPageModel());
 
-    _model.textController1 ??= TextEditingController();
-    _model.textFieldFocusNode1 ??= FocusNode();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultoqe = await VehicleApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResultoqe?.succeeded ?? true)) {
+        setState(() {
+          _model.listOfMyVehicleModels = functions
+              .fromJsonArrayToMyVycalesList(getJsonField(
+                (_model.apiResultoqe?.jsonBody ?? ''),
+                r'''$.vehicles''',
+              ))
+              .toList()
+              .cast<MyVehicleModelStruct>();
+        });
+      }
+    });
 
-    _model.textController2 ??= TextEditingController();
-    _model.textFieldFocusNode2 ??= FocusNode();
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -118,16 +138,32 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5.0, 0.0, 5.0, 0.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      height: 30.0,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFC1D6EF),
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      elevation: 0.0,
+                                      shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(0.0),
                                           topLeft: Radius.circular(20.0),
                                           topRight: Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 30.0,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFC1D6EF),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                          ),
+                                          border: Border.all(
+                                            color: Color(0xFFC1D6EF),
+                                            width: 0.0,
+                                          ),
                                         ),
                                       ),
                                     ),
@@ -136,13 +172,17 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: SvgPicture.asset(
-                                          'assets/images/Group_71459_(1).svg',
-                                          height: 200.0,
-                                          fit: BoxFit.contain,
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            50.0, 0.0, 50.0, 0.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: SvgPicture.asset(
+                                            'assets/images/Group_71459_(1).svg',
+                                            width: 250.0,
+                                            fit: BoxFit.contain,
+                                          ),
                                         ),
                                       ),
                                     ],
@@ -179,14 +219,22 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                       .dropDownValueController ??=
                                                   FormFieldController<String>(
                                                       null),
-                                              options: [
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '1fj9ttrv' /* Option 1 */,
-                                                )
-                                              ],
-                                              onChanged: (val) => setState(() =>
-                                                  _model.dropDownValue = val),
+                                              options: _model
+                                                  .listOfMyVehicleModels
+                                                  .map((e) => e.plateNumber)
+                                                  .toList(),
+                                              onChanged: (val) async {
+                                                setState(() =>
+                                                    _model.dropDownValue = val);
+                                                setState(() {
+                                                  _model.selectedVehicleModel =
+                                                      functions.getSelectedVehicle(
+                                                          _model.dropDownValue!,
+                                                          _model
+                                                              .listOfMyVehicleModels
+                                                              .toList());
+                                                });
+                                              },
                                               width: double.infinity,
                                               height: 40.0,
                                               textStyle:
@@ -195,7 +243,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                'v3cn7fl3' /* Car Model/License Plate */,
+                                                'v3cn7fl3' /* License Plate */,
                                               ),
                                               icon: Icon(
                                                 Icons.arrow_drop_down,
@@ -217,118 +265,6 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                               hidesUnderline: true,
                                               isSearchable: false,
                                               isMultiSelect: false,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 20.0, 20.0, 0.0),
-                                          child: Container(
-                                            height: 40.0,
-                                            decoration: BoxDecoration(),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 0.0,
-                                                                8.0, 0.0),
-                                                    child: TextFormField(
-                                                      controller: _model
-                                                          .textController1,
-                                                      focusNode: _model
-                                                          .textFieldFocusNode1,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          'iiexjpsx' /* Vin Number */,
-                                                        ),
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium,
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium,
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0xFF646464),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0xFF646464),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        errorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error,
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error,
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        filled: true,
-                                                        fillColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .white,
-                                                      ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                      validator: _model
-                                                          .textController1Validator
-                                                          .asValidator(context),
-                                                    ),
-                                                  ),
-                                                ),
-                                              ],
                                             ),
                                           ),
                                         ),
@@ -360,6 +296,16 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                   );
                                                 });
                                               }
+                                              setState(() {
+                                                _model.selectedDate =
+                                                    dateTimeFormat(
+                                                  'yyyy/MM/dd',
+                                                  _model.datePicked1,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                );
+                                              });
                                             },
                                             child: Container(
                                               height: 40.0,
@@ -386,11 +332,17 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'ugnvc90c' /* Date */,
-                                                      ),
+                                                      _model.selectedDate !=
+                                                                  null &&
+                                                              _model.selectedDate !=
+                                                                  ''
+                                                          ? _model.selectedDate
+                                                          : FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                              enText: 'Date',
+                                                              arText: 'التاريخ',
+                                                            ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -445,6 +397,16 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                   );
                                                 });
                                               }
+                                              setState(() {
+                                                _model.selectedTime =
+                                                    dateTimeFormat(
+                                                  'H:mm:ss',
+                                                  _model.datePicked2,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                );
+                                              });
                                             },
                                             child: Container(
                                               height: 40.0,
@@ -471,11 +433,17 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '5mnf1zjp' /* Time */,
-                                                      ),
+                                                      _model.selectedTime !=
+                                                                  null &&
+                                                              _model.selectedTime !=
+                                                                  ''
+                                                          ? _model.selectedTime
+                                                          : FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                              enText: 'Time',
+                                                              arText: 'الوقت',
+                                                            ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -517,10 +485,10 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                             .fromSTEB(8.0, 0.0,
                                                                 8.0, 0.0),
                                                     child: TextFormField(
-                                                      controller: _model
-                                                          .textController2,
+                                                      controller:
+                                                          _model.textController,
                                                       focusNode: _model
-                                                          .textFieldFocusNode2,
+                                                          .textFieldFocusNode,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -610,7 +578,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                       textAlign:
                                                           TextAlign.center,
                                                       validator: _model
-                                                          .textController2Validator
+                                                          .textControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -628,47 +596,161 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
-                                                },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'q4gc7rvw' /* Book Now */,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          50.0, 0.0, 50.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
+                                              Builder(
+                                                builder: (context) =>
+                                                    FFButtonWidget(
+                                                  onPressed: () async {
+                                                    _model.apiResult6ff =
+                                                        await RepairServiceApiCall
+                                                            .call(
+                                                      token: FFAppState()
+                                                          .userModel
+                                                          .token,
+                                                      date:
+                                                          '${_model.selectedDate} ${_model.selectedTime}',
+                                                      details: _model
+                                                          .textController.text,
+                                                      vehicleId: _model
+                                                          .selectedVehicleModel
+                                                          ?.id,
+                                                    );
+                                                    if ((_model.apiResult6ff
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText: 'Aleart',
+                                                              arText: 'تنبيه',
+                                                            )),
+                                                            content: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText:
+                                                                  'Your Requst is Sent',
+                                                              arText:
+                                                                  'تم ارسال المعلومات',
+                                                            )),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child: Text(FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                  enText: 'Ok',
+                                                                  arText:
+                                                                      'حسنا',
+                                                                )),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                      if (Navigator.of(context)
+                                                          .canPop()) {
+                                                        context.pop();
+                                                      }
+                                                      context.pushNamed(
+                                                          'HomeScreen');
+                                                    } else {
+                                                      await showAlignedDialog(
+                                                        context: context,
+                                                        isGlobal: true,
+                                                        avoidOverflow: false,
+                                                        targetAnchor:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        followerAnchor:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Material(
+                                                            color: Colors
+                                                                .transparent,
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child:
+                                                                  Modal06BasicInformationWidget(
+                                                                body: (_model
+                                                                        .apiResult6ff
+                                                                        ?.bodyText ??
+                                                                    ''),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
+                                                    }
+
+                                                    setState(() {});
+                                                  },
+                                                  text: FFLocalizations.of(
                                                           context)
-                                                      .ahayundai,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.white,
-                                                      ),
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
+                                                      .getText(
+                                                    'q4gc7rvw' /* Book Now */,
                                                   ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0),
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(50.0, 0.0,
+                                                                50.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .ahayundai,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: Colors.white,
+                                                        ),
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0),
+                                                  ),
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                      ].addToEnd(SizedBox(height: 10.0)),
+                                      ].addToEnd(SizedBox(height: 50.0)),
                                     ),
                                   ),
                                 ),

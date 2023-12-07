@@ -243,37 +243,48 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                         ),
                       ),
                     ),
-                    Container(
-                      decoration: BoxDecoration(
-                        color: FlutterFlowTheme.of(context).secondaryBackground,
-                      ),
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            FaIcon(
-                              FontAwesomeIcons.calendarCheck,
-                              color: FlutterFlowTheme.of(context).secondaryText,
-                              size: 30.0,
-                            ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  10.0, 0.0, 10.0, 0.0),
-                              child: Text(
-                                FFLocalizations.of(context).getText(
-                                  'f87dmor3' /* My Appointment */,
-                                ),
-                                style: TextStyle(
-                                  fontFamily: 'Heebo Regular',
-                                  fontSize: 16.0,
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed('MyAppointmentPage');
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              FaIcon(
+                                FontAwesomeIcons.calendarCheck,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 30.0,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    'f87dmor3' /* My Appointment */,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: 'Heebo Regular',
+                                    fontSize: 16.0,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

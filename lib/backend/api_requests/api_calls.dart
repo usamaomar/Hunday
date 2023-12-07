@@ -336,16 +336,125 @@ class AddToCartApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
     int? partId,
-    int? quantity,
   }) async {
     final ffApiRequestBody = '''
 {
-  "part_id": ${partId},
-  "quantity": ${quantity}
+  "part_id": ${partId}
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'AddToCartApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/myCart',
+      apiUrl: 'https://hyundai.completechaintech.com/api/addToCart',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class ClearAllCartApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'ClearAllCart Api',
+      apiUrl: 'https://hyundai.completechaintech.com/api/clearAllCart',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class RemoveItemFromCartApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    int? cartId,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'RemoveItemFromCartApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/removeCart/${cartId}',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'cartId': cartId,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class RegularServiceApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    int? serviceTypeId,
+    String? date = '',
+    int? vehicleId,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "service_type_id": ${serviceTypeId},
+  "vehicle_id": ${vehicleId},
+  "date": "${date}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'RegularServiceApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/regular/service',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class RepairServiceApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    int? vehicleId,
+    String? date = '',
+    String? details = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "vehicle_id": ${vehicleId},
+  "date": "${date}",
+  "details": "${details}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'RepairServiceApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/repair/service',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -837,6 +946,50 @@ class PartsApiCall {
       );
 }
 
+class UpdateCartApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    int? id,
+    int? partId,
+    int? quantity,
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'UpdateCart Api',
+      apiUrl: 'https://hyundai.completechaintech.com/api/updateCart/${id}',
+      callType: ApiCallType.PUT,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+        'id': id,
+        'part_id': partId,
+        'quantity': quantity,
+      },
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+
+  static dynamic detailsModel(dynamic response) => getJsonField(
+        response,
+        r'''$.car''',
+      );
+  static dynamic performanceModel(dynamic response) => getJsonField(
+        response,
+        r'''$.car.performance''',
+      );
+  static dynamic carsSlider(dynamic response) => getJsonField(
+        response,
+        r'''$.car.car_sliders''',
+        true,
+      );
+}
+
 class VehicleApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
@@ -844,6 +997,29 @@ class VehicleApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'VehicleApi',
       apiUrl: 'https://hyundai.completechaintech.com/api/vehicle',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class ServiceTypeApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'ServiceTypeApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/serviceType',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',

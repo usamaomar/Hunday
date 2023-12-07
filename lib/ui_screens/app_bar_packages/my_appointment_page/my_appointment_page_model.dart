@@ -3,14 +3,15 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
-import 'my_order_page_widget.dart' show MyOrderPageWidget;
+import 'my_appointment_page_widget.dart' show MyAppointmentPageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-class MyOrderPageModel extends FlutterFlowModel<MyOrderPageWidget> {
+class MyAppointmentPageModel extends FlutterFlowModel<MyAppointmentPageWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -20,6 +21,9 @@ class MyOrderPageModel extends FlutterFlowModel<MyOrderPageWidget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
+
+  // State field(s) for RatingBar widget.
+  double? ratingBarValue;
 
   /// Initialization and disposal methods.
 

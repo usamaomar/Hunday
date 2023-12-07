@@ -365,42 +365,50 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // MyOrderPage
   {
-    'op7kr558': {
+    '4uv784pe': {
       'en': 'Completed',
       'ar': 'مكتمل',
     },
-    'hm2t9tw7': {
-      'en': 'Canceled',
-      'ar': 'ألغيت',
-    },
-    '6iiztaf5': {
-      'en': 'Requested',
-      'ar': 'مطلوب',
-    },
-    'qutb036t': {
+    'ow6mnw00': {
       'en': 'No :',
       'ar': 'رقم :',
     },
-    'f5yq1ofa': {
+    'd34hv7a7': {
       'en': 'Hello',
       'ar': 'رقم :',
     },
-    'sfxncixb': {
+    'x7l7flaf': {
       'en':
           'Duralast Platinum AGM Battery BCI Group Size 47 680 CCA H5-AGMDuralast Platinum AGM Battery BCI Group Size 47 680 CCA H5-AGM',
       'ar': 'رقم :',
     },
-    '6zvxe8ov': {
+    'lyiy9dln': {
       'en': 'Total :',
       'ar': 'المجموع :',
     },
-    'klnf67ip': {
+    'p0bfnbf6': {
       'en': '100 JOD',
       'ar': 'رقم :',
     },
-    't0yzh5p8': {
+    'lsbcy83b': {
       'en': '100 JOD',
       'ar': 'رقم :',
+    },
+    'bt7eplas': {
+      'en': 'Cancled',
+      'ar': 'ملغى',
+    },
+    '74ob5fo1': {
+      'en': 'Tab View 2',
+      'ar': '',
+    },
+    '6rbqvu50': {
+      'en': 'Requested',
+      'ar': 'مطلوب',
+    },
+    'af1g81c3': {
+      'en': 'Tab View 3',
+      'ar': '',
     },
     '2m4xuvht': {
       'en': 'Home',
@@ -518,53 +526,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // RegularPage
-  {
-    '5oq745lc': {
-      'en': 'Option 1',
-      'ar': '',
-    },
-    '4r4p2eo4': {
-      'en': 'Service Type',
-      'ar': 'نوع الخدمة',
-    },
-    'ccv24fw3': {
-      'en': 'Search for an item...',
-      'ar': '',
-    },
-    'p8vf7yb6': {
-      'en': 'Option 1',
-      'ar': '',
-    },
-    '8cjlzw3f': {
-      'en': 'Car Model/License Plate',
-      'ar': 'نموذج السيارة/لوحة الترخيص',
-    },
-    'w6qzjk15': {
-      'en': 'Search for an item...',
-      'ar': '',
-    },
-    '9dpoz9s7': {
-      'en': 'Vin Number',
-      'ar': 'رقم المركبة',
-    },
-    'qexjtbr5': {
-      'en': 'Date',
-      'ar': 'تاريخ',
-    },
-    'az7khk5l': {
-      'en': 'Time',
-      'ar': 'تاريخ',
-    },
-    'x53lp7sx': {
-      'en': 'Book Now',
-      'ar': 'احجز الآن',
-    },
-    'lrhvbju2': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
   // RepairPage
   {
     '1fj9ttrv': {
@@ -572,24 +533,12 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'v3cn7fl3': {
-      'en': 'Car Model/License Plate',
-      'ar': 'نموذج السيارة/لوحة الترخيص',
+      'en': 'License Plate',
+      'ar': 'لوحة الترخيص',
     },
     'scxw8d5x': {
       'en': 'Search for an item...',
       'ar': '',
-    },
-    'iiexjpsx': {
-      'en': 'Vin Number',
-      'ar': 'رقم المركبة',
-    },
-    'ugnvc90c': {
-      'en': 'Date',
-      'ar': 'تاريخ',
-    },
-    '5mnf1zjp': {
-      'en': 'Time',
-      'ar': 'تاريخ',
     },
     'yqkqi4qe': {
       'en': 'Details ...',
@@ -732,13 +681,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'لا يوجد محتوى لعرضه',
     },
   },
-  // CartPage
-  {
-    'wj7mlkzj': {
-      'en': 'No content to show',
-      'ar': 'لا يوجد محتوى لعرضه',
-    },
-  },
   // MorePage
   {
     'p6oewnbh': {
@@ -769,6 +711,246 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // CarModelDetailsPdfViewr
   {
     'wmsoocl8': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // RegularPage
+  {
+    '3vciz0fa': {
+      'en': 'Option 1',
+      'ar': '',
+    },
+    'atzmlm1q': {
+      'en': 'Service Type',
+      'ar': 'نوع الخدمة',
+    },
+    'mj3jmnh7': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'kbyps9c2': {
+      'en': 'Option 1',
+      'ar': '',
+    },
+    '3jd0kk0r': {
+      'en': 'Car Model / License Plate',
+      'ar': 'نموذج السيارة/لوحة الترخيص',
+    },
+    'exh9lqzu': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'j3282cea': {
+      'en': 'Book Now',
+      'ar': 'احجز الآن',
+    },
+    '2ubt6fvn': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // ShippingAddressPage
+  {
+    'm24x7hjn': {
+      'en': 'Shipping Address',
+      'ar': 'عنوان الشحن',
+    },
+    'h2156rx8': {
+      'en': 'Option 1',
+      'ar': '',
+    },
+    '72mdyy4h': {
+      'en': 'Governent',
+      'ar': 'المدينه',
+    },
+    'ur6wydsk': {
+      'en': 'Search for an item...',
+      'ar': '',
+    },
+    'n66nkzcb': {
+      'en': 'Your Name Here',
+      'ar': 'اسمك هنا',
+    },
+    'fxfuisg9': {
+      'en': 'Email',
+      'ar': 'بريد إلكتروني',
+    },
+    'wizto9iw': {
+      'en': 'Phone Number',
+      'ar': 'رقم التليفون',
+    },
+    'ickq9vgb': {
+      'en': 'Street Address',
+      'ar': 'عنوان الشارع',
+    },
+    'y6n4rs3m': {
+      'en': 'Building Number',
+      'ar': 'رقم المبنى',
+    },
+    'zwca6rlo': {
+      'en': 'Next',
+      'ar': 'التالي',
+    },
+    'i6l65ykt': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // CartSummaryPage
+  {
+    '6xd0p129': {
+      'en': 'Cart Summary',
+      'ar': 'ملخص العربة',
+    },
+    'rfsw40l6': {
+      'en': 'Discounted item—no additional coupons apply',
+      'ar': 'منتج مخفض - لا تنطبق كوبونات إضافية',
+    },
+    'ra35fsb8': {
+      'en': 'Hello World',
+      'ar': '',
+    },
+    'wmjklpgr': {
+      'en': 'Hello World',
+      'ar': '',
+    },
+    'fq044a94': {
+      'en': 'Discount Code',
+      'ar': 'الرقم التسلسلي للخصم',
+    },
+    'bgg33jaj': {
+      'en': 'Coupon Code',
+      'ar': 'رمز الكوبون',
+    },
+    'k2htpnfe': {
+      'en': 'Discount',
+      'ar': 'تخفيض',
+    },
+    'xv0jmhij': {
+      'en': '8888',
+      'ar': 'رمز الكوبون',
+    },
+    'onouedto': {
+      'en': '15%',
+      'ar': 'تخفيض',
+    },
+    'p2uap002': {
+      'en': 'Remove Coupon',
+      'ar': 'إزالة القسيمة',
+    },
+    'wj0lz5jr': {
+      'en': 'Subtotal',
+      'ar': 'المجموع الفرعي',
+    },
+    'yj8k51dz': {
+      'en': '180',
+      'ar': '',
+    },
+    'ewcugq5a': {
+      'en': 'Shipping Cost',
+      'ar': 'تكلفة الشحن',
+    },
+    '3aeddcsi': {
+      'en': '180',
+      'ar': '',
+    },
+    '2sx1fy0c': {
+      'en': 'VAT/Tax',
+      'ar': 'ضريبة القيمة المضافة',
+    },
+    'i5e4xn14': {
+      'en': '180',
+      'ar': '',
+    },
+    'qjum9ia7': {
+      'en': 'Coupon ( 15% )',
+      'ar': 'قسيمة ( 15%)',
+    },
+    'mhht1ka4': {
+      'en': '180',
+      'ar': '',
+    },
+    '0gl4jwe1': {
+      'en': 'Total Cost',
+      'ar': 'التكلفة الإجمالية',
+    },
+    '64lhqq9a': {
+      'en': '160',
+      'ar': '',
+    },
+    'qcfm77ue': {
+      'en': 'Next',
+      'ar': 'التالي',
+    },
+    'mnwe6l4v': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // MyAppointmentPage
+  {
+    'lmokc1fb': {
+      'en': 'Completed',
+      'ar': 'مكتمل',
+    },
+    '0hq0yfi8': {
+      'en': 'No :',
+      'ar': 'رقم :',
+    },
+    '5gy639ii': {
+      'en': 'Hello',
+      'ar': 'رقم :',
+    },
+    '3o633drw': {
+      'en':
+          'Duralast Platinum AGM Battery BCI Group Size 47 680 CCA H5-AGMDuralast Platinum AGM Battery BCI Group Size 47 680 CCA H5-AGM',
+      'ar': 'رقم :',
+    },
+    '7esps57k': {
+      'en': 'Date',
+      'ar': '',
+    },
+    'wu913olh': {
+      'en': 'Cancled',
+      'ar': 'ملغى',
+    },
+    'obzda17t': {
+      'en': 'Tab View 2',
+      'ar': '',
+    },
+    'cemww359': {
+      'en': 'Requested',
+      'ar': 'مطلوب',
+    },
+    'u8vsvx1b': {
+      'en': 'Tab View 3',
+      'ar': '',
+    },
+    'nydqvto1': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // MyVehiclesPage
+  {
+    '5ww6ldok': {
+      'en': 'Add New Vehicles',
+      'ar': 'إضافة مركبات جديدة',
+    },
+    'nbroyo6w': {
+      'en': 'Vin . No',
+      'ar': 'رقم . المركبة',
+    },
+    'o4jbzhjp': {
+      'en': 'Plate . No',
+      'ar': 'رقم . اللوحة',
+    },
+    '2nonl3qp': {
+      'en': 'Details',
+      'ar': 'تفاصيل',
+    },
+    'jjflr5eb': {
       'en': 'Home',
       'ar': '',
     },
@@ -1034,10 +1216,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    '3q1ra16p': {
-      'en': '120 JOD',
-      'ar': '',
-    },
   },
   // CartBottomSheet
   {
@@ -1049,25 +1227,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Add New Item',
       'ar': 'أضف أداة جديدة',
     },
-    'iyhucrh1': {
-      'en': '120 JOD',
-      'ar': '',
-    },
-    '9hdw3ji1': {
-      'en': 'Duralast Platinum AGM Battery',
-      'ar': '',
-    },
-    'x461zs9f': {
-      'en': '1',
-      'ar': '',
-    },
     'g0l0qlnf': {
       'en': 'Total',
       'ar': 'المجموع',
-    },
-    'zpmto5eg': {
-      'en': '500',
-      'ar': 'عربتك',
     },
     'qpf5wtpv': {
       'en': 'Proceed To Checkout',
@@ -1105,48 +1267,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'jcuvrswu': {
       'en': '',
       'ar': '',
-    },
-  },
-  // NewsBottomSheetComponentLoading
-  {
-    'w0ul9775': {
-      'en': '',
-      'ar': '',
-    },
-    '48mrpk4y': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt.',
-      'ar': '',
-    },
-    'ie2txc6w': {
-      'en': 'More',
-      'ar': 'المزيد',
-    },
-    'jfuvt7am': {
-      'en': '15 May 2023',
-      'ar': '',
-    },
-    's2s256ev': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt.',
-      'ar': '',
-    },
-    'qlpynpqb': {
-      'en': 'More',
-      'ar': 'المزيد',
-    },
-    'zpvkykzr': {
-      'en': '15 May 2023',
-      'ar': '',
-    },
-    'cd833pnp': {
-      'en':
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent pharetra augue accumsan aliquam tincidunt.',
-      'ar': '',
-    },
-    '4cajia55': {
-      'en': 'More',
-      'ar': 'المزيد',
     },
   },
   // VerifyForgetPasswordBottomDialog

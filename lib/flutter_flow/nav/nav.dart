@@ -181,14 +181,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'RegularPage',
-              path: 'regularPage',
-              builder: (context, params) => NavBarPage(
-                initialPage: '',
-                page: RegularPageWidget(),
-              ),
-            ),
-            FFRoute(
               name: 'RepairPage',
               path: 'repairPage',
               builder: (context, params) => NavBarPage(
@@ -298,6 +290,40 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 page: CarModelDetailsPdfViewrWidget(
                   pdfLink: params.getParam('pdfLink', ParamType.String),
                 ),
+              ),
+            ),
+            FFRoute(
+              name: 'RegularPage',
+              path: 'regularPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: RegularPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'ShippingAddressPage',
+              path: 'shippingAddressPage',
+              builder: (context, params) => ShippingAddressPageWidget(),
+            ),
+            FFRoute(
+              name: 'CartSummaryPage',
+              path: 'cartSummaryPage',
+              builder: (context, params) => CartSummaryPageWidget(),
+            ),
+            FFRoute(
+              name: 'MyAppointmentPage',
+              path: 'myAppointmentPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: MyAppointmentPageWidget(),
+              ),
+            ),
+            FFRoute(
+              name: 'MyVehiclesPage',
+              path: 'myVehiclesPage',
+              builder: (context, params) => NavBarPage(
+                initialPage: '',
+                page: MyVehiclesPageWidget(),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

@@ -15,7 +15,7 @@ export '/ui_screens/settings_screens/about_app_page/about_app_page_widget.dart'
     show AboutAppPageWidget;
 export '/ui_screens/nav_home_pakage/car_model_page/car_model_page_widget.dart'
     show CarModelPageWidget;
-export '/ui_screens/app_bar_packages/my_profile_page/my_profile_page_widget.dart'
+export '/ui_screens/my_profile_page/my_profile_page_widget.dart'
     show MyProfilePageWidget;
 export '/ui_screens/personal_information_page/personal_information_page_widget.dart'
     show PersonalInformationPageWidget;
@@ -33,8 +33,6 @@ export '/ui_screens/settings_screens/settings_page/settings_page_widget.dart'
     show SettingsPageWidget;
 export '/ui_screens/nav_home_pakage/maintenance_page/maintenance_page_widget.dart'
     show MaintenancePageWidget;
-export '/ui_screens/nav_home_pakage/regular_page/regular_page_widget.dart'
-    show RegularPageWidget;
 export '/ui_screens/nav_home_pakage/repair_page/repair_page_widget.dart'
     show RepairPageWidget;
 export '/ui_screens/nav_home_pakage/item_details_page/item_details_page_widget.dart'
@@ -59,3 +57,13 @@ export '/ui_screens/nav_pakege/more_page/more_page_widget.dart'
     show MorePageWidget;
 export '/ui_screens/nav_home_pakage/car_model_details_pdf_viewr/car_model_details_pdf_viewr_widget.dart'
     show CarModelDetailsPdfViewrWidget;
+export '/ui_screens/nav_home_pakage/regular_page/regular_page_widget.dart'
+    show RegularPageWidget;
+export '/ui_screens/checkout/shipping_address_page/shipping_address_page_widget.dart'
+    show ShippingAddressPageWidget;
+export '/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart'
+    show CartSummaryPageWidget;
+export '/ui_screens/app_bar_packages/my_appointment_page/my_appointment_page_widget.dart'
+    show MyAppointmentPageWidget;
+export '/ui_screens/settings_screens/my_vehicles_page/my_vehicles_page_widget.dart'
+    show MyVehiclesPageWidget;

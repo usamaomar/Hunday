@@ -1,6 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import '/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -58,28 +59,19 @@ class _CartPageWidgetState extends State<CartPageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).white,
         body: SafeArea(
           top: true,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      'wj7mlkzj' /* No content to show */,
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Heebo Regular',
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w200,
-                          useGoogleFonts: false,
-                        ),
-                  ),
-                ],
+          child: Container(
+            width: double.infinity,
+            height: double.infinity,
+            decoration: BoxDecoration(
+              color: FlutterFlowTheme.of(context).secondaryBackground,
+            ),
+            child: wrapWithModel(
+              model: _model.cartBottomSheetModel,
+              updateCallback: () => setState(() {}),
+              child: CartBottomSheetWidget(
+                isComponentView: false,
               ),
-            ],
+            ),
           ),
         ),
       ),

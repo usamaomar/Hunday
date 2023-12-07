@@ -1,12 +1,20 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -21,18 +29,63 @@ class RegularPageWidget extends StatefulWidget {
   _RegularPageWidgetState createState() => _RegularPageWidgetState();
 }
 
-class _RegularPageWidgetState extends State<RegularPageWidget> {
+class _RegularPageWidgetState extends State<RegularPageWidget>
+    with TickerProviderStateMixin {
   late RegularPageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = {
+    'columnOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 100.ms,
+          duration: 500.ms,
+          begin: Offset(0.0, 650.0),
+          end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
     _model = createModel(context, () => RegularPageModel());
 
-    _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResultoqe = await VehicleApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResultoqe?.succeeded ?? true)) {
+        setState(() {
+          _model.listOfMyVehicle = functions
+              .fromJsonArrayToMyVycalesList(getJsonField(
+                (_model.apiResultoqe?.jsonBody ?? ''),
+                r'''$.vehicles''',
+              ))
+              .toList()
+              .cast<MyVehicleModelStruct>();
+        });
+      }
+      _model.apiResultjfk = await ServiceTypeApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResultjfk?.succeeded ?? true)) {
+        setState(() {
+          _model.serviceTypeList = functions
+              .fromJsonListToServiceTypeModel(getJsonField(
+                (_model.apiResultjfk?.jsonBody ?? ''),
+                r'''$.ServiceTypes''',
+              ))
+              .toList()
+              .cast<ServiceTypeModelStruct>();
+        });
+      }
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -63,7 +116,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).white,
+        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: SafeArea(
           top: true,
           child: Stack(
@@ -79,103 +132,93 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
               ),
               Align(
                 alignment: AlignmentDirectional(0.00, 1.00),
-                child: Container(
-                  height: 800.0,
-                  child: Stack(
-                    children: [
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              5.0, 5.0, 5.0, 5.0),
-                          child: Material(
-                            color: Colors.transparent,
-                            elevation: 15.0,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                bottomLeft: Radius.circular(0.0),
-                                bottomRight: Radius.circular(0.0),
-                                topLeft: Radius.circular(20.0),
-                                topRight: Radius.circular(20.0),
-                              ),
-                            ),
-                            child: Container(
-                              width: double.infinity,
-                              constraints: BoxConstraints(
-                                maxHeight: 600.0,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFC1D6EF),
-                                borderRadius: BorderRadius.only(
-                                  bottomLeft: Radius.circular(0.0),
-                                  bottomRight: Radius.circular(0.0),
-                                  topLeft: Radius.circular(20.0),
-                                  topRight: Radius.circular(20.0),
-                                ),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 75.0, 0.0, 10.0),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Opacity(
-                                          opacity: 0.8,
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 50.0, 30.0, 0.0),
-                                            child: FlutterFlowDropDown<String>(
-                                              controller: _model
-                                                      .dropDownValueController1 ??=
-                                                  FormFieldController<String>(
-                                                      null),
-                                              options: [
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '5oq745lc' /* Option 1 */,
-                                                )
-                                              ],
-                                              onChanged: (val) => setState(() =>
-                                                  _model.dropDownValue1 = val),
-                                              width: double.infinity,
-                                              height: 40.0,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '4r4p2eo4' /* Service Type */,
-                                              ),
-                                              icon: Icon(
-                                                Icons.arrow_drop_down,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 24.0,
-                                              ),
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .white,
-                                              elevation: 2.0,
-                                              borderColor: Color(0xFF646464),
-                                              borderWidth: 1.0,
-                                              borderRadius: 8.0,
-                                              margin: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 4.0, 16.0, 4.0),
-                                              hidesUnderline: true,
-                                              isSearchable: false,
-                                              isMultiSelect: false,
-                                            ),
+                child: Stack(
+                  children: [
+                    Align(
+                      alignment: AlignmentDirectional(0.00, 1.00),
+                      child: SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(),
+                              child: Stack(
+                                alignment: AlignmentDirectional(0.0, 1.0),
+                                children: [
+                                  Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        5.0, 0.0, 5.0, 0.0),
+                                    child: Material(
+                                      color: Colors.transparent,
+                                      elevation: 0.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.only(
+                                          bottomLeft: Radius.circular(0.0),
+                                          bottomRight: Radius.circular(0.0),
+                                          topLeft: Radius.circular(20.0),
+                                          topRight: Radius.circular(20.0),
+                                        ),
+                                      ),
+                                      child: Container(
+                                        width: double.infinity,
+                                        height: 30.0,
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFC1D6EF),
+                                          borderRadius: BorderRadius.only(
+                                            bottomLeft: Radius.circular(0.0),
+                                            bottomRight: Radius.circular(0.0),
+                                            topLeft: Radius.circular(20.0),
+                                            topRight: Radius.circular(20.0),
+                                          ),
+                                          border: Border.all(
+                                            color: Color(0xFFC1D6EF),
+                                            width: 0.0,
                                           ),
                                         ),
+                                      ),
+                                    ),
+                                  ),
+                                  Row(
+                                    mainAxisSize: MainAxisSize.max,
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            50.0, 0.0, 50.0, 0.0),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: SvgPicture.asset(
+                                            'assets/images/Group_71459_(1).svg',
+                                            width: 250.0,
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                            Align(
+                              alignment: AlignmentDirectional(0.00, 1.00),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    5.0, 0.0, 5.0, 0.0),
+                                child: Container(
+                                  width: double.infinity,
+                                  constraints: BoxConstraints(
+                                    maxHeight: 600.0,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFC1D6EF),
+                                    borderRadius: BorderRadius.circular(0.0),
+                                  ),
+                                  child: SingleChildScrollView(
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
                                         Opacity(
                                           opacity: 0.8,
                                           child: Padding(
@@ -184,17 +227,24 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                                                     30.0, 20.0, 30.0, 0.0),
                                             child: FlutterFlowDropDown<String>(
                                               controller: _model
-                                                      .dropDownValueController2 ??=
+                                                      .dropDownValueController1 ??=
                                                   FormFieldController<String>(
                                                       null),
-                                              options: [
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'p8vf7yb6' /* Option 1 */,
-                                                )
-                                              ],
-                                              onChanged: (val) => setState(() =>
-                                                  _model.dropDownValue2 = val),
+                                              options: _model.serviceTypeList
+                                                  .map((e) => e.nameAr)
+                                                  .toList(),
+                                              onChanged: (val) async {
+                                                setState(() => _model
+                                                    .dropDownValue1 = val);
+                                                setState(() {
+                                                  _model.selectedServiceType =
+                                                      functions.getSelectedServiceType(
+                                                          _model
+                                                              .dropDownValue1!,
+                                                          _model.serviceTypeList
+                                                              .toList());
+                                                });
+                                              },
                                               width: double.infinity,
                                               height: 40.0,
                                               textStyle:
@@ -203,7 +253,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                                               hintText:
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                '8cjlzw3f' /* Car Model/License Plate */,
+                                                'atzmlm1q' /* Service Type */,
                                               ),
                                               icon: Icon(
                                                 Icons.arrow_drop_down,
@@ -231,113 +281,77 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                                         Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  20.0, 20.0, 20.0, 0.0),
-                                          child: Container(
-                                            height: 40.0,
-                                            decoration: BoxDecoration(),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(8.0, 0.0,
-                                                                8.0, 0.0),
-                                                    child: TextFormField(
-                                                      controller:
-                                                          _model.textController,
-                                                      focusNode: _model
-                                                          .textFieldFocusNode,
-                                                      obscureText: false,
-                                                      decoration:
-                                                          InputDecoration(
-                                                        labelText:
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                          '9dpoz9s7' /* Vin Number */,
-                                                        ),
-                                                        labelStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium,
-                                                        hintStyle:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .labelMedium,
-                                                        enabledBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0xFF646464),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        focusedBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: Color(
-                                                                0xFF646464),
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        errorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error,
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        focusedErrorBorder:
-                                                            OutlineInputBorder(
-                                                          borderSide:
-                                                              BorderSide(
-                                                            color: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .error,
-                                                            width: 1.0,
-                                                          ),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      8.0),
-                                                        ),
-                                                        filled: true,
-                                                        fillColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .white,
-                                                      ),
-                                                      style:
+                                                  30.0, 15.0, 30.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            children: [
+                                              Expanded(
+                                                child: Opacity(
+                                                  opacity: 0.8,
+                                                  child: FlutterFlowDropDown<
+                                                      String>(
+                                                    controller: _model
+                                                            .dropDownValueController2 ??=
+                                                        FormFieldController<
+                                                            String>(null),
+                                                    options: _model
+                                                        .listOfMyVehicle
+                                                        .map((e) =>
+                                                            e.plateNumber)
+                                                        .toList(),
+                                                    onChanged: (val) async {
+                                                      setState(() => _model
+                                                              .dropDownValue2 =
+                                                          val);
+                                                      setState(() {
+                                                        _model.selectedVehicleModel =
+                                                            functions.getSelectedVehicle(
+                                                                _model
+                                                                    .dropDownValue2!,
+                                                                _model
+                                                                    .listOfMyVehicle
+                                                                    .toList());
+                                                      });
+                                                    },
+                                                    height: 40.0,
+                                                    textStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .bodyMedium,
+                                                    hintText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      '3jd0kk0r' /* Car Model / License Plate */,
+                                                    ),
+                                                    icon: Icon(
+                                                      Icons
+                                                          .arrow_drop_down_sharp,
+                                                      color:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
-                                                      validator: _model
-                                                          .textControllerValidator
-                                                          .asValidator(context),
+                                                              .secondaryText,
+                                                      size: 24.0,
                                                     ),
+                                                    fillColor: FlutterFlowTheme
+                                                            .of(context)
+                                                        .secondaryBackground,
+                                                    elevation: 2.0,
+                                                    borderColor:
+                                                        Color(0xFF646464),
+                                                    borderWidth: 1.0,
+                                                    borderRadius: 8.0,
+                                                    margin:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(16.0, 4.0,
+                                                                16.0, 4.0),
+                                                    hidesUnderline: true,
+                                                    isSearchable: false,
+                                                    isMultiSelect: false,
                                                   ),
                                                 ),
-                                              ],
-                                            ),
+                                              ),
+                                            ],
                                           ),
                                         ),
                                         Padding(
@@ -357,6 +371,53 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                                                     getCurrentTimestamp,
                                                 firstDate: getCurrentTimestamp,
                                                 lastDate: DateTime(2050),
+                                                builder: (context, child) {
+                                                  return wrapInMaterialDatePickerTheme(
+                                                    context,
+                                                    child!,
+                                                    headerBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primary,
+                                                    headerForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .info,
+                                                    headerTextStyle:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .headlineLarge
+                                                            .override(
+                                                              fontFamily:
+                                                                  'Poppins',
+                                                              fontSize: 32.0,
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w600,
+                                                            ),
+                                                    pickerBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground,
+                                                    pickerForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    selectedDateTimeBackgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent4,
+                                                    selectedDateTimeForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .info,
+                                                    actionButtonForegroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .primaryText,
+                                                    iconSize: 24.0,
+                                                  );
+                                                },
                                               );
 
                                               if (_datePicked1Date != null) {
@@ -368,6 +429,16 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                                                   );
                                                 });
                                               }
+                                              setState(() {
+                                                _model.selectedDate =
+                                                    dateTimeFormat(
+                                                  'yyyy/MM/dd',
+                                                  _model.datePicked1,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                );
+                                              });
                                             },
                                             child: Container(
                                               height: 40.0,
@@ -394,11 +465,17 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'qexjtbr5' /* Date */,
-                                                      ),
+                                                      _model.selectedDate !=
+                                                                  null &&
+                                                              _model.selectedDate !=
+                                                                  ''
+                                                          ? _model.selectedDate
+                                                          : FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                              enText: 'Date',
+                                                              arText: 'التاريخ',
+                                                            ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -453,6 +530,16 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                                                   );
                                                 });
                                               }
+                                              setState(() {
+                                                _model.selectedTime =
+                                                    dateTimeFormat(
+                                                  'H:mm:ss',
+                                                  _model.datePicked2,
+                                                  locale: FFLocalizations.of(
+                                                          context)
+                                                      .languageCode,
+                                                );
+                                              });
                                             },
                                             child: Container(
                                               height: 40.0,
@@ -479,11 +566,17 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                                                             .fromSTEB(10.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'az7khk5l' /* Time */,
-                                                      ),
+                                                      _model.selectedTime !=
+                                                                  null &&
+                                                              _model.selectedTime !=
+                                                                  ''
+                                                          ? _model.selectedTime
+                                                          : FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
+                                                              enText: 'Time',
+                                                              arText: 'الوقت',
+                                                            ),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -518,75 +611,173 @@ class _RegularPageWidgetState extends State<RegularPageWidget> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.start,
                                             children: [
-                                              FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
-                                                },
-                                                text:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                  'x53lp7sx' /* Book Now */,
-                                                ),
-                                                options: FFButtonOptions(
-                                                  height: 40.0,
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          50.0, 0.0, 50.0, 0.0),
-                                                  iconPadding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(0.0, 0.0,
-                                                              0.0, 0.0),
-                                                  color: FlutterFlowTheme.of(
+                                              Builder(
+                                                builder: (context) =>
+                                                    FFButtonWidget(
+                                                  onPressed: () async {
+                                                    _model.apiResult6ff =
+                                                        await RegularServiceApiCall
+                                                            .call(
+                                                      token: FFAppState()
+                                                          .userModel
+                                                          .token,
+                                                      date:
+                                                          '${_model.selectedDate} ${_model.selectedTime}',
+                                                      serviceTypeId: _model
+                                                          .selectedServiceType
+                                                          ?.id,
+                                                      vehicleId: _model
+                                                          .selectedVehicleModel
+                                                          ?.id,
+                                                    );
+                                                    if ((_model.apiResult6ff
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText: 'Aleart',
+                                                              arText: 'تنبيه',
+                                                            )),
+                                                            content: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText:
+                                                                  'Your Requst is Sent',
+                                                              arText:
+                                                                  'تم ارسال المعلومات',
+                                                            )),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child: Text(FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                  enText: 'Ok',
+                                                                  arText:
+                                                                      'حسنا',
+                                                                )),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                      if (Navigator.of(context)
+                                                          .canPop()) {
+                                                        context.pop();
+                                                      }
+                                                      context.pushNamed(
+                                                          'HomeScreen');
+                                                    } else {
+                                                      await showAlignedDialog(
+                                                        context: context,
+                                                        isGlobal: true,
+                                                        avoidOverflow: false,
+                                                        targetAnchor:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        followerAnchor:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Material(
+                                                            color: Colors
+                                                                .transparent,
+                                                            child:
+                                                                GestureDetector(
+                                                              onTap: () => _model
+                                                                      .unfocusNode
+                                                                      .canRequestFocus
+                                                                  ? FocusScope.of(
+                                                                          context)
+                                                                      .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                  : FocusScope.of(
+                                                                          context)
+                                                                      .unfocus(),
+                                                              child:
+                                                                  Modal06BasicInformationWidget(
+                                                                body: (_model
+                                                                        .apiResult6ff
+                                                                        ?.bodyText ??
+                                                                    ''),
+                                                              ),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
+                                                    }
+
+                                                    setState(() {});
+                                                  },
+                                                  text: FFLocalizations.of(
                                                           context)
-                                                      .ahayundai,
-                                                  textStyle: FlutterFlowTheme
-                                                          .of(context)
-                                                      .titleSmall
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        color: Colors.white,
-                                                      ),
-                                                  borderSide: BorderSide(
-                                                    color: Colors.transparent,
-                                                    width: 1.0,
+                                                      .getText(
+                                                    'j3282cea' /* Book Now */,
                                                   ),
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0),
+                                                  options: FFButtonOptions(
+                                                    height: 40.0,
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(50.0, 0.0,
+                                                                50.0, 0.0),
+                                                    iconPadding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(0.0, 0.0,
+                                                                0.0, 0.0),
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .ahayundai,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .titleSmall
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color: Colors.white,
+                                                        ),
+                                                    borderSide: BorderSide(
+                                                      color: Colors.transparent,
+                                                      width: 1.0,
+                                                    ),
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5.0),
+                                                  ),
                                                 ),
                                               ),
                                             ],
                                           ),
                                         ),
-                                      ],
+                                      ].addToEnd(SizedBox(height: 50.0)),
                                     ),
-                                  ],
+                                  ),
                                 ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 75.0, 0.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(0.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Group_71459_(1).svg',
-                                height: 200.0,
-                                fit: BoxFit.contain,
                               ),
                             ),
                           ],
                         ),
-                      ),
-                    ],
-                  ),
+                      ).animateOnPageLoad(
+                          animationsMap['columnOnPageLoadAnimation']!),
+                    ),
+                  ],
                 ),
               ),
               Column(

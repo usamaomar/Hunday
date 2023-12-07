@@ -4,7 +4,10 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -58,7 +61,7 @@ class _AddComponentShopingDetailsWidgetState
           _model.listOfPartsModelLocal = functions
               .fromJsonArrayToPartModelList(getJsonField(
                 (_model.apiResultjaz?.jsonBody ?? ''),
-                r'''$.parts.data''',
+                r'''$.parts''',
               ))
               .toList()
               .cast<PartModelStruct>();
@@ -533,82 +536,84 @@ class _AddComponentShopingDetailsWidgetState
                                                           CrossAxisAlignment
                                                               .end,
                                                       children: [
-                                                        Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .end,
-                                                          children: [
-                                                            Card(
-                                                              clipBehavior: Clip
-                                                                  .antiAliasWithSaveLayer,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .only(
-                                                                  bottomLeft: Radius
-                                                                      .circular(
-                                                                          20.0),
-                                                                  bottomRight: Radius
-                                                                      .circular(
-                                                                          0.0),
-                                                                  topLeft: Radius
-                                                                      .circular(
-                                                                          20.0),
-                                                                  topRight: Radius
-                                                                      .circular(
-                                                                          0.0),
+                                                        if (listLcsItem
+                                                                    .specialPrice !=
+                                                                null
+                                                            ? false
+                                                            : true)
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .end,
+                                                            children: [
+                                                              Card(
+                                                                clipBehavior: Clip
+                                                                    .antiAliasWithSaveLayer,
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .secondaryBackground,
+                                                                shape:
+                                                                    RoundedRectangleBorder(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .only(
+                                                                    bottomLeft:
+                                                                        Radius.circular(
+                                                                            20.0),
+                                                                    bottomRight:
+                                                                        Radius.circular(
+                                                                            0.0),
+                                                                    topLeft: Radius
+                                                                        .circular(
+                                                                            20.0),
+                                                                    topRight: Radius
+                                                                        .circular(
+                                                                            0.0),
+                                                                  ),
+                                                                ),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .center,
+                                                                  children: [
+                                                                    Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          20.0,
+                                                                          5.0,
+                                                                          20.0,
+                                                                          5.0),
+                                                                      child:
+                                                                          Text(
+                                                                        listLcsItem.specialPrice !=
+                                                                                null
+                                                                            ? '${listLcsItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                enText: 'JOD',
+                                                                                arText: 'دينار',
+                                                                              )}'
+                                                                            : '0',
+                                                                        textAlign:
+                                                                            TextAlign.center,
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                              fontFamily: 'Poppins',
+                                                                              color: FlutterFlowTheme.of(context).error,
+                                                                              fontWeight: FontWeight.w600,
+                                                                              decoration: TextDecoration.lineThrough,
+                                                                            ),
+                                                                      ),
+                                                                    ),
+                                                                  ],
                                                                 ),
                                                               ),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            20.0,
-                                                                            5.0,
-                                                                            20.0,
-                                                                            5.0),
-                                                                    child: Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        '3q1ra16p' /* 120 JOD */,
-                                                                      ),
-                                                                      textAlign:
-                                                                          TextAlign
-                                                                              .center,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Poppins',
-                                                                            color:
-                                                                                Colors.black,
-                                                                            fontWeight:
-                                                                                FontWeight.w600,
-                                                                            decoration:
-                                                                                TextDecoration.lineThrough,
-                                                                          ),
-                                                                    ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                          ],
-                                                        ),
+                                                            ],
+                                                          ),
                                                         Row(
                                                           mainAxisSize:
                                                               MainAxisSize.max,
@@ -616,43 +621,136 @@ class _AddComponentShopingDetailsWidgetState
                                                               MainAxisAlignment
                                                                   .spaceBetween,
                                                           children: [
-                                                            Card(
-                                                              clipBehavior: Clip
-                                                                  .antiAliasWithSaveLayer,
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              elevation: 4.0,
-                                                              shape:
-                                                                  RoundedRectangleBorder(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
+                                                            Builder(
+                                                              builder:
+                                                                  (context) =>
+                                                                      InkWell(
+                                                                splashColor: Colors
+                                                                    .transparent,
+                                                                focusColor: Colors
+                                                                    .transparent,
+                                                                hoverColor: Colors
+                                                                    .transparent,
+                                                                highlightColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                onTap:
+                                                                    () async {
+                                                                  _model.apiResulto0l =
+                                                                      await AddToCartApiCall
+                                                                          .call(
+                                                                    token: FFAppState()
+                                                                        .userModel
+                                                                        .token,
+                                                                    partId:
+                                                                        listLcsItem
+                                                                            .id,
+                                                                  );
+                                                                  if ((_model
+                                                                          .apiResulto0l
+                                                                          ?.succeeded ??
+                                                                      true)) {
+                                                                    await showModalBottomSheet(
+                                                                      isScrollControlled:
+                                                                          true,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      enableDrag:
+                                                                          false,
+                                                                      context:
+                                                                          context,
+                                                                      builder:
+                                                                          (context) {
+                                                                        return Padding(
+                                                                          padding:
+                                                                              MediaQuery.viewInsetsOf(context),
+                                                                          child:
+                                                                              CartBottomSheetWidget(
+                                                                            isComponentView:
+                                                                                true,
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        safeSetState(
+                                                                            () {}));
+                                                                  } else {
+                                                                    await showAlignedDialog(
+                                                                      context:
+                                                                          context,
+                                                                      isGlobal:
+                                                                          true,
+                                                                      avoidOverflow:
+                                                                          false,
+                                                                      targetAnchor: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      followerAnchor: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      builder:
+                                                                          (dialogContext) {
+                                                                        return Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          child:
+                                                                              Modal06BasicInformationWidget(
+                                                                            body:
+                                                                                (_model.apiResulto0l?.bodyText ?? ''),
+                                                                          ),
+                                                                        );
+                                                                      },
+                                                                    ).then((value) =>
+                                                                        setState(
+                                                                            () {}));
+                                                                  }
+
+                                                                  setState(
+                                                                      () {});
+                                                                },
+                                                                child: Card(
+                                                                  clipBehavior:
+                                                                      Clip.antiAliasWithSaveLayer,
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                  elevation:
+                                                                      4.0,
+                                                                  shape:
+                                                                      RoundedRectangleBorder(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
                                                                             8.0),
-                                                              ),
-                                                              child: Padding(
-                                                                padding:
-                                                                    EdgeInsetsDirectional
+                                                                  ),
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             5.0,
                                                                             5.0,
                                                                             5.0,
                                                                             5.0),
-                                                                child:
-                                                                    ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                    child:
+                                                                        ClipRRect(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
                                                                               8.0),
-                                                                  child:
-                                                                      SvgPicture
+                                                                      child: SvgPicture
                                                                           .asset(
-                                                                    'assets/images/Group_72250.svg',
-                                                                    width: 25.0,
-                                                                    height:
-                                                                        25.0,
-                                                                    fit: BoxFit
-                                                                        .cover,
+                                                                        'assets/images/Group_72250.svg',
+                                                                        width:
+                                                                            25.0,
+                                                                        height:
+                                                                            25.0,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
                                                               ),
@@ -690,12 +788,22 @@ class _AddComponentShopingDetailsWidgetState
                                                                         .center,
                                                                 children: [
                                                                   Text(
-                                                                    '${listLcsItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                      enText:
-                                                                          'JOD',
-                                                                      arText:
-                                                                          'دينار',
-                                                                    )}',
+                                                                    (listLcsItem.specialPrice ==
+                                                                                null) ||
+                                                                            (listLcsItem.specialPrice ==
+                                                                                0.0)
+                                                                        ? '${listLcsItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                            enText:
+                                                                                'JOD',
+                                                                            arText:
+                                                                                'دينار',
+                                                                          )}'
+                                                                        : '${listLcsItem.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                            enText:
+                                                                                'JOD',
+                                                                            arText:
+                                                                                'دينار',
+                                                                          )}',
                                                                     textAlign:
                                                                         TextAlign
                                                                             .center,

@@ -291,11 +291,17 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                           ),
                         ),
                       ),
-                      Opacity(
-                        opacity: 0.5,
-                        child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 15.0, 30.0, 0.0),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            30.0, 15.0, 30.0, 0.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('MyVehiclesPage');
+                          },
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
                             children: [
@@ -450,16 +456,15 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    if (false)
-                      Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
-                        child: wrapWithModel(
-                          model: _model.myOrdersAndAppointmentsComponentModel,
-                          updateCallback: () => setState(() {}),
-                          child: MyOrdersAndAppointmentsComponentWidget(),
-                        ).animateOnPageLoad(animationsMap[
-                            'myOrdersAndAppointmentsComponentOnPageLoadAnimation']!),
-                      ),
+                    Align(
+                      alignment: AlignmentDirectional(0.00, 1.00),
+                      child: wrapWithModel(
+                        model: _model.myOrdersAndAppointmentsComponentModel,
+                        updateCallback: () => setState(() {}),
+                        child: MyOrdersAndAppointmentsComponentWidget(),
+                      ).animateOnPageLoad(animationsMap[
+                          'myOrdersAndAppointmentsComponentOnPageLoadAnimation']!),
+                    ),
                   ],
                 ),
               ),

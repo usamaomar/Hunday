@@ -89,9 +89,10 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
                   updateCallback: () => setState(() {}),
                   child: HyndayAppBarWidget(
                     appBarTitle: FFLocalizations.of(context).getVariableText(
-                      enText: 'shop',
+                      enText: 'Shop',
                       arText: 'محل',
                     ),
+                    isMyProfileOpend: false,
                   ),
                 ),
                 Align(
@@ -248,19 +249,15 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
                                       child: Padding(
                                         padding:
                                             MediaQuery.viewInsetsOf(context),
-                                        child: Container(
-                                          height: double.infinity,
-                                          child:
-                                              AddComponentShopingDetailsWidget(
-                                            partId: getJsonField(
-                                              listLocsItem,
-                                              r'''$.id''',
-                                            ),
-                                            titleh: getJsonField(
-                                              listLocsItem,
-                                              r'''$.name''',
-                                            ).toString(),
+                                        child: AddComponentShopingDetailsWidget(
+                                          partId: getJsonField(
+                                            listLocsItem,
+                                            r'''$.id''',
                                           ),
+                                          titleh: getJsonField(
+                                            listLocsItem,
+                                            r'''$.name''',
+                                          ).toString(),
                                         ),
                                       ),
                                     );

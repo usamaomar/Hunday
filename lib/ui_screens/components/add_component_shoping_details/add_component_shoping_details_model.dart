@@ -4,9 +4,12 @@ import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/form_field_controller.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'add_component_shoping_details_widget.dart'
     show AddComponentShopingDetailsWidget;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -70,6 +73,8 @@ class AddComponentShopingDetailsModel
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
   DateTime? datePicked;
+  // Stores action output result for [Backend Call - API (AddToCartApi)] action in Card widget.
+  ApiCallResponse? apiResulto0l;
 
   /// Initialization and disposal methods.
 

@@ -275,3 +275,38 @@ MyVehicleModelStruct getSelectedVehicle(
       listOfVehicle.firstWhere((c) => c.plateNumber == platenumber);
   return vehicle;
 }
+
+List<CartModelStruct> convertFromJsonListToCarttList(dynamic jsonObject) {
+  return jsonObject
+      .map((e) => e != null && e != '' ? CartModelStruct.fromMap(e) : null)
+      .toList()
+      .toList()
+      .cast<CartModelStruct>();
+}
+
+int incrementFunction(int numberValue) {
+  return numberValue = numberValue + 1;
+}
+
+int decrementFunction(int numberValue) {
+  return numberValue = numberValue - 1;
+}
+
+List<ServiceTypeModelStruct> fromJsonListToServiceTypeModel(
+    dynamic jsonObject) {
+  return jsonObject
+      .map((e) =>
+          e != null && e != '' ? ServiceTypeModelStruct.fromMap(e) : null)
+      .toList()
+      .toList()
+      .cast<ServiceTypeModelStruct>();
+}
+
+ServiceTypeModelStruct getSelectedServiceType(
+  String serviceTypeName,
+  List<ServiceTypeModelStruct> serviceTypeList,
+) {
+  ServiceTypeModelStruct vehicle =
+      serviceTypeList.firstWhere((c) => c.nameAr == serviceTypeName);
+  return vehicle;
+}

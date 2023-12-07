@@ -229,6 +229,8 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
                                               },
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.min,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.end,
                                                 children: [
                                                   Stack(
                                                     children: [
@@ -252,51 +254,55 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
                                                           ),
                                                         ),
                                                       ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    85.0,
-                                                                    60.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .center,
-                                                          children: [
-                                                            Flexible(
-                                                              child: Text(
-                                                                functions.getNameByLanguge(
-                                                                    getJsonField(
-                                                                      listOfOffersItem,
-                                                                      r'''$.name_en''',
-                                                                    ).toString(),
-                                                                    getJsonField(
-                                                                      listOfOffersItem,
-                                                                      r'''$.name_ar''',
-                                                                    ).toString(),
-                                                                    FFLocalizations.of(context).languageCode),
-                                                                maxLines: 4,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'HeeboBold',
-                                                                      color: Colors
-                                                                          .black,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                      useGoogleFonts:
-                                                                          false,
-                                                                    ),
+                                                      Container(
+                                                        decoration:
+                                                            BoxDecoration(),
+                                                        child: Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      85.0,
+                                                                      60.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .min,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .center,
+                                                            children: [
+                                                              Flexible(
+                                                                child: Text(
+                                                                  functions.getNameByLanguge(
+                                                                      getJsonField(
+                                                                        listOfOffersItem,
+                                                                        r'''$.name_en''',
+                                                                      ).toString(),
+                                                                      getJsonField(
+                                                                        listOfOffersItem,
+                                                                        r'''$.name_ar''',
+                                                                      ).toString(),
+                                                                      FFLocalizations.of(context).languageCode),
+                                                                  maxLines: 4,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'HeeboBold',
+                                                                        color: Colors
+                                                                            .black,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
+                                                                ),
                                                               ),
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
                                                       ),
                                                     ],
