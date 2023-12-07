@@ -301,7 +301,8 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                                 }
 
                                 setState(() {
-                                  _model.backFaceImage = _model.backFaceImage;
+                                  _model.backFaceImage =
+                                      _model.uploadedLocalFile2;
                                 });
                                 setState(() {
                                   _model.isBackImageAdedd = true;
