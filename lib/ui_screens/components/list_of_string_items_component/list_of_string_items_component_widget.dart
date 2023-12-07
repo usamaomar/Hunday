@@ -294,7 +294,7 @@ class _ListOfStringItemsComponentWidgetState
                                   child: TextFormField(
                                     controller: _model.textController1,
                                     focusNode: _model.textFieldFocusNode1,
-                                    autofocus: true,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -385,7 +385,7 @@ class _ListOfStringItemsComponentWidgetState
                                   child: TextFormField(
                                     controller: _model.textController2,
                                     focusNode: _model.textFieldFocusNode2,
-                                    autofocus: true,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -937,7 +937,7 @@ class _ListOfStringItemsComponentWidgetState
                                   child: TextFormField(
                                     controller: _model.textController4,
                                     focusNode: _model.textFieldFocusNode4,
-                                    autofocus: true,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -990,6 +990,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
+                                    keyboardType: TextInputType.number,
                                     validator: _model.textController4Validator
                                         .asValidator(context),
                                   ),
@@ -1028,7 +1029,7 @@ class _ListOfStringItemsComponentWidgetState
                                   child: TextFormField(
                                     controller: _model.textController5,
                                     focusNode: _model.textFieldFocusNode5,
-                                    autofocus: true,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -1081,6 +1082,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
+                                    keyboardType: TextInputType.number,
                                     validator: _model.textController5Validator
                                         .asValidator(context),
                                   ),
@@ -1119,7 +1121,7 @@ class _ListOfStringItemsComponentWidgetState
                                   child: TextFormField(
                                     controller: _model.textController6,
                                     focusNode: _model.textFieldFocusNode6,
-                                    autofocus: true,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -1172,6 +1174,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
+                                    keyboardType: TextInputType.number,
                                     validator: _model.textController6Validator
                                         .asValidator(context),
                                   ),
@@ -1210,7 +1213,7 @@ class _ListOfStringItemsComponentWidgetState
                                   child: TextFormField(
                                     controller: _model.textController7,
                                     focusNode: _model.textFieldFocusNode7,
-                                    autofocus: true,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -1263,6 +1266,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
+                                    keyboardType: TextInputType.number,
                                     validator: _model.textController7Validator
                                         .asValidator(context),
                                   ),
@@ -1303,7 +1307,7 @@ class _ListOfStringItemsComponentWidgetState
                                         _model.textFieldCapacityController,
                                     focusNode:
                                         _model.textFieldCapacityFocusNode,
-                                    autofocus: true,
+                                    textInputAction: TextInputAction.next,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -1356,6 +1360,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
+                                    keyboardType: TextInputType.number,
                                     validator: _model
                                         .textFieldCapacityControllerValidator
                                         .asValidator(context),
@@ -1456,7 +1461,7 @@ class _ListOfStringItemsComponentWidgetState
                                     controller:
                                         _model.textFieldcompnyController,
                                     focusNode: _model.textFieldcompnyFocusNode,
-                                    autofocus: true,
+                                    textInputAction: TextInputAction.done,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
@@ -1509,6 +1514,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
+                                    keyboardType: TextInputType.number,
                                     validator: _model
                                         .textFieldcompnyControllerValidator
                                         .asValidator(context),
