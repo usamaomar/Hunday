@@ -312,6 +312,9 @@ ServiceTypeModelStruct getSelectedServiceType(
 }
 
 String convertJsonToString(String input) {
+  if (input.startsWith("<")) {
+    return input;
+  }
   dynamic json = jsonDecode(input);
   try {
     // Reverse the input string
