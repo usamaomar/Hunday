@@ -312,7 +312,7 @@ ServiceTypeModelStruct getSelectedServiceType(
 }
 
 String convertJsonToString(String input) {
-  if (!input.startsWith("{") || !input.startsWith("[")) {
+  if (!input.startsWith("{")) {
     return input;
   }
   dynamic json = jsonDecode(input);
