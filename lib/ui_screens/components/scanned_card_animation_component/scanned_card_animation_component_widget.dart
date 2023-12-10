@@ -114,6 +114,7 @@ class _ScannedCardAnimationComponentWidgetState
                             builder: (context) => FFButtonWidget(
                               onPressed: () async {
                                 await showAlignedDialog(
+                                  barrierDismissible: false,
                                   context: context,
                                   isGlobal: true,
                                   avoidOverflow: false,
@@ -173,6 +174,7 @@ class _ScannedCardAnimationComponentWidgetState
                             builder: (context) => FFButtonWidget(
                               onPressed: () async {
                                 await showAlignedDialog(
+                                  barrierDismissible: false,
                                   context: context,
                                   isGlobal: true,
                                   avoidOverflow: false,

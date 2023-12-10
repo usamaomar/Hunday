@@ -1494,7 +1494,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                             child:
                                                                 Modal06BasicInformationWidget(
                                                               body: (_model
-                                                                      .apiResult7h5
+                                                                      .apiResultjcw
                                                                       ?.bodyText ??
                                                                   ''),
                                                             ),

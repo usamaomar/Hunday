@@ -387,6 +387,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                     onTap: () async {
                                       await showAlignedDialog(
                                         barrierColor: Colors.transparent,
+                                        barrierDismissible: false,
                                         context: context,
                                         isGlobal: true,
                                         avoidOverflow: false,
@@ -415,8 +416,6 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           );
                                         },
                                       ).then((value) => setState(() {}));
-
-                                      context.pushNamed('ShopPage');
                                     },
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
