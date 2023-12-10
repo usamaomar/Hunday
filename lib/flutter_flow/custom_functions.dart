@@ -312,7 +312,7 @@ ServiceTypeModelStruct getSelectedServiceType(
 }
 
 String convertJsonToString(String input) {
-  if (input.startsWith("<")) {
+  if (!input.startsWith("{") || !input.startsWith("[")) {
     return input;
   }
   dynamic json = jsonDecode(input);
@@ -328,13 +328,13 @@ String convertJsonToString(String input) {
       json.forEach((key, value) {
         if (value is List) {
           // If the value is a list, convert it to a comma-separated string
-          lines.add('$key: ${value.join(', ')}');
+          lines.add('${value.join(', ')}');
         } else if (value is Map) {
           // If the value is another object, recursively convert it
-          lines.add('$key: ${convertJsonToStringInternal(value)}');
+          lines.add('${convertJsonToStringInternal(value)}');
         } else {
           // Otherwise, append the key-value pair as a string
-          lines.add('$key: $value');
+          lines.add('$value');
         }
       });
       // Join the lines with line breaks and return the result
@@ -362,13 +362,13 @@ String convertJsonToStringInternal(dynamic json) {
       json.forEach((key, value) {
         if (value is List) {
           // If the value is a list, convert it to a comma-separated string
-          lines.add('$key: ${value.join(', ')}');
+          lines.add('${value.join(', ')}');
         } else if (value is Map) {
           // If the value is another object, recursively convert it
-          lines.add('$key: ${convertJsonToStringInternal(value)}');
+          lines.add('${convertJsonToStringInternal(value)}');
         } else {
           // Otherwise, append the key-value pair as a string
-          lines.add('$key: $value');
+          lines.add('$value');
         }
       });
       // Join the lines with line breaks and return the result
