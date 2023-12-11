@@ -72,23 +72,21 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
       if ((_model.apiResultx44?.succeeded ?? true)) {
         setState(() {
           _model.listOfCartItemsLocal = functions
-              .convertFromJsonListToCarttList(getJsonField(
+              .convertFromJsonToCartObject(getJsonField(
                 (_model.apiResultx44?.jsonBody ?? ''),
-                r'''$.cartItem''',
+                r'''$''',
               ))
+              .cartItems
               .toList()
               .cast<CartModelStruct>();
         });
         setState(() {
-          _model.totalPrice = valueOrDefault<double>(
-            ((_model.apiResultx44?.jsonBody ?? '') != null &&
-                        (_model.apiResultx44?.jsonBody ?? '') != ''
-                    ? CartItemModelStruct.fromMap(
-                        (_model.apiResultx44?.jsonBody ?? ''))
-                    : null)
-                ?.totalPrice,
-            0.0,
-          );
+          _model.totalPrice = functions
+              .convertFromJsonToCartObject(getJsonField(
+                (_model.apiResultx44?.jsonBody ?? ''),
+                r'''$''',
+              ))
+              .totalPrice;
         });
       }
     });
@@ -310,6 +308,18 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                   height: 95.0,
                                                                   fit: BoxFit
                                                                       .contain,
+                                                                  errorBuilder: (context,
+                                                                          error,
+                                                                          stackTrace) =>
+                                                                      Image
+                                                                          .asset(
+                                                                    'assets/images/error_image.png',
+                                                                    width: 95.0,
+                                                                    height:
+                                                                        95.0,
+                                                                    fit: BoxFit
+                                                                        .contain,
+                                                                  ),
                                                                 ),
                                                               ),
                                                             ),

@@ -250,6 +250,14 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                 width: double.infinity,
                                                 height: 150.0,
                                                 fit: BoxFit.cover,
+                                                errorWidget: (context, error,
+                                                        stackTrace) =>
+                                                    Image.asset(
+                                                  'assets/images/error_image.png',
+                                                  width: double.infinity,
+                                                  height: 150.0,
+                                                  fit: BoxFit.cover,
+                                                ),
                                               ),
                                             ),
                                           ),

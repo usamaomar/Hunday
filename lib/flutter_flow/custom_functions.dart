@@ -382,3 +382,7 @@ String convertJsonToStringInternal(dynamic json) {
     return json.toString();
   }
 }
+
+CartItemModelStruct convertFromJsonToCartObject(dynamic jsonObject) {
+  return CartItemModelStruct();
+}

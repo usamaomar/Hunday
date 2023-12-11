@@ -10,7 +10,6 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'offers_page_model.dart';
@@ -77,328 +76,300 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
                 ).image,
               ),
             ),
-            child: Stack(
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    wrapWithModel(
-                      model: _model.hyndayAppBarModel,
-                      updateCallback: () => setState(() {}),
-                      child: HyndayAppBarWidget(
-                        appBarTitle:
-                            FFLocalizations.of(context).getVariableText(
-                          enText: 'Offers',
-                          arText: 'العروض',
-                        ),
-                        isMyProfileOpend: false,
-                      ),
+                wrapWithModel(
+                  model: _model.hyndayAppBarModel,
+                  updateCallback: () => setState(() {}),
+                  child: HyndayAppBarWidget(
+                    appBarTitle: FFLocalizations.of(context).getVariableText(
+                      enText: 'Offers',
+                      arText: 'العروض',
                     ),
-                    Expanded(
-                      child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 42.0, 0.0, 0.0),
-                        child: FutureBuilder<ApiCallResponse>(
-                          future: (_model.apiRequestCompleter ??=
-                                  Completer<ApiCallResponse>()
-                                    ..complete(OfferApiCall.call(
-                                      token: FFAppState().userModel.token,
-                                    )))
-                              .future,
-                          builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
-                            if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 50.0,
-                                  height: 50.0,
-                                  child: SpinKitDualRing(
-                                    color: Color(0xFF092853),
-                                    size: 50.0,
-                                  ),
-                                ),
-                              );
+                    isMyProfileOpend: false,
+                  ),
+                ),
+                Expanded(
+                  child: Padding(
+                    padding:
+                        EdgeInsetsDirectional.fromSTEB(0.0, 42.0, 0.0, 0.0),
+                    child: FutureBuilder<ApiCallResponse>(
+                      future: (_model.apiRequestCompleter ??=
+                              Completer<ApiCallResponse>()
+                                ..complete(OfferApiCall.call(
+                                  token: FFAppState().userModel.token,
+                                )))
+                          .future,
+                      builder: (context, snapshot) {
+                        // Customize what your widget looks like when it's loading.
+                        if (!snapshot.hasData) {
+                          return Center(
+                            child: SizedBox(
+                              width: 50.0,
+                              height: 50.0,
+                              child: SpinKitDualRing(
+                                color: Color(0xFF092853),
+                                size: 50.0,
+                              ),
+                            ),
+                          );
+                        }
+                        final listViewOfferApiResponse = snapshot.data!;
+                        return Builder(
+                          builder: (context) {
+                            final listOfOffers = OfferApiCall.apiListOffersJson(
+                                  listViewOfferApiResponse.jsonBody,
+                                )?.toList() ??
+                                [];
+                            if (listOfOffers.isEmpty) {
+                              return EmptyListComponentWidget();
                             }
-                            final listViewOfferApiResponse = snapshot.data!;
-                            return Builder(
-                              builder: (context) {
-                                final listOfOffers =
-                                    OfferApiCall.apiListOffersJson(
-                                          listViewOfferApiResponse.jsonBody,
-                                        )?.toList() ??
-                                        [];
-                                if (listOfOffers.isEmpty) {
-                                  return EmptyListComponentWidget();
-                                }
-                                return RefreshIndicator(
-                                  onRefresh: () async {
-                                    setState(() =>
-                                        _model.apiRequestCompleter = null);
-                                    await _model.waitForApiRequestCompleted();
-                                  },
-                                  child: ListView.builder(
-                                    padding: EdgeInsets.zero,
-                                    shrinkWrap: true,
-                                    scrollDirection: Axis.vertical,
-                                    itemCount: listOfOffers.length,
-                                    itemBuilder: (context, listOfOffersIndex) {
-                                      final listOfOffersItem =
-                                          listOfOffers[listOfOffersIndex];
-                                      return InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          context.pushNamed(
-                                            'OffersDetailsPage',
-                                            queryParameters: {
-                                              'id': serializeParam(
-                                                getJsonField(
-                                                  listOfOffersItem,
-                                                  r'''$.id''',
-                                                ).toString(),
-                                                ParamType.String,
+                            return RefreshIndicator(
+                              onRefresh: () async {
+                                setState(
+                                    () => _model.apiRequestCompleter = null);
+                                await _model.waitForApiRequestCompleted();
+                              },
+                              child: ListView.builder(
+                                padding: EdgeInsets.zero,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: listOfOffers.length,
+                                itemBuilder: (context, listOfOffersIndex) {
+                                  final listOfOffersItem =
+                                      listOfOffers[listOfOffersIndex];
+                                  return InkWell(
+                                    splashColor: Colors.transparent,
+                                    focusColor: Colors.transparent,
+                                    hoverColor: Colors.transparent,
+                                    highlightColor: Colors.transparent,
+                                    onTap: () async {
+                                      context.pushNamed(
+                                        'OffersDetailsPage',
+                                        queryParameters: {
+                                          'id': serializeParam(
+                                            getJsonField(
+                                              listOfOffersItem,
+                                              r'''$.id''',
+                                            ).toString(),
+                                            ParamType.String,
+                                          ),
+                                        }.withoutNulls,
+                                      );
+                                    },
+                                    child: Stack(
+                                      alignment: AlignmentDirectional(0.0, 0.0),
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 0.0, 30.0, 0.0),
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(25.0),
+                                            child: BackdropFilter(
+                                              filter: ImageFilter.blur(
+                                                sigmaX: 5.0,
+                                                sigmaY: 5.0,
                                               ),
-                                            }.withoutNulls,
-                                          );
-                                        },
-                                        child: Stack(
-                                          children: [
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          30.0, 0.0, 30.0, 0.0),
-                                                  child: Container(
-                                                    width: 315.0,
-                                                    height: 243.0,
-                                                    decoration: BoxDecoration(),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: BackdropFilter(
-                                                        filter:
-                                                            ImageFilter.blur(
-                                                          sigmaX: 3.0,
-                                                          sigmaY: 3.0,
-                                                        ),
-                                                        child: Opacity(
-                                                          opacity: 0.7,
-                                                          child: Container(
-                                                            width: 315.0,
-                                                            height: 243.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: Color(
-                                                                  0xD3FFFFFF),
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          25.0),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ),
-                                                  ),
+                                              child: Container(
+                                                height: 210.0,
+                                                decoration: BoxDecoration(
+                                                  color: Color(0x69FFFFFF),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          25.0),
                                                 ),
-                                              ],
-                                            ),
-                                            InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                context.pushNamed(
-                                                  'OffersDetailsPage',
-                                                  queryParameters: {
-                                                    'id': serializeParam(
-                                                      getJsonField(
-                                                        listOfOffersItem,
-                                                        r'''$.id''',
-                                                      ).toString(),
-                                                      ParamType.String,
-                                                    ),
-                                                  }.withoutNulls,
-                                                );
-                                              },
-                                              child: Column(
-                                                mainAxisSize: MainAxisSize.max,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.end,
-                                                children: [
-                                                  Align(
-                                                    alignment:
-                                                        AlignmentDirectional(
-                                                            -1.00, 0.00),
-                                                    child: Padding(
+                                                child: Stack(
+                                                  children: [
+                                                    Padding(
                                                       padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  20.0,
-                                                                  0.0,
-                                                                  20.0,
-                                                                  0.0),
-                                                      child: Stack(
+                                                                  40.0,
+                                                                  30.0,
+                                                                  40.0,
+                                                                  20.0),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
                                                         children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        57.0,
-                                                                        34.0,
-                                                                        0.0,
-                                                                        0.0),
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          0.0),
-                                                              child: SvgPicture
-                                                                  .asset(
-                                                                'assets/images/text_(1).svg',
-                                                                fit: BoxFit
-                                                                    .cover,
+                                                          Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Expanded(
+                                                                child: Text(
+                                                                  functions.getNameByLanguge(
+                                                                      getJsonField(
+                                                                        listOfOffersItem,
+                                                                        r'''$.name_en''',
+                                                                      ).toString(),
+                                                                      getJsonField(
+                                                                        listOfOffersItem,
+                                                                        r'''$.name_ar''',
+                                                                      ).toString(),
+                                                                      FFLocalizations.of(context).languageCode),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Heebo',
+                                                                        color: Colors
+                                                                            .black,
+                                                                        fontSize:
+                                                                            14.0,
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
+                                                                ),
                                                               ),
-                                                            ),
+                                                            ],
                                                           ),
-                                                          Container(
-                                                            decoration:
-                                                                BoxDecoration(),
-                                                            child: Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          85.0,
-                                                                          60.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .min,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .center,
-                                                                children: [
-                                                                  Flexible(
-                                                                    child: Text(
-                                                                      functions.getNameByLanguge(
-                                                                          getJsonField(
-                                                                            listOfOffersItem,
-                                                                            r'''$.name_en''',
-                                                                          ).toString(),
-                                                                          getJsonField(
-                                                                            listOfOffersItem,
-                                                                            r'''$.name_ar''',
-                                                                          ).toString(),
-                                                                          FFLocalizations.of(context).languageCode),
-                                                                      maxLines:
-                                                                          4,
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'HeeboBold',
-                                                                            color:
-                                                                                Colors.black,
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                    ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  15.0,
+                                                                  20.0,
+                                                                  15.0,
+                                                                  20.0),
+                                                      child: Row(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Flexible(
+                                                            child: Column(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                              children: [
+                                                                SizedBox(
+                                                                  width: 135.0,
+                                                                  child:
+                                                                      Divider(
+                                                                    height: 0.0,
+                                                                    thickness:
+                                                                        8.0,
+                                                                    color: Color(
+                                                                        0xFF092853),
                                                                   ),
-                                                                ],
-                                                              ),
+                                                                ),
+                                                                Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                  children: [
+                                                                    SizedBox(
+                                                                      height:
+                                                                          100.0,
+                                                                      child:
+                                                                          VerticalDivider(
+                                                                        width:
+                                                                            0.0,
+                                                                        thickness:
+                                                                            8.0,
+                                                                        color: Color(
+                                                                            0xFF092853),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ],
                                                             ),
                                                           ),
                                                         ],
                                                       ),
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(50.0, 0.0,
-                                                                50.0, 0.0),
-                                                    child: Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment.end,
-                                                      children: [
-                                                        ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      10.0),
-                                                          child: Container(
-                                                            width: 235.0,
-                                                            height: 150.0,
-                                                            decoration:
-                                                                BoxDecoration(
-                                                              color: FlutterFlowTheme
-                                                                      .of(context)
-                                                                  .secondaryBackground,
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10.0),
-                                                              border:
-                                                                  Border.all(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .white,
-                                                                width: 2.0,
-                                                              ),
-                                                            ),
-                                                            child: ClipRRect(
-                                                              borderRadius:
-                                                                  BorderRadius
-                                                                      .circular(
-                                                                          10.0),
-                                                              child:
-                                                                  Image.network(
-                                                                getJsonField(
-                                                                  listOfOffersItem,
-                                                                  r'''$.full_image''',
-                                                                ),
-                                                                fit: BoxFit
-                                                                    .cover,
-                                                              ),
-                                                            ),
-                                                          ),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
-                                          ],
+                                          ),
                                         ),
-                                      );
-                                    },
-                                  ),
-                                );
-                              },
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 120.0, 50.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.end,
+                                            children: [
+                                              ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(10.0),
+                                                child: Container(
+                                                  width: 235.0,
+                                                  height: 150.0,
+                                                  decoration: BoxDecoration(
+                                                    color: FlutterFlowTheme.of(
+                                                            context)
+                                                        .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                    border: Border.all(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .white,
+                                                      width: 2.0,
+                                                    ),
+                                                  ),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            10.0),
+                                                    child: Image.network(
+                                                      getJsonField(
+                                                        listOfOffersItem,
+                                                        r'''$.full_image''',
+                                                      ),
+                                                      fit: BoxFit.cover,
+                                                      errorBuilder: (context,
+                                                              error,
+                                                              stackTrace) =>
+                                                          Image.asset(
+                                                        'assets/images/error_image.png',
+                                                        fit: BoxFit.cover,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              ),
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              ),
                             );
                           },
-                        ),
-                      ),
+                        );
+                      },
                     ),
-                  ],
+                  ),
                 ),
               ],
             ),

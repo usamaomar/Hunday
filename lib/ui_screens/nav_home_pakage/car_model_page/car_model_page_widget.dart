@@ -238,6 +238,14 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                                         ),
                                                         width: 85.0,
                                                         fit: BoxFit.contain,
+                                                        errorBuilder: (context,
+                                                                error,
+                                                                stackTrace) =>
+                                                            Image.asset(
+                                                          'assets/images/error_image.png',
+                                                          width: 85.0,
+                                                          fit: BoxFit.contain,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),

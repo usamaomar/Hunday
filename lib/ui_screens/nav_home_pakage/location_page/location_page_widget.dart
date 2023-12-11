@@ -291,6 +291,12 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                                 width: 33.0,
                                                                                 height: 33.0,
                                                                                 fit: BoxFit.contain,
+                                                                                errorBuilder: (context, error, stackTrace) => Image.asset(
+                                                                                  'assets/images/error_image.png',
+                                                                                  width: 33.0,
+                                                                                  height: 33.0,
+                                                                                  fit: BoxFit.contain,
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                             ClipRRect(
@@ -354,6 +360,16 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                               162.0,
                                                                           fit: BoxFit
                                                                               .cover,
+                                                                          errorWidget: (context, error, stackTrace) =>
+                                                                              Image.asset(
+                                                                            'assets/images/error_image.png',
+                                                                            width:
+                                                                                285.0,
+                                                                            height:
+                                                                                162.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),

@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/nav_home_pakage/empty_list_component/empty_list_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -206,6 +207,9 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                         .listOfCarsModel
                                         .map((e) => e)
                                         .toList();
+                                    if (listOfLocalCars.isEmpty) {
+                                      return EmptyListComponentWidget();
+                                    }
                                     return ListView.builder(
                                       padding: EdgeInsets.fromLTRB(
                                         0,
@@ -394,6 +398,16 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                             width: 125.0,
                                                             height: 125.0,
                                                             fit: BoxFit.contain,
+                                                            errorBuilder: (context,
+                                                                    error,
+                                                                    stackTrace) =>
+                                                                Image.asset(
+                                                              'assets/images/error_image.png',
+                                                              width: 125.0,
+                                                              height: 125.0,
+                                                              fit: BoxFit
+                                                                  .contain,
+                                                            ),
                                                           ),
                                                         ),
                                                       ),

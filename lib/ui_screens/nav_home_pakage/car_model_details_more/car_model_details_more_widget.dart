@@ -204,6 +204,12 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                             r'''$.full_image''',
                                           ),
                                           fit: BoxFit.cover,
+                                          errorBuilder:
+                                              (context, error, stackTrace) =>
+                                                  Image.asset(
+                                            'assets/images/error_image.png',
+                                            fit: BoxFit.cover,
+                                          ),
                                         ),
                                       ),
                                     ),
