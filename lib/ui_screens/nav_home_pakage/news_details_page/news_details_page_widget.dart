@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/nav_home_pakage/empty_list_component/empty_list_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -313,14 +314,18 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .secondaryBackground,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            25.0),
                                                   ),
                                                   child: Builder(
                                                     builder: (context) {
-                                                      final imagesList =
-                                                          FFAppState()
-                                                              .newsModelJsonList
-                                                              .map((e) => e)
-                                                              .toList();
+                                                      final imagesList = _model
+                                                          .listOfGallaryImages
+                                                          .toList();
+                                                      if (imagesList.isEmpty) {
+                                                        return EmptyListComponentWidget();
+                                                      }
                                                       return ListView.builder(
                                                         padding:
                                                             EdgeInsets.zero,
@@ -338,67 +343,32 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                             padding:
                                                                 EdgeInsetsDirectional
                                                                     .fromSTEB(
-                                                                        10.0,
+                                                                        0.0,
                                                                         5.0,
                                                                         10.0,
                                                                         0.0),
-                                                            child: InkWell(
-                                                              splashColor: Colors
-                                                                  .transparent,
-                                                              focusColor: Colors
-                                                                  .transparent,
-                                                              hoverColor: Colors
-                                                                  .transparent,
-                                                              highlightColor:
-                                                                  Colors
-                                                                      .transparent,
-                                                              onTap: () async {
-                                                                context
-                                                                    .pushNamed(
-                                                                  'NewsDetailsPage',
-                                                                  queryParameters:
-                                                                      {
-                                                                    'itemIndex':
-                                                                        serializeParam(
-                                                                      imagesListIndex,
-                                                                      ParamType
-                                                                          .int,
-                                                                    ),
-                                                                    'itemId':
-                                                                        serializeParam(
-                                                                      getJsonField(
-                                                                        imagesListItem,
-                                                                        r'''$.id''',
-                                                                      ).toString(),
-                                                                      ParamType
-                                                                          .String,
-                                                                    ),
-                                                                  }.withoutNulls,
-                                                                );
-                                                              },
-                                                              child: Container(
-                                                                width: 110.0,
-                                                                height: 95.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: Color(
-                                                                      0xFFF5F0F0),
-                                                                  image:
-                                                                      DecorationImage(
-                                                                    fit: BoxFit
-                                                                        .cover,
-                                                                    image: Image
-                                                                        .network(
-                                                                      getJsonField(
-                                                                        imagesListItem,
-                                                                        r'''$.full_listing_image''',
-                                                                      ),
-                                                                    ).image,
-                                                                  ),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              20.0),
+                                                            child: Container(
+                                                              width: 110.0,
+                                                              height: 95.0,
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color(
+                                                                    0xFFF5F0F0),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            0.0),
+                                                              ),
+                                                              child: ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                                child: Image
+                                                                    .network(
+                                                                  imagesListItem,
+                                                                  fit: BoxFit
+                                                                      .cover,
                                                                 ),
                                                               ),
                                                             ),

@@ -9,8 +9,6 @@ export '/ui_screens/nav_home_pakage/shop_page/shop_page_widget.dart'
     show ShopPageWidget;
 export '/ui_screens/registration_package/splash_page/splash_page_widget.dart'
     show SplashPageWidget;
-export '/ui_screens/nav_pakege/car_page/car_page_widget.dart'
-    show CarPageWidget;
 export '/ui_screens/settings_screens/about_app_page/about_app_page_widget.dart'
     show AboutAppPageWidget;
 export '/ui_screens/nav_home_pakage/car_model_page/car_model_page_widget.dart'
@@ -67,3 +65,5 @@ export '/ui_screens/app_bar_packages/my_appointment_page/my_appointment_page_wid
     show MyAppointmentPageWidget;
 export '/ui_screens/settings_screens/my_vehicles_page/my_vehicles_page_widget.dart'
     show MyVehiclesPageWidget;
+export '/ui_screens/settings_screens/my_vehicles_details_page/my_vehicles_details_page_widget.dart'
+    show MyVehiclesDetailsPageWidget;

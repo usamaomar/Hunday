@@ -20,7 +20,7 @@ bool? newCustomFunction2(
   String searchText,
   String currentTitle,
 ) {
-  return currentTitle.contains(searchText);
+  return currentTitle.toLowerCase().contains(searchText.toLowerCase());
 }
 
 String checkNumberAndValidate(String phoneNumber) {

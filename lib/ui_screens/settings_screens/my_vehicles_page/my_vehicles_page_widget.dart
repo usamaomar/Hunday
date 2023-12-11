@@ -5,8 +5,10 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -18,7 +20,13 @@ import 'my_vehicles_page_model.dart';
 export 'my_vehicles_page_model.dart';
 
 class MyVehiclesPageWidget extends StatefulWidget {
-  const MyVehiclesPageWidget({Key? key}) : super(key: key);
+  const MyVehiclesPageWidget({
+    Key? key,
+    bool? isBarHidden,
+  })  : this.isBarHidden = isBarHidden ?? false,
+        super(key: key);
+
+  final bool isBarHidden;
 
   @override
   _MyVehiclesPageWidgetState createState() => _MyVehiclesPageWidgetState();
@@ -193,40 +201,107 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                     mainAxisSize: MainAxisSize.max,
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            30.0, 0.0, 30.0, 0.0),
-                                        child: FFButtonWidget(
-                                          onPressed: () {
-                                            print('Button pressed ...');
-                                          },
-                                          text: FFLocalizations.of(context)
-                                              .getText(
-                                            '5ww6ldok' /* Add New Vehicles */,
-                                          ),
-                                          options: FFButtonOptions(
-                                            height: 40.0,
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    24.0, 0.0, 24.0, 0.0),
-                                            iconPadding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
-                                            color: Color(0xFF092853),
-                                            textStyle:
-                                                FlutterFlowTheme.of(context)
-                                                    .titleSmall
-                                                    .override(
-                                                      fontFamily: 'Poppins',
-                                                      color: Colors.white,
+                                      Builder(
+                                        builder: (context) => Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 0.0, 30.0, 0.0),
+                                          child: FFButtonWidget(
+                                            onPressed: () async {
+                                              await showAlignedDialog(
+                                                barrierColor:
+                                                    Colors.transparent,
+                                                barrierDismissible: false,
+                                                context: context,
+                                                isGlobal: true,
+                                                avoidOverflow: false,
+                                                targetAnchor:
+                                                    AlignmentDirectional(
+                                                            0.0, 0.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
+                                                followerAnchor:
+                                                    AlignmentDirectional(
+                                                            0.0, 0.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
+                                                builder: (dialogContext) {
+                                                  return Material(
+                                                    color: Colors.transparent,
+                                                    child: GestureDetector(
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
+                                                                  context)
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
+                                                      child:
+                                                          ScannedCardAnimationComponentWidget(),
                                                     ),
-                                            elevation: 3.0,
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF3D6398),
-                                              width: 1.0,
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
+
+                                              _model.apiResultoqe12 =
+                                                  await VehicleApiCall.call(
+                                                token: FFAppState()
+                                                    .userModel
+                                                    .token,
+                                              );
+                                              if ((_model.apiResultoqe12
+                                                      ?.succeeded ??
+                                                  true)) {
+                                                setState(() {
+                                                  _model.myCarsList = functions
+                                                      .fromJsonArrayToMyVycalesList(
+                                                          getJsonField(
+                                                        (_model.apiResultoqe12
+                                                                ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.vehicles''',
+                                                      ))
+                                                      .toList()
+                                                      .cast<
+                                                          MyVehicleModelStruct>();
+                                                });
+                                              }
+
+                                              setState(() {});
+                                            },
+                                            text: FFLocalizations.of(context)
+                                                .getText(
+                                              '5ww6ldok' /* Add New Vehicles */,
                                             ),
-                                            borderRadius:
-                                                BorderRadius.circular(5.0),
+                                            options: FFButtonOptions(
+                                              height: 40.0,
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      24.0, 0.0, 24.0, 0.0),
+                                              iconPadding: EdgeInsetsDirectional
+                                                  .fromSTEB(0.0, 0.0, 0.0, 0.0),
+                                              color: Color(0xFF092853),
+                                              textStyle:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.white,
+                                                      ),
+                                              elevation: 3.0,
+                                              borderSide: BorderSide(
+                                                color: Color(0xFF3D6398),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -459,22 +534,48 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                                                       15.0,
                                                                       15.0,
                                                                       15.0),
-                                                          child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '2nonl3qp' /* Details */,
+                                                          child: InkWell(
+                                                            splashColor: Colors
+                                                                .transparent,
+                                                            focusColor: Colors
+                                                                .transparent,
+                                                            hoverColor: Colors
+                                                                .transparent,
+                                                            highlightColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
+                                                              context.pushNamed(
+                                                                'MyVehiclesDetailsPage',
+                                                                queryParameters:
+                                                                    {
+                                                                  'vehicleObject':
+                                                                      serializeParam(
+                                                                    localsItem
+                                                                        .toMap(),
+                                                                    ParamType
+                                                                        .JSON,
+                                                                  ),
+                                                                }.withoutNulls,
+                                                              );
+                                                            },
+                                                            child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '2nonl3qp' /* Details */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Poppins',
+                                                                    decoration:
+                                                                        TextDecoration
+                                                                            .underline,
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Poppins',
-                                                                  decoration:
-                                                                      TextDecoration
-                                                                          .underline,
-                                                                ),
                                                           ),
                                                         ),
                                                       ],
@@ -497,48 +598,49 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                           animationsMap['containerOnPageLoadAnimation']!),
                     ),
                   ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(0.0),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(
-                        sigmaX: 2.0,
-                        sigmaY: 2.0,
-                      ),
-                      child: Container(
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            colors: [Color(0x80FFFFFF), Color(0x11FFFFFF)],
-                            stops: [0.0, 1.0],
-                            begin: AlignmentDirectional(0.0, -1.0),
-                            end: AlignmentDirectional(0, 1.0),
-                          ),
+                  if (widget.isBarHidden == true)
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(0.0),
+                      child: BackdropFilter(
+                        filter: ImageFilter.blur(
+                          sigmaX: 2.0,
+                          sigmaY: 2.0,
                         ),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                wrapWithModel(
-                                  model: _model.hyndayAppBarModel,
-                                  updateCallback: () => setState(() {}),
-                                  child: HyndayAppBarWidget(
-                                    appBarTitle: FFLocalizations.of(context)
-                                        .getVariableText(
-                                      enText: 'My Vehicles',
-                                      arText: 'مركباتي',
-                                    ),
-                                    isMyProfileOpend: false,
-                                  ),
-                                ),
-                              ],
+                        child: Container(
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Color(0x80FFFFFF), Color(0x11FFFFFF)],
+                              stops: [0.0, 1.0],
+                              begin: AlignmentDirectional(0.0, -1.0),
+                              end: AlignmentDirectional(0, 1.0),
                             ),
-                          ],
+                          ),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  wrapWithModel(
+                                    model: _model.hyndayAppBarModel,
+                                    updateCallback: () => setState(() {}),
+                                    child: HyndayAppBarWidget(
+                                      appBarTitle: FFLocalizations.of(context)
+                                          .getVariableText(
+                                        enText: 'My Vehicles',
+                                        arText: 'مركباتي',
+                                      ),
+                                      isMyProfileOpend: false,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
                       ),
                     ),
-                  ),
                 ],
               ),
             ),

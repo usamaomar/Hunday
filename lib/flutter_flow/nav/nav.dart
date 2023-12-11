@@ -80,16 +80,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SplashPageWidget(),
             ),
             FFRoute(
-              name: 'CarPage',
-              path: 'carPage',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'CarPage')
-                  : NavBarPage(
-                      initialPage: 'CarPage',
-                      page: CarPageWidget(),
-                    ),
-            ),
-            FFRoute(
               name: 'AboutAppPage',
               path: 'aboutAppPage',
               builder: (context, params) => NavBarPage(
@@ -321,9 +311,22 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'MyVehiclesPage',
               path: 'myVehiclesPage',
+              builder: (context, params) => params.isEmpty
+                  ? NavBarPage(initialPage: 'MyVehiclesPage')
+                  : MyVehiclesPageWidget(
+                      isBarHidden:
+                          params.getParam('isBarHidden', ParamType.bool),
+                    ),
+            ),
+            FFRoute(
+              name: 'MyVehiclesDetailsPage',
+              path: 'myVehiclesDetailsPage',
               builder: (context, params) => NavBarPage(
                 initialPage: '',
-                page: MyVehiclesPageWidget(),
+                page: MyVehiclesDetailsPageWidget(
+                  vehicleObject:
+                      params.getParam('vehicleObject', ParamType.JSON),
+                ),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),

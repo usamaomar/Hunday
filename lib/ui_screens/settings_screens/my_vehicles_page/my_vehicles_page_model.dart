@@ -5,9 +5,11 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'my_vehicles_page_widget.dart' show MyVehiclesPageWidget;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -35,6 +37,8 @@ class MyVehiclesPageModel extends FlutterFlowModel<MyVehiclesPageWidget> {
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (VehicleApi)] action in MyVehiclesPage widget.
   ApiCallResponse? apiResultoqe;
+  // Stores action output result for [Backend Call - API (VehicleApi)] action in Button widget.
+  ApiCallResponse? apiResultoqe12;
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
 

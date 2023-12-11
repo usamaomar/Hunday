@@ -192,7 +192,7 @@ class _BottomNavBarComponentWidgetState
                           highlightColor: Colors.transparent,
                           onTap: () async {
                             context.pushNamed(
-                              'CarPage',
+                              'MyVehiclesPage',
                               extra: <String, dynamic>{
                                 kTransitionInfoKey: TransitionInfo(
                                   hasTransition: true,

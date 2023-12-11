@@ -118,7 +118,7 @@ class _NavBarPageState extends State<NavBarPage> {
       'HomeScreen': HomeScreenWidget(),
       'ChatPage': ChatPageWidget(),
       'CartPage': CartPageWidget(),
-      'CarPage': CarPageWidget(),
+      'MyVehiclesPage': MyVehiclesPageWidget(),
       'MorePage': MorePageWidget(),
     };
     final currentIndex = tabs.keys.toList().indexOf(_currentPageName);
@@ -193,10 +193,10 @@ class _NavBarPageState extends State<NavBarPage> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
-                  Icons.directions_car,
+                  Icons.directions_car_sharp,
                   color:
                       currentIndex == 3 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
-                  size: 25.0,
+                  size: 24.0,
                 ),
               ],
             ),

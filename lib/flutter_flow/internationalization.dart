@@ -260,13 +260,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // CarPage
-  {
-    '4zgsyvj7': {
-      'en': 'No content to show',
-      'ar': 'لا يوجد محتوى لعرضه',
-    },
-  },
   // AboutAppPage
   {
     'ccaswkvd': {
@@ -951,6 +944,85 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'تفاصيل',
     },
     'jjflr5eb': {
+      'en': '',
+      'ar': '',
+    },
+  },
+  // MyVehiclesDetailsPage
+  {
+    '2ya8t9kt': {
+      'en': '-',
+      'ar': '',
+    },
+    'sdbrnotx': {
+      'en': 'Owner Name',
+      'ar': 'اسم المالك',
+    },
+    't2fnbpw8': {
+      'en': 'Address',
+      'ar': 'عنوان',
+    },
+    'cnzletxp': {
+      'en': 'Car Type',
+      'ar': 'نوع السيارة',
+    },
+    's8v20sev': {
+      'en': '-',
+      'ar': 'رقم . اللوحة',
+    },
+    'ujate068': {
+      'en': 'Car Category',
+      'ar': 'فئة السيارة',
+    },
+    'fe8yrbs2': {
+      'en': '-',
+      'ar': 'رقم . اللوحة',
+    },
+    'i3p4spy0': {
+      'en': 'Car Color',
+      'ar': 'لون السيارة',
+    },
+    '60t3zgov': {
+      'en': 'Year of Menufacturing',
+      'ar': 'سنة التصنيع',
+    },
+    'kgn1sgos': {
+      'en': 'Registered Until',
+      'ar': 'مسجل حتى',
+    },
+    'b7tgbzmf': {
+      'en': 'Plate Number',
+      'ar': 'رقم المحرك',
+    },
+    'v811tdzc': {
+      'en': 'Enging Capacity',
+      'ar': 'القدرة الهندسية',
+    },
+    'lmwejay7': {
+      'en': 'Fuel Type',
+      'ar': 'نوع الوقود',
+    },
+    'qc5afgea': {
+      'en': '-',
+      'ar': 'رقم . اللوحة',
+    },
+    'zr55hkyq': {
+      'en': 'Registration Number',
+      'ar': 'رقم التسجيل',
+    },
+    'yslgr8eg': {
+      'en': 'VIN Number',
+      'ar': 'رقم المركبة',
+    },
+    'leiltngm': {
+      'en': 'Engine Number',
+      'ar': 'رقم المحرك',
+    },
+    'g9ivjbzh': {
+      'en': 'Insurance Company',
+      'ar': 'شركة التأمين',
+    },
+    'iettw4s8': {
       'en': 'Home',
       'ar': '',
     },
@@ -1409,6 +1481,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '2l3ucgna': {
       'en': 'Save',
       'ar': 'يحفظ',
+    },
+  },
+  // EmptyListComponent
+  {
+    'vgub0o34': {
+      'en': 'No content to show',
+      'ar': 'لا يوجد محتوى لعرضه',
     },
   },
   // Miscellaneous
