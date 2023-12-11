@@ -1,10 +1,12 @@
 export '/backend/schema/util/schema_util.dart';
 
+export 'address_model_struct.dart';
 export 'car_categories_struct.dart';
 export 'car_info_model_struct.dart';
 export 'car_model_struct.dart';
 export 'cart_item_model_struct.dart';
 export 'cart_model_struct.dart';
+export 'delivery_price_model_struct.dart';
 export 'fuel_type_model_struct.dart';
 export 'login_model_struct.dart';
 export 'my_vehicle_model_struct.dart';

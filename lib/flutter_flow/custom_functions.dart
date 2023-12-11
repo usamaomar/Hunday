@@ -249,6 +249,16 @@ String convertDateFormat(String inputDate) {
   return outputDate;
 }
 
+DeliveryPriceModelStruct getCityModelByName(
+  List<DeliveryPriceModelStruct> listOfDeliveryPrices,
+  String name,
+) {
+  DeliveryPriceModelStruct vehicle =
+      listOfDeliveryPrices.firstWhere((c) => c.name == name);
+
+  return vehicle;
+}
+
 List<PartCategoryModelStruct> convertFromJsonToPartCategoryList(
     dynamic jsonObject) {
   return jsonObject
@@ -384,5 +394,29 @@ String convertJsonToStringInternal(dynamic json) {
 }
 
 CartItemModelStruct convertFromJsonToCartObject(dynamic jsonObject) {
-  return CartItemModelStruct();
+  return CartItemModelStruct(
+      cartItems: convertFromJsonListToCarttList(jsonObject['cartItems']),
+      subTotal: jsonObject['subTotal'],
+      tax: jsonObject['tax'],
+      totalPrice: jsonObject['totalPrice']);
+}
+
+List<DeliveryPriceModelStruct> convertFromJsonListToAddressListModels(
+    dynamic jsonObject) {
+  return jsonObject
+      .map((e) =>
+          e != null && e != '' ? DeliveryPriceModelStruct.fromMap(e) : null)
+      .toList()
+      .toList()
+      .cast<DeliveryPriceModelStruct>();
+}
+
+DeliveryPriceModelStruct getCityModelById(
+  List<DeliveryPriceModelStruct> listOfDeliveryPrices,
+  int id,
+) {
+  DeliveryPriceModelStruct vehicle =
+      listOfDeliveryPrices.firstWhere((c) => c.id == id);
+
+  return vehicle;
 }

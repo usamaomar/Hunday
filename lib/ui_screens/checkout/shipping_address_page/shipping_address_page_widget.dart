@@ -1,3 +1,5 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -5,6 +7,10 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/backend/schema/structs/index.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -49,6 +55,83 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => ShippingAddressPageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResult5ds = await DeliveryPricesApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResult5ds?.succeeded ?? true)) {
+        setState(() {
+          _model.listOfLocalDeliveryPriceModels = functions
+              .convertFromJsonListToAddressListModels(getJsonField(
+                (_model.apiResult5ds?.jsonBody ?? ''),
+                r'''$.deliveryPrices''',
+              ))
+              .toList()
+              .cast<DeliveryPriceModelStruct>();
+        });
+      }
+      _model.apiResultqwk = await GetAddressApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResultqwk?.succeeded ?? true)) {
+        setState(() {
+          _model.addressModel = getJsonField(
+                        (_model.apiResultqwk?.jsonBody ?? ''),
+                        r'''$.address''',
+                      ) !=
+                      null &&
+                  getJsonField(
+                        (_model.apiResultqwk?.jsonBody ?? ''),
+                        r'''$.address''',
+                      ) !=
+                      ''
+              ? AddressModelStruct.fromMap(getJsonField(
+                  (_model.apiResultqwk?.jsonBody ?? ''),
+                  r'''$.address''',
+                ))
+              : null;
+        });
+        setState(() {
+          _model.textController1?.text = (_model.addressModel?.name != null &&
+                  _model.addressModel?.name != ''
+              ? _model.addressModel!.name
+              : FFAppState().userModel.name);
+        });
+        setState(() {
+          _model.textController2?.text = (_model.addressModel?.email != null &&
+                  _model.addressModel?.email != ''
+              ? _model.addressModel!.email
+              : FFAppState().userModel.email);
+        });
+        setState(() {
+          _model.textController3?.text = (_model.addressModel?.phone != null &&
+                  _model.addressModel?.phone != ''
+              ? _model.addressModel!.phone
+              : FFAppState().userModel.phone);
+        });
+        setState(() {
+          _model.textController4?.text =
+              (_model.addressModel?.streetAddress != null &&
+                      _model.addressModel?.streetAddress != ''
+                  ? _model.addressModel!.streetAddress
+                  : '-');
+        });
+        setState(() {
+          _model.textController5?.text =
+              (_model.addressModel?.buildingNumber != null
+                  ? _model.addressModel!.buildingNumber.toString()
+                  : '-');
+        });
+        setState(() {
+          _model.selectedCityModelString = functions
+              .getCityModelById(_model.listOfLocalDeliveryPriceModels.toList(),
+                  _model.addressModel?.id != null ? _model.addressModel!.id : 0)
+              .name;
+        });
+      }
+    });
 
     _model.textController1 ??= TextEditingController();
     _model.textFieldFocusNode1 ??= FocusNode();
@@ -188,12 +271,12 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                       5.0, 0.0, 5.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
-                                    constraints: BoxConstraints(
-                                      maxHeight: 600.0,
-                                    ),
                                     decoration: BoxDecoration(
                                       color: Color(0xFFC1D6EF),
                                       borderRadius: BorderRadius.circular(0.0),
+                                      border: Border.all(
+                                        color: Color(0xFFC1D6EF),
+                                      ),
                                     ),
                                     child: SingleChildScrollView(
                                       child: Column(
@@ -239,17 +322,14 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                         .dropDownValueController ??=
                                                     FormFieldController<String>(
                                                         null),
-                                                options: [
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'h2156rx8' /* Option 1 */,
-                                                  )
-                                                ],
+                                                options: _model
+                                                    .listOfLocalDeliveryPriceModels
+                                                    .map((e) => e.name)
+                                                    .toList(),
                                                 onChanged: (val) => setState(
                                                     () => _model.dropDownValue =
                                                         val),
                                                 width: double.infinity,
-                                                height: 40.0,
                                                 textStyle:
                                                     FlutterFlowTheme.of(context)
                                                         .bodyMedium,
@@ -289,7 +369,6 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: Container(
-                                                height: 40.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -388,7 +467,6 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: Container(
-                                                height: 40.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -489,7 +567,6 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: Container(
-                                                height: 40.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -590,7 +667,6 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: Container(
-                                                height: 40.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -691,7 +767,6 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                               borderRadius:
                                                   BorderRadius.circular(8.0),
                                               child: Container(
-                                                height: 40.0,
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
@@ -791,55 +866,155 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                FFButtonWidget(
-                                                  onPressed: () async {
-                                                    context.pushNamed(
-                                                      'CartSummaryPage',
-                                                      extra: <String, dynamic>{
-                                                        kTransitionInfoKey:
-                                                            TransitionInfo(
-                                                          hasTransition: true,
-                                                          transitionType:
-                                                              PageTransitionType
-                                                                  .leftToRight,
-                                                          duration: Duration(
-                                                              milliseconds: 50),
-                                                        ),
-                                                      },
-                                                    );
-                                                  },
-                                                  text: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    'zwca6rlo' /* Next */,
-                                                  ),
-                                                  options: FFButtonOptions(
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(50.0, 0.0,
-                                                                50.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
+                                                Builder(
+                                                  builder: (context) =>
+                                                      FFButtonWidget(
+                                                    onPressed: () async {
+                                                      _model.apiResultdip =
+                                                          await AddAddressApiCall
+                                                              .call(
+                                                        token: FFAppState()
+                                                            .userModel
+                                                            .token,
+                                                        name: _model
+                                                            .textController1
+                                                            .text,
+                                                        email: _model
+                                                            .textController2
+                                                            .text,
+                                                        phone: _model
+                                                            .textController3
+                                                            .text,
+                                                        cityId: functions
+                                                            .getCityModelByName(
+                                                                _model
+                                                                    .listOfLocalDeliveryPriceModels
+                                                                    .toList(),
+                                                                _model
+                                                                    .dropDownValue!)
+                                                            .id,
+                                                        streetAddress: _model
+                                                            .textController4
+                                                            .text,
+                                                        buildingNumber:
+                                                            int.tryParse(_model
+                                                                .textController5
+                                                                .text),
+                                                      );
+                                                      if ((_model.apiResultdip
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        context.pushNamed(
+                                                          'CartSummaryPage',
+                                                          extra: <String,
+                                                              dynamic>{
+                                                            kTransitionInfoKey:
+                                                                TransitionInfo(
+                                                              hasTransition:
+                                                                  true,
+                                                              transitionType:
+                                                                  PageTransitionType
+                                                                      .leftToRight,
+                                                              duration: Duration(
+                                                                  milliseconds:
+                                                                      50),
+                                                            ),
+                                                          },
+                                                        );
+                                                      } else {
+                                                        await showAlignedDialog(
+                                                          context: context,
+                                                          isGlobal: true,
+                                                          avoidOverflow: false,
+                                                          targetAnchor:
+                                                              AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                          followerAnchor:
+                                                              AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () => _model
+                                                                        .unfocusNode
+                                                                        .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(_model
+                                                                            .unfocusNode)
+                                                                    : FocusScope.of(
+                                                                            context)
+                                                                        .unfocus(),
+                                                                child:
+                                                                    Modal06BasicInformationWidget(
+                                                                  body: (_model
+                                                                          .apiResultdip
+                                                                          ?.bodyText ??
+                                                                      ''),
+                                                                ),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+                                                      }
+
+                                                      setState(() {});
+                                                    },
+                                                    text: FFLocalizations.of(
                                                             context)
-                                                        .ahayundai,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: Colors.white,
-                                                        ),
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
+                                                        .getText(
+                                                      'zwca6rlo' /* Next */,
                                                     ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
+                                                    options: FFButtonOptions(
+                                                      height: 40.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  50.0,
+                                                                  0.0,
+                                                                  50.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .ahayundai,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5.0),
+                                                    ),
                                                   ),
                                                 ),
                                               ],

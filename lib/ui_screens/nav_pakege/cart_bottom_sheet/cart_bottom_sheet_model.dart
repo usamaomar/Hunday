@@ -5,7 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
-import '/backend/schema/structs/index.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'cart_bottom_sheet_widget.dart' show CartBottomSheetWidget;
 import 'package:aligned_dialog/aligned_dialog.dart';

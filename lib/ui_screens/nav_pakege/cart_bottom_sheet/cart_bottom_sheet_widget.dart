@@ -5,7 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
-import '/backend/schema/structs/index.dart';
+import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
@@ -287,46 +287,62 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                         child: Stack(
                                                           alignment:
                                                               AlignmentDirectional(
-                                                                  1.0, 1.0),
+                                                                  1.0, 0.0),
                                                           children: [
-                                                            Align(
-                                                              alignment:
-                                                                  AlignmentDirectional(
-                                                                      1.00,
-                                                                      0.00),
-                                                              child: ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .center,
+                                                              children: [
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          1.00,
+                                                                          0.00),
+                                                                  child:
+                                                                      ClipRRect(
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
                                                                             8.0),
-                                                                child: Image
-                                                                    .network(
-                                                                  seedCartListItem
-                                                                      .part
-                                                                      .fullImage,
-                                                                  width: 95.0,
-                                                                  height: 95.0,
-                                                                  fit: BoxFit
-                                                                      .contain,
-                                                                  errorBuilder: (context,
-                                                                          error,
-                                                                          stackTrace) =>
-                                                                      Image
-                                                                          .asset(
-                                                                    'assets/images/error_image.png',
-                                                                    width: 95.0,
-                                                                    height:
-                                                                        95.0,
-                                                                    fit: BoxFit
-                                                                        .contain,
+                                                                    child: Image
+                                                                        .network(
+                                                                      seedCartListItem
+                                                                          .part
+                                                                          .fullImage,
+                                                                      width:
+                                                                          100.0,
+                                                                      height:
+                                                                          95.0,
+                                                                      fit: BoxFit
+                                                                          .fill,
+                                                                      errorBuilder: (context,
+                                                                              error,
+                                                                              stackTrace) =>
+                                                                          Image
+                                                                              .asset(
+                                                                        'assets/images/error_image.png',
+                                                                        width:
+                                                                            100.0,
+                                                                        height:
+                                                                            95.0,
+                                                                        fit: BoxFit
+                                                                            .fill,
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
+                                                              ],
                                                             ),
                                                             Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
                                                                       .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .end,
                                                               crossAxisAlignment:
                                                                   CrossAxisAlignment
                                                                       .end,
@@ -337,64 +353,89 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                         null
                                                                     ? false
                                                                     : true)
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .max,
-                                                                    mainAxisAlignment:
-                                                                        MainAxisAlignment
-                                                                            .end,
-                                                                    children: [
-                                                                      Card(
-                                                                        clipBehavior:
-                                                                            Clip.antiAliasWithSaveLayer,
-                                                                        color: FlutterFlowTheme.of(context)
-                                                                            .secondaryBackground,
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            1.00,
+                                                                            0.00),
+                                                                    child:
+                                                                        Padding(
+                                                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0,
+                                                                          5.0,
+                                                                          0.0,
+                                                                          10.0),
+                                                                      child:
+                                                                          Material(
+                                                                        color: Colors
+                                                                            .transparent,
                                                                         elevation:
-                                                                            0.0,
+                                                                            2.0,
                                                                         shape:
                                                                             RoundedRectangleBorder(
                                                                           borderRadius:
                                                                               BorderRadius.only(
                                                                             bottomLeft:
-                                                                                Radius.circular(20.0),
+                                                                                Radius.circular(10.0),
                                                                             bottomRight:
                                                                                 Radius.circular(0.0),
                                                                             topLeft:
-                                                                                Radius.circular(20.0),
+                                                                                Radius.circular(10.0),
                                                                             topRight:
                                                                                 Radius.circular(0.0),
                                                                           ),
                                                                         ),
                                                                         child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.max,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.center,
-                                                                          children: [
-                                                                            Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 20.0, 5.0),
-                                                                              child: Text(
-                                                                                seedCartListItem.part.specialPrice != null
-                                                                                    ? '${seedCartListItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                        enText: 'JOD',
-                                                                                        arText: 'دينار',
-                                                                                      )}'
-                                                                                    : '0',
-                                                                                textAlign: TextAlign.center,
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Poppins',
-                                                                                      color: FlutterFlowTheme.of(context).error,
-                                                                                      fontWeight: FontWeight.w600,
-                                                                                      decoration: TextDecoration.lineThrough,
-                                                                                    ),
+                                                                            Container(
+                                                                          width:
+                                                                              85.0,
+                                                                          height:
+                                                                              30.0,
+                                                                          decoration:
+                                                                              BoxDecoration(
+                                                                            color:
+                                                                                FlutterFlowTheme.of(context).white,
+                                                                            borderRadius:
+                                                                                BorderRadius.only(
+                                                                              bottomLeft: Radius.circular(10.0),
+                                                                              bottomRight: Radius.circular(0.0),
+                                                                              topLeft: Radius.circular(10.0),
+                                                                              topRight: Radius.circular(0.0),
+                                                                            ),
+                                                                          ),
+                                                                          child:
+                                                                              Align(
+                                                                            alignment:
+                                                                                AlignmentDirectional(0.00, 0.00),
+                                                                            child:
+                                                                                Padding(
+                                                                              padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                                                                              child: Row(
+                                                                                mainAxisSize: MainAxisSize.min,
+                                                                                mainAxisAlignment: MainAxisAlignment.center,
+                                                                                children: [
+                                                                                  Text(
+                                                                                    seedCartListItem.part.specialPrice != null
+                                                                                        ? '${seedCartListItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                            enText: 'JOD',
+                                                                                            arText: 'دينار',
+                                                                                          )}'
+                                                                                        : '0',
+                                                                                    textAlign: TextAlign.center,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Poppins',
+                                                                                          color: Color(0xFFD60000),
+                                                                                          fontSize: 12.0,
+                                                                                          fontWeight: FontWeight.normal,
+                                                                                        ),
+                                                                                  ),
+                                                                                ],
                                                                               ),
                                                                             ),
-                                                                          ],
+                                                                          ),
                                                                         ),
                                                                       ),
-                                                                    ],
+                                                                    ),
                                                                   ),
                                                                 Align(
                                                                   alignment:
@@ -402,73 +443,63 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           1.00,
                                                                           0.00),
                                                                   child:
-                                                                      Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            0.0,
-                                                                            5.0,
-                                                                            0.0,
-                                                                            10.0),
-                                                                    child:
-                                                                        Container(
-                                                                      height:
-                                                                          30.0,
-                                                                      decoration:
-                                                                          BoxDecoration(
-                                                                        color: Color(
-                                                                            0xFF3D6398),
-                                                                        borderRadius:
-                                                                            BorderRadius.only(
-                                                                          bottomLeft:
-                                                                              Radius.circular(10.0),
-                                                                          bottomRight:
-                                                                              Radius.circular(0.0),
-                                                                          topLeft:
-                                                                              Radius.circular(10.0),
-                                                                          topRight:
-                                                                              Radius.circular(0.0),
-                                                                        ),
+                                                                      Container(
+                                                                    width: 85.0,
+                                                                    height:
+                                                                        30.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0xFF3D6398),
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .only(
+                                                                        bottomLeft:
+                                                                            Radius.circular(10.0),
+                                                                        bottomRight:
+                                                                            Radius.circular(0.0),
+                                                                        topLeft:
+                                                                            Radius.circular(10.0),
+                                                                        topRight:
+                                                                            Radius.circular(0.0),
                                                                       ),
+                                                                    ),
+                                                                    child:
+                                                                        Align(
+                                                                      alignment: AlignmentDirectional(
+                                                                          0.00,
+                                                                          0.00),
                                                                       child:
-                                                                          Align(
-                                                                        alignment: AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            15.0,
+                                                                            0.0,
+                                                                            15.0,
+                                                                            0.0),
                                                                         child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              15.0,
-                                                                              0.0,
-                                                                              15.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              Row(
-                                                                            mainAxisSize:
-                                                                                MainAxisSize.min,
-                                                                            mainAxisAlignment:
-                                                                                MainAxisAlignment.center,
-                                                                            children: [
-                                                                              Text(
-                                                                                '${(seedCartListItem.part.specialPrice == null) || (seedCartListItem.part.specialPrice == 0.0) ? '${seedCartListItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                    enText: 'JOD',
-                                                                                    arText: 'دينار',
-                                                                                  )}' : '${seedCartListItem.part.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                    enText: 'JOD',
-                                                                                    arText: 'دينار',
-                                                                                  )}'} ${FFLocalizations.of(context).getVariableText(
+                                                                            Row(
+                                                                          mainAxisSize:
+                                                                              MainAxisSize.min,
+                                                                          mainAxisAlignment:
+                                                                              MainAxisAlignment.center,
+                                                                          children: [
+                                                                            Text(
+                                                                              '${(seedCartListItem.part.specialPrice == null) || (seedCartListItem.part.specialPrice == 0.0) ? '${seedCartListItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                                   enText: 'JOD',
                                                                                   arText: 'دينار',
-                                                                                )}',
-                                                                                textAlign: TextAlign.center,
-                                                                                style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                      fontFamily: 'Poppins',
-                                                                                      color: FlutterFlowTheme.of(context).white,
-                                                                                      fontSize: 12.0,
-                                                                                      fontWeight: FontWeight.normal,
-                                                                                    ),
-                                                                              ),
-                                                                            ],
-                                                                          ),
+                                                                                )}' : '${seedCartListItem.part.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                  enText: 'JOD',
+                                                                                  arText: 'دينار',
+                                                                                )}'}',
+                                                                              textAlign: TextAlign.center,
+                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                    fontFamily: 'Poppins',
+                                                                                    color: FlutterFlowTheme.of(context).white,
+                                                                                    fontSize: 12.0,
+                                                                                    fontWeight: FontWeight.normal,
+                                                                                  ),
+                                                                            ),
+                                                                          ],
                                                                         ),
                                                                       ),
                                                                     ),
@@ -476,6 +507,60 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                 ),
                                                               ],
                                                             ),
+                                                            if (_model
+                                                                    .isLoading ==
+                                                                true)
+                                                              ClipRRect(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            0.0),
+                                                                child:
+                                                                    BackdropFilter(
+                                                                  filter:
+                                                                      ImageFilter
+                                                                          .blur(
+                                                                    sigmaX: 2.0,
+                                                                    sigmaY: 2.0,
+                                                                  ),
+                                                                  child:
+                                                                      Container(
+                                                                    width:
+                                                                        100.0,
+                                                                    height:
+                                                                        95.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0x55FFFFFF),
+                                                                    ),
+                                                                    child:
+                                                                        Visibility(
+                                                                      visible:
+                                                                          _model.isLoading ==
+                                                                              true,
+                                                                      child:
+                                                                          CircularPercentIndicator(
+                                                                        percent:
+                                                                            0.7,
+                                                                        radius:
+                                                                            12.5,
+                                                                        lineWidth:
+                                                                            3.0,
+                                                                        animation:
+                                                                            true,
+                                                                        animateFromLastPercent:
+                                                                            true,
+                                                                        progressColor:
+                                                                            FlutterFlowTheme.of(context).ahayundai,
+                                                                        backgroundColor:
+                                                                            Color(0xFF7C91BB),
+                                                                      ).animateOnPageLoad(
+                                                                              animationsMap['progressBarOnPageLoadAnimation']!),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
                                                           ],
                                                         ),
                                                       ),
@@ -582,17 +667,22 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                         setState(
                                                                             () {
                                                                           _model.listOfCartItemsLocal = functions
-                                                                              .convertFromJsonListToCarttList(getJsonField(
+                                                                              .convertFromJsonToCartObject(getJsonField(
                                                                                 (_model.apiResultx4488?.jsonBody ?? ''),
-                                                                                r'''$.cartItem''',
+                                                                                r'''$''',
                                                                               ))
+                                                                              .cartItems
                                                                               .toList()
                                                                               .cast<CartModelStruct>();
                                                                         });
                                                                         setState(
                                                                             () {
-                                                                          _model.totalPrice =
-                                                                              CartItemModelStruct.fromMap((_model.apiResultx4488?.jsonBody ?? '')).totalPrice;
+                                                                          _model.totalPrice = functions
+                                                                              .convertFromJsonToCartObject(getJsonField(
+                                                                                (_model.apiResultx4488?.jsonBody ?? ''),
+                                                                                r'''$''',
+                                                                              ))
+                                                                              .totalPrice;
                                                                         });
                                                                       }
                                                                     } else {
@@ -669,39 +759,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                             ),
                                                                       ),
                                                                     ),
-                                                                    if (_model
-                                                                            .isLoading ==
-                                                                        true)
-                                                                      Align(
-                                                                        alignment: AlignmentDirectional(
-                                                                            0.00,
-                                                                            0.00),
-                                                                        child:
-                                                                            Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
-                                                                              15.0,
-                                                                              0.0,
-                                                                              15.0,
-                                                                              0.0),
-                                                                          child:
-                                                                              CircularPercentIndicator(
-                                                                            percent:
-                                                                                0.7,
-                                                                            radius:
-                                                                                12.5,
-                                                                            lineWidth:
-                                                                                3.0,
-                                                                            animation:
-                                                                                true,
-                                                                            animateFromLastPercent:
-                                                                                true,
-                                                                            progressColor:
-                                                                                FlutterFlowTheme.of(context).ahayundai,
-                                                                            backgroundColor:
-                                                                                Color(0xFF7C91BB),
-                                                                          ).animateOnPageLoad(animationsMap['progressBarOnPageLoadAnimation']!),
-                                                                        ),
-                                                                      ),
                                                                   ],
                                                                 ),
                                                               ),
@@ -754,17 +811,22 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                         setState(
                                                                             () {
                                                                           _model.listOfCartItemsLocal = functions
-                                                                              .convertFromJsonListToCarttList(getJsonField(
+                                                                              .convertFromJsonToCartObject(getJsonField(
                                                                                 (_model.apiResultx448866?.jsonBody ?? ''),
-                                                                                r'''$.cartItem''',
+                                                                                r'''$''',
                                                                               ))
+                                                                              .cartItems
                                                                               .toList()
                                                                               .cast<CartModelStruct>();
                                                                         });
                                                                         setState(
                                                                             () {
-                                                                          _model.totalPrice =
-                                                                              CartItemModelStruct.fromMap((_model.apiResultx448866?.jsonBody ?? '')).totalPrice;
+                                                                          _model.totalPrice = functions
+                                                                              .convertFromJsonToCartObject(getJsonField(
+                                                                                (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                r'''$''',
+                                                                              ))
+                                                                              .totalPrice;
                                                                         });
                                                                       }
                                                                     } else {
@@ -860,24 +922,28 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                       setState(() {
                                                         _model.listOfCartItemsLocal =
                                                             functions
-                                                                .convertFromJsonListToCarttList(
+                                                                .convertFromJsonToCartObject(
                                                                     getJsonField(
                                                                   (_model.apiResu8
                                                                           ?.jsonBody ??
                                                                       ''),
-                                                                  r'''$.cartItem''',
+                                                                  r'''$''',
                                                                 ))
+                                                                .cartItems
                                                                 .toList()
                                                                 .cast<
                                                                     CartModelStruct>();
                                                       });
                                                       setState(() {
                                                         _model.totalPrice =
-                                                            CartItemModelStruct
-                                                                    .fromMap((_model
-                                                                            .apiResu8
-                                                                            ?.jsonBody ??
-                                                                        ''))
+                                                            functions
+                                                                .convertFromJsonToCartObject(
+                                                                    getJsonField(
+                                                                  (_model.apiResu8
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$''',
+                                                                ))
                                                                 .totalPrice;
                                                       });
                                                     }

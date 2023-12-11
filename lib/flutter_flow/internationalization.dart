@@ -749,10 +749,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Shipping Address',
       'ar': 'عنوان الشحن',
     },
-    'h2156rx8': {
-      'en': 'Option 1',
-      'ar': '',
-    },
     '72mdyy4h': {
       'en': 'Governent',
       'ar': 'المدينه',
@@ -950,75 +946,75 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // MyVehiclesDetailsPage
   {
-    '2ya8t9kt': {
+    'h5tps4y9': {
       'en': '-',
       'ar': '',
     },
-    'sdbrnotx': {
+    '0jhokdvo': {
       'en': 'Owner Name',
       'ar': 'اسم المالك',
     },
-    't2fnbpw8': {
+    'ttad25oy': {
       'en': 'Address',
       'ar': 'عنوان',
     },
-    'cnzletxp': {
+    'snefw7t4': {
       'en': 'Car Type',
       'ar': 'نوع السيارة',
     },
-    's8v20sev': {
+    'u3gfgsq5': {
       'en': '-',
       'ar': 'رقم . اللوحة',
     },
-    'ujate068': {
+    'wwqyjst1': {
       'en': 'Car Category',
       'ar': 'فئة السيارة',
     },
-    'fe8yrbs2': {
+    'paplehe5': {
       'en': '-',
       'ar': 'رقم . اللوحة',
     },
-    'i3p4spy0': {
+    'pqh4aozw': {
       'en': 'Car Color',
       'ar': 'لون السيارة',
     },
-    '60t3zgov': {
+    '1uf8k20q': {
       'en': 'Year of Menufacturing',
       'ar': 'سنة التصنيع',
     },
-    'kgn1sgos': {
+    'chfp6y8s': {
       'en': 'Registered Until',
       'ar': 'مسجل حتى',
     },
-    'b7tgbzmf': {
+    '02vir69e': {
       'en': 'Plate Number',
       'ar': 'رقم المحرك',
     },
-    'v811tdzc': {
+    'xnun2lk7': {
       'en': 'Enging Capacity',
       'ar': 'القدرة الهندسية',
     },
-    'lmwejay7': {
+    'b24zprrk': {
       'en': 'Fuel Type',
       'ar': 'نوع الوقود',
     },
-    'qc5afgea': {
+    'ul6rt32s': {
       'en': '-',
       'ar': 'رقم . اللوحة',
     },
-    'zr55hkyq': {
+    'mxlgzph1': {
       'en': 'Registration Number',
       'ar': 'رقم التسجيل',
     },
-    'yslgr8eg': {
+    '7pcq4s78': {
       'en': 'VIN Number',
       'ar': 'رقم المركبة',
     },
-    'leiltngm': {
+    'lp1r5j5x': {
       'en': 'Engine Number',
       'ar': 'رقم المحرك',
     },
-    'g9ivjbzh': {
+    'i9y7wmtv': {
       'en': 'Insurance Company',
       'ar': 'شركة التأمين',
     },

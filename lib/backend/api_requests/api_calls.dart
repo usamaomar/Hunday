@@ -1036,6 +1036,90 @@ class ServiceTypeApiCall {
   }
 }
 
+class DeliveryPricesApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'deliveryPrices Api',
+      apiUrl: 'https://hyundai.completechaintech.com/api/deliveryPrices',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class GetAddressApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getAddressApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/address',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
+class AddAddressApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? name = '',
+    String? email = '',
+    String? phone = '',
+    int? cityId,
+    String? streetAddress = '',
+    int? buildingNumber,
+  }) async {
+    final ffApiRequestBody = '''
+{
+"name": "${name}",
+"email": "${email}",
+"phone": "${phone}",
+"city_id": ${cityId},
+"street_address": "${streetAddress}",
+"building_number": ${buildingNumber}
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'addAddressApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/address',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;
