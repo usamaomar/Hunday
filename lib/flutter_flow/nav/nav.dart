@@ -328,6 +328,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                       params.getParam('vehicleObject', ParamType.JSON),
                 ),
               ),
+            ),
+            FFRoute(
+              name: 'SheckOutPagePage',
+              path: 'sheckOutPagePage',
+              builder: (context, params) => SheckOutPagePageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

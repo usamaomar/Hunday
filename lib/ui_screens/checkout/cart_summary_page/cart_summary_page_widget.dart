@@ -885,8 +885,9 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                 MainAxisAlignment.start,
                                             children: [
                                               FFButtonWidget(
-                                                onPressed: () {
-                                                  print('Button pressed ...');
+                                                onPressed: () async {
+                                                  context.pushNamed(
+                                                      'SheckOutPagePage');
                                                 },
                                                 text:
                                                     FFLocalizations.of(context)

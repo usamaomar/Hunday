@@ -973,7 +973,7 @@ class _MyVehiclesDetailsPageWidgetState
                                       ),
                                     ),
                                   ),
-                                ],
+                                ].addToEnd(SizedBox(height: 50.0)),
                               ),
                             ),
                           ),

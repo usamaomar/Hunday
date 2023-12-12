@@ -749,10 +749,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Shipping Address',
       'ar': 'عنوان الشحن',
     },
-    '72mdyy4h': {
-      'en': 'Governent',
-      'ar': 'المدينه',
-    },
     'ur6wydsk': {
       'en': 'Search for an item...',
       'ar': '',
@@ -1019,6 +1015,37 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'شركة التأمين',
     },
     'iettw4s8': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // SheckOutPagePage
+  {
+    'utnohcb9': {
+      'en': 'Payment Method',
+      'ar': 'طريقة الدفع او السداد',
+    },
+    'c2pz80f3': {
+      'en': 'Payment Gateway',
+      'ar': 'بوابة الدفع',
+    },
+    '0wa18vj8': {
+      'en': 'Cash on Delivery',
+      'ar': 'الدفع عند الاستلام',
+    },
+    '1q7o3z7p': {
+      'en': 'By clicking the button you agree to our ',
+      'ar': 'بالنقر على الزر فإنك توافق على',
+    },
+    'c4kn7j9t': {
+      'en': 'Terms & Conditions',
+      'ar': 'البنود و الظروف',
+    },
+    '7cavw78u': {
+      'en': 'Next',
+      'ar': 'التالي',
+    },
+    'ztueekub': {
       'en': 'Home',
       'ar': '',
     },

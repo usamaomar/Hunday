@@ -67,3 +67,5 @@ export '/ui_screens/settings_screens/my_vehicles_page/my_vehicles_page_widget.da
     show MyVehiclesPageWidget;
 export '/ui_screens/settings_screens/my_vehicles_details_page/my_vehicles_details_page_widget.dart'
     show MyVehiclesDetailsPageWidget;
+export '/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart'
+    show SheckOutPagePageWidget;
