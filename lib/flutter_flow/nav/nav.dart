@@ -39,12 +39,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => SplashPageWidget(),
+      errorBuilder: (context, state) => PaymentPageWidget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => SplashPageWidget(),
+          builder: (context, _) => PaymentPageWidget(),
           routes: [
             FFRoute(
               name: 'loginScreen',
@@ -333,6 +333,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'SheckOutPagePage',
               path: 'sheckOutPagePage',
               builder: (context, params) => SheckOutPagePageWidget(),
+            ),
+            FFRoute(
+              name: 'PaymentPage',
+              path: 'paymentPage',
+              builder: (context, params) => PaymentPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
