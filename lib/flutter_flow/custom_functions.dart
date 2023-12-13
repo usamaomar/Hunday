@@ -396,9 +396,9 @@ String convertJsonToStringInternal(dynamic json) {
 CartItemModelStruct convertFromJsonToCartObject(dynamic jsonObject) {
   return CartItemModelStruct(
       cartItems: convertFromJsonListToCarttList(jsonObject['cartItems']),
-      subTotal: jsonObject['subTotal'],
-      tax: jsonObject['tax'],
-      totalPrice: jsonObject['totalPrice']);
+      subTotal: jsonObject['subTotal'].toDouble(),
+      tax: jsonObject['tax'].toString(),
+      totalPrice: jsonObject['totalPrice'].toDouble());
 }
 
 List<DeliveryPriceModelStruct> convertFromJsonListToAddressListModels(
