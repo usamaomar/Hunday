@@ -1052,11 +1052,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // PaymentPage
   {
-    'gw8gnp2d': {
+    '0ta0gtr1': {
       'en': 'Button',
       'ar': '',
     },
-    'b1rz2kxd': {
+    'msx02ztx': {
       'en': 'Home',
       'ar': '',
     },

@@ -71,7 +71,7 @@ class _PaymentPageWidgetState extends State<PaymentPageWidget> {
                       print('Button pressed ...');
                     },
                     text: FFLocalizations.of(context).getText(
-                      'gw8gnp2d' /* Button */,
+                      '0ta0gtr1' /* Button */,
                     ),
                     options: FFButtonOptions(
                       height: 40.0,
