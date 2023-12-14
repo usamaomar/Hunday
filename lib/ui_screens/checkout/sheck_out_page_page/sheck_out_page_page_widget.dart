@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
@@ -473,8 +474,21 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                   MainAxisAlignment.start,
                                               children: [
                                                 FFButtonWidget(
-                                                  onPressed: () {
-                                                    print('Button pressed ...');
+                                                  onPressed: () async {
+                                                    _model.apiResultgyn =
+                                                        await GetPaymentIdApiCall
+                                                            .call(
+                                                      token: FFAppState()
+                                                          .userModel
+                                                          .token,
+                                                    );
+                                                    if ((_model.apiResultgyn
+                                                            ?.succeeded ??
+                                                        true)) {
+                                                      setState(() {});
+                                                    }
+
+                                                    setState(() {});
                                                   },
                                                   text: FFLocalizations.of(
                                                           context)

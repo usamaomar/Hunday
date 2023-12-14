@@ -1050,17 +1050,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
-  // PaymentPage
-  {
-    '0ta0gtr1': {
-      'en': 'Button',
-      'ar': '',
-    },
-    'msx02ztx': {
-      'en': 'Home',
-      'ar': '',
-    },
-  },
   // Fild
   {
     '12neuu73': {
