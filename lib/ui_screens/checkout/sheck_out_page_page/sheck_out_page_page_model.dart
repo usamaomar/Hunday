@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/backend/schema/structs/index.dart';
 import 'sheck_out_page_page_widget.dart' show SheckOutPagePageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -17,6 +19,12 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 class SheckOutPagePageModel extends FlutterFlowModel<SheckOutPagePageWidget> {
+  ///  Local state fields for this page.
+
+  PaymentModelStruct? paymentModel;
+  void updatePaymentModelStruct(Function(PaymentModelStruct) updateFn) =>
+      updateFn(paymentModel ??= PaymentModelStruct());
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

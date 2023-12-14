@@ -13,6 +13,8 @@ export 'my_vehicle_model_struct.dart';
 export 'news_model_struct.dart';
 export 'part_category_model_struct.dart';
 export 'part_model_struct.dart';
+export 'payment_model_struct.dart';
+export 'payment_result_struct.dart';
 export 'service_type_model_struct.dart';
 export 'shop_list_item_model_struct.dart';
 export 'user_model_struct.dart';

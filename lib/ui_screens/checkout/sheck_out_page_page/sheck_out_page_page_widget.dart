@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_radio_button.dart';
@@ -7,6 +8,7 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/backend/schema/structs/index.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -262,6 +264,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                               0.0),
                                                       child: Image.asset(
                                                         'assets/images/paypal.png',
+                                                        width: 100.0,
                                                         fit: BoxFit.cover,
                                                       ),
                                                     ),
@@ -407,10 +410,13 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                         FlutterFlowTheme.of(
                                                                 context)
                                                             .secondaryText,
-                                                    textStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium,
+                                                    textStyle: FlutterFlowTheme
+                                                            .of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 12.0,
+                                                        ),
                                                     unselectedTextStyle:
                                                         FlutterFlowTheme.of(
                                                                 context)
@@ -485,7 +491,24 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                     if ((_model.apiResultgyn
                                                             ?.succeeded ??
                                                         true)) {
-                                                      setState(() {});
+                                                      setState(() {
+                                                        _model
+                                                            .paymentModel = (_model
+                                                                            .apiResultgyn
+                                                                            ?.jsonBody ??
+                                                                        '') !=
+                                                                    null &&
+                                                                (_model.apiResultgyn
+                                                                            ?.jsonBody ??
+                                                                        '') !=
+                                                                    ''
+                                                            ? PaymentModelStruct
+                                                                .fromMap((_model
+                                                                        .apiResultgyn
+                                                                        ?.jsonBody ??
+                                                                    ''))
+                                                            : null;
+                                                      });
                                                     }
 
                                                     setState(() {});
