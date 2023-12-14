@@ -763,6 +763,8 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                               style:
                                                   FlutterFlowTheme.of(context)
                                                       .bodyMedium,
+                                              keyboardType:
+                                                  TextInputType.number,
                                               validator: _model
                                                   .textController5Validator
                                                   .asValidator(context),
