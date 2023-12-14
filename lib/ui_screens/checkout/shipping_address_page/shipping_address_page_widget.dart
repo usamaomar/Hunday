@@ -1,3 +1,6 @@
+import 'package:hyperpay_plugin/flutter_hyperpay.dart';
+import 'package:hyperpay_plugin/model/ready_ui.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -19,6 +22,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'in_app_payment_setting.dart';
 import 'shipping_address_page_model.dart';
 export 'shipping_address_page_model.dart';
 
@@ -33,6 +37,9 @@ class ShippingAddressPageWidget extends StatefulWidget {
 class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
     with TickerProviderStateMixin {
   late ShippingAddressPageModel _model;
+
+  late FlutterHyperPay flutterHyperPay ;
+
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -58,6 +65,14 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
+
+      flutterHyperPay = FlutterHyperPay(
+        shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // return back to app
+        paymentMode:  PaymentMode.test, // test or live
+        lang: InAppPaymentSetting.getLang(),
+      );
+
+
       _model.apiResult5ds = await DeliveryPricesApiCall.call(
         token: FFAppState().userModel.token,
       );
@@ -781,106 +796,114 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                   builder: (context) =>
                                                       FFButtonWidget(
                                                     onPressed: () async {
-                                                      _model.apiResultdip =
-                                                          await AddAddressApiCall
-                                                              .call(
-                                                        token: FFAppState()
-                                                            .userModel
-                                                            .token,
-                                                        name: _model
-                                                            .textController1
-                                                            .text,
-                                                        email: _model
-                                                            .textController2
-                                                            .text,
-                                                        phone: _model
-                                                            .textController3
-                                                            .text,
-                                                        cityId: functions
-                                                            .getCityModelByName(
-                                                                _model
-                                                                    .listOfLocalDeliveryPriceModels
-                                                                    .toList(),
-                                                                _model
-                                                                    .selectedCityModelString)
-                                                            .id,
-                                                        streetAddress: _model
-                                                            .textController4
-                                                            .text,
-                                                        buildingNumber:
-                                                            int.tryParse(_model
-                                                                .textController5
-                                                                .text),
-                                                      );
-                                                      if ((_model.apiResultdip
-                                                              ?.succeeded ??
-                                                          true)) {
-                                                        context.pushNamed(
-                                                          'CartSummaryPage',
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            kTransitionInfoKey:
-                                                                TransitionInfo(
-                                                              hasTransition:
-                                                                  true,
-                                                              transitionType:
-                                                                  PageTransitionType
-                                                                      .leftToRight,
-                                                              duration: Duration(
-                                                                  milliseconds:
-                                                                      50),
-                                                            ),
-                                                          },
-                                                        );
-                                                      } else {
-                                                        await showAlignedDialog(
-                                                          context: context,
-                                                          isGlobal: true,
-                                                          avoidOverflow: false,
-                                                          targetAnchor:
-                                                              AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                          followerAnchor:
-                                                              AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                          builder:
-                                                              (dialogContext) {
-                                                            return Material(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
-                                                                        .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
-                                                                child:
-                                                                    Modal06BasicInformationWidget(
-                                                                  body: (_model
-                                                                          .apiResultdip
-                                                                          ?.bodyText ??
-                                                                      ''),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            setState(() {}));
-                                                      }
 
-                                                      setState(() {});
+
+
+
+
+                                                      // _model.apiResultdip =
+                                                      //     await AddAddressApiCall
+                                                      //         .call(
+                                                      //   token: FFAppState()
+                                                      //       .userModel
+                                                      //       .token,
+                                                      //   name: _model
+                                                      //       .textController1
+                                                      //       .text,
+                                                      //   email: _model
+                                                      //       .textController2
+                                                      //       .text,
+                                                      //   phone: _model
+                                                      //       .textController3
+                                                      //       .text,
+                                                      //   cityId: functions
+                                                      //       .getCityModelByName(
+                                                      //           _model
+                                                      //               .listOfLocalDeliveryPriceModels
+                                                      //               .toList(),
+                                                      //           _model
+                                                      //               .selectedCityModelString)
+                                                      //       .id,
+                                                      //   streetAddress: _model
+                                                      //       .textController4
+                                                      //       .text,
+                                                      //   buildingNumber:
+                                                      //       int.tryParse(_model
+                                                      //           .textController5
+                                                      //           .text),
+                                                      // );
+                                                      // if ((_model.apiResultdip
+                                                      //         ?.succeeded ??
+                                                      //     true)) {
+                                                      //   context.pushNamed(
+                                                      //     'CartSummaryPage',
+                                                      //     extra: <String,
+                                                      //         dynamic>{
+                                                      //       kTransitionInfoKey:
+                                                      //           TransitionInfo(
+                                                      //         hasTransition:
+                                                      //             true,
+                                                      //         transitionType:
+                                                      //             PageTransitionType
+                                                      //                 .leftToRight,
+                                                      //         duration: Duration(
+                                                      //             milliseconds:
+                                                      //                 50),
+                                                      //       ),
+                                                      //     },
+                                                      //   );
+                                                      // } else {
+                                                      //   await showAlignedDialog(
+                                                      //     context: context,
+                                                      //     isGlobal: true,
+                                                      //     avoidOverflow: false,
+                                                      //     targetAnchor:
+                                                      //         AlignmentDirectional(
+                                                      //                 0.0, 0.0)
+                                                      //             .resolve(
+                                                      //                 Directionality.of(
+                                                      //                     context)),
+                                                      //     followerAnchor:
+                                                      //         AlignmentDirectional(
+                                                      //                 0.0, 0.0)
+                                                      //             .resolve(
+                                                      //                 Directionality.of(
+                                                      //                     context)),
+                                                      //     builder:
+                                                      //         (dialogContext) {
+                                                      //       return Material(
+                                                      //         color: Colors
+                                                      //             .transparent,
+                                                      //         child:
+                                                      //             GestureDetector(
+                                                      //           onTap: () => _model
+                                                      //                   .unfocusNode
+                                                      //                   .canRequestFocus
+                                                      //               ? FocusScope.of(
+                                                      //                       context)
+                                                      //                   .requestFocus(_model
+                                                      //                       .unfocusNode)
+                                                      //               : FocusScope.of(
+                                                      //                       context)
+                                                      //                   .unfocus(),
+                                                      //           child:
+                                                      //               Modal06BasicInformationWidget(
+                                                      //             body: (_model
+                                                      //                     .apiResultdip
+                                                      //                     ?.bodyText ??
+                                                      //                 ''),
+                                                      //           ),
+                                                      //         ),
+                                                      //       );
+                                                      //     },
+                                                      //   ).then((value) =>
+                                                      //       setState(() {}));
+                                                      // }
+                                                      //
+                                                      // setState(() {});
+
+
+
                                                     },
                                                     text: FFLocalizations.of(
                                                             context)
@@ -974,5 +997,29 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
         ),
       ),
     );
+
+
+
+  }
+
+  payRequestNowReadyUI(
+      {required List<String> brandsName, required String checkoutId}) async {
+    PaymentResultData paymentResultData;
+    paymentResultData =
+    await flutterHyperPay.readyUICards(
+      readyUI: ReadyUI(
+          brandsName: brandsName ,
+          checkoutId: checkoutId,
+          merchantIdApplePayIOS: InAppPaymentSetting.merchantId, // applepay
+          countryCodeApplePayIOS: InAppPaymentSetting.countryCode, // applePay
+          companyNameApplePayIOS: "Test Co", // applePay
+          themColorHexIOS: "#000000" ,// FOR IOS ONLY
+          setStorePaymentDetailsMode: true // store payment details for future use
+      ),
+    ).catchError((onError){
+      print("object");
+    });
+
+    print("object");
   }
 }
