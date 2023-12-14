@@ -333,11 +333,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'SheckOutPagePage',
               path: 'sheckOutPagePage',
               builder: (context, params) => SheckOutPagePageWidget(),
-            ),
-            FFRoute(
-              name: 'PaymentPage',
-              path: 'paymentPage',
-              builder: (context, params) => PaymentPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

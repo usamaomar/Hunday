@@ -1082,6 +1082,29 @@ class GetAddressApiCall {
   }
 }
 
+class GetPaymentIdApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getPaymentIdApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/payment',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+    );
+  }
+}
+
 class AddAddressApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
