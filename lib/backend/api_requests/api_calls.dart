@@ -1089,14 +1089,13 @@ class GetPaymentIdApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'getPaymentIdApi',
       apiUrl: 'https://hyundai.completechaintech.com/api/payment',
-      callType: ApiCallType.GET,
+      callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
         'Accept': 'application/json',
       },
-      params: {
-        'token': token,
-      },
+      params: {},
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
