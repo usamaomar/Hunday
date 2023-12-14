@@ -2,7 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -189,87 +188,132 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                               ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child:
-                                                        FlutterFlowRadioButton(
-                                                      options: [
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'c2pz80f3' /* Payment Gateway */,
-                                                        )
-                                                      ].toList(),
-                                                      onChanged: (val) =>
-                                                          setState(() {}),
-                                                      controller: _model
-                                                              .radioButtonValueController1 ??=
-                                                          FormFieldController<
-                                                              String>(null),
-                                                      optionHeight: 32.0,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium,
-                                                      selectedTextStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Heebo Regular',
-                                                                color: Color(
-                                                                    0xFF81787A),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                useGoogleFonts:
-                                                                    false,
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  setState(() {
+                                                    _model.isCashOnDeliverySelected =
+                                                        _model.isPaymentSelected ==
+                                                                true
+                                                            ? false
+                                                            : true;
+                                                  });
+                                                },
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child: Container(
+                                                            width: 20.0,
+                                                            height: 20.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .ahayundai,
+                                                                width: 2.0,
                                                               ),
-                                                      buttonPosition:
-                                                          RadioButtonPosition
-                                                              .left,
-                                                      direction: Axis.vertical,
-                                                      radioButtonColor:
-                                                          Color(0xFF7C91BB),
-                                                      inactiveRadioButtonColor:
-                                                          FlutterFlowTheme.of(
+                                                            ),
+                                                            child: Visibility(
+                                                              visible: _model
+                                                                      .isPaymentSelected ==
+                                                                  true,
+                                                              child: Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.00,
+                                                                        0.00),
+                                                                child: Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  elevation:
+                                                                      0.0,
+                                                                  shape:
+                                                                      const CircleBorder(),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 10.0,
+                                                                    height:
+                                                                        10.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .ahayundai,
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        width:
+                                                                            0.0,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          FFLocalizations.of(
                                                                   context)
-                                                              .secondaryText,
-                                                      toggleable: false,
-                                                      horizontalAlignment:
-                                                          WrapAlignment.start,
-                                                      verticalAlignment:
-                                                          WrapCrossAlignment
-                                                              .start,
+                                                              .getText(
+                                                            'zc0zuzu7' /* Payment Gateway */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                15.0, 0.0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.asset(
-                                                        'assets/images/paypal.png',
-                                                        width: 100.0,
-                                                        fit: BoxFit.cover,
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                        child: Image.asset(
+                                                          'assets/images/paypal.png',
+                                                          width: 100.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -286,88 +330,133 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                               ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(15.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child:
-                                                        FlutterFlowRadioButton(
-                                                      options: [
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          '0wa18vj8' /* Cash on Delivery */,
-                                                        )
-                                                      ].toList(),
-                                                      onChanged: (val) =>
-                                                          setState(() {}),
-                                                      controller: _model
-                                                              .radioButtonValueController2 ??=
-                                                          FormFieldController<
-                                                              String>(null),
-                                                      optionHeight: 32.0,
-                                                      textStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .labelMedium,
-                                                      selectedTextStyle:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Heebo Regular',
-                                                                color: Color(
-                                                                    0xFF81787A),
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .w500,
-                                                                useGoogleFonts:
-                                                                    false,
+                                              child: InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor:
+                                                    Colors.transparent,
+                                                onTap: () async {
+                                                  setState(() {
+                                                    _model.isCashOnDeliverySelected =
+                                                        _model.isCashOnDeliverySelected ==
+                                                                true
+                                                            ? false
+                                                            : true;
+                                                  });
+                                                },
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child: Container(
+                                                            width: 20.0,
+                                                            height: 20.0,
+                                                            decoration:
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .secondaryBackground,
+                                                              shape: BoxShape
+                                                                  .circle,
+                                                              border:
+                                                                  Border.all(
+                                                                color: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .ahayundai,
+                                                                width: 2.0,
                                                               ),
-                                                      buttonPosition:
-                                                          RadioButtonPosition
-                                                              .left,
-                                                      direction: Axis.vertical,
-                                                      radioButtonColor:
-                                                          Color(0xFF7C91BB),
-                                                      inactiveRadioButtonColor:
-                                                          FlutterFlowTheme.of(
+                                                            ),
+                                                            child: Visibility(
+                                                              visible: _model
+                                                                      .isCashOnDeliverySelected ==
+                                                                  true,
+                                                              child: Align(
+                                                                alignment:
+                                                                    AlignmentDirectional(
+                                                                        0.00,
+                                                                        0.00),
+                                                                child: Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  elevation:
+                                                                      0.0,
+                                                                  shape:
+                                                                      const CircleBorder(),
+                                                                  child:
+                                                                      Container(
+                                                                    width: 10.0,
+                                                                    height:
+                                                                        10.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .ahayundai,
+                                                                      shape: BoxShape
+                                                                          .circle,
+                                                                      border:
+                                                                          Border
+                                                                              .all(
+                                                                        width:
+                                                                            0.0,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                        Text(
+                                                          FFLocalizations.of(
                                                                   context)
-                                                              .secondaryText,
-                                                      toggleable: false,
-                                                      horizontalAlignment:
-                                                          WrapAlignment.start,
-                                                      verticalAlignment:
-                                                          WrapCrossAlignment
-                                                              .start,
+                                                              .getText(
+                                                            'p8ns4vw1' /* Cash on Delivery */,
+                                                          ),
+                                                          style: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .bodyMedium,
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                15.0, 0.0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              0.0),
-                                                      child: Image.asset(
-                                                        'assets/images/Group_71575@2x.png',
-                                                        width: 61.0,
-                                                        height: 33.0,
-                                                        fit: BoxFit.cover,
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(0.0),
+                                                        child: Image.asset(
+                                                          'assets/images/Group_71575@2x.png',
+                                                          width: 61.0,
+                                                          height: 33.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),

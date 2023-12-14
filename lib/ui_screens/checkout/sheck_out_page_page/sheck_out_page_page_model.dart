@@ -2,7 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_checkbox_group.dart';
-import '/flutter_flow/flutter_flow_radio_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -25,13 +24,13 @@ class SheckOutPagePageModel extends FlutterFlowModel<SheckOutPagePageWidget> {
   void updatePaymentModelStruct(Function(PaymentModelStruct) updateFn) =>
       updateFn(paymentModel ??= PaymentModelStruct());
 
+  bool isCashOnDeliverySelected = false;
+
+  bool isPaymentSelected = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for RadioButton widget.
-  FormFieldController<String>? radioButtonValueController1;
-  // State field(s) for RadioButton widget.
-  FormFieldController<String>? radioButtonValueController2;
   // State field(s) for CheckboxGroup widget.
   List<String>? checkboxGroupValues;
   FormFieldController<List<String>>? checkboxGroupValueController;
@@ -54,7 +53,4 @@ class SheckOutPagePageModel extends FlutterFlowModel<SheckOutPagePageWidget> {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
-
-  String? get radioButtonValue1 => radioButtonValueController1?.value;
-  String? get radioButtonValue2 => radioButtonValueController2?.value;
 }
