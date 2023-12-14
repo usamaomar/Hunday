@@ -1025,11 +1025,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Payment Method',
       'ar': 'طريقة الدفع او السداد',
     },
-    'c2pz80f3': {
+    'zc0zuzu7': {
       'en': 'Payment Gateway',
       'ar': 'بوابة الدفع',
     },
-    '0wa18vj8': {
+    'p8ns4vw1': {
       'en': 'Cash on Delivery',
       'ar': 'الدفع عند الاستلام',
     },
