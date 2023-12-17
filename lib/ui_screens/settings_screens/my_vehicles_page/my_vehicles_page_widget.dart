@@ -127,7 +127,7 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 140.0, 0.0, 0.0),
@@ -310,12 +310,7 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  5.0,
-                                                                  5.0,
-                                                                  5.0,
-                                                                  5.0),
+                                                          EdgeInsets.all(5.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -375,12 +370,7 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                                     ),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  5.0,
-                                                                  5.0,
-                                                                  5.0,
-                                                                  5.0),
+                                                          EdgeInsets.all(5.0),
                                                       child: Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -431,9 +421,7 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                                   ),
                                                 ),
                                                 Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(15.0, 15.0,
-                                                          15.0, 15.0),
+                                                  padding: EdgeInsets.all(15.0),
                                                   child: InkWell(
                                                     splashColor:
                                                         Colors.transparent,

@@ -136,8 +136,7 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                             elevation: 0.0,
                             buttonMargin: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                4.0, 4.0, 4.0, 4.0),
+                            padding: EdgeInsets.all(4.0),
                             tabs: [
                               Tab(
                                 text: FFLocalizations.of(context).getText(
@@ -166,8 +165,7 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        30.0, 30.0, 30.0, 30.0),
+                                    padding: EdgeInsets.all(30.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [

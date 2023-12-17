@@ -48,7 +48,7 @@ class _MyOrdersAndAppointmentsComponentWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+      padding: EdgeInsets.all(5.0),
       child: Material(
         color: Colors.transparent,
         elevation: 15.0,

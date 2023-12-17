@@ -760,8 +760,7 @@ class _ListOfStringItemsComponentWidgetState
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 5.0, 5.0, 5.0),
+                                    padding: EdgeInsets.all(5.0),
                                     child: Text(
                                       _model.yearOfManufacturingString,
                                       style: FlutterFlowTheme.of(context)
@@ -769,8 +768,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 5.0, 5.0, 5.0),
+                                    padding: EdgeInsets.all(5.0),
                                     child: Icon(
                                       Icons.calendar_month,
                                       color: Color(0xFF092853),
@@ -884,8 +882,7 @@ class _ListOfStringItemsComponentWidgetState
                                     MainAxisAlignment.spaceBetween,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 5.0, 5.0, 5.0),
+                                    padding: EdgeInsets.all(5.0),
                                     child: Text(
                                       _model.registeredUntil,
                                       style: FlutterFlowTheme.of(context)
@@ -893,8 +890,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                   ),
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        5.0, 5.0, 5.0, 5.0),
+                                    padding: EdgeInsets.all(5.0),
                                     child: Icon(
                                       Icons.calendar_month,
                                       color: Color(0xFF092853),

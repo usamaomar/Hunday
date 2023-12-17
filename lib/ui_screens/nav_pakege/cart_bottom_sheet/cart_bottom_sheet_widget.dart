@@ -106,7 +106,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, 1.00),
+      alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
         height: double.infinity,
         decoration: BoxDecoration(
@@ -258,7 +258,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                             Expanded(
                                               child: Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.00, 0.00),
+                                                    1.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
                                                       MainAxisSize.max,
@@ -283,7 +283,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                       child: Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                0.00, 0.00),
+                                                                0.0, 0.0),
                                                         child: Stack(
                                                           alignment:
                                                               AlignmentDirectional(
@@ -300,8 +300,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                 Align(
                                                                   alignment:
                                                                       AlignmentDirectional(
-                                                                          1.00,
-                                                                          0.00),
+                                                                          1.0,
+                                                                          0.0),
                                                                   child:
                                                                       ClipRRect(
                                                                     borderRadius:
@@ -356,8 +356,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
-                                                                            1.00,
-                                                                            0.00),
+                                                                            1.0,
+                                                                            0.0),
                                                                     child:
                                                                         Padding(
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -406,7 +406,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           child:
                                                                               Align(
                                                                             alignment:
-                                                                                AlignmentDirectional(0.00, 0.00),
+                                                                                AlignmentDirectional(0.0, 0.0),
                                                                             child:
                                                                                 Padding(
                                                                               padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
@@ -440,8 +440,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                 Align(
                                                                   alignment:
                                                                       AlignmentDirectional(
-                                                                          1.00,
-                                                                          0.00),
+                                                                          1.0,
+                                                                          0.0),
                                                                   child:
                                                                       Container(
                                                                     width: 85.0,
@@ -466,9 +466,10 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                     ),
                                                                     child:
                                                                         Align(
-                                                                      alignment: AlignmentDirectional(
-                                                                          0.00,
-                                                                          0.00),
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0),
                                                                       child:
                                                                           Padding(
                                                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -734,8 +735,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                               Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.00,
-                                                                        0.00),
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: Stack(
                                                                   children: [
                                                                     Padding(

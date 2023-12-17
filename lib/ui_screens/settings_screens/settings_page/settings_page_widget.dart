@@ -99,7 +99,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
               child: Stack(
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
@@ -130,7 +130,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         40.0, 0.0, 40.0, 0.0),
@@ -567,12 +567,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    5.0,
-                                                                    5.0,
-                                                                    5.0),
+                                                            EdgeInsets.all(5.0),
                                                         child: Icon(
                                                           Icons
                                                               .nightlight_rounded,
@@ -694,12 +689,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    5.0,
-                                                                    5.0,
-                                                                    5.0,
-                                                                    5.0),
+                                                            EdgeInsets.all(5.0),
                                                         child: Icon(
                                                           Icons.fingerprint,
                                                           color:

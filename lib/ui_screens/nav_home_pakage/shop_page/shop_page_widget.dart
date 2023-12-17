@@ -96,7 +96,7 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
                   ),
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, -1.00),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
@@ -287,7 +287,7 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
                                     getJsonField(
                                       listLocsItem,
                                       r'''$.full_icon''',
-                                    ),
+                                    ).toString(),
                                     'https://cdn-icons-png.flaticon.com/512/1505/1505516.png',
                                   ),
                                 ),

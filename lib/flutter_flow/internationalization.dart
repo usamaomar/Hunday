@@ -792,14 +792,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Discounted item—no additional coupons apply',
       'ar': 'منتج مخفض - لا تنطبق كوبونات إضافية',
     },
-    'ra35fsb8': {
-      'en': 'Hello World',
-      'ar': '',
-    },
-    'wmjklpgr': {
-      'en': 'Hello World',
-      'ar': '',
-    },
     'fq044a94': {
       'en': 'Discount Code',
       'ar': 'الرقم التسلسلي للخصم',
@@ -828,25 +820,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Subtotal',
       'ar': 'المجموع الفرعي',
     },
-    'yj8k51dz': {
-      'en': '180',
-      'ar': '',
-    },
     'ewcugq5a': {
       'en': 'Shipping Cost',
       'ar': 'تكلفة الشحن',
     },
-    '3aeddcsi': {
-      'en': '180',
-      'ar': '',
-    },
     '2sx1fy0c': {
       'en': 'VAT/Tax',
       'ar': 'ضريبة القيمة المضافة',
-    },
-    'i5e4xn14': {
-      'en': '180',
-      'ar': '',
     },
     'qjum9ia7': {
       'en': 'Coupon ( 15% )',
@@ -859,10 +839,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '0gl4jwe1': {
       'en': 'Total Cost',
       'ar': 'التكلفة الإجمالية',
-    },
-    '64lhqq9a': {
-      'en': '160',
-      'ar': '',
     },
     'qcfm77ue': {
       'en': 'Next',
@@ -1511,6 +1487,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'vgub0o34': {
       'en': 'No content to show',
       'ar': 'لا يوجد محتوى لعرضه',
+    },
+  },
+  // ThankYouComponent
+  {
+    'v9l6ir1m': {
+      'en': 'Thank you for your purchase',
+      'ar': 'شكرا لك على الشراء',
+    },
+    'qik04uao': {
+      'en': 'OK',
+      'ar': 'نعم',
     },
   },
   // Miscellaneous

@@ -228,7 +228,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                   ],
                 ),
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     height: 500.0,
                     constraints: BoxConstraints(

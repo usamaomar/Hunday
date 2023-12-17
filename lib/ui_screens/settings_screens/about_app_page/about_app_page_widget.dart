@@ -101,7 +101,7 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                     child: Stack(
                       children: [
                         Align(
-                          alignment: AlignmentDirectional(0.00, 1.00),
+                          alignment: AlignmentDirectional(0.0, 1.0),
                           child: Container(
                             constraints: BoxConstraints(
                               maxHeight: 550.0,
@@ -133,7 +133,7 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                     ),
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(-1.00, 0.00),
+                                          AlignmentDirectional(-1.0, 0.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             30.0, 0.0, 30.0, 0.0),

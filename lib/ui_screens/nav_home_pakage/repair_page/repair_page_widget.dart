@@ -120,11 +120,11 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Stack(
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -191,7 +191,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.00, 1.00),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 5.0, 0.0),

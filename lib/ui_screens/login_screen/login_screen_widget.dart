@@ -86,7 +86,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, 0.00),
+            alignment: AlignmentDirectional(0.0, 0.0),
             child: Container(
               width: double.infinity,
               height: double.infinity,
@@ -99,7 +99,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                       color: FlutterFlowTheme.of(context).secondaryBackground,
                       image: DecorationImage(
                         fit: BoxFit.cover,
-                        alignment: AlignmentDirectional(0.00, -1.00),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         image: Image.asset(
                           'assets/images/oness.png',
                         ).image,
@@ -108,12 +108,12 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       height: double.infinity,
                       decoration: BoxDecoration(),
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,

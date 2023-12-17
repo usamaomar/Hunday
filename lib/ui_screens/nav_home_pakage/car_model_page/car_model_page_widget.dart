@@ -143,7 +143,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                       gridOfCarModelsItem[
                                           gridOfCarModelsItemIndex];
                                   return Align(
-                                    alignment: AlignmentDirectional(0.00, 0.00),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Stack(
                                       children: [
                                         ClipRRect(
@@ -235,7 +235,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                                         getJsonField(
                                                           gridOfCarModelsItemItem,
                                                           r'''$.full_image''',
-                                                        ),
+                                                        ).toString(),
                                                         width: 85.0,
                                                         fit: BoxFit.contain,
                                                         errorBuilder: (context,

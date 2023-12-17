@@ -151,7 +151,12 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                           fieldHeight: 34.0,
                           fieldWidth: 34.0,
                           borderWidth: 2.0,
-                          borderRadius: BorderRadius.circular(5.0),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(5.0),
+                            bottomRight: Radius.circular(5.0),
+                            topLeft: Radius.circular(5.0),
+                            topRight: Radius.circular(5.0),
+                          ),
                           shape: PinCodeFieldShape.box,
                           activeColor: FlutterFlowTheme.of(context).white,
                           inactiveColor: FlutterFlowTheme.of(context).white,
@@ -222,7 +227,7 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
+                    alignment: AlignmentDirectional(0.0, 0.0),
                     child: Container(
                       width: 350.0,
                       height: 50.0,

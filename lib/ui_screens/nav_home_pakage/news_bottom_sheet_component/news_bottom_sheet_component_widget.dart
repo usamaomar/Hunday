@@ -48,7 +48,7 @@ class _NewsBottomSheetComponentWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+      padding: EdgeInsets.all(5.0),
       child: Material(
         color: Colors.transparent,
         elevation: 15.0,
@@ -148,7 +148,7 @@ class _NewsBottomSheetComponentWidgetState
                                       tag: getJsonField(
                                         listOfNewsItemsItem,
                                         r'''$.full_listing_image''',
-                                      ),
+                                      ).toString(),
                                       transitionOnUserGestures: true,
                                       child: ClipRRect(
                                         borderRadius:
@@ -161,7 +161,7 @@ class _NewsBottomSheetComponentWidgetState
                                           imageUrl: getJsonField(
                                             listOfNewsItemsItem,
                                             r'''$.full_listing_image''',
-                                          ),
+                                          ).toString(),
                                           width: 150.0,
                                           height: double.infinity,
                                           fit: BoxFit.cover,
@@ -178,8 +178,7 @@ class _NewsBottomSheetComponentWidgetState
                                     ),
                                     Flexible(
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            15.0, 15.0, 15.0, 15.0),
+                                        padding: EdgeInsets.all(15.0),
                                         child: SingleChildScrollView(
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
