@@ -525,10 +525,10 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                             .override(
                                                               fontFamily:
                                                                   'Heebo Regular',
-                                                              fontSize: 16.0,
+                                                              fontSize: 12.0,
                                                               fontWeight:
                                                                   FontWeight
-                                                                      .w500,
+                                                                      .normal,
                                                               useGoogleFonts:
                                                                   false,
                                                             ),
