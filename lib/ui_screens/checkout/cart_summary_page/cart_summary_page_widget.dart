@@ -698,8 +698,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  _model.cartObject!.subTotal
-                                                      .toString(),
+                                                  '${_model.cartObject?.subTotal ?? 0}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -741,9 +740,8 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  _model
-                                                      .cartObject!.shippingCost
-                                                      .toString(),
+                                                  '${_model
+                                                      .cartObject?.shippingCost ?? 0}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

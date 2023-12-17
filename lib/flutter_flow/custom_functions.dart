@@ -416,7 +416,7 @@ DeliveryPriceModelStruct getCityModelById(
   int id,
 ) {
   DeliveryPriceModelStruct vehicle =
-      listOfDeliveryPrices.firstWhere((c) => c.id == id);
+      listOfDeliveryPrices.firstWhere((c) => c.id == id , orElse:  () => listOfDeliveryPrices[0]);
 
   return vehicle;
 }
