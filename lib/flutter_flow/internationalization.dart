@@ -366,33 +366,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'No :',
       'ar': 'رقم :',
     },
-    'd34hv7a7': {
-      'en': 'Hello',
-      'ar': 'رقم :',
-    },
-    'x7l7flaf': {
-      'en':
-          'Duralast Platinum AGM Battery BCI Group Size 47 680 CCA H5-AGMDuralast Platinum AGM Battery BCI Group Size 47 680 CCA H5-AGM',
-      'ar': 'رقم :',
-    },
     'lyiy9dln': {
       'en': 'Total :',
       'ar': 'المجموع :',
-    },
-    'p0bfnbf6': {
-      'en': '100 JOD',
-      'ar': 'رقم :',
-    },
-    'lsbcy83b': {
-      'en': '100 JOD',
-      'ar': 'رقم :',
     },
     'bt7eplas': {
       'en': 'Cancled',
       'ar': 'ملغى',
     },
     '74ob5fo1': {
-      'en': 'Tab View 2',
+      'en': '',
       'ar': '',
     },
     '6rbqvu50': {
@@ -400,7 +383,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'مطلوب',
     },
     'af1g81c3': {
-      'en': 'Tab View 3',
+      'en': '',
       'ar': '',
     },
     '2m4xuvht': {
