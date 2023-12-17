@@ -88,9 +88,9 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+                  padding: EdgeInsets.all(5.0),
                   child: Material(
                     color: Colors.transparent,
                     elevation: 15.0,
@@ -715,7 +715,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, -1.00),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(8.0),
                           child: Image.network(

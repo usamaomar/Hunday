@@ -496,7 +496,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                 ].addToEnd(SizedBox(height: 150.0)),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: wrapWithModel(
                   model: _model.myOrdersAndAppointmentsComponentModel,
                   updateCallback: () => setState(() {}),

@@ -120,7 +120,7 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     constraints: BoxConstraints(
                       maxHeight: 500.0,
@@ -154,7 +154,7 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     40.0, 0.0, 40.0, 0.0),
@@ -183,9 +183,10 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                             child: Image.network(
                                               functions
                                                   .nullConverter(getJsonField(
-                                                _model.localJson,
-                                                r'''$.full_image_node''',
-                                              ))!,
+                                                    _model.localJson,
+                                                    r'''$.full_image_node''',
+                                                  ))!
+                                                  .toString(),
                                               width: 300.0,
                                               height: 200.0,
                                               fit: BoxFit.cover,

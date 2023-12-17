@@ -59,7 +59,7 @@ class _Modal06BasicInformationWidgetState
         height: 350.0,
         decoration: BoxDecoration(),
         child: Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: double.infinity,
             constraints: BoxConstraints(
@@ -77,7 +77,7 @@ class _Modal06BasicInformationWidgetState
               borderRadius: BorderRadius.circular(16.0),
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(20.0, 20.0, 20.0, 20.0),
+              padding: EdgeInsets.all(20.0),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
@@ -171,8 +171,7 @@ class _Modal06BasicInformationWidgetState
                               '5ayz050s' /* Cancel */,
                             ),
                             options: FFButtonOptions(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  24.0, 24.0, 24.0, 24.0),
+                              padding: EdgeInsets.all(24.0),
                               iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,

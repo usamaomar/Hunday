@@ -112,7 +112,7 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: wrapWithModel(
                     model: _model.newsBottomSheetComponentModel,
                     updateCallback: () => setState(() {}),

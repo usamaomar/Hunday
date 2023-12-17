@@ -116,7 +116,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                 Stack(
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Container(
                         constraints: BoxConstraints(
                           maxHeight: 550.0,
@@ -150,7 +150,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                   ),
                                 ),
                                 Align(
-                                  alignment: AlignmentDirectional(0.00, 0.00),
+                                  alignment: AlignmentDirectional(0.0, 0.0),
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         40.0, 0.0, 40.0, 0.0),
@@ -185,7 +185,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                             .newsModelJsonList[
                                                         widget.itemIndex!],
                                                     r'''$.full_listing_image''',
-                                                  ),
+                                                  ).toString(),
                                                   width: 300.0,
                                                   height: 200.0,
                                                   fit: BoxFit.cover,

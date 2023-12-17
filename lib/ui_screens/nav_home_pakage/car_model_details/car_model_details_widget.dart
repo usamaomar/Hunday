@@ -130,7 +130,7 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     constraints: BoxConstraints(
                       maxHeight: 600.0,
@@ -253,11 +253,12 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                       ?.succeeded ??
                                                   true)) {
                                                 if (GetCarDetailsApiCall
-                                                        .carsSlider(
+                                                            .carsSlider(
                                                       (_model.responceFromGetCarDetails
                                                               ?.jsonBody ??
                                                           ''),
-                                                    ).length >
+                                                    )!
+                                                        .length >
                                                     0) {
                                                   context.pushNamed(
                                                     'CarModelDetailsMoreWithSlieder',
@@ -394,7 +395,7 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                             getJsonField(
                                                               listOfLocalCarsItem,
                                                               r'''$.full_image''',
-                                                            ),
+                                                            ).toString(),
                                                             width: 125.0,
                                                             height: 125.0,
                                                             fit: BoxFit.contain,

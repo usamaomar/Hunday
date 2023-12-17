@@ -1,8 +1,11 @@
+import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -47,6 +50,19 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
     super.initState();
     _model = createModel(context, () => CartSummaryPageModel());
 
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      _model.apiResult3z0 = await GetMyCartApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResult3z0?.succeeded ?? true)) {
+        setState(() {
+          _model.cartObject = functions.convertFromJsonToCartObject(
+              (_model.apiResult3z0?.jsonBody ?? ''));
+        });
+      }
+    });
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -89,11 +105,11 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Stack(
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
+                      alignment: AlignmentDirectional(0.0, 1.0),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             0.0, 150.0, 0.0, 0.0),
@@ -144,7 +160,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                 ),
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 1.00),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
@@ -247,93 +263,54 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                     color: Color(0xFF3D6398),
                                                   ),
                                                 ),
-                                                child: ListView(
-                                                  padding: EdgeInsets.zero,
-                                                  shrinkWrap: true,
-                                                  scrollDirection:
-                                                      Axis.vertical,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  15.0,
-                                                                  15.0,
+                                                child: Builder(
+                                                  builder: (context) {
+                                                    final listCartItem = _model
+                                                            .cartObject
+                                                            ?.cartItems
+                                                            ?.toList() ??
+                                                        [];
+                                                    return ListView.builder(
+                                                      padding: EdgeInsets.zero,
+                                                      shrinkWrap: true,
+                                                      scrollDirection:
+                                                          Axis.vertical,
+                                                      itemCount:
+                                                          listCartItem.length,
+                                                      itemBuilder: (context,
+                                                          listCartItemIndex) {
+                                                        final listCartItemItem =
+                                                            listCartItem[
+                                                                listCartItemIndex];
+                                                        return Padding(
+                                                          padding:
+                                                              EdgeInsets.all(
                                                                   15.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Padding(
-                                                            padding:
-                                                                EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                        0.0,
-                                                                        0.0,
-                                                                        0.0,
-                                                                        10.0),
-                                                            child: Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .spaceBetween,
-                                                              children: [
-                                                                Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    'ra35fsb8' /* Hello World */,
-                                                                  ),
-                                                                  style: FlutterFlowTheme.of(
-                                                                          context)
-                                                                      .bodyMedium
-                                                                      .override(
-                                                                        fontFamily:
-                                                                            'HeeboBold',
-                                                                        color: Color(
-                                                                            0xFF4E4E4E),
-                                                                        fontWeight:
-                                                                            FontWeight.bold,
-                                                                        useGoogleFonts:
-                                                                            false,
-                                                                      ),
-                                                                ),
-                                                                Row(
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            10.0),
+                                                                child: Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
                                                                           .max,
+                                                                  mainAxisAlignment:
+                                                                      MainAxisAlignment
+                                                                          .spaceBetween,
                                                                   children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          10.0,
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                        child: SvgPicture
-                                                                            .asset(
-                                                                          'assets/images/Group_73011.svg',
-                                                                          width:
-                                                                              20.0,
-                                                                          height:
-                                                                              20.0,
-                                                                          fit: BoxFit
-                                                                              .cover,
-                                                                        ),
-                                                                      ),
-                                                                    ),
                                                                     Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'wmjklpgr' /* Hello World */,
-                                                                      ),
+                                                                      listCartItemItem
+                                                                          .part
+                                                                          .name,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
                                                                           .bodyMedium
@@ -341,31 +318,72 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                             fontFamily:
                                                                                 'HeeboBold',
                                                                             color:
-                                                                                Color(0xFFE50D23),
+                                                                                Color(0xFF4E4E4E),
                                                                             fontWeight:
                                                                                 FontWeight.bold,
                                                                             useGoogleFonts:
                                                                                 false,
                                                                           ),
                                                                     ),
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              10.0,
+                                                                              0.0,
+                                                                              10.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              ClipRRect(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                            child:
+                                                                                SvgPicture.asset(
+                                                                              'assets/images/Group_73011.svg',
+                                                                              width: 20.0,
+                                                                              height: 20.0,
+                                                                              fit: BoxFit.cover,
+                                                                            ),
+                                                                          ),
+                                                                        ),
+                                                                        Text(
+                                                                          listCartItemItem
+                                                                              .part
+                                                                              .price
+                                                                              .toString(),
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'HeeboBold',
+                                                                                color: Color(0xFFE50D23),
+                                                                                fontWeight: FontWeight.bold,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
                                                                   ],
                                                                 ),
-                                                              ],
-                                                            ),
+                                                              ),
+                                                              Opacity(
+                                                                opacity: 0.8,
+                                                                child: Divider(
+                                                                  height: 0.0,
+                                                                  thickness:
+                                                                      1.0,
+                                                                  color: Color(
+                                                                      0xFF3D6398),
+                                                                ),
+                                                              ),
+                                                            ],
                                                           ),
-                                                          Opacity(
-                                                            opacity: 0.8,
-                                                            child: Divider(
-                                                              height: 0.0,
-                                                              thickness: 1.0,
-                                                              color: Color(
-                                                                  0xFF3D6398),
-                                                            ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],
+                                                        );
+                                                      },
+                                                    );
+                                                  },
                                                 ),
                                               ),
                                             ),
@@ -394,12 +412,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  15.0,
-                                                                  15.0,
-                                                                  15.0),
+                                                          EdgeInsets.all(15.0),
                                                       child: Text(
                                                         FFLocalizations.of(
                                                                 context)
@@ -685,10 +698,8 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'yj8k51dz' /* 180 */,
-                                                  ),
+                                                  _model.cartObject!.subTotal
+                                                      .toString(),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -730,10 +741,9 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '3aeddcsi' /* 180 */,
-                                                  ),
+                                                  _model
+                                                      .cartObject!.shippingCost
+                                                      .toString(),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -775,9 +785,9 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'i5e4xn14' /* 180 */,
+                                                  valueOrDefault<String>(
+                                                    _model.cartObject?.tax,
+                                                    '0',
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
@@ -879,10 +889,11 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                               ),
                                                     ),
                                                     Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '64lhqq9a' /* 160 */,
+                                                      valueOrDefault<String>(
+                                                        _model.cartObject
+                                                            ?.totalPrice
+                                                            ?.toString(),
+                                                        '0',
                                                       ),
                                                       style:
                                                           FlutterFlowTheme.of(

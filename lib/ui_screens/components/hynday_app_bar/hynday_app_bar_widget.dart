@@ -110,8 +110,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                       ),
                       AlignedTooltip(
                         content: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                4.0, 4.0, 4.0, 4.0),
+                            padding: EdgeInsets.all(4.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
                                 'nn9je08c' /* Message... */,

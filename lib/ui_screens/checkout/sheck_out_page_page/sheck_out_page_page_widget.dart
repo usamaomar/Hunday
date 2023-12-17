@@ -7,7 +7,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/thank_you_component/thank_you_component_widget.dart';
 import '/backend/schema/structs/index.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -93,13 +95,13 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -125,7 +127,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                 ],
                               ),
                               Align(
-                                alignment: AlignmentDirectional(0.00, 1.00),
+                                alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
@@ -196,6 +198,11 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                     Colors.transparent,
                                                 onTap: () async {
                                                   setState(() {
+                                                    _model.isPaymentSelected =
+                                                        _model.isPaymentSelected ==
+                                                                true
+                                                            ? false
+                                                            : true;
                                                     _model.isCashOnDeliverySelected =
                                                         _model.isPaymentSelected ==
                                                                 true
@@ -247,8 +254,8 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                               child: Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.00,
-                                                                        0.00),
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: Material(
                                                                   color: Colors
                                                                       .transparent,
@@ -343,6 +350,11 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                 true
                                                             ? false
                                                             : true;
+                                                    _model.isPaymentSelected =
+                                                        _model.isCashOnDeliverySelected ==
+                                                                true
+                                                            ? false
+                                                            : true;
                                                   });
                                                 },
                                                 child: Row(
@@ -389,8 +401,8 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                               child: Align(
                                                                 alignment:
                                                                     AlignmentDirectional(
-                                                                        0.00,
-                                                                        0.00),
+                                                                        0.0,
+                                                                        0.0),
                                                                 child: Material(
                                                                   color: Colors
                                                                       .transparent,
@@ -568,72 +580,174 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                               mainAxisAlignment:
                                                   MainAxisAlignment.start,
                                               children: [
-                                                FFButtonWidget(
-                                                  onPressed: () async {
-                                                    _model.apiResultgyn =
-                                                        await GetPaymentIdApiCall
-                                                            .call(
-                                                      token: FFAppState()
-                                                          .userModel
-                                                          .token,
-                                                    );
-                                                    if ((_model.apiResultgyn
-                                                            ?.succeeded ??
-                                                        true)) {
-                                                      setState(() {
-                                                        _model
-                                                            .paymentModel = (_model
-                                                                            .apiResultgyn
-                                                                            ?.jsonBody ??
-                                                                        '') !=
-                                                                    null &&
-                                                                (_model.apiResultgyn
-                                                                            ?.jsonBody ??
-                                                                        '') !=
-                                                                    ''
-                                                            ? PaymentModelStruct
-                                                                .fromMap((_model
-                                                                        .apiResultgyn
-                                                                        ?.jsonBody ??
-                                                                    ''))
-                                                            : null;
-                                                      });
-                                                    }
+                                                Builder(
+                                                  builder: (context) =>
+                                                      FFButtonWidget(
+                                                    onPressed: () async {
+                                                      var _shouldSetState =
+                                                          false;
+                                                      if ((_model.isCashOnDeliverySelected ==
+                                                              true) ||
+                                                          (_model.isPaymentSelected ==
+                                                              true)) {
+                                                        if (_model
+                                                                .isPaymentSelected ==
+                                                            true) {
+                                                          _model.apiResultgyn =
+                                                              await GetPaymentIdApiCall
+                                                                  .call(
+                                                            token: FFAppState()
+                                                                .userModel
+                                                                .token,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if ((_model
+                                                                  .apiResultgyn
+                                                                  ?.succeeded ??
+                                                              true)) {
+                                                            setState(() {
+                                                              _model
+                                                                  .paymentModel = (_model.apiResultgyn?.jsonBody ??
+                                                                              '') !=
+                                                                          null &&
+                                                                      (_model.apiResultgyn?.jsonBody ??
+                                                                              '') !=
+                                                                          ''
+                                                                  ? PaymentModelStruct
+                                                                      .fromMap((_model
+                                                                              .apiResultgyn
+                                                                              ?.jsonBody ??
+                                                                          ''))
+                                                                  : null;
+                                                            });
+                                                          }
+                                                          _model.apiResult8am =
+                                                              await GetPaymentStatusApiCall
+                                                                  .call(
+                                                            token: FFAppState()
+                                                                .userModel
+                                                                .token,
+                                                          );
+                                                          _shouldSetState =
+                                                              true;
+                                                          if ((_model
+                                                                  .apiResult8am
+                                                                  ?.succeeded ??
+                                                              true)) {
+                                                            setState(() {});
+                                                          }
+                                                        } else {
+                                                          _model.apiResultmcd =
+                                                              await CashOnDeliveryApiCall
+                                                                  .call();
+                                                          _shouldSetState =
+                                                              true;
+                                                          if ((_model
+                                                                  .apiResultmcd
+                                                                  ?.succeeded ??
+                                                              true)) {
+                                                            FFAppState()
+                                                                .update(() {});
+                                                          }
+                                                        }
 
-                                                    setState(() {});
-                                                  },
-                                                  text: FFLocalizations.of(
-                                                          context)
-                                                      .getText(
-                                                    '7cavw78u' /* Next */,
-                                                  ),
-                                                  options: FFButtonOptions(
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(50.0, 0.0,
-                                                                50.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
+                                                        await showAlignedDialog(
+                                                          context: context,
+                                                          isGlobal: true,
+                                                          avoidOverflow: false,
+                                                          targetAnchor:
+                                                              AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                          followerAnchor:
+                                                              AlignmentDirectional(
+                                                                      0.0, 0.0)
+                                                                  .resolve(
+                                                                      Directionality.of(
+                                                                          context)),
+                                                          builder:
+                                                              (dialogContext) {
+                                                            return Material(
+                                                              color: Colors
+                                                                  .transparent,
+                                                              child:
+                                                                  GestureDetector(
+                                                                onTap: () => _model
+                                                                        .unfocusNode
+                                                                        .canRequestFocus
+                                                                    ? FocusScope.of(
+                                                                            context)
+                                                                        .requestFocus(_model
+                                                                            .unfocusNode)
+                                                                    : FocusScope.of(
+                                                                            context)
+                                                                        .unfocus(),
+                                                                child:
+                                                                    ThankYouComponentWidget(),
+                                                              ),
+                                                            );
+                                                          },
+                                                        ).then((value) =>
+                                                            setState(() {}));
+
+                                                        context.goNamed(
+                                                            'HomeScreen');
+                                                      } else {
+                                                        if (_shouldSetState)
+                                                          setState(() {});
+                                                        return;
+                                                      }
+
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                    },
+                                                    text: FFLocalizations.of(
                                                             context)
-                                                        .ahayundai,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: Colors.white,
-                                                        ),
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
+                                                        .getText(
+                                                      '7cavw78u' /* Next */,
                                                     ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
+                                                    options: FFButtonOptions(
+                                                      height: 40.0,
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  50.0,
+                                                                  0.0,
+                                                                  50.0,
+                                                                  0.0),
+                                                      iconPadding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .ahayundai,
+                                                      textStyle:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .titleSmall
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Poppins',
+                                                                color: Colors
+                                                                    .white,
+                                                              ),
+                                                      borderSide: BorderSide(
+                                                        color:
+                                                            Colors.transparent,
+                                                        width: 1.0,
+                                                      ),
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              5.0),
+                                                    ),
                                                   ),
                                                 ),
                                               ],

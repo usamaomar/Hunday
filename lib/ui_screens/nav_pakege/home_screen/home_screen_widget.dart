@@ -115,7 +115,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           FFAppState().listOfOpendItems = functions
               .addFalseValuesToList(LocationApiCall.apiLocationsJsonList(
                 (_model.locationsApiResponce?.jsonBody ?? ''),
-              ).length)
+              )!
+                  .length)
               .toList()
               .cast<bool>();
         });
@@ -246,7 +247,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                 imageUrl: getJsonField(
                                                   sliderSlideListItem,
                                                   r'''$.full_image''',
-                                                ),
+                                                ).toString(),
                                                 width: double.infinity,
                                                 height: 150.0,
                                                 fit: BoxFit.cover,

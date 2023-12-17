@@ -57,7 +57,7 @@ class _ShopListItemComponentWidgetState
     return Opacity(
       opacity: 0.8,
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(10.0, 10.0, 10.0, 10.0),
+        padding: EdgeInsets.all(10.0),
         child: Row(
           mainAxisSize: MainAxisSize.max,
           mainAxisAlignment: MainAxisAlignment.start,
@@ -75,8 +75,7 @@ class _ShopListItemComponentWidgetState
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
-                          15.0, 15.0, 15.0, 15.0),
+                      padding: EdgeInsets.all(15.0),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(0.0),
                         child: Image.network(
@@ -89,8 +88,7 @@ class _ShopListItemComponentWidgetState
                     ),
                     Expanded(
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 15.0, 15.0),
+                        padding: EdgeInsets.all(15.0),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,

@@ -343,7 +343,7 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
                                                       getJsonField(
                                                         listOfOffersItem,
                                                         r'''$.full_image''',
-                                                      ),
+                                                      ).toString(),
                                                       fit: BoxFit.cover,
                                                       errorBuilder: (context,
                                                               error,

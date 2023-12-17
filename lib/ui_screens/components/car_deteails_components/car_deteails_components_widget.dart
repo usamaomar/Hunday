@@ -165,8 +165,7 @@ class _CarDeteailsComponentsWidgetState
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 15.0, 15.0),
+                        padding: EdgeInsets.all(15.0),
                         child: Text(
                           FFLocalizations.of(context).getText(
                             'hbpd88lb' /* Technical Presentation */,
@@ -182,8 +181,7 @@ class _CarDeteailsComponentsWidgetState
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            15.0, 15.0, 15.0, 15.0),
+                        padding: EdgeInsets.all(15.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -303,8 +301,7 @@ class _CarDeteailsComponentsWidgetState
                               borderRadius: BorderRadius.circular(0.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 15.0, 15.0, 15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: Text(
                                 performancesItem,
                                 maxLines: 2,
@@ -423,8 +420,7 @@ class _CarDeteailsComponentsWidgetState
                               borderRadius: BorderRadius.circular(0.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 15.0, 15.0, 15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: Text(
                                 saftyItem,
                                 maxLines: 2,
@@ -543,8 +539,7 @@ class _CarDeteailsComponentsWidgetState
                               borderRadius: BorderRadius.circular(0.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 15.0, 15.0, 15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: Text(
                                 interiorItem,
                                 maxLines: 2,
@@ -664,8 +659,7 @@ class _CarDeteailsComponentsWidgetState
                               borderRadius: BorderRadius.circular(0.0),
                             ),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  15.0, 15.0, 15.0, 15.0),
+                              padding: EdgeInsets.all(15.0),
                               child: Text(
                                 performancesItem,
                                 maxLines: 2,

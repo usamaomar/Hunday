@@ -27,6 +27,7 @@ class LoginApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -91,6 +92,7 @@ class RegisterApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -141,6 +143,7 @@ class GetMobileNumberCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -168,6 +171,7 @@ class GetVerifiedCodeApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -204,6 +208,7 @@ class ChangePasswordApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -236,6 +241,7 @@ class LicenseScanApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -272,6 +278,7 @@ class TestDriveApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -328,6 +335,7 @@ class StoreVehicleApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -356,6 +364,7 @@ class AddToCartApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -378,6 +387,7 @@ class ClearAllCartApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -403,6 +413,7 @@ class RemoveItemFromCartApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -435,6 +446,7 @@ class RegularServiceApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -467,6 +479,7 @@ class RepairServiceApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -488,6 +501,7 @@ class GetMyCartApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -525,6 +539,7 @@ class UpdateUserApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -551,6 +566,7 @@ class TestAuthUserApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -572,14 +588,15 @@ class NewsApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic newsModelList(dynamic response) => getJsonField(
+  static List? newsModelList(dynamic response) => getJsonField(
         response,
         r'''$.news.data[:]''',
         true,
-      );
+      ) as List?;
 }
 
 class DetailsNewsApiCall {
@@ -602,6 +619,7 @@ class DetailsNewsApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -632,14 +650,15 @@ class LocationApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic apiLocationsJsonList(dynamic response) => getJsonField(
+  static List? apiLocationsJsonList(dynamic response) => getJsonField(
         response,
         r'''$.locations.data''',
         true,
-      );
+      ) as List?;
 }
 
 class OfferApiCall {
@@ -659,14 +678,15 @@ class OfferApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic apiListOffersJson(dynamic response) => getJsonField(
+  static List? apiListOffersJson(dynamic response) => getJsonField(
         response,
         r'''$.offers.data''',
         true,
-      );
+      ) as List?;
 }
 
 class OfferDetailsApiCall {
@@ -689,6 +709,7 @@ class OfferDetailsApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -715,14 +736,15 @@ class SettingApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic socialMediaJsonObject(dynamic response) => getJsonField(
+  static List? socialMediaJsonObject(dynamic response) => getJsonField(
         response,
         r'''$.settings''',
         true,
-      );
+      ) as List?;
 }
 
 class SliderApiCall {
@@ -742,34 +764,41 @@ class SliderApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic listOfStringUrls(dynamic response) => getJsonField(
+  static List<String>? listOfStringUrls(dynamic response) => (getJsonField(
         response,
         r'''$.slider.data[:].full_image''',
         true,
-      );
-  static dynamic listOfTitles(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .cast<String>();
+  static List? listOfTitles(dynamic response) => getJsonField(
         response,
         r'''$.slider.data[:].title''',
         true,
-      );
-  static dynamic listSliderItems(dynamic response) => getJsonField(
+      ) as List?;
+  static List? listSliderItems(dynamic response) => getJsonField(
         response,
         r'''$.slider.data''',
         true,
-      );
-  static dynamic sloganenItems(dynamic response) => getJsonField(
+      ) as List?;
+  static List<String>? sloganenItems(dynamic response) => (getJsonField(
         response,
         r'''$.slider.data[:].slogan_en''',
         true,
-      );
-  static dynamic sloganarItems(dynamic response) => getJsonField(
+      ) as List?)
+          ?.withoutNulls
+          .cast<String>();
+  static List<String>? sloganarItems(dynamic response) => (getJsonField(
         response,
         r'''$.slider.data[:].slogan_ar''',
         true,
-      );
+      ) as List?)
+          ?.withoutNulls
+          .cast<String>();
 }
 
 class CarModelsApiCall {
@@ -789,14 +818,15 @@ class CarModelsApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic carModelList(dynamic response) => getJsonField(
+  static List? carModelList(dynamic response) => getJsonField(
         response,
         r'''$.carCategories.data''',
         true,
-      );
+      ) as List?;
 }
 
 class GetCarsApiCall {
@@ -820,14 +850,15 @@ class GetCarsApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
-  static dynamic listOfCars(dynamic response) => getJsonField(
+  static List? listOfCars(dynamic response) => getJsonField(
         response,
         r'''$.cars.data''',
         true,
-      );
+      ) as List?;
 }
 
 class GetCarDetailsApiCall {
@@ -850,6 +881,7 @@ class GetCarDetailsApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -861,11 +893,11 @@ class GetCarDetailsApiCall {
         response,
         r'''$.car.performance''',
       );
-  static dynamic carsSlider(dynamic response) => getJsonField(
+  static List? carsSlider(dynamic response) => getJsonField(
         response,
         r'''$.car.car_sliders''',
         true,
-      );
+      ) as List?;
 }
 
 class PartsCategoryApiCall {
@@ -889,6 +921,7 @@ class PartsCategoryApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -900,11 +933,11 @@ class PartsCategoryApiCall {
         response,
         r'''$.car.performance''',
       );
-  static dynamic carsSlider(dynamic response) => getJsonField(
+  static List? carsSlider(dynamic response) => getJsonField(
         response,
         r'''$.car.car_sliders''',
         true,
-      );
+      ) as List?;
 }
 
 class PartsApiCall {
@@ -928,6 +961,7 @@ class PartsApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -939,11 +973,11 @@ class PartsApiCall {
         response,
         r'''$.car.performance''',
       );
-  static dynamic carsSlider(dynamic response) => getJsonField(
+  static List? carsSlider(dynamic response) => getJsonField(
         response,
         r'''$.car.car_sliders''',
         true,
-      );
+      ) as List?;
 }
 
 class UpdateCartApiCall {
@@ -972,6 +1006,7 @@ class UpdateCartApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 
@@ -983,11 +1018,11 @@ class UpdateCartApiCall {
         response,
         r'''$.car.performance''',
       );
-  static dynamic carsSlider(dynamic response) => getJsonField(
+  static List? carsSlider(dynamic response) => getJsonField(
         response,
         r'''$.car.car_sliders''',
         true,
-      );
+      ) as List?;
 }
 
 class VehicleApiCall {
@@ -1009,6 +1044,7 @@ class VehicleApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -1032,6 +1068,7 @@ class ServiceTypeApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -1055,6 +1092,7 @@ class DeliveryPricesApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -1078,6 +1116,31 @@ class GetAddressApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class GetPaymentStatusApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getPaymentStatusApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/paymentStatus',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -1100,6 +1163,7 @@ class GetPaymentIdApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
     );
   }
 }
@@ -1138,6 +1202,30 @@ class AddAddressApiCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class CashOnDeliveryApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'cashOnDeliveryApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/CashonDelivery',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
     );
   }
 }

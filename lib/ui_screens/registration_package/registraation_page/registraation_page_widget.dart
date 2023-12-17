@@ -107,7 +107,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                 color: FlutterFlowTheme.of(context).secondaryBackground,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  alignment: AlignmentDirectional(0.00, -1.00),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   image: Image.asset(
                     'assets/images/oness.png',
                   ).image,
@@ -491,7 +491,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 false)
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    1.00, 0.00),
+                                                    1.0, 0.0),
                                                 child: AlignedTooltip(
                                                   content: Padding(
                                                       padding:
@@ -728,12 +728,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(
-                                                                14.0,
-                                                                14.0,
-                                                                14.0,
-                                                                14.0),
+                                                        EdgeInsets.all(14.0),
                                                     child: Text(
                                                       _model.localDateOfBirth!,
                                                       style: FlutterFlowTheme
@@ -823,7 +818,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                       Align(
                                                         alignment:
                                                             AlignmentDirectional(
-                                                                1.00, 0.00),
+                                                                1.0, 0.0),
                                                         child: AlignedTooltip(
                                                           content: Padding(
                                                               padding:

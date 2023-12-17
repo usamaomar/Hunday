@@ -51,7 +51,8 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
           FFAppState().listOfOpendItems = functions
               .addFalseValuesToList(LocationApiCall.apiLocationsJsonList(
                 (_model.locationsApiResponce1?.jsonBody ?? ''),
-              ).length)
+              )!
+                  .length)
               .toList()
               .cast<bool>();
         });
@@ -102,13 +103,13 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
+                alignment: AlignmentDirectional(0.0, 1.0),
                 child: Container(
                   height: 800.0,
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               5.0, 130.0, 5.0, 5.0),
@@ -276,8 +277,8 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                         decoration:
                                                                             BoxDecoration(),
                                                                         alignment: AlignmentDirectional(
-                                                                            -1.00,
-                                                                            0.00),
+                                                                            -1.0,
+                                                                            0.0),
                                                                         child:
                                                                             Stack(
                                                                           children: [
@@ -287,7 +288,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                                 getJsonField(
                                                                                   locationListItem,
                                                                                   r'''$.full_icon''',
-                                                                                ),
+                                                                                ).toString(),
                                                                                 width: 33.0,
                                                                                 height: 33.0,
                                                                                 fit: BoxFit.contain,
@@ -334,11 +335,9 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                           .max,
                                                                   children: [
                                                                     Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          15.0,
-                                                                          15.0,
-                                                                          15.0,
-                                                                          15.0),
+                                                                      padding:
+                                                                          EdgeInsets.all(
+                                                                              15.0),
                                                                       child:
                                                                           ClipRRect(
                                                                         borderRadius:
@@ -353,7 +352,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                               getJsonField(
                                                                             locationListItem,
                                                                             r'''$.full_image''',
-                                                                          ),
+                                                                          ).toString(),
                                                                           width:
                                                                               285.0,
                                                                           height:
@@ -680,9 +679,10 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                         Container(
                                                                       decoration:
                                                                           BoxDecoration(),
-                                                                      alignment: AlignmentDirectional(
-                                                                          -1.00,
-                                                                          0.00),
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              -1.0,
+                                                                              0.0),
                                                                       child:
                                                                           Stack(
                                                                         children: [
@@ -696,7 +696,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                               imageUrl: getJsonField(
                                                                                 locationListItem,
                                                                                 r'''$.full_icon''',
-                                                                              ),
+                                                                              ).toString(),
                                                                               width: 24.0,
                                                                               height: 24.0,
                                                                               fit: BoxFit.contain,

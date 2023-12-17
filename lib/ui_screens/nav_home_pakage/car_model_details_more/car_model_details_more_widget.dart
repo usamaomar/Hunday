@@ -150,7 +150,7 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
             child: Stack(
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.00, 1.00),
+                  alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
                     constraints: BoxConstraints(
                       maxHeight: 600.0,
@@ -202,7 +202,7 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                           getJsonField(
                                             widget.carJsonItem,
                                             r'''$.full_image''',
-                                          ),
+                                          ).toString(),
                                           fit: BoxFit.cover,
                                           errorBuilder:
                                               (context, error, stackTrace) =>

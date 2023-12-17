@@ -55,7 +55,7 @@ class _ResetPasswordComponentWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(5.0, 5.0, 5.0, 5.0),
+      padding: EdgeInsets.all(5.0),
       child: Container(
         width: double.infinity,
         height: double.infinity,

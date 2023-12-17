@@ -115,7 +115,7 @@ class _MyVehiclesDetailsPageWidgetState
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
@@ -180,8 +180,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFEBEEF1),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -238,8 +237,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFF8F8F8),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -295,8 +293,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFEBEEF1),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -352,8 +349,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFF8F8F8),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -408,8 +404,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFEBEEF1),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -465,8 +460,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFF8F8F8),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -522,8 +516,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFEBEEF1),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -580,8 +573,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFF8F8F8),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -637,8 +629,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFEBEEF1),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -695,8 +686,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFF8F8F8),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -751,8 +741,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFEBEEF1),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -810,8 +799,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFF8F8F8),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -867,8 +855,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFEBEEF1),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:
@@ -925,8 +912,7 @@ class _MyVehiclesDetailsPageWidgetState
                                         color: Color(0xFFF8F8F8),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            5.0, 5.0, 5.0, 5.0),
+                                        padding: EdgeInsets.all(5.0),
                                         child: Column(
                                           mainAxisSize: MainAxisSize.max,
                                           crossAxisAlignment:

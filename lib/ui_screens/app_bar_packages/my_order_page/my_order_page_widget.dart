@@ -134,8 +134,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                             elevation: 0.0,
                             buttonMargin: EdgeInsetsDirectional.fromSTEB(
                                 8.0, 0.0, 8.0, 0.0),
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                4.0, 4.0, 4.0, 4.0),
+                            padding: EdgeInsets.all(4.0),
                             tabs: [
                               Tab(
                                 text: FFLocalizations.of(context).getText(

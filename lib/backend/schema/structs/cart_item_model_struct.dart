@@ -11,10 +11,12 @@ class CartItemModelStruct extends BaseStruct {
     List<CartModelStruct>? cartItems,
     double? subTotal,
     String? tax,
+    double? shippingCost,
   })  : _totalPrice = totalPrice,
         _cartItems = cartItems,
         _subTotal = subTotal,
-        _tax = tax;
+        _tax = tax,
+        _shippingCost = shippingCost;
 
   // "totalPrice" field.
   double? _totalPrice;
@@ -44,6 +46,14 @@ class CartItemModelStruct extends BaseStruct {
   set tax(String? val) => _tax = val;
   bool hasTax() => _tax != null;
 
+  // "shippingCost" field.
+  double? _shippingCost;
+  double get shippingCost => _shippingCost ?? 0.0;
+  set shippingCost(double? val) => _shippingCost = val;
+  void incrementShippingCost(double amount) =>
+      _shippingCost = shippingCost + amount;
+  bool hasShippingCost() => _shippingCost != null;
+
   static CartItemModelStruct fromMap(Map<String, dynamic> data) =>
       CartItemModelStruct(
         totalPrice: castToType<double>(data['totalPrice']),
@@ -53,6 +63,7 @@ class CartItemModelStruct extends BaseStruct {
         ),
         subTotal: castToType<double>(data['subTotal']),
         tax: data['tax'] as String?,
+        shippingCost: castToType<double>(data['shippingCost']),
       );
 
   static CartItemModelStruct? maybeFromMap(dynamic data) =>
@@ -63,6 +74,7 @@ class CartItemModelStruct extends BaseStruct {
         'cartItems': _cartItems?.map((e) => e.toMap()).toList(),
         'subTotal': _subTotal,
         'tax': _tax,
+        'shippingCost': _shippingCost,
       }.withoutNulls;
 
   @override
@@ -83,6 +95,10 @@ class CartItemModelStruct extends BaseStruct {
         'tax': serializeParam(
           _tax,
           ParamType.String,
+        ),
+        'shippingCost': serializeParam(
+          _shippingCost,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -109,6 +125,11 @@ class CartItemModelStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        shippingCost: deserializeParam(
+          data['shippingCost'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -121,21 +142,24 @@ class CartItemModelStruct extends BaseStruct {
         totalPrice == other.totalPrice &&
         listEquality.equals(cartItems, other.cartItems) &&
         subTotal == other.subTotal &&
-        tax == other.tax;
+        tax == other.tax &&
+        shippingCost == other.shippingCost;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([totalPrice, cartItems, subTotal, tax]);
+  int get hashCode => const ListEquality()
+      .hash([totalPrice, cartItems, subTotal, tax, shippingCost]);
 }
 
 CartItemModelStruct createCartItemModelStruct({
   double? totalPrice,
   double? subTotal,
   String? tax,
+  double? shippingCost,
 }) =>
     CartItemModelStruct(
       totalPrice: totalPrice,
       subTotal: subTotal,
       tax: tax,
+      shippingCost: shippingCost,
     );
