@@ -405,7 +405,11 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                   ''),
                                               r'''$.vehicles''',
                                             ) !=
-                                            null) {
+                                            null && (getJsonField(
+                                          (_model.apiResult2kt?.jsonBody ??
+                                              ''),
+                                          r'''$.vehicles''',
+                                        ) as List).isNotEmpty ) {
                                           context.pushNamed('ShopPage');
                                         } else {
                                           await showAlignedDialog(

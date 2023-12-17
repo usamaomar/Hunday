@@ -656,58 +656,53 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                     .apiResultmcd
                                                                     ?.succeeded ??
                                                                 true)) {
-                                                              FFAppState()
-                                                                  .update(
-                                                                      () {});
-                                                            }
-                                                          }
-
-                                                          await showAlignedDialog(
-                                                            context: context,
-                                                            isGlobal: true,
-                                                            avoidOverflow:
+                                                              await showAlignedDialog(
+                                                                context: context,
+                                                                isGlobal: true,
+                                                                avoidOverflow:
                                                                 false,
-                                                            targetAnchor:
+                                                                targetAnchor:
                                                                 AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0)
+                                                                    0.0,
+                                                                    0.0)
                                                                     .resolve(
-                                                                        Directionality.of(
-                                                                            context)),
-                                                            followerAnchor:
+                                                                    Directionality.of(
+                                                                        context)),
+                                                                followerAnchor:
                                                                 AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0)
+                                                                    0.0,
+                                                                    0.0)
                                                                     .resolve(
-                                                                        Directionality.of(
-                                                                            context)),
-                                                            builder:
-                                                                (dialogContext) {
-                                                              return Material(
-                                                                color: Colors
-                                                                    .transparent,
-                                                                child:
+                                                                    Directionality.of(
+                                                                        context)),
+                                                                builder:
+                                                                    (dialogContext) {
+                                                                  return Material(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    child:
                                                                     GestureDetector(
-                                                                  onTap: () => _model
+                                                                      onTap: () => _model
                                                                           .unfocusNode
                                                                           .canRequestFocus
-                                                                      ? FocusScope.of(
-                                                                              context)
+                                                                          ? FocusScope.of(
+                                                                          context)
                                                                           .requestFocus(_model
-                                                                              .unfocusNode)
-                                                                      : FocusScope.of(
-                                                                              context)
+                                                                          .unfocusNode)
+                                                                          : FocusScope.of(
+                                                                          context)
                                                                           .unfocus(),
-                                                                  child:
+                                                                      child:
                                                                       ThankYouComponentWidget(),
-                                                                ),
-                                                              );
-                                                            },
-                                                          ).then((value) =>
-                                                              setState(() {}));
-
-                                                          context.goNamed(
-                                                              'HomeScreen');
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ).then((value) {
+                                                                context.pushReplacementNamed(
+                                                                    'HomeScreen');
+                                                              });
+                                                            }
+                                                          }
                                                         } else {
                                                           await showDialog(
                                                             context: context,
