@@ -65,11 +65,14 @@ class _CartPageWidgetState extends State<CartPageWidget> {
             decoration: BoxDecoration(
               color: FlutterFlowTheme.of(context).secondaryBackground,
             ),
-            child: wrapWithModel(
-              model: _model.cartBottomSheetModel,
-              updateCallback: () => setState(() {}),
-              child: CartBottomSheetWidget(
-                isComponentView: false,
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 50.0),
+              child: wrapWithModel(
+                model: _model.cartBottomSheetModel,
+                updateCallback: () => setState(() {}),
+                child: CartBottomSheetWidget(
+                  isComponentView: false,
+                ),
               ),
             ),
           ),
