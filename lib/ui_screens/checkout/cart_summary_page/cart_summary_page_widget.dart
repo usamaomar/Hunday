@@ -485,7 +485,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                   labelText: FFLocalizations.of(
                                                                           context)
                                                                       .getText(
-                                                                    'afzcb7rj' /* Label here... */,
+                                                                    'afzcb7rj' /* Add Coupon */,
                                                                   ),
                                                                   labelStyle: FlutterFlowTheme.of(
                                                                           context)
