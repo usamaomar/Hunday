@@ -34,7 +34,7 @@ class SheckOutPagePageWidget extends StatefulWidget {
 class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     with TickerProviderStateMixin {
   late SheckOutPagePageModel _model;
-  late FlutterHyperPay flutterHyperPay ;
+  late FlutterHyperPay flutterHyperPay;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -58,18 +58,17 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     super.initState();
     _model = createModel(context, () => SheckOutPagePageModel());
 
-
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       flutterHyperPay = FlutterHyperPay(
-        shopperResultUrl: InAppPaymentSetting.shopperResultUrl, // return back to app
-        paymentMode:  PaymentMode.test, // test or live
+        shopperResultUrl: InAppPaymentSetting.shopperResultUrl,
+        // return back to app
+        paymentMode: PaymentMode.test,
+        // test or live
         lang: InAppPaymentSetting.getLang(),
       );
     });
 
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-    }));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -637,8 +636,11 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                           ''))
                                                                   : null;
                                                             });
-                                                            payRequestNowReadyUI(checkoutId: _model
-                                                                .paymentModel?.id ?? "null");
+                                                            payRequestNowReadyUI(
+                                                                checkoutId: _model
+                                                                        .paymentModel
+                                                                        ?.id ??
+                                                                    "null");
                                                           }
                                                         } else {
                                                           _model.apiResultmcd =
@@ -653,38 +655,38 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                             await showAlignedDialog(
                                                               context: context,
                                                               isGlobal: true,
-                                                              avoidOverflow: false,
+                                                              avoidOverflow:
+                                                                  false,
                                                               targetAnchor:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                                  .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
+                                                                  AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
                                                               followerAnchor:
-                                                              AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                                  .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
+                                                                  AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0)
+                                                                      .resolve(
+                                                                          Directionality.of(
+                                                                              context)),
                                                               builder:
                                                                   (dialogContext) {
                                                                 return Material(
                                                                   color: Colors
                                                                       .transparent,
                                                                   child:
-                                                                  GestureDetector(
+                                                                      GestureDetector(
                                                                     onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                        ? FocusScope.of(
-                                                                        context)
-                                                                        .requestFocus(_model
-                                                                        .unfocusNode)
-                                                                        : FocusScope.of(
-                                                                        context)
-                                                                        .unfocus(),
+                                                                            .unfocusNode
+                                                                            .canRequestFocus
+                                                                        ? FocusScope.of(context).requestFocus(_model
+                                                                            .unfocusNode)
+                                                                        : FocusScope.of(context)
+                                                                            .unfocus(),
                                                                     child:
-                                                                    ThankYouComponentWidget(),
+                                                                        ThankYouComponentWidget(),
                                                                   ),
                                                                 );
                                                               },
@@ -798,115 +800,69 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     );
   }
 
-  payRequestNowReadyUI(
-      { required String checkoutId}) async {
-
-    await flutterHyperPay.readyUICards(
+  payRequestNowReadyUI({required String checkoutId}) async {
+    await flutterHyperPay
+        .readyUICards(
       readyUI: ReadyUI(
-          brandsName: [ "VISA" , "MASTER"] ,
+          brandsName: ["VISA", "MASTER"],
           checkoutId: checkoutId,
-          themColorHexIOS: "#000000" ,// FOR IOS ONLY
-          setStorePaymentDetailsMode: true // store payment details for future use
-      ),
-    ).then((value) async{
-      if(value.errorString?.isNotEmpty == true && value.errorString !=null){
+          themColorHexIOS: "#000000", // FOR IOS ONLY
+          setStorePaymentDetailsMode:
+              true // store payment details for future use
+          ),
+    )
+        .then((value) async {
+      if (value.errorString?.isNotEmpty == true && value.errorString != null) {
         await showDialog(
             context: context,
-            builder:
-                (alertDialogContext) {
+            builder: (alertDialogContext) {
               return AlertDialog(
-                title: Text(
-                    FFLocalizations.of(
-                        context)
-                        .getVariableText(
-                      enText: 'Error',
-                      arText: 'مشكلة خادم',
-                    )),
-                content: Text(
-                    '${value.errorString} , ${value.paymentResult.name}'
-                ),
+                title: Text(FFLocalizations.of(context).getVariableText(
+                  enText: 'Error',
+                  arText: 'مشكلة خادم',
+                )),
+                content:
+                    Text('${value.errorString} , ${value.paymentResult.name}'),
                 actions: [
                   TextButton(
-                    onPressed: () =>
-                        Navigator.pop(
-                            alertDialogContext),
-                    child: Text(
-                        FFLocalizations.of(
-                            context)
-                            .getVariableText(
-                          enText: 'Ok',
-                          arText: 'حسنا',
-                        )),
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text(FFLocalizations.of(context).getVariableText(
+                      enText: 'Ok',
+                      arText: 'حسنا',
+                    )),
                   ),
                 ],
               );
             });
-      }else{
-        _model.apiResult8am =
-        await GetPaymentStatusApiCall
-            .call(
-          token: FFAppState()
-              .userModel
-              .token,
+      } else {
+        _model.apiResult8am = await GetPaymentStatusApiCall.call(
+          token: FFAppState().userModel.token,
         );
-        if ((_model
-            .apiResult8am
-            ?.succeeded ??
-            true)) {
-          setState(() async{
-            await showAlignedDialog(
+        if ((_model.apiResult8am?.succeeded ?? true)) {
+          await showAlignedDialog(
             context: context,
             isGlobal: true,
             avoidOverflow: false,
-            targetAnchor:
-            AlignmentDirectional(
-                0.0, 0.0)
-                .resolve(
-                Directionality.of(
-                    context)),
-            followerAnchor:
-            AlignmentDirectional(
-                0.0, 0.0)
-                .resolve(
-                Directionality.of(
-                    context)),
-            builder:
-                (dialogContext) {
+            targetAnchor: AlignmentDirectional(0.0, 0.0)
+                .resolve(Directionality.of(context)),
+            followerAnchor: AlignmentDirectional(0.0, 0.0)
+                .resolve(Directionality.of(context)),
+            builder: (dialogContext) {
               return Material(
-                color: Colors
-                    .transparent,
-                child:
-                GestureDetector(
-                  onTap: () => _model
-                      .unfocusNode
-                      .canRequestFocus
-                      ? FocusScope.of(
-                      context)
-                      .requestFocus(_model
-                      .unfocusNode)
-                      : FocusScope.of(
-                      context)
-                      .unfocus(),
-                  child:
-                  ThankYouComponentWidget(),
+                color: Colors.transparent,
+                child: GestureDetector(
+                  onTap: () => _model.unfocusNode.canRequestFocus
+                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                      : FocusScope.of(context).unfocus(),
+                  child: ThankYouComponentWidget(),
                 ),
               );
             },
-            ).then((value) =>
-                setState(() {
-                  context.pushReplacementNamed(
-                      'HomeScreen');
-                }));
-          });
+          ).then((value) => setState(() {
+                context.pushReplacementNamed('HomeScreen');
+              }));
         }
-
       }
-
-
     });
-
-
-
-
-
-}}
+  }
+}
