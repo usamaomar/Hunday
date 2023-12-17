@@ -19,6 +19,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+
 import 'shipping_address_page_model.dart';
 export 'shipping_address_page_model.dart';
 
@@ -44,8 +45,8 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
           curve: Curves.easeInOut,
           delay: 100.ms,
           duration: 500.ms,
-          begin: Offset(0.0, 650.0),
-          end: Offset(0.0, 0.0),
+          begin: Offset(0, 650),
+          end: Offset(0, 0),
         ),
       ],
     ),
@@ -65,9 +66,9 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
         setState(() {
           _model.listOfLocalDeliveryPriceModels = functions
               .convertFromJsonListToAddressListModels(getJsonField(
-                (_model.apiResult5ds?.jsonBody ?? ''),
-                r'''$.deliveryPrices''',
-              ))
+            (_model.apiResult5ds?.jsonBody ?? ''),
+            r'''$.deliveryPrices''',
+          ))
               .toList()
               .cast<DeliveryPriceModelStruct>();
         });
@@ -78,56 +79,56 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
       if ((_model.apiResultqwk?.succeeded ?? true)) {
         setState(() {
           _model.addressModel = getJsonField(
-                        (_model.apiResultqwk?.jsonBody ?? ''),
-                        r'''$.address''',
-                      ) !=
-                      null &&
-                  getJsonField(
-                        (_model.apiResultqwk?.jsonBody ?? ''),
-                        r'''$.address''',
-                      ) !=
-                      ''
+            (_model.apiResultqwk?.jsonBody ?? ''),
+            r'''$.address''',
+          ) !=
+              null &&
+              getJsonField(
+                (_model.apiResultqwk?.jsonBody ?? ''),
+                r'''$.address''',
+              ) !=
+                  ''
               ? AddressModelStruct.fromMap(getJsonField(
-                  (_model.apiResultqwk?.jsonBody ?? ''),
-                  r'''$.address''',
-                ))
+            (_model.apiResultqwk?.jsonBody ?? ''),
+            r'''$.address''',
+          ))
               : null;
         });
         setState(() {
           _model.textController1?.text = (_model.addressModel?.name != null &&
-                  _model.addressModel?.name != ''
+              _model.addressModel?.name != ''
               ? _model.addressModel!.name
               : FFAppState().userModel.name);
         });
         setState(() {
           _model.textController2?.text = (_model.addressModel?.email != null &&
-                  _model.addressModel?.email != ''
+              _model.addressModel?.email != ''
               ? _model.addressModel!.email
               : FFAppState().userModel.email);
         });
         setState(() {
           _model.textController3?.text = (_model.addressModel?.phone != null &&
-                  _model.addressModel?.phone != ''
+              _model.addressModel?.phone != ''
               ? _model.addressModel!.phone
               : FFAppState().userModel.phone);
         });
         setState(() {
           _model.textController4?.text =
-              (_model.addressModel?.streetAddress != null &&
-                      _model.addressModel?.streetAddress != ''
-                  ? _model.addressModel!.streetAddress
-                  : '-');
+          (_model.addressModel?.streetAddress != null &&
+              _model.addressModel?.streetAddress != ''
+              ? _model.addressModel!.streetAddress
+              : '-');
         });
         setState(() {
           _model.textController5?.text =
-              (_model.addressModel?.buildingNumber != null
-                  ? _model.addressModel!.buildingNumber.toString()
-                  : '-');
+          (_model.addressModel?.buildingNumber != null
+              ? _model.addressModel!.buildingNumber.toString()
+              : '-');
         });
         setState(() {
           _model.selectedCityModelString = functions
               .getCityModelById(_model.listOfLocalDeliveryPriceModels.toList(),
-                  _model.addressModel?.id != null ? _model.addressModel!.id : 0)
+              _model.addressModel?.id != null ? _model.addressModel!.id : 0)
               .name;
         });
       }
@@ -192,7 +193,7 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
               Align(
                 alignment: AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 150, 0, 0),
                   child: Stack(
                     children: [
                       Align(
@@ -205,36 +206,36 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                               Container(
                                 decoration: BoxDecoration(),
                                 child: Stack(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
+                                  alignment: AlignmentDirectional(0, 1),
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 0.0, 5.0, 0.0),
+                                          5, 0, 5, 0),
                                       child: Material(
                                         color: Colors.transparent,
-                                        elevation: 0.0,
+                                        elevation: 0,
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(0.0),
-                                            bottomRight: Radius.circular(0.0),
-                                            topLeft: Radius.circular(20.0),
-                                            topRight: Radius.circular(20.0),
+                                            bottomLeft: Radius.circular(0),
+                                            bottomRight: Radius.circular(0),
+                                            topLeft: Radius.circular(20),
+                                            topRight: Radius.circular(20),
                                           ),
                                         ),
                                         child: Container(
                                           width: double.infinity,
-                                          height: 30.0,
+                                          height: 30,
                                           decoration: BoxDecoration(
                                             color: Color(0xFFC1D6EF),
                                             borderRadius: BorderRadius.only(
-                                              bottomLeft: Radius.circular(0.0),
-                                              bottomRight: Radius.circular(0.0),
-                                              topLeft: Radius.circular(20.0),
-                                              topRight: Radius.circular(20.0),
+                                              bottomLeft: Radius.circular(0),
+                                              bottomRight: Radius.circular(0),
+                                              topLeft: Radius.circular(20),
+                                              topRight: Radius.circular(20),
                                             ),
                                             border: Border.all(
                                               color: Color(0xFFC1D6EF),
-                                              width: 0.0,
+                                              width: 0,
                                             ),
                                           ),
                                         ),
@@ -243,18 +244,18 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                     Row(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
-                                          MainAxisAlignment.center,
+                                      MainAxisAlignment.center,
                                       children: [
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  50.0, 0.0, 50.0, 0.0),
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              50, 0, 50, 0),
                                           child: ClipRRect(
                                             borderRadius:
-                                                BorderRadius.circular(0.0),
+                                            BorderRadius.circular(0),
                                             child: SvgPicture.asset(
                                               'assets/images/Group_71544.svg',
-                                              width: 250.0,
+                                              width: 250,
                                               fit: BoxFit.contain,
                                             ),
                                           ),
@@ -268,12 +269,12 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                 alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 0.0, 5.0, 0.0),
+                                      5, 0, 5, 0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
                                       color: Color(0xFFC1D6EF),
-                                      borderRadius: BorderRadius.circular(0.0),
+                                      borderRadius: BorderRadius.circular(0),
                                       border: Border.all(
                                         color: Color(0xFFC1D6EF),
                                       ),
@@ -284,8 +285,8 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                         children: [
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 20.0, 30.0, 0.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                30, 20, 30, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -295,17 +296,17 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                     'm24x7hjn' /* Shipping Address */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'HeeboBold',
-                                                        color:
-                                                            Color(0xFF092853),
-                                                        fontSize: 16.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                                    fontFamily: 'HeeboBold',
+                                                    color:
+                                                    Color(0xFF092853),
+                                                    fontSize: 16,
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                    useGoogleFonts: false,
+                                                  ),
                                                 ),
                                               ],
                                             ),
@@ -314,12 +315,11 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                             opacity: 0.8,
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 20.0, 30.0, 0.0),
+                                                  .fromSTEB(30, 20, 30, 0),
                                               child:
-                                                  FlutterFlowDropDown<String>(
+                                              FlutterFlowDropDown<String>(
                                                 controller: _model
-                                                        .dropDownValueController ??=
+                                                    .dropDownValueController ??=
                                                     FormFieldController<String>(
                                                         null),
                                                 options: _model
@@ -331,32 +331,31 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                       .dropDownValue = val);
                                                   setState(() {
                                                     _model.selectedCityModelString =
-                                                        _model.dropDownValue!;
+                                                    _model.dropDownValue!;
                                                   });
                                                 },
                                                 width: double.infinity,
                                                 textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium,
                                                 hintText: _model
                                                     .selectedCityModelString,
                                                 icon: Icon(
                                                   Icons.arrow_drop_down,
                                                   color: FlutterFlowTheme.of(
-                                                          context)
+                                                      context)
                                                       .secondaryText,
-                                                  size: 24.0,
+                                                  size: 24,
                                                 ),
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .white,
-                                                elevation: 2.0,
+                                                FlutterFlowTheme.of(context)
+                                                    .white,
+                                                elevation: 2,
                                                 borderColor: Color(0xFF646464),
-                                                borderWidth: 1.0,
-                                                borderRadius: 8.0,
+                                                borderWidth: 1,
+                                                borderRadius: 8,
                                                 margin: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        16.0, 4.0, 16.0, 4.0),
+                                                    .fromSTEB(16, 4, 16, 4),
                                                 hidesUnderline: true,
                                                 isSearchable: false,
                                                 isMultiSelect: false,
@@ -365,79 +364,75 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 20.0, 30.0, 0.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                30, 20, 30, 0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController1,
+                                              _model.textController1,
                                               focusNode:
-                                                  _model.textFieldFocusNode1,
+                                              _model.textFieldFocusNode1,
                                               textInputAction:
-                                                  TextInputAction.next,
+                                              TextInputAction.next,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
+                                                FFLocalizations.of(context)
+                                                    .getText(
                                                   'n66nkzcb' /* Your Name Here */,
                                                 ),
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 enabledBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedErrorBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .white,
+                                                FlutterFlowTheme.of(context)
+                                                    .white,
                                               ),
                                               style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium,
                                               validator: _model
                                                   .textController1Validator
                                                   .asValidator(context),
@@ -445,81 +440,77 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 20.0, 30.0, 0.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                30, 20, 30, 0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController2,
+                                              _model.textController2,
                                               focusNode:
-                                                  _model.textFieldFocusNode2,
+                                              _model.textFieldFocusNode2,
                                               textInputAction:
-                                                  TextInputAction.next,
+                                              TextInputAction.next,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
+                                                FFLocalizations.of(context)
+                                                    .getText(
                                                   'fxfuisg9' /* Email */,
                                                 ),
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 enabledBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedErrorBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .white,
+                                                FlutterFlowTheme.of(context)
+                                                    .white,
                                               ),
                                               style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium,
                                               keyboardType:
-                                                  TextInputType.emailAddress,
+                                              TextInputType.emailAddress,
                                               validator: _model
                                                   .textController2Validator
                                                   .asValidator(context),
@@ -527,79 +518,75 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 20.0, 30.0, 0.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                30, 20, 30, 0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController3,
+                                              _model.textController3,
                                               focusNode:
-                                                  _model.textFieldFocusNode3,
+                                              _model.textFieldFocusNode3,
                                               textInputAction:
-                                                  TextInputAction.next,
+                                              TextInputAction.next,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
+                                                FFLocalizations.of(context)
+                                                    .getText(
                                                   'wizto9iw' /* Phone Number */,
                                                 ),
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 enabledBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedErrorBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .white,
+                                                FlutterFlowTheme.of(context)
+                                                    .white,
                                               ),
                                               style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium,
                                               keyboardType: TextInputType.phone,
                                               validator: _model
                                                   .textController3Validator
@@ -608,81 +595,77 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 20.0, 30.0, 0.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                30, 20, 30, 0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController4,
+                                              _model.textController4,
                                               focusNode:
-                                                  _model.textFieldFocusNode4,
+                                              _model.textFieldFocusNode4,
                                               textInputAction:
-                                                  TextInputAction.next,
+                                              TextInputAction.next,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
+                                                FFLocalizations.of(context)
+                                                    .getText(
                                                   'ickq9vgb' /* Street Address */,
                                                 ),
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 enabledBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedErrorBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .white,
+                                                FlutterFlowTheme.of(context)
+                                                    .white,
                                               ),
                                               style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium,
                                               keyboardType:
-                                                  TextInputType.streetAddress,
+                                              TextInputType.streetAddress,
                                               validator: _model
                                                   .textController4Validator
                                                   .asValidator(context),
@@ -690,79 +673,75 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 20.0, 30.0, 0.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                30, 20, 30, 0),
                                             child: TextFormField(
                                               controller:
-                                                  _model.textController5,
+                                              _model.textController5,
                                               focusNode:
-                                                  _model.textFieldFocusNode5,
+                                              _model.textFieldFocusNode5,
                                               textInputAction:
-                                                  TextInputAction.done,
+                                              TextInputAction.done,
                                               obscureText: false,
                                               decoration: InputDecoration(
                                                 labelText:
-                                                    FFLocalizations.of(context)
-                                                        .getText(
+                                                FFLocalizations.of(context)
+                                                    .getText(
                                                   'y6n4rs3m' /* Building Number */,
                                                 ),
                                                 labelStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 hintStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .labelMedium,
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
                                                 enabledBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: Color(0xFF646464),
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 focusedErrorBorder:
-                                                    OutlineInputBorder(
+                                                OutlineInputBorder(
                                                   borderSide: BorderSide(
                                                     color: FlutterFlowTheme.of(
-                                                            context)
+                                                        context)
                                                         .error,
-                                                    width: 1.0,
+                                                    width: 1,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
+                                                  BorderRadius.circular(8),
                                                 ),
                                                 filled: true,
                                                 fillColor:
-                                                    FlutterFlowTheme.of(context)
-                                                        .white,
+                                                FlutterFlowTheme.of(context)
+                                                    .white,
                                               ),
                                               style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                              FlutterFlowTheme.of(context)
+                                                  .bodyMedium,
                                               keyboardType:
                                                   TextInputType.number,
                                               validator: _model
@@ -772,168 +751,162 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 30.5, 30.0, 0.0),
+                                            EdgeInsetsDirectional.fromSTEB(
+                                                30, 30.5, 30, 0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                              MainAxisAlignment.start,
                                               children: [
                                                 Builder(
                                                   builder: (context) =>
                                                       FFButtonWidget(
-                                                    onPressed: () async {
-                                                      _model.apiResultdip =
+                                                        onPressed: () async {
+                                                          _model.apiResultdip =
                                                           await AddAddressApiCall
                                                               .call(
-                                                        token: FFAppState()
-                                                            .userModel
-                                                            .token,
-                                                        name: _model
-                                                            .textController1
-                                                            .text,
-                                                        email: _model
-                                                            .textController2
-                                                            .text,
-                                                        phone: _model
-                                                            .textController3
-                                                            .text,
-                                                        cityId: functions
-                                                            .getCityModelByName(
+                                                            token: FFAppState()
+                                                                .userModel
+                                                                .token,
+                                                            name: _model
+                                                                .textController1
+                                                                .text,
+                                                            email: _model
+                                                                .textController2
+                                                                .text,
+                                                            phone: _model
+                                                                .textController3
+                                                                .text,
+                                                            cityId: functions
+                                                                .getCityModelByName(
                                                                 _model
                                                                     .listOfLocalDeliveryPriceModels
                                                                     .toList(),
                                                                 _model
                                                                     .selectedCityModelString)
-                                                            .id,
-                                                        streetAddress: _model
-                                                            .textController4
-                                                            .text,
-                                                        buildingNumber:
+                                                                .id,
+                                                            streetAddress: _model
+                                                                .textController4
+                                                                .text,
+                                                            buildingNumber:
                                                             int.tryParse(_model
                                                                 .textController5
                                                                 .text),
-                                                      );
-                                                      if ((_model.apiResultdip
+                                                          );
+                                                          if ((_model.apiResultdip
                                                               ?.succeeded ??
-                                                          true)) {
-                                                        context.pushNamed(
-                                                          'CartSummaryPage',
-                                                          extra: <String,
-                                                              dynamic>{
-                                                            kTransitionInfoKey:
+                                                              true)) {
+                                                            context.pushNamed(
+                                                              'CartSummaryPage',
+                                                              extra: <String,
+                                                                  dynamic>{
+                                                                kTransitionInfoKey:
                                                                 TransitionInfo(
-                                                              hasTransition:
+                                                                  hasTransition:
                                                                   true,
-                                                              transitionType:
+                                                                  transitionType:
                                                                   PageTransitionType
                                                                       .leftToRight,
-                                                              duration: Duration(
-                                                                  milliseconds:
+                                                                  duration: Duration(
+                                                                      milliseconds:
                                                                       50),
-                                                            ),
-                                                          },
-                                                        );
-                                                      } else {
-                                                        await showAlignedDialog(
-                                                          context: context,
-                                                          isGlobal: true,
-                                                          avoidOverflow: false,
-                                                          targetAnchor:
+                                                                ),
+                                                              },
+                                                            );
+                                                          } else {
+                                                            await showAlignedDialog(
+                                                              context: context,
+                                                              isGlobal: true,
+                                                              avoidOverflow: false,
+                                                              targetAnchor:
                                                               AlignmentDirectional(
-                                                                      0.0, 0.0)
+                                                                  0, 0)
                                                                   .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                          followerAnchor:
+                                                                  Directionality.of(
+                                                                      context)),
+                                                              followerAnchor:
                                                               AlignmentDirectional(
-                                                                      0.0, 0.0)
+                                                                  0, 0)
                                                                   .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                          builder:
-                                                              (dialogContext) {
-                                                            return Material(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              child:
+                                                                  Directionality.of(
+                                                                      context)),
+                                                              builder:
+                                                                  (dialogContext) {
+                                                                return Material(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  child:
                                                                   GestureDetector(
-                                                                onTap: () => _model
+                                                                    onTap: () => _model
                                                                         .unfocusNode
                                                                         .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
+                                                                        ? FocusScope.of(
+                                                                        context)
                                                                         .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
+                                                                        .unfocusNode)
+                                                                        : FocusScope.of(
+                                                                        context)
                                                                         .unfocus(),
-                                                                child:
+                                                                    child:
                                                                     Modal06BasicInformationWidget(
-                                                                  body: (_model
+                                                                      body: (_model
                                                                           .apiResultdip
                                                                           ?.bodyText ??
-                                                                      ''),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        ).then((value) =>
-                                                            setState(() {}));
-                                                      }
+                                                                          ''),
+                                                                    ),
+                                                                  ),
+                                                                );
+                                                              },
+                                                            ).then((value) =>
+                                                                setState(() {}));
+                                                          }
 
-                                                      setState(() {});
-                                                    },
-                                                    text: FFLocalizations.of(
+                                                          setState(() {});
+                                                        },
+                                                        text: FFLocalizations.of(
                                                             context)
-                                                        .getText(
-                                                      'zwca6rlo' /* Next */,
-                                                    ),
-                                                    options: FFButtonOptions(
-                                                      height: 40.0,
-                                                      padding:
+                                                            .getText(
+                                                          'zwca6rlo' /* Next */,
+                                                        ),
+                                                        options: FFButtonOptions(
+                                                          height: 40,
+                                                          padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  50.0,
-                                                                  0.0,
-                                                                  50.0,
-                                                                  0.0),
-                                                      iconPadding:
+                                                              50, 0, 50, 0),
+                                                          iconPadding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      color:
+                                                              0, 0, 0, 0),
+                                                          color:
                                                           FlutterFlowTheme.of(
-                                                                  context)
+                                                              context)
                                                               .ahayundai,
-                                                      textStyle:
+                                                          textStyle:
                                                           FlutterFlowTheme.of(
-                                                                  context)
+                                                              context)
                                                               .titleSmall
                                                               .override(
-                                                                fontFamily:
-                                                                    'Poppins',
-                                                                color: Colors
-                                                                    .white,
-                                                              ),
-                                                      borderSide: BorderSide(
-                                                        color:
+                                                            fontFamily:
+                                                            'Poppins',
+                                                            color: Colors
+                                                                .white,
+                                                          ),
+                                                          borderSide: BorderSide(
+                                                            color:
                                                             Colors.transparent,
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
+                                                            width: 1,
+                                                          ),
+                                                          borderRadius:
                                                           BorderRadius.circular(
-                                                              5.0),
-                                                    ),
-                                                  ),
+                                                              5),
+                                                        ),
+                                                      ),
                                                 ),
                                               ],
                                             ),
                                           ),
-                                        ].addToEnd(SizedBox(height: 50.0)),
+                                        ].addToEnd(SizedBox(height: 50)),
                                       ),
                                     ),
                                   ),
@@ -960,7 +933,7 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                         updateCallback: () => setState(() {}),
                         child: HyndayAppBarWidget(
                           appBarTitle:
-                              FFLocalizations.of(context).getVariableText(
+                          FFLocalizations.of(context).getVariableText(
                             enText: 'Checkout',
                             arText: 'الدفع',
                           ),

@@ -1,3 +1,7 @@
+import 'package:hyperpay_plugin/flutter_hyperpay.dart';
+import 'package:hyperpay_plugin/model/ready_ui.dart';
+
+import '../shipping_address_page/in_app_payment_setting.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -28,6 +32,7 @@ class SheckOutPagePageWidget extends StatefulWidget {
 class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     with TickerProviderStateMixin {
   late SheckOutPagePageModel _model;
+  late FlutterHyperPay flutterHyperPay;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -50,6 +55,16 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => SheckOutPagePageModel());
+
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      flutterHyperPay = FlutterHyperPay(
+        shopperResultUrl: InAppPaymentSetting.shopperResultUrl,
+        // return back to app
+        paymentMode: PaymentMode.test,
+        // test or live
+        lang: InAppPaymentSetting.getLang(),
+      );
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -841,5 +856,71 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
         ),
       ),
     );
+  }
+
+  payRequestNowReadyUI({required String checkoutId}) async {
+    await flutterHyperPay
+        .readyUICards(
+      readyUI: ReadyUI(
+          brandsName: ["VISA", "MASTER"],
+          checkoutId: checkoutId,
+          themColorHexIOS: "#000000", // FOR IOS ONLY
+          setStorePaymentDetailsMode:
+              true // store payment details for future use
+          ),
+    )
+        .then((value) async {
+      if (value.errorString?.isNotEmpty == true && value.errorString != null) {
+        await showDialog(
+            context: context,
+            builder: (alertDialogContext) {
+              return AlertDialog(
+                title: Text(FFLocalizations.of(context).getVariableText(
+                  enText: 'Error',
+                  arText: 'مشكلة خادم',
+                )),
+                content:
+                    Text('${value.errorString} , ${value.paymentResult.name}'),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(alertDialogContext),
+                    child: Text(FFLocalizations.of(context).getVariableText(
+                      enText: 'Ok',
+                      arText: 'حسنا',
+                    )),
+                  ),
+                ],
+              );
+            });
+      } else {
+        _model.apiResult8am = await GetPaymentStatusApiCall.call(
+          token: FFAppState().userModel.token,
+        );
+        if ((_model.apiResult8am?.succeeded ?? true)) {
+          await showAlignedDialog(
+            context: context,
+            isGlobal: true,
+            avoidOverflow: false,
+            targetAnchor: AlignmentDirectional(0.0, 0.0)
+                .resolve(Directionality.of(context)),
+            followerAnchor: AlignmentDirectional(0.0, 0.0)
+                .resolve(Directionality.of(context)),
+            builder: (dialogContext) {
+              return Material(
+                color: Colors.transparent,
+                child: GestureDetector(
+                  onTap: () => _model.unfocusNode.canRequestFocus
+                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                      : FocusScope.of(context).unfocus(),
+                  child: ThankYouComponentWidget(),
+                ),
+              );
+            },
+          ).then((value) => setState(() {
+                context.pushReplacementNamed('HomeScreen');
+              }));
+        }
+      }
+    });
   }
 }
