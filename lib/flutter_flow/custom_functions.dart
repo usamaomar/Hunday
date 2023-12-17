@@ -398,7 +398,7 @@ CartItemModelStruct convertFromJsonToCartObject(dynamic jsonObject) {
       cartItems: convertFromJsonListToCarttList(jsonObject['cartItems']),
       subTotal: jsonObject['subTotal'].toDouble(),
       tax: jsonObject['tax'].toString(),
-      shippingCost: jsonObject['shippingCost'],
+      shippingCost: jsonObject['shippingCost'].toDouble(),
       discountRate: jsonObject['discountRate'].toString(),
       couponCode: jsonObject['couponCode'],
       totalPrice: jsonObject['totalPrice'].toDouble());
