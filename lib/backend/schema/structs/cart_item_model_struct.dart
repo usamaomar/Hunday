@@ -12,11 +12,15 @@ class CartItemModelStruct extends BaseStruct {
     double? subTotal,
     String? tax,
     double? shippingCost,
+    String? discountRate,
+    String? couponCode,
   })  : _totalPrice = totalPrice,
         _cartItems = cartItems,
         _subTotal = subTotal,
         _tax = tax,
-        _shippingCost = shippingCost;
+        _shippingCost = shippingCost,
+        _discountRate = discountRate,
+        _couponCode = couponCode;
 
   // "totalPrice" field.
   double? _totalPrice;
@@ -54,6 +58,18 @@ class CartItemModelStruct extends BaseStruct {
       _shippingCost = shippingCost + amount;
   bool hasShippingCost() => _shippingCost != null;
 
+  // "discountRate" field.
+  String? _discountRate;
+  String get discountRate => _discountRate ?? '';
+  set discountRate(String? val) => _discountRate = val;
+  bool hasDiscountRate() => _discountRate != null;
+
+  // "couponCode" field.
+  String? _couponCode;
+  String get couponCode => _couponCode ?? '';
+  set couponCode(String? val) => _couponCode = val;
+  bool hasCouponCode() => _couponCode != null;
+
   static CartItemModelStruct fromMap(Map<String, dynamic> data) =>
       CartItemModelStruct(
         totalPrice: castToType<double>(data['totalPrice']),
@@ -64,6 +80,8 @@ class CartItemModelStruct extends BaseStruct {
         subTotal: castToType<double>(data['subTotal']),
         tax: data['tax'] as String?,
         shippingCost: castToType<double>(data['shippingCost']),
+        discountRate: data['discountRate'] as String?,
+        couponCode: data['couponCode'] as String?,
       );
 
   static CartItemModelStruct? maybeFromMap(dynamic data) =>
@@ -75,6 +93,8 @@ class CartItemModelStruct extends BaseStruct {
         'subTotal': _subTotal,
         'tax': _tax,
         'shippingCost': _shippingCost,
+        'discountRate': _discountRate,
+        'couponCode': _couponCode,
       }.withoutNulls;
 
   @override
@@ -99,6 +119,14 @@ class CartItemModelStruct extends BaseStruct {
         'shippingCost': serializeParam(
           _shippingCost,
           ParamType.double,
+        ),
+        'discountRate': serializeParam(
+          _discountRate,
+          ParamType.String,
+        ),
+        'couponCode': serializeParam(
+          _couponCode,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -130,6 +158,16 @@ class CartItemModelStruct extends BaseStruct {
           ParamType.double,
           false,
         ),
+        discountRate: deserializeParam(
+          data['discountRate'],
+          ParamType.String,
+          false,
+        ),
+        couponCode: deserializeParam(
+          data['couponCode'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -143,12 +181,21 @@ class CartItemModelStruct extends BaseStruct {
         listEquality.equals(cartItems, other.cartItems) &&
         subTotal == other.subTotal &&
         tax == other.tax &&
-        shippingCost == other.shippingCost;
+        shippingCost == other.shippingCost &&
+        discountRate == other.discountRate &&
+        couponCode == other.couponCode;
   }
 
   @override
-  int get hashCode => const ListEquality()
-      .hash([totalPrice, cartItems, subTotal, tax, shippingCost]);
+  int get hashCode => const ListEquality().hash([
+        totalPrice,
+        cartItems,
+        subTotal,
+        tax,
+        shippingCost,
+        discountRate,
+        couponCode
+      ]);
 }
 
 CartItemModelStruct createCartItemModelStruct({
@@ -156,10 +203,14 @@ CartItemModelStruct createCartItemModelStruct({
   double? subTotal,
   String? tax,
   double? shippingCost,
+  String? discountRate,
+  String? couponCode,
 }) =>
     CartItemModelStruct(
       totalPrice: totalPrice,
       subTotal: subTotal,
       tax: tax,
       shippingCost: shippingCost,
+      discountRate: discountRate,
+      couponCode: couponCode,
     );

@@ -792,6 +792,22 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Discounted item—no additional coupons apply',
       'ar': 'منتج مخفض - لا تنطبق كوبونات إضافية',
     },
+    'w5s8atya': {
+      'en': 'Discount Code',
+      'ar': 'الرقم التسلسلي للخصم',
+    },
+    'afzcb7rj': {
+      'en': 'Label here...',
+      'ar': '',
+    },
+    'e4uz6sgz': {
+      'en': 'Invalid Coupon Code',
+      'ar': 'رقم قسيمه غير صالح',
+    },
+    'dzu6yv39': {
+      'en': 'Apply coupon',
+      'ar': 'تطبيق القسيمة',
+    },
     'fq044a94': {
       'en': 'Discount Code',
       'ar': 'الرقم التسلسلي للخصم',
@@ -802,14 +818,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'k2htpnfe': {
       'en': 'Discount',
-      'ar': 'تخفيض',
-    },
-    'xv0jmhij': {
-      'en': '8888',
-      'ar': 'رمز الكوبون',
-    },
-    'onouedto': {
-      'en': '15%',
       'ar': 'تخفيض',
     },
     'p2uap002': {
@@ -831,10 +839,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'qjum9ia7': {
       'en': 'Coupon ( 15% )',
       'ar': 'قسيمة ( 15%)',
-    },
-    'mhht1ka4': {
-      'en': '180',
-      'ar': '',
     },
     '0gl4jwe1': {
       'en': 'Total Cost',
@@ -1010,7 +1014,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الدفع عند الاستلام',
     },
     'nmxvz08q': {
-      'en': 'By clicking the button you agree to our ',
+      'en': 'By clicking the button you agree to',
       'ar': 'بالنقر على الزر فإنك توافق على لدينا',
     },
     'c4kn7j9t': {
@@ -1018,8 +1022,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'البنود و الظروف',
     },
     '7cavw78u': {
-      'en': 'Next',
-      'ar': 'التالي',
+      'en': 'Complete your purchase',
+      'ar': 'اتمام عملية الشراء',
     },
     'ztueekub': {
       'en': 'Home',
