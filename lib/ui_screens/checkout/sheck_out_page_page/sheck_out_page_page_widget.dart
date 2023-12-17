@@ -511,18 +511,24 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                         Color(0xEBFFFFFF),
                                                   ),
                                                 ),
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'nmxvz08q' /* By clicking the button you agr... */,
+                                                Flexible(
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'nmxvz08q' /* By clicking the button you agr... */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'HeeboBold',
+                                                          fontSize: 14.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 12.0,
-                                                      ),
                                                 ),
                                               ],
                                             ),
@@ -577,7 +583,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
-                                                  MainAxisAlignment.start,
+                                                  MainAxisAlignment.center,
                                               children: [
                                                 Builder(
                                                   builder: (context) =>
@@ -702,6 +708,40 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                           context.goNamed(
                                                               'HomeScreen');
                                                         } else {
+                                                          await showDialog(
+                                                            context: context,
+                                                            builder:
+                                                                (alertDialogContext) {
+                                                              return AlertDialog(
+                                                                title: Text(FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                  enText:
+                                                                      'Aleart',
+                                                                  arText:
+                                                                      'تنبيه',
+                                                                )),
+                                                                content: Text(
+                                                                    FFLocalizations.of(
+                                                                            context)
+                                                                        .getVariableText(
+                                                                  enText:
+                                                                      'Please select payment method',
+                                                                  arText:
+                                                                      'قم بأختيار طريقة للدفع',
+                                                                )),
+                                                                actions: [
+                                                                  TextButton(
+                                                                    onPressed: () =>
+                                                                        Navigator.pop(
+                                                                            alertDialogContext),
+                                                                    child: Text(
+                                                                        'Ok'),
+                                                                  ),
+                                                                ],
+                                                              );
+                                                            },
+                                                          );
                                                           if (_shouldSetState)
                                                             setState(() {});
                                                           return;
@@ -752,7 +792,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                     text: FFLocalizations.of(
                                                             context)
                                                         .getText(
-                                                      '7cavw78u' /* Next */,
+                                                      '7cavw78u' /* Complete your purchase */,
                                                     ),
                                                     options: FFButtonOptions(
                                                       height: 40.0,

@@ -23,11 +23,25 @@ class CartSummaryPageModel extends FlutterFlowModel<CartSummaryPageWidget> {
   void updateCartObjectStruct(Function(CartItemModelStruct) updateFn) =>
       updateFn(cartObject ??= CartItemModelStruct());
 
+  bool addingCouponeIsSuccess = true;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - API (getMyCartApi)] action in CartSummaryPage widget.
   ApiCallResponse? apiResult3z0;
+  // State field(s) for TextField widget.
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
+  // Stores action output result for [Backend Call - API (addCouponApi)] action in Button widget.
+  ApiCallResponse? apiResult5gw;
+  // Stores action output result for [Backend Call - API (getMyCartApi)] action in Button widget.
+  ApiCallResponse? apiResult3z0cc;
+  // Stores action output result for [Backend Call - API (removeCouponApi)] action in Text widget.
+  ApiCallResponse? apiResultw5l;
+  // Stores action output result for [Backend Call - API (getMyCartApi)] action in Text widget.
+  ApiCallResponse? apiResult3z0vcvcv;
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
 
@@ -39,6 +53,9 @@ class CartSummaryPageModel extends FlutterFlowModel<CartSummaryPageWidget> {
 
   void dispose() {
     unfocusNode.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
+
     hyndayAppBarModel.dispose();
   }
 

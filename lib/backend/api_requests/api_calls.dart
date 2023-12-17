@@ -1230,6 +1230,58 @@ class CashOnDeliveryApiCall {
   }
 }
 
+class AddCouponApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? couponCode = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "coupon_code": "${couponCode}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'addCouponApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/addCoupon',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
+class RemoveCouponApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'removeCouponApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/removeCoupon',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      bodyType: BodyType.NONE,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class ApiPagingParams {
   int nextPageNumber = 0;
   int numItems = 0;

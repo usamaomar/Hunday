@@ -32,6 +32,18 @@ class FFAppState extends ChangeNotifier {
       }
     });
     _safeInit(() {
+      _newsModelJsonList =
+          prefs.getStringList('ff_newsModelJsonList')?.map((x) {
+                try {
+                  return jsonDecode(x);
+                } catch (e) {
+                  print("Can't decode persisted json. Error: $e.");
+                  return {};
+                }
+              }).toList() ??
+              _newsModelJsonList;
+    });
+    _safeInit(() {
       _sliderList = prefs.getStringList('ff_sliderList')?.map((x) {
             try {
               return jsonDecode(x);
@@ -168,18 +180,26 @@ class FFAppState extends ChangeNotifier {
   List<dynamic> get newsModelJsonList => _newsModelJsonList;
   set newsModelJsonList(List<dynamic> _value) {
     _newsModelJsonList = _value;
+    prefs.setStringList(
+        'ff_newsModelJsonList', _value.map((x) => jsonEncode(x)).toList());
   }
 
   void addToNewsModelJsonList(dynamic _value) {
     _newsModelJsonList.add(_value);
+    prefs.setStringList('ff_newsModelJsonList',
+        _newsModelJsonList.map((x) => jsonEncode(x)).toList());
   }
 
   void removeFromNewsModelJsonList(dynamic _value) {
     _newsModelJsonList.remove(_value);
+    prefs.setStringList('ff_newsModelJsonList',
+        _newsModelJsonList.map((x) => jsonEncode(x)).toList());
   }
 
   void removeAtIndexFromNewsModelJsonList(int _index) {
     _newsModelJsonList.removeAt(_index);
+    prefs.setStringList('ff_newsModelJsonList',
+        _newsModelJsonList.map((x) => jsonEncode(x)).toList());
   }
 
   void updateNewsModelJsonListAtIndex(
@@ -187,10 +207,14 @@ class FFAppState extends ChangeNotifier {
     dynamic Function(dynamic) updateFn,
   ) {
     _newsModelJsonList[_index] = updateFn(_newsModelJsonList[_index]);
+    prefs.setStringList('ff_newsModelJsonList',
+        _newsModelJsonList.map((x) => jsonEncode(x)).toList());
   }
 
   void insertAtIndexInNewsModelJsonList(int _index, dynamic _value) {
     _newsModelJsonList.insert(_index, _value);
+    prefs.setStringList('ff_newsModelJsonList',
+        _newsModelJsonList.map((x) => jsonEncode(x)).toList());
   }
 
   List<dynamic> _sharedLocationsJsonList = [];

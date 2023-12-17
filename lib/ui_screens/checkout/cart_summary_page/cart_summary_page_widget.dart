@@ -63,6 +63,9 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
       }
     });
 
+    _model.textController ??= TextEditingController();
+    _model.textFieldFocusNode ??= FocusNode();
+
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -350,10 +353,12 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                           ),
                                                                         ),
                                                                         Text(
-                                                                          listCartItemItem
-                                                                              .part
-                                                                              .price
-                                                                              .toString(),
+                                                                          '${(listCartItemItem.part.specialPrice != null) && (listCartItemItem.part.specialPrice > 0.0) ? listCartItemItem.part.specialPrice.toString() : listCartItemItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                            enText:
+                                                                                'JD',
+                                                                            arText:
+                                                                                'د.أ',
+                                                                          )}',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -388,289 +393,656 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                               ),
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 20.0, 30.0, 0.0),
-                                            child: ClipRRect(
-                                              borderRadius:
-                                                  BorderRadius.circular(8.0),
-                                              child: Container(
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  border: Border.all(
-                                                    color: Color(0xFF3D6398),
-                                                  ),
-                                                ),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsets.all(15.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'fq044a94' /* Discount Code */,
-                                                        ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'HeeboBold',
-                                                                  color: Color(
-                                                                      0xFF092853),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  0.0,
-                                                                  15.0,
-                                                                  15.0),
-                                                      child: Container(
-                                                        decoration:
-                                                            BoxDecoration(
+                                          Stack(
+                                            children: [
+                                              if (_model.cartObject
+                                                          ?.couponCode ==
+                                                      null ||
+                                                  _model.cartObject
+                                                          ?.couponCode ==
+                                                      '')
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(30.0, 20.0,
+                                                          30.0, 0.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0xFFC1D6EF),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        border: Border.all(
                                                           color:
                                                               Color(0xFF3D6398),
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      5.0),
                                                         ),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Flexible(
-                                                              child: Column(
+                                                      ),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    15.0),
+                                                            child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'w5s8atya' /* Discount Code */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'HeeboBold',
+                                                                    color: Color(
+                                                                        0xFF092853),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    useGoogleFonts:
+                                                                        false,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: 35.0,
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Padding(
+                                                              padding:
+                                                                  EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          8.0,
+                                                                          0.0,
+                                                                          8.0,
+                                                                          0.0),
+                                                              child:
+                                                                  TextFormField(
+                                                                controller: _model
+                                                                    .textController,
+                                                                focusNode: _model
+                                                                    .textFieldFocusNode,
+                                                                autofocus: true,
+                                                                obscureText:
+                                                                    false,
+                                                                decoration:
+                                                                    InputDecoration(
+                                                                  labelText: FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'afzcb7rj' /* Label here... */,
+                                                                  ),
+                                                                  labelStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium,
+                                                                  hintStyle: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .labelMedium,
+                                                                  enabledBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .buttonDisabled,
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            0.0),
+                                                                  ),
+                                                                  focusedBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .primary,
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            0.0),
+                                                                  ),
+                                                                  errorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            0.0),
+                                                                  ),
+                                                                  focusedErrorBorder:
+                                                                      OutlineInputBorder(
+                                                                    borderSide:
+                                                                        BorderSide(
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .error,
+                                                                      width:
+                                                                          2.0,
+                                                                    ),
+                                                                    borderRadius:
+                                                                        BorderRadius.circular(
+                                                                            0.0),
+                                                                  ),
+                                                                  filled: true,
+                                                                  fillColor: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium,
+                                                                validator: _model
+                                                                    .textControllerValidator
+                                                                    .asValidator(
+                                                                        context),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Container(
+                                                            height: 40.0,
+                                                            decoration:
+                                                                BoxDecoration(),
+                                                            child: Visibility(
+                                                              visible: _model
+                                                                      .addingCouponeIsSuccess ==
+                                                                  false,
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        10.0,
+                                                                        15.0,
+                                                                        10.0),
+                                                                child: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                    'e4uz6sgz' /* Invalid Coupon Code */,
+                                                                  ),
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Heebo Regular',
+                                                                        color: Color(
+                                                                            0xFFD60000),
+                                                                        fontSize:
+                                                                            15.0,
+                                                                        fontWeight:
+                                                                            FontWeight.w500,
+                                                                        useGoogleFonts:
+                                                                            false,
+                                                                      ),
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        10.0,
+                                                                        10.0,
+                                                                        0.0,
+                                                                        15.0),
+                                                            child:
+                                                                FFButtonWidget(
+                                                              onPressed:
+                                                                  () async {
+                                                                _model.apiResult5gw =
+                                                                    await AddCouponApiCall
+                                                                        .call(
+                                                                  token: FFAppState()
+                                                                      .userModel
+                                                                      .token,
+                                                                  couponCode: _model
+                                                                      .textController
+                                                                      .text,
+                                                                );
+                                                                if ((_model
+                                                                        .apiResult5gw
+                                                                        ?.succeeded ??
+                                                                    true)) {
+                                                                  if (getJsonField(
+                                                                        (_model.apiResult5gw?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.error''',
+                                                                      ) ==
+                                                                      null) {
+                                                                    setState(
+                                                                        () {
+                                                                      _model.addingCouponeIsSuccess =
+                                                                          true;
+                                                                    });
+                                                                    _model.apiResult3z0cc =
+                                                                        await GetMyCartApiCall
+                                                                            .call(
+                                                                      token: FFAppState()
+                                                                          .userModel
+                                                                          .token,
+                                                                    );
+                                                                    if ((_model
+                                                                            .apiResult3z0cc
+                                                                            ?.succeeded ??
+                                                                        true)) {
+                                                                      setState(
+                                                                          () {
+                                                                        _model
+                                                                            .cartObject = functions.convertFromJsonToCartObject((_model
+                                                                                .apiResult3z0cc?.jsonBody ??
+                                                                            ''));
+                                                                      });
+                                                                    }
+                                                                  } else {
+                                                                    setState(
+                                                                        () {
+                                                                      _model.addingCouponeIsSuccess =
+                                                                          false;
+                                                                    });
+                                                                  }
+                                                                } else {
+                                                                  setState(() {
+                                                                    _model.addingCouponeIsSuccess =
+                                                                        false;
+                                                                  });
+                                                                }
+
+                                                                setState(() {});
+                                                              },
+                                                              text: FFLocalizations
+                                                                      .of(context)
+                                                                  .getText(
+                                                                'dzu6yv39' /* Apply coupon */,
+                                                              ),
+                                                              options:
+                                                                  FFButtonOptions(
+                                                                height: 40.0,
+                                                                padding: EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        24.0,
+                                                                        0.0,
+                                                                        24.0,
+                                                                        0.0),
+                                                                iconPadding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                color: Color(
+                                                                    0xFF3D6398),
+                                                                textStyle: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .titleSmall
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'HeeboBold',
+                                                                      color: Colors
+                                                                          .white,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .w600,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
+                                                                elevation: 3.0,
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Colors
+                                                                      .transparent,
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ],
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
+                                              if (_model.cartObject
+                                                          ?.couponCode !=
+                                                      null &&
+                                                  _model.cartObject
+                                                          ?.couponCode !=
+                                                      '')
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(30.0, 20.0,
+                                                          30.0, 0.0),
+                                                  child: ClipRRect(
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            8.0),
+                                                    child: Container(
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0xFFC1D6EF),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        border: Border.all(
+                                                          color:
+                                                              Color(0xFF3D6398),
+                                                        ),
+                                                      ),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsets.all(
+                                                                    15.0),
+                                                            child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                'fq044a94' /* Discount Code */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'HeeboBold',
+                                                                    color: Color(
+                                                                        0xFF092853),
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    useGoogleFonts:
+                                                                        false,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        0.0,
+                                                                        15.0,
+                                                                        15.0),
+                                                            child: Container(
+                                                              decoration:
+                                                                  BoxDecoration(
+                                                                color: Color(
+                                                                    0xFF3D6398),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0),
+                                                              ),
+                                                              child: Row(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
                                                                 children: [
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
+                                                                  Flexible(
+                                                                    child:
+                                                                        Column(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .max,
+                                                                      crossAxisAlignment:
+                                                                          CrossAxisAlignment
+                                                                              .start,
+                                                                      children: [
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15.0,
+                                                                              10.0,
+                                                                              0.0,
+                                                                              10.0),
+                                                                          child:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'bgg33jaj' /* Coupon Code */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Heebo Regular',
+                                                                                  color: FlutterFlowTheme.of(context).white,
+                                                                                  fontSize: 13.0,
+                                                                                  fontWeight: FontWeight.normal,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                        Divider(
+                                                                          height:
+                                                                              1.0,
+                                                                          thickness:
+                                                                              1.0,
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).white,
+                                                                        ),
+                                                                        Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15.0,
+                                                                              10.0,
+                                                                              0.0,
+                                                                              10.0),
+                                                                          child:
+                                                                              Text(
+                                                                            FFLocalizations.of(context).getText(
+                                                                              'k2htpnfe' /* Discount */,
+                                                                            ),
+                                                                            style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                  fontFamily: 'Heebo Regular',
+                                                                                  color: FlutterFlowTheme.of(context).white,
+                                                                                  fontSize: 13.0,
+                                                                                  fontWeight: FontWeight.normal,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ),
+                                                                  SizedBox(
+                                                                    height:
+                                                                        90.0,
+                                                                    child:
+                                                                        VerticalDivider(
+                                                                      width:
+                                                                          0.0,
+                                                                      thickness:
+                                                                          1.0,
+                                                                      color: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .accent4,
+                                                                    ),
+                                                                  ),
+                                                                  Column(
+                                                                    mainAxisSize:
+                                                                        MainAxisSize
+                                                                            .max,
+                                                                    crossAxisAlignment:
+                                                                        CrossAxisAlignment
+                                                                            .start,
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            15.0,
+                                                                            10.0,
+                                                                            15.0,
+                                                                            10.0),
+                                                                        child:
+                                                                            Text(
+                                                                          _model
+                                                                              .cartObject!
+                                                                              .couponCode,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Heebo Regular',
+                                                                                color: FlutterFlowTheme.of(context).white,
+                                                                                fontSize: 13.0,
+                                                                                fontWeight: FontWeight.normal,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                      Container(
+                                                                        width:
+                                                                            60.0,
+                                                                        height:
+                                                                            1.0,
+                                                                        decoration:
+                                                                            BoxDecoration(
+                                                                          color:
+                                                                              FlutterFlowTheme.of(context).secondaryBackground,
+                                                                        ),
+                                                                      ),
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             15.0,
                                                                             10.0,
                                                                             0.0,
                                                                             10.0),
-                                                                    child: Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'bgg33jaj' /* Coupon Code */,
-                                                                      ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Heebo Regular',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).white,
-                                                                            fontSize:
-                                                                                13.0,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            useGoogleFonts:
-                                                                                false,
+                                                                        child:
+                                                                            Text(
+                                                                          valueOrDefault<
+                                                                              String>(
+                                                                            _model.cartObject?.discountRate,
+                                                                            '0%',
                                                                           ),
-                                                                    ),
-                                                                  ),
-                                                                  Divider(
-                                                                    height: 1.0,
-                                                                    thickness:
-                                                                        1.0,
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .white,
-                                                                  ),
-                                                                  Padding(
-                                                                    padding: EdgeInsetsDirectional
-                                                                        .fromSTEB(
-                                                                            15.0,
-                                                                            10.0,
-                                                                            0.0,
-                                                                            10.0),
-                                                                    child: Text(
-                                                                      FFLocalizations.of(
-                                                                              context)
-                                                                          .getText(
-                                                                        'k2htpnfe' /* Discount */,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Heebo Regular',
+                                                                                color: FlutterFlowTheme.of(context).white,
+                                                                                fontSize: 13.0,
+                                                                                fontWeight: FontWeight.normal,
+                                                                                useGoogleFonts: false,
+                                                                              ),
+                                                                        ),
                                                                       ),
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Heebo Regular',
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).white,
-                                                                            fontSize:
-                                                                                13.0,
-                                                                            fontWeight:
-                                                                                FontWeight.normal,
-                                                                            useGoogleFonts:
-                                                                                false,
-                                                                          ),
-                                                                    ),
+                                                                    ],
                                                                   ),
                                                                 ],
                                                               ),
                                                             ),
-                                                            SizedBox(
-                                                              height: 90.0,
-                                                              child:
-                                                                  VerticalDivider(
-                                                                width: 0.0,
-                                                                thickness: 1.0,
-                                                                color: FlutterFlowTheme.of(
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        15.0,
+                                                                        0.0,
+                                                                        15.0,
+                                                                        15.0),
+                                                            child: InkWell(
+                                                              splashColor: Colors
+                                                                  .transparent,
+                                                              focusColor: Colors
+                                                                  .transparent,
+                                                              hoverColor: Colors
+                                                                  .transparent,
+                                                              highlightColor:
+                                                                  Colors
+                                                                      .transparent,
+                                                              onTap: () async {
+                                                                _model.apiResultw5l =
+                                                                    await RemoveCouponApiCall
+                                                                        .call(
+                                                                  token: FFAppState()
+                                                                      .userModel
+                                                                      .token,
+                                                                );
+                                                                if ((_model
+                                                                        .apiResultw5l
+                                                                        ?.succeeded ??
+                                                                    true)) {
+                                                                  _model.apiResult3z0vcvcv =
+                                                                      await GetMyCartApiCall
+                                                                          .call(
+                                                                    token: FFAppState()
+                                                                        .userModel
+                                                                        .token,
+                                                                  );
+                                                                  if ((_model
+                                                                          .apiResult3z0vcvcv
+                                                                          ?.succeeded ??
+                                                                      true)) {
+                                                                    setState(
+                                                                        () {
+                                                                      _model
+                                                                          .cartObject = functions.convertFromJsonToCartObject((_model
+                                                                              .apiResult3z0vcvcv
+                                                                              ?.jsonBody ??
+                                                                          ''));
+                                                                    });
+                                                                  }
+                                                                }
+
+                                                                setState(() {});
+                                                              },
+                                                              child: Text(
+                                                                FFLocalizations.of(
                                                                         context)
-                                                                    .accent4,
+                                                                    .getText(
+                                                                  'p2uap002' /* Remove Coupon */,
+                                                                ),
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'HeeboBold',
+                                                                      color: Color(
+                                                                          0xFFD60000),
+                                                                      fontSize:
+                                                                          13.0,
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      decoration:
+                                                                          TextDecoration
+                                                                              .underline,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
                                                               ),
                                                             ),
-                                                            Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .start,
-                                                              children: [
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          15.0,
-                                                                          10.0,
-                                                                          15.0,
-                                                                          10.0),
-                                                                  child: Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'xv0jmhij' /* 8888 */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Heebo Regular',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).white,
-                                                                          fontSize:
-                                                                              13.0,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                                Container(
-                                                                  width: 60.0,
-                                                                  height: 1.0,
-                                                                  decoration:
-                                                                      BoxDecoration(
-                                                                    color: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .secondaryBackground,
-                                                                  ),
-                                                                ),
-                                                                Padding(
-                                                                  padding: EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          15.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          10.0),
-                                                                  child: Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      'onouedto' /* 15% */,
-                                                                    ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Heebo Regular',
-                                                                          color:
-                                                                              FlutterFlowTheme.of(context).white,
-                                                                          fontSize:
-                                                                              13.0,
-                                                                          fontWeight:
-                                                                              FontWeight.normal,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
-                                                        ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  0.0,
-                                                                  15.0,
-                                                                  15.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'p2uap002' /* Remove Coupon */,
-                                                        ),
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'HeeboBold',
-                                                              color: Color(
-                                                                  0xFFD60000),
-                                                              fontSize: 13.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              decoration:
-                                                                  TextDecoration
-                                                                      .underline,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
+                                            ],
                                           ),
                                           Padding(
                                             padding:
@@ -698,8 +1070,10 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  _model.cartObject!.subTotal
-                                                      .toString(),
+                                                  '${_model.cartObject?.subTotal.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                    enText: 'JD',
+                                                    arText: 'د.أ',
+                                                  )}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -741,9 +1115,10 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  _model
-                                                      .cartObject!.shippingCost
-                                                      .toString(),
+                                                  '${_model.cartObject?.shippingCost.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                    enText: 'JD',
+                                                    arText: 'د.أ',
+                                                  )}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -785,10 +1160,13 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  valueOrDefault<String>(
+                                                  '${valueOrDefault<String>(
                                                     _model.cartObject?.tax,
                                                     '0',
-                                                  ),
+                                                  )} ${FFLocalizations.of(context).getVariableText(
+                                                    enText: 'JD',
+                                                    arText: 'د.أ',
+                                                  )}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
@@ -830,10 +1208,14 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'mhht1ka4' /* 180 */,
-                                                  ),
+                                                  '${valueOrDefault<String>(
+                                                    _model.cartObject
+                                                        ?.discountRate,
+                                                    '0%',
+                                                  )} ${FFLocalizations.of(context).getVariableText(
+                                                    enText: 'JD',
+                                                    arText: 'د.أ',
+                                                  )}',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
