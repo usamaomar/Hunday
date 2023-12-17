@@ -797,8 +797,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الرقم التسلسلي للخصم',
     },
     'afzcb7rj': {
-      'en': 'Label here...',
-      'ar': '',
+      'en': 'Add Coupon',
+      'ar': 'أضف رمز القسيمة',
     },
     'e4uz6sgz': {
       'en': 'Invalid Coupon Code',
