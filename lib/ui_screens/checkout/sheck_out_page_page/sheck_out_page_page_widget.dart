@@ -643,22 +643,8 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                             ''))
                                                                     : null;
                                                               });
-                                                            }
-                                                            _model.apiResult8am =
-                                                                await GetPaymentStatusApiCall
-                                                                    .call(
-                                                              token:
-                                                                  FFAppState()
-                                                                      .userModel
-                                                                      .token,
-                                                            );
-                                                            _shouldSetState =
-                                                                true;
-                                                            if ((_model
-                                                                    .apiResult8am
-                                                                    ?.succeeded ??
-                                                                true)) {
-                                                              setState(() {});
+                                                              payRequestNowReadyUI(checkoutId: _model
+                                                                  .paymentModel?.id ?? "null");
                                                             }
                                                           } else {
                                                             _model.apiResultmcd =
