@@ -394,37 +394,56 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      await showAlignedDialog(
-                                        barrierColor: Colors.transparent,
-                                        barrierDismissible: false,
-                                        context: context,
-                                        isGlobal: true,
-                                        avoidOverflow: false,
-                                        targetAnchor:
-                                            AlignmentDirectional(0.0, 0.0)
+                                      _model.apiResult2kt =
+                                          await VehicleApiCall.call(
+                                        token: FFAppState().userModel.token,
+                                      );
+                                      if ((_model.apiResult2kt?.succeeded ??
+                                          true)) {
+                                        if (getJsonField(
+                                              (_model.apiResult2kt?.jsonBody ??
+                                                  ''),
+                                              r'''$.vehicles''',
+                                            ) !=
+                                            null) {
+                                          context.pushNamed('ShopPage');
+                                        } else {
+                                          await showAlignedDialog(
+                                            barrierColor: Colors.transparent,
+                                            barrierDismissible: false,
+                                            context: context,
+                                            isGlobal: true,
+                                            avoidOverflow: false,
+                                            targetAnchor: AlignmentDirectional(
+                                                    0.0, 0.0)
                                                 .resolve(
                                                     Directionality.of(context)),
-                                        followerAnchor:
-                                            AlignmentDirectional(0.0, 0.0)
-                                                .resolve(
-                                                    Directionality.of(context)),
-                                        builder: (dialogContext) {
-                                          return Material(
-                                            color: Colors.transparent,
-                                            child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
-                                                      .unfocus(),
-                                              child:
-                                                  ScannedCardAnimationComponentWidget(),
-                                            ),
-                                          );
-                                        },
-                                      ).then((value) => setState(() {}));
+                                            followerAnchor:
+                                                AlignmentDirectional(0.0, 0.0)
+                                                    .resolve(Directionality.of(
+                                                        context)),
+                                            builder: (dialogContext) {
+                                              return Material(
+                                                color: Colors.transparent,
+                                                child: GestureDetector(
+                                                  onTap: () => _model
+                                                          .unfocusNode
+                                                          .canRequestFocus
+                                                      ? FocusScope.of(context)
+                                                          .requestFocus(_model
+                                                              .unfocusNode)
+                                                      : FocusScope.of(context)
+                                                          .unfocus(),
+                                                  child:
+                                                      ScannedCardAnimationComponentWidget(),
+                                                ),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+                                        }
+                                      }
+
+                                      setState(() {});
                                     },
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,

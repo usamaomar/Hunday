@@ -51,6 +51,9 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
 
   int carouselCurrentIndex = 1;
 
+  // Stores action output result for [Backend Call - API (VehicleApi)] action in Column widget.
+  ApiCallResponse? apiResult2kt;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
