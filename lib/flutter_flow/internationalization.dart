@@ -1009,9 +1009,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cash on Delivery',
       'ar': 'الدفع عند الاستلام',
     },
-    '1q7o3z7p': {
+    'nmxvz08q': {
       'en': 'By clicking the button you agree to our ',
-      'ar': 'بالنقر على الزر فإنك توافق على',
+      'ar': 'بالنقر على الزر فإنك توافق على لدينا',
     },
     'c4kn7j9t': {
       'en': 'Terms & Conditions',

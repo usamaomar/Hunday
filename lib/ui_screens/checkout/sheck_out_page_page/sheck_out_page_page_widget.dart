@@ -1,11 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/thank_you_component/thank_you_component_widget.dart';
 import '/backend/schema/structs/index.dart';
@@ -475,70 +473,56 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    28.0, 30.0, 28.0, 0.0),
+                                                    30.0, 30.0, 30.0, 0.0),
                                             child: Row(
-                                              mainAxisSize: MainAxisSize.min,
+                                              mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Flexible(
-                                                  child:
-                                                      FlutterFlowCheckboxGroup(
-                                                    options: [
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        '1q7o3z7p' /* By clicking the button you agr... */,
-                                                      )
-                                                    ],
-                                                    onChanged: (val) =>
-                                                        setState(() => _model
-                                                                .checkboxGroupValues =
-                                                            val),
-                                                    controller: _model
-                                                            .checkboxGroupValueController ??=
-                                                        FormFieldController<
-                                                            List<String>>(
-                                                      [],
+                                                Theme(
+                                                  data: ThemeData(
+                                                    checkboxTheme:
+                                                        CheckboxThemeData(
+                                                      shape:
+                                                          RoundedRectangleBorder(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(4.0),
+                                                      ),
                                                     ),
+                                                    unselectedWidgetColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .accent2,
+                                                  ),
+                                                  child: Checkbox(
+                                                    value:
+                                                        _model.checkboxValue ??=
+                                                            false,
+                                                    onChanged:
+                                                        (newValue) async {
+                                                      setState(() =>
+                                                          _model.checkboxValue =
+                                                              newValue!);
+                                                    },
                                                     activeColor:
                                                         FlutterFlowTheme.of(
                                                                 context)
-                                                            .info,
+                                                            .ahayundai,
                                                     checkColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .white,
-                                                    checkboxBorderColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .secondaryText,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 12.0,
-                                                        ),
-                                                    unselectedTextStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Heebo Regular',
-                                                              fontSize: 12.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .normal,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
-                                                    checkboxBorderRadius:
-                                                        BorderRadius.circular(
-                                                            4.0),
-                                                    initialized: _model
-                                                            .checkboxGroupValues !=
-                                                        null,
+                                                        Color(0xEBFFFFFF),
                                                   ),
+                                                ),
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'nmxvz08q' /* By clicking the button you agr... */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 12.0,
+                                                      ),
                                                 ),
                                               ],
                                             ),
@@ -550,23 +534,38 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'c4kn7j9t' /* Terms & Conditions */,
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    await launchURL(
+                                                        'https://hyundai.completechaintech.com');
+                                                  },
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'c4kn7j9t' /* Terms & Conditions */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'HeeboBold',
+                                                          color:
+                                                              Color(0xFF3D6398),
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'HeeboBold',
-                                                        color:
-                                                            Color(0xFF3D6398),
-                                                        fontSize: 16.0,
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        useGoogleFonts: false,
-                                                      ),
                                                 ),
                                               ],
                                             ),
@@ -586,116 +585,162 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                     onPressed: () async {
                                                       var _shouldSetState =
                                                           false;
-                                                      if ((_model.isCashOnDeliverySelected ==
-                                                              true) ||
-                                                          (_model.isPaymentSelected ==
-                                                              true)) {
-                                                        if (_model
-                                                                .isPaymentSelected ==
-                                                            true) {
-                                                          _model.apiResultgyn =
-                                                              await GetPaymentIdApiCall
-                                                                  .call(
-                                                            token: FFAppState()
-                                                                .userModel
-                                                                .token,
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if ((_model
-                                                                  .apiResultgyn
-                                                                  ?.succeeded ??
-                                                              true)) {
-                                                            setState(() {
-                                                              _model
-                                                                  .paymentModel = (_model.apiResultgyn?.jsonBody ??
-                                                                              '') !=
-                                                                          null &&
-                                                                      (_model.apiResultgyn?.jsonBody ??
-                                                                              '') !=
-                                                                          ''
-                                                                  ? PaymentModelStruct
-                                                                      .fromMap((_model
-                                                                              .apiResultgyn
-                                                                              ?.jsonBody ??
-                                                                          ''))
-                                                                  : null;
-                                                            });
+                                                      if (_model
+                                                              .checkboxValue ==
+                                                          true) {
+                                                        if ((_model.isCashOnDeliverySelected ==
+                                                                true) ||
+                                                            (_model.isPaymentSelected ==
+                                                                true)) {
+                                                          if (_model
+                                                                  .isPaymentSelected ==
+                                                              true) {
+                                                            _model.apiResultgyn =
+                                                                await GetPaymentIdApiCall
+                                                                    .call(
+                                                              token:
+                                                                  FFAppState()
+                                                                      .userModel
+                                                                      .token,
+                                                            );
+                                                            _shouldSetState =
+                                                                true;
+                                                            if ((_model
+                                                                    .apiResultgyn
+                                                                    ?.succeeded ??
+                                                                true)) {
+                                                              setState(() {
+                                                                _model
+                                                                    .paymentModel = (_model.apiResultgyn?.jsonBody ??
+                                                                                '') !=
+                                                                            null &&
+                                                                        (_model.apiResultgyn?.jsonBody ??
+                                                                                '') !=
+                                                                            ''
+                                                                    ? PaymentModelStruct.fromMap(
+                                                                        (_model.apiResultgyn?.jsonBody ??
+                                                                            ''))
+                                                                    : null;
+                                                              });
+                                                            }
+                                                            _model.apiResult8am =
+                                                                await GetPaymentStatusApiCall
+                                                                    .call(
+                                                              token:
+                                                                  FFAppState()
+                                                                      .userModel
+                                                                      .token,
+                                                            );
+                                                            _shouldSetState =
+                                                                true;
+                                                            if ((_model
+                                                                    .apiResult8am
+                                                                    ?.succeeded ??
+                                                                true)) {
+                                                              setState(() {});
+                                                            }
+                                                          } else {
+                                                            _model.apiResultmcd =
+                                                                await CashOnDeliveryApiCall
+                                                                    .call();
+                                                            _shouldSetState =
+                                                                true;
+                                                            if ((_model
+                                                                    .apiResultmcd
+                                                                    ?.succeeded ??
+                                                                true)) {
+                                                              FFAppState()
+                                                                  .update(
+                                                                      () {});
+                                                            }
                                                           }
-                                                          _model.apiResult8am =
-                                                              await GetPaymentStatusApiCall
-                                                                  .call(
-                                                            token: FFAppState()
-                                                                .userModel
-                                                                .token,
-                                                          );
-                                                          _shouldSetState =
-                                                              true;
-                                                          if ((_model
-                                                                  .apiResult8am
-                                                                  ?.succeeded ??
-                                                              true)) {
-                                                            setState(() {});
-                                                          }
-                                                        } else {
-                                                          _model.apiResultmcd =
-                                                              await CashOnDeliveryApiCall
-                                                                  .call();
-                                                          _shouldSetState =
-                                                              true;
-                                                          if ((_model
-                                                                  .apiResultmcd
-                                                                  ?.succeeded ??
-                                                              true)) {
-                                                            FFAppState()
-                                                                .update(() {});
-                                                          }
-                                                        }
 
-                                                        await showAlignedDialog(
-                                                          context: context,
-                                                          isGlobal: true,
-                                                          avoidOverflow: false,
-                                                          targetAnchor:
-                                                              AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                          followerAnchor:
-                                                              AlignmentDirectional(
-                                                                      0.0, 0.0)
-                                                                  .resolve(
-                                                                      Directionality.of(
-                                                                          context)),
-                                                          builder:
-                                                              (dialogContext) {
-                                                            return Material(
-                                                              color: Colors
-                                                                  .transparent,
-                                                              child:
-                                                                  GestureDetector(
-                                                                onTap: () => _model
-                                                                        .unfocusNode
-                                                                        .canRequestFocus
-                                                                    ? FocusScope.of(
-                                                                            context)
-                                                                        .requestFocus(_model
-                                                                            .unfocusNode)
-                                                                    : FocusScope.of(
-                                                                            context)
-                                                                        .unfocus(),
+                                                          await showAlignedDialog(
+                                                            context: context,
+                                                            isGlobal: true,
+                                                            avoidOverflow:
+                                                                false,
+                                                            targetAnchor:
+                                                                AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                            followerAnchor:
+                                                                AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
+                                                            builder:
+                                                                (dialogContext) {
+                                                              return Material(
+                                                                color: Colors
+                                                                    .transparent,
                                                                 child:
-                                                                    ThankYouComponentWidget(),
-                                                              ),
+                                                                    GestureDetector(
+                                                                  onTap: () => _model
+                                                                          .unfocusNode
+                                                                          .canRequestFocus
+                                                                      ? FocusScope.of(
+                                                                              context)
+                                                                          .requestFocus(_model
+                                                                              .unfocusNode)
+                                                                      : FocusScope.of(
+                                                                              context)
+                                                                          .unfocus(),
+                                                                  child:
+                                                                      ThankYouComponentWidget(),
+                                                                ),
+                                                              );
+                                                            },
+                                                          ).then((value) =>
+                                                              setState(() {}));
+
+                                                          context.goNamed(
+                                                              'HomeScreen');
+                                                        } else {
+                                                          if (_shouldSetState)
+                                                            setState(() {});
+                                                          return;
+                                                        }
+                                                      } else {
+                                                        await showDialog(
+                                                          context: context,
+                                                          builder:
+                                                              (alertDialogContext) {
+                                                            return AlertDialog(
+                                                              title: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getVariableText(
+                                                                enText:
+                                                                    'Aleart',
+                                                                arText: 'تنبيه',
+                                                              )),
+                                                              content: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getVariableText(
+                                                                enText:
+                                                                    'Dont forget to applay on privacy and policy',
+                                                                arText:
+                                                                    'لا تنسى الموافقة على الشروط والاحكام',
+                                                              )),
+                                                              actions: [
+                                                                TextButton(
+                                                                  onPressed: () =>
+                                                                      Navigator.pop(
+                                                                          alertDialogContext),
+                                                                  child: Text(
+                                                                      'Ok'),
+                                                                ),
+                                                              ],
                                                             );
                                                           },
-                                                        ).then((value) =>
-                                                            setState(() {}));
-
-                                                        context.goNamed(
-                                                            'HomeScreen');
-                                                      } else {
+                                                        );
                                                         if (_shouldSetState)
                                                           setState(() {});
                                                         return;

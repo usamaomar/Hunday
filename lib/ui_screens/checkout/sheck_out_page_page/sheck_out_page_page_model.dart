@@ -1,11 +1,9 @@
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
-import '/flutter_flow/flutter_flow_checkbox_group.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/thank_you_component/thank_you_component_widget.dart';
 import '/backend/schema/structs/index.dart';
@@ -30,12 +28,13 @@ class SheckOutPagePageModel extends FlutterFlowModel<SheckOutPagePageWidget> {
 
   bool isPaymentSelected = false;
 
+  bool checkBoxIsSelected = false;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  // State field(s) for CheckboxGroup widget.
-  List<String>? checkboxGroupValues;
-  FormFieldController<List<String>>? checkboxGroupValueController;
+  // State field(s) for Checkbox widget.
+  bool? checkboxValue;
   // Stores action output result for [Backend Call - API (getPaymentIdApi)] action in Button widget.
   ApiCallResponse? apiResultgyn;
   // Stores action output result for [Backend Call - API (getPaymentStatusApi)] action in Button widget.
