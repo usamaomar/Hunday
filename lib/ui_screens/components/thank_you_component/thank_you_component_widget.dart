@@ -51,12 +51,12 @@ class _ThankYouComponentWidgetState extends State<ThankYouComponentWidget> {
       borderRadius: BorderRadius.circular(20.0),
       child: BackdropFilter(
         filter: ImageFilter.blur(
-          sigmaX: 30.0,
-          sigmaY: 2.0,
+          sigmaX: 20.0,
+          sigmaY: 20.0,
         ),
         child: Container(
           decoration: BoxDecoration(
-            color: Color(0x66FFFFFF),
+            color: Color(0x88FFFFFF),
             borderRadius: BorderRadius.circular(20.0),
           ),
           child: Column(
