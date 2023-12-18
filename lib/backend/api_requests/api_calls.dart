@@ -1237,7 +1237,7 @@ class CashOnDeliveryApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'cashOnDeliveryApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/CashonDelivery',
+      apiUrl: 'https://hyundai.completechaintech.com/api/cashOnDelivery',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',

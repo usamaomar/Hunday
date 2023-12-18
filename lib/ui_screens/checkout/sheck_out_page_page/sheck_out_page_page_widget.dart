@@ -649,7 +649,10 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                           } else {
                                                             _model.apiResultmcd =
                                                                 await CashOnDeliveryApiCall
-                                                                    .call();
+                                                                    .call(   token:
+                                                                FFAppState()
+                                                                    .userModel
+                                                                    .token,);
                                                             _shouldSetState =
                                                                 true;
                                                             if ((_model
