@@ -169,246 +169,251 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                     child: Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: FlutterFlowTheme.of(context)
-                                                .secondaryBackground,
-                                            borderRadius:
-                                                BorderRadius.circular(20.0),
-                                          ),
-                                          child: Stack(
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        30.0, 20.0, 30.0, 20.0),
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  15.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        children: [
-                                                          Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '0hq0yfi8' /* No : */,
+                                        if (false)
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryBackground,
+                                              borderRadius:
+                                                  BorderRadius.circular(20.0),
+                                            ),
+                                            child: Stack(
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(30.0, 20.0,
+                                                          30.0, 20.0),
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    15.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '0hq0yfi8' /* No : */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Rajdhani',
+                                                                    color: Color(
+                                                                        0xFF092853),
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Rajdhani',
-                                                                  color: Color(
-                                                                      0xFF092853),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                          ),
-                                                          Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '5gy639ii' /* Hello */,
+                                                            Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '5gy639ii' /* Hello */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Rajdhani',
+                                                                    color: Color(
+                                                                        0xFF092853),
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Rajdhani',
-                                                                  color: Color(
-                                                                      0xFF092853),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
-                                                          ),
-                                                        ],
-                                                      ),
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        Expanded(
-                                                          child: Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '3o633drw' /* Duralast Platinum AGM Battery ... */,
-                                                            ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Heebo',
-                                                                  color: Colors
-                                                                      .black,
-                                                                  fontSize:
-                                                                      14.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
-                                                          ),
+                                                          ],
                                                         ),
-                                                      ],
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Row(
+                                                      ),
+                                                      Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
                                                         children: [
-                                                          Icon(
-                                                            Icons
-                                                                .calendar_month,
-                                                            color: Color(
-                                                                0xFF092853),
-                                                            size: 24.0,
-                                                          ),
-                                                          Text(
-                                                            FFLocalizations.of(
-                                                                    context)
-                                                                .getText(
-                                                              '7esps57k' /* Date */,
+                                                          Expanded(
+                                                            child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '3o633drw' /* Duralast Platinum AGM Battery ... */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Heebo',
+                                                                    color: Colors
+                                                                        .black,
+                                                                    fontSize:
+                                                                        14.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                    useGoogleFonts:
+                                                                        false,
+                                                                  ),
                                                             ),
-                                                            style: FlutterFlowTheme
-                                                                    .of(context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'Rajdhani',
-                                                                  color: Color(
-                                                                      0xFF092853),
-                                                                  fontSize:
-                                                                      16.0,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                ),
                                                           ),
                                                         ],
                                                       ),
-                                                    ),
-                                                  ],
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                        child: Row(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          children: [
+                                                            Icon(
+                                                              Icons
+                                                                  .calendar_month,
+                                                              color: Color(
+                                                                  0xFF092853),
+                                                              size: 24.0,
+                                                            ),
+                                                            Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getText(
+                                                                '7esps57k' /* Date */,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .bodyMedium
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Rajdhani',
+                                                                    color: Color(
+                                                                        0xFF092853),
+                                                                    fontSize:
+                                                                        16.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold,
+                                                                  ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        15.0, 20.0, 15.0, 20.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.start,
-                                                  children: [
-                                                    Flexible(
-                                                      child: Column(
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(15.0, 20.0,
+                                                          15.0, 20.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceBetween,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .start,
+                                                    children: [
+                                                      Flexible(
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            SizedBox(
+                                                              width: 135.0,
+                                                              child: Divider(
+                                                                height: 0.0,
+                                                                thickness: 8.0,
+                                                                color: Color(
+                                                                    0xFF092853),
+                                                              ),
+                                                            ),
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .min,
+                                                              children: [
+                                                                SizedBox(
+                                                                  height: 100.0,
+                                                                  child:
+                                                                      VerticalDivider(
+                                                                    width: 0.0,
+                                                                    thickness:
+                                                                        8.0,
+                                                                    color: Color(
+                                                                        0xFF092853),
+                                                                  ),
+                                                                ),
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      ),
+                                                      Row(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
                                                         children: [
-                                                          SizedBox(
-                                                            width: 135.0,
-                                                            child: Divider(
-                                                              height: 0.0,
-                                                              thickness: 8.0,
+                                                          RatingBar.builder(
+                                                            onRatingUpdate: (newValue) =>
+                                                                setState(() =>
+                                                                    _model.ratingBarValue =
+                                                                        newValue),
+                                                            itemBuilder:
+                                                                (context,
+                                                                        index) =>
+                                                                    Icon(
+                                                              Icons
+                                                                  .star_rounded,
                                                               color: Color(
                                                                   0xFF092853),
                                                             ),
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .min,
-                                                            children: [
-                                                              SizedBox(
-                                                                height: 100.0,
-                                                                child:
-                                                                    VerticalDivider(
-                                                                  width: 0.0,
-                                                                  thickness:
-                                                                      8.0,
-                                                                  color: Color(
-                                                                      0xFF092853),
-                                                                ),
-                                                              ),
-                                                            ],
+                                                            direction:
+                                                                Axis.horizontal,
+                                                            initialRating: _model
+                                                                    .ratingBarValue ??=
+                                                                3.0,
+                                                            unratedColor:
+                                                                FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .accent3,
+                                                            itemCount: 5,
+                                                            itemSize: 20.0,
+                                                            glowColor: Color(
+                                                                0xFF092853),
                                                           ),
                                                         ],
                                                       ),
-                                                    ),
-                                                    Row(
-                                                      mainAxisSize:
-                                                          MainAxisSize.max,
-                                                      children: [
-                                                        RatingBar.builder(
-                                                          onRatingUpdate: (newValue) =>
-                                                              setState(() =>
-                                                                  _model.ratingBarValue =
-                                                                      newValue),
-                                                          itemBuilder: (context,
-                                                                  index) =>
-                                                              Icon(
-                                                            Icons.star_rounded,
-                                                            color: Color(
-                                                                0xFF092853),
-                                                          ),
-                                                          direction:
-                                                              Axis.horizontal,
-                                                          initialRating: _model
-                                                                  .ratingBarValue ??=
-                                                              3.0,
-                                                          unratedColor:
-                                                              FlutterFlowTheme.of(
-                                                                      context)
-                                                                  .accent3,
-                                                          itemCount: 5,
-                                                          itemSize: 20.0,
-                                                          glowColor:
-                                                              Color(0xFF092853),
-                                                        ),
-                                                      ],
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
-                                              ),
-                                            ],
+                                              ],
+                                            ),
                                           ),
-                                        ),
                                       ],
                                     ),
                                   ),

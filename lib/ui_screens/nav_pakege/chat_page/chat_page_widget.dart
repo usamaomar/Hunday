@@ -65,19 +65,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
               Column(
                 mainAxisSize: MainAxisSize.max,
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      'y2ok92y7' /* No content to show */,
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Heebo Regular',
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.w200,
-                          useGoogleFonts: false,
-                        ),
-                  ),
-                ],
+                children: [],
               ),
             ],
           ),
