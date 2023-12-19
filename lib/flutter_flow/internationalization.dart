@@ -147,6 +147,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Home',
       'ar': '',
     },
+    'c2pz80f3': {
+      'en': 'we would like to take biometric as login',
+      'ar': 'نود أن نأخذ القياسات الحيوية لتسجيل الدخول',
+    },
   },
   // registraationPage
   {
@@ -648,13 +652,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     '6vo4oqd8': {
       'en': 'Home',
       'ar': '',
-    },
-  },
-  // ChatPage
-  {
-    'y2ok92y7': {
-      'en': 'No content to show',
-      'ar': 'لا يوجد محتوى لعرضه',
     },
   },
   // MorePage

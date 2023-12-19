@@ -656,136 +656,123 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                           endIndent: 15.0,
                                           color: Color(0xFFABADAE),
                                         ),
-                                        Opacity(
-                                          opacity: 0.5,
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    15.0, 10.0, 15.0, 10.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                        color: FlutterFlowTheme
-                                                                .of(context)
-                                                            .secondaryBackground,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(3.0),
-                                                        border: Border.all(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .ahayundai,
-                                                          width: 0.5,
-                                                        ),
-                                                      ),
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsets.all(5.0),
-                                                        child: Icon(
-                                                          Icons.fingerprint,
-                                                          color:
-                                                              Color(0xFF3D6398),
-                                                          size: 20.0,
-                                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 10.0, 15.0, 10.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme
+                                                              .of(context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              3.0),
+                                                      border: Border.all(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .ahayundai,
+                                                        width: 0.5,
                                                       ),
                                                     ),
-                                                    Padding(
+                                                    child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getText(
-                                                          'gup13knb' /* Enable fingerprint */,
-                                                        ),
-                                                        textAlign:
-                                                            TextAlign.start,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'HeeboBold',
-                                                              color: Color(
-                                                                  0xFF3D6398),
-                                                              fontSize: 14.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
+                                                          EdgeInsets.all(5.0),
+                                                      child: Icon(
+                                                        Icons.fingerprint,
+                                                        color:
+                                                            Color(0xFF3D6398),
+                                                        size: 20.0,
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
-                                                Switch.adaptive(
-                                                  value: _model.switchValue2 ??=
-                                                      false,
-                                                  onChanged: (newValue) async {
-                                                    setState(() =>
-                                                        _model.switchValue2 =
-                                                            newValue!);
-                                                    if (newValue!) {
-                                                      final _localAuth =
-                                                          LocalAuthentication();
-                                                      bool
-                                                          _isBiometricSupported =
-                                                          await _localAuth
-                                                              .isDeviceSupported();
-                                                      bool canCheckBiometrics =
-                                                          await _localAuth
-                                                              .canCheckBiometrics;
-                                                      if (_isBiometricSupported &&
-                                                          canCheckBiometrics) {
-                                                        _model.allowsBes = await _localAuth
-                                                            .authenticate(
-                                                                localizedReason:
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                  '6yklnh8p' /* app is requesting your finger ... */,
-                                                                ),
-                                                                options: const AuthenticationOptions(
-                                                                    biometricOnly:
-                                                                        true));
-                                                        setState(() {});
-                                                      }
-
+                                                  ),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(10.0, 0.0,
+                                                                10.0, 0.0),
+                                                    child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'gup13knb' /* Enable fingerprint */,
+                                                      ),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'HeeboBold',
+                                                            color: Color(
+                                                                0xFF3D6398),
+                                                            fontSize: 14.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            useGoogleFonts:
+                                                                false,
+                                                          ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                              Switch.adaptive(
+                                                value: _model.switchValue2 ??=
+                                                    false,
+                                                onChanged: (newValue) async {
+                                                  setState(() =>
+                                                      _model.switchValue2 =
+                                                          newValue!);
+                                                  if (newValue!) {
+                                                    final _localAuth =
+                                                        LocalAuthentication();
+                                                    bool _isBiometricSupported =
+                                                        await _localAuth
+                                                            .isDeviceSupported();
+                                                    bool canCheckBiometrics =
+                                                        await _localAuth
+                                                            .canCheckBiometrics;
+                                                    if (_isBiometricSupported &&
+                                                        canCheckBiometrics) {
+                                                      _model.allowsBes = await _localAuth
+                                                          .authenticate(
+                                                              localizedReason:
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getText(
+                                                                '6yklnh8p' /* app is requesting your finger ... */,
+                                                              ),
+                                                              options: const AuthenticationOptions(
+                                                                  biometricOnly:
+                                                                      true));
                                                       setState(() {});
                                                     }
-                                                  },
-                                                  activeColor:
-                                                      Color(0xFF4B9246),
-                                                  activeTrackColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .accent1,
-                                                  inactiveTrackColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .alternate,
-                                                  inactiveThumbColor:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryText,
-                                                ),
-                                              ],
-                                            ),
+
+                                                    setState(() {});
+                                                  }
+                                                },
+                                                activeColor: Color(0xFF4B9246),
+                                                activeTrackColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent1,
+                                                inactiveTrackColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .alternate,
+                                                inactiveThumbColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .secondaryText,
+                                              ),
+                                            ],
                                           ),
                                         ),
                                         Divider(

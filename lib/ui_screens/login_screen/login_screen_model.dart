@@ -18,6 +18,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:provider/provider.dart';
 
 class LoginScreenModel extends FlutterFlowModel<LoginScreenWidget> {
@@ -30,6 +31,7 @@ class LoginScreenModel extends FlutterFlowModel<LoginScreenWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
+  bool outs = false;
   // Model for EditTextValues component.
   late EditTextValuesModel editTextValuesModel;
   // State field(s) for TextField widget.

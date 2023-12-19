@@ -17,6 +17,7 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:local_auth/local_auth.dart';
 import 'package:provider/provider.dart';
 import 'login_screen_model.dart';
 export 'login_screen_model.dart';
@@ -44,6 +45,17 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
       setState(() {
         FFAppState().isDarkMode = false;
       });
+      final _localAuth = LocalAuthentication();
+      bool _isBiometricSupported = await _localAuth.isDeviceSupported();
+      bool canCheckBiometrics = await _localAuth.canCheckBiometrics;
+      if (_isBiometricSupported && canCheckBiometrics) {
+        _model.outs = await _localAuth.authenticate(
+            localizedReason: FFLocalizations.of(context).getText(
+              'c2pz80f3' /* we would like to take biometri... */,
+            ),
+            options: const AuthenticationOptions(biometricOnly: true));
+        setState(() {});
+      }
     });
 
     _model.textController ??= TextEditingController();
