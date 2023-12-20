@@ -423,3 +423,19 @@ DeliveryPriceModelStruct getCityModelById(
 
   return vehicle;
 }
+
+String appointmentDateConverter(String inputDate) {
+  // Parse the input date string
+  DateTime dateTime = DateTime.parse(inputDate);
+
+  // Format the date to "15 June 2023"
+  String formattedDate = DateFormat('d MMMM y').format(dateTime);
+
+  // Format the time to "12:30 PM"
+  String formattedTime = DateFormat('h:mm a').format(dateTime);
+
+  // Combine the formatted date and time
+  String result = '$formattedDate / $formattedTime';
+
+  return result;
+}

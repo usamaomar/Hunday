@@ -1,12 +1,14 @@
+import '/backend/api_requests/api_calls.dart';
+import '/components/my_rating_component_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'my_appointment_page_widget.dart' show MyAppointmentPageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
@@ -21,9 +23,6 @@ class MyAppointmentPageModel extends FlutterFlowModel<MyAppointmentPageWidget> {
   TabController? tabBarController;
   int get tabBarCurrentIndex =>
       tabBarController != null ? tabBarController!.index : 0;
-
-  // State field(s) for RatingBar widget.
-  double? ratingBarValue;
 
   /// Initialization and disposal methods.
 

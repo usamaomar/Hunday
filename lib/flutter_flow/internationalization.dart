@@ -843,19 +843,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'No :',
       'ar': 'رقم :',
     },
-    '5gy639ii': {
-      'en': 'Hello',
-      'ar': 'رقم :',
-    },
-    '3o633drw': {
-      'en':
-          'Duralast Platinum AGM Battery BCI Group Size 47 680 CCA H5-AGMDuralast Platinum AGM Battery BCI Group Size 47 680 CCA H5-AGM',
-      'ar': 'رقم :',
-    },
-    '7esps57k': {
-      'en': 'Date',
-      'ar': '',
-    },
     'wu913olh': {
       'en': 'Cancled',
       'ar': 'ملغى',

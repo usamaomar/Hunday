@@ -1169,6 +1169,30 @@ class GetMyOrderApiCall {
   }
 }
 
+class GetMyAppointmentApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'getMyAppointmentApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/myAppointment',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class GetPaymentIdApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
