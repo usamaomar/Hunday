@@ -62,7 +62,7 @@ class _MyOrdersAndAppointmentsComponentWidgetState
         ),
         child: Container(
           width: double.infinity,
-          height: 225.0,
+          height: 325.0,
           decoration: BoxDecoration(
             color: Color(0xFFC1D6EF),
             borderRadius: BorderRadius.only(
@@ -72,96 +72,21 @@ class _MyOrdersAndAppointmentsComponentWidgetState
               topRight: Radius.circular(25.0),
             ),
           ),
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                          color: Color(0xFF3D6398),
-                          borderRadius: BorderRadius.circular(20.0),
-                          border: Border.all(
-                            color: Color(0xFF3D6398),
-                          ),
-                        ),
-                        child: InkWell(
-                          splashColor: Colors.transparent,
-                          focusColor: Colors.transparent,
-                          hoverColor: Colors.transparent,
-                          highlightColor: Colors.transparent,
-                          onTap: () async {
-                            context.pushNamed(
-                              'MyOrderPage',
-                              extra: <String, dynamic>{
-                                kTransitionInfoKey: TransitionInfo(
-                                  hasTransition: true,
-                                  transitionType: PageTransitionType.fade,
-                                  duration: Duration(milliseconds: 0),
-                                ),
-                              },
-                            );
-                          },
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    50.0, 20.0, 50.0, 20.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(0.0),
-                                  child: SvgPicture.asset(
-                                    'assets/images/Group_72224.svg',
-                                    width: 50.0,
-                                    height: 50.0,
-                                    fit: BoxFit.fill,
-                                  ),
-                                ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 20.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'i3kbyih3' /* My Order */,
-                                  ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'HeeboBold',
-                                        color:
-                                            FlutterFlowTheme.of(context).white,
-                                        fontWeight: FontWeight.bold,
-                                        useGoogleFonts: false,
-                                      ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      InkWell(
-                        splashColor: Colors.transparent,
-                        focusColor: Colors.transparent,
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () async {
-                          context.pushNamed('MyAppointmentPage');
-                        },
-                        child: Container(
+          child: Padding(
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
                           decoration: BoxDecoration(
                             color: Color(0xFF3D6398),
                             borderRadius: BorderRadius.circular(20.0),
@@ -169,49 +94,127 @@ class _MyOrdersAndAppointmentsComponentWidgetState
                               color: Color(0xFF3D6398),
                             ),
                           ),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    50.0, 20.0, 50.0, 20.0),
-                                child: ClipRRect(
-                                  borderRadius: BorderRadius.circular(0.0),
-                                  child: SvgPicture.asset(
-                                    'assets/images/Group_72227.svg',
-                                    width: 50.0,
-                                    height: 50.0,
-                                    fit: BoxFit.fill,
+                          child: InkWell(
+                            splashColor: Colors.transparent,
+                            focusColor: Colors.transparent,
+                            hoverColor: Colors.transparent,
+                            highlightColor: Colors.transparent,
+                            onTap: () async {
+                              context.pushNamed(
+                                'MyOrderPage',
+                                extra: <String, dynamic>{
+                                  kTransitionInfoKey: TransitionInfo(
+                                    hasTransition: true,
+                                    transitionType: PageTransitionType.fade,
+                                    duration: Duration(milliseconds: 0),
+                                  ),
+                                },
+                              );
+                            },
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      50.0, 20.0, 50.0, 20.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(0.0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/Group_72224.svg',
+                                      width: 50.0,
+                                      height: 50.0,
+                                      fit: BoxFit.fill,
+                                    ),
                                   ),
                                 ),
-                              ),
-                              Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 20.0),
-                                child: Text(
-                                  FFLocalizations.of(context).getText(
-                                    'c4hbd3hr' /* My Appointment */,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 20.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'i3kbyih3' /* My Order */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'HeeboBold',
+                                          color: FlutterFlowTheme.of(context)
+                                              .white,
+                                          fontWeight: FontWeight.bold,
+                                          useGoogleFonts: false,
+                                        ),
                                   ),
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'HeeboBold',
-                                        color:
-                                            FlutterFlowTheme.of(context).white,
-                                        fontWeight: FontWeight.bold,
-                                        useGoogleFonts: false,
-                                      ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ],
+                      ],
+                    ),
+                    Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            context.pushNamed('MyAppointmentPage');
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Color(0xFF3D6398),
+                              borderRadius: BorderRadius.circular(20.0),
+                              border: Border.all(
+                                color: Color(0xFF3D6398),
+                              ),
+                            ),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      50.0, 20.0, 50.0, 20.0),
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(0.0),
+                                    child: SvgPicture.asset(
+                                      'assets/images/Group_72227.svg',
+                                      width: 50.0,
+                                      height: 50.0,
+                                      fit: BoxFit.fill,
+                                    ),
+                                  ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 20.0),
+                                  child: Text(
+                                    FFLocalizations.of(context).getText(
+                                      'c4hbd3hr' /* My Appointment */,
+                                    ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'HeeboBold',
+                                          color: FlutterFlowTheme.of(context)
+                                              .white,
+                                          fontWeight: FontWeight.bold,
+                                          useGoogleFonts: false,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ),
