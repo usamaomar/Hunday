@@ -54,6 +54,22 @@ class FFAppState extends ChangeNotifier {
           }).toList() ??
           _sliderList;
     });
+    _safeInit(() {
+      if (prefs.containsKey('ff_biomatricDtateModel')) {
+        try {
+          final serializedData =
+              prefs.getString('ff_biomatricDtateModel') ?? '{}';
+          _biomatricDtateModel = BiomatricModelStruct.fromSerializableMap(
+              jsonDecode(serializedData));
+        } catch (e) {
+          print("Can't decode persisted data type. Error: $e.");
+        }
+      }
+    });
+    _safeInit(() {
+      _isFingerEnabled =
+          prefs.getBool('ff_isFingerEnabled') ?? _isFingerEnabled;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -456,6 +472,26 @@ class FFAppState extends ChangeNotifier {
   dynamic get secendImage => _secendImage;
   set secendImage(dynamic _value) {
     _secendImage = _value;
+  }
+
+  BiomatricModelStruct _biomatricDtateModel = BiomatricModelStruct();
+  BiomatricModelStruct get biomatricDtateModel => _biomatricDtateModel;
+  set biomatricDtateModel(BiomatricModelStruct _value) {
+    _biomatricDtateModel = _value;
+    prefs.setString('ff_biomatricDtateModel', _value.serialize());
+  }
+
+  void updateBiomatricDtateModelStruct(
+      Function(BiomatricModelStruct) updateFn) {
+    updateFn(_biomatricDtateModel);
+    prefs.setString('ff_biomatricDtateModel', _biomatricDtateModel.serialize());
+  }
+
+  bool _isFingerEnabled = false;
+  bool get isFingerEnabled => _isFingerEnabled;
+  set isFingerEnabled(bool _value) {
+    _isFingerEnabled = _value;
+    prefs.setBool('ff_isFingerEnabled', _value);
   }
 }
 

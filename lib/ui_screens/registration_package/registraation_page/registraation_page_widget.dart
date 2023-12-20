@@ -1,4 +1,5 @@
 import '/backend/api_requests/api_calls.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -1405,6 +1406,20 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                         .passwordEditTextValuesModel2
                                                         .textController
                                                         .text;
+                                                  });
+                                                  setState(() {
+                                                    FFAppState()
+                                                            .biomatricDtateModel =
+                                                        BiomatricModelStruct(
+                                                      phoneNumber: _model
+                                                          .phoneEditTextValuesModel
+                                                          .textController
+                                                          .text,
+                                                      password: _model
+                                                          .passwordEditTextValuesModel1
+                                                          .textController
+                                                          .text,
+                                                    );
                                                   });
                                                   _model.apiResultjcw =
                                                       await GetMobileNumberCall
