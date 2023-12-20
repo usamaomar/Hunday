@@ -109,9 +109,9 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                     _model.timerController.onStopTimer();
                     if (FFAppState().userModel.token != null &&
                         FFAppState().userModel.token != '') {
-                      context.goNamed('HomeScreen');
+                      context.pushReplacementNamed('HomeScreen');
                     } else {
-                      context.goNamed('loginScreen');
+                      context.pushReplacementNamed('loginScreen');
                     }
                   },
                   textAlign: TextAlign.start,

@@ -6,8 +6,13 @@
   <component name="ChangeListManager">
     <list default="true" id="5c709fe7-e310-49d4-8d80-4f40db602209" name="Changes" comment="x">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/backend/api_requests/api_calls.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/api_requests/api_calls.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/bottom_nav_bar_component/bottom_nav_bar_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/logout_dialog/logout_dialog_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/logout_dialog/logout_dialog_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/regular_page/regular_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/regular_page/regular_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/repair_page/repair_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/repair_page/repair_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

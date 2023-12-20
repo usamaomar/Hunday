@@ -91,7 +91,7 @@ class _BottomNavBarComponentWidgetState
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed(
+                            context.pushReplacementNamed(
                               'HomeScreen',
                               extra: <String, dynamic>{
                                 kTransitionInfoKey: TransitionInfo(

@@ -102,7 +102,7 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
                           if (Navigator.of(context).canPop()) {
                             context.pop();
                           }
-                          context.pushNamed(
+                          context.pushReplacementNamed(
                             'splashPage',
                             extra: <String, dynamic>{
                               kTransitionInfoKey: TransitionInfo(

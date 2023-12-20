@@ -112,7 +112,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
             if (Navigator.of(context).canPop()) {
               context.pop();
             }
-            context.pushNamed(
+            context.pushReplacementNamed(
               'HomeScreen',
               extra: <String, dynamic>{
                 kTransitionInfoKey: TransitionInfo(
@@ -676,7 +676,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                       .canPop()) {
                                                     context.pop();
                                                   }
-                                                  context.pushNamed(
+                                                  context.pushReplacementNamed(
                                                     'HomeScreen',
                                                     extra: <String, dynamic>{
                                                       kTransitionInfoKey:

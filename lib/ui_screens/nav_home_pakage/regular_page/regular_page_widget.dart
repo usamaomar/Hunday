@@ -675,7 +675,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                           .canPop()) {
                                                         context.pop();
                                                       }
-                                                      context.pushNamed(
+                                                      context.pushReplacementNamed(
                                                           'HomeScreen');
                                                     } else {
                                                       await showAlignedDialog(

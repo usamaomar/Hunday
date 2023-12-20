@@ -641,7 +641,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                           .canPop()) {
                                                         context.pop();
                                                       }
-                                                      context.pushNamed(
+                                                      context.pushReplacementNamed(
                                                           'HomeScreen');
                                                     } else {
                                                       await showAlignedDialog(
