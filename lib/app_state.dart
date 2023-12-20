@@ -70,6 +70,9 @@ class FFAppState extends ChangeNotifier {
       _isFingerEnabled =
           prefs.getBool('ff_isFingerEnabled') ?? _isFingerEnabled;
     });
+    _safeInit(() {
+      _currentLanguge = prefs.getString('ff_currentLanguge') ?? _currentLanguge;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -492,6 +495,13 @@ class FFAppState extends ChangeNotifier {
   set isFingerEnabled(bool _value) {
     _isFingerEnabled = _value;
     prefs.setBool('ff_isFingerEnabled', _value);
+  }
+
+  String _currentLanguge = '';
+  String get currentLanguge => _currentLanguge;
+  set currentLanguge(String _value) {
+    _currentLanguge = _value;
+    prefs.setString('ff_currentLanguge', _value);
   }
 }
 
