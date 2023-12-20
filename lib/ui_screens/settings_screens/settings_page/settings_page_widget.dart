@@ -362,9 +362,23 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                             )) {
                                                           setAppLanguage(
                                                               context, 'en');
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .currentLanguge =
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode;
+                                                          });
                                                         } else {
                                                           setAppLanguage(
                                                               context, 'ar');
+                                                          setState(() {
+                                                            FFAppState()
+                                                                    .currentLanguge =
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode;
+                                                          });
                                                         }
 
                                                         _model.updateResponse =

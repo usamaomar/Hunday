@@ -33,6 +33,10 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.timerController.onStartTimer();
+      if (FFAppState().currentLanguge != null &&
+          FFAppState().currentLanguge != '') {
+        setAppLanguage(context, FFAppState().currentLanguge);
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
