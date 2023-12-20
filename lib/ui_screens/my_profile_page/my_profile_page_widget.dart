@@ -507,7 +507,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                   ),
                                 ],
                               ),
-                            ].addToEnd(SizedBox(height: 150.0)),
+                            ].addToEnd(SizedBox(height: 350.0)),
                           ),
                         ),
                         Align(

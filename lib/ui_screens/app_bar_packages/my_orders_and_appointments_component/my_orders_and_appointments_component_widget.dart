@@ -62,7 +62,7 @@ class _MyOrdersAndAppointmentsComponentWidgetState
         ),
         child: Container(
           width: double.infinity,
-          height: 325.0,
+          height: 275.0,
           decoration: BoxDecoration(
             color: Color(0xFFC1D6EF),
             borderRadius: BorderRadius.only(
