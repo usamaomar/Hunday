@@ -728,7 +728,8 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                               ),
                                               Switch.adaptive(
                                                 value: _model.switchValue2 ??=
-                                                    false,
+                                                    FFAppState()
+                                                        .isFingerEnabled,
                                                 onChanged: (newValue) async {
                                                   setState(() =>
                                                       _model.switchValue2 =
@@ -756,6 +757,21 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                                   biometricOnly:
                                                                       true));
                                                       setState(() {});
+                                                    }
+
+                                                    if (_model.allowsBes ==
+                                                        true) {
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .isFingerEnabled =
+                                                            true;
+                                                      });
+                                                    } else {
+                                                      setState(() {
+                                                        FFAppState()
+                                                                .isFingerEnabled =
+                                                            true;
+                                                      });
                                                     }
 
                                                     setState(() {});

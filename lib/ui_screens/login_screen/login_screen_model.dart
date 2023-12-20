@@ -32,6 +32,8 @@ class LoginScreenModel extends FlutterFlowModel<LoginScreenWidget> {
 
   final unfocusNode = FocusNode();
   bool outs = false;
+  // Stores action output result for [Backend Call - API (LoginApi)] action in loginScreen widget.
+  ApiCallResponse? loginApiRes5;
   // Model for EditTextValues component.
   late EditTextValuesModel editTextValuesModel;
   // State field(s) for TextField widget.
