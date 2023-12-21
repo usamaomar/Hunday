@@ -197,7 +197,9 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                         itemBuilder: (context, lisyIndex) {
                                           final lisyItem = lisy[lisyIndex];
                                           return Padding(
-                                            padding: EdgeInsets.all(30.0),
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    30.0, 30.0, 30.0, 0.0),
                                             child: Column(
                                               mainAxisSize: MainAxisSize.min,
                                               children: [
