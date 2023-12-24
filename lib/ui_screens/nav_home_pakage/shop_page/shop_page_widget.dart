@@ -182,7 +182,12 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
                         ),
                       ),
                     ),
-                    padding: EdgeInsets.zero,
+                    padding: EdgeInsets.fromLTRB(
+                      0,
+                      0,
+                      0,
+                      75.0,
+                    ),
                     primary: false,
                     reverse: false,
                     scrollDirection: Axis.vertical,
