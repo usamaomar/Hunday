@@ -16,13 +16,13 @@ class PartModelStruct extends BaseStruct {
     String? length,
     String? height,
     String? width,
-    int? price,
     String? image,
     int? status,
     String? fullImage,
     String? name,
     double? specialPrice,
     int? quantity,
+    double? price,
   })  : _id = id,
         _nameEn = nameEn,
         _nameAr = nameAr,
@@ -32,13 +32,13 @@ class PartModelStruct extends BaseStruct {
         _length = length,
         _height = height,
         _width = width,
-        _price = price,
         _image = image,
         _status = status,
         _fullImage = fullImage,
         _name = name,
         _specialPrice = specialPrice,
-        _quantity = quantity;
+        _quantity = quantity,
+        _price = price;
 
   // "id" field.
   int? _id;
@@ -96,13 +96,6 @@ class PartModelStruct extends BaseStruct {
   set width(String? val) => _width = val;
   bool hasWidth() => _width != null;
 
-  // "price" field.
-  int? _price;
-  int get price => _price ?? 0;
-  set price(int? val) => _price = val;
-  void incrementPrice(int amount) => _price = price + amount;
-  bool hasPrice() => _price != null;
-
   // "image" field.
   String? _image;
   String get image => _image ?? '';
@@ -143,6 +136,13 @@ class PartModelStruct extends BaseStruct {
   void incrementQuantity(int amount) => _quantity = quantity + amount;
   bool hasQuantity() => _quantity != null;
 
+  // "price" field.
+  double? _price;
+  double get price => _price ?? 0.0;
+  set price(double? val) => _price = val;
+  void incrementPrice(double amount) => _price = price + amount;
+  bool hasPrice() => _price != null;
+
   static PartModelStruct fromMap(Map<String, dynamic> data) => PartModelStruct(
         id: castToType<int>(data['id']),
         nameEn: data['name_en'] as String?,
@@ -153,13 +153,13 @@ class PartModelStruct extends BaseStruct {
         length: data['length'] as String?,
         height: data['height'] as String?,
         width: data['width'] as String?,
-        price: castToType<int>(data['price']),
         image: data['image'] as String?,
         status: castToType<int>(data['status']),
         fullImage: data['full_image'] as String?,
         name: data['name'] as String?,
         specialPrice: castToType<double>(data['special_price']),
         quantity: castToType<int>(data['quantity']),
+        price: castToType<double>(data['price']),
       );
 
   static PartModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -176,13 +176,13 @@ class PartModelStruct extends BaseStruct {
         'length': _length,
         'height': _height,
         'width': _width,
-        'price': _price,
         'image': _image,
         'status': _status,
         'full_image': _fullImage,
         'name': _name,
         'special_price': _specialPrice,
         'quantity': _quantity,
+        'price': _price,
       }.withoutNulls;
 
   @override
@@ -223,10 +223,6 @@ class PartModelStruct extends BaseStruct {
           _width,
           ParamType.String,
         ),
-        'price': serializeParam(
-          _price,
-          ParamType.int,
-        ),
         'image': serializeParam(
           _image,
           ParamType.String,
@@ -250,6 +246,10 @@ class PartModelStruct extends BaseStruct {
         'quantity': serializeParam(
           _quantity,
           ParamType.int,
+        ),
+        'price': serializeParam(
+          _price,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -300,11 +300,6 @@ class PartModelStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
-        price: deserializeParam(
-          data['price'],
-          ParamType.int,
-          false,
-        ),
         image: deserializeParam(
           data['image'],
           ParamType.String,
@@ -335,6 +330,11 @@ class PartModelStruct extends BaseStruct {
           ParamType.int,
           false,
         ),
+        price: deserializeParam(
+          data['price'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -352,13 +352,13 @@ class PartModelStruct extends BaseStruct {
         length == other.length &&
         height == other.height &&
         width == other.width &&
-        price == other.price &&
         image == other.image &&
         status == other.status &&
         fullImage == other.fullImage &&
         name == other.name &&
         specialPrice == other.specialPrice &&
-        quantity == other.quantity;
+        quantity == other.quantity &&
+        price == other.price;
   }
 
   @override
@@ -372,13 +372,13 @@ class PartModelStruct extends BaseStruct {
         length,
         height,
         width,
-        price,
         image,
         status,
         fullImage,
         name,
         specialPrice,
-        quantity
+        quantity,
+        price
       ]);
 }
 
@@ -392,13 +392,13 @@ PartModelStruct createPartModelStruct({
   String? length,
   String? height,
   String? width,
-  int? price,
   String? image,
   int? status,
   String? fullImage,
   String? name,
   double? specialPrice,
   int? quantity,
+  double? price,
 }) =>
     PartModelStruct(
       id: id,
@@ -410,11 +410,11 @@ PartModelStruct createPartModelStruct({
       length: length,
       height: height,
       width: width,
-      price: price,
       image: image,
       status: status,
       fullImage: fullImage,
       name: name,
       specialPrice: specialPrice,
       quantity: quantity,
+      price: price,
     );
