@@ -2,10 +2,12 @@ import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/ui_screens/components/reset_password_component/reset_password_component_widget.dart';
 import '/backend/schema/structs/index.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:pin_code_fields/pin_code_fields.dart';
+import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -141,82 +143,100 @@ class _VerifyForgetPasswordBottomDialogWidgetState
                         EdgeInsetsDirectional.fromSTEB(100.0, 10.0, 100.0, 0.0),
                     child: Container(
                       decoration: BoxDecoration(),
-                      child: PinCodeTextField(
-                        autoDisposeControllers: false,
-                        appContext: context,
-                        length: 4,
-                        textStyle: FlutterFlowTheme.of(context).bodyLarge,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        enableActiveFill: true,
-                        autoFocus: false,
-                        enablePinAutofill: true,
-                        errorTextSpace: 16.0,
-                        showCursor: true,
-                        cursorColor: FlutterFlowTheme.of(context).primaryText,
-                        obscureText: false,
-                        keyboardType: TextInputType.number,
-                        pinTheme: PinTheme(
-                          fieldHeight: 34.0,
-                          fieldWidth: 34.0,
-                          borderWidth: 2.0,
-                          borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(5.0),
-                            bottomRight: Radius.circular(5.0),
-                            topLeft: Radius.circular(5.0),
-                            topRight: Radius.circular(5.0),
+                      child: Builder(
+                        builder: (context) => PinCodeTextField(
+                          autoDisposeControllers: false,
+                          appContext: context,
+                          length: 4,
+                          textStyle: FlutterFlowTheme.of(context).bodyLarge,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          enableActiveFill: true,
+                          autoFocus: false,
+                          enablePinAutofill: true,
+                          errorTextSpace: 16.0,
+                          showCursor: true,
+                          cursorColor: FlutterFlowTheme.of(context).primaryText,
+                          obscureText: false,
+                          keyboardType: TextInputType.number,
+                          pinTheme: PinTheme(
+                            fieldHeight: 34.0,
+                            fieldWidth: 34.0,
+                            borderWidth: 2.0,
+                            borderRadius: BorderRadius.only(
+                              bottomLeft: Radius.circular(5.0),
+                              bottomRight: Radius.circular(5.0),
+                              topLeft: Radius.circular(5.0),
+                              topRight: Radius.circular(5.0),
+                            ),
+                            shape: PinCodeFieldShape.box,
+                            activeColor: FlutterFlowTheme.of(context).white,
+                            inactiveColor: FlutterFlowTheme.of(context).white,
+                            selectedColor: FlutterFlowTheme.of(context).white,
+                            activeFillColor: FlutterFlowTheme.of(context).white,
+                            inactiveFillColor:
+                                FlutterFlowTheme.of(context).white,
+                            selectedFillColor:
+                                FlutterFlowTheme.of(context).white,
                           ),
-                          shape: PinCodeFieldShape.box,
-                          activeColor: FlutterFlowTheme.of(context).white,
-                          inactiveColor: FlutterFlowTheme.of(context).white,
-                          selectedColor: FlutterFlowTheme.of(context).white,
-                          activeFillColor: FlutterFlowTheme.of(context).white,
-                          inactiveFillColor: FlutterFlowTheme.of(context).white,
-                          selectedFillColor: FlutterFlowTheme.of(context).white,
+                          controller: _model.pinCodeController,
+                          onChanged: (_) {},
+                          onCompleted: (_) async {
+                            _model.apiResultpqp =
+                                await GetVerifiedCodeApiCall.call(
+                              phone: widget.phoneNumber,
+                              verifiedCode: _model.pinCodeController!.text,
+                            );
+                            if ((_model.apiResultpqp?.succeeded ?? true)) {
+                              setState(() {
+                                FFAppState().userModel =
+                                    UserModelStruct.maybeFromMap(
+                                        (_model.apiResultpqp?.jsonBody ?? ''))!;
+                              });
+                              Navigator.pop(context);
+                            } else {
+                              await showAlignedDialog(
+                                context: context,
+                                isGlobal: true,
+                                avoidOverflow: false,
+                                targetAnchor: AlignmentDirectional(0.0, 0.0)
+                                    .resolve(Directionality.of(context)),
+                                followerAnchor: AlignmentDirectional(0.0, 0.0)
+                                    .resolve(Directionality.of(context)),
+                                builder: (dialogContext) {
+                                  return Material(
+                                    color: Colors.transparent,
+                                    child: Modal06BasicInformationWidget(
+                                      body:
+                                          (_model.apiResultpqp?.bodyText ?? ''),
+                                    ),
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
+                            }
+
+                            showModalBottomSheet(
+                              isScrollControlled: true,
+                              backgroundColor: Color(0x00FFFFFF),
+                              barrierColor: Color(0x00FFFFFF),
+                              enableDrag: false,
+                              context: context,
+                              builder: (context) {
+                                return Padding(
+                                  padding: MediaQuery.viewInsetsOf(context),
+                                  child: Container(
+                                    height: 400.0,
+                                    child: ResetPasswordComponentWidget(),
+                                  ),
+                                );
+                              },
+                            ).then((value) => safeSetState(() {}));
+
+                            setState(() {});
+                          },
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
+                          validator: _model.pinCodeControllerValidator
+                              .asValidator(context),
                         ),
-                        controller: _model.pinCodeController,
-                        onChanged: (_) {},
-                        onCompleted: (_) async {
-                          var _shouldSetState = false;
-                          _model.apiResultpqp =
-                              await GetVerifiedCodeApiCall.call(
-                            phone: widget.phoneNumber,
-                            verifiedCode: _model.pinCodeController!.text,
-                          );
-                          _shouldSetState = true;
-                          if ((_model.apiResultpqp?.succeeded ?? true)) {
-                            setState(() {
-                              FFAppState().userModel =
-                                  UserModelStruct.maybeFromMap(
-                                      (_model.apiResultpqp?.jsonBody ?? ''))!;
-                            });
-                            Navigator.pop(context);
-                          } else {
-                            if (_shouldSetState) setState(() {});
-                            return;
-                          }
-
-                          showModalBottomSheet(
-                            isScrollControlled: true,
-                            backgroundColor: Color(0x00FFFFFF),
-                            barrierColor: Color(0x00FFFFFF),
-                            enableDrag: false,
-                            context: context,
-                            builder: (context) {
-                              return Padding(
-                                padding: MediaQuery.viewInsetsOf(context),
-                                child: Container(
-                                  height: 400.0,
-                                  child: ResetPasswordComponentWidget(),
-                                ),
-                              );
-                            },
-                          ).then((value) => safeSetState(() {}));
-
-                          if (_shouldSetState) setState(() {});
-                        },
-                        autovalidateMode: AutovalidateMode.onUserInteraction,
-                        validator: _model.pinCodeControllerValidator
-                            .asValidator(context),
                       ),
                     ),
                   ),
