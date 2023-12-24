@@ -262,34 +262,37 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                               ),
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 10.0, 30.0, 10.0),
-                                            child: Text(
-                                              functions.getNameByLanguge(
-                                                  getJsonField(
-                                                    sliderSlideListItem,
-                                                    r'''$.slogan_en''',
-                                                  ).toString(),
-                                                  getJsonField(
-                                                    sliderSlideListItem,
-                                                    r'''$.slogan_en''',
-                                                  ).toString(),
-                                                  FFLocalizations.of(context)
-                                                      .languageCode),
-                                              textAlign: TextAlign.center,
-                                              maxLines: 2,
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'HeeboBold',
-                                                    color: Color(0xFF212427),
-                                                    fontSize: 16.0,
-                                                    fontWeight: FontWeight.bold,
-                                                    useGoogleFonts: false,
-                                                  ),
+                                          Flexible(
+                                            child: Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      30.0, 10.0, 30.0, 10.0),
+                                              child: Text(
+                                                functions.getNameByLanguge(
+                                                    getJsonField(
+                                                      sliderSlideListItem,
+                                                      r'''$.slogan_en''',
+                                                    ).toString(),
+                                                    getJsonField(
+                                                      sliderSlideListItem,
+                                                      r'''$.slogan_en''',
+                                                    ).toString(),
+                                                    FFLocalizations.of(context)
+                                                        .languageCode),
+                                                textAlign: TextAlign.center,
+                                                maxLines: 2,
+                                                style: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'HeeboBold',
+                                                      color: Color(0xFF212427),
+                                                      fontSize: 16.0,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                      useGoogleFonts: false,
+                                                    ),
+                                              ),
                                             ),
                                           ),
                                         ],
@@ -360,7 +363,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       flex: 1,
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 0.0, 30.0, 55.0),
+                            30.0, 0.0, 30.0, 75.0),
                         child: GridView(
                           padding: EdgeInsets.zero,
                           gridDelegate:
