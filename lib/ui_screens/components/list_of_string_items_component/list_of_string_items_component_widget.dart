@@ -50,21 +50,10 @@ class _ListOfStringItemsComponentWidgetState
     // On component load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        _model.carInfoLocalModel = getJsonField(
-                      widget.jsonData,
-                      r'''$.info''',
-                    ) !=
-                    null &&
-                getJsonField(
-                      widget.jsonData,
-                      r'''$.info''',
-                    ) !=
-                    ''
-            ? CarInfoModelStruct.fromMap(getJsonField(
-                widget.jsonData,
-                r'''$.info''',
-              ))
-            : null;
+        _model.carInfoLocalModel = CarInfoModelStruct.maybeFromMap(getJsonField(
+          widget.jsonData,
+          r'''$.info''',
+        ));
         _model.carModelList = functions
             .fromJsonToModelList(getJsonField(
               widget.jsonData,

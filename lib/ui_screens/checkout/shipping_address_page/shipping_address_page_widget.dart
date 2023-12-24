@@ -78,21 +78,11 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
       );
       if ((_model.apiResultqwk?.succeeded ?? true)) {
         setState(() {
-          _model.addressModel = getJsonField(
-            (_model.apiResultqwk?.jsonBody ?? ''),
-            r'''$.address''',
-          ) !=
-              null &&
-              getJsonField(
-                (_model.apiResultqwk?.jsonBody ?? ''),
-                r'''$.address''',
-              ) !=
-                  ''
-              ? AddressModelStruct.fromMap(getJsonField(
+          _model.addressModel = AddressModelStruct.maybeFromMap(getJsonField(
             (_model.apiResultqwk?.jsonBody ?? ''),
             r'''$.address''',
           ))
-              : null;
+              ;
         });
         setState(() {
           _model.textController1?.text = (_model.addressModel?.name != null &&

@@ -148,8 +148,9 @@ class NewsModelStruct extends BaseStruct {
         description: data['description'] as String?,
       );
 
-  static NewsModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? NewsModelStruct.fromMap(data) : null;
+  static NewsModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? NewsModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

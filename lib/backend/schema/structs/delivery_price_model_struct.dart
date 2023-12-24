@@ -59,10 +59,9 @@ class DeliveryPriceModelStruct extends BaseStruct {
         name: data['name'] as String?,
       );
 
-  static DeliveryPriceModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? DeliveryPriceModelStruct.fromMap(data)
-          : null;
+  static DeliveryPriceModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? DeliveryPriceModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

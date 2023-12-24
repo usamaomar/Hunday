@@ -65,10 +65,11 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
           );
           if ((_model.loginApiRes5?.succeeded ?? true)) {
             setState(() {
-              FFAppState().userModel = UserModelStruct.fromMap(getJsonField(
+              FFAppState().userModel =
+                  UserModelStruct.maybeFromMap(getJsonField(
                 (_model.loginApiRes5?.jsonBody ?? ''),
                 r'''$.user''',
-              ));
+              ))!;
             });
             setState(() {
               FFAppState().biomatricDtateModel = BiomatricModelStruct(
@@ -594,13 +595,14 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                     true)) {
                                                   setState(() {
                                                     FFAppState().userModel =
-                                                        UserModelStruct.fromMap(
-                                                            getJsonField(
+                                                        UserModelStruct
+                                                            .maybeFromMap(
+                                                                getJsonField(
                                                       (_model.loginApiRes
                                                               ?.jsonBody ??
                                                           ''),
                                                       r'''$.user''',
-                                                    ));
+                                                    ))!;
                                                   });
                                                   setState(() {
                                                     FFAppState()

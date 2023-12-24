@@ -180,8 +180,9 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                           _shouldSetState = true;
                           if ((_model.apiResultpqp?.succeeded ?? true)) {
                             setState(() {
-                              FFAppState().userModel = UserModelStruct.fromMap(
-                                  FFAppState().reservedUserModel);
+                              FFAppState().userModel =
+                                  UserModelStruct.maybeFromMap(
+                                      FFAppState().reservedUserModel)!;
                             });
                             setState(() {
                               FFAppState().updateUserModelStruct(

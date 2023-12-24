@@ -49,10 +49,9 @@ class ServiceTypeModelStruct extends BaseStruct {
         name: data['name'] as String?,
       );
 
-  static ServiceTypeModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? ServiceTypeModelStruct.fromMap(data)
-          : null;
+  static ServiceTypeModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? ServiceTypeModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

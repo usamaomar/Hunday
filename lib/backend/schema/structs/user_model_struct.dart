@@ -102,8 +102,9 @@ class UserModelStruct extends BaseStruct {
         profilePhotoUrl: data['profile_photo_url'] as String?,
       );
 
-  static UserModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? UserModelStruct.fromMap(data) : null;
+  static UserModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? UserModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'name': _name,

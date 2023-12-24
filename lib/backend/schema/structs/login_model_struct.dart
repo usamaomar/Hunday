@@ -30,8 +30,9 @@ class LoginModelStruct extends BaseStruct {
         tokenType: data['token_type'] as String?,
       );
 
-  static LoginModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? LoginModelStruct.fromMap(data) : null;
+  static LoginModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? LoginModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'access_token': _accessToken,

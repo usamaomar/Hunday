@@ -86,7 +86,7 @@ class CarModelStruct extends BaseStruct {
       );
 
   static CarModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CarModelStruct.fromMap(data) : null;
+      data is Map ? CarModelStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'fullName': _fullName,
