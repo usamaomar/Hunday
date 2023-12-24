@@ -26,7 +26,7 @@ class TestStruct extends BaseStruct {
       );
 
   static TestStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? TestStruct.fromMap(data) : null;
+      data is Map ? TestStruct.fromMap(data.cast<String, dynamic>()) : null;
 
   Map<String, dynamic> toMap() => {
         'listOfCarModel': _listOfCarModel?.map((e) => e.toMap()).toList(),

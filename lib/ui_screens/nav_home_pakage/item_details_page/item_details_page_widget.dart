@@ -44,10 +44,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
-        _model.localMyPart =
-            widget.jsonObject != null && widget.jsonObject != ''
-                ? PartModelStruct.fromMap(widget.jsonObject)
-                : null;
+        _model.localMyPart = PartModelStruct.maybeFromMap(widget.jsonObject);
       });
     });
 

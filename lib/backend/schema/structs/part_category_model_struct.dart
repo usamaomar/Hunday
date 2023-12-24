@@ -104,10 +104,9 @@ class PartCategoryModelStruct extends BaseStruct {
         description: data['description'] as String?,
       );
 
-  static PartCategoryModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? PartCategoryModelStruct.fromMap(data)
-          : null;
+  static PartCategoryModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? PartCategoryModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

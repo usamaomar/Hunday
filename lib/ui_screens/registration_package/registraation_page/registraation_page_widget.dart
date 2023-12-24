@@ -277,7 +277,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                 Container(
                                   decoration: BoxDecoration(
                                     color: Color(0xB8FFFEFE),
-                                    borderRadius: BorderRadius.circular(3.0),
+                                    borderRadius: BorderRadius.circular(0.0),
                                     border: Border.all(
                                       color: valueOrDefault<Color>(
                                         _model.localEmailIsValid == true
@@ -325,11 +325,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
+                                                    BorderRadius.circular(0.0),
                                               ),
                                               focusedBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
@@ -337,11 +333,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
+                                                    BorderRadius.circular(0.0),
                                               ),
                                               errorBorder: OutlineInputBorder(
                                                 borderSide: BorderSide(
@@ -349,11 +341,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
+                                                    BorderRadius.circular(0.0),
                                               ),
                                               focusedErrorBorder:
                                                   OutlineInputBorder(
@@ -362,11 +350,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                   width: 1.0,
                                                 ),
                                                 borderRadius:
-                                                    const BorderRadius.only(
-                                                  topLeft: Radius.circular(4.0),
-                                                  topRight:
-                                                      Radius.circular(4.0),
-                                                ),
+                                                    BorderRadius.circular(0.0),
                                               ),
                                             ),
                                             style: FlutterFlowTheme.of(context)
@@ -1421,103 +1405,38 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                           .text,
                                                     );
                                                   });
-                                                  _model.apiResultjcw =
-                                                      await GetMobileNumberCall
-                                                          .call(
-                                                    phone: getJsonField(
-                                                      FFAppState()
-                                                          .reservedUserModel,
-                                                      r'''$.phone''',
-                                                    ).toString(),
-                                                  );
-                                                  _shouldSetState = true;
-                                                  if ((_model.apiResultjcw
-                                                          ?.succeeded ??
-                                                      true)) {
-                                                    await showModalBottomSheet(
-                                                      isScrollControlled: true,
-                                                      backgroundColor:
-                                                          Colors.transparent,
-                                                      enableDrag: false,
-                                                      context: context,
-                                                      builder: (context) {
-                                                        return GestureDetector(
-                                                          onTap: () => _model
-                                                                  .unfocusNode
-                                                                  .canRequestFocus
-                                                              ? FocusScope.of(
-                                                                      context)
-                                                                  .requestFocus(
-                                                                      _model
-                                                                          .unfocusNode)
-                                                              : FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
-                                                          child: Padding(
-                                                            padding: MediaQuery
-                                                                .viewInsetsOf(
-                                                                    context),
-                                                            child: Container(
-                                                              height: 400.0,
-                                                              child:
-                                                                  VerifyBottomDialogWidget(),
-                                                            ),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        safeSetState(() {}));
-                                                  } else {
-                                                    await showAlignedDialog(
-                                                      context: context,
-                                                      isGlobal: true,
-                                                      avoidOverflow: false,
-                                                      targetAnchor:
-                                                          AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      followerAnchor:
-                                                          AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      builder: (dialogContext) {
-                                                        return Material(
-                                                          color: Colors
-                                                              .transparent,
-                                                          child:
-                                                              GestureDetector(
-                                                            onTap: () => _model
-                                                                    .unfocusNode
-                                                                    .canRequestFocus
-                                                                ? FocusScope.of(
-                                                                        context)
-                                                                    .requestFocus(
-                                                                        _model
-                                                                            .unfocusNode)
-                                                                : FocusScope.of(
-                                                                        context)
-                                                                    .unfocus(),
+                                                  await showModalBottomSheet(
+                                                    isScrollControlled: true,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    enableDrag: false,
+                                                    context: context,
+                                                    builder: (context) {
+                                                      return GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child: Padding(
+                                                          padding: MediaQuery
+                                                              .viewInsetsOf(
+                                                                  context),
+                                                          child: Container(
+                                                            height: 400.0,
                                                             child:
-                                                                Modal06BasicInformationWidget(
-                                                              body: (_model
-                                                                      .apiResultjcw
-                                                                      ?.bodyText ??
-                                                                  ''),
-                                                            ),
+                                                                VerifyBottomDialogWidget(),
                                                           ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        setState(() {}));
-
-                                                    if (_shouldSetState)
-                                                      setState(() {});
-                                                    return;
-                                                  }
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      safeSetState(() {}));
                                                 } else {
                                                   await showAlignedDialog(
                                                     context: context,

@@ -162,8 +162,9 @@ class PartModelStruct extends BaseStruct {
         quantity: castToType<int>(data['quantity']),
       );
 
-  static PartModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? PartModelStruct.fromMap(data) : null;
+  static PartModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? PartModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

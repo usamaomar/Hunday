@@ -62,8 +62,9 @@ class CartModelStruct extends BaseStruct {
         part: PartModelStruct.maybeFromMap(data['part']),
       );
 
-  static CartModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CartModelStruct.fromMap(data) : null;
+  static CartModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? CartModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

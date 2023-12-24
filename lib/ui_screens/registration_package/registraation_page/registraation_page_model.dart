@@ -71,8 +71,6 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
   bool? checkboxValue2;
   // Stores action output result for [Backend Call - API (RegisterApi)] action in Button widget.
   ApiCallResponse? apiResult7h5;
-  // Stores action output result for [Backend Call - API (GetMobileNumber)] action in Button widget.
-  ApiCallResponse? apiResultjcw;
 
   /// Initialization and disposal methods.
 

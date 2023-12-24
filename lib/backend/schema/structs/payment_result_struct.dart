@@ -30,8 +30,9 @@ class PaymentResultStruct extends BaseStruct {
         description: data['description'] as String?,
       );
 
-  static PaymentResultStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? PaymentResultStruct.fromMap(data) : null;
+  static PaymentResultStruct? maybeFromMap(dynamic data) => data is Map
+      ? PaymentResultStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'code': _code,

@@ -30,8 +30,9 @@ class BiomatricModelStruct extends BaseStruct {
         password: data['password'] as String?,
       );
 
-  static BiomatricModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? BiomatricModelStruct.fromMap(data) : null;
+  static BiomatricModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? BiomatricModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'phoneNumber': _phoneNumber,

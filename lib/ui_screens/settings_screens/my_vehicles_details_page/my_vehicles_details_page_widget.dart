@@ -59,9 +59,7 @@ class _MyVehiclesDetailsPageWidgetState
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
         _model.myVehicleModel =
-            widget.vehicleObject != null && widget.vehicleObject != ''
-                ? MyVehicleModelStruct.fromMap(widget.vehicleObject)
-                : null;
+            MyVehicleModelStruct.maybeFromMap(widget.vehicleObject);
       });
     });
 

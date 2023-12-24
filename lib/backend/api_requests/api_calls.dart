@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'dart:typed_data';
+import '../schema/structs/index.dart';
 
 import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
@@ -623,7 +624,7 @@ class DetailsNewsApiCall {
     );
   }
 
-  static dynamic details(dynamic response) => getJsonField(
+  static dynamic? details(dynamic response) => getJsonField(
         response,
         r'''$..details''',
       );
@@ -713,7 +714,7 @@ class OfferDetailsApiCall {
     );
   }
 
-  static dynamic offerJsonModel(dynamic response) => getJsonField(
+  static dynamic? offerJsonModel(dynamic response) => getJsonField(
         response,
         r'''$.offer''',
       );
@@ -774,7 +775,9 @@ class SliderApiCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   static List? listOfTitles(dynamic response) => getJsonField(
         response,
         r'''$.slider.data[:].title''',
@@ -791,14 +794,18 @@ class SliderApiCall {
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
   static List<String>? sloganarItems(dynamic response) => (getJsonField(
         response,
         r'''$.slider.data[:].slogan_ar''',
         true,
       ) as List?)
           ?.withoutNulls
-          .cast<String>();
+          .map((x) => castToType<String>(x))
+          .withoutNulls
+          .toList();
 }
 
 class CarModelsApiCall {
@@ -885,14 +892,15 @@ class GetCarDetailsApiCall {
     );
   }
 
-  static dynamic detailsModel(dynamic response) => getJsonField(
+  static dynamic? detailsModel(dynamic response) => getJsonField(
         response,
         r'''$.car''',
       );
-  static dynamic performanceModel(dynamic response) => getJsonField(
+  static String? performanceModel(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.car.performance''',
-      );
+      ));
   static List? carsSlider(dynamic response) => getJsonField(
         response,
         r'''$.car.car_sliders''',
@@ -925,14 +933,15 @@ class PartsCategoryApiCall {
     );
   }
 
-  static dynamic detailsModel(dynamic response) => getJsonField(
+  static dynamic? detailsModel(dynamic response) => getJsonField(
         response,
         r'''$.car''',
       );
-  static dynamic performanceModel(dynamic response) => getJsonField(
+  static String? performanceModel(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.car.performance''',
-      );
+      ));
   static List? carsSlider(dynamic response) => getJsonField(
         response,
         r'''$.car.car_sliders''',
@@ -965,14 +974,15 @@ class PartsApiCall {
     );
   }
 
-  static dynamic detailsModel(dynamic response) => getJsonField(
+  static dynamic? detailsModel(dynamic response) => getJsonField(
         response,
         r'''$.car''',
       );
-  static dynamic performanceModel(dynamic response) => getJsonField(
+  static String? performanceModel(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.car.performance''',
-      );
+      ));
   static List? carsSlider(dynamic response) => getJsonField(
         response,
         r'''$.car.car_sliders''',
@@ -1010,14 +1020,15 @@ class UpdateCartApiCall {
     );
   }
 
-  static dynamic detailsModel(dynamic response) => getJsonField(
+  static dynamic? detailsModel(dynamic response) => getJsonField(
         response,
         r'''$.car''',
       );
-  static dynamic performanceModel(dynamic response) => getJsonField(
+  static String? performanceModel(dynamic response) =>
+      castToType<String>(getJsonField(
         response,
         r'''$.car.performance''',
-      );
+      ));
   static List? carsSlider(dynamic response) => getJsonField(
         response,
         r'''$.car.car_sliders''',

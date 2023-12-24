@@ -616,17 +616,11 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                     ?.succeeded ??
                                                                 true)) {
                                                               setState(() {
-                                                                _model
-                                                                    .paymentModel = (_model.apiResultgyn?.jsonBody ??
-                                                                                '') !=
-                                                                            null &&
-                                                                        (_model.apiResultgyn?.jsonBody ??
-                                                                                '') !=
-                                                                            ''
-                                                                    ? PaymentModelStruct.fromMap(
-                                                                        (_model.apiResultgyn?.jsonBody ??
-                                                                            ''))
-                                                                    : null;
+                                                                _model.paymentModel =
+                                                                    PaymentModelStruct.maybeFromMap((_model
+                                                                            .apiResultgyn
+                                                                            ?.jsonBody ??
+                                                                        ''));
                                                               });
                                                             }
                                                             _model.apiResult8am =

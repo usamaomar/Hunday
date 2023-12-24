@@ -164,8 +164,9 @@ class MyVehicleModelStruct extends BaseStruct {
         insuranceCompany: data['insurance_company'] as String?,
       );
 
-  static MyVehicleModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? MyVehicleModelStruct.fromMap(data) : null;
+  static MyVehicleModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? MyVehicleModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

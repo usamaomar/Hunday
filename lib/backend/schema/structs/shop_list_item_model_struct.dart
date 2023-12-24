@@ -39,10 +39,9 @@ class ShopListItemModelStruct extends BaseStruct {
         description: data['description'] as String?,
       );
 
-  static ShopListItemModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? ShopListItemModelStruct.fromMap(data)
-          : null;
+  static ShopListItemModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? ShopListItemModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'image_url': _imageUrl,

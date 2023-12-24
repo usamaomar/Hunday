@@ -160,8 +160,9 @@ class CarInfoModelStruct extends BaseStruct {
         m2: data['m2'] as String?,
       );
 
-  static CarInfoModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CarInfoModelStruct.fromMap(data) : null;
+  static CarInfoModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? CarInfoModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'owner_name': _ownerName,

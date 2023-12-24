@@ -59,8 +59,9 @@ class FuelTypeModelStruct extends BaseStruct {
         name: data['name'] as String?,
       );
 
-  static FuelTypeModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? FuelTypeModelStruct.fromMap(data) : null;
+  static FuelTypeModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? FuelTypeModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'id': _id,

@@ -84,8 +84,9 @@ class CartItemModelStruct extends BaseStruct {
         couponCode: data['couponCode'] as String?,
       );
 
-  static CartItemModelStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CartItemModelStruct.fromMap(data) : null;
+  static CartItemModelStruct? maybeFromMap(dynamic data) => data is Map
+      ? CartItemModelStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'totalPrice': _totalPrice,
