@@ -823,7 +823,10 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               .apiResultx448866
                                                                               ?.succeeded ??
                                                                           true)) {
-                                                                        if (_model.apiResultx448866 ==
+                                                                        if (getJsonField(
+                                                                                  (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                  r'''$.cart''',
+                                                                                ) ==
                                                                                 null
                                                                             ? true
                                                                             : false) {
