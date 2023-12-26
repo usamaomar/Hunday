@@ -67,7 +67,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
         setState(() {
           _model.couponModel = CouponModelStruct.maybeFromMap(getJsonField(
             (_model.apiResult3z0?.jsonBody ?? ''),
-            r'''$.data.coupon''',
+            r'''$.cart.coupon''',
           ));
         });
       }
@@ -635,17 +635,6 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                       .textController
                                                                       .text,
                                                                 );
-                                                                setState(() {
-                                                                  _model.couponModel =
-                                                                      CouponModelStruct
-                                                                          .maybeFromMap(
-                                                                              getJsonField(
-                                                                    (_model.apiResult5gw
-                                                                            ?.jsonBody ??
-                                                                        ''),
-                                                                    r'''$.data.coupon''',
-                                                                  ));
-                                                                });
                                                                 if ((_model
                                                                         .apiResult5gw
                                                                         ?.succeeded ??
@@ -660,6 +649,16 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                         () {
                                                                       _model.addingCouponeIsSuccess =
                                                                           true;
+                                                                    });
+                                                                    setState(
+                                                                        () {
+                                                                      _model.couponModel =
+                                                                          CouponModelStruct.maybeFromMap(
+                                                                              getJsonField(
+                                                                        (_model.apiResult5gw?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.cart.coupon''',
+                                                                      ));
                                                                     });
                                                                     _model.apiResult3z0cc =
                                                                         await GetMyCartApiCall
@@ -1014,7 +1013,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                       (_model.apiResultw5l
                                                                               ?.jsonBody ??
                                                                           ''),
-                                                                      r'''$.data.coupon''',
+                                                                      r'''$.cart.coupon''',
                                                                     ));
                                                                   });
                                                                   _model.apiResult3z0vcvcv =
