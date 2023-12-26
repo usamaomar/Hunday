@@ -1,6 +1,7 @@
 import 'package:hyperpay_plugin/flutter_hyperpay.dart';
 import 'package:hyperpay_plugin/model/ready_ui.dart';
 
+import '../../components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '../shipping_address_page/in_app_payment_setting.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
@@ -637,16 +638,25 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                             ?.jsonBody ??
                                                                         ''));
                                                               });
-                                                              payRequestNowReadyUI(checkoutId: _model
-                                                                  .paymentModel?.id ?? "null");
+                                                              payRequestNowReadyUI(
+                                                                  checkoutId: _model
+                                                                          .paymentModel
+                                                                          ?.id ??
+                                                                      "null",
+                                                                  merchantId: _model
+                                                                          .paymentModel
+                                                                          ?.merchantTransactionId ??
+                                                                      "null");
                                                             }
                                                           } else {
                                                             _model.apiResultmcd =
                                                                 await CashOnDeliveryApiCall
-                                                                    .call(   token:
-                                                                FFAppState()
-                                                                    .userModel
-                                                                    .token,);
+                                                                    .call(
+                                                              token:
+                                                                  FFAppState()
+                                                                      .userModel
+                                                                      .token,
+                                                            );
                                                             _shouldSetState =
                                                                 true;
                                                             if ((_model
@@ -654,43 +664,39 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                     ?.succeeded ??
                                                                 true)) {
                                                               await showAlignedDialog(
-                                                                context: context,
+                                                                context:
+                                                                    context,
                                                                 isGlobal: true,
                                                                 avoidOverflow:
-                                                                false,
+                                                                    false,
                                                                 targetAnchor:
-                                                                AlignmentDirectional(
-                                                                    0.0,
-                                                                    0.0)
-                                                                    .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
+                                                                    AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
                                                                 followerAnchor:
-                                                                AlignmentDirectional(
-                                                                    0.0,
-                                                                    0.0)
-                                                                    .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
+                                                                    AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
                                                                 builder:
                                                                     (dialogContext) {
                                                                   return Material(
                                                                     color: Colors
                                                                         .transparent,
                                                                     child:
-                                                                    GestureDetector(
+                                                                        GestureDetector(
                                                                       onTap: () => _model
-                                                                          .unfocusNode
-                                                                          .canRequestFocus
-                                                                          ? FocusScope.of(
-                                                                          context)
-                                                                          .requestFocus(_model
-                                                                          .unfocusNode)
-                                                                          : FocusScope.of(
-                                                                          context)
-                                                                          .unfocus(),
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
                                                                       child:
-                                                                      ThankYouComponentWidget(),
+                                                                          ThankYouComponentWidget(),
                                                                     ),
                                                                   );
                                                                 },
@@ -698,6 +704,51 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                 context.pushReplacementNamed(
                                                                     'HomeScreen');
                                                               });
+                                                            }else{
+                                                              await showAlignedDialog(
+                                                                context: context,
+                                                                isGlobal: true,
+                                                                avoidOverflow: false,
+                                                                targetAnchor:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                    .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                                followerAnchor:
+                                                                AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                    .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                                builder: (dialogContext) {
+                                                                  return Material(
+                                                                    color:
+                                                                    Colors.transparent,
+                                                                    child: GestureDetector(
+                                                                      onTap: () => _model
+                                                                          .unfocusNode
+                                                                          .canRequestFocus
+                                                                          ? FocusScope.of(
+                                                                          context)
+                                                                          .requestFocus(
+                                                                          _model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(
+                                                                          context)
+                                                                          .unfocus(),
+                                                                      child:
+                                                                      Modal06BasicInformationWidget(
+                                                                        body: (_model
+                                                                            .apiResultmcd
+                                                                            ?.bodyText ??
+                                                                            ''),
+                                                                      ),
+                                                                    ),
+                                                                  );
+                                                                },
+                                                              ).then((value) =>
+                                                                  setState(() {}));
                                                             }
                                                           }
                                                         } else {
@@ -876,14 +927,18 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     );
   }
 
-  payRequestNowReadyUI({required String checkoutId}) async {
+  payRequestNowReadyUI(
+      {required String checkoutId, required merchantId}) async {
     await flutterHyperPay
         .readyUICards(
       readyUI: ReadyUI(
           brandsName: ["VISA", "MASTER"],
           checkoutId: checkoutId,
-          countryCodeApplePayIOS: InAppPaymentSetting.countryCode, // applePay
-          themColorHexIOS: "#000000", // FOR IOS ONLY
+          merchantIdApplePayIOS: merchantId,
+          countryCodeApplePayIOS: InAppPaymentSetting.countryCode,
+          // applePay
+          themColorHexIOS: "#000000",
+          // FOR IOS ONLY
           setStorePaymentDetailsMode:
               false // store payment details for future use
           ),

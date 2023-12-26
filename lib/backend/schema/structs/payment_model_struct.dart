@@ -65,7 +65,7 @@ class PaymentModelStruct extends BaseStruct {
         ndc: data['ndc'] as String?,
         id: data['id'] as String?,
         result: PaymentResultStruct.maybeFromMap(data['result']),
-        merchantTransactionId: data['merchantTransactionId'] as String?,
+        merchantTransactionId: data['merchantTransactionId'].toString(),
       );
 
   static PaymentModelStruct? maybeFromMap(dynamic data) => data is Map
