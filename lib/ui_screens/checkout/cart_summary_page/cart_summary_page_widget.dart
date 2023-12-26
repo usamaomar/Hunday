@@ -942,11 +942,11 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                             10.0),
                                                                         child:
                                                                             Text(
-                                                                          getJsonField(
+                                                                          '${getJsonField(
                                                                             (_model.apiResult3z0?.jsonBody ??
                                                                                 ''),
                                                                             r'''$.cart.coupon.discount_rate''',
-                                                                          ).toString(),
+                                                                          ).toString()} %',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -1217,14 +1217,12 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  '${valueOrDefault<String>(
-                                                    _model.cartObject
-                                                        ?.discountRate,
-                                                    '0%',
-                                                  )} ${FFLocalizations.of(context).getVariableText(
-                                                    enText: 'JD',
-                                                    arText: 'د.أ',
-                                                  )}',
+                                                  '${getJsonField(
+                                                    (_model.apiResult3z0
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.cart.coupon.discount_rate''',
+                                                  ).toString()} %',
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium
