@@ -338,7 +338,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                             Column(
                                                               mainAxisSize:
                                                                   MainAxisSize
-                                                                      .max,
+                                                                      .min,
                                                               mainAxisAlignment:
                                                                   MainAxisAlignment
                                                                       .end,
@@ -346,11 +346,12 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                   CrossAxisAlignment
                                                                       .end,
                                                               children: [
-                                                                if (seedCartListItem
-                                                                            .discAmount !=
-                                                                        null
-                                                                    ? false
-                                                                    : true)
+                                                                if ((seedCartListItem.discAmount !=
+                                                                            null) &&
+                                                                        (seedCartListItem.discAmount >
+                                                                            0.0)
+                                                                    ? true
+                                                                    : false)
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
@@ -385,8 +386,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                         ),
                                                                         child:
                                                                             Container(
-                                                                          width:
-                                                                              85.0,
                                                                           height:
                                                                               30.0,
                                                                           decoration:
@@ -442,7 +441,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           0.0),
                                                                   child:
                                                                       Container(
-                                                                    width: 85.0,
                                                                     height:
                                                                         30.0,
                                                                     decoration:
@@ -483,13 +481,10 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               MainAxisAlignment.center,
                                                                           children: [
                                                                             Text(
-                                                                              '${(seedCartListItem.discAmount == null) || (seedCartListItem.discAmount == 0.0) ? '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                  enText: 'JOD',
-                                                                                  arText: 'دينار',
-                                                                                )}' : '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                  enText: 'JOD',
-                                                                                  arText: 'دينار',
-                                                                                )}'}',
+                                                                              '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                enText: 'JOD',
+                                                                                arText: 'دينار',
+                                                                              )}',
                                                                               textAlign: TextAlign.center,
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                     fontFamily: 'Poppins',
