@@ -695,7 +695,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           _model.totalPrice = functions
                                                                               .convertFromJsonToCartObject(getJsonField(
                                                                                 (_model.apiResultx4488?.jsonBody ?? ''),
-                                                                                r'''$''',
+                                                                                r'''$.cart''',
                                                                               ))
                                                                               .totalPrice;
                                                                         });
@@ -839,7 +839,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           _model.totalPrice = functions
                                                                               .convertFromJsonToCartObject(getJsonField(
                                                                                 (_model.apiResultx448866?.jsonBody ?? ''),
-                                                                                r'''$''',
+                                                                                r'''$.cart''',
                                                                               ))
                                                                               .totalPrice;
                                                                         });
