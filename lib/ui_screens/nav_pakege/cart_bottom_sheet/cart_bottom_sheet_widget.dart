@@ -346,9 +346,9 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                   CrossAxisAlignment
                                                                       .end,
                                                               children: [
-                                                                if ((seedCartListItem.discAmount !=
+                                                                if ((seedCartListItem.specialPrice !=
                                                                             null) &&
-                                                                        (seedCartListItem.discAmount >
+                                                                        (seedCartListItem.specialPrice >
                                                                             0.0)
                                                                     ? true
                                                                     : false)
@@ -412,8 +412,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                                                 children: [
                                                                                   Text(
-                                                                                    seedCartListItem.discAmount != null
-                                                                                        ? '${seedCartListItem.discAmount.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                    seedCartListItem.specialPrice != null
+                                                                                        ? '${seedCartListItem.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                                             enText: 'JOD',
                                                                                             arText: 'دينار',
                                                                                           )}'
