@@ -497,19 +497,20 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                                           decoration: TextDecoration.lineThrough,
                                                                                         ),
                                                                                   ),
-                                                                                Text(
-                                                                                  '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                    enText: 'JOD',
-                                                                                    arText: 'دينار',
-                                                                                  )}',
-                                                                                  textAlign: TextAlign.center,
-                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                        fontFamily: 'Poppins',
-                                                                                        color: FlutterFlowTheme.of(context).white,
-                                                                                        fontSize: 12.0,
-                                                                                        fontWeight: FontWeight.normal,
-                                                                                      ),
-                                                                                ),
+                                                                                if ((seedCartListItem.specialPrice == null) && (seedCartListItem.specialPrice <= 0.0))
+                                                                                  Text(
+                                                                                    '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                      enText: 'JOD',
+                                                                                      arText: 'دينار',
+                                                                                    )}',
+                                                                                    textAlign: TextAlign.center,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Poppins',
+                                                                                          color: FlutterFlowTheme.of(context).white,
+                                                                                          fontSize: 12.0,
+                                                                                          fontWeight: FontWeight.normal,
+                                                                                        ),
+                                                                                  ),
                                                                               ],
                                                                             ),
                                                                           ],
@@ -683,7 +684,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           _model.listOfCartItemsLocal = functions
                                                                               .convertFromJsonToCartObject(getJsonField(
                                                                                 (_model.apiResultx4488?.jsonBody ?? ''),
-                                                                                r'''$''',
+                                                                                r'''$.cart''',
                                                                               ))
                                                                               .cartItems
                                                                               .toList()
@@ -827,7 +828,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           _model.listOfCartItemsLocal = functions
                                                                               .convertFromJsonToCartObject(getJsonField(
                                                                                 (_model.apiResultx448866?.jsonBody ?? ''),
-                                                                                r'''$''',
+                                                                                r'''$.cart''',
                                                                               ))
                                                                               .cartItems
                                                                               .toList()
@@ -842,6 +843,21 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               ))
                                                                               .totalPrice;
                                                                         });
+                                                                        if (!(functions
+                                                                                .convertFromJsonToCartObject(getJsonField(
+                                                                                  (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                  r'''$.cart.cartItems''',
+                                                                                ))
+                                                                                .cartItems
+                                                                                .isNotEmpty
+                                                                            ? true
+                                                                            : false)) {
+                                                                          _model
+                                                                              .updatePage(() {
+                                                                            _model.listOfCartItemsLocal =
+                                                                                [];
+                                                                          });
+                                                                        }
                                                                       }
                                                                     } else {
                                                                       await showAlignedDialog(
@@ -940,7 +956,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                   (_model.apiResu8
                                                                           ?.jsonBody ??
                                                                       ''),
-                                                                  r'''$''',
+                                                                  r'''$.cart''',
                                                                 ))
                                                                 .cartItems
                                                                 .toList()
@@ -955,7 +971,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                   (_model.apiResu8
                                                                           ?.jsonBody ??
                                                                       ''),
-                                                                  r'''$''',
+                                                                  r'''$.cart''',
                                                                 ))
                                                                 .totalPrice;
                                                       });
