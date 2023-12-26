@@ -79,7 +79,12 @@ class _NewsBottomSheetComponentWidgetState
               final listOfNewsItems =
                   FFAppState().newsModelJsonList.map((e) => e).toList();
               return ListView.builder(
-                padding: EdgeInsets.zero,
+                padding: EdgeInsets.fromLTRB(
+                  0,
+                  0,
+                  0,
+                  75.0,
+                ),
                 scrollDirection: Axis.vertical,
                 itemCount: listOfNewsItems.length,
                 itemBuilder: (context, listOfNewsItemsIndex) {

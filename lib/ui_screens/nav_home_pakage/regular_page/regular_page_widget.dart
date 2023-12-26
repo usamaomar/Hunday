@@ -766,7 +766,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                             ],
                                           ),
                                         ),
-                                      ].addToEnd(SizedBox(height: 50.0)),
+                                      ].addToEnd(SizedBox(height: 75.0)),
                                     ),
                                   ),
                                 ),
