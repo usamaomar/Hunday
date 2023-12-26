@@ -1079,7 +1079,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  '${functions.roundDoubleToThreeDigits(_model.cartObject!.subTotal)} ${FFLocalizations.of(context).getVariableText(
+                                                  '${functions.roundDoubleToThreeDigits(_model.cartObject?.subTotal??0)} ${FFLocalizations.of(context).getVariableText(
                                                     enText: 'JD',
                                                     arText: 'د.أ',
                                                   )}',
