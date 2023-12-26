@@ -1193,53 +1193,62 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                               ],
                                             ),
                                           ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 15.0, 30.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'qjum9ia7' /* Coupon */,
+                                          if (getJsonField(
+                                                (_model.apiResult3z0
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$.cart.coupon.discount_rate''',
+                                              ) !=
+                                              null)
+                                            Padding(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
+                                                      30.0, 15.0, 30.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'qjum9ia7' /* Coupon */,
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'HeeboBold',
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                        ),
                                                   ),
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'HeeboBold',
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                                Text(
-                                                  '${getJsonField(
-                                                    (_model.apiResult3z0
-                                                            ?.jsonBody ??
-                                                        ''),
-                                                    r'''$.cart.coupon.discount_rate''',
-                                                  ).toString()} %',
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'HeeboBold',
-                                                        color:
-                                                            Color(0xFF3D6398),
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                              ],
+                                                  Text(
+                                                    '${getJsonField(
+                                                      (_model.apiResult3z0
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.cart.coupon.discount_rate''',
+                                                    ).toString()} %',
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'HeeboBold',
+                                                          color:
+                                                              Color(0xFF3D6398),
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
