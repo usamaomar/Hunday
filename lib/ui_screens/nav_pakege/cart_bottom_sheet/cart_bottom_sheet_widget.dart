@@ -973,10 +973,11 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                           .userModel
                                                           .token,
                                                     );
-                                                    if ((_model.apiResultx448866
+                                                    if ((_model
+                                                            .apiResultx448866Copy
                                                             ?.succeeded ??
                                                         true)) {
-                                                      if (_model.apiResultx448866 ==
+                                                      if (_model.apiResultx448866Copy ==
                                                               null
                                                           ? true
                                                           : false) {
@@ -994,7 +995,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                               functions
                                                                   .convertFromJsonToCartObject(
                                                                       getJsonField(
-                                                                    (_model.apiResultx448866
+                                                                    (_model.apiResultx448866Copy
                                                                             ?.jsonBody ??
                                                                         ''),
                                                                     r'''$.cart''',
@@ -1009,7 +1010,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                               functions
                                                                   .convertFromJsonToCartObject(
                                                                       getJsonField(
-                                                                    (_model.apiResultx448866
+                                                                    (_model.apiResultx448866Copy
                                                                             ?.jsonBody ??
                                                                         ''),
                                                                     r'''$.cart''',
