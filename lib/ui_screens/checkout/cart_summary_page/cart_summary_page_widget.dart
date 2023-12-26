@@ -67,7 +67,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
         setState(() {
           _model.couponModel = CouponModelStruct.maybeFromMap(getJsonField(
             (_model.apiResult3z0?.jsonBody ?? ''),
-            r'''$.data''',
+            r'''$.data.coupon''',
           ));
         });
       }
@@ -410,10 +410,10 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                           ),
                                           Stack(
                                             children: [
-                                              if (_model.cartObject
+                                              if (_model.couponModel
                                                           ?.couponCode ==
                                                       null ||
-                                                  _model.cartObject
+                                                  _model.couponModel
                                                           ?.couponCode ==
                                                       '')
                                                 Padding(
@@ -643,7 +643,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                     (_model.apiResult5gw
                                                                             ?.jsonBody ??
                                                                         ''),
-                                                                    r'''$.data''',
+                                                                    r'''$.data.coupon''',
                                                                   ));
                                                                 });
                                                                 if ((_model
@@ -754,10 +754,10 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                     ),
                                                   ),
                                                 ),
-                                              if (_model.cartObject
+                                              if (_model.couponModel
                                                           ?.couponCode !=
                                                       null &&
-                                                  _model.cartObject
+                                                  _model.couponModel
                                                           ?.couponCode !=
                                                       '')
                                                 Padding(
@@ -1015,7 +1015,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                       (_model.apiResultw5l
                                                                               ?.jsonBody ??
                                                                           ''),
-                                                                      r'''$.data''',
+                                                                      r'''$.data.coupon''',
                                                                     ));
                                                                   });
                                                                   _model.apiResult3z0vcvcv =
