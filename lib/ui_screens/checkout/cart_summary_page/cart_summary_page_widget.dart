@@ -928,8 +928,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                         child:
                                                                             Text(
                                                                           _model
-                                                                              .couponModel!
-                                                                              .couponCode,
+                                                                              .couponModel?.couponCode??'',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
