@@ -1077,7 +1077,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  '${_model.cartObject?.subTotal.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                  '${functions.roundDoubleToThreeDigits(_model.cartObject!.subTotal)} ${FFLocalizations.of(context).getVariableText(
                                                     enText: 'JD',
                                                     arText: 'د.أ',
                                                   )}',
@@ -1278,12 +1278,14 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                               ),
                                                     ),
                                                     Text(
-                                                      valueOrDefault<String>(
+                                                      functions
+                                                          .roundDoubleToThreeDigits(
+                                                              valueOrDefault<
+                                                                  double>(
                                                         _model.cartObject
-                                                            ?.totalPrice
-                                                            ?.toString(),
-                                                        '0',
-                                                      ),
+                                                            ?.totalPrice,
+                                                        0.0,
+                                                      )),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
