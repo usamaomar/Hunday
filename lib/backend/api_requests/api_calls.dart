@@ -397,10 +397,12 @@ class RemoveItemFromCartApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
     String? partId = '',
+    String? quantity = 'null',
   }) async {
     final ffApiRequestBody = '''
 {
-  "part_id": "${partId}"
+  "part_id": "${partId}",
+  "quantity": "${quantity}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RemoveItemFromCartApi',

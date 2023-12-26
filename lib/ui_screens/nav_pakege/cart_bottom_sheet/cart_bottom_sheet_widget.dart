@@ -922,30 +922,27 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  setState(() {
-                                                    _model.isLoading = true;
-                                                  });
                                                   _model.apiResultxxf2Copy =
-                                                      await UpdateCartApiCall
+                                                      await RemoveItemFromCartApiCall
                                                           .call(
-                                                    id: seedCartListItem.id,
-                                                    partId: seedCartListItem.id,
                                                     token: FFAppState()
                                                         .userModel
                                                         .token,
-                                                    quantity: 0,
+                                                    partId: seedCartListItem.id
+                                                        .toString(),
+                                                    quantity: '0',
                                                   );
                                                   if ((_model.apiResultxxf2Copy
                                                           ?.succeeded ??
                                                       true)) {
-                                                    _model.apiResu8 =
+                                                    _model.apiResultx448866Copy =
                                                         await GetMyCartApiCall
                                                             .call(
                                                       token: FFAppState()
                                                           .userModel
                                                           .token,
                                                     );
-                                                    if ((_model.apiResu8
+                                                    if ((_model.apiResultx448866
                                                             ?.succeeded ??
                                                         true)) {
                                                       setState(() {
@@ -953,7 +950,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                             functions
                                                                 .convertFromJsonToCartObject(
                                                                     getJsonField(
-                                                                  (_model.apiResu8
+                                                                  (_model.apiResultx448866
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.cart''',
@@ -968,13 +965,30 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                             functions
                                                                 .convertFromJsonToCartObject(
                                                                     getJsonField(
-                                                                  (_model.apiResu8
+                                                                  (_model.apiResultx448866
                                                                           ?.jsonBody ??
                                                                       ''),
                                                                   r'''$.cart''',
                                                                 ))
                                                                 .totalPrice;
                                                       });
+                                                      if (!(functions
+                                                              .convertFromJsonToCartObject(
+                                                                  getJsonField(
+                                                                (_model.apiResultx448866
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                                r'''$.cart.cartItems''',
+                                                              ))
+                                                              .cartItems
+                                                              .isNotEmpty
+                                                          ? true
+                                                          : false)) {
+                                                        _model.updatePage(() {
+                                                          _model.listOfCartItemsLocal =
+                                                              [];
+                                                        });
+                                                      }
                                                     }
                                                   } else {
                                                     await showAlignedDialog(
