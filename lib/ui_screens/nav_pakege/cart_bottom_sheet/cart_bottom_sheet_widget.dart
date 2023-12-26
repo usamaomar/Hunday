@@ -480,18 +480,37 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           mainAxisAlignment:
                                                                               MainAxisAlignment.center,
                                                                           children: [
-                                                                            Text(
-                                                                              '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                enText: 'JOD',
-                                                                                arText: 'دينار',
-                                                                              )}',
-                                                                              textAlign: TextAlign.center,
-                                                                              style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                    fontFamily: 'Poppins',
-                                                                                    color: FlutterFlowTheme.of(context).white,
-                                                                                    fontSize: 12.0,
-                                                                                    fontWeight: FontWeight.normal,
+                                                                            Stack(
+                                                                              children: [
+                                                                                if ((seedCartListItem.specialPrice != null) && (seedCartListItem.specialPrice > 0.0))
+                                                                                  Text(
+                                                                                    '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                      enText: 'JOD',
+                                                                                      arText: 'دينار',
+                                                                                    )}',
+                                                                                    textAlign: TextAlign.center,
+                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                          fontFamily: 'Poppins',
+                                                                                          color: FlutterFlowTheme.of(context).white,
+                                                                                          fontSize: 12.0,
+                                                                                          fontWeight: FontWeight.normal,
+                                                                                          decoration: TextDecoration.lineThrough,
+                                                                                        ),
                                                                                   ),
+                                                                                Text(
+                                                                                  '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                    enText: 'JOD',
+                                                                                    arText: 'دينار',
+                                                                                  )}',
+                                                                                  textAlign: TextAlign.center,
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'Poppins',
+                                                                                        color: FlutterFlowTheme.of(context).white,
+                                                                                        fontSize: 12.0,
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                      ),
+                                                                                ),
+                                                                              ],
                                                                             ),
                                                                           ],
                                                                         ),
