@@ -12,11 +12,13 @@ class PaymentModelStruct extends BaseStruct {
     String? ndc,
     String? id,
     PaymentResultStruct? result,
+    String? merchantTransactionId,
   })  : _buildNumber = buildNumber,
         _timestamp = timestamp,
         _ndc = ndc,
         _id = id,
-        _result = result;
+        _result = result,
+        _merchantTransactionId = merchantTransactionId;
 
   // "buildNumber" field.
   String? _buildNumber;
@@ -50,6 +52,12 @@ class PaymentModelStruct extends BaseStruct {
       updateFn(_result ??= PaymentResultStruct());
   bool hasResult() => _result != null;
 
+  // "merchantTransactionId" field.
+  String? _merchantTransactionId;
+  String get merchantTransactionId => _merchantTransactionId ?? '';
+  set merchantTransactionId(String? val) => _merchantTransactionId = val;
+  bool hasMerchantTransactionId() => _merchantTransactionId != null;
+
   static PaymentModelStruct fromMap(Map<String, dynamic> data) =>
       PaymentModelStruct(
         buildNumber: data['buildNumber'] as String?,
@@ -57,6 +65,7 @@ class PaymentModelStruct extends BaseStruct {
         ndc: data['ndc'] as String?,
         id: data['id'] as String?,
         result: PaymentResultStruct.maybeFromMap(data['result']),
+        merchantTransactionId: data['merchantTransactionId'] as String?,
       );
 
   static PaymentModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -69,6 +78,7 @@ class PaymentModelStruct extends BaseStruct {
         'ndc': _ndc,
         'id': _id,
         'result': _result?.toMap(),
+        'merchantTransactionId': _merchantTransactionId,
       }.withoutNulls;
 
   @override
@@ -92,6 +102,10 @@ class PaymentModelStruct extends BaseStruct {
         'result': serializeParam(
           _result,
           ParamType.DataStruct,
+        ),
+        'merchantTransactionId': serializeParam(
+          _merchantTransactionId,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -123,6 +137,11 @@ class PaymentModelStruct extends BaseStruct {
           false,
           structBuilder: PaymentResultStruct.fromSerializableMap,
         ),
+        merchantTransactionId: deserializeParam(
+          data['merchantTransactionId'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -135,12 +154,13 @@ class PaymentModelStruct extends BaseStruct {
         timestamp == other.timestamp &&
         ndc == other.ndc &&
         id == other.id &&
-        result == other.result;
+        result == other.result &&
+        merchantTransactionId == other.merchantTransactionId;
   }
 
   @override
-  int get hashCode =>
-      const ListEquality().hash([buildNumber, timestamp, ndc, id, result]);
+  int get hashCode => const ListEquality()
+      .hash([buildNumber, timestamp, ndc, id, result, merchantTransactionId]);
 }
 
 PaymentModelStruct createPaymentModelStruct({
@@ -149,6 +169,7 @@ PaymentModelStruct createPaymentModelStruct({
   String? ndc,
   String? id,
   PaymentResultStruct? result,
+  String? merchantTransactionId,
 }) =>
     PaymentModelStruct(
       buildNumber: buildNumber,
@@ -156,4 +177,5 @@ PaymentModelStruct createPaymentModelStruct({
       ndc: ndc,
       id: id,
       result: result ?? PaymentResultStruct(),
+      merchantTransactionId: merchantTransactionId,
     );
