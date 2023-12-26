@@ -942,11 +942,11 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                             10.0),
                                                                         child:
                                                                             Text(
-                                                                          valueOrDefault<
-                                                                              String>(
-                                                                            _model.cartObject?.discountRate,
-                                                                            '0%',
-                                                                          ),
+                                                                          getJsonField(
+                                                                            (_model.apiResult3z0?.jsonBody ??
+                                                                                ''),
+                                                                            r'''$.cart.coupon.coupon_code''',
+                                                                          ).toString(),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
