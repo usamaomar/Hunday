@@ -656,10 +656,12 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                         true)) {
                                                                       setState(
                                                                           () {
-                                                                        _model
-                                                                            .cartObject = functions.convertFromJsonToCartObject((_model
-                                                                                .apiResult3z0cc?.jsonBody ??
-                                                                            ''));
+                                                                        _model.cartObject =
+                                                                            functions.convertFromJsonToCartObject(getJsonField(
+                                                                          (_model.apiResult3z0cc?.jsonBody ??
+                                                                              ''),
+                                                                          r'''$.cart''',
+                                                                        ));
                                                                       });
                                                                     }
                                                                   } else {
