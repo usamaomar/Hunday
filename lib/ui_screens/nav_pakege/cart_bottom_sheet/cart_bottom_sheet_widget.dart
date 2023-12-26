@@ -224,174 +224,158 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Container(
-                        decoration: BoxDecoration(),
-                        child: Builder(
-                          builder: (context) {
-                            final seedCartList = _model.listOfCartItemsLocal
-                                .map((e) => e)
-                                .toList();
-                            return ListView.builder(
-                              padding: EdgeInsets.zero,
-                              primary: false,
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              itemCount: seedCartList.length,
-                              itemBuilder: (context, seedCartListIndex) {
-                                final seedCartListItem =
-                                    seedCartList[seedCartListIndex];
-                                return Visibility(
-                                  visible: seedCartListItem.quantity > 0,
-                                  child: Column(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            30.0, 10.0, 30.0, 10.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Expanded(
-                                              child: Align(
-                                                alignment: AlignmentDirectional(
-                                                    1.0, 0.0),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.start,
-                                                  crossAxisAlignment:
-                                                      CrossAxisAlignment.center,
-                                                  children: [
-                                                    Card(
-                                                      clipBehavior: Clip
-                                                          .antiAliasWithSaveLayer,
-                                                      color: FlutterFlowTheme
-                                                              .of(context)
-                                                          .secondaryBackground,
-                                                      elevation: 4.0,
-                                                      shape:
-                                                          RoundedRectangleBorder(
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8.0),
-                                                      ),
-                                                      child: Align(
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                0.0, 0.0),
-                                                        child: Stack(
+                      Expanded(
+                        child: Container(
+                          decoration: BoxDecoration(),
+                          child: Builder(
+                            builder: (context) {
+                              final seedCartList = _model.listOfCartItemsLocal
+                                  .map((e) => e)
+                                  .toList();
+                              return ListView.builder(
+                                padding: EdgeInsets.zero,
+                                primary: false,
+                                shrinkWrap: true,
+                                scrollDirection: Axis.vertical,
+                                itemCount: seedCartList.length,
+                                itemBuilder: (context, seedCartListIndex) {
+                                  final seedCartListItem =
+                                      seedCartList[seedCartListIndex];
+                                  return Visibility(
+                                    visible: seedCartListItem.quantity > 0,
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      children: [
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 10.0, 30.0, 10.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Expanded(
+                                                child: Align(
+                                                  alignment:
+                                                      AlignmentDirectional(
+                                                          1.0, 0.0),
+                                                  child: Row(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
+                                                    crossAxisAlignment:
+                                                        CrossAxisAlignment
+                                                            .center,
+                                                    children: [
+                                                      Card(
+                                                        clipBehavior: Clip
+                                                            .antiAliasWithSaveLayer,
+                                                        color: FlutterFlowTheme
+                                                                .of(context)
+                                                            .secondaryBackground,
+                                                        elevation: 4.0,
+                                                        shape:
+                                                            RoundedRectangleBorder(
+                                                          borderRadius:
+                                                              BorderRadius
+                                                                  .circular(
+                                                                      8.0),
+                                                        ),
+                                                        child: Align(
                                                           alignment:
                                                               AlignmentDirectional(
-                                                                  1.0, 0.0),
-                                                          children: [
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .center,
-                                                              children: [
-                                                                Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          1.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      ClipRRect(
-                                                                    borderRadius:
-                                                                        BorderRadius.circular(
-                                                                            8.0),
-                                                                    child: Image
-                                                                        .network(
-                                                                      seedCartListItem
-                                                                          .fullImage,
-                                                                      width:
-                                                                          100.0,
-                                                                      height:
-                                                                          95.0,
-                                                                      fit: BoxFit
-                                                                          .fill,
-                                                                      errorBuilder: (context,
-                                                                              error,
-                                                                              stackTrace) =>
-                                                                          Image
-                                                                              .asset(
-                                                                        'assets/images/error_image.png',
-                                                                        width:
-                                                                            100.0,
-                                                                        height:
-                                                                            95.0,
-                                                                        fit: BoxFit
-                                                                            .fill,
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            Column(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .min,
-                                                              mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .end,
-                                                              crossAxisAlignment:
-                                                                  CrossAxisAlignment
-                                                                      .end,
-                                                              children: [
-                                                                if ((seedCartListItem.specialPrice !=
-                                                                            null) &&
-                                                                        (seedCartListItem.specialPrice >
-                                                                            0.0)
-                                                                    ? true
-                                                                    : false)
+                                                                  0.0, 0.0),
+                                                          child: Stack(
+                                                            alignment:
+                                                                AlignmentDirectional(
+                                                                    1.0, 0.0),
+                                                            children: [
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .center,
+                                                                children: [
                                                                   Align(
                                                                     alignment:
                                                                         AlignmentDirectional(
                                                                             1.0,
                                                                             0.0),
                                                                     child:
-                                                                        Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          0.0,
-                                                                          10.0),
-                                                                      child:
-                                                                          Material(
-                                                                        color: Colors
-                                                                            .transparent,
-                                                                        elevation:
-                                                                            2.0,
-                                                                        shape:
-                                                                            RoundedRectangleBorder(
-                                                                          borderRadius:
-                                                                              BorderRadius.only(
-                                                                            bottomLeft:
-                                                                                Radius.circular(10.0),
-                                                                            bottomRight:
-                                                                                Radius.circular(0.0),
-                                                                            topLeft:
-                                                                                Radius.circular(10.0),
-                                                                            topRight:
-                                                                                Radius.circular(0.0),
-                                                                          ),
-                                                                        ),
-                                                                        child:
-                                                                            Container(
+                                                                        ClipRRect(
+                                                                      borderRadius:
+                                                                          BorderRadius.circular(
+                                                                              8.0),
+                                                                      child: Image
+                                                                          .network(
+                                                                        seedCartListItem
+                                                                            .fullImage,
+                                                                        width:
+                                                                            100.0,
+                                                                        height:
+                                                                            95.0,
+                                                                        fit: BoxFit
+                                                                            .fill,
+                                                                        errorBuilder: (context,
+                                                                                error,
+                                                                                stackTrace) =>
+                                                                            Image.asset(
+                                                                          'assets/images/error_image.png',
+                                                                          width:
+                                                                              100.0,
                                                                           height:
-                                                                              30.0,
-                                                                          decoration:
-                                                                              BoxDecoration(
-                                                                            color:
-                                                                                FlutterFlowTheme.of(context).white,
+                                                                              95.0,
+                                                                          fit: BoxFit
+                                                                              .fill,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Column(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .min,
+                                                                mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .end,
+                                                                crossAxisAlignment:
+                                                                    CrossAxisAlignment
+                                                                        .end,
+                                                                children: [
+                                                                  if ((seedCartListItem.specialPrice !=
+                                                                              null) &&
+                                                                          (seedCartListItem.specialPrice >
+                                                                              0.0)
+                                                                      ? true
+                                                                      : false)
+                                                                    Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              1.0,
+                                                                              0.0),
+                                                                      child:
+                                                                          Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            0.0,
+                                                                            5.0,
+                                                                            0.0,
+                                                                            10.0),
+                                                                        child:
+                                                                            Material(
+                                                                          color:
+                                                                              Colors.transparent,
+                                                                          elevation:
+                                                                              2.0,
+                                                                          shape:
+                                                                              RoundedRectangleBorder(
                                                                             borderRadius:
                                                                                 BorderRadius.only(
                                                                               bottomLeft: Radius.circular(10.0),
@@ -401,465 +385,301 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                             ),
                                                                           ),
                                                                           child:
-                                                                              Align(
-                                                                            alignment:
-                                                                                AlignmentDirectional(0.0, 0.0),
+                                                                              Container(
+                                                                            height:
+                                                                                30.0,
+                                                                            decoration:
+                                                                                BoxDecoration(
+                                                                              color: FlutterFlowTheme.of(context).white,
+                                                                              borderRadius: BorderRadius.only(
+                                                                                bottomLeft: Radius.circular(10.0),
+                                                                                bottomRight: Radius.circular(0.0),
+                                                                                topLeft: Radius.circular(10.0),
+                                                                                topRight: Radius.circular(0.0),
+                                                                              ),
+                                                                            ),
                                                                             child:
-                                                                                Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
-                                                                              child: Row(
-                                                                                mainAxisSize: MainAxisSize.min,
-                                                                                mainAxisAlignment: MainAxisAlignment.center,
-                                                                                children: [
-                                                                                  Text(
-                                                                                    seedCartListItem.specialPrice != null
-                                                                                        ? '${seedCartListItem.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                            enText: 'JOD',
-                                                                                            arText: 'دينار',
-                                                                                          )}'
-                                                                                        : '0',
-                                                                                    textAlign: TextAlign.center,
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Poppins',
-                                                                                          color: Color(0xFFD60000),
-                                                                                          fontSize: 12.0,
-                                                                                          fontWeight: FontWeight.normal,
-                                                                                        ),
-                                                                                  ),
-                                                                                ],
+                                                                                Align(
+                                                                              alignment: AlignmentDirectional(0.0, 0.0),
+                                                                              child: Padding(
+                                                                                padding: EdgeInsetsDirectional.fromSTEB(15.0, 0.0, 15.0, 0.0),
+                                                                                child: Row(
+                                                                                  mainAxisSize: MainAxisSize.min,
+                                                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                                                  children: [
+                                                                                    Text(
+                                                                                      seedCartListItem.specialPrice != null
+                                                                                          ? '${seedCartListItem.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                              enText: 'JOD',
+                                                                                              arText: 'دينار',
+                                                                                            )}'
+                                                                                          : '0',
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Poppins',
+                                                                                            color: Color(0xFFD60000),
+                                                                                            fontSize: 12.0,
+                                                                                            fontWeight: FontWeight.normal,
+                                                                                          ),
+                                                                                    ),
+                                                                                  ],
+                                                                                ),
                                                                               ),
                                                                             ),
                                                                           ),
                                                                         ),
                                                                       ),
                                                                     ),
-                                                                  ),
-                                                                Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          1.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      Container(
-                                                                    height:
-                                                                        30.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: Color(
-                                                                          0xFF3D6398),
-                                                                      borderRadius:
-                                                                          BorderRadius
-                                                                              .only(
-                                                                        bottomLeft:
-                                                                            Radius.circular(10.0),
-                                                                        bottomRight:
-                                                                            Radius.circular(0.0),
-                                                                        topLeft:
-                                                                            Radius.circular(10.0),
-                                                                        topRight:
-                                                                            Radius.circular(0.0),
-                                                                      ),
-                                                                    ),
+                                                                  Align(
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            1.0,
+                                                                            0.0),
                                                                     child:
-                                                                        Align(
-                                                                      alignment:
-                                                                          AlignmentDirectional(
-                                                                              0.0,
-                                                                              0.0),
+                                                                        Container(
+                                                                      height:
+                                                                          30.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Color(
+                                                                            0xFF3D6398),
+                                                                        borderRadius:
+                                                                            BorderRadius.only(
+                                                                          bottomLeft:
+                                                                              Radius.circular(10.0),
+                                                                          bottomRight:
+                                                                              Radius.circular(0.0),
+                                                                          topLeft:
+                                                                              Radius.circular(10.0),
+                                                                          topRight:
+                                                                              Radius.circular(0.0),
+                                                                        ),
+                                                                      ),
                                                                       child:
-                                                                          Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                                                            15.0,
+                                                                          Align(
+                                                                        alignment: AlignmentDirectional(
                                                                             0.0,
-                                                                            15.0,
                                                                             0.0),
                                                                         child:
-                                                                            Row(
-                                                                          mainAxisSize:
-                                                                              MainAxisSize.min,
-                                                                          mainAxisAlignment:
-                                                                              MainAxisAlignment.center,
-                                                                          children: [
-                                                                            Stack(
-                                                                              children: [
-                                                                                if ((seedCartListItem.specialPrice != null) && (seedCartListItem.specialPrice > 0.0))
-                                                                                  Text(
-                                                                                    '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                      enText: 'JOD',
-                                                                                      arText: 'دينار',
-                                                                                    )}',
-                                                                                    textAlign: TextAlign.center,
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Poppins',
-                                                                                          color: FlutterFlowTheme.of(context).white,
-                                                                                          fontSize: 12.0,
-                                                                                          fontWeight: FontWeight.normal,
-                                                                                          decoration: TextDecoration.lineThrough,
-                                                                                        ),
-                                                                                  ),
-                                                                                if (seedCartListItem.specialPrice <= 0.0)
-                                                                                  Text(
-                                                                                    '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
-                                                                                      enText: 'JOD',
-                                                                                      arText: 'دينار',
-                                                                                    )}',
-                                                                                    textAlign: TextAlign.center,
-                                                                                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                          fontFamily: 'Poppins',
-                                                                                          color: FlutterFlowTheme.of(context).white,
-                                                                                          fontSize: 12.0,
-                                                                                          fontWeight: FontWeight.normal,
-                                                                                        ),
-                                                                                  ),
-                                                                              ],
-                                                                            ),
-                                                                          ],
+                                                                            Padding(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                              15.0,
+                                                                              0.0,
+                                                                              15.0,
+                                                                              0.0),
+                                                                          child:
+                                                                              Row(
+                                                                            mainAxisSize:
+                                                                                MainAxisSize.min,
+                                                                            mainAxisAlignment:
+                                                                                MainAxisAlignment.center,
+                                                                            children: [
+                                                                              Stack(
+                                                                                children: [
+                                                                                  if ((seedCartListItem.specialPrice != null) && (seedCartListItem.specialPrice > 0.0))
+                                                                                    Text(
+                                                                                      '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                        enText: 'JOD',
+                                                                                        arText: 'دينار',
+                                                                                      )}',
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Poppins',
+                                                                                            color: FlutterFlowTheme.of(context).white,
+                                                                                            fontSize: 12.0,
+                                                                                            fontWeight: FontWeight.normal,
+                                                                                            decoration: TextDecoration.lineThrough,
+                                                                                          ),
+                                                                                    ),
+                                                                                  if (seedCartListItem.specialPrice <= 0.0)
+                                                                                    Text(
+                                                                                      '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                        enText: 'JOD',
+                                                                                        arText: 'دينار',
+                                                                                      )}',
+                                                                                      textAlign: TextAlign.center,
+                                                                                      style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                            fontFamily: 'Poppins',
+                                                                                            color: FlutterFlowTheme.of(context).white,
+                                                                                            fontSize: 12.0,
+                                                                                            fontWeight: FontWeight.normal,
+                                                                                          ),
+                                                                                    ),
+                                                                                ],
+                                                                              ),
+                                                                            ],
+                                                                          ),
                                                                         ),
                                                                       ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                            if (seedCartListItem
-                                                                .isLoading)
-                                                              ClipRRect(
-                                                                borderRadius:
-                                                                    BorderRadius
-                                                                        .circular(
-                                                                            0.0),
-                                                                child:
-                                                                    BackdropFilter(
-                                                                  filter:
-                                                                      ImageFilter
-                                                                          .blur(
-                                                                    sigmaX: 2.0,
-                                                                    sigmaY: 2.0,
-                                                                  ),
+                                                                ],
+                                                              ),
+                                                              if (seedCartListItem
+                                                                  .isLoading)
+                                                                ClipRRect(
+                                                                  borderRadius:
+                                                                      BorderRadius
+                                                                          .circular(
+                                                                              0.0),
                                                                   child:
-                                                                      Container(
-                                                                    width:
-                                                                        100.0,
-                                                                    height:
-                                                                        95.0,
-                                                                    decoration:
-                                                                        BoxDecoration(
-                                                                      color: Color(
-                                                                          0x55FFFFFF),
+                                                                      BackdropFilter(
+                                                                    filter:
+                                                                        ImageFilter
+                                                                            .blur(
+                                                                      sigmaX:
+                                                                          2.0,
+                                                                      sigmaY:
+                                                                          2.0,
                                                                     ),
                                                                     child:
-                                                                        Visibility(
-                                                                      visible:
-                                                                          seedCartListItem
-                                                                              .isLoading,
+                                                                        Container(
+                                                                      width:
+                                                                          100.0,
+                                                                      height:
+                                                                          95.0,
+                                                                      decoration:
+                                                                          BoxDecoration(
+                                                                        color: Color(
+                                                                            0x55FFFFFF),
+                                                                      ),
                                                                       child:
-                                                                          CircularPercentIndicator(
-                                                                        percent:
-                                                                            0.7,
-                                                                        radius:
-                                                                            12.5,
-                                                                        lineWidth:
-                                                                            3.0,
-                                                                        animation:
-                                                                            true,
-                                                                        animateFromLastPercent:
-                                                                            true,
-                                                                        progressColor:
-                                                                            FlutterFlowTheme.of(context).ahayundai,
-                                                                        backgroundColor:
-                                                                            Color(0xFF7C91BB),
-                                                                      ).animateOnPageLoad(
-                                                                              animationsMap['progressBarOnPageLoadAnimation']!),
-                                                                    ),
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  0.0,
-                                                                  15.0,
-                                                                  0.0),
-                                                      child: Column(
-                                                        mainAxisSize:
-                                                            MainAxisSize.max,
-                                                        mainAxisAlignment:
-                                                            MainAxisAlignment
-                                                                .start,
-                                                        crossAxisAlignment:
-                                                            CrossAxisAlignment
-                                                                .start,
-                                                        children: [
-                                                          ClipRRect(
-                                                            child: Container(
-                                                              constraints:
-                                                                  BoxConstraints(
-                                                                maxWidth: 140.0,
-                                                              ),
-                                                              decoration:
-                                                                  BoxDecoration(
-                                                                color: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .secondaryBackground,
-                                                              ),
-                                                              child: Text(
-                                                                seedCartListItem
-                                                                    .name,
-                                                                maxLines: 2,
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Poppins',
-                                                                      color: Color(
-                                                                          0xFF120900),
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                            ),
-                                                          ),
-                                                          Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                            children: [
-                                                              Builder(
-                                                                builder:
-                                                                    (context) =>
-                                                                        InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    setState(
-                                                                        () {
-                                                                      _model
-                                                                          .updateListOfCartItemsLocalAtIndex(
-                                                                        seedCartListIndex,
-                                                                        (e) => e
-                                                                          ..isLoading =
+                                                                          Visibility(
+                                                                        visible:
+                                                                            seedCartListItem.isLoading,
+                                                                        child:
+                                                                            CircularPercentIndicator(
+                                                                          percent:
+                                                                              0.7,
+                                                                          radius:
+                                                                              12.5,
+                                                                          lineWidth:
+                                                                              3.0,
+                                                                          animation:
                                                                               true,
-                                                                      );
-                                                                    });
-                                                                    _model.apiResulti8n =
-                                                                        await AddToCartApiCall
-                                                                            .call(
-                                                                      token: FFAppState()
-                                                                          .userModel
-                                                                          .token,
-                                                                      partId:
-                                                                          seedCartListItem
-                                                                              .id,
-                                                                    );
-                                                                    if ((_model
-                                                                            .apiResulti8n
-                                                                            ?.succeeded ??
-                                                                        true)) {
-                                                                      _model.apiResultx4488 =
-                                                                          await GetMyCartApiCall
-                                                                              .call(
-                                                                        token: FFAppState()
-                                                                            .userModel
-                                                                            .token,
-                                                                      );
-                                                                      if ((_model
-                                                                              .apiResultx4488
-                                                                              ?.succeeded ??
-                                                                          true)) {
-                                                                        setState(
-                                                                            () {
-                                                                          _model.listOfCartItemsLocal = functions
-                                                                              .convertFromJsonToCartObject(getJsonField(
-                                                                                (_model.apiResultx4488?.jsonBody ?? ''),
-                                                                                r'''$.cart''',
-                                                                              ))
-                                                                              .cartItems
-                                                                              .toList()
-                                                                              .cast<PartModelStruct>();
-                                                                        });
-                                                                        setState(
-                                                                            () {
-                                                                          _model.totalPrice = functions
-                                                                              .convertFromJsonToCartObject(getJsonField(
-                                                                                (_model.apiResultx4488?.jsonBody ?? ''),
-                                                                                r'''$.cart''',
-                                                                              ))
-                                                                              .totalPrice;
-                                                                        });
-                                                                      }
-                                                                    } else {
-                                                                      await showAlignedDialog(
-                                                                        context:
-                                                                            context,
-                                                                        isGlobal:
-                                                                            true,
-                                                                        avoidOverflow:
-                                                                            false,
-                                                                        targetAnchor:
-                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                        followerAnchor:
-                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                        builder:
-                                                                            (dialogContext) {
-                                                                          return Material(
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            child:
-                                                                                Modal06BasicInformationWidget(
-                                                                              body: (_model.apiResulti8n?.bodyText ?? ''),
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                      ).then((value) =>
-                                                                          setState(
-                                                                              () {}));
-                                                                    }
-
-                                                                    setState(
-                                                                        () {
-                                                                      _model
-                                                                          .updateListOfCartItemsLocalAtIndex(
-                                                                        seedCartListIndex,
-                                                                        (e) => e
-                                                                          ..isLoading =
-                                                                              false,
-                                                                      );
-                                                                    });
-
-                                                                    setState(
-                                                                        () {});
-                                                                  },
-                                                                  child: Icon(
-                                                                    Icons
-                                                                        .add_circle_outline,
-                                                                    color: Color(
-                                                                        0xFFC1D6EF),
-                                                                    size: 29.0,
-                                                                  ),
-                                                                ),
-                                                              ),
-                                                              Align(
-                                                                alignment:
-                                                                    AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0),
-                                                                child: Stack(
-                                                                  children: [
-                                                                    Padding(
-                                                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                                                          15.0,
-                                                                          0.0,
-                                                                          15.0,
-                                                                          0.0),
-                                                                      child:
-                                                                          Text(
-                                                                        seedCartListItem
-                                                                            .quantity
-                                                                            .toString(),
-                                                                        textAlign:
-                                                                            TextAlign.center,
-                                                                        style: FlutterFlowTheme.of(context)
-                                                                            .bodyMedium
-                                                                            .override(
-                                                                              fontFamily: 'Poppins',
-                                                                              color: Color(0xFF343434),
-                                                                            ),
+                                                                          animateFromLastPercent:
+                                                                              true,
+                                                                          progressColor:
+                                                                              FlutterFlowTheme.of(context).ahayundai,
+                                                                          backgroundColor:
+                                                                              Color(0xFF7C91BB),
+                                                                        ).animateOnPageLoad(animationsMap['progressBarOnPageLoadAnimation']!),
                                                                       ),
                                                                     ),
-                                                                  ],
+                                                                  ),
+                                                                ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    15.0,
+                                                                    0.0,
+                                                                    15.0,
+                                                                    0.0),
+                                                        child: Column(
+                                                          mainAxisSize:
+                                                              MainAxisSize.max,
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                  .start,
+                                                          crossAxisAlignment:
+                                                              CrossAxisAlignment
+                                                                  .start,
+                                                          children: [
+                                                            ClipRRect(
+                                                              child: Container(
+                                                                constraints:
+                                                                    BoxConstraints(
+                                                                  maxWidth:
+                                                                      140.0,
+                                                                ),
+                                                                decoration:
+                                                                    BoxDecoration(
+                                                                  color: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .secondaryBackground,
+                                                                ),
+                                                                child: Text(
+                                                                  seedCartListItem
+                                                                      .name,
+                                                                  maxLines: 2,
+                                                                  style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                      .bodyMedium
+                                                                      .override(
+                                                                        fontFamily:
+                                                                            'Poppins',
+                                                                        color: Color(
+                                                                            0xFF120900),
+                                                                        fontWeight:
+                                                                            FontWeight.bold,
+                                                                      ),
                                                                 ),
                                                               ),
-                                                              Builder(
-                                                                builder:
-                                                                    (context) =>
-                                                                        InkWell(
-                                                                  splashColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  focusColor: Colors
-                                                                      .transparent,
-                                                                  hoverColor: Colors
-                                                                      .transparent,
-                                                                  highlightColor:
-                                                                      Colors
-                                                                          .transparent,
-                                                                  onTap:
-                                                                      () async {
-                                                                    setState(
-                                                                        () {
-                                                                      _model
-                                                                          .updateListOfCartItemsLocalAtIndex(
-                                                                        seedCartListIndex,
-                                                                        (e) => e
-                                                                          ..isLoading =
-                                                                              true,
-                                                                      );
-                                                                    });
-                                                                    _model.apiResultxxf2 =
-                                                                        await RemoveItemFromCartApiCall
-                                                                            .call(
-                                                                      token: FFAppState()
-                                                                          .userModel
-                                                                          .token,
-                                                                      partId: seedCartListItem
-                                                                          .id
-                                                                          .toString(),
-                                                                    );
-                                                                    if ((_model
-                                                                            .apiResultxxf2
-                                                                            ?.succeeded ??
-                                                                        true)) {
-                                                                      _model.apiResultx448866 =
-                                                                          await GetMyCartApiCall
+                                                            ),
+                                                            Row(
+                                                              mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                              children: [
+                                                                Builder(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      setState(
+                                                                          () {
+                                                                        _model
+                                                                            .updateListOfCartItemsLocalAtIndex(
+                                                                          seedCartListIndex,
+                                                                          (e) => e
+                                                                            ..isLoading =
+                                                                                true,
+                                                                        );
+                                                                      });
+                                                                      _model.apiResulti8n =
+                                                                          await AddToCartApiCall
                                                                               .call(
                                                                         token: FFAppState()
                                                                             .userModel
                                                                             .token,
+                                                                        partId:
+                                                                            seedCartListItem.id,
                                                                       );
                                                                       if ((_model
-                                                                              .apiResultx448866
+                                                                              .apiResulti8n
                                                                               ?.succeeded ??
                                                                           true)) {
-                                                                        if (getJsonField(
-                                                                                  (_model.apiResultx448866?.jsonBody ?? ''),
-                                                                                  r'''$.cart''',
-                                                                                ) ==
-                                                                                null
-                                                                            ? true
-                                                                            : false) {
-                                                                          _model
-                                                                              .updatePage(() {
-                                                                            _model.listOfCartItemsLocal =
-                                                                                [];
-                                                                          });
-                                                                          setState(
-                                                                              () {
-                                                                            _model.totalPrice =
-                                                                                0.0;
-                                                                          });
-                                                                        } else {
+                                                                        _model.apiResultx4488 =
+                                                                            await GetMyCartApiCall.call(
+                                                                          token: FFAppState()
+                                                                              .userModel
+                                                                              .token,
+                                                                        );
+                                                                        if ((_model.apiResultx4488?.succeeded ??
+                                                                            true)) {
                                                                           setState(
                                                                               () {
                                                                             _model.listOfCartItemsLocal = functions
                                                                                 .convertFromJsonToCartObject(getJsonField(
-                                                                                  (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                  (_model.apiResultx4488?.jsonBody ?? ''),
                                                                                   r'''$.cart''',
                                                                                 ))
                                                                                 .cartItems
@@ -870,44 +690,204 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               () {
                                                                             _model.totalPrice = functions
                                                                                 .convertFromJsonToCartObject(getJsonField(
-                                                                                  (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                  (_model.apiResultx4488?.jsonBody ?? ''),
                                                                                   r'''$.cart''',
                                                                                 ))
                                                                                 .totalPrice;
                                                                           });
                                                                         }
+                                                                      } else {
+                                                                        await showAlignedDialog(
+                                                                          context:
+                                                                              context,
+                                                                          isGlobal:
+                                                                              true,
+                                                                          avoidOverflow:
+                                                                              false,
+                                                                          targetAnchor:
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          followerAnchor:
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          builder:
+                                                                              (dialogContext) {
+                                                                            return Material(
+                                                                              color: Colors.transparent,
+                                                                              child: Modal06BasicInformationWidget(
+                                                                                body: (_model.apiResulti8n?.bodyText ?? ''),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ).then((value) =>
+                                                                            setState(() {}));
                                                                       }
-                                                                    } else {
-                                                                      await showAlignedDialog(
-                                                                        context:
-                                                                            context,
-                                                                        isGlobal:
-                                                                            true,
-                                                                        avoidOverflow:
-                                                                            false,
-                                                                        targetAnchor:
-                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                        followerAnchor:
-                                                                            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                        builder:
-                                                                            (dialogContext) {
-                                                                          return Material(
-                                                                            color:
-                                                                                Colors.transparent,
-                                                                            child:
-                                                                                Modal06BasicInformationWidget(
-                                                                              body: (_model.apiResultxxf2?.bodyText ?? ''),
-                                                                            ),
-                                                                          );
-                                                                        },
-                                                                      ).then((value) =>
-                                                                          setState(
-                                                                              () {}));
-                                                                    }
 
-                                                                    setState(
-                                                                        () {
-                                                                      if (_model
+                                                                      setState(
+                                                                          () {
+                                                                        _model
+                                                                            .updateListOfCartItemsLocalAtIndex(
+                                                                          seedCartListIndex,
+                                                                          (e) => e
+                                                                            ..isLoading =
+                                                                                false,
+                                                                        );
+                                                                      });
+
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .add_circle_outline,
+                                                                      color: Color(
+                                                                          0xFFC1D6EF),
+                                                                      size:
+                                                                          29.0,
+                                                                    ),
+                                                                  ),
+                                                                ),
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          0.0,
+                                                                          0.0),
+                                                                  child: Stack(
+                                                                    children: [
+                                                                      Padding(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            15.0,
+                                                                            0.0,
+                                                                            15.0,
+                                                                            0.0),
+                                                                        child:
+                                                                            Text(
+                                                                          seedCartListItem
+                                                                              .quantity
+                                                                              .toString(),
+                                                                          textAlign:
+                                                                              TextAlign.center,
+                                                                          style: FlutterFlowTheme.of(context)
+                                                                              .bodyMedium
+                                                                              .override(
+                                                                                fontFamily: 'Poppins',
+                                                                                color: Color(0xFF343434),
+                                                                              ),
+                                                                        ),
+                                                                      ),
+                                                                    ],
+                                                                  ),
+                                                                ),
+                                                                Builder(
+                                                                  builder:
+                                                                      (context) =>
+                                                                          InkWell(
+                                                                    splashColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    focusColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    hoverColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    highlightColor:
+                                                                        Colors
+                                                                            .transparent,
+                                                                    onTap:
+                                                                        () async {
+                                                                      setState(
+                                                                          () {
+                                                                        _model
+                                                                            .updateListOfCartItemsLocalAtIndex(
+                                                                          seedCartListIndex,
+                                                                          (e) => e
+                                                                            ..isLoading =
+                                                                                true,
+                                                                        );
+                                                                      });
+                                                                      _model.apiResultxxf2 =
+                                                                          await RemoveItemFromCartApiCall
+                                                                              .call(
+                                                                        token: FFAppState()
+                                                                            .userModel
+                                                                            .token,
+                                                                        partId: seedCartListItem
+                                                                            .id
+                                                                            .toString(),
+                                                                      );
+                                                                      if ((_model
+                                                                              .apiResultxxf2
+                                                                              ?.succeeded ??
+                                                                          true)) {
+                                                                        _model.apiResultx448866 =
+                                                                            await GetMyCartApiCall.call(
+                                                                          token: FFAppState()
+                                                                              .userModel
+                                                                              .token,
+                                                                        );
+                                                                        if ((_model.apiResultx448866?.succeeded ??
+                                                                            true)) {
+                                                                          if (getJsonField(
+                                                                                    (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                    r'''$.cart''',
+                                                                                  ) ==
+                                                                                  null
+                                                                              ? true
+                                                                              : false) {
+                                                                            _model.updatePage(() {
+                                                                              _model.listOfCartItemsLocal = [];
+                                                                            });
+                                                                            setState(() {
+                                                                              _model.totalPrice = 0.0;
+                                                                            });
+                                                                          } else {
+                                                                            setState(() {
+                                                                              _model.listOfCartItemsLocal = functions
+                                                                                  .convertFromJsonToCartObject(getJsonField(
+                                                                                    (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                    r'''$.cart''',
+                                                                                  ))
+                                                                                  .cartItems
+                                                                                  .toList()
+                                                                                  .cast<PartModelStruct>();
+                                                                            });
+                                                                            setState(() {
+                                                                              _model.totalPrice = functions
+                                                                                  .convertFromJsonToCartObject(getJsonField(
+                                                                                    (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                    r'''$.cart''',
+                                                                                  ))
+                                                                                  .totalPrice;
+                                                                            });
+                                                                          }
+                                                                        }
+                                                                      } else {
+                                                                        await showAlignedDialog(
+                                                                          context:
+                                                                              context,
+                                                                          isGlobal:
+                                                                              true,
+                                                                          avoidOverflow:
+                                                                              false,
+                                                                          targetAnchor:
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          followerAnchor:
+                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                          builder:
+                                                                              (dialogContext) {
+                                                                            return Material(
+                                                                              color: Colors.transparent,
+                                                                              child: Modal06BasicInformationWidget(
+                                                                                body: (_model.apiResultxxf2?.bodyText ?? ''),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ).then((value) =>
+                                                                            setState(() {}));
+                                                                      }
+
+                                                                      setState(
+                                                                          () {
+                                                                        if (_model
                                                                           .listOfCartItemsLocal
                                                                           .isNotEmpty) {
                                                                         _model
@@ -920,150 +900,157 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                       }
                                                                     });
 
-                                                                    setState(
-                                                                        () {});
-                                                                  },
-                                                                  child: Icon(
-                                                                    Icons
-                                                                        .remove_circle_outline_sharp,
-                                                                    color: Color(
-                                                                        0xFFB6CBE5),
-                                                                    size: 29.0,
+                                                                      setState(
+                                                                          () {});
+                                                                    },
+                                                                    child: Icon(
+                                                                      Icons
+                                                                          .remove_circle_outline_sharp,
+                                                                      color: Color(
+                                                                          0xFFB6CBE5),
+                                                                      size:
+                                                                          29.0,
+                                                                    ),
                                                                   ),
                                                                 ),
-                                                              ),
-                                                            ],
-                                                          ),
-                                                        ],
+                                                              ],
+                                                            ),
+                                                          ],
+                                                        ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                            Builder(
-                                              builder: (context) => InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
-                                                    Colors.transparent,
-                                                onTap: () async {
-                                                  setState(() {
-                                                    _model
-                                                        .updateListOfCartItemsLocalAtIndex(
-                                                      seedCartListIndex,
-                                                      (e) =>
-                                                          e..isLoading = true,
-                                                    );
-                                                  });
-                                                  _model.apiResultxxf2Copy =
-                                                      await RemoveItemFromCartApiCall
-                                                          .call(
-                                                    token: FFAppState()
-                                                        .userModel
-                                                        .token,
-                                                    partId: seedCartListItem.id
-                                                        .toString(),
-                                                    quantity: '0',
-                                                  );
-                                                  if ((_model.apiResultxxf2Copy
-                                                          ?.succeeded ??
-                                                      true)) {
-                                                    _model.apiResultx448866Copy =
-                                                        await GetMyCartApiCall
+                                              Builder(
+                                                builder: (context) => InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    setState(() {
+                                                      _model
+                                                          .updateListOfCartItemsLocalAtIndex(
+                                                        seedCartListIndex,
+                                                        (e) =>
+                                                            e..isLoading = true,
+                                                      );
+                                                    });
+                                                    _model.apiResultxxf2Copy =
+                                                        await RemoveItemFromCartApiCall
                                                             .call(
                                                       token: FFAppState()
                                                           .userModel
                                                           .token,
+                                                      partId: seedCartListItem
+                                                          .id
+                                                          .toString(),
+                                                      quantity: '0',
                                                     );
                                                     if ((_model
-                                                            .apiResultx448866Copy
+                                                            .apiResultxxf2Copy
                                                             ?.succeeded ??
                                                         true)) {
-                                                      if (getJsonField(
+                                                      _model.apiResultx448866Copy =
+                                                          await GetMyCartApiCall
+                                                              .call(
+                                                        token: FFAppState()
+                                                            .userModel
+                                                            .token,
+                                                      );
+                                                      if ((_model
+                                                              .apiResultx448866Copy
+                                                              ?.succeeded ??
+                                                          true)) {
+                                                        if (getJsonField(
                                                         (_model.apiResultx448866Copy
                                                             ?.jsonBody ??
                                                             ''),
                                                         r'''$.cart''',
                                                       ) ==
-                                                              null
-                                                          ? true
-                                                          : false) {
-                                                        _model.updatePage(() {
-                                                          _model.listOfCartItemsLocal =
-                                                              [];
-                                                        });
-                                                        setState(() {
-                                                          _model.totalPrice =
-                                                              0.0;
-                                                        });
-                                                      } else {
-                                                        setState(() {
-                                                          _model.listOfCartItemsLocal =
-                                                              functions
-                                                                  .convertFromJsonToCartObject(
-                                                                      getJsonField(
-                                                                    (_model.apiResultx448866Copy
-                                                                            ?.jsonBody ??
-                                                                        ''),
-                                                                    r'''$.cart''',
-                                                                  ))
-                                                                  .cartItems
-                                                                  .toList()
-                                                                  .cast<
-                                                                      PartModelStruct>();
-                                                        });
-                                                        setState(() {
-                                                          _model.totalPrice =
-                                                              functions
-                                                                  .convertFromJsonToCartObject(
-                                                                      getJsonField(
-                                                                    (_model.apiResultx448866Copy
-                                                                            ?.jsonBody ??
-                                                                        ''),
-                                                                    r'''$.cart''',
-                                                                  ))
-                                                                  .totalPrice;
-                                                        });
+                                                                null
+                                                            ? true
+                                                            : false) {
+                                                          _model.updatePage(() {
+                                                            _model.listOfCartItemsLocal =
+                                                                [];
+                                                          });
+                                                          setState(() {
+                                                            _model.totalPrice =
+                                                                0.0;
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            _model.listOfCartItemsLocal =
+                                                                functions
+                                                                    .convertFromJsonToCartObject(
+                                                                        getJsonField(
+                                                                      (_model.apiResultx448866Copy
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                      r'''$.cart''',
+                                                                    ))
+                                                                    .cartItems
+                                                                    .toList()
+                                                                    .cast<
+                                                                        PartModelStruct>();
+                                                          });
+                                                          setState(() {
+                                                            _model.totalPrice =
+                                                                functions
+                                                                    .convertFromJsonToCartObject(
+                                                                        getJsonField(
+                                                                      (_model.apiResultx448866Copy
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                      r'''$.cart''',
+                                                                    ))
+                                                                    .totalPrice;
+                                                          });
+                                                        }
                                                       }
+                                                    } else {
+                                                      await showAlignedDialog(
+                                                        context: context,
+                                                        isGlobal: true,
+                                                        avoidOverflow: false,
+                                                        targetAnchor:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        followerAnchor:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        builder:
+                                                            (dialogContext) {
+                                                          return Material(
+                                                            color: Colors
+                                                                .transparent,
+                                                            child:
+                                                                Modal06BasicInformationWidget(
+                                                              body: (_model
+                                                                      .apiResultxxf2Copy
+                                                                      ?.bodyText ??
+                                                                  ''),
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
                                                     }
-                                                  } else {
-                                                    await showAlignedDialog(
-                                                      context: context,
-                                                      isGlobal: true,
-                                                      avoidOverflow: false,
-                                                      targetAnchor:
-                                                          AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      followerAnchor:
-                                                          AlignmentDirectional(
-                                                                  0.0, 0.0)
-                                                              .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      builder: (dialogContext) {
-                                                        return Material(
-                                                          color: Colors
-                                                              .transparent,
-                                                          child:
-                                                              Modal06BasicInformationWidget(
-                                                            body: (_model
-                                                                    .apiResultxxf2Copy
-                                                                    ?.bodyText ??
-                                                                ''),
-                                                          ),
-                                                        );
-                                                      },
-                                                    ).then((value) =>
-                                                        setState(() {}));
-                                                  }
 
-                                                  setState(() {
-                                                    if (_model
+                                                    setState(() {
+                                                      if (_model
                                                             .listOfCartItemsLocal.isNotEmpty) {
                                                       _model
                                                           .updateListOfCartItemsLocalAtIndex(
@@ -1074,67 +1061,67 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                     }
                                                   });
 
-                                                  setState(() {});
-                                                },
-                                                child: Column(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  9.0,
-                                                                  10.0,
-                                                                  9.0),
-                                                      child: Card(
-                                                        clipBehavior: Clip
-                                                            .antiAliasWithSaveLayer,
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .white,
-                                                        elevation: 10.0,
-                                                        shape:
-                                                            RoundedRectangleBorder(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      0.0),
-                                                        ),
-                                                        child: ClipRRect(
-                                                          borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                      0.0),
-                                                          child:
-                                                              SvgPicture.asset(
-                                                            'assets/images/Group_72259.svg',
-                                                            fit: BoxFit.cover,
+                                                    setState(() {});
+                                                  },
+                                                  child: Column(
+                                                    mainAxisSize:
+                                                        MainAxisSize.max,
+                                                    children: [
+                                                      Padding(
+                                                        padding:
+                                                            EdgeInsetsDirectional
+                                                                .fromSTEB(
+                                                                    10.0,
+                                                                    9.0,
+                                                                    10.0,
+                                                                    9.0),
+                                                        child: Card(
+                                                          clipBehavior: Clip
+                                                              .antiAliasWithSaveLayer,
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .white,
+                                                          elevation: 10.0,
+                                                          shape:
+                                                              RoundedRectangleBorder(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        0.0),
+                                                          ),
+                                                          child: ClipRRect(
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        0.0),
+                                                            child: SvgPicture
+                                                                .asset(
+                                                              'assets/images/Group_72259.svg',
+                                                              fit: BoxFit.cover,
+                                                            ),
                                                           ),
                                                         ),
                                                       ),
-                                                    ),
-                                                  ],
+                                                    ],
+                                                  ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
-                                      ),
-                                      Divider(
-                                        thickness: 1.0,
-                                        indent: 35.0,
-                                        endIndent: 35.0,
-                                        color: Color(0xFFC1D6EF),
-                                      ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            );
-                          },
+                                        Divider(
+                                          thickness: 1.0,
+                                          indent: 35.0,
+                                          endIndent: 35.0,
+                                          color: Color(0xFFC1D6EF),
+                                        ),
+                                      ],
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          ),
                         ),
                       ),
                     ],
