@@ -804,9 +804,9 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                       token: FFAppState()
                                                                           .userModel
                                                                           .token,
-                                                                      cartId:
-                                                                          seedCartListItem
-                                                                              .id,
+                                                                      partId: seedCartListItem
+                                                                          .id
+                                                                          .toString(),
                                                                     );
                                                                     if ((_model
                                                                             .apiResultxxf2

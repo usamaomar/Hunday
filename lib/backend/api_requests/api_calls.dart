@@ -396,20 +396,23 @@ class ClearAllCartApiCall {
 class RemoveItemFromCartApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
-    int? cartId,
+    String? partId = '',
   }) async {
+    final ffApiRequestBody = '''
+{
+  "part_id": "${partId}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'RemoveItemFromCartApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/removeCart/${cartId}',
+      apiUrl: 'https://hyundai.completechaintech.com/api/removeFromCart',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
         'Accept': 'application/json',
       },
-      params: {
-        'cartId': cartId,
-      },
-      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
