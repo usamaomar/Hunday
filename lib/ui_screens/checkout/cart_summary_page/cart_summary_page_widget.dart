@@ -57,8 +57,11 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
       );
       if ((_model.apiResult3z0?.succeeded ?? true)) {
         setState(() {
-          _model.cartObject = functions.convertFromJsonToCartObject(
-              (_model.apiResult3z0?.jsonBody ?? ''));
+          _model.cartObject =
+              functions.convertFromJsonToCartObject(getJsonField(
+            (_model.apiResult3z0?.jsonBody ?? ''),
+            r'''$.cart''',
+          ));
         });
       }
     });
