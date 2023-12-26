@@ -6,7 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/shipping_address_page/in_app_payment_setting.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/shipping_address_page/in_app_payment_setting.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,7 +128,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703618130712</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="x">
+      <created>1703620419624</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1703620419624</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -147,6 +155,23 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart</url>
+          <line>914</line>
+          <option name="timeStamp" value="169" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart</url>
+          <line>917</line>
+          <option name="timeStamp" value="170" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart</url>
+          <line>633</line>
+          <option name="timeStamp" value="172" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
         <breakpoint type="python-exception">

@@ -882,9 +882,10 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
       readyUI: ReadyUI(
           brandsName: ["VISA", "MASTER"],
           checkoutId: checkoutId,
+          countryCodeApplePayIOS: InAppPaymentSetting.countryCode, // applePay
           themColorHexIOS: "#000000", // FOR IOS ONLY
           setStorePaymentDetailsMode:
-              true // store payment details for future use
+              false // store payment details for future use
           ),
     )
         .then((value) async {
