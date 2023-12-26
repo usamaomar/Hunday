@@ -286,12 +286,12 @@ MyVehicleModelStruct getSelectedVehicle(
   return vehicle;
 }
 
-List<CartModelStruct> convertFromJsonListToCarttList(dynamic jsonObject) {
+List<PartModelStruct> convertFromJsonListToCarttList(dynamic jsonObject) {
   return jsonObject
-      .map((e) => e != null && e != '' ? CartModelStruct.fromMap(e) : null)
+      .map((e) => e != null && e != '' ? PartModelStruct.fromMap(e) : null)
       .toList()
       .toList()
-      .cast<CartModelStruct>();
+      .cast<PartModelStruct>();
 }
 
 int incrementFunction(int numberValue) {
@@ -400,7 +400,7 @@ CartItemModelStruct convertFromJsonToCartObject(dynamic jsonObject) {
       tax: jsonObject['tax'].toString(),
       shippingCost: jsonObject['shippingCost'].toDouble(),
       discountRate: jsonObject['discountRate'].toString(),
-      couponCode: jsonObject['couponCode'],
+      couponCode: jsonObject['coupon'],
       totalPrice: jsonObject['totalPrice'].toDouble());
 }
 

@@ -8,19 +8,21 @@ import '/flutter_flow/flutter_flow_util.dart';
 class CartItemModelStruct extends BaseStruct {
   CartItemModelStruct({
     double? totalPrice,
-    List<CartModelStruct>? cartItems,
     double? subTotal,
     String? tax,
     double? shippingCost,
     String? discountRate,
     String? couponCode,
+    String? discountAmount,
+    List<PartModelStruct>? cartItems,
   })  : _totalPrice = totalPrice,
-        _cartItems = cartItems,
         _subTotal = subTotal,
         _tax = tax,
         _shippingCost = shippingCost,
         _discountRate = discountRate,
-        _couponCode = couponCode;
+        _couponCode = couponCode,
+        _discountAmount = discountAmount,
+        _cartItems = cartItems;
 
   // "totalPrice" field.
   double? _totalPrice;
@@ -28,14 +30,6 @@ class CartItemModelStruct extends BaseStruct {
   set totalPrice(double? val) => _totalPrice = val;
   void incrementTotalPrice(double amount) => _totalPrice = totalPrice + amount;
   bool hasTotalPrice() => _totalPrice != null;
-
-  // "cartItems" field.
-  List<CartModelStruct>? _cartItems;
-  List<CartModelStruct> get cartItems => _cartItems ?? const [];
-  set cartItems(List<CartModelStruct>? val) => _cartItems = val;
-  void updateCartItems(Function(List<CartModelStruct>) updateFn) =>
-      updateFn(_cartItems ??= []);
-  bool hasCartItems() => _cartItems != null;
 
   // "subTotal" field.
   double? _subTotal;
@@ -70,18 +64,33 @@ class CartItemModelStruct extends BaseStruct {
   set couponCode(String? val) => _couponCode = val;
   bool hasCouponCode() => _couponCode != null;
 
+  // "discountAmount" field.
+  String? _discountAmount;
+  String get discountAmount => _discountAmount ?? '';
+  set discountAmount(String? val) => _discountAmount = val;
+  bool hasDiscountAmount() => _discountAmount != null;
+
+  // "cartItems" field.
+  List<PartModelStruct>? _cartItems;
+  List<PartModelStruct> get cartItems => _cartItems ?? const [];
+  set cartItems(List<PartModelStruct>? val) => _cartItems = val;
+  void updateCartItems(Function(List<PartModelStruct>) updateFn) =>
+      updateFn(_cartItems ??= []);
+  bool hasCartItems() => _cartItems != null;
+
   static CartItemModelStruct fromMap(Map<String, dynamic> data) =>
       CartItemModelStruct(
         totalPrice: castToType<double>(data['totalPrice']),
-        cartItems: getStructList(
-          data['cartItems'],
-          CartModelStruct.fromMap,
-        ),
         subTotal: castToType<double>(data['subTotal']),
         tax: data['tax'] as String?,
         shippingCost: castToType<double>(data['shippingCost']),
         discountRate: data['discountRate'] as String?,
         couponCode: data['couponCode'] as String?,
+        discountAmount: data['discountAmount'] as String?,
+        cartItems: getStructList(
+          data['cartItems'],
+          PartModelStruct.fromMap,
+        ),
       );
 
   static CartItemModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -90,12 +99,13 @@ class CartItemModelStruct extends BaseStruct {
 
   Map<String, dynamic> toMap() => {
         'totalPrice': _totalPrice,
-        'cartItems': _cartItems?.map((e) => e.toMap()).toList(),
         'subTotal': _subTotal,
         'tax': _tax,
         'shippingCost': _shippingCost,
         'discountRate': _discountRate,
         'couponCode': _couponCode,
+        'discountAmount': _discountAmount,
+        'cartItems': _cartItems?.map((e) => e.toMap()).toList(),
       }.withoutNulls;
 
   @override
@@ -103,11 +113,6 @@ class CartItemModelStruct extends BaseStruct {
         'totalPrice': serializeParam(
           _totalPrice,
           ParamType.double,
-        ),
-        'cartItems': serializeParam(
-          _cartItems,
-          ParamType.DataStruct,
-          true,
         ),
         'subTotal': serializeParam(
           _subTotal,
@@ -129,6 +134,15 @@ class CartItemModelStruct extends BaseStruct {
           _couponCode,
           ParamType.String,
         ),
+        'discountAmount': serializeParam(
+          _discountAmount,
+          ParamType.String,
+        ),
+        'cartItems': serializeParam(
+          _cartItems,
+          ParamType.DataStruct,
+          true,
+        ),
       }.withoutNulls;
 
   static CartItemModelStruct fromSerializableMap(Map<String, dynamic> data) =>
@@ -137,12 +151,6 @@ class CartItemModelStruct extends BaseStruct {
           data['totalPrice'],
           ParamType.double,
           false,
-        ),
-        cartItems: deserializeStructParam<CartModelStruct>(
-          data['cartItems'],
-          ParamType.DataStruct,
-          true,
-          structBuilder: CartModelStruct.fromSerializableMap,
         ),
         subTotal: deserializeParam(
           data['subTotal'],
@@ -169,6 +177,17 @@ class CartItemModelStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        discountAmount: deserializeParam(
+          data['discountAmount'],
+          ParamType.String,
+          false,
+        ),
+        cartItems: deserializeStructParam<PartModelStruct>(
+          data['cartItems'],
+          ParamType.DataStruct,
+          true,
+          structBuilder: PartModelStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -179,23 +198,25 @@ class CartItemModelStruct extends BaseStruct {
     const listEquality = ListEquality();
     return other is CartItemModelStruct &&
         totalPrice == other.totalPrice &&
-        listEquality.equals(cartItems, other.cartItems) &&
         subTotal == other.subTotal &&
         tax == other.tax &&
         shippingCost == other.shippingCost &&
         discountRate == other.discountRate &&
-        couponCode == other.couponCode;
+        couponCode == other.couponCode &&
+        discountAmount == other.discountAmount &&
+        listEquality.equals(cartItems, other.cartItems);
   }
 
   @override
   int get hashCode => const ListEquality().hash([
         totalPrice,
-        cartItems,
         subTotal,
         tax,
         shippingCost,
         discountRate,
-        couponCode
+        couponCode,
+        discountAmount,
+        cartItems
       ]);
 }
 
@@ -206,6 +227,7 @@ CartItemModelStruct createCartItemModelStruct({
   double? shippingCost,
   String? discountRate,
   String? couponCode,
+  String? discountAmount,
 }) =>
     CartItemModelStruct(
       totalPrice: totalPrice,
@@ -214,4 +236,5 @@ CartItemModelStruct createCartItemModelStruct({
       shippingCost: shippingCost,
       discountRate: discountRate,
       couponCode: couponCode,
+      discountAmount: discountAmount,
     );
