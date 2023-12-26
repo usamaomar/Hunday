@@ -1,3 +1,6 @@
+import 'package:aligned_dialog/aligned_dialog.dart';
+
+import '../modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -178,33 +181,42 @@ class _ForgetPasswordComponentWidgetState
                               },
                             ).then((value) => safeSetState(() {}));
                           } else {
-                            await showDialog(
+                            await showAlignedDialog(
                               context: context,
-                              builder: (alertDialogContext) {
-                                return AlertDialog(
-                                  title: Text(FFLocalizations.of(context)
-                                      .getVariableText(
-                                    enText: 'Error',
-                                    arText: 'مشكلة خادم',
-                                  )),
-                                  content: Text(
-                                      (_model.apiResultrqt?.bodyText ?? '')),
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () =>
-                                          Navigator.pop(alertDialogContext),
-                                      child: Text(FFLocalizations.of(context)
-                                          .getVariableText(
-                                        enText: 'Ok',
-                                        arText: 'حسنا',
-                                      )),
+                              isGlobal: true,
+                              avoidOverflow: false,
+                              targetAnchor:
+                              AlignmentDirectional(
+                                  0.0, 0.0)
+                                  .resolve(
+                                  Directionality.of(
+                                      context)),
+                              followerAnchor:
+                              AlignmentDirectional(
+                                  0.0, 0.0)
+                                  .resolve(
+                                  Directionality.of(
+                                      context)),
+                              builder: (dialogContext) {
+                                return Material(
+                                  color:
+                                  Colors.transparent,
+                                  child: GestureDetector(
+                                    onTap: () =>
+                                        Navigator.pop(dialogContext),
+                                    child:
+                                    Modal06BasicInformationWidget(
+                                      body: (_model
+                                          .apiResultrqt
+                                          ?.bodyText ??
+                                          ''),
                                     ),
-                                  ],
+                                  ),
                                 );
                               },
-                            );
+                            ).then((value) =>
+                                setState(() {}));
                           }
-
                           setState(() {});
                         },
                         text: FFLocalizations.of(context).getText(

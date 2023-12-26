@@ -111,8 +111,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                   },
                   onEnded: () async {
                     _model.timerController.onStopTimer();
-                    if (FFAppState().userModel.token != null &&
-                        FFAppState().userModel.token != '') {
+                    if (FFAppState().userModel.token.isNotEmpty) {
                       context.pushReplacementNamed('HomeScreen');
                     } else {
                       context.pushReplacementNamed('loginScreen');

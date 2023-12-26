@@ -1,3 +1,4 @@
+import 'package:animated_bottom_navigation_bar/animated_bottom_navigation_bar.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -132,89 +133,100 @@ class _NavBarPageState extends State<NavBarPage> {
               .removeViewPadding(removeBottom: true),
           child: _currentPage ?? tabs[_currentPageName]!),
       extendBody: true,
-      bottomNavigationBar: FloatingNavbar(
-        currentIndex: currentIndex,
+      bottomNavigationBar: AnimatedBottomNavigationBar(
+        activeIndex: currentIndex,
+
+        // gapWidth: double.infinity,
         onTap: (i) => setState(() {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
+        // leftCornerRadius: 32,
+        // rightCornerRadius: 32,
         backgroundColor: Colors.white,
-        selectedItemColor: Color(0xFF3D6398),
-        unselectedItemColor: Color(0xFFB7B7B7),
-        selectedBackgroundColor: FlutterFlowTheme.of(context).white,
-        borderRadius: 0.0,
-        itemBorderRadius: 8.0,
-        margin: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
-        width: double.infinity,
-        elevation: 0.0,
-        items: [
-          FloatingNavbarItem(
-            customWidget: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.home_outlined,
-                  color:
-                      currentIndex == 0 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
-                  size: 25.0,
-                ),
-              ],
-            ),
-          ),
-          FloatingNavbarItem(
-            customWidget: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.chat_rounded,
-                  color:
-                      currentIndex == 1 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
-                  size: 24.0,
-                ),
-              ],
-            ),
-          ),
-          FloatingNavbarItem(
-            customWidget: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.shopping_cart_sharp,
-                  color:
-                      currentIndex == 2 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
-                  size: 24.0,
-                ),
-              ],
-            ),
-          ),
-          FloatingNavbarItem(
-            customWidget: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.directions_car_sharp,
-                  color:
-                      currentIndex == 3 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
-                  size: 24.0,
-                ),
-              ],
-            ),
-          ),
-          FloatingNavbarItem(
-            customWidget: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Icon(
-                  Icons.keyboard_control,
-                  color:
-                      currentIndex == 4 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
-                  size: 24.0,
-                ),
-              ],
-            ),
-          )
+        icons: const [
+          Icons.home_outlined,
+          Icons.chat_rounded,
+          Icons.shopping_cart_sharp,
+          Icons.directions_car_sharp,
+          Icons.keyboard_control,
         ],
+        // selectedItemColor: Color(0xFF3D6398),
+        // unselectedItemColor: Color(0xFFB7B7B7),
+        // selectedBackgroundColor: FlutterFlowTheme.of(context).white,
+        // borderRadius: 0.0,
+        // itemBorderRadius: 8.0,
+        // margin: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        // padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 0.0),
+        // width: double.infinity,
+        // elevation: 0.0,
+        // items: [
+        //   FloatingNavbarItem(
+        //     customWidget: Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Icon(
+        //           Icons.home_outlined,
+        //           color:
+        //               currentIndex == 0 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
+        //           size: 25.0,
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        //   FloatingNavbarItem(
+        //     customWidget: Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Icon(
+        //           Icons.chat_rounded,
+        //           color:
+        //               currentIndex == 1 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
+        //           size: 24.0,
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        //   FloatingNavbarItem(
+        //     customWidget: Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Icon(
+        //           Icons.shopping_cart_sharp,
+        //           color:
+        //               currentIndex == 2 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
+        //           size: 24.0,
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        //   FloatingNavbarItem(
+        //     customWidget: Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Icon(
+        //           Icons.directions_car_sharp,
+        //           color:
+        //               currentIndex == 3 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
+        //           size: 24.0,
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        //   FloatingNavbarItem(
+        //     customWidget: Column(
+        //       mainAxisAlignment: MainAxisAlignment.center,
+        //       children: [
+        //         Icon(
+        //           Icons.keyboard_control,
+        //           color:
+        //               currentIndex == 4 ? Color(0xFF3D6398) : Color(0xFFB7B7B7),
+        //           size: 24.0,
+        //         ),
+        //       ],
+        //     ),
+        //   )
+        // ],
       ),
     );
   }

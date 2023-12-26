@@ -907,13 +907,17 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
 
                                                                     setState(
                                                                         () {
-                                                                      _model
-                                                                          .updateListOfCartItemsLocalAtIndex(
-                                                                        seedCartListIndex,
-                                                                        (e) => e
-                                                                          ..isLoading =
-                                                                              false,
-                                                                      );
+                                                                      if (_model
+                                                                          .listOfCartItemsLocal
+                                                                          .isNotEmpty) {
+                                                                        _model
+                                                                            .updateListOfCartItemsLocalAtIndex(
+                                                                          seedCartListIndex,
+                                                                          (e) => e
+                                                                            ..isLoading =
+                                                                                false,
+                                                                        );
+                                                                      }
                                                                     });
 
                                                                     setState(
@@ -977,7 +981,12 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                             .apiResultx448866Copy
                                                             ?.succeeded ??
                                                         true)) {
-                                                      if (_model.apiResultx448866Copy ==
+                                                      if (getJsonField(
+                                                        (_model.apiResultx448866Copy
+                                                            ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.cart''',
+                                                      ) ==
                                                               null
                                                           ? true
                                                           : false) {
@@ -1054,12 +1063,15 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                   }
 
                                                   setState(() {
-                                                    _model
-                                                        .updateListOfCartItemsLocalAtIndex(
-                                                      seedCartListIndex,
-                                                      (e) =>
-                                                          e..isLoading = false,
-                                                    );
+                                                    if (_model
+                                                            .listOfCartItemsLocal.isNotEmpty) {
+                                                      _model
+                                                          .updateListOfCartItemsLocalAtIndex(
+                                                        seedCartListIndex,
+                                                        (e) => e
+                                                          ..isLoading = false,
+                                                      );
+                                                    }
                                                   });
 
                                                   setState(() {});

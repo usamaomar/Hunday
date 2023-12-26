@@ -183,13 +183,15 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                                   }
                                 }
 
-                                setState(() {
-                                  _model.frontFaceImage =
-                                      _model.uploadedLocalFile1;
-                                });
-                                setState(() {
-                                  _model.isFrontFaceAdded = true;
-                                });
+                                if (_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false) {
+                                  setState(() {
+                                    _model.frontFaceImage =
+                                        _model.uploadedLocalFile1;
+                                  });
+                                  setState(() {
+                                    _model.isFrontFaceAdded = true;
+                                  });
+                                }
                               },
                               text: FFLocalizations.of(context).getText(
                                 '4mxuj11u' /* Scan */,
@@ -299,14 +301,15 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                                     return;
                                   }
                                 }
-
-                                setState(() {
-                                  _model.backFaceImage =
-                                      _model.uploadedLocalFile2;
-                                });
-                                setState(() {
-                                  _model.isBackImageAdedd = true;
-                                });
+                                if (_model.uploadedLocalFile2.bytes?.isNotEmpty ?? false) {
+                                  setState(() {
+                                    _model.backFaceImage =
+                                        _model.uploadedLocalFile2;
+                                  });
+                                  setState(() {
+                                    _model.isBackImageAdedd = true;
+                                  });
+                                }
                               },
                               text: FFLocalizations.of(context).getText(
                                 '7gkzwtaa' /* Scan */,

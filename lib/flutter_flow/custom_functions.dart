@@ -395,7 +395,9 @@ String convertJsonToStringInternal(dynamic json) {
 
 CartItemModelStruct convertFromJsonToCartObject(dynamic jsonObject) {
   return CartItemModelStruct(
-      cartItems: convertFromJsonListToCarttList(jsonObject['cartItems']),
+      cartItems: jsonObject['cartItems'] == null
+          ? []
+          : convertFromJsonListToCarttList(jsonObject['cartItems']),
       subTotal: jsonObject['subTotal'].toDouble(),
       tax: jsonObject['tax'].toString(),
       shippingCost: jsonObject['shippingCost'].toDouble(),
@@ -418,8 +420,8 @@ DeliveryPriceModelStruct getCityModelById(
   List<DeliveryPriceModelStruct> listOfDeliveryPrices,
   int id,
 ) {
-  DeliveryPriceModelStruct vehicle =
-      listOfDeliveryPrices.firstWhere((c) => c.id == id , orElse:  () => listOfDeliveryPrices[0]);
+  DeliveryPriceModelStruct vehicle = listOfDeliveryPrices
+      .firstWhere((c) => c.id == id, orElse: () => listOfDeliveryPrices[0]);
 
   return vehicle;
 }
