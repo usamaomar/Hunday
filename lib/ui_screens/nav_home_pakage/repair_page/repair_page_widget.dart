@@ -482,6 +482,8 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                       _model.textController,
                                                   focusNode:
                                                       _model.textFieldFocusNode,
+                                                  textInputAction:
+                                                      TextInputAction.done,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
                                                     labelText:
@@ -732,7 +734,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                             ],
                                           ),
                                         ),
-                                      ].addToEnd(SizedBox(height: 50.0)),
+                                      ].addToEnd(SizedBox(height: 75.0)),
                                     ),
                                   ),
                                 ),

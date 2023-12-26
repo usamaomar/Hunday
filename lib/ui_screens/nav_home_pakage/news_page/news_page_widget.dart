@@ -109,36 +109,39 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
                 ).image,
               ),
             ),
-            child: Stack(
-              children: [
-                Align(
-                  alignment: AlignmentDirectional(0.0, 1.0),
-                  child: wrapWithModel(
-                    model: _model.newsBottomSheetComponentModel,
-                    updateCallback: () => setState(() {}),
-                    child: NewsBottomSheetComponentWidget(),
-                  ).animateOnPageLoad(animationsMap[
-                      'newsBottomSheetComponentOnPageLoadAnimation']!),
-                ),
-                Column(
-                  mainAxisSize: MainAxisSize.max,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    wrapWithModel(
-                      model: _model.hyndayAppBarModel,
+            child: Container(
+              height: double.infinity,
+              child: Stack(
+                children: [
+                  Align(
+                    alignment: AlignmentDirectional(0.0, 1.0),
+                    child: wrapWithModel(
+                      model: _model.newsBottomSheetComponentModel,
                       updateCallback: () => setState(() {}),
-                      child: HyndayAppBarWidget(
-                        appBarTitle:
-                            FFLocalizations.of(context).getVariableText(
-                          enText: 'News',
-                          arText: 'الاخبار',
+                      child: NewsBottomSheetComponentWidget(),
+                    ).animateOnPageLoad(animationsMap[
+                        'newsBottomSheetComponentOnPageLoadAnimation']!),
+                  ),
+                  Column(
+                    mainAxisSize: MainAxisSize.max,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      wrapWithModel(
+                        model: _model.hyndayAppBarModel,
+                        updateCallback: () => setState(() {}),
+                        child: HyndayAppBarWidget(
+                          appBarTitle:
+                              FFLocalizations.of(context).getVariableText(
+                            enText: 'News',
+                            arText: 'الاخبار',
+                          ),
+                          isMyProfileOpend: false,
                         ),
-                        isMyProfileOpend: false,
                       ),
-                    ),
-                  ],
-                ),
-              ],
+                    ],
+                  ),
+                ],
+              ),
             ),
           ),
         ),

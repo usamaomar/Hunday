@@ -1498,7 +1498,6 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
-                                    keyboardType: TextInputType.number,
                                     validator: _model
                                         .textFieldcompnyControllerValidator
                                         .asValidator(context),
