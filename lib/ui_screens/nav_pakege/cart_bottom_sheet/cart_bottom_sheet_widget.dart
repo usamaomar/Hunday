@@ -521,9 +521,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                 ),
                                                               ],
                                                             ),
-                                                            if (_model
-                                                                    .isLoading ==
-                                                                true)
+                                                            if (seedCartListItem
+                                                                .isLoading)
                                                               ClipRRect(
                                                                 borderRadius:
                                                                     BorderRadius
@@ -551,8 +550,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                     child:
                                                                         Visibility(
                                                                       visible:
-                                                                          _model.isLoading ==
-                                                                              true,
+                                                                          seedCartListItem
+                                                                              .isLoading,
                                                                       child:
                                                                           CircularPercentIndicator(
                                                                         percent:
@@ -651,8 +650,13 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                       () async {
                                                                     setState(
                                                                         () {
-                                                                      _model.isLoading =
-                                                                          true;
+                                                                      _model
+                                                                          .updateListOfCartItemsLocalAtIndex(
+                                                                        seedCartListIndex,
+                                                                        (e) => e
+                                                                          ..isLoading =
+                                                                              true,
+                                                                      );
                                                                     });
                                                                     _model.apiResulti8n =
                                                                         await AddToCartApiCall
@@ -730,8 +734,13 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
 
                                                                     setState(
                                                                         () {
-                                                                      _model.isLoading =
-                                                                          false;
+                                                                      _model
+                                                                          .updateListOfCartItemsLocalAtIndex(
+                                                                        seedCartListIndex,
+                                                                        (e) => e
+                                                                          ..isLoading =
+                                                                              false,
+                                                                      );
                                                                     });
 
                                                                     setState(
@@ -795,8 +804,13 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                       () async {
                                                                     setState(
                                                                         () {
-                                                                      _model.isLoading =
-                                                                          true;
+                                                                      _model
+                                                                          .updateListOfCartItemsLocalAtIndex(
+                                                                        seedCartListIndex,
+                                                                        (e) => e
+                                                                          ..isLoading =
+                                                                              true,
+                                                                      );
                                                                     });
                                                                     _model.apiResultxxf2 =
                                                                         await RemoveItemFromCartApiCall
@@ -834,6 +848,11 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               .updatePage(() {
                                                                             _model.listOfCartItemsLocal =
                                                                                 [];
+                                                                          });
+                                                                          setState(
+                                                                              () {
+                                                                            _model.totalPrice =
+                                                                                0.0;
                                                                           });
                                                                         } else {
                                                                           setState(
@@ -888,8 +907,13 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
 
                                                                     setState(
                                                                         () {
-                                                                      _model.isLoading =
-                                                                          false;
+                                                                      _model
+                                                                          .updateListOfCartItemsLocalAtIndex(
+                                                                        seedCartListIndex,
+                                                                        (e) => e
+                                                                          ..isLoading =
+                                                                              false,
+                                                                      );
                                                                     });
 
                                                                     setState(
@@ -921,6 +945,14 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
+                                                  setState(() {
+                                                    _model
+                                                        .updateListOfCartItemsLocalAtIndex(
+                                                      seedCartListIndex,
+                                                      (e) =>
+                                                          e..isLoading = true,
+                                                    );
+                                                  });
                                                   _model.apiResultxxf2Copy =
                                                       await RemoveItemFromCartApiCall
                                                           .call(
@@ -951,6 +983,10 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                         _model.updatePage(() {
                                                           _model.listOfCartItemsLocal =
                                                               [];
+                                                        });
+                                                        setState(() {
+                                                          _model.totalPrice =
+                                                              0.0;
                                                         });
                                                       } else {
                                                         setState(() {
@@ -1017,7 +1053,12 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                   }
 
                                                   setState(() {
-                                                    _model.isLoading = false;
+                                                    _model
+                                                        .updateListOfCartItemsLocalAtIndex(
+                                                      seedCartListIndex,
+                                                      (e) =>
+                                                          e..isLoading = false,
+                                                    );
                                                   });
 
                                                   setState(() {});
