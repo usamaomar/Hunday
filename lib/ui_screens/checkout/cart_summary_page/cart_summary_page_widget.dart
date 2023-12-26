@@ -361,7 +361,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                             ),
                                                                           ),
                                                                         Text(
-                                                                          '${(listCartItemItem.discAmount != null) && (listCartItemItem.discAmount > 0.0) ? listCartItemItem.price.toString() : listCartItemItem.discAmount.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                          '${ (listCartItemItem.discAmount <= 0.0) ? listCartItemItem.price.toString() : listCartItemItem.discAmount.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                             enText:
                                                                                 'JD',
                                                                             arText:

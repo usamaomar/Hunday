@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="x">
+    <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/custom_functions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/custom_functions.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/add_component_shoping_details/add_component_shoping_details_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/add_component_shoping_details/add_component_shoping_details_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/forget_password_component/forget_password_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/forget_password_component/forget_password_component_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +92,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703171090580</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="x">
+      <created>1703611170049</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1703611170049</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -119,6 +119,13 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart</url>
+          <line>630</line>
+          <option name="timeStamp" value="119" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
         <breakpoint type="python-exception">
