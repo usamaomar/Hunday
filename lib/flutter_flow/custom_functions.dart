@@ -439,3 +439,15 @@ String appointmentDateConverter(String inputDate) {
 
   return result;
 }
+
+String roundDoubleToThreeDigits(double value) {
+  String roundedValue = value.toStringAsFixed(3);
+
+  // Remove trailing zeros
+  roundedValue = roundedValue.replaceAll(RegExp(r'0*$'), '');
+
+  // Remove trailing dot if present
+  roundedValue = roundedValue.replaceAll(RegExp(r'\.$'), '');
+
+  return roundedValue;
+}
