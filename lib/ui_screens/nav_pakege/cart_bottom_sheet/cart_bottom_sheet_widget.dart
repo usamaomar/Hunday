@@ -1153,10 +1153,10 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                 ),
                           ),
                           Text(
-                            '${valueOrDefault<String>(
-                              _model.totalPrice.toString(),
-                              '0',
-                            )} ${FFLocalizations.of(context).getVariableText(
+                            '${functions.roundDoubleToThreeDigits(valueOrDefault<double>(
+                              _model.totalPrice,
+                              0.0,
+                            ))} ${FFLocalizations.of(context).getVariableText(
                               enText: 'JOD',
                               arText: 'دينار',
                             )}',
