@@ -945,7 +945,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                           getJsonField(
                                                                             (_model.apiResult3z0?.jsonBody ??
                                                                                 ''),
-                                                                            r'''$.cart.coupon.coupon_code''',
+                                                                            r'''$.cart.coupon.discount_rate''',
                                                                           ).toString(),
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
