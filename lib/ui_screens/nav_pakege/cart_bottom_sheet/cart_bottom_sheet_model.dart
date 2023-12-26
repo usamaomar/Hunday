@@ -22,17 +22,17 @@ import 'package:provider/provider.dart';
 class CartBottomSheetModel extends FlutterFlowModel<CartBottomSheetWidget> {
   ///  Local state fields for this component.
 
-  List<CartModelStruct> listOfCartItemsLocal = [];
-  void addToListOfCartItemsLocal(CartModelStruct item) =>
+  List<PartModelStruct> listOfCartItemsLocal = [];
+  void addToListOfCartItemsLocal(PartModelStruct item) =>
       listOfCartItemsLocal.add(item);
-  void removeFromListOfCartItemsLocal(CartModelStruct item) =>
+  void removeFromListOfCartItemsLocal(PartModelStruct item) =>
       listOfCartItemsLocal.remove(item);
   void removeAtIndexFromListOfCartItemsLocal(int index) =>
       listOfCartItemsLocal.removeAt(index);
-  void insertAtIndexInListOfCartItemsLocal(int index, CartModelStruct item) =>
+  void insertAtIndexInListOfCartItemsLocal(int index, PartModelStruct item) =>
       listOfCartItemsLocal.insert(index, item);
   void updateListOfCartItemsLocalAtIndex(
-          int index, Function(CartModelStruct) updateFn) =>
+          int index, Function(PartModelStruct) updateFn) =>
       listOfCartItemsLocal[index] = updateFn(listOfCartItemsLocal[index]);
 
   bool isLoading = false;

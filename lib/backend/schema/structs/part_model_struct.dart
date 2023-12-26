@@ -23,6 +23,7 @@ class PartModelStruct extends BaseStruct {
     double? specialPrice,
     int? quantity,
     double? price,
+    double? discAmount,
   })  : _id = id,
         _nameEn = nameEn,
         _nameAr = nameAr,
@@ -38,7 +39,8 @@ class PartModelStruct extends BaseStruct {
         _name = name,
         _specialPrice = specialPrice,
         _quantity = quantity,
-        _price = price;
+        _price = price,
+        _discAmount = discAmount;
 
   // "id" field.
   int? _id;
@@ -143,6 +145,13 @@ class PartModelStruct extends BaseStruct {
   void incrementPrice(double amount) => _price = price + amount;
   bool hasPrice() => _price != null;
 
+  // "disc_amount" field.
+  double? _discAmount;
+  double get discAmount => _discAmount ?? 0.0;
+  set discAmount(double? val) => _discAmount = val;
+  void incrementDiscAmount(double amount) => _discAmount = discAmount + amount;
+  bool hasDiscAmount() => _discAmount != null;
+
   static PartModelStruct fromMap(Map<String, dynamic> data) => PartModelStruct(
         id: castToType<int>(data['id']),
         nameEn: data['name_en'] as String?,
@@ -160,6 +169,7 @@ class PartModelStruct extends BaseStruct {
         specialPrice: castToType<double>(data['special_price']),
         quantity: castToType<int>(data['quantity']),
         price: castToType<double>(data['price']),
+        discAmount: castToType<double>(data['disc_amount']),
       );
 
   static PartModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -183,6 +193,7 @@ class PartModelStruct extends BaseStruct {
         'special_price': _specialPrice,
         'quantity': _quantity,
         'price': _price,
+        'disc_amount': _discAmount,
       }.withoutNulls;
 
   @override
@@ -249,6 +260,10 @@ class PartModelStruct extends BaseStruct {
         ),
         'price': serializeParam(
           _price,
+          ParamType.double,
+        ),
+        'disc_amount': serializeParam(
+          _discAmount,
           ParamType.double,
         ),
       }.withoutNulls;
@@ -335,6 +350,11 @@ class PartModelStruct extends BaseStruct {
           ParamType.double,
           false,
         ),
+        discAmount: deserializeParam(
+          data['disc_amount'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -358,7 +378,8 @@ class PartModelStruct extends BaseStruct {
         name == other.name &&
         specialPrice == other.specialPrice &&
         quantity == other.quantity &&
-        price == other.price;
+        price == other.price &&
+        discAmount == other.discAmount;
   }
 
   @override
@@ -378,7 +399,8 @@ class PartModelStruct extends BaseStruct {
         name,
         specialPrice,
         quantity,
-        price
+        price,
+        discAmount
       ]);
 }
 
@@ -399,6 +421,7 @@ PartModelStruct createPartModelStruct({
   double? specialPrice,
   int? quantity,
   double? price,
+  double? discAmount,
 }) =>
     PartModelStruct(
       id: id,
@@ -417,4 +440,5 @@ PartModelStruct createPartModelStruct({
       specialPrice: specialPrice,
       quantity: quantity,
       price: price,
+      discAmount: discAmount,
     );

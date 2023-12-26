@@ -139,283 +139,277 @@ class _AddComponentShopingDetailsWidgetState
                 ),
                 child: Padding(
                   padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Stack(
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
-                              child: Column(
-                                mainAxisSize: MainAxisSize.max,
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  SizedBox(
-                                    width: 60.0,
-                                    child: Divider(
-                                      height: 5.0,
-                                      thickness: 2.0,
-                                      color: Color(0xFF3D6398),
-                                    ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Stack(
+                        children: [
+                          Align(
+                            alignment: AlignmentDirectional(0.0, 0.0),
+                            child: Column(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                SizedBox(
+                                  width: 60.0,
+                                  child: Divider(
+                                    height: 5.0,
+                                    thickness: 2.0,
+                                    color: Color(0xFF3D6398),
                                   ),
-                                  SizedBox(
-                                    width: 40.0,
-                                    child: Divider(
-                                      height: 9.0,
-                                      thickness: 2.0,
-                                      color: Color(0xFF3D6398),
-                                    ),
+                                ),
+                                SizedBox(
+                                  width: 40.0,
+                                  child: Divider(
+                                    height: 9.0,
+                                    thickness: 2.0,
+                                    color: Color(0xFF3D6398),
                                   ),
-                                ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Align(
+                            alignment: AlignmentDirectional(-1.0, 0.0),
+                            child: Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  25.0, 0.0, 25.0, 0.0),
+                              child: InkWell(
+                                splashColor: Colors.transparent,
+                                focusColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  Navigator.pop(context);
+                                },
+                                child: Icon(
+                                  Icons.arrow_back_outlined,
+                                  color: Color(0xFF3D6398),
+                                  size: 24.0,
+                                ),
                               ),
                             ),
-                            Align(
-                              alignment: AlignmentDirectional(-1.0, 0.0),
+                          ),
+                        ],
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            18.0, 20.0, 18.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
-                                    25.0, 0.0, 25.0, 0.0),
-                                child: InkWell(
-                                  splashColor: Colors.transparent,
-                                  focusColor: Colors.transparent,
-                                  hoverColor: Colors.transparent,
-                                  highlightColor: Colors.transparent,
-                                  onTap: () async {
-                                    Navigator.pop(context);
-                                  },
-                                  child: Icon(
-                                    Icons.arrow_back_outlined,
-                                    color: Color(0xFF3D6398),
-                                    size: 24.0,
+                                    8.0, 0.0, 8.0, 0.0),
+                                child: TextFormField(
+                                  controller: _model.textController,
+                                  focusNode: _model.textFieldFocusNode,
+                                  obscureText: false,
+                                  decoration: InputDecoration(
+                                    labelText:
+                                        FFLocalizations.of(context).getText(
+                                      'ebrw9fwu' /* Search by Name or Part Number */,
+                                    ),
+                                    labelStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                    hintStyle: FlutterFlowTheme.of(context)
+                                        .labelMedium,
+                                    enabledBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xFFE1E1E1),
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    focusedBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color: Color(0xFFE1E1E1),
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    errorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    focusedErrorBorder: OutlineInputBorder(
+                                      borderSide: BorderSide(
+                                        color:
+                                            FlutterFlowTheme.of(context).error,
+                                        width: 1.0,
+                                      ),
+                                      borderRadius: BorderRadius.circular(5.0),
+                                    ),
+                                    filled: true,
+                                    fillColor:
+                                        FlutterFlowTheme.of(context).white,
                                   ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Heebo Regular',
+                                        color: Color(0xFF747474),
+                                        fontSize: 13.0,
+                                        fontWeight: FontWeight.w500,
+                                        useGoogleFonts: false,
+                                      ),
+                                  validator: _model.textControllerValidator
+                                      .asValidator(context),
                                 ),
                               ),
                             ),
                           ],
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              18.0, 20.0, 18.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      8.0, 0.0, 8.0, 0.0),
-                                  child: TextFormField(
-                                    controller: _model.textController,
-                                    focusNode: _model.textFieldFocusNode,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        'ebrw9fwu' /* Search by Name or Part Number */,
-                                      ),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFE1E1E1),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFE1E1E1),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      filled: true,
-                                      fillColor:
-                                          FlutterFlowTheme.of(context).white,
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Heebo Regular',
-                                          color: Color(0xFF747474),
-                                          fontSize: 13.0,
-                                          fontWeight: FontWeight.w500,
-                                          useGoogleFonts: false,
-                                        ),
-                                    validator: _model.textControllerValidator
-                                        .asValidator(context),
-                                  ),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            25.0, 15.0, 25.0, 0.0),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            Expanded(
+                              child: FlutterFlowDropDown<String>(
+                                controller: _model.dropDownValueController ??=
+                                    FormFieldController<String>(null),
+                                options: _model.listOfMyVehicle
+                                    .map((e) => e.plateNumber)
+                                    .toList(),
+                                onChanged: (val) async {
+                                  setState(() => _model.dropDownValue = val);
+                                  setState(() {
+                                    _model.selectedVehicleModel =
+                                        functions.getSelectedVehicle(
+                                            _model.dropDownValue!,
+                                            _model.listOfMyVehicle.toList());
+                                  });
+                                },
+                                height: 50.0,
+                                textStyle:
+                                    FlutterFlowTheme.of(context).bodyMedium,
+                                hintText: FFLocalizations.of(context).getText(
+                                  'rt1i3fku' /* Car Model / License Plate */,
                                 ),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              25.0, 15.0, 25.0, 0.0),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Expanded(
-                                child: FlutterFlowDropDown<String>(
-                                  controller: _model.dropDownValueController ??=
-                                      FormFieldController<String>(null),
-                                  options: _model.listOfMyVehicle
-                                      .map((e) => e.plateNumber)
-                                      .toList(),
-                                  onChanged: (val) async {
-                                    setState(() => _model.dropDownValue = val);
-                                    setState(() {
-                                      _model.selectedVehicleModel =
-                                          functions.getSelectedVehicle(
-                                              _model.dropDownValue!,
-                                              _model.listOfMyVehicle.toList());
-                                    });
-                                  },
-                                  height: 50.0,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  hintText: FFLocalizations.of(context).getText(
-                                    'rt1i3fku' /* Car Model / License Plate */,
-                                  ),
-                                  icon: FaIcon(
-                                    FontAwesomeIcons.caretDown,
-                                    color: Colors.black,
-                                    size: 20.0,
-                                  ),
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  elevation: 2.0,
-                                  borderColor: Color(0xFFE1E1E1),
-                                  borderWidth: 1.0,
-                                  borderRadius: 5.0,
-                                  margin: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 4.0, 16.0, 4.0),
-                                  hidesUnderline: true,
-                                  isSearchable: false,
-                                  isMultiSelect: false,
+                                icon: FaIcon(
+                                  FontAwesomeIcons.caretDown,
+                                  color: Colors.black,
+                                  size: 20.0,
                                 ),
+                                fillColor: FlutterFlowTheme.of(context)
+                                    .secondaryBackground,
+                                elevation: 2.0,
+                                borderColor: Color(0xFFE1E1E1),
+                                borderWidth: 1.0,
+                                borderRadius: 5.0,
+                                margin: EdgeInsetsDirectional.fromSTEB(
+                                    16.0, 4.0, 16.0, 4.0),
+                                hidesUnderline: true,
+                                isSearchable: false,
+                                isMultiSelect: false,
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
-                        Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              25.0, 15.0, 25.0, 20.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              final _datePickedDate = await showDatePicker(
-                                context: context,
-                                initialDate: getCurrentTimestamp,
-                                firstDate: getCurrentTimestamp,
-                                lastDate: DateTime(2050),
-                              );
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            25.0, 15.0, 25.0, 20.0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {
+                            final _datePickedDate = await showDatePicker(
+                              context: context,
+                              initialDate: getCurrentTimestamp,
+                              firstDate: getCurrentTimestamp,
+                              lastDate: DateTime(2050),
+                            );
 
-                              if (_datePickedDate != null) {
-                                safeSetState(() {
-                                  _model.datePicked = DateTime(
-                                    _datePickedDate.year,
-                                    _datePickedDate.month,
-                                    _datePickedDate.day,
-                                  );
-                                });
-                              }
-                              setState(() {
-                                _model.selectedYear = dateTimeFormat(
-                                  'yMd',
-                                  _model.datePicked,
-                                  locale:
-                                      FFLocalizations.of(context).languageCode,
+                            if (_datePickedDate != null) {
+                              safeSetState(() {
+                                _model.datePicked = DateTime(
+                                  _datePickedDate.year,
+                                  _datePickedDate.month,
+                                  _datePickedDate.day,
                                 );
                               });
-                            },
-                            child: Container(
-                              height: 50.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                border: Border.all(
-                                  color: Color(0xFFE1E1E1),
-                                  width: 1.0,
-                                ),
+                            }
+                            setState(() {
+                              _model.selectedYear = dateTimeFormat(
+                                'yMd',
+                                _model.datePicked,
+                                locale:
+                                    FFLocalizations.of(context).languageCode,
+                              );
+                            });
+                          },
+                          child: Container(
+                            height: 50.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).white,
+                              borderRadius: BorderRadius.circular(5.0),
+                              border: Border.all(
+                                color: Color(0xFFE1E1E1),
+                                width: 1.0,
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        _model.selectedYear != null &&
-                                                _model.selectedYear != ''
-                                            ? _model.selectedYear
-                                            : valueOrDefault<String>(
-                                                FFLocalizations.of(context)
-                                                    .getVariableText(
-                                                  enText: 'Year of Creation',
-                                                  arText: 'سنة الصنع',
-                                                ),
-                                                '٫',
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      10.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      _model.selectedYear != null &&
+                                              _model.selectedYear != ''
+                                          ? _model.selectedYear
+                                          : valueOrDefault<String>(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Year of Creation',
+                                                arText: 'سنة الصنع',
                                               ),
-                                        '-',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                              '٫',
+                                            ),
+                                      '-',
                                     ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 10.0, 0.0),
-                                    child: Icon(
-                                      Icons.calendar_month_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 21.0,
-                                    ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 10.0, 0.0),
+                                  child: Icon(
+                                    Icons.calendar_month_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 21.0,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
-                        Builder(
+                      ),
+                      Expanded(
+                        child: Builder(
                           builder: (context) {
                             final listLcs = _model.listOfPartsModelLocal
                                 .map((e) => e)
                                 .toList();
                             return ListView.builder(
                               padding: EdgeInsets.zero,
-                              shrinkWrap: true,
                               scrollDirection: Axis.vertical,
                               itemCount: listLcs.length,
                               itemBuilder: (context, listLcsIndex) {
@@ -846,8 +840,8 @@ class _AddComponentShopingDetailsWidgetState
                             );
                           },
                         ),
-                      ],
-                    ),
+                      ),
+                    ].addToEnd(SizedBox(height: 150.0)),
                   ),
                 ),
               ),

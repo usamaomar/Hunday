@@ -319,7 +319,6 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                   children: [
                                                                     Text(
                                                                       listCartItemItem
-                                                                          .part
                                                                           .name,
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
@@ -359,7 +358,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                             ),
                                                                           ),
                                                                         Text(
-                                                                          '${(listCartItemItem.part.specialPrice != null) && (listCartItemItem.part.specialPrice > 0.0) ? listCartItemItem.part.specialPrice.toString() : listCartItemItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                          '${(listCartItemItem.discAmount != null) && (listCartItemItem.discAmount > 0.0) ? listCartItemItem.price.toString() : listCartItemItem.discAmount.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                             enText:
                                                                                 'JD',
                                                                             arText:

@@ -74,17 +74,17 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
           _model.listOfCartItemsLocal = functions
               .convertFromJsonToCartObject(getJsonField(
                 (_model.apiResultx44?.jsonBody ?? ''),
-                r'''$''',
+                r'''$.cart''',
               ))
               .cartItems
               .toList()
-              .cast<CartModelStruct>();
+              .cast<PartModelStruct>();
         });
         setState(() {
           _model.totalPrice = functions
               .convertFromJsonToCartObject(getJsonField(
                 (_model.apiResultx44?.jsonBody ?? ''),
-                r'''$''',
+                r'''$.cart''',
               ))
               .totalPrice;
         });
@@ -310,7 +310,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                     child: Image
                                                                         .network(
                                                                       seedCartListItem
-                                                                          .part
                                                                           .fullImage,
                                                                       width:
                                                                           100.0,
@@ -348,8 +347,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                       .end,
                                                               children: [
                                                                 if (seedCartListItem
-                                                                            .part
-                                                                            .specialPrice !=
+                                                                            .discAmount !=
                                                                         null
                                                                     ? false
                                                                     : true)
@@ -415,8 +413,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                                 mainAxisAlignment: MainAxisAlignment.center,
                                                                                 children: [
                                                                                   Text(
-                                                                                    seedCartListItem.part.specialPrice != null
-                                                                                        ? '${seedCartListItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                    seedCartListItem.discAmount != null
+                                                                                        ? '${seedCartListItem.discAmount.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                                             enText: 'JOD',
                                                                                             arText: 'دينار',
                                                                                           )}'
@@ -485,10 +483,10 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               MainAxisAlignment.center,
                                                                           children: [
                                                                             Text(
-                                                                              '${(seedCartListItem.part.specialPrice == null) || (seedCartListItem.part.specialPrice == 0.0) ? '${seedCartListItem.part.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                              '${(seedCartListItem.discAmount == null) || (seedCartListItem.discAmount == 0.0) ? '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                                   enText: 'JOD',
                                                                                   arText: 'دينار',
-                                                                                )}' : '${seedCartListItem.part.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                                )}' : '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                                   enText: 'JOD',
                                                                                   arText: 'دينار',
                                                                                 )}'}',
@@ -598,7 +596,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                               ),
                                                               child: Text(
                                                                 seedCartListItem
-                                                                    .part.name,
+                                                                    .name,
                                                                 maxLines: 2,
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -647,8 +645,9 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                       token: FFAppState()
                                                                           .userModel
                                                                           .token,
-                                                                      partId: seedCartListItem
-                                                                          .partId,
+                                                                      partId:
+                                                                          seedCartListItem
+                                                                              .id,
                                                                     );
                                                                     if ((_model
                                                                             .apiResulti8n
@@ -674,7 +673,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               ))
                                                                               .cartItems
                                                                               .toList()
-                                                                              .cast<CartModelStruct>();
+                                                                              .cast<PartModelStruct>();
                                                                         });
                                                                         setState(
                                                                             () {
@@ -818,7 +817,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               ))
                                                                               .cartItems
                                                                               .toList()
-                                                                              .cast<CartModelStruct>();
+                                                                              .cast<PartModelStruct>();
                                                                         });
                                                                         setState(
                                                                             () {
@@ -900,8 +899,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                       await UpdateCartApiCall
                                                           .call(
                                                     id: seedCartListItem.id,
-                                                    partId:
-                                                        seedCartListItem.partId,
+                                                    partId: seedCartListItem.id,
                                                     token: FFAppState()
                                                         .userModel
                                                         .token,
@@ -933,7 +931,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                 .cartItems
                                                                 .toList()
                                                                 .cast<
-                                                                    CartModelStruct>();
+                                                                    PartModelStruct>();
                                                       });
                                                       setState(() {
                                                         _model.totalPrice =
