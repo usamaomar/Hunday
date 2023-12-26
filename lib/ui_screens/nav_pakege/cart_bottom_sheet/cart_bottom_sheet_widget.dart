@@ -1181,32 +1181,37 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Expanded(
-                            child: FFButtonWidget(
-                              onPressed: () async {
-                                context.pushNamed('ShippingAddressPage');
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'qpf5wtpv' /* Proceed To Checkout */,
-                              ),
-                              options: FFButtonOptions(
-                                width: 130.0,
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: FlutterFlowTheme.of(context).ahayundai,
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                                borderSide: BorderSide(
-                                  color: Colors.transparent,
-                                  width: 1.0,
+                            child: Opacity(
+                              opacity: _model.totalPrice <= 0.0 ? 0.5 : 1.0,
+                              child: FFButtonWidget(
+                                onPressed: () async {
+                                  if (_model.totalPrice > 0.0) {
+                                    context.pushNamed('ShippingAddressPage');
+                                  }
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'qpf5wtpv' /* Proceed To Checkout */,
                                 ),
-                                borderRadius: BorderRadius.circular(5.0),
+                                options: FFButtonOptions(
+                                  width: 130.0,
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: FlutterFlowTheme.of(context).ahayundai,
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.white,
+                                      ),
+                                  borderSide: BorderSide(
+                                    color: Colors.transparent,
+                                    width: 1.0,
+                                  ),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
                               ),
                             ),
                           ),
