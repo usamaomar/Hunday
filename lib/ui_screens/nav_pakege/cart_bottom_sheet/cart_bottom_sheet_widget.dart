@@ -823,39 +823,35 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               .apiResultx448866
                                                                               ?.succeeded ??
                                                                           true)) {
-                                                                        setState(
-                                                                            () {
-                                                                          _model.listOfCartItemsLocal = functions
-                                                                              .convertFromJsonToCartObject(getJsonField(
-                                                                                (_model.apiResultx448866?.jsonBody ?? ''),
-                                                                                r'''$.cart''',
-                                                                              ))
-                                                                              .cartItems
-                                                                              .toList()
-                                                                              .cast<PartModelStruct>();
-                                                                        });
-                                                                        setState(
-                                                                            () {
-                                                                          _model.totalPrice = functions
-                                                                              .convertFromJsonToCartObject(getJsonField(
-                                                                                (_model.apiResultx448866?.jsonBody ?? ''),
-                                                                                r'''$.cart''',
-                                                                              ))
-                                                                              .totalPrice;
-                                                                        });
-                                                                        if (!(functions
-                                                                                .convertFromJsonToCartObject(getJsonField(
-                                                                                  (_model.apiResultx448866?.jsonBody ?? ''),
-                                                                                  r'''$.cart.cartItems''',
-                                                                                ))
-                                                                                .cartItems
-                                                                                .isNotEmpty
+                                                                        if (_model.apiResultx448866 ==
+                                                                                null
                                                                             ? true
-                                                                            : false)) {
+                                                                            : false) {
                                                                           _model
                                                                               .updatePage(() {
                                                                             _model.listOfCartItemsLocal =
                                                                                 [];
+                                                                          });
+                                                                        } else {
+                                                                          setState(
+                                                                              () {
+                                                                            _model.listOfCartItemsLocal = functions
+                                                                                .convertFromJsonToCartObject(getJsonField(
+                                                                                  (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                  r'''$.cart''',
+                                                                                ))
+                                                                                .cartItems
+                                                                                .toList()
+                                                                                .cast<PartModelStruct>();
+                                                                          });
+                                                                          setState(
+                                                                              () {
+                                                                            _model.totalPrice = functions
+                                                                                .convertFromJsonToCartObject(getJsonField(
+                                                                                  (_model.apiResultx448866?.jsonBody ?? ''),
+                                                                                  r'''$.cart''',
+                                                                                ))
+                                                                                .totalPrice;
                                                                           });
                                                                         }
                                                                       }
