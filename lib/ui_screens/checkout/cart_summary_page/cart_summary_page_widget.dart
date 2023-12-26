@@ -361,7 +361,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                             ),
                                                                           ),
                                                                         Text(
-                                                                          '${ (listCartItemItem.discAmount <= 0.0) ? listCartItemItem.price.toString() : listCartItemItem.discAmount.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                          '${(listCartItemItem.discAmount <= 0.0) ? listCartItemItem.price.toString() : listCartItemItem.discAmount.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                             enText:
                                                                                 'JD',
                                                                             arText:
@@ -1007,11 +1007,13 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                       true)) {
                                                                     setState(
                                                                         () {
-                                                                      _model
-                                                                          .cartObject = functions.convertFromJsonToCartObject((_model
-                                                                              .apiResult3z0vcvcv
-                                                                              ?.jsonBody ??
-                                                                          ''));
+                                                                      _model.cartObject =
+                                                                          functions
+                                                                              .convertFromJsonToCartObject(getJsonField(
+                                                                        (_model.apiResult3z0vcvcv?.jsonBody ??
+                                                                            ''),
+                                                                        r'''$.cart''',
+                                                                      ));
                                                                     });
                                                                   }
                                                                 }
@@ -1079,7 +1081,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       ),
                                                 ),
                                                 Text(
-                                                  '${functions.roundDoubleToThreeDigits(_model.cartObject?.subTotal??0)} ${FFLocalizations.of(context).getVariableText(
+                                                  '${functions.roundDoubleToThreeDigits(_model.cartObject?.subTotal ?? 0)} ${FFLocalizations.of(context).getVariableText(
                                                     enText: 'JD',
                                                     arText: 'د.أ',
                                                   )}',
