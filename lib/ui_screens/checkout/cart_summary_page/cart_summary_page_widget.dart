@@ -57,8 +57,11 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
       );
       if ((_model.apiResult3z0?.succeeded ?? true)) {
         setState(() {
-          _model.cartObject = functions.convertFromJsonToCartObject(
-              (_model.apiResult3z0?.jsonBody ?? ''));
+          _model.cartObject =
+              functions.convertFromJsonToCartObject(getJsonField(
+            (_model.apiResult3z0?.jsonBody ?? ''),
+            r'''$.cart''',
+          ));
         });
       }
     });
@@ -1199,7 +1202,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'qjum9ia7' /* Coupon ( 15% ) */,
+                                                    'qjum9ia7' /* Coupon */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
