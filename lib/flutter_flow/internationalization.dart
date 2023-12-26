@@ -817,8 +817,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'ضريبة القيمة المضافة',
     },
     'qjum9ia7': {
-      'en': 'Coupon ( 15% )',
-      'ar': 'قسيمة ( 15%)',
+      'en': 'Coupon',
+      'ar': 'قسيمة',
     },
     '0gl4jwe1': {
       'en': 'Total Cost',

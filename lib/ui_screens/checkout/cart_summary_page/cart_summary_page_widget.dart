@@ -1202,7 +1202,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                 Text(
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                    'qjum9ia7' /* Coupon ( 15% ) */,
+                                                    'qjum9ia7' /* Coupon */,
                                                   ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
