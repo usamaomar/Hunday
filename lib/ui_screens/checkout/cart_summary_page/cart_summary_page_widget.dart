@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -61,6 +62,12 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
               functions.convertFromJsonToCartObject(getJsonField(
             (_model.apiResult3z0?.jsonBody ?? ''),
             r'''$.cart''',
+          ));
+        });
+        setState(() {
+          _model.couponModel = CouponModelStruct.maybeFromMap(getJsonField(
+            (_model.apiResult3z0?.jsonBody ?? ''),
+            r'''$.data''',
           ));
         });
       }
@@ -628,6 +635,17 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                       .textController
                                                                       .text,
                                                                 );
+                                                                setState(() {
+                                                                  _model.couponModel =
+                                                                      CouponModelStruct
+                                                                          .maybeFromMap(
+                                                                              getJsonField(
+                                                                    (_model.apiResult5gw
+                                                                            ?.jsonBody ??
+                                                                        ''),
+                                                                    r'''$.data''',
+                                                                  ));
+                                                                });
                                                                 if ((_model
                                                                         .apiResult5gw
                                                                         ?.succeeded ??
@@ -910,7 +928,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                         child:
                                                                             Text(
                                                                           _model
-                                                                              .cartObject!
+                                                                              .couponModel!
                                                                               .couponCode,
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
@@ -942,11 +960,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                             10.0),
                                                                         child:
                                                                             Text(
-                                                                          '${getJsonField(
-                                                                            (_model.apiResult3z0?.jsonBody ??
-                                                                                ''),
-                                                                            r'''$.cart.coupon.discount_rate''',
-                                                                          ).toString()} %',
+                                                                          '${_model.couponModel?.discountRate} %',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(
@@ -994,6 +1008,16 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                         .apiResultw5l
                                                                         ?.succeeded ??
                                                                     true)) {
+                                                                  setState(() {
+                                                                    _model.couponModel =
+                                                                        CouponModelStruct.maybeFromMap(
+                                                                            getJsonField(
+                                                                      (_model.apiResultw5l
+                                                                              ?.jsonBody ??
+                                                                          ''),
+                                                                      r'''$.data''',
+                                                                    ));
+                                                                  });
                                                                   _model.apiResult3z0vcvcv =
                                                                       await GetMyCartApiCall
                                                                           .call(
@@ -1191,13 +1215,10 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                               ],
                                             ),
                                           ),
-                                          if (getJsonField(
-                                                (_model.apiResult3z0
-                                                        ?.jsonBody ??
-                                                    ''),
-                                                r'''$.cart.coupon.discount_rate''',
-                                              ) !=
-                                              null)
+                                          if (_model.couponModel?.couponCode !=
+                                                  null &&
+                                              _model.couponModel?.couponCode !=
+                                                  '')
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(

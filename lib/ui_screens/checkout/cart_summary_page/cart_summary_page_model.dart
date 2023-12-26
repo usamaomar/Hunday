@@ -5,6 +5,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'cart_summary_page_widget.dart' show CartSummaryPageWidget;
 import 'package:flutter/material.dart';
@@ -24,6 +25,10 @@ class CartSummaryPageModel extends FlutterFlowModel<CartSummaryPageWidget> {
       updateFn(cartObject ??= CartItemModelStruct());
 
   bool addingCouponeIsSuccess = true;
+
+  CouponModelStruct? couponModel;
+  void updateCouponModelStruct(Function(CouponModelStruct) updateFn) =>
+      updateFn(couponModel ??= CouponModelStruct());
 
   ///  State fields for stateful widgets in this page.
 

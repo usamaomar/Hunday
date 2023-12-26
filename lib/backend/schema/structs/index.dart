@@ -19,4 +19,5 @@ export 'payment_result_struct.dart';
 export 'service_type_model_struct.dart';
 export 'shop_list_item_model_struct.dart';
 export 'user_model_struct.dart';
+export 'coupon_model_struct.dart';
 export 'test_struct.dart';
