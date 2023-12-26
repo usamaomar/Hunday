@@ -451,3 +451,14 @@ String roundDoubleToThreeDigits(double value) {
 
   return roundedValue;
 }
+
+List<String> convertFromJsonListToImagePathes(List<dynamic> json) {
+  List<String> list = [];
+  list.addAll(json
+      .map((e) => e != null && e != '' ? e['full_path_image'] : null)
+      .toList()
+      .toList()
+      .cast<String>());
+
+  return list;
+}

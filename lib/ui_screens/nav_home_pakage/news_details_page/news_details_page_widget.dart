@@ -63,7 +63,16 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
         id: widget.itemId,
       );
       if ((_model.responses?.succeeded ?? true)) {
-        setState(() {});
+        setState(() {
+          _model.listOfGallaryImages = functions
+              .convertFromJsonListToImagePathes(getJsonField(
+                (_model.responses?.jsonBody ?? ''),
+                r'''$.details.news_gallery''',
+                true,
+              )!)
+              .toList()
+              .cast<String>();
+        });
       }
     });
 
