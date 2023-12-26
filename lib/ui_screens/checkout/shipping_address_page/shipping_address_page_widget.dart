@@ -105,13 +105,13 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
               (_model.addressModel?.streetAddress != null &&
                       _model.addressModel?.streetAddress != ''
                   ? _model.addressModel!.streetAddress
-                  : '-');
+                  : ' ');
         });
         setState(() {
           _model.textController5?.text =
               (_model.addressModel?.buildingNumber != null
                   ? _model.addressModel!.buildingNumber.toString()
-                  : '-');
+                  : ' ');
         });
         setState(() {
           _model.selectedCityModelString = functions
