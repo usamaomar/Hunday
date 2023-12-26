@@ -402,7 +402,7 @@ CartItemModelStruct convertFromJsonToCartObject(dynamic jsonObject) {
       tax: jsonObject['tax'].toString(),
       shippingCost: jsonObject['shippingCost'].toDouble(),
       discountRate: jsonObject['discountRate'].toString(),
-      couponCode: jsonObject['coupon'],
+      couponCode: jsonObject['coupon'] !=null ? jsonObject['coupon']['coupon_code'] : jsonObject['coupon'],
       totalPrice: jsonObject['totalPrice'].toDouble());
 }
 
