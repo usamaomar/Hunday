@@ -497,7 +497,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                                           decoration: TextDecoration.lineThrough,
                                                                                         ),
                                                                                   ),
-                                                                                if ((seedCartListItem.specialPrice == null) && (seedCartListItem.specialPrice <= 0.0))
+                                                                                if (seedCartListItem.specialPrice <= 0.0)
                                                                                   Text(
                                                                                     '${seedCartListItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                                       enText: 'JOD',
