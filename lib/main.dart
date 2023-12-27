@@ -14,7 +14,6 @@ import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
-  await Firebase.initializeApp();
   try {
     if (message != null &&
         message.notification != null &&
