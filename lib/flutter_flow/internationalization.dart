@@ -855,17 +855,9 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cancled',
       'ar': 'ملغى',
     },
-    'obzda17t': {
-      'en': 'Tab View 2',
-      'ar': '',
-    },
     'cemww359': {
       'en': 'Requested',
       'ar': 'مطلوب',
-    },
-    'u8vsvx1b': {
-      'en': 'Tab View 3',
-      'ar': '',
     },
     'nydqvto1': {
       'en': 'Home',

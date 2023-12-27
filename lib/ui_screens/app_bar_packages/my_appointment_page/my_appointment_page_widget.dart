@@ -447,28 +447,8 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                   );
                                 },
                               ),
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'obzda17t' /* Tab View 2 */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 32.0,
-                                    ),
-                              ),
-                              Text(
-                                FFLocalizations.of(context).getText(
-                                  'u8vsvx1b' /* Tab View 3 */,
-                                ),
-                                style: FlutterFlowTheme.of(context)
-                                    .bodyMedium
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 32.0,
-                                    ),
-                              ),
+                              Container(),
+                              Container(),
                             ],
                           ),
                         ),
