@@ -1,3 +1,5 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -43,7 +45,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => RegistraationPageModel());
-
+    // FirebaseMessaging.instance.getToken().then((fbToken) {
+    //   FFAppState().FCM = fbToken ?? 'null';
+    // });
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
