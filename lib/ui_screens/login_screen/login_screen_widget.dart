@@ -64,8 +64,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
 
         if (_model.outs == true) {
           _model.loginApiRes5 = await LoginApiCall.call(
-            phone: FFAppState().biomatricDtateModel.phoneNumber,
+            phone: FFAppState().biomatricDtateModel.phoneNumber.substring(1) == '0' ? FFAppState().biomatricDtateModel.phoneNumber : '0${FFAppState().biomatricDtateModel.phoneNumber}',
             password: FFAppState().biomatricDtateModel.password,
+            fcm: FFAppState().FCM,
           );
           if ((_model.loginApiRes5?.succeeded ?? true)) {
             setState(() {
