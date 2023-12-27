@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "779673897933",
+    "project_id": "hunday-45504",
+    "storage_bucket": "hunday-45504.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:779673897933:android:ccefe97b63d61f1a85d284",
+        "android_client_info": {
+          "package_name": "com.mycompany.hyundai"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBgY2uCL8vG7R0Qu9gWE8UePMg6Vm7bjT4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
