@@ -1245,12 +1245,10 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                         ),
                                                   ),
                                                   Text(
-                                                    '${getJsonField(
-                                                      (_model.apiResult3z0
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                      r'''$.cart.coupon.discount_rate''',
-                                                    ).toString()} %',
+                                                    '${_model.couponModel?.discountamount?.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                      enText: 'JD',
+                                                      arText: ' د.أ',
+                                                    )}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium
