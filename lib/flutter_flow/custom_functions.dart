@@ -473,3 +473,19 @@ List<String> convertFromJsonListToImagePathes(List<dynamic> json) {
 
   return list;
 }
+
+String convertDateFormatOrders(String inoutDate) {
+  try {
+    // Parse the input date string
+    DateTime parsedDate = DateTime.parse(inoutDate);
+
+    // Format the date as "yyyy/MM/dd-HH:mm"
+    String formattedDate = DateFormat('yyyy/MM/dd-HH:mm').format(parsedDate);
+
+    return formattedDate;
+  } catch (e) {
+    // Handle parsing errors if any
+    print("Error converting date: $e");
+    return '';
+  }
+}
