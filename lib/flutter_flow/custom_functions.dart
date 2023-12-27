@@ -110,6 +110,17 @@ List<bool> addFalseValuesToList(int size) {
   return resultList;
 }
 
+List<String> convertFromJsonListToStrings(List<dynamic> json) {
+  List<String> list = [];
+  list.addAll(json
+      .map((e) => e != null && e != '' ? e : null)
+      .toList()
+      .toList()
+      .cast<String>());
+
+  return list;
+}
+
 List<bool> updateAtIndexAndClearOthers(
   List<bool> boolList,
   int index,
