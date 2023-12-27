@@ -381,7 +381,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                                             'التاريخ : ',
                                                                       )} ${getJsonField(
                                                                         completedListItem,
-                                                                        r'''$.date''',
+                                                                        r'''$.created_at''',
                                                                       ).toString()}',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
