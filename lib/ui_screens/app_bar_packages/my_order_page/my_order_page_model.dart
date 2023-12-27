@@ -4,6 +4,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 import 'my_order_page_widget.dart' show MyOrderPageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
