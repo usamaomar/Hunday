@@ -482,7 +482,7 @@ String convertDateFormatOrders(String inoutDate) {
     DateTime parsedDate = DateTime.parse(inoutDate);
 
     // Format the date as "yyyy/MM/dd-HH:mm"
-    String formattedDate = DateFormat('yyyy/MM/dd-HH:mm').format(parsedDate);
+    String formattedDate = DateFormat('yyyy/MM/dd').format(parsedDate);
 
     return formattedDate;
   } catch (e) {

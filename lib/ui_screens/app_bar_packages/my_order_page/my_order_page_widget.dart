@@ -348,7 +348,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                               Text(
                                                                 '${getJsonField(
                                                                   completedListItem,
-                                                                  r'''$.total_price''',
+                                                                  r'''$.totalPrice''',
                                                                 ).toString()} ${FFLocalizations.of(context).getVariableText(
                                                                   enText: 'JD',
                                                                   arText: 'د.أ',
@@ -682,7 +682,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                               Text(
                                                                 '${getJsonField(
                                                                   completedListItem,
-                                                                  r'''$.total_price''',
+                                                                  r'''$.totalPrice''',
                                                                 ).toString()} ${FFLocalizations.of(context).getVariableText(
                                                                   enText: 'JD',
                                                                   arText: 'د.أ',
@@ -1016,7 +1016,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                               Text(
                                                                 '${getJsonField(
                                                                   completedListItem,
-                                                                  r'''$.total_price''',
+                                                                  r'''$.totalPrice''',
                                                                 ).toString()} ${FFLocalizations.of(context).getVariableText(
                                                                   enText: 'JD',
                                                                   arText: 'د.أ',
