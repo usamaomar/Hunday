@@ -13,9 +13,14 @@ class LoginApiCall {
   static Future<ApiCallResponse> call({
     String? phone = '0777882330',
     String? password = 'password',
+    String? fcm = '',
   }) async {
     final ffApiRequestBody = '''
-{"phone":"${phone}","password":"${password}"}''';
+{
+  "phone": "${phone}",
+  "password": "${password}",
+  "fcm": "${fcm}"
+}''';
     return ApiManager.instance.makeApiCall(
       callName: 'LoginApi',
       apiUrl: 'https://hyundai.completechaintech.com/api/login',
@@ -68,18 +73,20 @@ class RegisterApiCall {
     String? email = '',
     String? countryCode = 'JO',
     String? date = '',
+    String? fcm = '',
   }) async {
     final ffApiRequestBody = '''
 {
-"phone": "${phone}",
-"password": "${password}",
-"name_en": "${name}",
-"name": "${name}",
-"gender": "${gender}",
-"lang": "${lang}",
-"email": "${email}",
-"country_code": "JO",
-"bod": "${date}"
+  "phone": "${phone}",
+  "password": "${password}",
+  "name_en": "${name}",
+  "name": "${name}",
+  "gender": "${gender}",
+  "lang": "${lang}",
+  "email": "${email}",
+  "country_code": "JO",
+  "bod": "${date}",
+  "fcm": "${fcm}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RegisterApi',

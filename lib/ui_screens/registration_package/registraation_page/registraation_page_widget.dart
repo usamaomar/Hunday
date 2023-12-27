@@ -1370,6 +1370,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                       .textController.text,
                                                   countryCode: 'JO',
                                                   date: _model.localDateOfBirth,
+                                                  fcm: FFAppState().FCM,
                                                 );
                                                 _shouldSetState = true;
                                                 if ((_model.apiResult7h5

@@ -588,6 +588,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                   phone: _model.phoneNumber,
                                                   password: _model
                                                       .textController.text,
+                                                  fcm: FFAppState().FCM,
                                                 );
                                                 _shouldSetState = true;
                                                 if ((_model.loginApiRes
