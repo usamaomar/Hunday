@@ -185,6 +185,9 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                       final completedList = getJsonField(
                                         listViewGetMyOrderApiResponse.jsonBody,
                                         r'''$.myOrders.completed''',
+                                      )== null ? [] :  getJsonField(
+                                        listViewGetMyOrderApiResponse.jsonBody,
+                                        r'''$.myOrders.completed''',
                                       ).toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
@@ -514,6 +517,9 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                   return Builder(
                                     builder: (context) {
                                       final completedList = getJsonField(
+                                        listViewGetMyOrderApiResponse.jsonBody,
+                                        r'''$.myOrders.cenceled''',
+                                      ) == null ? [] : getJsonField(
                                         listViewGetMyOrderApiResponse.jsonBody,
                                         r'''$.myOrders.cenceled''',
                                       ).toList();
@@ -846,7 +852,10 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                     builder: (context) {
                                       final completedList = getJsonField(
                                         listViewGetMyOrderApiResponse.jsonBody,
-                                        r'''$.myOrders.completed''',
+                                        r'''$.myOrders.requested''',
+                                      ) == null ? [] : getJsonField(
+                                        listViewGetMyOrderApiResponse.jsonBody,
+                                        r'''$.myOrders.requested''',
                                       ).toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,

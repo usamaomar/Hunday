@@ -6,10 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/backend/schema/structs/payment_model_struct.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/schema/structs/payment_model_struct.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/app_bar_packages/my_order_page/my_order_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/app_bar_packages/my_order_page/my_order_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1703625965484</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="x">
+      <created>1703633244933</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1703633244934</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -169,6 +173,16 @@
           <url>file://$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart</url>
           <line>972</line>
           <option name="timeStamp" value="175" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/app_bar_packages/my_order_page/my_order_page_widget.dart</url>
+          <line>516</line>
+          <option name="timeStamp" value="191" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/app_bar_packages/my_order_page/my_order_page_widget.dart</url>
+          <line>525</line>
+          <option name="timeStamp" value="192" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
