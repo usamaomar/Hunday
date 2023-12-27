@@ -31,9 +31,9 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SplashPageModel());
-    // FirebaseMessaging.instance.getToken().then((fbToken) {
-    //   FFAppState().FCM = fbToken ?? 'null';
-    // });
+    FirebaseMessaging.instance.getToken().then((fbToken) {
+      FFAppState().FCM = fbToken ?? 'null';
+    });
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.timerController.onStartTimer();

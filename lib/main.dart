@@ -27,16 +27,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
 void main() async {
 
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp();
+   await Firebase.initializeApp();
   usePathUrlStrategy();
 
-  await FlutterFlowTheme.initialize();
+
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
+  await FlutterFlowTheme.initialize();
 
-
-  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
@@ -62,10 +62,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   void initState() {
+    FirebaseMessaging.instance.getToken().then((fbToken) {
+      FFAppState().FCM = fbToken ?? 'null';
+    });
+
     super.initState();
-    // FirebaseMessaging.instance.getToken().then((fbToken) {
-    //   FFAppState().FCM = fbToken ?? 'null';
-    // });
+
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
   }

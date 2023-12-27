@@ -40,9 +40,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LoginScreenModel());
-    // FirebaseMessaging.instance.getToken().then((fbToken) {
-    //   FFAppState().FCM = fbToken ?? 'null';
-    // });
+    FirebaseMessaging.instance.getToken().then((fbToken) {
+      FFAppState().FCM = fbToken ?? 'null';
+    });
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setDarkModeSetting(context, ThemeMode.light);

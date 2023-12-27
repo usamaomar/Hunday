@@ -45,9 +45,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => RegistraationPageModel());
-    // FirebaseMessaging.instance.getToken().then((fbToken) {
-    //   FFAppState().FCM = fbToken ?? 'null';
-    // });
+    FirebaseMessaging.instance.getToken().then((fbToken) {
+      FFAppState().FCM = fbToken ?? 'null';
+    });
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setState(() {
