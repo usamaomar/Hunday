@@ -503,6 +503,12 @@ class FFAppState extends ChangeNotifier {
     _currentLanguge = _value;
     prefs.setString('ff_currentLanguge', _value);
   }
+
+  String _FCM = '';
+  String get FCM => _FCM;
+  set FCM(String _value) {
+    _FCM = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
