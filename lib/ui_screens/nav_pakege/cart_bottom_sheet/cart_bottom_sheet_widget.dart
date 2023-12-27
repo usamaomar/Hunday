@@ -70,24 +70,43 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
         token: FFAppState().userModel.token,
       );
       if ((_model.apiResultx44?.succeeded ?? true)) {
-        setState(() {
-          _model.listOfCartItemsLocal = functions
-              .convertFromJsonToCartObject(getJsonField(
-                (_model.apiResultx44?.jsonBody ?? ''),
-                r'''$.cart''',
-              ))
-              .cartItems
-              .toList()
-              .cast<PartModelStruct>();
-        });
-        setState(() {
-          _model.totalPrice = functions
-              .convertFromJsonToCartObject(getJsonField(
-                (_model.apiResultx44?.jsonBody ?? ''),
-                r'''$.cart''',
-              ))
-              .totalPrice;
-        });
+        if (getJsonField(
+              (_model.apiResultx44?.jsonBody ?? ''),
+              r'''$.cart''',
+            ) !=
+            null) {
+          setState(() {
+            _model.listOfCartItemsLocal = functions
+                .convertFromJsonToCartObject(getJsonField(
+                  (_model.apiResultx44?.jsonBody ?? ''),
+                  r'''$.cart''',
+                ))
+                .cartItems
+                .toList()
+                .cast<PartModelStruct>();
+          });
+          setState(() {
+            _model.totalPrice = functions
+                .convertFromJsonToCartObject(getJsonField(
+                  (_model.apiResultx44?.jsonBody ?? ''),
+                  r'''$.cart''',
+                ))
+                .totalPrice;
+          });
+          FFAppState()
+              .update(() {
+            FFAppState().badgeCount =
+                _model.listOfCartItemsLocal.length;
+          });
+        }else{
+          FFAppState()
+              .update(() {
+            FFAppState().badgeCount =
+                0;
+          });
+        }
+
+
       }
     });
 
@@ -893,17 +912,16 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                       setState(
                                                                           () {
                                                                         if (_model
-                                                                          .listOfCartItemsLocal
-                                                                          .isNotEmpty) {
-                                                                        _model
-                                                                            .updateListOfCartItemsLocalAtIndex(
-                                                                          seedCartListIndex,
-                                                                          (e) => e
-                                                                            ..isLoading =
-                                                                                false,
-                                                                        );
-                                                                      }
-                                                                    });
+                                                                            .listOfCartItemsLocal
+                                                                            .isNotEmpty) {
+                                                                          _model
+                                                                              .updateListOfCartItemsLocalAtIndex(
+                                                                            seedCartListIndex,
+                                                                            (e) => e
+                                                                              ..isLoading = false,
+                                                                          );
+                                                                        }
+                                                                      });
                                                                       FFAppState()
                                                                           .update(
                                                                               () {
@@ -980,11 +998,11 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                               ?.succeeded ??
                                                           true)) {
                                                         if (getJsonField(
-                                                        (_model.apiResultx448866Copy
-                                                            ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.cart''',
-                                                      ) ==
+                                                                  (_model.apiResultx448866Copy
+                                                                          ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.cart''',
+                                                                ) ==
                                                                 null
                                                             ? true
                                                             : false) {
@@ -1061,23 +1079,26 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                           setState(() {}));
                                                     }
 
-                                                    setState(() {
-                                                      if (_model
-                                                            .listOfCartItemsLocal.isNotEmpty) {
-                                                      _model
-                                                          .updateListOfCartItemsLocalAtIndex(
-                                                        seedCartListIndex,
-                                                        (e) => e
-                                                          ..isLoading = false,
-                                                      );
-                                                    }
-                                                  });
                                                     FFAppState().update(() {
                                                       FFAppState().badgeCount =
                                                           _model
                                                               .listOfCartItemsLocal
                                                               .length;
                                                     });
+
+                                                    setState(() {
+                                                      if (_model
+                                                          .listOfCartItemsLocal
+                                                          .isNotEmpty) {
+                                                        _model
+                                                            .updateListOfCartItemsLocalAtIndex(
+                                                          seedCartListIndex,
+                                                          (e) => e
+                                                            ..isLoading = false,
+                                                        );
+                                                      }
+                                                    });
+
 
                                                     setState(() {});
                                                   },

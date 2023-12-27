@@ -182,7 +182,7 @@ class _NavBarPageState extends State<NavBarPage> {
               height: 20.0,
               fit: BoxFit.contain,
             ),
-            badgeCount: 10,
+            badgeCount: FFAppState().badgeCount ,
             showBadge: true
           ),
           CustomNavigationBarItem(

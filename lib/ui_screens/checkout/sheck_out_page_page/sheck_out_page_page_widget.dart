@@ -701,54 +701,58 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                   );
                                                                 },
                                                               ).then((value) {
+                                                                FFAppState()
+                                                                    .update(() {
+                                                                  FFAppState()
+                                                                      .badgeCount = 0;
+                                                                });
                                                                 context.pushReplacementNamed(
                                                                     'HomeScreen');
                                                               });
-                                                            }else{
+                                                            } else {
                                                               await showAlignedDialog(
-                                                                context: context,
+                                                                context:
+                                                                    context,
                                                                 isGlobal: true,
-                                                                avoidOverflow: false,
+                                                                avoidOverflow:
+                                                                    false,
                                                                 targetAnchor:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                    .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
+                                                                    AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
                                                                 followerAnchor:
-                                                                AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                    .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                                builder: (dialogContext) {
+                                                                    AlignmentDirectional(
+                                                                            0.0,
+                                                                            0.0)
+                                                                        .resolve(
+                                                                            Directionality.of(context)),
+                                                                builder:
+                                                                    (dialogContext) {
                                                                   return Material(
-                                                                    color:
-                                                                    Colors.transparent,
-                                                                    child: GestureDetector(
+                                                                    color: Colors
+                                                                        .transparent,
+                                                                    child:
+                                                                        GestureDetector(
                                                                       onTap: () => _model
-                                                                          .unfocusNode
-                                                                          .canRequestFocus
-                                                                          ? FocusScope.of(
-                                                                          context)
-                                                                          .requestFocus(
-                                                                          _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
                                                                               .unfocusNode)
-                                                                          : FocusScope.of(
-                                                                          context)
-                                                                          .unfocus(),
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
                                                                       child:
-                                                                      Modal06BasicInformationWidget(
-                                                                        body: (_model
-                                                                            .apiResultmcd
-                                                                            ?.bodyText ??
+                                                                          Modal06BasicInformationWidget(
+                                                                        body: (_model.apiResultmcd?.bodyText ??
                                                                             ''),
                                                                       ),
                                                                     ),
                                                                   );
                                                                 },
                                                               ).then((value) =>
-                                                                  setState(() {}));
+                                                                  setState(
+                                                                      () {}));
                                                             }
                                                           }
                                                         } else {
@@ -991,6 +995,9 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
               );
             },
           ).then((value) => setState(() {
+                FFAppState().update(() {
+                  FFAppState().badgeCount = 0;
+                });
                 context.pushReplacementNamed('HomeScreen');
               }));
         }
