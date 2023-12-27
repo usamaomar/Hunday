@@ -10,9 +10,11 @@ class CouponModelStruct extends BaseStruct {
     int? id,
     String? couponCode,
     String? discountRate,
+    double? discountamount,
   })  : _id = id,
         _couponCode = couponCode,
-        _discountRate = discountRate;
+        _discountRate = discountRate,
+        _discountamount = discountamount;
 
   // "id" field.
   int? _id;
@@ -33,11 +35,20 @@ class CouponModelStruct extends BaseStruct {
   set discountRate(String? val) => _discountRate = val;
   bool hasDiscountRate() => _discountRate != null;
 
+  // "discountamount" field.
+  double? _discountamount;
+  double get discountamount => _discountamount ?? 0.0;
+  set discountamount(double? val) => _discountamount = val;
+  void incrementDiscountamount(double amount) =>
+      _discountamount = discountamount + amount;
+  bool hasDiscountamount() => _discountamount != null;
+
   static CouponModelStruct fromMap(Map<String, dynamic> data) =>
       CouponModelStruct(
         id: castToType<int>(data['id']),
         couponCode: data['coupon_code'] as String?,
         discountRate: data['discount_rate'] as String?,
+        discountamount: castToType<double>(data['discountamount']),
       );
 
   static CouponModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -48,6 +59,7 @@ class CouponModelStruct extends BaseStruct {
         'id': _id,
         'coupon_code': _couponCode,
         'discount_rate': _discountRate,
+        'discountamount': _discountamount,
       }.withoutNulls;
 
   @override
@@ -63,6 +75,10 @@ class CouponModelStruct extends BaseStruct {
         'discount_rate': serializeParam(
           _discountRate,
           ParamType.String,
+        ),
+        'discountamount': serializeParam(
+          _discountamount,
+          ParamType.double,
         ),
       }.withoutNulls;
 
@@ -83,6 +99,11 @@ class CouponModelStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        discountamount: deserializeParam(
+          data['discountamount'],
+          ParamType.double,
+          false,
+        ),
       );
 
   @override
@@ -93,20 +114,24 @@ class CouponModelStruct extends BaseStruct {
     return other is CouponModelStruct &&
         id == other.id &&
         couponCode == other.couponCode &&
-        discountRate == other.discountRate;
+        discountRate == other.discountRate &&
+        discountamount == other.discountamount;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([id, couponCode, discountRate]);
+  int get hashCode =>
+      const ListEquality().hash([id, couponCode, discountRate, discountamount]);
 }
 
 CouponModelStruct createCouponModelStruct({
   int? id,
   String? couponCode,
   String? discountRate,
+  double? discountamount,
 }) =>
     CouponModelStruct(
       id: id,
       couponCode: couponCode,
       discountRate: discountRate,
+      discountamount: discountamount,
     );
