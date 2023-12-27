@@ -184,7 +184,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                     builder: (context) {
                                       final completedList = getJsonField(
                                         listViewGetMyOrderApiResponse.jsonBody,
-                                        r'''$.myOrders''',
+                                        r'''$.myOrders.completed''',
                                       ).toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
@@ -257,7 +257,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                               Text(
                                                                 getJsonField(
                                                                   completedListItem,
-                                                                  r'''$.invoice_id''',
+                                                                  r'''$.id''',
                                                                 ).toString(),
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
@@ -283,10 +283,10 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                           children: [
                                                             Expanded(
                                                               child: Text(
-                                                                getJsonField(
+                                                                '${getJsonField(
                                                                   completedListItem,
-                                                                  r'''$.invoice.status''',
-                                                                ).toString(),
+                                                                  r'''$.item''',
+                                                                ).toString()}, ',
                                                                 style: FlutterFlowTheme.of(
                                                                         context)
                                                                     .bodyMedium
@@ -344,7 +344,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                               Text(
                                                                 '${getJsonField(
                                                                   completedListItem,
-                                                                  r'''$.total''',
+                                                                  r'''$.total_price''',
                                                                 ).toString()} ${FFLocalizations.of(context).getVariableText(
                                                                   enText: 'JD',
                                                                   arText: 'د.أ',
@@ -381,7 +381,7 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                                             'التاريخ : ',
                                                                       )} ${getJsonField(
                                                                         completedListItem,
-                                                                        r'''$.date''',
+                                                                        r'''$.created_at''',
                                                                       ).toString()}',
                                                                       style: FlutterFlowTheme.of(
                                                                               context)
