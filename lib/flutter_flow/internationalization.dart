@@ -378,17 +378,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Cancled',
       'ar': 'ملغى',
     },
-    '74ob5fo1': {
-      'en': '',
-      'ar': '',
+    '4511l167': {
+      'en': 'No :',
+      'ar': 'رقم :',
+    },
+    's989ymiy': {
+      'en': 'Total :',
+      'ar': 'المجموع :',
     },
     '6rbqvu50': {
       'en': 'Requested',
       'ar': 'مطلوب',
     },
-    'af1g81c3': {
-      'en': '',
-      'ar': '',
+    'wimhgt37': {
+      'en': 'No :',
+      'ar': 'رقم :',
+    },
+    'wb9dvh64': {
+      'en': 'Total :',
+      'ar': 'المجموع :',
     },
     '2m4xuvht': {
       'en': 'Home',
