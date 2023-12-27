@@ -1,6 +1,7 @@
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -25,12 +26,9 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
 }
 
 void main() async {
-
   WidgetsFlutterBinding.ensureInitialized();
-   await Firebase.initializeApp();
+  await Firebase.initializeApp();
   usePathUrlStrategy();
-
-
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
@@ -162,19 +160,47 @@ class _NavBarPageState extends State<NavBarPage> {
         }),
         items: [
           CustomNavigationBarItem(
-            icon: const Icon(Icons.home_outlined),
+            icon: SvgPicture.asset(
+              'assets/images/Group_70668_(1).svg',
+              width: 20.0,
+              height: 20.0,
+              fit: BoxFit.contain,
+            ),
           ),
           CustomNavigationBarItem(
-            icon: const Icon(Icons.chat_rounded),
+            icon: SvgPicture.asset(
+              'assets/images/Group_71272.svg',
+              width: 20.0,
+              height: 20.0,
+              fit: BoxFit.contain,
+            ),
           ),
           CustomNavigationBarItem(
-            icon: const Icon(Icons.shopping_cart_sharp),
+            icon: SvgPicture.asset(
+              'assets/images/Group_70661.svg',
+              width: 20.0,
+              height: 20.0,
+              fit: BoxFit.contain,
+            ),
+            badgeCount: 10,
+            showBadge: true
           ),
           CustomNavigationBarItem(
-            icon: const Icon(Icons.directions_car_sharp),
+            icon: SvgPicture.asset(
+              'assets/images/Group_72107.svg',
+              width: 20.0,
+              height: 20.0,
+              fit: BoxFit.contain,
+            ),
           ),
           CustomNavigationBarItem(
-            icon: const Icon(Icons.keyboard_control),
+            icon: SvgPicture.asset(
+              'assets/images/Group_72269.svg',
+
+              width: 20.0,
+              height: 20.0,
+              fit: BoxFit.contain,
+            ),
           ),
         ],
         iconSize: 24.0,
