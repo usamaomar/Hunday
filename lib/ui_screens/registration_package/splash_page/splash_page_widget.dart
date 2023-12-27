@@ -1,3 +1,5 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_timer.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -29,7 +31,9 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => SplashPageModel());
-
+    // FirebaseMessaging.instance.getToken().then((fbToken) {
+    //   FFAppState().FCM = fbToken ?? 'null';
+    // });
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.timerController.onStartTimer();

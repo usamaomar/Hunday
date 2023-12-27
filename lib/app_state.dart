@@ -73,6 +73,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _currentLanguge = prefs.getString('ff_currentLanguge') ?? _currentLanguge;
     });
+    _safeInit(() {
+      _FCM = prefs.getString('ff_FCM') ?? _FCM;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -502,6 +505,13 @@ class FFAppState extends ChangeNotifier {
   set currentLanguge(String _value) {
     _currentLanguge = _value;
     prefs.setString('ff_currentLanguge', _value);
+  }
+
+  String _FCM = '';
+  String get FCM => _FCM;
+  set FCM(String _value) {
+    _FCM = _value;
+    prefs.setString('ff_FCM', _value);
   }
 }
 

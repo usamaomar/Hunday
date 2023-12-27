@@ -1,3 +1,5 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -38,7 +40,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => LoginScreenModel());
-
+    // FirebaseMessaging.instance.getToken().then((fbToken) {
+    //   FFAppState().FCM = fbToken ?? 'null';
+    // });
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       setDarkModeSetting(context, ThemeMode.light);
@@ -588,6 +592,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                   phone: _model.phoneNumber,
                                                   password: _model
                                                       .textController.text,
+                                                  fcm: FFAppState().FCM,
                                                 );
                                                 _shouldSetState = true;
                                                 if ((_model.loginApiRes

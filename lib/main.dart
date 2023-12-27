@@ -18,15 +18,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
     if (message != null &&
         message.notification != null &&
         message.notification?.title != null &&
-        message.notification?.body != null) {
-
-    }
+        message.notification?.body != null) {}
   } catch (ex) {
     ex.toString();
   }
 }
+
 void main() async {
+
   WidgetsFlutterBinding.ensureInitialized();
+  // await Firebase.initializeApp();
   usePathUrlStrategy();
 
   await FlutterFlowTheme.initialize();
@@ -34,8 +35,8 @@ void main() async {
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
 
-  await Firebase.initializeApp();
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
+  // FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
@@ -62,9 +63,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
-    FirebaseMessaging.instance.getToken().then((fbToken) {
-
-    });
+    // FirebaseMessaging.instance.getToken().then((fbToken) {
+    //   FFAppState().FCM = fbToken ?? 'null';
+    // });
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
   }
@@ -138,7 +139,9 @@ class _NavBarPageState extends State<NavBarPage> {
       'MyVehiclesPage': MyVehiclesPageWidget(),
       'MorePage': MorePageWidget(),
     };
-    final currentIndex = _currentPageName.isEmpty ? 0 : tabs.keys.toList().indexOf(_currentPageName);
+    final currentIndex = _currentPageName.isEmpty
+        ? 0
+        : tabs.keys.toList().indexOf(_currentPageName);
 
     final MediaQueryData queryData = MediaQuery.of(context);
 
@@ -155,7 +158,6 @@ class _NavBarPageState extends State<NavBarPage> {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
         }),
-
         items: [
           CustomNavigationBarItem(
             icon: const Icon(Icons.home_outlined),
