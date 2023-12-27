@@ -76,6 +76,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _FCM = prefs.getString('ff_FCM') ?? _FCM;
     });
+    _safeInit(() {
+      _badgeCount = prefs.getInt('ff_badgeCount') ?? _badgeCount;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -512,6 +515,13 @@ class FFAppState extends ChangeNotifier {
   set FCM(String _value) {
     _FCM = _value;
     prefs.setString('ff_FCM', _value);
+  }
+
+  int _badgeCount = 0;
+  int get badgeCount => _badgeCount;
+  set badgeCount(int _value) {
+    _badgeCount = _value;
+    prefs.setInt('ff_badgeCount', _value);
   }
 }
 

@@ -695,6 +695,11 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                                 ))
                                                                                 .totalPrice;
                                                                           });
+                                                                          FFAppState()
+                                                                              .update(() {
+                                                                            FFAppState().badgeCount =
+                                                                                _model.listOfCartItemsLocal.length;
+                                                                          });
                                                                         }
                                                                       } else {
                                                                         await showAlignedDialog(
@@ -899,6 +904,13 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                         );
                                                                       }
                                                                     });
+                                                                      FFAppState()
+                                                                          .update(
+                                                                              () {
+                                                                        FFAppState().badgeCount = _model
+                                                                            .listOfCartItemsLocal
+                                                                            .length;
+                                                                      });
 
                                                                       setState(
                                                                           () {});
@@ -1060,6 +1072,12 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                       );
                                                     }
                                                   });
+                                                    FFAppState().update(() {
+                                                      FFAppState().badgeCount =
+                                                          _model
+                                                              .listOfCartItemsLocal
+                                                              .length;
+                                                    });
 
                                                     setState(() {});
                                                   },
