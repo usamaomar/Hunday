@@ -252,14 +252,24 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                       .responceFromGetCarDetails
                                                       ?.succeeded ??
                                                   true)) {
-                                                if (GetCarDetailsApiCall
-                                                            .carsSlider(
-                                                      (_model.responceFromGetCarDetails
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                    )!
-                                                        .length >
-                                                    0) {
+                                                if (getJsonField(
+                                                          (_model.responceFromGetCarDetails
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.car.car_sliders''',
+                                                          true,
+                                                        ) ==
+                                                        null
+                                                    ? false
+                                                    : (getJsonField(
+                                                          (_model.responceFromGetCarDetails
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.car.car_sliders''',
+                                                          true,
+                                                        ) as List)
+                                                            .length >
+                                                        0) {
                                                   context.pushNamed(
                                                     'CarModelDetailsMoreWithSlieder',
                                                     queryParameters: {
