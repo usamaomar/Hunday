@@ -139,6 +139,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           _model.listOfJsons = FFAppState().sliderList.toList().cast<dynamic>();
         });
       }
+      setState(() {
+        FFAppState().paymentStatus = '';
+      });
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
