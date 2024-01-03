@@ -30,6 +30,8 @@ class SheckOutPagePageModel extends FlutterFlowModel<SheckOutPagePageWidget> {
 
   bool checkBoxIsSelected = false;
 
+  dynamic responceData;
+
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

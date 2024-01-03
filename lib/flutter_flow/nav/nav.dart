@@ -332,7 +332,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'SheckOutPagePage',
               path: 'sheckOutPagePage',
-              builder: (context, params) => SheckOutPagePageWidget(),
+              builder: (context, params) => SheckOutPagePageWidget(
+                json: params.getParam('json', ParamType.JSON),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
