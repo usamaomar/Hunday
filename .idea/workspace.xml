@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="x" />
+    <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="x">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/shipping_address_page/in_app_payment_setting.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/shipping_address_page/in_app_payment_setting.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/offers_details_page/offers_details_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/offers_details_page/offers_details_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,7 +196,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704031959630</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="x">
+      <created>1704183779942</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1704183779942</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -208,68 +223,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>757</line>
-          <option name="timeStamp" value="207" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>756</line>
-          <option name="timeStamp" value="208" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>761</line>
-          <option name="timeStamp" value="209" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>762</line>
-          <option name="timeStamp" value="210" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>769</line>
-          <option name="timeStamp" value="211" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>775</line>
-          <option name="timeStamp" value="213" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>752</line>
-          <option name="timeStamp" value="214" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>751</line>
-          <option name="timeStamp" value="216" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>750</line>
-          <option name="timeStamp" value="217" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>753</line>
-          <option name="timeStamp" value="218" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>754</line>
-          <option name="timeStamp" value="219" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart</url>
-          <line>759</line>
-          <option name="timeStamp" value="220" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
       </default-breakpoints>

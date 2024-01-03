@@ -948,6 +948,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
           ),
     )
         .then((value) async {
+      // context.pushReplacementNamed('sheckOutPagePage');
       if (value.errorString?.isNotEmpty == true && value.errorString != null) {
         await showDialog(
             context: context,
@@ -971,6 +972,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
               );
             });
       } else {
+        // context.pushReplacementNamed('sheckOutPagePage');
         _model.apiResult8am = await GetPaymentStatusApiCall.call(
           token: FFAppState().userModel.token,
         );
@@ -995,10 +997,10 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
               );
             },
           ).then((value) => setState(() {
-                FFAppState().update(() {
-                  FFAppState().badgeCount = 0;
-                });
-                context.pushReplacementNamed('HomeScreen');
+                // FFAppState().update(() {
+                //   FFAppState().badgeCount = 0;
+                // });
+                // context.pushReplacementNamed('HomeScreen');
               }));
         }
       }

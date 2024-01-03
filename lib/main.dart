@@ -1,9 +1,11 @@
+import 'dart:async';
+
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -54,7 +56,6 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
-
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
 
@@ -63,12 +64,14 @@ class _MyAppState extends State<MyApp> {
     FirebaseMessaging.instance.getToken().then((fbToken) {
       FFAppState().FCM = fbToken ?? 'null';
     });
-
+    // initUniLinks();
     super.initState();
 
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
   }
+
+
 
   void setLocale(String language) {
     setState(() => _locale = createLocale(language));
@@ -126,6 +129,8 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   void initState() {
     super.initState();
+
+
     _currentPageName = widget.initialPage ?? _currentPageName;
     _currentPage = widget.page;
   }
