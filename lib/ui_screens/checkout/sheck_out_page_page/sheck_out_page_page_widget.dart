@@ -42,7 +42,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
+  Map<String,AnimationInfo> animationsMap = {
     'columnOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
@@ -60,6 +60,9 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
   @override
   void initState() {
     super.initState();
+
+
+    
     _model = createModel(context, () => SheckOutPagePageModel());
 
     SchedulerBinding.instance.addPostFrameCallback((_) async {
