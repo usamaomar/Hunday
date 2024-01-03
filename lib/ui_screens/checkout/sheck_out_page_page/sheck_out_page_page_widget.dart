@@ -763,16 +763,16 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                       () {}));
                                                             }
                                                           }
-                                                          context.pushNamed(
-                                                            'SheckOutPagePage',
-                                                            queryParameters: {
-                                                              'json':
-                                                              serializeParam(
-                                                                widget.json,
-                                                                ParamType.JSON,
-                                                              ),
-                                                            }.withoutNulls,
-                                                          );
+                                                          // context.pushNamed(
+                                                          //   'SheckOutPagePage',
+                                                          //   queryParameters: {
+                                                          //     'json':
+                                                          //     serializeParam(
+                                                          //       widget.json,
+                                                          //       ParamType.JSON,
+                                                          //     ),
+                                                          //   }.withoutNulls,
+                                                          // );
                                                         } else {
                                                           await showDialog(
                                                             context: context,
@@ -951,6 +951,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   payRequestNowReadyUI(
       {required String checkoutId, required merchantId}) async {
+    FFAppState().paymentStatus = "Done";
     await flutterHyperPay
         .readyUICards(
       readyUI: ReadyUI(
@@ -966,6 +967,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
           ),
     )
         .then((value) async {
+
       // context.pushReplacementNamed('sheckOutPagePage');
       if (value.errorString?.isNotEmpty == true && value.errorString != null) {
         await showDialog(
