@@ -292,7 +292,7 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
                                     getJsonField(
                                       listLocsItem,
                                       r'''$.full_icon''',
-                                    ).toString(),
+                                    )?.toString(),
                                     'https://cdn-icons-png.flaticon.com/512/1505/1505516.png',
                                   ),
                                 ),

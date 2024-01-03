@@ -24,7 +24,12 @@ import 'sheck_out_page_page_model.dart';
 export 'sheck_out_page_page_model.dart';
 
 class SheckOutPagePageWidget extends StatefulWidget {
-  const SheckOutPagePageWidget({Key? key}) : super(key: key);
+  const SheckOutPagePageWidget({
+    Key? key,
+    this.json,
+  }) : super(key: key);
+
+  final dynamic json;
 
   @override
   _SheckOutPagePageWidgetState createState() => _SheckOutPagePageWidgetState();
@@ -755,6 +760,16 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                       () {}));
                                                             }
                                                           }
+                                                          context.pushNamed(
+                                                            'SheckOutPagePage',
+                                                            queryParameters: {
+                                                              'json':
+                                                              serializeParam(
+                                                                widget.json,
+                                                                ParamType.JSON,
+                                                              ),
+                                                            }.withoutNulls,
+                                                          );
                                                         } else {
                                                           await showDialog(
                                                             context: context,
