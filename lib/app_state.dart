@@ -523,6 +523,12 @@ class FFAppState extends ChangeNotifier {
     _badgeCount = _value;
     prefs.setInt('ff_badgeCount', _value);
   }
+
+  String _paymentStatus = '';
+  String get paymentStatus => _paymentStatus;
+  set paymentStatus(String _value) {
+    _paymentStatus = _value;
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
