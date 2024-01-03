@@ -79,6 +79,9 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _badgeCount = prefs.getInt('ff_badgeCount') ?? _badgeCount;
     });
+    _safeInit(() {
+      _paymentStatus = prefs.getString('ff_paymentStatus') ?? _paymentStatus;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -528,6 +531,7 @@ class FFAppState extends ChangeNotifier {
   String get paymentStatus => _paymentStatus;
   set paymentStatus(String _value) {
     _paymentStatus = _value;
+    prefs.setString('ff_paymentStatus', _value);
   }
 }
 
