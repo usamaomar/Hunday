@@ -1,18 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
-import '/backend/schema/structs/index.dart';
 
 import '/index.dart';
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'serialization_util.dart';
 
@@ -25,6 +20,7 @@ class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
 
   static AppStateNotifier? _instance;
+
   static AppStateNotifier get instance => _instance ??= AppStateNotifier._();
 
   bool showSplashImage = true;
@@ -44,7 +40,24 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => SplashPageWidget(),
+          builder: (context, params) {
+            final String? id = params.getParam('id', ParamType.String);
+            final String? resourcePath = params.getParam('resourcePath', ParamType.String);
+            print("_initialize => id =$id");
+            print("_initialize => resourcePath =$resourcePath");
+            if (id != null) {
+              return NavBarPage(
+                initialPage: 'HomeScreen',
+                page: HomeScreenWidget(
+                  deepLinkId: id,
+                ),
+              );
+            } else {
+              return SplashPageWidget(
+                deepLinkId: id,
+              );
+            }
+          },
           routes: [
             FFRoute(
               name: 'loginScreen',
@@ -57,15 +70,23 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => RegistraationPageWidget(),
             ),
             FFRoute(
-              name: 'HomeScreen',
-              path: 'homeScreen',
-              builder: (context, params) => params.isEmpty
-                  ? NavBarPage(initialPage: 'HomeScreen')
-                  : NavBarPage(
+                name: 'HomeScreen',
+                path: 'homeScreen',
+                builder: (context, params) {
+                  if (params.isEmpty) {
+                    return NavBarPage(initialPage: 'HomeScreen');
+                  } else {
+                    String? id =
+                        params.getParam('deepLinkId', ParamType.String);
+                    print("HomeScreen -> id= ${id}");
+                    return NavBarPage(
                       initialPage: 'HomeScreen',
-                      page: HomeScreenWidget(),
-                    ),
-            ),
+                      page: HomeScreenWidget(
+                        deepLinkId: id,
+                      ),
+                    );
+                  }
+                }),
             FFRoute(
               name: 'ShopPage',
               path: 'shopPage',
@@ -77,7 +98,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'splashPage',
               path: 'splashPage',
-              builder: (context, params) => SplashPageWidget(),
+              builder: (context, params) => SplashPageWidget(
+                deepLinkId: params.getParam('deepLinkId', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'AboutAppPage',
@@ -330,10 +353,16 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               ),
             ),
             FFRoute(
-              name: 'SheckOutPagePage',
-              path: 'sheckOutPagePage',
-              builder: (context, params) => SheckOutPagePageWidget(),
-            )
+                name: 'SheckOutPagePage',
+                path: 'sheckOutPagePage',
+                builder: (context, params) {
+                  String? id = params.getParam('deepLinkId', ParamType.String);
+                  print("sheckOutPagePage -> id= ${id}");
+
+                  return SheckOutPagePageWidget(
+                    deepLinkId: id,
+                  );
+                })
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
       ].map((r) => r.toRoute(appStateNotifier)).toList(),
@@ -362,10 +391,12 @@ extension NavigationExtensions on BuildContext {
 extension _GoRouterStateExtensions on GoRouterState {
   Map<String, dynamic> get extraMap =>
       extra != null ? extra as Map<String, dynamic> : {};
+
   Map<String, dynamic> get allParams => <String, dynamic>{}
     ..addAll(pathParameters)
     ..addAll(queryParameters)
     ..addAll(extraMap);
+
   TransitionInfo get transitionInfo => extraMap.containsKey(kTransitionInfoKey)
       ? extraMap[kTransitionInfoKey] as TransitionInfo
       : TransitionInfo.appDefault();
@@ -385,9 +416,12 @@ class FFParameters {
       state.allParams.isEmpty ||
       (state.extraMap.length == 1 &&
           state.extraMap.containsKey(kTransitionInfoKey));
+
   bool isAsyncParam(MapEntry<String, dynamic> param) =>
       asyncParams.containsKey(param.key) && param.value is String;
+
   bool get hasFutures => state.allParams.entries.any(isAsyncParam);
+
   Future<bool> completeFutures() => Future.wait(
         state.allParams.entries.where(isAsyncParam).map(
           (param) async {
@@ -502,6 +536,7 @@ class TransitionInfo {
 
 class RootPageContext {
   const RootPageContext(this.isRootPage, [this.errorRoute]);
+
   final bool isRootPage;
   final String? errorRoute;
 

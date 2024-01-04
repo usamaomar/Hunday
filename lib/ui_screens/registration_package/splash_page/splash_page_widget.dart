@@ -16,7 +16,12 @@ import 'splash_page_model.dart';
 export 'splash_page_model.dart';
 
 class SplashPageWidget extends StatefulWidget {
-  const SplashPageWidget({Key? key}) : super(key: key);
+  const SplashPageWidget({
+    Key? key,
+    this.deepLinkId,
+  }) : super(key: key);
+
+  final String? deepLinkId;
 
   @override
   _SplashPageWidgetState createState() => _SplashPageWidgetState();
@@ -30,17 +35,34 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
   @override
   void initState() {
     super.initState();
+    // SchedulerBinding.instance.addPostFrameCallback((_) async {
+    //   if(widget.deepLinkId!=null) {
+    //     print("_SplashPageWidgetState");
+    //     context.pushReplacementNamed(
+    //       'HomeScreen',
+    //       queryParameters: {
+    //         'deepLinkId': serializeParam(
+    //           widget.deepLinkId,
+    //           ParamType.String,
+    //         ),
+    //       }.withoutNulls,
+    //     );
+    //   }
+    // });
     _model = createModel(context, () => SplashPageModel());
     FirebaseMessaging.instance.getToken().then((fbToken) {
       FFAppState().FCM = fbToken ?? 'null';
     });
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      _model.timerController.onStartTimer();
+      if(widget.deepLinkId==null){
+        _model.timerController.onStartTimer();
+      }
       if (FFAppState().currentLanguge != null &&
           FFAppState().currentLanguge != '') {
         setAppLanguage(context, FFAppState().currentLanguge);
       }
+
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -115,6 +137,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                   },
                   onEnded: () async {
                     _model.timerController.onStopTimer();
+                    print('timer stopped');
                     if (FFAppState().userModel.token.isNotEmpty) {
                       context.pushReplacementNamed('HomeScreen');
                     } else {

@@ -11,20 +11,22 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/thank_you_component/thank_you_component_widget.dart';
-import '/backend/schema/structs/index.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'sheck_out_page_page_model.dart';
 export 'sheck_out_page_page_model.dart';
 
 class SheckOutPagePageWidget extends StatefulWidget {
-  const SheckOutPagePageWidget({Key? key}) : super(key: key);
+  const SheckOutPagePageWidget({
+    Key? key,
+    this.deepLinkId,
+  }) : super(key: key);
+
+  final String? deepLinkId;
 
   @override
   _SheckOutPagePageWidgetState createState() => _SheckOutPagePageWidgetState();
@@ -34,10 +36,10 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     with TickerProviderStateMixin {
   late SheckOutPagePageModel _model;
   late FlutterHyperPay flutterHyperPay;
-
+  bool isLoading = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
+  Map<String, AnimationInfo> animationsMap = {
     'columnOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
       effects: [
@@ -56,7 +58,6 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => SheckOutPagePageModel());
-
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       flutterHyperPay = FlutterHyperPay(
         shopperResultUrl: InAppPaymentSetting.shopperResultUrl,
@@ -65,15 +66,80 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
         // test or live
         lang: InAppPaymentSetting.getLang(),
       );
+      if (widget.deepLinkId != null) {
+        isLoading = true;
+        checks();
+      }
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
+  void checks() async {
+    _model.apiResult8am = await GetPaymentStatusApiCall.call(
+      token: FFAppState().userModel.token,
+    );
+    if ((_model.apiResult8am?.succeeded ?? true)) {
+      isLoading = false;
+      print('${_model.apiResult8am?.bodyText}');
+      print('---------------------------------');
+      print('${_model.apiResult8am?.jsonBody}');
+      await showAlignedDialog(
+        context: context,
+        isGlobal: true,
+        avoidOverflow: false,
+        targetAnchor:
+            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+        followerAnchor:
+            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+        builder: (dialogContext) {
+          return Material(
+            color: Colors.transparent,
+            child: GestureDetector(
+              onTap: () => _model.unfocusNode.canRequestFocus
+                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                  : FocusScope.of(context).unfocus(),
+              child: ThankYouComponentWidget(),
+            ),
+          );
+        },
+      ).then((value) => setState(() {
+            FFAppState().update(() {
+              FFAppState().badgeCount = 0;
+            });
+            context.pushReplacementNamed('HomeScreen');
+          }));
+    } else {
+      isLoading = false;
+      await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text(FFLocalizations.of(context).getVariableText(
+                enText: 'Error',
+                arText: 'مشكلة خادم',
+              )),
+              content: Text(FFLocalizations.of(context).getVariableText(
+                enText: 'Issue With Payment Method',
+                arText: 'مشكلة في عملية الدفع',
+              )),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text(FFLocalizations.of(context).getVariableText(
+                    enText: 'Ok',
+                    arText: 'حسنا',
+                  )),
+                ),
+              ],
+            );
+          });
+    }
+  }
+
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
@@ -89,7 +155,6 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     }
 
     context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -556,37 +621,47 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                InkWell(
-                                                  splashColor:
-                                                      Colors.transparent,
-                                                  focusColor:
-                                                      Colors.transparent,
-                                                  hoverColor:
-                                                      Colors.transparent,
-                                                  highlightColor:
-                                                      Colors.transparent,
-                                                  onTap: () async {
-                                                    await launchURL(
-                                                        'https://hyundai.completechaintech.com');
-                                                  },
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      'c4kn7j9t' /* Terms & Conditions */,
+                                                Builder(
+                                                  builder: (context) => InkWell(
+                                                    splashColor:
+                                                        Colors.transparent,
+                                                    focusColor:
+                                                        Colors.transparent,
+                                                    hoverColor:
+                                                        Colors.transparent,
+                                                    highlightColor:
+                                                        Colors.transparent,
+                                                    onTap: () async {
+                                                      await launchURL(
+                                                          'https://hyundai.completechaintech.com');
+                                                      // await Share.share(
+                                                      //   'myapp://test.com${GoRouter.of(context).location}',
+                                                      //   sharePositionOrigin:
+                                                      //       getWidgetBoundingBox(
+                                                      //           context),
+                                                      // );
+                                                    },
+                                                    child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getText(
+                                                        'c4kn7j9t' /* Terms & Conditions */,
+                                                      ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'HeeboBold',
+                                                            color: Color(
+                                                                0xFF3D6398),
+                                                            fontSize: 16.0,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            useGoogleFonts:
+                                                                false,
+                                                          ),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'HeeboBold',
-                                                          color:
-                                                              Color(0xFF3D6398),
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: false,
-                                                        ),
                                                   ),
                                                 ),
                                               ],
@@ -755,6 +830,16 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                       () {}));
                                                             }
                                                           }
+                                                          // context.pushNamed(
+                                                          //   'SheckOutPagePage',
+                                                          //   queryParameters: {
+                                                          //     'json':
+                                                          //     serializeParam(
+                                                          //       widget.json,
+                                                          //       ParamType.JSON,
+                                                          //     ),
+                                                          //   }.withoutNulls,
+                                                          // );
                                                         } else {
                                                           await showDialog(
                                                             context: context,
@@ -933,6 +1018,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   payRequestNowReadyUI(
       {required String checkoutId, required merchantId}) async {
+    // FFAppState().paymentStatus = 'paymentInit';
     await flutterHyperPay
         .readyUICards(
       readyUI: ReadyUI(
@@ -957,8 +1043,10 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                   enText: 'Error',
                   arText: 'مشكلة خادم',
                 )),
-                content:
-                    Text('${value.errorString} , ${value.paymentResult.name}'),
+                content: Text(FFLocalizations.of(context).getVariableText(
+                  enText: 'Issue With Payment Method',
+                  arText: 'مشكلة في عملية الدفع',
+                )),
                 actions: [
                   TextButton(
                     onPressed: () => Navigator.pop(alertDialogContext),
@@ -970,37 +1058,6 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                 ],
               );
             });
-      } else {
-        _model.apiResult8am = await GetPaymentStatusApiCall.call(
-          token: FFAppState().userModel.token,
-        );
-        if ((_model.apiResult8am?.succeeded ?? true)) {
-          await showAlignedDialog(
-            context: context,
-            isGlobal: true,
-            avoidOverflow: false,
-            targetAnchor: AlignmentDirectional(0.0, 0.0)
-                .resolve(Directionality.of(context)),
-            followerAnchor: AlignmentDirectional(0.0, 0.0)
-                .resolve(Directionality.of(context)),
-            builder: (dialogContext) {
-              return Material(
-                color: Colors.transparent,
-                child: GestureDetector(
-                  onTap: () => _model.unfocusNode.canRequestFocus
-                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                      : FocusScope.of(context).unfocus(),
-                  child: ThankYouComponentWidget(),
-                ),
-              );
-            },
-          ).then((value) => setState(() {
-                FFAppState().update(() {
-                  FFAppState().badgeCount = 0;
-                });
-                context.pushReplacementNamed('HomeScreen');
-              }));
-        }
       }
     });
   }

@@ -371,7 +371,7 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                                           Colors.transparent,
                                                       onTap: () async {
                                                         await Share.share(
-                                                          'hyundai://hyundai.com${GoRouter.of(context).location}',
+                                                          'myapp://test.com${GoRouter.of(context).location}',
                                                           sharePositionOrigin:
                                                               getWidgetBoundingBox(
                                                                   context),
