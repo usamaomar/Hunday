@@ -45,15 +45,20 @@
             </intent-filter>
             <!-- Deep linking -->
             <meta-data android:name="flutter_deeplinking_enabled" android:value="true" />
-
-
-            <intent-filter>
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-                <action android:name="android.intent.action.MAIN" />
+<!--                <action android:name="android.intent.action.MAIN" />-->
                 <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.LAUNCHER" />
-                <data android:scheme="com.mycompany.hyundai" />
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--                <data android:scheme="com.mycompany.hyundai" />-->
+
+                <data android:scheme="http" android:host="test.com" />
+                <data android:scheme="https" />
+                <data
+                    android:host="test.com"
+                    android:scheme="myapp" />
+
             </intent-filter>
 
 <!--            <intent-filter >-->

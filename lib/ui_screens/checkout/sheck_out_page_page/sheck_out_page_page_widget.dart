@@ -59,10 +59,10 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   @override
   void initState() {
+    checks();
     super.initState();
 
 
-    
     _model = createModel(context, () => SheckOutPagePageModel());
 
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -78,10 +78,106 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
+  void checks() async{
+
+
+    await showDialog(
+        context: context,
+        builder: (alertDialogContext) {
+          return AlertDialog(
+            title: Text(FFLocalizations.of(context).getVariableText(
+              enText: 'Error',
+              arText: 'مشكلة خادم',
+            )),
+            content:
+            Text(FFLocalizations.of(context).getVariableText(
+              enText: widget.json.toString(),
+              arText:  widget.json.toString(),
+            )),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(alertDialogContext),
+                child: Text(FFLocalizations.of(context).getVariableText(
+                  enText: 'Ok',
+                  arText: 'حسنا',
+                )),
+              ),
+            ],
+          );
+        });
+
+//     _model.apiResult8am = await GetPaymentStatusApiCall.call(
+//       token: FFAppState().userModel.token,
+//     );
+//     if ((_model.apiResult8am?.succeeded ?? true)) {
+// print("");
+//     }
+    if(FFAppState().paymentStatus == 'Success'){
+      _model.apiResult8am = await GetPaymentStatusApiCall.call(
+        token: FFAppState().userModel.token,
+      );
+      if ((_model.apiResult8am?.succeeded ?? true)) {
+        FFAppState().paymentStatus = '';
+        await showAlignedDialog(
+        context: context,
+        isGlobal: true,
+        avoidOverflow: false,
+        targetAnchor: AlignmentDirectional(0.0, 0.0)
+            .resolve(Directionality.of(context)),
+        followerAnchor: AlignmentDirectional(0.0, 0.0)
+            .resolve(Directionality.of(context)),
+        builder: (dialogContext) {
+          return Material(
+            color: Colors.transparent,
+            child: GestureDetector(
+              onTap: () => _model.unfocusNode.canRequestFocus
+                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                  : FocusScope.of(context).unfocus(),
+              child: ThankYouComponentWidget(),
+            ),
+          );
+        },
+        ).then((value) => setState(() {
+          FFAppState().update(() {
+            FFAppState().badgeCount = 0;
+          });
+          context.pushReplacementNamed('HomeScreen');
+        }));
+      }
+    }else if(FFAppState().paymentStatus == 'Error'){
+      FFAppState().paymentStatus = '';
+      await showDialog(
+          context: context,
+          builder: (alertDialogContext) {
+            return AlertDialog(
+              title: Text(FFLocalizations.of(context).getVariableText(
+                enText: 'Error',
+                arText: 'مشكلة خادم',
+              )),
+              content:
+              Text(FFLocalizations.of(context).getVariableText(
+                enText: 'Issue With Payment Method',
+                arText: 'مشكلة في عملية الدفع',
+              )),
+              actions: [
+                TextButton(
+                  onPressed: () => Navigator.pop(alertDialogContext),
+                  child: Text(FFLocalizations.of(context).getVariableText(
+                    enText: 'Ok',
+                    arText: 'حسنا',
+                  )),
+                ),
+              ],
+            );
+          });
+    }
+  }
+
+
+
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
@@ -951,7 +1047,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   payRequestNowReadyUI(
       {required String checkoutId, required merchantId}) async {
-    FFAppState().paymentStatus = "Done";
+    FFAppState().paymentStatus = 'paymentInit';
     await flutterHyperPay
         .readyUICards(
       readyUI: ReadyUI(
@@ -965,64 +1061,11 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
           setStorePaymentDetailsMode:
               false // store payment details for future use
           ),
-    )
-        .then((value) async {
-
-      // context.pushReplacementNamed('sheckOutPagePage');
+    ).then((value) async {
       if (value.errorString?.isNotEmpty == true && value.errorString != null) {
-        await showDialog(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text(FFLocalizations.of(context).getVariableText(
-                  enText: 'Error',
-                  arText: 'مشكلة خادم',
-                )),
-                content:
-                    Text('${value.errorString} , ${value.paymentResult.name}'),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text(FFLocalizations.of(context).getVariableText(
-                      enText: 'Ok',
-                      arText: 'حسنا',
-                    )),
-                  ),
-                ],
-              );
-            });
+        FFAppState().paymentStatus = "Error";
       } else {
-        // context.pushReplacementNamed('sheckOutPagePage');
-        _model.apiResult8am = await GetPaymentStatusApiCall.call(
-          token: FFAppState().userModel.token,
-        );
-        if ((_model.apiResult8am?.succeeded ?? true)) {
-          await showAlignedDialog(
-            context: context,
-            isGlobal: true,
-            avoidOverflow: false,
-            targetAnchor: AlignmentDirectional(0.0, 0.0)
-                .resolve(Directionality.of(context)),
-            followerAnchor: AlignmentDirectional(0.0, 0.0)
-                .resolve(Directionality.of(context)),
-            builder: (dialogContext) {
-              return Material(
-                color: Colors.transparent,
-                child: GestureDetector(
-                  onTap: () => _model.unfocusNode.canRequestFocus
-                      ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                      : FocusScope.of(context).unfocus(),
-                  child: ThankYouComponentWidget(),
-                ),
-              );
-            },
-          ).then((value) => setState(() {
-                // FFAppState().update(() {
-                //   FFAppState().badgeCount = 0;
-                // });
-                // context.pushReplacementNamed('HomeScreen');
-              }));
-        }
+        FFAppState().paymentStatus = "Success";
       }
     });
   }

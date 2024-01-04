@@ -36,7 +36,7 @@ class AppStateNotifier extends ChangeNotifier {
 }
 
 GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
-      initialLocation: FFAppState().paymentStatus.isNotEmpty ? 'SheckOutPagePage' : '/',
+      initialLocation:  '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) => SplashPageWidget(),
@@ -44,7 +44,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
         FFRoute(
           name: '_initialize',
           path: '/',
-          builder: (context, _) => FFAppState().paymentStatus.isNotEmpty ?SheckOutPagePageWidget() : SplashPageWidget(),
+          builder: (context, _) =>   SplashPageWidget(),
           routes: [
             FFRoute(
               name: 'loginScreen',

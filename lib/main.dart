@@ -71,8 +71,6 @@ class _MyAppState extends State<MyApp> {
     _router = createRouter(_appStateNotifier);
   }
 
-
-
   void setLocale(String language) {
     setState(() => _locale = createLocale(language));
   }
@@ -129,8 +127,6 @@ class _NavBarPageState extends State<NavBarPage> {
   @override
   void initState() {
     super.initState();
-
-
     _currentPageName = widget.initialPage ?? _currentPageName;
     _currentPage = widget.page;
   }
