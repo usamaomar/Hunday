@@ -22,10 +22,10 @@ export 'sheck_out_page_page_model.dart';
 class SheckOutPagePageWidget extends StatefulWidget {
   const SheckOutPagePageWidget({
     Key? key,
-    this.json,
+    this.deepLinkId,
   }) : super(key: key);
 
-  final dynamic json;
+  final String? deepLinkId;
 
   @override
   _SheckOutPagePageWidgetState createState() => _SheckOutPagePageWidgetState();
@@ -721,10 +721,12 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                           context.pushNamed(
                                                             'SheckOutPagePage',
                                                             queryParameters: {
-                                                              'json':
+                                                              'deepLinkId':
                                                                   serializeParam(
-                                                                widget.json,
-                                                                ParamType.JSON,
+                                                                widget
+                                                                    .deepLinkId,
+                                                                ParamType
+                                                                    .String,
                                                               ),
                                                             }.withoutNulls,
                                                           );

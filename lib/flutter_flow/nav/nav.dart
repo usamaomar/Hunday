@@ -63,7 +63,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                   ? NavBarPage(initialPage: 'HomeScreen')
                   : NavBarPage(
                       initialPage: 'HomeScreen',
-                      page: HomeScreenWidget(),
+                      page: HomeScreenWidget(
+                        deepLinkId:
+                            params.getParam('deepLinkId', ParamType.String),
+                      ),
                     ),
             ),
             FFRoute(
@@ -77,7 +80,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'splashPage',
               path: 'splashPage',
-              builder: (context, params) => SplashPageWidget(),
+              builder: (context, params) => SplashPageWidget(
+                deepLinkId: params.getParam('deepLinkId', ParamType.String),
+              ),
             ),
             FFRoute(
               name: 'AboutAppPage',
@@ -333,7 +338,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'SheckOutPagePage',
               path: 'sheckOutPagePage',
               builder: (context, params) => SheckOutPagePageWidget(
-                json: params.getParam('json', ParamType.JSON),
+                deepLinkId: params.getParam('deepLinkId', ParamType.String),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
