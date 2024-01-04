@@ -47,59 +47,12 @@
             <meta-data android:name="flutter_deeplinking_enabled" android:value="true" />
             <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.VIEW" />
-<!--                <action android:name="android.intent.action.MAIN" />-->
-                <category android:name="android.intent.category.BROWSABLE" />
                 <category android:name="android.intent.category.DEFAULT" />
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--                <data android:scheme="com.mycompany.hyundai" />-->
-
-                <data android:scheme="http" android:host="test.com" />
-                <data android:scheme="https" />
+                <category android:name="android.intent.category.BROWSABLE" />
                 <data
                     android:host="test.com"
-                    android:scheme="myapp" />
+                    android:scheme="myapp" />            </intent-filter>
 
-            </intent-filter>
-
-<!--            <intent-filter >-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--                <data android:scheme="hyundai" android:host="commycompanyhyundaihyundai.com" />-->
-<!--            </intent-filter>-->
-
-
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                &lt;!&ndash; Accepts URIs that begin with YOUR_SCHEME://YOUR_HOST &ndash;&gt;-->
-<!--                <data-->
-<!--                    android:scheme="hyundai"-->
-<!--                    android:host="commycompanyhyundaihyundai.com" />-->
-<!--            </intent-filter>-->
-
-            <!-- App Links -->
-<!--            <intent-filter android:autoVerify="true">-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                &lt;!&ndash; Accepts URIs that begin with https://YOUR_HOST &ndash;&gt;-->
-<!--                <data-->
-<!--                    android:scheme="https"-->
-<!--                    android:host="commycompanyhyundaihyundai.com" />-->
-<!--            </intent-filter>-->
-
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.VIEW" />-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-<!--                <category android:name="android.intent.category.BROWSABLE" />-->
-<!--                <category android:name="android.intent.category.DEFAULT" />-->
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--                <data android:scheme="com.commycompanyhyundai.payment" />-->
-<!--            </intent-filter>-->
         </activity>
 
         <!-- Don't delete the meta-data below.
