@@ -19,7 +19,12 @@ import 'home_screen_model.dart';
 export 'home_screen_model.dart';
 
 class HomeScreenWidget extends StatefulWidget {
-  const HomeScreenWidget({Key? key}) : super(key: key);
+  const HomeScreenWidget({
+    Key? key,
+    this.deepLinkId,
+  }) : super(key: key);
+
+  final String? deepLinkId;
 
   @override
   _HomeScreenWidgetState createState() => _HomeScreenWidgetState();
