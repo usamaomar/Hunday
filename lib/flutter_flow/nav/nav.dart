@@ -1,18 +1,13 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
-import '/backend/schema/structs/index.dart';
 
 import '/index.dart';
 import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'serialization_util.dart';
 
@@ -51,11 +46,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             print("_initialize => id =$id");
             print("_initialize => resourcePath =$resourcePath");
             if (id != null) {
-              FFAppState().update(() {
-                FFAppState().badgeCount = 0;
-              });
-              return HomeScreenWidget(
-                deepLinkId: id,
+              return NavBarPage(
+                initialPage: 'HomeScreen',
+                page: HomeScreenWidget(
+                  deepLinkId: id,
+                ),
               );
             } else {
               return SplashPageWidget(

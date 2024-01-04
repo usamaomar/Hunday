@@ -4,6 +4,7 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
@@ -21,7 +22,11 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
     if (message != null &&
         message.notification != null &&
         message.notification?.title != null &&
-        message.notification?.body != null) {}
+        message.notification?.body != null) {
+
+
+
+    }
   } catch (ex) {
     ex.toString();
   }

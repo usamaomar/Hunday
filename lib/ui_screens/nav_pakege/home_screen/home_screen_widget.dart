@@ -1,9 +1,10 @@
+import 'package:hyundai/ui_screens/components/progress_component/progress_component_widget.dart';
+
 import '../../components/thank_you_component/thank_you_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_dialog/aligned_dialog.dart';
@@ -12,9 +13,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'home_screen_model.dart';
 export 'home_screen_model.dart';
@@ -42,13 +41,16 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
     _model = createModel(context, () => HomeScreenModel());
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-       if(widget.deepLinkId!=null){
-         checks();
-       }
+      if (widget.deepLinkId != null) {
+        checks();
+      }
       _model.localTestAuth2 = await TestAuthUserApiCall.call(
         token: FFAppState().userModel.token,
       );
       if ((_model.localTestAuth2?.succeeded ?? true)) {
+        FFAppState().update(() {
+          FFAppState().badgeCount = 0;
+        });
         setState(() {
           FFAppState().updateUserModelStruct(
             (e) => e
@@ -146,12 +148,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           _model.listOfJsons = FFAppState().sliderList.toList().cast<dynamic>();
         });
       }
-
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
-
 
   void checks() async {
     isLoading = true;
@@ -168,9 +168,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         isGlobal: true,
         avoidOverflow: false,
         targetAnchor:
-        AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
         followerAnchor:
-        AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
         builder: (dialogContext) {
           return Material(
             color: Colors.transparent,
@@ -183,10 +183,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           );
         },
       ).then((value) => setState(() {
-        FFAppState().update(() {
-          FFAppState().badgeCount = 0;
-        });
-      }));
+            FFAppState().update(() {
+              FFAppState().badgeCount = 0;
+            });
+          }));
     } else {
       isLoading = false;
       await showDialog(
@@ -269,8 +269,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(0.0, 25.0, 0.0, 0.0),
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 25.0, 0.0, 0.0),
                           child: SvgPicture.asset(
                             'assets/images/Group_70060.svg',
                             fit: BoxFit.fitWidth,
@@ -301,22 +301,24 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         itemBuilder:
                                             (context, sliderSlideListIndex, _) {
                                           final sliderSlideListItem =
-                                              sliderSlideList[sliderSlideListIndex];
+                                              sliderSlideList[
+                                                  sliderSlideListIndex];
                                           return Column(
                                             mainAxisSize: MainAxisSize.min,
                                             children: [
                                               Padding(
-                                                padding:
-                                                    EdgeInsetsDirectional.fromSTEB(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
                                                         30.0, 0.0, 30.0, 0.0),
                                                 child: ClipRRect(
                                                   borderRadius:
-                                                      BorderRadius.circular(5.0),
+                                                      BorderRadius.circular(
+                                                          5.0),
                                                   child: CachedNetworkImage(
-                                                    fadeInDuration:
-                                                        Duration(milliseconds: 200),
-                                                    fadeOutDuration:
-                                                        Duration(milliseconds: 200),
+                                                    fadeInDuration: Duration(
+                                                        milliseconds: 200),
+                                                    fadeOutDuration: Duration(
+                                                        milliseconds: 200),
                                                     imageUrl: getJsonField(
                                                       sliderSlideListItem,
                                                       r'''$.full_image''',
@@ -324,7 +326,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     width: double.infinity,
                                                     height: 150.0,
                                                     fit: BoxFit.cover,
-                                                    errorWidget: (context, error,
+                                                    errorWidget: (context,
+                                                            error,
                                                             stackTrace) =>
                                                         Image.asset(
                                                       'assets/images/error_image.png',
@@ -338,8 +341,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                               Flexible(
                                                 child: Padding(
                                                   padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          30.0, 10.0, 30.0, 10.0),
+                                                      .fromSTEB(30.0, 10.0,
+                                                          30.0, 10.0),
                                                   child: Text(
                                                     functions.getNameByLanguge(
                                                         getJsonField(
@@ -350,7 +353,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           sliderSlideListItem,
                                                           r'''$.slogan_en''',
                                                         ).toString(),
-                                                        FFLocalizations.of(context)
+                                                        FFLocalizations.of(
+                                                                context)
                                                             .languageCode),
                                                     textAlign: TextAlign.center,
                                                     maxLines: 2,
@@ -358,8 +362,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                             context)
                                                         .bodyMedium
                                                         .override(
-                                                          fontFamily: 'HeeboBold',
-                                                          color: Color(0xFF212427),
+                                                          fontFamily:
+                                                              'HeeboBold',
+                                                          color:
+                                                              Color(0xFF212427),
                                                           fontSize: 16.0,
                                                           fontWeight:
                                                               FontWeight.bold,
@@ -375,8 +381,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                             _model.carouselController ??=
                                                 CarouselController(),
                                         options: CarouselOptions(
-                                          initialPage:
-                                              min(1, sliderSlideList.length - 1),
+                                          initialPage: min(
+                                              1, sliderSlideList.length - 1),
                                           viewportFraction: 1.0,
                                           disableCenter: true,
                                           enlargeCenterPage: true,
@@ -386,12 +392,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           autoPlay: true,
                                           autoPlayAnimationDuration:
                                               Duration(milliseconds: 1000),
-                                          autoPlayInterval:
-                                              Duration(milliseconds: (1000 + 1000)),
+                                          autoPlayInterval: Duration(
+                                              milliseconds: (1000 + 1000)),
                                           autoPlayCurve: Curves.linear,
                                           pauseAutoPlayInFiniteScroll: true,
-                                          onPageChanged: (index, _) =>
-                                              _model.carouselCurrentIndex = index,
+                                          onPageChanged: (index, _) => _model
+                                              .carouselCurrentIndex = index,
                                         ),
                                       ),
                                     );
@@ -405,8 +411,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                     Flexible(
                       flex: 1,
                       child: Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+                        padding: EdgeInsetsDirectional.fromSTEB(
+                            30.0, 0.0, 30.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -477,31 +483,40 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           if ((_model.apiResult2kt?.succeeded ??
                                               true)) {
                                             if (getJsonField(
-                                                  (_model.apiResult2kt?.jsonBody ??
+                                                      (_model.apiResult2kt
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.vehicles''',
+                                                    ) !=
+                                                    null &&
+                                                (getJsonField(
+                                                  (_model.apiResult2kt
+                                                          ?.jsonBody ??
                                                       ''),
                                                   r'''$.vehicles''',
-                                                ) !=
-                                                null && (getJsonField(
-                                              (_model.apiResult2kt?.jsonBody ??
-                                                  ''),
-                                              r'''$.vehicles''',
-                                            ) as List).isNotEmpty ) {
+                                                ) as List)
+                                                    .isNotEmpty) {
                                               context.pushNamed('ShopPage');
                                             } else {
                                               await showAlignedDialog(
-                                                barrierColor: Colors.transparent,
+                                                barrierColor:
+                                                    Colors.transparent,
                                                 barrierDismissible: false,
                                                 context: context,
                                                 isGlobal: true,
                                                 avoidOverflow: false,
-                                                targetAnchor: AlignmentDirectional(
-                                                        0.0, 0.0)
-                                                    .resolve(
-                                                        Directionality.of(context)),
+                                                targetAnchor:
+                                                    AlignmentDirectional(
+                                                            0.0, 0.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
                                                 followerAnchor:
-                                                    AlignmentDirectional(0.0, 0.0)
-                                                        .resolve(Directionality.of(
-                                                            context)),
+                                                    AlignmentDirectional(
+                                                            0.0, 0.0)
+                                                        .resolve(
+                                                            Directionality.of(
+                                                                context)),
                                                 builder: (dialogContext) {
                                                   return Material(
                                                     color: Colors.transparent,
@@ -509,17 +524,20 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                       onTap: () => _model
                                                               .unfocusNode
                                                               .canRequestFocus
-                                                          ? FocusScope.of(context)
+                                                          ? FocusScope.of(
+                                                                  context)
                                                               .requestFocus(_model
                                                                   .unfocusNode)
-                                                          : FocusScope.of(context)
+                                                          : FocusScope.of(
+                                                                  context)
                                                               .unfocus(),
                                                       child:
                                                           ScannedCardAnimationComponentWidget(),
                                                     ),
                                                   );
                                                 },
-                                              ).then((value) => setState(() {}));
+                                              ).then(
+                                                  (value) => setState(() {}));
                                             }
                                           }
 
@@ -529,8 +547,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Padding(
-                                              padding:
-                                                  EdgeInsetsDirectional.fromSTEB(
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(
                                                       20.0, 20.0, 20.0, 8.0),
                                               child: ClipRRect(
                                                 borderRadius:
@@ -547,8 +565,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                               thickness: 1.0,
                                               indent: 25.0,
                                               endIndent: 25.0,
-                                              color: FlutterFlowTheme.of(context)
-                                                  .accent4,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .accent4,
                                             ),
                                             Row(
                                               mainAxisSize: MainAxisSize.max,
@@ -561,15 +580,15 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                       '0pq4i1m3' /* Parts Shop */,
                                                     ),
                                                     textAlign: TextAlign.center,
-                                                    style:
-                                                        FlutterFlowTheme.of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Seagoe Ui Bold',
-                                                              color: Colors.white,
-                                                              useGoogleFonts: false,
-                                                            ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Seagoe Ui Bold',
+                                                          color: Colors.white,
+                                                          useGoogleFonts: false,
+                                                        ),
                                                   ),
                                                 ),
                                               ],
@@ -607,7 +626,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                               hasTransition: true,
                                               transitionType:
                                                   PageTransitionType.fade,
-                                              duration: Duration(milliseconds: 0),
+                                              duration:
+                                                  Duration(milliseconds: 0),
                                             ),
                                           },
                                         );
@@ -616,8 +636,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 20.0, 20.0, 8.0),
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 20.0, 20.0, 8.0),
                                             child: SvgPicture.asset(
                                               'assets/images/Group_70550.svg',
                                               width: 100.0,
@@ -643,15 +664,15 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     '8io5q1kq' /* Services */,
                                                   ),
                                                   textAlign: TextAlign.center,
-                                                  style:
-                                                      FlutterFlowTheme.of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Seagoe Ui Bold',
-                                                            color: Colors.white,
-                                                            useGoogleFonts: false,
-                                                          ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
                                                 ),
                                               ),
                                             ],
@@ -686,9 +707,10 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           extra: <String, dynamic>{
                                             kTransitionInfoKey: TransitionInfo(
                                               hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.bottomToTop,
-                                              duration: Duration(milliseconds: 500),
+                                              transitionType: PageTransitionType
+                                                  .bottomToTop,
+                                              duration:
+                                                  Duration(milliseconds: 500),
                                             ),
                                           },
                                         );
@@ -697,8 +719,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 20.0, 20.0, 8.0),
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 20.0, 20.0, 8.0),
                                             child: SvgPicture.asset(
                                               'assets/images/Group_70551.svg',
                                               width: 100.0,
@@ -724,15 +747,15 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     'qts15g7r' /* Car model */,
                                                   ),
                                                   textAlign: TextAlign.center,
-                                                  style:
-                                                      FlutterFlowTheme.of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Seagoe Ui Bold',
-                                                            color: Colors.white,
-                                                            useGoogleFonts: false,
-                                                          ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
                                                 ),
                                               ),
                                             ],
@@ -769,7 +792,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                               hasTransition: true,
                                               transitionType:
                                                   PageTransitionType.fade,
-                                              duration: Duration(milliseconds: 0),
+                                              duration:
+                                                  Duration(milliseconds: 0),
                                             ),
                                           },
                                         );
@@ -778,8 +802,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 20.0, 20.0, 8.0),
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 20.0, 20.0, 8.0),
                                             child: Image.asset(
                                               'assets/images/Group_70552@2x.png',
                                               width: 100.0,
@@ -805,15 +830,15 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     '2xlj2tf9' /* Locations */,
                                                   ),
                                                   textAlign: TextAlign.center,
-                                                  style:
-                                                      FlutterFlowTheme.of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Seagoe Ui Bold',
-                                                            color: Colors.white,
-                                                            useGoogleFonts: false,
-                                                          ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
                                                 ),
                                               ),
                                             ],
@@ -849,8 +874,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 20.0, 20.0, 8.0),
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 20.0, 20.0, 8.0),
                                             child: SvgPicture.asset(
                                               'assets/images/Group_72070.svg',
                                               width: 100.0,
@@ -876,15 +902,15 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     'xifs34ig' /* Monthly offers */,
                                                   ),
                                                   textAlign: TextAlign.center,
-                                                  style:
-                                                      FlutterFlowTheme.of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Seagoe Ui Bold',
-                                                            color: Colors.white,
-                                                            useGoogleFonts: false,
-                                                          ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
                                                 ),
                                               ),
                                             ],
@@ -921,7 +947,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                               hasTransition: true,
                                               transitionType:
                                                   PageTransitionType.fade,
-                                              duration: Duration(milliseconds: 0),
+                                              duration:
+                                                  Duration(milliseconds: 0),
                                             ),
                                           },
                                         );
@@ -930,8 +957,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                20.0, 20.0, 20.0, 8.0),
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    20.0, 20.0, 20.0, 8.0),
                                             child: SvgPicture.asset(
                                               'assets/images/Group_70554.svg',
                                               width: 100.0,
@@ -957,15 +985,15 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     'rncq54oc' /* News */,
                                                   ),
                                                   textAlign: TextAlign.center,
-                                                  style:
-                                                      FlutterFlowTheme.of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'Seagoe Ui Bold',
-                                                            color: Colors.white,
-                                                            useGoogleFonts: false,
-                                                          ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                        color: Colors.white,
+                                                        useGoogleFonts: false,
+                                                      ),
                                                 ),
                                               ),
                                             ],
@@ -984,14 +1012,18 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                   ],
                 ),
               ),
-              isLoading  ? Container(
-                width: double.infinity,
-                height: double.infinity,
-                decoration: BoxDecoration(
-                  color: Color(0x6A030303),
-                ),
-
-              ) : Container(),
+              isLoading
+                  ? Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      decoration: BoxDecoration(
+                        color: Color(0x6A030303),
+                      ),
+                      child: Align(
+                          alignment: AlignmentDirectional(0.0, 0.0),
+                          child: ProgressComponentWidget()),
+                    )
+                  : Container(),
             ],
           ),
         ),

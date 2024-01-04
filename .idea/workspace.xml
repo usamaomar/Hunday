@@ -7,10 +7,9 @@
     <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="x">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/flutter_flow/nav/nav.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/nav/nav.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/progress_component/progress_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/progress_component/progress_component_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1704368687919</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="x">
+      <created>1704375984633</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1704375984633</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
