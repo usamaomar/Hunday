@@ -82,30 +82,30 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
   void checks() async{
 
 
-    await showDialog(
-        context: context,
-        builder: (alertDialogContext) {
-          return AlertDialog(
-            title: Text(FFLocalizations.of(context).getVariableText(
-              enText: 'Error',
-              arText: 'مشكلة خادم',
-            )),
-            content:
-            Text(FFLocalizations.of(context).getVariableText(
-              enText: widget.json.toString(),
-              arText:  widget.json.toString(),
-            )),
-            actions: [
-              TextButton(
-                onPressed: () => Navigator.pop(alertDialogContext),
-                child: Text(FFLocalizations.of(context).getVariableText(
-                  enText: 'Ok',
-                  arText: 'حسنا',
-                )),
-              ),
-            ],
-          );
-        });
+    // await showDialog(
+    //     context: context,
+    //     builder: (alertDialogContext) {
+    //       return AlertDialog(
+    //         title: Text(FFLocalizations.of(context).getVariableText(
+    //           enText: 'Error',
+    //           arText: 'مشكلة خادم',
+    //         )),
+    //         content:
+    //         Text(FFLocalizations.of(context).getVariableText(
+    //           enText: widget.json.toString(),
+    //           arText:  widget.json.toString(),
+    //         )),
+    //         actions: [
+    //           TextButton(
+    //             onPressed: () => Navigator.pop(alertDialogContext),
+    //             child: Text(FFLocalizations.of(context).getVariableText(
+    //               enText: 'Ok',
+    //               arText: 'حسنا',
+    //             )),
+    //           ),
+    //         ],
+    //       );
+    //     });
 
 //     _model.apiResult8am = await GetPaymentStatusApiCall.call(
 //       token: FFAppState().userModel.token,
@@ -113,65 +113,65 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 //     if ((_model.apiResult8am?.succeeded ?? true)) {
 // print("");
 //     }
-    if(FFAppState().paymentStatus == 'Success'){
-      _model.apiResult8am = await GetPaymentStatusApiCall.call(
-        token: FFAppState().userModel.token,
-      );
-      if ((_model.apiResult8am?.succeeded ?? true)) {
-        FFAppState().paymentStatus = '';
-        await showAlignedDialog(
-        context: context,
-        isGlobal: true,
-        avoidOverflow: false,
-        targetAnchor: AlignmentDirectional(0.0, 0.0)
-            .resolve(Directionality.of(context)),
-        followerAnchor: AlignmentDirectional(0.0, 0.0)
-            .resolve(Directionality.of(context)),
-        builder: (dialogContext) {
-          return Material(
-            color: Colors.transparent,
-            child: GestureDetector(
-              onTap: () => _model.unfocusNode.canRequestFocus
-                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                  : FocusScope.of(context).unfocus(),
-              child: ThankYouComponentWidget(),
-            ),
-          );
-        },
-        ).then((value) => setState(() {
-          FFAppState().update(() {
-            FFAppState().badgeCount = 0;
-          });
-          context.pushReplacementNamed('HomeScreen');
-        }));
-      }
-    }else if(FFAppState().paymentStatus == 'Error'){
-      FFAppState().paymentStatus = '';
-      await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text(FFLocalizations.of(context).getVariableText(
-                enText: 'Error',
-                arText: 'مشكلة خادم',
-              )),
-              content:
-              Text(FFLocalizations.of(context).getVariableText(
-                enText: 'Issue With Payment Method',
-                arText: 'مشكلة في عملية الدفع',
-              )),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text(FFLocalizations.of(context).getVariableText(
-                    enText: 'Ok',
-                    arText: 'حسنا',
-                  )),
-                ),
-              ],
-            );
-          });
-    }
+//     if(FFAppState().paymentStatus == 'Success'){
+//       _model.apiResult8am = await GetPaymentStatusApiCall.call(
+//         token: FFAppState().userModel.token,
+//       );
+//       if ((_model.apiResult8am?.succeeded ?? true)) {
+//         FFAppState().paymentStatus = '';
+//         await showAlignedDialog(
+//         context: context,
+//         isGlobal: true,
+//         avoidOverflow: false,
+//         targetAnchor: AlignmentDirectional(0.0, 0.0)
+//             .resolve(Directionality.of(context)),
+//         followerAnchor: AlignmentDirectional(0.0, 0.0)
+//             .resolve(Directionality.of(context)),
+//         builder: (dialogContext) {
+//           return Material(
+//             color: Colors.transparent,
+//             child: GestureDetector(
+//               onTap: () => _model.unfocusNode.canRequestFocus
+//                   ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+//                   : FocusScope.of(context).unfocus(),
+//               child: ThankYouComponentWidget(),
+//             ),
+//           );
+//         },
+//         ).then((value) => setState(() {
+//           FFAppState().update(() {
+//             FFAppState().badgeCount = 0;
+//           });
+//           context.pushReplacementNamed('HomeScreen');
+//         }));
+//       }
+//     }else if(FFAppState().paymentStatus == 'Error'){
+//       FFAppState().paymentStatus = '';
+//       await showDialog(
+//           context: context,
+//           builder: (alertDialogContext) {
+//             return AlertDialog(
+//               title: Text(FFLocalizations.of(context).getVariableText(
+//                 enText: 'Error',
+//                 arText: 'مشكلة خادم',
+//               )),
+//               content:
+//               Text(FFLocalizations.of(context).getVariableText(
+//                 enText: 'Issue With Payment Method',
+//                 arText: 'مشكلة في عملية الدفع',
+//               )),
+//               actions: [
+//                 TextButton(
+//                   onPressed: () => Navigator.pop(alertDialogContext),
+//                   child: Text(FFLocalizations.of(context).getVariableText(
+//                     enText: 'Ok',
+//                     arText: 'حسنا',
+//                   )),
+//                 ),
+//               ],
+//             );
+//           });
+//     }
   }
 
 
@@ -674,12 +674,12 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                     onTap: () async {
                                                       await launchURL(
                                                           'https://hyundai.completechaintech.com');
-                                                      await Share.share(
-                                                        'myapp://test.com${GoRouter.of(context).location}',
-                                                        sharePositionOrigin:
-                                                            getWidgetBoundingBox(
-                                                                context),
-                                                      );
+                                                      // await Share.share(
+                                                      //   'myapp://test.com${GoRouter.of(context).location}',
+                                                      //   sharePositionOrigin:
+                                                      //       getWidgetBoundingBox(
+                                                      //           context),
+                                                      // );
                                                     },
                                                     child: Text(
                                                       FFLocalizations.of(
@@ -1058,7 +1058,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   payRequestNowReadyUI(
       {required String checkoutId, required merchantId}) async {
-    FFAppState().paymentStatus = 'paymentInit';
+    // FFAppState().paymentStatus = 'paymentInit';
     await flutterHyperPay
         .readyUICards(
       readyUI: ReadyUI(
@@ -1074,9 +1074,12 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
           ),
     ).then((value) async {
       if (value.errorString?.isNotEmpty == true && value.errorString != null) {
-        FFAppState().paymentStatus = "Error";
+        print("paymentStatus ErrorErrorErrorErrorErrorErrorErrorError");
+        // FFAppState().paymentStatus = "Error";
       } else {
-        FFAppState().paymentStatus = "Success";
+        print("paymentStatus SuccessSuccessSuccessSuccessSuccessSuccessSuccessSuccess");
+
+        // FFAppState().paymentStatus = "Success";
       }
     });
   }

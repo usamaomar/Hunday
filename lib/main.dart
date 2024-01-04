@@ -30,7 +30,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  usePathUrlStrategy();
+  // usePathUrlStrategy();
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState();
