@@ -13,7 +13,6 @@ import '/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
 import 'registraation_page_widget.dart' show RegistraationPageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';

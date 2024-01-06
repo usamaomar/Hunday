@@ -9,7 +9,6 @@ import '/ui_screens/components/test_drive_component/test_drive_component_widget.
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'car_model_details_more_with_slieder_widget.dart'
     show CarModelDetailsMoreWithSliederWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

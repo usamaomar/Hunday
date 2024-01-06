@@ -7,7 +7,6 @@ import '/ui_screens/components/reset_password_component/reset_password_component
 import '/backend/schema/structs/index.dart';
 import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -194,17 +193,14 @@ class _VerifyForgetPasswordBottomDialogWidgetState
                               });
                               Navigator.pop(context);
                             } else {
-                              await showAlignedDialog(
+                              await showDialog(
                                 context: context,
-                                isGlobal: true,
-                                avoidOverflow: false,
-                                targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                    .resolve(Directionality.of(context)),
-                                followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                    .resolve(Directionality.of(context)),
                                 builder: (dialogContext) {
-                                  return Material(
-                                    color: Colors.transparent,
+                                  return Dialog(
+                                    insetPadding: EdgeInsets.zero,
+                                    backgroundColor: Colors.transparent,
+                                    alignment: AlignmentDirectional(0.0, 0.0)
+                                        .resolve(Directionality.of(context)),
                                     child: Modal06BasicInformationWidget(
                                       body:
                                           (_model.apiResultpqp?.bodyText ?? ''),

@@ -9,7 +9,6 @@ import '/ui_screens/components/modal06_basic_information/modal06_basic_informati
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'login_screen_widget.dart' show LoginScreenWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';

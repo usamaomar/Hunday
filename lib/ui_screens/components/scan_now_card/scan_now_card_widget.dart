@@ -6,7 +6,6 @@ import '/flutter_flow/upload_data.dart';
 import '/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import 'dart:ui';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -400,17 +399,14 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                                   },
                                 ).then((value) => safeSetState(() {}));
                               } else {
-                                await showAlignedDialog(
+                                await showDialog(
                                   context: context,
-                                  isGlobal: true,
-                                  avoidOverflow: false,
-                                  targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
-                                  followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
                                   builder: (dialogContext) {
-                                    return Material(
-                                      color: Colors.transparent,
+                                    return Dialog(
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
                                       child: Modal06BasicInformationWidget(
                                         body: (_model.apiResultixl1?.bodyText ??
                                             ''),

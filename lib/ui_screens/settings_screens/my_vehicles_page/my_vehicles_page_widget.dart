@@ -9,7 +9,6 @@ import '/ui_screens/components/scanned_card_animation_component/scanned_card_ani
 import '/ui_screens/nav_home_pakage/empty_list_component/empty_list_component_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -151,21 +150,18 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                     30.0, 20.0, 30.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
-                                    await showAlignedDialog(
+                                    await showDialog(
                                       barrierColor: Colors.transparent,
                                       barrierDismissible: false,
                                       context: context,
-                                      isGlobal: true,
-                                      avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
-                                              0.0, 0.0)
-                                          .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
-                                              0.0, 0.0)
-                                          .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
-                                        return Material(
-                                          color: Colors.transparent,
+                                        return Dialog(
+                                          insetPadding: EdgeInsets.zero,
+                                          backgroundColor: Colors.transparent,
+                                          alignment: AlignmentDirectional(
+                                                  0.0, 0.0)
+                                              .resolve(
+                                                  Directionality.of(context)),
                                           child: GestureDetector(
                                             onTap: () => _model
                                                     .unfocusNode.canRequestFocus

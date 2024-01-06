@@ -10,7 +10,6 @@ import '/ui_screens/nav_home_pakage/empty_list_component/empty_list_component_wi
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'my_vehicles_page_widget.dart' show MyVehiclesPageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';

@@ -155,6 +155,9 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                               ),
                             ],
                             controller: _model.tabBarController,
+                            onTap: (i) async {
+                              [() async {}, () async {}, () async {}][i]();
+                            },
                           ),
                         ),
                         Expanded(

@@ -6,7 +6,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'home_screen_widget.dart' show HomeScreenWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';

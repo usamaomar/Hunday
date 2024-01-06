@@ -8,7 +8,6 @@ import '/ui_screens/components/modal06_basic_information/modal06_basic_informati
 import '/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart';
 import '/backend/schema/structs/index.dart';
 import 'item_details_page_widget.dart' show ItemDetailsPageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';

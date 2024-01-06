@@ -10,7 +10,6 @@ import '/ui_screens/components/forget_password_component/forget_password_compone
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -131,17 +130,14 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
 
             return;
           } else {
-            await showAlignedDialog(
+            await showDialog(
               context: context,
-              isGlobal: true,
-              avoidOverflow: false,
-              targetAnchor: AlignmentDirectional(0.0, 0.0)
-                  .resolve(Directionality.of(context)),
-              followerAnchor: AlignmentDirectional(0.0, 0.0)
-                  .resolve(Directionality.of(context)),
               builder: (dialogContext) {
-                return Material(
-                  color: Colors.transparent,
+                return Dialog(
+                  insetPadding: EdgeInsets.zero,
+                  backgroundColor: Colors.transparent,
+                  alignment: AlignmentDirectional(0.0, 0.0)
+                      .resolve(Directionality.of(context)),
                   child: GestureDetector(
                     onTap: () => _model.unfocusNode.canRequestFocus
                         ? FocusScope.of(context)
@@ -703,26 +699,20 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                     setState(() {});
                                                   return;
                                                 } else {
-                                                  await showAlignedDialog(
+                                                  await showDialog(
                                                     context: context,
-                                                    isGlobal: true,
-                                                    avoidOverflow: false,
-                                                    targetAnchor:
-                                                        AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    followerAnchor:
-                                                        AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
                                                     builder: (dialogContext) {
-                                                      return Material(
-                                                        color:
+                                                      return Dialog(
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
                                                             Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
                                                         child: GestureDetector(
                                                           onTap: () => _model
                                                                   .unfocusNode

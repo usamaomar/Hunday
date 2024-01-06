@@ -514,7 +514,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                     ),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
-                                                                            0.0),
+                                                                            5.0),
                                                                   ),
                                                                   focusedBorder:
                                                                       OutlineInputBorder(
@@ -528,7 +528,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                     ),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
-                                                                            0.0),
+                                                                            5.0),
                                                                   ),
                                                                   errorBorder:
                                                                       OutlineInputBorder(
@@ -542,7 +542,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                     ),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
-                                                                            0.0),
+                                                                            5.0),
                                                                   ),
                                                                   focusedErrorBorder:
                                                                       OutlineInputBorder(
@@ -556,7 +556,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                     ),
                                                                     borderRadius:
                                                                         BorderRadius.circular(
-                                                                            0.0),
+                                                                            5.0),
                                                                   ),
                                                                   filled: true,
                                                                   fillColor: FlutterFlowTheme.of(

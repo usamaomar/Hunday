@@ -7,7 +7,6 @@ import '/ui_screens/components/list_of_string_items_component/list_of_string_ite
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import 'dart:ui';
 import 'scan_now_card_widget.dart' show ScanNowCardWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

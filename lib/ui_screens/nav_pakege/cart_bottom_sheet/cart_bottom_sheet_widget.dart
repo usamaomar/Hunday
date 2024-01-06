@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import 'dart:ui';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -721,21 +720,15 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           });
                                                                         }
                                                                       } else {
-                                                                        await showAlignedDialog(
+                                                                        await showDialog(
                                                                           context:
                                                                               context,
-                                                                          isGlobal:
-                                                                              true,
-                                                                          avoidOverflow:
-                                                                              false,
-                                                                          targetAnchor:
-                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                          followerAnchor:
-                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                           builder:
                                                                               (dialogContext) {
-                                                                            return Material(
-                                                                              color: Colors.transparent,
+                                                                            return Dialog(
+                                                                              insetPadding: EdgeInsets.zero,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                               child: Modal06BasicInformationWidget(
                                                                                 body: (_model.apiResulti8n?.bodyText ?? ''),
                                                                               ),
@@ -885,21 +878,15 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           }
                                                                         }
                                                                       } else {
-                                                                        await showAlignedDialog(
+                                                                        await showDialog(
                                                                           context:
                                                                               context,
-                                                                          isGlobal:
-                                                                              true,
-                                                                          avoidOverflow:
-                                                                              false,
-                                                                          targetAnchor:
-                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                          followerAnchor:
-                                                                              AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                           builder:
                                                                               (dialogContext) {
-                                                                            return Material(
-                                                                              color: Colors.transparent,
+                                                                            return Dialog(
+                                                                              insetPadding: EdgeInsets.zero,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
                                                                               child: Modal06BasicInformationWidget(
                                                                                 body: (_model.apiResultxxf2?.bodyText ?? ''),
                                                                               ),
@@ -1045,27 +1032,21 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                         }
                                                       }
                                                     } else {
-                                                      await showAlignedDialog(
+                                                      await showDialog(
                                                         context: context,
-                                                        isGlobal: true,
-                                                        avoidOverflow: false,
-                                                        targetAnchor:
-                                                            AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                        followerAnchor:
-                                                            AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
                                                         builder:
                                                             (dialogContext) {
-                                                          return Material(
-                                                            color: Colors
-                                                                .transparent,
+                                                          return Dialog(
+                                                            insetPadding:
+                                                                EdgeInsets.zero,
+                                                            backgroundColor:
+                                                                Colors
+                                                                    .transparent,
+                                                            alignment: AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
                                                             child:
                                                                 Modal06BasicInformationWidget(
                                                               body: (_model

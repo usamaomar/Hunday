@@ -8,7 +8,6 @@ import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/thank_you_component/thank_you_component_widget.dart';
 import '/backend/schema/structs/index.dart';
 import 'sheck_out_page_page_widget.dart' show SheckOutPagePageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
