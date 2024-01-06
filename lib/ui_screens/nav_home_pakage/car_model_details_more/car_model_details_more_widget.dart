@@ -255,7 +255,7 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                             decoration: BoxDecoration(
                                               color: Color(0xFF5584BC),
                                               borderRadius:
-                                                  BorderRadius.circular(15.0),
+                                              BorderRadius.circular(15.0),
                                               border: Border.all(
                                                 color: Color(0xFFAFC3E1),
                                               ),
@@ -266,12 +266,21 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 20.0,
-                                                          20.0, 8.0),
+                                                      20.0, 8.0),
                                                   child: ClipRRect(
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
-                                                    child: SvgPicture.asset(
+                                                    BorderRadius.circular(
+                                                        0.0),
+                                                    child: getJsonField(
+                                                      _model
+                                                          .detailsJsonObject,
+                                                      r'''$.fuel_id''',
+                                                    ) == 3 ? SvgPicture.asset(
+                                                      'assets/images/enfs.svg',
+                                                      width: 100.0,
+                                                      height: 40.0,
+                                                      fit: BoxFit.scaleDown,
+                                                    ) : SvgPicture.asset(
                                                       'assets/images/Group_70647.svg',
                                                       width: 100.0,
                                                       height: 40.0,
@@ -281,39 +290,64 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                 ),
                                                 Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
                                                   children: [
                                                     Expanded(
                                                       flex: 1,
                                                       child: Text(
+
+                                                        getJsonField(
+                                                          _model
+                                                              .detailsJsonObject,
+                                                          r'''$.fuel_id''',
+                                                        ) == 3
+                                                            ?
+
                                                         functions
                                                             .getNameByLanguge(
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.engine_capacity_en''',
-                                                                ).toString(),
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.engine_capacity_ar''',
-                                                                ).toString(),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.battery_capacity_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.battery_capacity_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode)
+                                                            : functions
+                                                            .getNameByLanguge(
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.engine_size_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.engine_size_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode),
                                                         textAlign:
-                                                            TextAlign.center,
+                                                        TextAlign.center,
                                                         style: FlutterFlowTheme
-                                                                .of(context)
+                                                            .of(context)
                                                             .bodyMedium
                                                             .override(
-                                                              fontFamily:
-                                                                  'Seagoe Ui Bold',
-                                                              color:
-                                                                  Colors.white,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
+                                                          fontFamily:
+                                                          'Seagoe Ui Bold',
+                                                          color:
+                                                          Colors.white,
+                                                          useGoogleFonts:
+                                                          false,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -325,74 +359,7 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                             decoration: BoxDecoration(
                                               color: Color(0xFF5584BC),
                                               borderRadius:
-                                                  BorderRadius.circular(15.0),
-                                              border: Border.all(
-                                                color: Color(0xFFAFC3E1),
-                                              ),
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(20.0, 20.0,
-                                                          20.0, 8.0),
-                                                  child: SvgPicture.asset(
-                                                    'assets/images/Group_70650.svg',
-                                                    width: 100.0,
-                                                    height: 40.0,
-                                                    fit: BoxFit.scaleDown,
-                                                  ),
-                                                ),
-                                                Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.min,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment.center,
-                                                  children: [
-                                                    Expanded(
-                                                      flex: 1,
-                                                      child: Text(
-                                                        functions
-                                                            .getNameByLanguge(
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.battery_type_en''',
-                                                                ).toString(),
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.battery_type_ar''',
-                                                                ).toString(),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode),
-                                                        textAlign:
-                                                            TextAlign.center,
-                                                        style: FlutterFlowTheme
-                                                                .of(context)
-                                                            .bodyMedium
-                                                            .override(
-                                                              fontFamily:
-                                                                  'Seagoe Ui Bold',
-                                                              color:
-                                                                  Colors.white,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFF5584BC),
-                                              borderRadius:
-                                                  BorderRadius.circular(15.0),
+                                              BorderRadius.circular(15.0),
                                               border: Border.all(
                                                 color: Color(0xFFAFC3E1),
                                               ),
@@ -403,9 +370,18 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 20.0,
-                                                          20.0, 8.0),
-                                                  child: SvgPicture.asset(
-                                                    'assets/images/Group_70649.svg',
+                                                      20.0, 8.0),
+                                                  child: getJsonField(
+                                                    _model
+                                                        .detailsJsonObject,
+                                                    r'''$.fuel_id''',
+                                                  ) == 3 ? SvgPicture.asset(
+                                                    'assets/images/ger.svg',
+                                                    width: 100.0,
+                                                    height: 40.0,
+                                                    fit: BoxFit.scaleDown,
+                                                  ) : SvgPicture.asset(
+                                                    'assets/images/Group_70650.svg',
                                                     width: 100.0,
                                                     height: 40.0,
                                                     fit: BoxFit.scaleDown,
@@ -413,39 +389,128 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                 ),
                                                 Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
+                                                  children: [
+                                                    Expanded(
+                                                      flex: 1,
+                                                      child: Text(
+
+                                                        getJsonField(
+                                                          _model
+                                                              .detailsJsonObject,
+                                                          r'''$.fuel_id''',
+                                                        ) == 3 ?
+                                                        functions
+                                                            .getNameByLanguge(
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.estimated_mileage_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.estimated_mileage_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode) :
+                                                        functions
+                                                            .getNameByLanguge(
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.transmission_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.transmission_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode),
+                                                        textAlign:
+                                                        TextAlign.center,
+                                                        style: FlutterFlowTheme
+                                                            .of(context)
+                                                            .bodyMedium
+                                                            .override(
+                                                          fontFamily:
+                                                          'Seagoe Ui Bold',
+                                                          color:
+                                                          Colors.white,
+                                                          useGoogleFonts:
+                                                          false,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF5584BC),
+                                              borderRadius:
+                                              BorderRadius.circular(15.0),
+                                              border: Border.all(
+                                                color: Color(0xFFAFC3E1),
+                                              ),
+                                            ),
+                                            child: Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              children: [
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(20.0, 20.0,
+                                                      20.0, 8.0),
+                                                  child: SvgPicture.asset(
+                                                    'assets/images/hrs.svg',
+                                                    width: 100.0,
+                                                    height: 40.0,
+                                                    fit: BoxFit.scaleDown,
+                                                  ),
+                                                ),
+                                                Row(
+                                                  mainAxisSize:
+                                                  MainAxisSize.max,
                                                   children: [
                                                     Expanded(
                                                       flex: 1,
                                                       child: Text(
                                                         functions
                                                             .getNameByLanguge(
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.fuel_type.name_en''',
-                                                                ).toString(),
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.fuel_type.name_ar''',
-                                                                ).toString(),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.horse_power_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.horse_power_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode),
                                                         textAlign:
-                                                            TextAlign.center,
+                                                        TextAlign.center,
                                                         style: FlutterFlowTheme
-                                                                .of(context)
+                                                            .of(context)
                                                             .bodyMedium
                                                             .override(
-                                                              fontFamily:
-                                                                  'Seagoe Ui Bold',
-                                                              color:
-                                                                  Colors.white,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
+                                                          fontFamily:
+                                                          'Seagoe Ui Bold',
+                                                          color:
+                                                          Colors.white,
+                                                          useGoogleFonts:
+                                                          false,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -480,9 +545,9 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                       ),
                                     ),
                                     if (getJsonField(
-                                          _model.detailsJsonObject,
-                                          r'''$.full_description''',
-                                        ) !=
+                                      _model.detailsJsonObject,
+                                      r'''$.description_en''',
+                                    ) !=
                                         null)
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -491,22 +556,35 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Text(
-                                              getJsonField(
-                                                _model.detailsJsonObject,
-                                                r'''$.description''',
-                                              ).toString(),
-                                              maxLines: 2,
-                                              style: FlutterFlowTheme.of(
+                                              functions
+                                                  .getNameByLanguge(
+                                                  getJsonField(
+                                                    _model
+                                                        .detailsJsonObject,
+                                                    r'''$.description_en''',
+                                                  ).toString(),
+                                                  getJsonField(
+                                                    _model
+                                                        .detailsJsonObject,
+                                                    r'''$.description_ar''',
+                                                  ).toString(),
+                                                  FFLocalizations
+                                                      .of(
                                                       context)
+                                                      .languageCode),
+                                              maxLines: 2,
+                                              style: FlutterFlowTheme
+                                                  .of(
+                                                  context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Heebo Regular',
-                                                    color: Color(0xFF212427),
-                                                    fontSize: 14.0,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    useGoogleFonts: false,
-                                                  ),
+                                                fontFamily: 'Heebo Regular',
+                                                color: Color(0xFF212427),
+                                                fontSize: 14.0,
+                                                fontWeight:
+                                                FontWeight.normal,
+                                                useGoogleFonts: false,
+                                              ),
                                             ),
                                           ],
                                         ),

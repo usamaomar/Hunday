@@ -1,4 +1,3 @@
-import 'package:aligned_dialog/aligned_dialog.dart';
 
 import '../modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/api_requests/api_calls.dart';
@@ -181,22 +180,8 @@ class _ForgetPasswordComponentWidgetState
                               },
                             ).then((value) => safeSetState(() {}));
                           } else {
-                            await showAlignedDialog(
+                            await showDialog(
                               context: context,
-                              isGlobal: true,
-                              avoidOverflow: false,
-                              targetAnchor:
-                              AlignmentDirectional(
-                                  0.0, 0.0)
-                                  .resolve(
-                                  Directionality.of(
-                                      context)),
-                              followerAnchor:
-                              AlignmentDirectional(
-                                  0.0, 0.0)
-                                  .resolve(
-                                  Directionality.of(
-                                      context)),
                               builder: (dialogContext) {
                                 return Material(
                                   color:

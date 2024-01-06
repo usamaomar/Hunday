@@ -10,7 +10,6 @@ import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -804,22 +803,8 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                               },
                                                             );
                                                           } else {
-                                                            await showAlignedDialog(
+                                                            await showDialog(
                                                               context: context,
-                                                              isGlobal: true,
-                                                              avoidOverflow: false,
-                                                              targetAnchor:
-                                                              AlignmentDirectional(
-                                                                  0, 0)
-                                                                  .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                              followerAnchor:
-                                                              AlignmentDirectional(
-                                                                  0, 0)
-                                                                  .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
                                                               builder:
                                                                   (dialogContext) {
                                                                 return Material(

@@ -256,18 +256,12 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                           (_model.responceFromGetCarDetails
                                                                   ?.jsonBody ??
                                                               ''),
-                                                          r'''$.car.car_sliders''',
+                                                          r'''$.car.slider_image''',
                                                           true,
-                                                        ) ==
+                                                        )[0] ==
                                                         null
                                                     ? false
-                                                    : (getJsonField(
-                                                          (_model.responceFromGetCarDetails
-                                                                  ?.jsonBody ??
-                                                              ''),
-                                                          r'''$.car.car_sliders''',
-                                                          true,
-                                                        ) as List)
+                                                    : jsonDecode(getJsonField((_model.responceFromGetCarDetails?.jsonBody ?? ''), r'''$.car.slider_image''', true,)[0])
                                                             .length >
                                                         0) {
                                                   context.pushNamed(

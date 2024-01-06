@@ -109,7 +109,9 @@ class _CarModelDetailsMoreWithSliederWidgetState
     if (isiOS) {
       SystemChrome.setSystemUIOverlayStyle(
         SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
+          statusBarBrightness: Theme
+              .of(context)
+              .brightness,
           systemStatusBarContrastEnforced: true,
         ),
       );
@@ -119,7 +121,9 @@ class _CarModelDetailsMoreWithSliederWidgetState
 
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: FlutterFlowTheme.of(context).white,
+      backgroundColor: FlutterFlowTheme
+          .of(context)
+          .white,
       body: SafeArea(
         top: true,
         child: Container(
@@ -128,9 +132,11 @@ class _CarModelDetailsMoreWithSliederWidgetState
           decoration: BoxDecoration(
             image: DecorationImage(
               fit: BoxFit.cover,
-              image: Image.asset(
+              image: Image
+                  .asset(
                 'assets/images/mapss.png',
-              ).image,
+              )
+                  .image,
             ),
           ),
           child: Container(
@@ -142,42 +148,38 @@ class _CarModelDetailsMoreWithSliederWidgetState
                   children: [
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                       child: Builder(
                         builder: (context) {
-                          final listOfImages = getJsonField(
-                            widget.carJsonItem,
-                            r'''$.car_sliders''',
-                          ).toList();
+                          final listOfImages = jsonDecode(getJsonField(
+                            (widget.carJsonItem ?? ''),
+                            r'''$.slider_image''',
+                            true,
+                          )[0]);
+
                           return Container(
                             width: double.infinity,
                             height: 300.0,
                             child: CarouselSlider.builder(
                               itemCount: listOfImages.length,
                               itemBuilder: (context, listOfImagesIndex, _) {
-                                final listOfImagesItem =
-                                    listOfImages[listOfImagesIndex];
+                                // final listOfImagesItem =
+                                //     listOfImages[listOfImagesIndex];
                                 return ClipRRect(
                                   borderRadius: BorderRadius.circular(8.0),
                                   child: Image.network(
-                                    'http://hyundai.completechaintech.com/storage/model/${getJsonField(
-                                      widget.carJsonItem,
-                                      r'''$.car''',
-                                    ).toString()}/${getJsonField(
-                                      listOfImagesItem,
-                                      r'''$.image''',
-                                    ).toString()}',
+                                    '${listOfImages[listOfImagesIndex]}',
                                     width: 300.0,
                                     height: 200.0,
                                     fit: BoxFit.cover,
                                     errorBuilder:
                                         (context, error, stackTrace) =>
-                                            Image.asset(
-                                      'assets/images/error_image.png',
-                                      width: 300.0,
-                                      height: 200.0,
-                                      fit: BoxFit.cover,
-                                    ),
+                                        Image.asset(
+                                          'assets/images/error_image.png',
+                                          width: 300.0,
+                                          height: 200.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                   ),
                                 );
                               },
@@ -193,13 +195,13 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                 scrollDirection: Axis.horizontal,
                                 autoPlay: true,
                                 autoPlayAnimationDuration:
-                                    Duration(milliseconds: 200),
+                                Duration(milliseconds: 200),
                                 autoPlayInterval:
-                                    Duration(milliseconds: (200 + 4000)),
+                                Duration(milliseconds: (200 + 4000)),
                                 autoPlayCurve: Curves.linear,
                                 pauseAutoPlayInFiniteScroll: true,
                                 onPageChanged: (index, _) =>
-                                    _model.carouselCurrentIndex = index,
+                                _model.carouselCurrentIndex = index,
                               ),
                             ),
                           );
@@ -212,11 +214,15 @@ class _CarModelDetailsMoreWithSliederWidgetState
                         width: double.infinity,
                         height: 100.0,
                         decoration: BoxDecoration(
-                          color: FlutterFlowTheme.of(context).white,
+                          color: FlutterFlowTheme
+                              .of(context)
+                              .white,
                           boxShadow: [
                             BoxShadow(
                               blurRadius: 50.0,
-                              color: FlutterFlowTheme.of(context).white,
+                              color: FlutterFlowTheme
+                                  .of(context)
+                                  .white,
                               offset: Offset(0.0, 55.0),
                               spreadRadius: 15.0,
                             )
@@ -265,7 +271,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                       child: GridView(
                                         padding: EdgeInsets.zero,
                                         gridDelegate:
-                                            SliverGridDelegateWithFixedCrossAxisCount(
+                                        SliverGridDelegateWithFixedCrossAxisCount(
                                           crossAxisCount: 3,
                                           crossAxisSpacing: 10.0,
                                           mainAxisSpacing: 11.0,
@@ -278,7 +284,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                             decoration: BoxDecoration(
                                               color: Color(0xFF5584BC),
                                               borderRadius:
-                                                  BorderRadius.circular(15.0),
+                                              BorderRadius.circular(15.0),
                                               border: Border.all(
                                                 color: Color(0xFFAFC3E1),
                                               ),
@@ -289,12 +295,21 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 20.0,
-                                                          20.0, 8.0),
+                                                      20.0, 8.0),
                                                   child: ClipRRect(
                                                     borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
-                                                    child: SvgPicture.asset(
+                                                    BorderRadius.circular(
+                                                        0.0),
+                                                    child: getJsonField(
+                                                      _model
+                                                          .detailsJsonObject,
+                                                      r'''$.fuel_id''',
+                                                    ) == 3 ? SvgPicture.asset(
+                                                      'assets/images/enfs.svg',
+                                                      width: 100.0,
+                                                      height: 40.0,
+                                                      fit: BoxFit.scaleDown,
+                                                    ) : SvgPicture.asset(
                                                       'assets/images/Group_70647.svg',
                                                       width: 100.0,
                                                       height: 40.0,
@@ -304,39 +319,64 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                 ),
                                                 Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
                                                   children: [
                                                     Expanded(
                                                       flex: 1,
                                                       child: Text(
+
+                                                        getJsonField(
+                                                          _model
+                                                              .detailsJsonObject,
+                                                          r'''$.fuel_id''',
+                                                        ) == 3
+                                                            ?
+
                                                         functions
                                                             .getNameByLanguge(
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.engine_capacity_en''',
-                                                                ).toString(),
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.engine_capacity_ar''',
-                                                                ).toString(),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.battery_capacity_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.battery_capacity_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode)
+                                                            : functions
+                                                            .getNameByLanguge(
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.engine_size_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.engine_size_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode),
                                                         textAlign:
-                                                            TextAlign.center,
+                                                        TextAlign.center,
                                                         style: FlutterFlowTheme
-                                                                .of(context)
+                                                            .of(context)
                                                             .bodyMedium
                                                             .override(
-                                                              fontFamily:
-                                                                  'Seagoe Ui Bold',
-                                                              color:
-                                                                  Colors.white,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
+                                                          fontFamily:
+                                                          'Seagoe Ui Bold',
+                                                          color:
+                                                          Colors.white,
+                                                          useGoogleFonts:
+                                                          false,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -348,7 +388,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                             decoration: BoxDecoration(
                                               color: Color(0xFF5584BC),
                                               borderRadius:
-                                                  BorderRadius.circular(15.0),
+                                              BorderRadius.circular(15.0),
                                               border: Border.all(
                                                 color: Color(0xFFAFC3E1),
                                               ),
@@ -359,8 +399,17 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 20.0,
-                                                          20.0, 8.0),
-                                                  child: SvgPicture.asset(
+                                                      20.0, 8.0),
+                                                  child: getJsonField(
+                                                    _model
+                                                        .detailsJsonObject,
+                                                    r'''$.fuel_id''',
+                                                  ) == 3 ? SvgPicture.asset(
+                                                    'assets/images/ger.svg',
+                                                    width: 100.0,
+                                                    height: 40.0,
+                                                    fit: BoxFit.scaleDown,
+                                                  ) : SvgPicture.asset(
                                                     'assets/images/Group_70650.svg',
                                                     width: 100.0,
                                                     height: 40.0,
@@ -369,39 +418,62 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                 ),
                                                 Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
                                                   children: [
                                                     Expanded(
                                                       flex: 1,
                                                       child: Text(
+
+                                                        getJsonField(
+                                                          _model
+                                                              .detailsJsonObject,
+                                                          r'''$.fuel_id''',
+                                                        ) == 3 ?
                                                         functions
                                                             .getNameByLanguge(
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.battery_type_en''',
-                                                                ).toString(),
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.battery_type_ar''',
-                                                                ).toString(),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.estimated_mileage_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.estimated_mileage_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode) :
+                                                        functions
+                                                            .getNameByLanguge(
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.transmission_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.transmission_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode),
                                                         textAlign:
-                                                            TextAlign.center,
+                                                        TextAlign.center,
                                                         style: FlutterFlowTheme
-                                                                .of(context)
+                                                            .of(context)
                                                             .bodyMedium
                                                             .override(
-                                                              fontFamily:
-                                                                  'Seagoe Ui Bold',
-                                                              color:
-                                                                  Colors.white,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
+                                                          fontFamily:
+                                                          'Seagoe Ui Bold',
+                                                          color:
+                                                          Colors.white,
+                                                          useGoogleFonts:
+                                                          false,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -413,7 +485,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                             decoration: BoxDecoration(
                                               color: Color(0xFF5584BC),
                                               borderRadius:
-                                                  BorderRadius.circular(15.0),
+                                              BorderRadius.circular(15.0),
                                               border: Border.all(
                                                 color: Color(0xFFAFC3E1),
                                               ),
@@ -424,9 +496,9 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                 Padding(
                                                   padding: EdgeInsetsDirectional
                                                       .fromSTEB(20.0, 20.0,
-                                                          20.0, 8.0),
+                                                      20.0, 8.0),
                                                   child: SvgPicture.asset(
-                                                    'assets/images/Group_70649.svg',
+                                                    'assets/images/hrs.svg',
                                                     width: 100.0,
                                                     height: 40.0,
                                                     fit: BoxFit.scaleDown,
@@ -434,39 +506,40 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                 ),
                                                 Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
                                                   children: [
                                                     Expanded(
                                                       flex: 1,
                                                       child: Text(
                                                         functions
                                                             .getNameByLanguge(
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.fuel_type.name_en''',
-                                                                ).toString(),
-                                                                getJsonField(
-                                                                  _model
-                                                                      .detailsJsonObject,
-                                                                  r'''$.fuel_type.name_ar''',
-                                                                ).toString(),
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.horse_power_en''',
+                                                            ).toString(),
+                                                            getJsonField(
+                                                              _model
+                                                                  .detailsJsonObject,
+                                                              r'''$.horse_power_ar''',
+                                                            ).toString(),
+                                                            FFLocalizations
+                                                                .of(
+                                                                context)
+                                                                .languageCode),
                                                         textAlign:
-                                                            TextAlign.center,
+                                                        TextAlign.center,
                                                         style: FlutterFlowTheme
-                                                                .of(context)
+                                                            .of(context)
                                                             .bodyMedium
                                                             .override(
-                                                              fontFamily:
-                                                                  'Seagoe Ui Bold',
-                                                              color:
-                                                                  Colors.white,
-                                                              useGoogleFonts:
-                                                                  false,
-                                                            ),
+                                                          fontFamily:
+                                                          'Seagoe Ui Bold',
+                                                          color:
+                                                          Colors.white,
+                                                          useGoogleFonts:
+                                                          false,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -487,23 +560,24 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                             FFLocalizations.of(context).getText(
                                               'z1s82dpt' /* Description */,
                                             ),
-                                            style: FlutterFlowTheme.of(context)
+                                            style: FlutterFlowTheme
+                                                .of(context)
                                                 .bodyMedium
                                                 .override(
-                                                  fontFamily: 'HeeboBold',
-                                                  color: Color(0xFF212427),
-                                                  fontSize: 16.0,
-                                                  fontWeight: FontWeight.bold,
-                                                  useGoogleFonts: false,
-                                                ),
+                                              fontFamily: 'HeeboBold',
+                                              color: Color(0xFF212427),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: false,
+                                            ),
                                           ),
                                         ],
                                       ),
                                     ),
                                     if (getJsonField(
-                                          _model.detailsJsonObject,
-                                          r'''$.full_description''',
-                                        ) !=
+                                      _model.detailsJsonObject,
+                                      r'''$.description_en''',
+                                    ) !=
                                         null)
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -512,22 +586,35 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
                                             Text(
-                                              getJsonField(
-                                                _model.detailsJsonObject,
-                                                r'''$.description''',
-                                              ).toString(),
-                                              maxLines: 2,
-                                              style: FlutterFlowTheme.of(
+                                              functions
+                                                  .getNameByLanguge(
+                                                  getJsonField(
+                                                    _model
+                                                        .detailsJsonObject,
+                                                    r'''$.description_en''',
+                                                  ).toString(),
+                                                  getJsonField(
+                                                    _model
+                                                        .detailsJsonObject,
+                                                    r'''$.description_ar''',
+                                                  ).toString(),
+                                                  FFLocalizations
+                                                      .of(
                                                       context)
+                                                      .languageCode),
+                                              maxLines: 2,
+                                              style: FlutterFlowTheme
+                                                  .of(
+                                                  context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'Heebo Regular',
-                                                    color: Color(0xFF212427),
-                                                    fontSize: 14.0,
-                                                    fontWeight:
-                                                        FontWeight.normal,
-                                                    useGoogleFonts: false,
-                                                  ),
+                                                fontFamily: 'Heebo Regular',
+                                                color: Color(0xFF212427),
+                                                fontSize: 14.0,
+                                                fontWeight:
+                                                FontWeight.normal,
+                                                useGoogleFonts: false,
+                                              ),
                                             ),
                                           ],
                                         ),
@@ -539,62 +626,69 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Builder(
-                                            builder: (context) => InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
+                                            builder: (context) =>
+                                                InkWell(
+                                                  splashColor: Colors
+                                                      .transparent,
+                                                  focusColor: Colors
+                                                      .transparent,
+                                                  hoverColor: Colors
+                                                      .transparent,
+                                                  highlightColor:
                                                   Colors.transparent,
-                                              onTap: () async {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder: (dialogContext) {
-                                                    return Dialog(
-                                                      insetPadding:
+                                                  onTap: () async {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          insetPadding:
                                                           EdgeInsets.zero,
-                                                      backgroundColor:
+                                                          backgroundColor:
                                                           Colors.transparent,
-                                                      alignment:
+                                                          alignment:
                                                           AlignmentDirectional(
-                                                                  0.0, 0.0)
+                                                              0.0, 0.0)
                                                               .resolve(
-                                                                  Directionality.of(
-                                                                      context)),
-                                                      child: Container(
-                                                        height: 500.0,
-                                                        child:
+                                                              Directionality.of(
+                                                                  context)),
+                                                          child: Container(
+                                                            height: 500.0,
+                                                            child:
                                                             CarDeteailsComponentsWidget(
-                                                          carJsonId:
+                                                              carJsonId:
                                                               getJsonField(
-                                                            widget.carJsonItem,
-                                                            r'''$.id''',
-                                                          ).toString(),
-                                                        ),
-                                                      ),
-                                                    );
+                                                                widget
+                                                                    .carJsonItem,
+                                                                r'''$.id''',
+                                                              ).toString(),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then(
+                                                            (value) =>
+                                                            setState(() {}));
                                                   },
-                                                ).then(
-                                                    (value) => setState(() {}));
-                                              },
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '9rfbujwq' /* Specifications >> */,
-                                                ),
-                                                maxLines: 2,
-                                                style: FlutterFlowTheme.of(
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      '9rfbujwq' /* Specifications >> */,
+                                                    ),
+                                                    maxLines: 2,
+                                                    style: FlutterFlowTheme
+                                                        .of(
                                                         context)
-                                                    .bodyMedium
-                                                    .override(
+                                                        .bodyMedium
+                                                        .override(
                                                       fontFamily: 'HeeboBold',
                                                       color: Color(0xFF092853),
                                                       fontSize: 15.0,
                                                       fontWeight:
-                                                          FontWeight.bold,
+                                                      FontWeight.bold,
                                                       useGoogleFonts: false,
                                                     ),
-                                              ),
-                                            ),
+                                                  ),
+                                                ),
                                           ),
                                         ],
                                       ),
@@ -618,7 +712,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
+                                        MainAxisAlignment.spaceAround,
                                         children: [
                                           InkWell(
                                             splashColor: Colors.transparent,
@@ -644,29 +738,30 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                               elevation: 2.0,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(10.0),
+                                                BorderRadius.circular(10.0),
                                               ),
                                               child: Container(
                                                 decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
+                                                  color: FlutterFlowTheme
+                                                      .of(
+                                                      context)
                                                       .white,
                                                   borderRadius:
-                                                      BorderRadius.circular(
-                                                          10.0),
+                                                  BorderRadius.circular(
+                                                      10.0),
                                                 ),
                                                 child: Row(
                                                   mainAxisSize:
-                                                      MainAxisSize.max,
+                                                  MainAxisSize.max,
                                                   children: [
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  15.0,
-                                                                  10.0,
-                                                                  0.0,
-                                                                  10.0),
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                          15.0,
+                                                          10.0,
+                                                          0.0,
+                                                          10.0),
                                                       child: Lottie.network(
                                                         'https://lottie.host/3290845a-665d-44a3-a235-9cd29b35372f/SUYNvZ7Ti2.json',
                                                         width: 40.0,
@@ -677,33 +772,34 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                     ),
                                                     Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  20.0,
-                                                                  0.0),
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                          10.0,
+                                                          0.0,
+                                                          20.0,
+                                                          0.0),
                                                       child: Text(
                                                         FFLocalizations.of(
-                                                                context)
+                                                            context)
                                                             .getText(
                                                           'ca7jaj1r' /* Catalog */,
                                                         ),
                                                         style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium
-                                                                .override(
-                                                                  fontFamily:
-                                                                      'HeeboBold',
-                                                                  color: Color(
-                                                                      0xFF092853),
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
-                                                                  useGoogleFonts:
-                                                                      false,
-                                                                ),
+                                                        FlutterFlowTheme
+                                                            .of(
+                                                            context)
+                                                            .bodyMedium
+                                                            .override(
+                                                          fontFamily:
+                                                          'HeeboBold',
+                                                          color: Color(
+                                                              0xFF092853),
+                                                          fontWeight:
+                                                          FontWeight
+                                                              .bold,
+                                                          useGoogleFonts:
+                                                          false,
+                                                        ),
                                                       ),
                                                     ),
                                                   ],
@@ -712,125 +808,135 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                             ),
                                           ),
                                           if (getJsonField(
-                                                _model.detailsJsonObject,
-                                                r'''$.performance''',
-                                              ) !=
+                                            _model.detailsJsonObject,
+                                            r'''$.performance''',
+                                          ) !=
                                               getJsonField(
                                                 (_model.apiResultrr9
-                                                        ?.jsonBody ??
+                                                    ?.jsonBody ??
                                                     ''),
                                                 r'''$.test_drive''',
                                               ))
                                             Builder(
-                                              builder: (context) => InkWell(
-                                                splashColor: Colors.transparent,
-                                                focusColor: Colors.transparent,
-                                                hoverColor: Colors.transparent,
-                                                highlightColor:
+                                              builder: (context) =>
+                                                  InkWell(
+                                                    splashColor: Colors
+                                                        .transparent,
+                                                    focusColor: Colors
+                                                        .transparent,
+                                                    hoverColor: Colors
+                                                        .transparent,
+                                                    highlightColor:
                                                     Colors.transparent,
-                                                onTap: () async {
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder: (dialogContext) {
-                                                      return Dialog(
-                                                        insetPadding:
+                                                    onTap: () async {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder: (
+                                                            dialogContext) {
+                                                          return Dialog(
+                                                            insetPadding:
                                                             EdgeInsets.zero,
-                                                        backgroundColor:
+                                                            backgroundColor:
                                                             Colors.transparent,
-                                                        alignment:
+                                                            alignment:
                                                             AlignmentDirectional(
-                                                                    0.0, 0.0)
+                                                                0.0, 0.0)
                                                                 .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                        child: Container(
-                                                          height: 500.0,
-                                                          child:
+                                                                Directionality
+                                                                    .of(
+                                                                    context)),
+                                                            child: Container(
+                                                              height: 500.0,
+                                                              child:
                                                               TestDriveComponentWidget(),
-                                                        ),
-                                                      );
+                                                            ),
+                                                          );
+                                                        },
+                                                      ).then((value) =>
+                                                          setState(() {}));
                                                     },
-                                                  ).then((value) =>
-                                                      setState(() {}));
-                                                },
-                                                child: Material(
-                                                  color: Colors.transparent,
-                                                  elevation: 2.0,
-                                                  shape: RoundedRectangleBorder(
-                                                    borderRadius:
+                                                    child: Material(
+                                                      color: Colors.transparent,
+                                                      elevation: 2.0,
+                                                      shape: RoundedRectangleBorder(
+                                                        borderRadius:
                                                         BorderRadius.circular(
                                                             10.0),
-                                                  ),
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
+                                                      ),
+                                                      child: Container(
+                                                        decoration: BoxDecoration(
+                                                          color:
+                                                          FlutterFlowTheme
+                                                              .of(
+                                                              context)
                                                               .white,
-                                                      borderRadius:
+                                                          borderRadius:
                                                           BorderRadius.circular(
                                                               10.0),
-                                                    ),
-                                                    child: Row(
-                                                      mainAxisSize:
+                                                        ),
+                                                        child: Row(
+                                                          mainAxisSize:
                                                           MainAxisSize.max,
-                                                      children: [
-                                                        Padding(
-                                                          padding:
+                                                          children: [
+                                                            Padding(
+                                                              padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      15.0,
-                                                                      10.0,
-                                                                      0.0,
-                                                                      10.0),
-                                                          child: ClipRRect(
-                                                            borderRadius:
+                                                                  15.0,
+                                                                  10.0,
+                                                                  0.0,
+                                                                  10.0),
+                                                              child: ClipRRect(
+                                                                borderRadius:
                                                                 BorderRadius
                                                                     .circular(
-                                                                        0.0),
-                                                            child: Image.asset(
-                                                              'assets/images/Group_72207@2x.png',
-                                                              width: 40.0,
-                                                              height: 30.0,
-                                                              fit: BoxFit.cover,
+                                                                    0.0),
+                                                                child: Image
+                                                                    .asset(
+                                                                  'assets/images/Group_72207@2x.png',
+                                                                  width: 40.0,
+                                                                  height: 30.0,
+                                                                  fit: BoxFit
+                                                                      .cover,
+                                                                ),
+                                                              ),
                                                             ),
-                                                          ),
-                                                        ),
-                                                        Padding(
-                                                          padding:
+                                                            Padding(
+                                                              padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      20.0,
-                                                                      0.0),
-                                                          child: Text(
-                                                            FFLocalizations.of(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  20.0,
+                                                                  0.0),
+                                                              child: Text(
+                                                                FFLocalizations
+                                                                    .of(
                                                                     context)
-                                                                .getText(
-                                                              'kgthw2vc' /* Book a test drive */,
-                                                            ),
-                                                            style: FlutterFlowTheme
+                                                                    .getText(
+                                                                  'kgthw2vc' /* Book a test drive */,
+                                                                ),
+                                                                style: FlutterFlowTheme
                                                                     .of(context)
-                                                                .bodyMedium
-                                                                .override(
+                                                                    .bodyMedium
+                                                                    .override(
                                                                   fontFamily:
-                                                                      'HeeboBold',
+                                                                  'HeeboBold',
                                                                   color: Color(
                                                                       0xFF092853),
                                                                   fontWeight:
-                                                                      FontWeight
-                                                                          .bold,
+                                                                  FontWeight
+                                                                      .bold,
                                                                   useGoogleFonts:
-                                                                      false,
+                                                                  false,
                                                                 ),
-                                                          ),
+                                                              ),
+                                                            ),
+                                                          ],
                                                         ),
-                                                      ],
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ),
                                             ),
                                         ],
                                       ),

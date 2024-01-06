@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/ui_screens/components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
@@ -44,6 +43,18 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
       if (widget.deepLinkId != null) {
         checks();
       }
+
+      await showDialog(
+        context: context,
+        builder: (dialogContext) {
+          return Dialog(child: GestureDetector(
+            onTap: () => _model.unfocusNode.canRequestFocus
+                ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                : FocusScope.of(context).unfocus(),
+            child: ThankYouComponentWidget(),
+          ),);
+        },
+      );
       _model.localTestAuth2 = await TestAuthUserApiCall.call(
         token: FFAppState().userModel.token,
       );
@@ -158,29 +169,22 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
     _model.apiResult8am = await GetPaymentStatusApiCall.call(
       token: FFAppState().userModel.token,
     );
+
+
     if ((_model.apiResult8am?.succeeded ?? true)) {
       isLoading = false;
       print('${_model.apiResult8am?.bodyText}');
       print('---------------------------------');
       print('${_model.apiResult8am?.jsonBody}');
-      await showAlignedDialog(
+      await showDialog(
         context: context,
-        isGlobal: true,
-        avoidOverflow: false,
-        targetAnchor:
-            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-        followerAnchor:
-            AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
         builder: (dialogContext) {
-          return Material(
-            color: Colors.transparent,
-            child: GestureDetector(
-              onTap: () => _model.unfocusNode.canRequestFocus
-                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                  : FocusScope.of(context).unfocus(),
-              child: ThankYouComponentWidget(),
-            ),
-          );
+          return Dialog(child: GestureDetector(
+            onTap: () => _model.unfocusNode.canRequestFocus
+                ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                : FocusScope.of(context).unfocus(),
+            child: ThankYouComponentWidget(),
+          ),);
         },
       ).then((value) => setState(() {
             FFAppState().update(() {
@@ -498,49 +502,20 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                     .isNotEmpty) {
                                               context.pushNamed('ShopPage');
                                             } else {
-                                              await showAlignedDialog(
+                                              await showDialog(
                                                 barrierColor:
                                                     Colors.transparent,
                                                 barrierDismissible: false,
                                                 context: context,
-                                                isGlobal: true,
-                                                avoidOverflow: false,
-                                                targetAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
-                                                followerAnchor:
-                                                    AlignmentDirectional(
-                                                            0.0, 0.0)
-                                                        .resolve(
-                                                            Directionality.of(
-                                                                context)),
                                                 builder: (dialogContext) {
-                                                  return Material(
-                                                    color: Colors.transparent,
-                                                    child: GestureDetector(
-                                                      onTap: () => _model
-                                                              .unfocusNode
-                                                              .canRequestFocus
-                                                          ? FocusScope.of(
-                                                                  context)
-                                                              .requestFocus(_model
-                                                                  .unfocusNode)
-                                                          : FocusScope.of(
-                                                                  context)
-                                                              .unfocus(),
-                                                      child:
-                                                          ScannedCardAnimationComponentWidget(),
-                                                    ),
+                                                  return Dialog(
+                                                    child: ScannedCardAnimationComponentWidget(),
                                                   );
                                                 },
                                               ).then(
                                                   (value) => setState(() {}));
                                             }
                                           }
-
                                           setState(() {});
                                         },
                                         child: Column(
