@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/ui_screens/nav_pakege/time_component_list/time_component_list_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -277,7 +278,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              final _datePicked1Date =
+                                              final _datePickedDate =
                                                   await showDatePicker(
                                                 context: context,
                                                 initialDate:
@@ -286,12 +287,12 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                 lastDate: DateTime(2050),
                                               );
 
-                                              if (_datePicked1Date != null) {
+                                              if (_datePickedDate != null) {
                                                 safeSetState(() {
-                                                  _model.datePicked1 = DateTime(
-                                                    _datePicked1Date.year,
-                                                    _datePicked1Date.month,
-                                                    _datePicked1Date.day,
+                                                  _model.datePicked = DateTime(
+                                                    _datePickedDate.year,
+                                                    _datePickedDate.month,
+                                                    _datePickedDate.day,
                                                   );
                                                 });
                                               }
@@ -299,7 +300,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                 _model.selectedDate =
                                                     dateTimeFormat(
                                                   'yyyy/MM/dd',
-                                                  _model.datePicked1,
+                                                  _model.datePicked,
                                                   locale: FFLocalizations.of(
                                                           context)
                                                       .languageCode,
@@ -368,102 +369,166 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                             ),
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  30.0, 0.0, 30.0, 20.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              final _datePicked2Time =
-                                                  await showTimePicker(
-                                                context: context,
-                                                initialTime:
-                                                    TimeOfDay.fromDateTime(
-                                                        getCurrentTimestamp),
-                                              );
-                                              if (_datePicked2Time != null) {
-                                                safeSetState(() {
-                                                  _model.datePicked2 = DateTime(
-                                                    getCurrentTimestamp.year,
-                                                    getCurrentTimestamp.month,
-                                                    getCurrentTimestamp.day,
-                                                    _datePicked2Time.hour,
-                                                    _datePicked2Time.minute,
-                                                  );
-                                                });
-                                              }
-                                              setState(() {
-                                                _model.selectedTime =
-                                                    dateTimeFormat(
-                                                  'H:mm:ss',
-                                                  _model.datePicked2,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
-                                                );
-                                              });
-                                            },
-                                            child: Container(
-                                              height: 40.0,
-                                              decoration: BoxDecoration(
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .white,
-                                                borderRadius:
-                                                    BorderRadius.circular(8.0),
-                                                border: Border.all(
-                                                  color: Color(0xFF646464),
-                                                  width: 1.0,
-                                                ),
-                                              ),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceBetween,
-                                                children: [
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                0.0, 0.0),
-                                                    child: Text(
-                                                      _model.selectedTime !=
-                                                                  null &&
-                                                              _model.selectedTime !=
-                                                                  ''
-                                                          ? _model.selectedTime
-                                                          : FFLocalizations.of(
-                                                                  context)
-                                                              .getVariableText(
-                                                              enText: 'Time',
-                                                              arText: 'الوقت',
+                                        Builder(
+                                          builder: (context) => Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    30.0, 0.0, 30.0, 20.0),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor:
+                                                  Colors.transparent,
+                                              onTap: () async {
+                                                if (_model.selectedDate !=
+                                                            null &&
+                                                        _model.selectedDate !=
+                                                            ''
+                                                    ? true
+                                                    : false) {
+                                                  await showDialog(
+                                                    context: context,
+                                                    builder: (dialogContext) {
+                                                      return Dialog(
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
+                                                        child: GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child:
+                                                              TimeComponentListWidget(
+                                                            date:
+                                                                dateTimeFormat(
+                                                              'yyyy-MM-dd',
+                                                              _model.datePicked,
+                                                              locale: FFLocalizations
+                                                                      .of(context)
+                                                                  .languageCode,
                                                             ),
-                                                      style:
+                                                            serviceType:
+                                                                'regular',
+                                                          ),
+                                                        ),
+                                                      );
+                                                    },
+                                                  ).then((value) =>
+                                                      setState(() {}));
+                                                } else {
+                                                  ScaffoldMessenger.of(context)
+                                                      .showSnackBar(
+                                                    SnackBar(
+                                                      content: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                          enText:
+                                                              'Date is Not Selected',
+                                                          arText:
+                                                              'قم بتعيين التاريخ',
+                                                        ),
+                                                        style: TextStyle(
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .white,
+                                                        ),
+                                                      ),
+                                                      duration: Duration(
+                                                          milliseconds: 4000),
+                                                      backgroundColor:
                                                           FlutterFlowTheme.of(
                                                                   context)
-                                                              .bodyMedium,
+                                                              .secondary,
                                                     ),
+                                                  );
+                                                }
+                                              },
+                                              child: Container(
+                                                height: 40.0,
+                                                decoration: BoxDecoration(
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .white,
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          8.0),
+                                                  border: Border.all(
+                                                    color: Color(0xFF646464),
+                                                    width: 1.0,
                                                   ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                10.0, 0.0),
-                                                    child: Icon(
-                                                      Icons.access_time_filled,
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondaryText,
-                                                      size: 20.0,
+                                                ),
+                                                child: Row(
+                                                  mainAxisSize:
+                                                      MainAxisSize.max,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
+                                                  children: [
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  10.0,
+                                                                  0.0,
+                                                                  0.0,
+                                                                  0.0),
+                                                      child: Text(
+                                                        FFAppState().selectedTimeFromHundai !=
+                                                                    null &&
+                                                                FFAppState()
+                                                                        .selectedTimeFromHundai !=
+                                                                    ''
+                                                            ? FFAppState()
+                                                                .selectedTimeFromHundai
+                                                            : FFLocalizations
+                                                                    .of(context)
+                                                                .getVariableText(
+                                                                enText: 'Time',
+                                                                arText: 'الوقت',
+                                                              ),
+                                                        style:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .bodyMedium,
+                                                      ),
                                                     ),
-                                                  ),
-                                                ],
+                                                    Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  0.0,
+                                                                  10.0,
+                                                                  0.0),
+                                                      child: Icon(
+                                                        Icons
+                                                            .access_time_filled,
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .secondaryText,
+                                                        size: 20.0,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ),
@@ -590,7 +655,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                           .userModel
                                                           .token,
                                                       date:
-                                                          '${_model.selectedDate} ${_model.selectedTime}',
+                                                          '${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}',
                                                       details: _model
                                                           .textController.text,
                                                       vehicleId: _model

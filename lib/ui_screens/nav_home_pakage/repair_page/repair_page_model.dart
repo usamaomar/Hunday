@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/ui_screens/nav_pakege/time_component_list/time_component_list_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'repair_page_widget.dart' show RepairPageWidget;
 import 'package:flutter/foundation.dart';
@@ -44,8 +45,6 @@ class RepairPageModel extends FlutterFlowModel<RepairPageWidget> {
 
   String selectedDate = '';
 
-  String selectedTime = '';
-
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
@@ -54,8 +53,7 @@ class RepairPageModel extends FlutterFlowModel<RepairPageWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
-  DateTime? datePicked1;
-  DateTime? datePicked2;
+  DateTime? datePicked;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;

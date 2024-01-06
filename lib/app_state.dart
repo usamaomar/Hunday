@@ -82,6 +82,10 @@ class FFAppState extends ChangeNotifier {
     _safeInit(() {
       _paymentStatus = prefs.getString('ff_paymentStatus') ?? _paymentStatus;
     });
+    _safeInit(() {
+      _selectedTimeFromHundai = prefs.getString('ff_selectedTimeFromHundai') ??
+          _selectedTimeFromHundai;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -532,6 +536,13 @@ class FFAppState extends ChangeNotifier {
   set paymentStatus(String _value) {
     _paymentStatus = _value;
     prefs.setString('ff_paymentStatus', _value);
+  }
+
+  String _selectedTimeFromHundai = '';
+  String get selectedTimeFromHundai => _selectedTimeFromHundai;
+  set selectedTimeFromHundai(String _value) {
+    _selectedTimeFromHundai = _value;
+    prefs.setString('ff_selectedTimeFromHundai', _value);
   }
 }
 

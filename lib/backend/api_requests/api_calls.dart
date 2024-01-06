@@ -1278,6 +1278,38 @@ class AddAddressApiCall {
   }
 }
 
+class CheckAvailableTimeCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? serviceType = '',
+    String? date = '',
+  }) async {
+    final ffApiRequestBody = '''
+{
+"serviceType": "${serviceType}" ,
+"date": "${date}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'checkAvailableTime',
+      apiUrl:
+          'https://hyundai.completechaintech.com/api/service/checkAvailableTime',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class CashOnDeliveryApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
