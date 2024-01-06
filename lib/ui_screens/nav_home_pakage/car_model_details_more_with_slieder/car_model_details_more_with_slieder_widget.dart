@@ -7,7 +7,6 @@ import '/ui_screens/components/car_deteails_components/car_deteails_components_w
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/test_drive_component/test_drive_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -547,25 +546,20 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                               highlightColor:
                                                   Colors.transparent,
                                               onTap: () async {
-                                                await showAlignedDialog(
+                                                await showDialog(
                                                   context: context,
-                                                  isGlobal: true,
-                                                  avoidOverflow: false,
-                                                  targetAnchor:
-                                                      AlignmentDirectional(
-                                                              0.0, 0.0)
-                                                          .resolve(
-                                                              Directionality.of(
-                                                                  context)),
-                                                  followerAnchor:
-                                                      AlignmentDirectional(
-                                                              0.0, 0.0)
-                                                          .resolve(
-                                                              Directionality.of(
-                                                                  context)),
                                                   builder: (dialogContext) {
-                                                    return Material(
-                                                      color: Colors.transparent,
+                                                    return Dialog(
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
                                                       child: Container(
                                                         height: 500.0,
                                                         child:
@@ -735,26 +729,20 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                 highlightColor:
                                                     Colors.transparent,
                                                 onTap: () async {
-                                                  await showAlignedDialog(
+                                                  await showDialog(
                                                     context: context,
-                                                    isGlobal: true,
-                                                    avoidOverflow: false,
-                                                    targetAnchor:
-                                                        AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    followerAnchor:
-                                                        AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
                                                     builder: (dialogContext) {
-                                                      return Material(
-                                                        color:
+                                                      return Dialog(
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
                                                             Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
                                                         child: Container(
                                                           height: 500.0,
                                                           child:

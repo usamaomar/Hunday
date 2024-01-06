@@ -6,7 +6,6 @@ import '/ui_screens/components/scan_now_card/scan_now_card_widget.dart';
 import 'dart:ui';
 import 'scanned_card_animation_component_widget.dart'
     show ScannedCardAnimationComponentWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

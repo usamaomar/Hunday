@@ -133,7 +133,12 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
                                 await _model.waitForApiRequestCompleted();
                               },
                               child: ListView.builder(
-                                padding: EdgeInsets.zero,
+                                padding: EdgeInsets.fromLTRB(
+                                  0,
+                                  0,
+                                  0,
+                                  55.0,
+                                ),
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: listOfOffers.length,

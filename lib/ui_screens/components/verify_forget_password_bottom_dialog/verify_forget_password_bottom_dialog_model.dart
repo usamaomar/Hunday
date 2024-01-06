@@ -9,7 +9,6 @@ import '/custom_code/widgets/index.dart' as custom_widgets;
 import 'package:pin_code_fields/pin_code_fields.dart';
 import 'verify_forget_password_bottom_dialog_widget.dart'
     show VerifyForgetPasswordBottomDialogWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';

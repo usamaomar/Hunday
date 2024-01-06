@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/from_galler_card/from_galler_card_widget.dart';
 import '/ui_screens/components/scan_now_card/scan_now_card_widget.dart';
 import 'dart:ui';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
@@ -113,18 +112,15 @@ class _ScannedCardAnimationComponentWidgetState
                           child: Builder(
                             builder: (context) => FFButtonWidget(
                               onPressed: () async {
-                                await showAlignedDialog(
+                                await showDialog(
                                   barrierDismissible: false,
                                   context: context,
-                                  isGlobal: true,
-                                  avoidOverflow: false,
-                                  targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
-                                  followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
                                   builder: (dialogContext) {
-                                    return Material(
-                                      color: Colors.transparent,
+                                    return Dialog(
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
                                       child: ScanNowCardWidget(),
                                     );
                                   },
@@ -173,18 +169,15 @@ class _ScannedCardAnimationComponentWidgetState
                           child: Builder(
                             builder: (context) => FFButtonWidget(
                               onPressed: () async {
-                                await showAlignedDialog(
+                                await showDialog(
                                   barrierDismissible: false,
                                   context: context,
-                                  isGlobal: true,
-                                  avoidOverflow: false,
-                                  targetAnchor: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
-                                  followerAnchor: AlignmentDirectional(0.0, 0.0)
-                                      .resolve(Directionality.of(context)),
                                   builder: (dialogContext) {
-                                    return Material(
-                                      color: Colors.transparent,
+                                    return Dialog(
+                                      insetPadding: EdgeInsets.zero,
+                                      backgroundColor: Colors.transparent,
+                                      alignment: AlignmentDirectional(0.0, 0.0)
+                                          .resolve(Directionality.of(context)),
                                       child: FromGallerCardWidget(),
                                     );
                                   },

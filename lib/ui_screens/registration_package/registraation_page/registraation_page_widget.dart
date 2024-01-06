@@ -12,7 +12,6 @@ import '/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values
 import '/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
@@ -1439,26 +1438,20 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                   ).then((value) =>
                                                       safeSetState(() {}));
                                                 } else {
-                                                  await showAlignedDialog(
+                                                  await showDialog(
                                                     context: context,
-                                                    isGlobal: true,
-                                                    avoidOverflow: false,
-                                                    targetAnchor:
-                                                        AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
-                                                    followerAnchor:
-                                                        AlignmentDirectional(
-                                                                0.0, 0.0)
-                                                            .resolve(
-                                                                Directionality.of(
-                                                                    context)),
                                                     builder: (dialogContext) {
-                                                      return Material(
-                                                        color:
+                                                      return Dialog(
+                                                        insetPadding:
+                                                            EdgeInsets.zero,
+                                                        backgroundColor:
                                                             Colors.transparent,
+                                                        alignment:
+                                                            AlignmentDirectional(
+                                                                    0.0, 0.0)
+                                                                .resolve(
+                                                                    Directionality.of(
+                                                                        context)),
                                                         child: GestureDetector(
                                                           onTap: () => _model
                                                                   .unfocusNode

@@ -8,7 +8,6 @@ import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/test_drive_component/test_drive_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'car_model_details_more_widget.dart' show CarModelDetailsMoreWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';

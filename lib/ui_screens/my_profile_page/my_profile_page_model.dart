@@ -7,7 +7,6 @@ import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/logout_dialog/logout_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'my_profile_page_widget.dart' show MyProfilePageWidget;
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';

@@ -7,7 +7,6 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/thank_you_component/thank_you_component_widget.dart';
 import '/backend/schema/structs/index.dart';
-import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -671,30 +670,23 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                             }
                                                           }
 
-                                                          await showAlignedDialog(
+                                                          await showDialog(
                                                             context: context,
-                                                            isGlobal: true,
-                                                            avoidOverflow:
-                                                                false,
-                                                            targetAnchor:
-                                                                AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0)
-                                                                    .resolve(
-                                                                        Directionality.of(
-                                                                            context)),
-                                                            followerAnchor:
-                                                                AlignmentDirectional(
-                                                                        0.0,
-                                                                        0.0)
-                                                                    .resolve(
-                                                                        Directionality.of(
-                                                                            context)),
                                                             builder:
                                                                 (dialogContext) {
-                                                              return Material(
-                                                                color: Colors
-                                                                    .transparent,
+                                                              return Dialog(
+                                                                insetPadding:
+                                                                    EdgeInsets
+                                                                        .zero,
+                                                                backgroundColor:
+                                                                    Colors
+                                                                        .transparent,
+                                                                alignment: AlignmentDirectional(
+                                                                        0.0,
+                                                                        0.0)
+                                                                    .resolve(
+                                                                        Directionality.of(
+                                                                            context)),
                                                                 child:
                                                                     GestureDetector(
                                                                   onTap: () => _model

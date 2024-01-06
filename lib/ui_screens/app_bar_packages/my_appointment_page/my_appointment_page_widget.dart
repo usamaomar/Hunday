@@ -157,6 +157,9 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                               ),
                             ],
                             controller: _model.tabBarController,
+                            onTap: (i) async {
+                              [() async {}, () async {}, () async {}][i]();
+                            },
                           ),
                         ),
                         Expanded(
