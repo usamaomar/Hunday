@@ -8,6 +8,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
+import '/ui_screens/nav_pakege/time_component_list/time_component_list_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'regular_page_widget.dart' show RegularPageWidget;
 import 'package:flutter/foundation.dart';
@@ -43,8 +44,6 @@ class RegularPageModel extends FlutterFlowModel<RegularPageWidget> {
 
   String selectedDate = '';
 
-  String selectedTime = '';
-
   List<ServiceTypeModelStruct> serviceTypeList = [];
   void addToServiceTypeList(ServiceTypeModelStruct item) =>
       serviceTypeList.add(item);
@@ -76,8 +75,7 @@ class RegularPageModel extends FlutterFlowModel<RegularPageWidget> {
   // State field(s) for DropDown widget.
   String? dropDownValue2;
   FormFieldController<String>? dropDownValueController2;
-  DateTime? datePicked1;
-  DateTime? datePicked2;
+  DateTime? datePicked;
   // Stores action output result for [Backend Call - API (RegularServiceApi)] action in Button widget.
   ApiCallResponse? apiResult6ff;
   // Model for HyndayAppBar component.
