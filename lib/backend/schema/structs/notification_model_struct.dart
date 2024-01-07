@@ -11,10 +11,12 @@ class NotificationModelStruct extends BaseStruct {
     String? date,
     String? time,
     bool? isClicked,
+    String? body,
   })  : _title = title,
         _date = date,
         _time = time,
-        _isClicked = isClicked;
+        _isClicked = isClicked,
+        _body = body;
 
   // "title" field.
   String? _title;
@@ -40,12 +42,19 @@ class NotificationModelStruct extends BaseStruct {
   set isClicked(bool? val) => _isClicked = val;
   bool hasIsClicked() => _isClicked != null;
 
+  // "body" field.
+  String? _body;
+  String get body => _body ?? '';
+  set body(String? val) => _body = val;
+  bool hasBody() => _body != null;
+
   static NotificationModelStruct fromMap(Map<String, dynamic> data) =>
       NotificationModelStruct(
         title: data['title'] as String?,
         date: data['date'] as String?,
         time: data['time'] as String?,
         isClicked: data['isClicked'] as bool?,
+        body: data['body'] as String?,
       );
 
   static NotificationModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -57,6 +66,7 @@ class NotificationModelStruct extends BaseStruct {
         'date': _date,
         'time': _time,
         'isClicked': _isClicked,
+        'body': _body,
       }.withoutNulls;
 
   @override
@@ -76,6 +86,10 @@ class NotificationModelStruct extends BaseStruct {
         'isClicked': serializeParam(
           _isClicked,
           ParamType.bool,
+        ),
+        'body': serializeParam(
+          _body,
+          ParamType.String,
         ),
       }.withoutNulls;
 
@@ -102,6 +116,11 @@ class NotificationModelStruct extends BaseStruct {
           ParamType.bool,
           false,
         ),
+        body: deserializeParam(
+          data['body'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -113,11 +132,13 @@ class NotificationModelStruct extends BaseStruct {
         title == other.title &&
         date == other.date &&
         time == other.time &&
-        isClicked == other.isClicked;
+        isClicked == other.isClicked &&
+        body == other.body;
   }
 
   @override
-  int get hashCode => const ListEquality().hash([title, date, time, isClicked]);
+  int get hashCode =>
+      const ListEquality().hash([title, date, time, isClicked, body]);
 }
 
 NotificationModelStruct createNotificationModelStruct({
@@ -125,10 +146,12 @@ NotificationModelStruct createNotificationModelStruct({
   String? date,
   String? time,
   bool? isClicked,
+  String? body,
 }) =>
     NotificationModelStruct(
       title: title,
       date: date,
       time: time,
       isClicked: isClicked,
+      body: body,
     );
