@@ -15,9 +15,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'repair_page_model.dart';
 export 'repair_page_model.dart';
@@ -54,6 +52,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => RepairPageModel());
+    FFAppState().selectedTimeFromHundai = '';
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
@@ -82,7 +81,6 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
@@ -655,7 +653,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                           .userModel
                                                           .token,
                                                       date:
-                                                          '${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}',
+                                                      conveFrom('${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}'),
                                                       details: _model
                                                           .textController.text,
                                                       vehicleId: _model
@@ -834,5 +832,12 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
         ),
       ),
     );
+  }
+
+  String conveFrom(String value){
+    DateTime startDate = DateFormat("yyyy/MM/dd HH:mm").parse(value.split(' - ')[0]);
+    // Format the new date string
+    String formattedDateString = DateFormat("yyyy-MM-dd HH:mm:ss").format(startDate);
+    return formattedDateString;
   }
 }

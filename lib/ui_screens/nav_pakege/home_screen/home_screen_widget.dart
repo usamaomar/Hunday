@@ -43,18 +43,6 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
       if (widget.deepLinkId != null) {
         checks();
       }
-
-      await showDialog(
-        context: context,
-        builder: (dialogContext) {
-          return Dialog(child: GestureDetector(
-            onTap: () => _model.unfocusNode.canRequestFocus
-                ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                : FocusScope.of(context).unfocus(),
-            child: ThankYouComponentWidget(),
-          ),);
-        },
-      );
       _model.localTestAuth2 = await TestAuthUserApiCall.call(
         token: FFAppState().userModel.token,
       );
@@ -222,7 +210,6 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 

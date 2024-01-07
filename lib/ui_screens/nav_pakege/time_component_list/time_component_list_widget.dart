@@ -4,7 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'time_component_list_model.dart';
 export 'time_component_list_model.dart';
@@ -44,7 +43,6 @@ class _TimeComponentListWidgetState extends State<TimeComponentListWidget> {
   @override
   void dispose() {
     _model.maybeDispose();
-
     super.dispose();
   }
 
@@ -53,9 +51,10 @@ class _TimeComponentListWidgetState extends State<TimeComponentListWidget> {
     context.watch<FFAppState>();
 
     return Container(
+      margin: EdgeInsets.fromLTRB(20, 20, 20, 20),
       width: 390.0,
       height: 450.0,
-      decoration: BoxDecoration(),
+      color: Colors.white,
       child: FutureBuilder<ApiCallResponse>(
         future: CheckAvailableTimeCall.call(
           token: FFAppState().userModel.token,

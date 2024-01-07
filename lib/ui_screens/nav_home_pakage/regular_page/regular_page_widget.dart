@@ -54,7 +54,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => RegularPageModel());
-
+    FFAppState().selectedTimeFromHundai = '';
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       _model.apiResultoqe = await VehicleApiCall.call(
@@ -686,7 +686,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                           .userModel
                                                           .token,
                                                       date:
-                                                          '${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}',
+                                                      conveFrom('${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}'),
                                                       serviceTypeId: _model
                                                           .selectedServiceType
                                                           ?.id,
@@ -867,4 +867,15 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
       ),
     );
   }
+
+
+  String conveFrom(String value){
+    DateTime startDate = DateFormat("yyyy/MM/dd HH:mm").parse(value.split(' - ')[0]);
+    String formattedDateString = DateFormat("yyyy-MM-dd HH:mm:ss").format(startDate);
+    return formattedDateString;
+  }
+
+
 }
+
+

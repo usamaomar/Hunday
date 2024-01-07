@@ -452,7 +452,11 @@ class RegularServiceApiCall {
         'Authorization': 'Bearer ${token}',
         'Accept': 'application/json',
       },
-      params: {},
+      params: {
+        "service_type_id": "${serviceTypeId}",
+        "vehicle_id": "${vehicleId}",
+        "date": "${date}"
+      },
       body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
