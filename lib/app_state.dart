@@ -86,6 +86,22 @@ class FFAppState extends ChangeNotifier {
       _selectedTimeFromHundai = prefs.getString('ff_selectedTimeFromHundai') ??
           _selectedTimeFromHundai;
     });
+    _safeInit(() {
+      _localNotificationLost = prefs
+              .getStringList('ff_localNotificationLost')
+              ?.map((x) {
+                try {
+                  return NotificationModelStruct.fromSerializableMap(
+                      jsonDecode(x));
+                } catch (e) {
+                  print("Can't decode persisted data type. Error: $e.");
+                  return null;
+                }
+              })
+              .withoutNulls
+              .toList() ??
+          _localNotificationLost;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -543,6 +559,49 @@ class FFAppState extends ChangeNotifier {
   set selectedTimeFromHundai(String _value) {
     _selectedTimeFromHundai = _value;
     prefs.setString('ff_selectedTimeFromHundai', _value);
+  }
+
+  List<NotificationModelStruct> _localNotificationLost = [];
+  List<NotificationModelStruct> get localNotificationLost =>
+      _localNotificationLost;
+  set localNotificationLost(List<NotificationModelStruct> _value) {
+    _localNotificationLost = _value;
+    prefs.setStringList(
+        'ff_localNotificationLost', _value.map((x) => x.serialize()).toList());
+  }
+
+  void addToLocalNotificationLost(NotificationModelStruct _value) {
+    _localNotificationLost.add(_value);
+    prefs.setStringList('ff_localNotificationLost',
+        _localNotificationLost.map((x) => x.serialize()).toList());
+  }
+
+  void removeFromLocalNotificationLost(NotificationModelStruct _value) {
+    _localNotificationLost.remove(_value);
+    prefs.setStringList('ff_localNotificationLost',
+        _localNotificationLost.map((x) => x.serialize()).toList());
+  }
+
+  void removeAtIndexFromLocalNotificationLost(int _index) {
+    _localNotificationLost.removeAt(_index);
+    prefs.setStringList('ff_localNotificationLost',
+        _localNotificationLost.map((x) => x.serialize()).toList());
+  }
+
+  void updateLocalNotificationLostAtIndex(
+    int _index,
+    NotificationModelStruct Function(NotificationModelStruct) updateFn,
+  ) {
+    _localNotificationLost[_index] = updateFn(_localNotificationLost[_index]);
+    prefs.setStringList('ff_localNotificationLost',
+        _localNotificationLost.map((x) => x.serialize()).toList());
+  }
+
+  void insertAtIndexInLocalNotificationLost(
+      int _index, NotificationModelStruct _value) {
+    _localNotificationLost.insert(_index, _value);
+    prefs.setStringList('ff_localNotificationLost',
+        _localNotificationLost.map((x) => x.serialize()).toList());
   }
 }
 

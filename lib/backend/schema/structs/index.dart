@@ -12,6 +12,7 @@ export 'fuel_type_model_struct.dart';
 export 'login_model_struct.dart';
 export 'my_vehicle_model_struct.dart';
 export 'news_model_struct.dart';
+export 'notification_model_struct.dart';
 export 'part_category_model_struct.dart';
 export 'part_model_struct.dart';
 export 'payment_model_struct.dart';

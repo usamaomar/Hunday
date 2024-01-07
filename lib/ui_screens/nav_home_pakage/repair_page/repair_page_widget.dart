@@ -422,7 +422,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                                   .languageCode,
                                                             ),
                                                             serviceType:
-                                                                'regular',
+                                                                'repair',
                                                           ),
                                                         ),
                                                       );
