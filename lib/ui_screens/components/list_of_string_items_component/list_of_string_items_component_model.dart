@@ -100,6 +100,9 @@ class ListOfStringItemsComponentModel
   // State field(s) for DropDown widget.
   String? dropDownValue2;
   FormFieldController<String>? dropDownValueController2;
+  ///
+  String? dropDownValueYearOfCreation;
+  FormFieldController<String>? dropDownValueYearOfCreationController;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode3;
   TextEditingController? textController3;

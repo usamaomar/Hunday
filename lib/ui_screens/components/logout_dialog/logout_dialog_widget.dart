@@ -99,18 +99,10 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
                           FFAppState().userModel =
                               UserModelStruct.fromSerializableMap(
                                   jsonDecode('{}'));
-                          if (Navigator.of(context).canPop()) {
+                          while (context.canPop() == true) {
                             context.pop();
                           }
-                          context.pushReplacementNamed(
-                            'splashPage',
-                            extra: <String, dynamic>{
-                              kTransitionInfoKey: TransitionInfo(
-                                hasTransition: true,
-                                transitionType: PageTransitionType.leftToRight,
-                              ),
-                            },
-                          );
+                          context.pushReplacement('splashPage');
                         },
                         text: widget.confirmTextButton!,
                         options: FFButtonOptions(

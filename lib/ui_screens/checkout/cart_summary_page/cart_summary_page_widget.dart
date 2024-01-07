@@ -1197,8 +1197,8 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                     _model.cartObject?.tax,
                                                     '0',
                                                   )} ${FFLocalizations.of(context).getVariableText(
-                                                    enText: 'JD',
-                                                    arText: 'د.أ',
+                                                    enText: '%',
+                                                    arText: '%',
                                                   )}',
                                                   style: FlutterFlowTheme.of(
                                                           context)

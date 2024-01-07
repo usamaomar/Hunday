@@ -209,6 +209,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 page: ItemDetailsPageWidget(
                   jsonObject: params.getParam('jsonObject', ParamType.JSON),
                   titleHeader: params.getParam('titleHeader', ParamType.String),
+                  yearOf: params.getParam('yearOf', ParamType.String),
                 ),
               ),
             ),

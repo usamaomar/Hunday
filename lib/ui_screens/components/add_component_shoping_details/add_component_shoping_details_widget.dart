@@ -79,13 +79,16 @@ class _AddComponentShopingDetailsWidgetState
               ))
               .toList()
               .cast<MyVehicleModelStruct>();
+
+
+
         });
         setState(() {
           _model.titleHeade = widget.titleh!;
         });
       }
     });
-
+//year_of_manufacturing
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -292,6 +295,7 @@ class _AddComponentShopingDetailsWidgetState
                                           functions.getSelectedVehicle(
                                               _model.dropDownValue!,
                                               _model.listOfMyVehicle.toList());
+                                      _model.selectedYear =_model.selectedVehicleModel?.yearOfManufacturing ?? '-';
                                     });
                                   },
                                   height: 50.0,
@@ -300,10 +304,13 @@ class _AddComponentShopingDetailsWidgetState
                                   hintText: FFLocalizations.of(context).getText(
                                     'rt1i3fku' /* Car Model / License Plate */,
                                   ),
-                                  icon: FaIcon(
-                                    FontAwesomeIcons.caretDown,
-                                    color: Colors.black,
-                                    size: 20.0,
+                                  icon: Padding(
+                                    padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                                    child: FaIcon(
+                                      FontAwesomeIcons.caretDown,
+                                      color: Colors.black,
+                                      size: 20.0,
+                                    ),
                                   ),
                                   fillColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
@@ -312,7 +319,7 @@ class _AddComponentShopingDetailsWidgetState
                                   borderWidth: 1.0,
                                   borderRadius: 5.0,
                                   margin: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 4.0, 16.0, 4.0),
+                                      0.0, 0.0, 0.0, 0.0),
                                   hidesUnderline: true,
                                   isSearchable: false,
                                   isMultiSelect: false,
@@ -324,86 +331,54 @@ class _AddComponentShopingDetailsWidgetState
                         Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               25.0, 15.0, 25.0, 20.0),
-                          child: InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              final _datePickedDate = await showDatePicker(
-                                context: context,
-                                initialDate: getCurrentTimestamp,
-                                firstDate: getCurrentTimestamp,
-                                lastDate: DateTime(2050),
-                              );
-
-                              if (_datePickedDate != null) {
-                                safeSetState(() {
-                                  _model.datePicked = DateTime(
-                                    _datePickedDate.year,
-                                    _datePickedDate.month,
-                                    _datePickedDate.day,
-                                  );
-                                });
-                              }
-                              setState(() {
-                                _model.selectedYear = dateTimeFormat(
-                                  'yMd',
-                                  _model.datePicked,
-                                  locale:
-                                      FFLocalizations.of(context).languageCode,
-                                );
-                              });
-                            },
-                            child: Container(
-                              height: 50.0,
-                              decoration: BoxDecoration(
-                                color: FlutterFlowTheme.of(context).white,
-                                borderRadius: BorderRadius.circular(5.0),
-                                border: Border.all(
-                                  color: Color(0xFFE1E1E1),
-                                  width: 1.0,
-                                ),
+                          child: Container(
+                            height: 50.0,
+                            decoration: BoxDecoration(
+                              color: FlutterFlowTheme.of(context).white,
+                              borderRadius: BorderRadius.circular(5.0),
+                              border: Border.all(
+                                color: Color(0xFFE1E1E1),
+                                width: 1.0,
                               ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 0.0, 0.0),
-                                    child: Text(
-                                      valueOrDefault<String>(
-                                        _model.selectedYear != null &&
-                                                _model.selectedYear != ''
-                                            ? _model.selectedYear
-                                            : valueOrDefault<String>(
-                                                FFLocalizations.of(context)
-                                                    .getVariableText(
-                                                  enText: 'Year of Creation',
-                                                  arText: 'سنة الصنع',
-                                                ),
-                                                '٫',
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment:
+                                  MainAxisAlignment.spaceBetween,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 0.0, 0.0),
+                                  child: Text(
+                                    valueOrDefault<String>(
+                                      _model.selectedYear != null &&
+                                              _model.selectedYear != ''
+                                          ? _model.selectedYear
+                                          : valueOrDefault<String>(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Year of Creation',
+                                                arText: 'سنة الصنع',
                                               ),
-                                        '-',
-                                      ),
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium,
+                                              '٫',
+                                            ),
+                                      '-',
                                     ),
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 0.0, 10.0, 0.0),
-                                    child: Icon(
-                                      Icons.calendar_month_rounded,
-                                      color: FlutterFlowTheme.of(context)
-                                          .secondaryText,
-                                      size: 21.0,
-                                    ),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 10.0, 0.0),
+                                  child: Icon(
+                                    Icons.calendar_month_rounded,
+                                    color: FlutterFlowTheme.of(context)
+                                        .secondaryText,
+                                    size: 21.0,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
@@ -434,6 +409,10 @@ class _AddComponentShopingDetailsWidgetState
                                           ),
                                           'titleHeader': serializeParam(
                                             _model.titleHeade,
+                                            ParamType.String,
+                                          ),
+                                          'yearOf': serializeParam(
+                                            _model.selectedYear ?? '',
                                             ParamType.String,
                                           ),
                                         }.withoutNulls,

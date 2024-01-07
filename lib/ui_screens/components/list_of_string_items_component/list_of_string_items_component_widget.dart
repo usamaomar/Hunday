@@ -665,106 +665,59 @@ class _ListOfStringItemsComponentWidgetState
                                   ),
                             ),
                           ),
-                          InkWell(
-                            splashColor: Colors.transparent,
-                            focusColor: Colors.transparent,
-                            hoverColor: Colors.transparent,
-                            highlightColor: Colors.transparent,
-                            onTap: () async {
-                              // yearOfManufacturing
-                              final _datePicked1Date = await showDatePicker(
-                                context: context,
-                                initialDate: getCurrentTimestamp,
-                                firstDate: getCurrentTimestamp,
-                                lastDate: DateTime(2050),
-                                builder: (context, child) {
-                                  return wrapInMaterialDatePickerTheme(
-                                    context,
-                                    child!,
-                                    headerBackgroundColor:
-                                        FlutterFlowTheme.of(context).primary,
-                                    headerForegroundColor:
-                                        FlutterFlowTheme.of(context).info,
-                                    headerTextStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .headlineLarge
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              fontSize: 32.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
-                                    pickerBackgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
-                                    pickerForegroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                    selectedDateTimeBackgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
-                                    selectedDateTimeForegroundColor:
-                                        FlutterFlowTheme.of(context).white,
-                                    actionButtonForegroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                    iconSize: 24.0,
-                                  );
-                                },
-                              );
-
-                              if (_datePicked1Date != null) {
-                                safeSetState(() {
-                                  _model.datePicked1 = DateTime(
-                                    _datePicked1Date.year,
-                                    _datePicked1Date.month,
-                                    _datePicked1Date.day,
-                                  );
-                                });
-                              }
-                              setState(() {
-                                _model.yearOfManufacturingString =
-                                    valueOrDefault<String>(
-                                  dateTimeFormat(
-                                    'yyyy',
-                                    _model.datePicked1,
-                                    locale: FFLocalizations.of(context)
-                                        .languageCode,
-                                  ),
-                                  'yyyy',
-                                );
-                              });
-                            },
-                            child: Container(
-                              height: 40.0,
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(5.0),
-                                border: Border.all(
-                                  color: Color(0xFFE1E1E1),
-                                  width: 1.0,
-                                ),
-                              ),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.max,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Text(
-                                      _model.yearOfManufacturingString,
-                                      style: FlutterFlowTheme.of(context)
+                          Padding(
+                            padding:
+                            EdgeInsetsDirectional.fromSTEB(
+                                0.0, 0.0, 0.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              children: [
+                                Expanded(
+                                  child: Opacity(
+                                    opacity: 0.8,
+                                    child: FlutterFlowDropDown<
+                                        String>(
+                                      controller: _model
+                                          .dropDownValueYearOfCreationController ??=
+                                          FormFieldController<
+                                              String>(null),
+                                      options: generateDates()
+                                          .map((e) =>
+                                      e)
+                                          .toList(),
+                                      onChanged: (val) => setState(
+                                              () => _model.dropDownValueYearOfCreation = val),
+                                      height: 40.0,
+                                      textStyle:
+                                      FlutterFlowTheme.of(
+                                          context)
                                           .bodyMedium,
+                                      hintText:
+                                      _model.yearOfManufacturingString,
+                                      icon:Icon(
+                                        Icons.calendar_month,
+                                        color: Color(0xFF092853),
+                                        size: 24.0,
+                                      ),
+                                      fillColor: FlutterFlowTheme
+                                          .of(context)
+                                          .secondaryBackground,
+                                      elevation: 2.0,
+                                      borderColor:
+                                      Color(0xFFE1E1E1),
+                                      borderWidth: 1.0,
+                                      borderRadius: 5.0,
+                                      margin:
+                                      EdgeInsetsDirectional
+                                          .fromSTEB(5.0, 4.0,
+                                          5.0, 4.0),
+                                      hidesUnderline: true,
+                                      isSearchable: false,
+                                      isMultiSelect: false,
                                     ),
                                   ),
-                                  Padding(
-                                    padding: EdgeInsets.all(5.0),
-                                    child: Icon(
-                                      Icons.calendar_month,
-                                      color: Color(0xFF092853),
-                                      size: 24.0,
-                                    ),
-                                  ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -1157,7 +1110,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
-                                    keyboardType: TextInputType.number,
+                                    keyboardType: TextInputType.text,
                                     validator: _model.textController6Validator
                                         .asValidator(context),
                                   ),
@@ -1249,7 +1202,7 @@ class _ListOfStringItemsComponentWidgetState
                                     ),
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
-                                    keyboardType: TextInputType.number,
+                                    keyboardType: TextInputType.text,
                                     validator: _model.textController7Validator
                                         .asValidator(context),
                                   ),
@@ -1611,4 +1564,17 @@ class _ListOfStringItemsComponentWidgetState
       ],
     );
   }
+
+  List<String> generateDates() {
+    List<String> yearList = [];
+    // Get the current year
+    int currentYear = DateTime.now().year;
+    // Generate years from 1990 to the current year
+    for (int year = 1990; year <= currentYear; year++) {
+      // Add the year to the list as a string
+      yearList.add(year.toString());
+    }
+    return yearList;
+  }
+
 }

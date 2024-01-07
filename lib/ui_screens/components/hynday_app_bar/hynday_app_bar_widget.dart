@@ -108,26 +108,119 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                           ),
                         ),
                       ),
-                      AlignedTooltip(
-                        content: Padding(
-                            padding: EdgeInsets.all(4.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'nn9je08c' /* Message... */,
-                              ),
-                              style: FlutterFlowTheme.of(context).bodyLarge,
-                            )),
-                        offset: 4.0,
-                        preferredDirection: AxisDirection.down,
-                        borderRadius: BorderRadius.circular(8.0),
-                        backgroundColor:
-                            FlutterFlowTheme.of(context).secondaryBackground,
-                        elevation: 4.0,
-                        tailBaseWidth: 24.0,
-                        tailLength: 12.0,
-                        waitDuration: Duration(milliseconds: 100),
-                        showDuration: Duration(milliseconds: 1500),
-                        triggerMode: TooltipTriggerMode.tap,
+                      InkWell(
+                        onTap: () {
+                          showGeneralDialog(
+                            context: context,
+                            barrierDismissible: true,
+                            transitionDuration: Duration(milliseconds: 500),
+                            barrierLabel:
+                                MaterialLocalizations.of(context).dialogLabel,
+                            barrierColor: Colors.black.withOpacity(0),
+                            pageBuilder: (context, _, __) {
+                              return Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: <Widget>[
+                                  Container(
+                                    width: MediaQuery.of(context).size.width,
+                                    child: Card(
+                                      child: ListView(
+                                        primary: false,
+                                        shrinkWrap: true,
+                                        children: <Widget>[
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                15, 20, 15, 20),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment
+                                                      .spaceBetween,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                    enText: 'Notifications',
+                                                    arText: 'الاشعارات',
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'HeeboBold',
+                                                        color:
+                                                            Color(0xFF092853),
+                                                        fontSize: 18,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                                InkWell(
+                                                  onTap: (){
+                                                    context.safePop();
+                                                  },
+                                                  child: Icon(
+                                                    Icons.close_outlined,
+                                                    color: Color(0xFF3D6398),
+                                                    size: 24.0,
+                                                  ),
+                                                )
+                                              ],
+                                            ),
+                                          ),
+                                          Container(
+                                            width: 200,
+                                            margin: EdgeInsets.fromLTRB(
+                                                20, 0, 20, 0),
+                                            height: 1,
+                                            color: Color(0xFF3D6398),
+                                          ),
+                                          ListTile(
+                                            leading: Icon(
+                                              Icons.notifications,
+                                              color: Color(0xFF3D6398),
+                                              size: 24.0,
+                                            ),
+                                            title: Text('Item 1'),
+                                            onTap: () => Navigator.of(context)
+                                                .pop('item1'),
+                                            subtitle: Text('Item 1' ,style: FlutterFlowTheme.of(
+                                                context)
+                                                .bodyMedium
+                                                .override(
+                                              fontFamily: 'Rajdhani',
+                                              color:
+                                              Color(0xFF092853),
+                                              fontSize: 12,
+                                              fontWeight:
+                                              FontWeight.normal,
+                                              useGoogleFonts: false,
+                                            )),
+                                          )
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              );
+                            },
+                            transitionBuilder: (context, animation,
+                                secondaryAnimation, child) {
+                              return SlideTransition(
+                                position: CurvedAnimation(
+                                  parent: animation,
+                                  curve: Curves.easeOut,
+                                ).drive(Tween<Offset>(
+                                  begin: Offset(0, -1.0),
+                                  end: Offset.zero,
+                                )),
+                                child: child,
+                              );
+                            },
+                          );
+                        },
                         child: Icon(
                           Icons.notifications_sharp,
                           color: Color(0xFF092853),

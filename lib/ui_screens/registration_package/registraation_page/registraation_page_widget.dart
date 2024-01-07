@@ -1399,10 +1399,12 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                     FFAppState()
                                                             .biomatricDtateModel =
                                                         BiomatricModelStruct(
-                                                      phoneNumber: _model
-                                                          .phoneEditTextValuesModel
-                                                          .textController
-                                                          .text,
+                                                      phoneNumber:getJsonField(
+                                                        (_model.apiResult7h5
+                                                            ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.user.phone''',
+                                                      ),
                                                       password: _model
                                                           .passwordEditTextValuesModel1
                                                           .textController

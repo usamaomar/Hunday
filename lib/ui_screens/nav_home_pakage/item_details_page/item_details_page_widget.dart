@@ -21,10 +21,12 @@ class ItemDetailsPageWidget extends StatefulWidget {
     Key? key,
     required this.jsonObject,
     required this.titleHeader,
+    required this.yearOf,
   }) : super(key: key);
 
   final dynamic jsonObject;
   final String? titleHeader;
+  final String? yearOf;
 
   @override
   _ItemDetailsPageWidgetState createState() => _ItemDetailsPageWidgetState();
@@ -422,83 +424,86 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                 ),
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
-                                  25.0, 0.0, 25.0, 0.0),
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFF1F1F1),
-                                  borderRadius: BorderRadius.circular(0.0),
-                                ),
-                                child: Column(
-                                  mainAxisSize: MainAxisSize.max,
-                                  children: [
-                                    Container(
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFF1F1F1),
-                                      ),
-                                      child: Row(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.start,
-                                        children: [
-                                          Container(
-                                            width: 110.0,
-                                            decoration: BoxDecoration(),
-                                            child: Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      20.0, 0.0, 20.0, 0.0),
-                                              child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'km3ujc8c' /* Model Year */,
-                                                ),
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'HeeboBold',
-                                                      color: Color(0xFF212427),
-                                                      fontSize: 13.0,
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      useGoogleFonts: false,
-                                                    ),
-                                              ),
-                                            ),
-                                          ),
-                                          SizedBox(
-                                            height: 50.0,
-                                            child: VerticalDivider(
-                                              thickness: 2.0,
-                                              color: Color(0xFFBDBBBB),
-                                            ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'hesmbsvo' /* Hello World */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
+                            Visibility(
+                              visible: ((widget.yearOf?.isNotEmpty == true) && widget.yearOf!='-') ?? false,
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    25.0, 0.0, 25.0, 0.0),
+                                child: Container(
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF1F1F1),
+                                    borderRadius: BorderRadius.circular(0.0),
+                                  ),
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Color(0xFFF1F1F1),
+                                        ),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Container(
+                                              width: 110.0,
+                                              decoration: BoxDecoration(),
+                                              child: Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        20.0, 0.0, 20.0, 0.0),
+                                                child: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    'km3ujc8c' /* Model Year */,
+                                                  ),
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
                                                       .bodyMedium
                                                       .override(
-                                                        fontFamily: 'Poppins',
-                                                        color:
-                                                            Color(0xFF212427),
+                                                        fontFamily: 'HeeboBold',
+                                                        color: Color(0xFF212427),
                                                         fontSize: 13.0,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        useGoogleFonts: false,
                                                       ),
+                                                ),
+                                              ),
                                             ),
-                                          ),
-                                        ],
+                                            SizedBox(
+                                              height: 50.0,
+                                              child: VerticalDivider(
+                                                thickness: 2.0,
+                                                color: Color(0xFFBDBBBB),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  EdgeInsetsDirectional.fromSTEB(
+                                                      5.0, 0.0, 5.0, 0.0),
+                                              child: Text(
+                                                valueOrDefault<String>(
+                                                  widget.yearOf,
+                                                  '-',
+                                                ),
+                                                style:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily: 'Poppins',
+                                                          color:
+                                                              Color(0xFF212427),
+                                                          fontSize: 13.0,
+                                                        ),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
                             ),

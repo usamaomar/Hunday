@@ -139,6 +139,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Already have an account?  ',
       'ar': 'هل لديك حساب؟  ',
     },
+    'n5n9ddjw4q': {
+      'en': 'Press here to login using your saved biometrics',
+      'ar': 'اضغط هنا لأستخدام بصمة الاصبع',
+    },
     'auqle7ga': {
       'en': 'Sign Up',
       'ar': 'اذا اشترك الأن',

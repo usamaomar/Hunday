@@ -48,113 +48,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
       setState(() {
         FFAppState().isDarkMode = false;
       });
-      if (FFAppState().isFingerEnabled == true ? true : false) {
-        final _localAuth = LocalAuthentication();
-        bool _isBiometricSupported = await _localAuth.isDeviceSupported();
-        bool canCheckBiometrics = await _localAuth.canCheckBiometrics;
-        if (_isBiometricSupported && canCheckBiometrics) {
-          _model.outs = await _localAuth.authenticate(
-              localizedReason: FFLocalizations.of(context).getText(
-                'c2pz80f3' /* we would like to take biometri... */,
-              ),
-              options: const AuthenticationOptions(biometricOnly: true));
-          setState(() {});
-        }
 
-        if (_model.outs == true) {
-          _model.loginApiRes5 = await LoginApiCall.call(
-            phone: FFAppState().biomatricDtateModel.phoneNumber.substring(1) == '0' ? FFAppState().biomatricDtateModel.phoneNumber : '0${FFAppState().biomatricDtateModel.phoneNumber}',
-            password: FFAppState().biomatricDtateModel.password,
-            fcm: FFAppState().FCM,
-          );
-          if ((_model.loginApiRes5?.succeeded ?? true)) {
-            setState(() {
-              FFAppState().userModel =
-                  UserModelStruct.maybeFromMap(getJsonField(
-                (_model.loginApiRes5?.jsonBody ?? ''),
-                r'''$.user''',
-              ))!;
-            });
-            setState(() {
-              FFAppState().biomatricDtateModel = BiomatricModelStruct(
-                phoneNumber: _model.editTextValuesModel.textController.text,
-                password: _model.textController.text,
-              );
-            });
-            if (FFAppState().userModel.token != null &&
-                FFAppState().userModel.token != '') {
-              setState(() {
-                FFAppState().password = _model.textController.text;
-              });
-            } else {
-              await showDialog(
-                context: context,
-                builder: (alertDialogContext) {
-                  return AlertDialog(
-                    title: Text(FFLocalizations.of(context).getVariableText(
-                      enText: 'Error',
-                      arText: 'مشكلة خادم',
-                    )),
-                    content: Text(FFLocalizations.of(context).getVariableText(
-                      enText: 'Bad Access',
-                      arText: 'عملية دخول خاطئة',
-                    )),
-                    actions: [
-                      TextButton(
-                        onPressed: () => Navigator.pop(alertDialogContext),
-                        child: Text(FFLocalizations.of(context).getVariableText(
-                          enText: 'Ok',
-                          arText: 'حسنا',
-                        )),
-                      ),
-                    ],
-                  );
-                },
-              );
-              return;
-            }
-
-            if (Navigator.of(context).canPop()) {
-              context.pop();
-            }
-            context.pushReplacementNamed(
-              'HomeScreen',
-              extra: <String, dynamic>{
-                kTransitionInfoKey: TransitionInfo(
-                  hasTransition: true,
-                  transitionType: PageTransitionType.fade,
-                  duration: Duration(milliseconds: 0),
-                ),
-              },
-            );
-
-            return;
-          } else {
-            await showDialog(
-              context: context,
-              builder: (dialogContext) {
-                return Dialog(
-                  insetPadding: EdgeInsets.zero,
-                  backgroundColor: Colors.transparent,
-                  alignment: AlignmentDirectional(0.0, 0.0)
-                      .resolve(Directionality.of(context)),
-                  child: GestureDetector(
-                    onTap: () => _model.unfocusNode.canRequestFocus
-                        ? FocusScope.of(context)
-                            .requestFocus(_model.unfocusNode)
-                        : FocusScope.of(context).unfocus(),
-                    child: Modal06BasicInformationWidget(
-                      body: (_model.loginApiRes5?.bodyText ?? ''),
-                    ),
-                  ),
-                );
-              },
-            ).then((value) => setState(() {}));
-
-            return;
-          }
-        }
-      }
     });
 
     _model.textController ??= TextEditingController();
@@ -884,6 +778,169 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                         ),
                                       ),
                                     ],
+                                  ),
+                                ),
+                                Visibility(
+                                  visible: FFAppState().isFingerEnabled,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional
+                                        .fromSTEB(
+                                        20.0, 20.0, 20.0, 8.0),
+                                    child: InkWell(
+                                      onTap: () async{
+                                        if (FFAppState().isFingerEnabled == true ? true : false) {
+                                          final _localAuth = LocalAuthentication();
+                                          bool _isBiometricSupported = await _localAuth.isDeviceSupported();
+                                          bool canCheckBiometrics = await _localAuth.canCheckBiometrics;
+                                          if (_isBiometricSupported && canCheckBiometrics) {
+                                            _model.outs = await _localAuth.authenticate(
+                                                localizedReason: FFLocalizations.of(context).getText(
+                                                  'c2pz80f3' /* we would like to take biometri... */,
+                                                ),
+                                                options: const AuthenticationOptions(biometricOnly: true));
+                                            setState(() {});
+                                          }
+
+                                          if (_model.outs == true) {
+                                            _model.loginApiRes5 = await LoginApiCall.call(
+                                              phone: FFAppState().biomatricDtateModel.phoneNumber,
+                                              password: FFAppState().biomatricDtateModel.password,
+                                              fcm: FFAppState().FCM,
+                                            );
+                                            if ((_model.loginApiRes5?.succeeded ?? true)) {
+                                              setState(() {
+                                                FFAppState().userModel =
+                                                UserModelStruct.maybeFromMap(getJsonField(
+                                                  (_model.loginApiRes5?.jsonBody ?? ''),
+                                                  r'''$.user''',
+                                                ))!;
+                                              });
+                                              setState(() {
+                                                FFAppState().biomatricDtateModel = BiomatricModelStruct(
+                                                  phoneNumber: _model.editTextValuesModel.textController.text,
+                                                  password: _model.textController.text,
+                                                );
+                                              });
+                                              if (FFAppState().userModel.token != null &&
+                                                  FFAppState().userModel.token != '') {
+                                                setState(() {
+                                                  FFAppState().password = _model.textController.text;
+                                                });
+                                              } else {
+                                                await showDialog(
+                                                context: context,
+                                                builder: (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(FFLocalizations.of(context).getVariableText(
+                                                      enText: 'Error',
+                                                      arText: 'مشكلة خادم',
+                                                    )),
+                                                    content: Text(FFLocalizations.of(context).getVariableText(
+                                                      enText: 'Bad Access',
+                                                      arText: 'عملية دخول خاطئة',
+                                                    )),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () => Navigator.pop(alertDialogContext),
+                                                        child: Text(FFLocalizations.of(context).getVariableText(
+                                                          enText: 'Ok',
+                                                          arText: 'حسنا',
+                                                        )),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                                );
+                                                return;
+                                              }
+
+                                              if (Navigator.of(context).canPop()) {
+                                                context.pop();
+                                              }
+                                              context.pushReplacementNamed(
+                                                'HomeScreen',
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey: TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType: PageTransitionType.fade,
+                                                    duration: Duration(milliseconds: 0),
+                                                  ),
+                                                },
+                                              );
+
+                                              return;
+                                            } else {
+                                              await showDialog(
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return Dialog(
+                                                  insetPadding: EdgeInsets.zero,
+                                                  backgroundColor: Colors.transparent,
+                                                  alignment: AlignmentDirectional(0.0, 0.0)
+                                                      .resolve(Directionality.of(context)),
+                                                  child: GestureDetector(
+                                                    onTap: () => _model.unfocusNode.canRequestFocus
+                                                        ? FocusScope.of(context)
+                                                        .requestFocus(_model.unfocusNode)
+                                                        : FocusScope.of(context).unfocus(),
+                                                    child: Modal06BasicInformationWidget(
+                                                      body: (_model.loginApiRes5?.bodyText ?? ''),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              ).then((value) => setState(() {}));
+
+                                              return;
+                                            }
+                                          }
+                                        }
+                                      },
+                                      child: ClipRRect(
+                                        borderRadius:
+                                        BorderRadius.circular(0.0),
+                                        child: SvgPicture.asset(
+                                          'assets/images/fings.svg',
+                                          fit: BoxFit.scaleDown,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                                Visibility(
+                                  visible: FFAppState().isFingerEnabled,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        30.0, 40.0, 30.0, 0.0),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.max,
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        RichText(
+                                          textScaleFactor:
+                                          MediaQuery.of(context)
+                                              .textScaleFactor,
+                                          text: TextSpan(
+                                            children: [
+                                              TextSpan(
+                                                text:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                                  'n5n9ddjw4q' /* Already have an account?   */,
+                                                ),
+                                                style: TextStyle(),
+                                              ),
+                                            ],
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                              fontFamily: 'Heebo',
+                                              useGoogleFonts: false,
+                                            ),
+                                          ),
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ],

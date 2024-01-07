@@ -3,13 +3,11 @@ import '/components/my_rating_component_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'my_appointment_page_model.dart';
 export 'my_appointment_page_model.dart';
@@ -199,249 +197,252 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                         itemCount: lisy.length,
                                         itemBuilder: (context, lisyIndex) {
                                           final lisyItem = lisy[lisyIndex];
-                                          return Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 30.0, 30.0, 0.0),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                Container(
-                                                  decoration: BoxDecoration(
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .secondaryBackground,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            20.0),
-                                                  ),
-                                                  child: Stack(
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    30.0,
-                                                                    20.0,
-                                                                    30.0,
-                                                                    20.0),
-                                                        child: Column(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          children: [
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          15.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                children: [
-                                                                  Text(
-                                                                    FFLocalizations.of(
-                                                                            context)
-                                                                        .getText(
-                                                                      '0hq0yfi8' /* No : */,
+                                          return Visibility(
+                                            visible: lisyItem['status'] == 'Completed',
+                                            child: Padding(
+                                              padding:
+                                                  EdgeInsetsDirectional.fromSTEB(
+                                                      30.0, 30.0, 30.0, 0.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              20.0),
+                                                    ),
+                                                    child: Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      30.0,
+                                                                      20.0,
+                                                                      30.0,
+                                                                      20.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                                MainAxisSize.max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            15.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                              context)
+                                                                          .getText(
+                                                                        '0hq0yfi8' /* No : */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Rajdhani',
+                                                                            color:
+                                                                                Color(0xFF092853),
+                                                                            fontSize:
+                                                                                16.0,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                          ),
                                                                     ),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Rajdhani',
-                                                                          color:
-                                                                              Color(0xFF092853),
-                                                                          fontSize:
-                                                                              16.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
-                                                                  ),
-                                                                  Text(
-                                                                    getJsonField(
-                                                                      lisyItem,
-                                                                      r'''$.maintenance_type''',
-                                                                    ).toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Rajdhani',
-                                                                          color:
-                                                                              Color(0xFF092853),
-                                                                          fontSize:
-                                                                              16.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
-                                                                  ),
-                                                                ],
-                                                              ),
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                Expanded(
-                                                                  child: Text(
-                                                                    getJsonField(
-                                                                      lisyItem,
-                                                                      r'''$.details''',
-                                                                    ).toString(),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Heebo',
-                                                                          color:
-                                                                              Colors.black,
-                                                                          fontSize:
-                                                                              14.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                          useGoogleFonts:
-                                                                              false,
-                                                                        ),
-                                                                  ),
+                                                                    Text(
+                                                                      getJsonField(
+                                                                        lisyItem,
+                                                                        r'''$.maintenance_type''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Rajdhani',
+                                                                            color:
+                                                                                Color(0xFF092853),
+                                                                            fontSize:
+                                                                                16.0,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                          ),
+                                                                    ),
+                                                                  ],
                                                                 ),
-                                                              ],
-                                                            ),
-                                                            Padding(
-                                                              padding:
-                                                                  EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          10.0,
-                                                                          0.0,
-                                                                          0.0),
-                                                              child: Row(
+                                                              ),
+                                                              Row(
                                                                 mainAxisSize:
                                                                     MainAxisSize
                                                                         .max,
                                                                 children: [
-                                                                  Icon(
-                                                                    Icons
-                                                                        .calendar_month,
-                                                                    color: Color(
-                                                                        0xFF092853),
-                                                                    size: 24.0,
-                                                                  ),
-                                                                  Text(
-                                                                    functions
-                                                                        .appointmentDateConverter(
-                                                                            getJsonField(
-                                                                      lisyItem,
-                                                                      r'''$.date''',
-                                                                    ).toString()),
-                                                                    style: FlutterFlowTheme.of(
-                                                                            context)
-                                                                        .bodyMedium
-                                                                        .override(
-                                                                          fontFamily:
-                                                                              'Rajdhani',
-                                                                          color:
-                                                                              Color(0xFF092853),
-                                                                          fontSize:
-                                                                              16.0,
-                                                                          fontWeight:
-                                                                              FontWeight.bold,
-                                                                        ),
+                                                                  Expanded(
+                                                                    child: Text(
+                                                                      getJsonField(
+                                                                        lisyItem,
+                                                                        r'''$.details''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Heebo',
+                                                                            color:
+                                                                                Colors.black,
+                                                                            fontSize:
+                                                                                14.0,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                            useGoogleFonts:
+                                                                                false,
+                                                                          ),
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ),
-                                                          ],
-                                                        ),
-                                                      ),
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    15.0,
-                                                                    20.0,
-                                                                    15.0,
-                                                                    20.0),
-                                                        child: Row(
-                                                          mainAxisSize:
-                                                              MainAxisSize.max,
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                  .spaceBetween,
-                                                          crossAxisAlignment:
-                                                              CrossAxisAlignment
-                                                                  .start,
-                                                          children: [
-                                                            Flexible(
-                                                              child: Column(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                crossAxisAlignment:
-                                                                    CrossAxisAlignment
-                                                                        .start,
-                                                                children: [
-                                                                  SizedBox(
-                                                                    width:
-                                                                        135.0,
-                                                                    child:
-                                                                        Divider(
-                                                                      height:
-                                                                          0.0,
-                                                                      thickness:
-                                                                          8.0,
+                                                              Padding(
+                                                                padding:
+                                                                    EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                            0.0,
+                                                                            10.0,
+                                                                            0.0,
+                                                                            0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .calendar_month,
                                                                       color: Color(
                                                                           0xFF092853),
+                                                                      size: 24.0,
                                                                     ),
-                                                                  ),
-                                                                  Row(
-                                                                    mainAxisSize:
-                                                                        MainAxisSize
-                                                                            .min,
-                                                                    children: [
-                                                                      SizedBox(
+                                                                    Text(
+                                                                      functions
+                                                                          .appointmentDateConverter(
+                                                                              getJsonField(
+                                                                        lisyItem,
+                                                                        r'''$.date''',
+                                                                      ).toString()),
+                                                                      style: FlutterFlowTheme.of(
+                                                                              context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                            fontFamily:
+                                                                                'Rajdhani',
+                                                                            color:
+                                                                                Color(0xFF092853),
+                                                                            fontSize:
+                                                                                16.0,
+                                                                            fontWeight:
+                                                                                FontWeight.bold,
+                                                                          ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      15.0,
+                                                                      20.0,
+                                                                      15.0,
+                                                                      20.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                                MainAxisSize.max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
+                                                            crossAxisAlignment:
+                                                                CrossAxisAlignment
+                                                                    .start,
+                                                            children: [
+                                                              Flexible(
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  crossAxisAlignment:
+                                                                      CrossAxisAlignment
+                                                                          .start,
+                                                                  children: [
+                                                                    SizedBox(
+                                                                      width:
+                                                                          135.0,
+                                                                      child:
+                                                                          Divider(
                                                                         height:
-                                                                            100.0,
-                                                                        child:
-                                                                            VerticalDivider(
-                                                                          width:
-                                                                              0.0,
-                                                                          thickness:
-                                                                              8.0,
-                                                                          color:
-                                                                              Color(0xFF092853),
-                                                                        ),
+                                                                            0.0,
+                                                                        thickness:
+                                                                            8.0,
+                                                                        color: Color(
+                                                                            0xFF092853),
                                                                       ),
-                                                                    ],
+                                                                    ),
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                          MainAxisSize
+                                                                              .min,
+                                                                      children: [
+                                                                        SizedBox(
+                                                                          height:
+                                                                              100.0,
+                                                                          child:
+                                                                              VerticalDivider(
+                                                                            width:
+                                                                                0.0,
+                                                                            thickness:
+                                                                                8.0,
+                                                                            color:
+                                                                                Color(0xFF092853),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                    MainAxisSize
+                                                                        .max,
+                                                                children: [
+                                                                  MyRatingComponentWidget(
+                                                                    key: Key(
+                                                                        'Keyi2n_${lisyIndex}_of_${lisy.length}'),
                                                                   ),
                                                                 ],
                                                               ),
-                                                            ),
-                                                            Row(
-                                                              mainAxisSize:
-                                                                  MainAxisSize
-                                                                      .max,
-                                                              children: [
-                                                                MyRatingComponentWidget(
-                                                                  key: Key(
-                                                                      'Keyi2n_${lisyIndex}_of_${lisy.length}'),
-                                                                ),
-                                                              ],
-                                                            ),
-                                                          ],
+                                                            ],
+                                                          ),
                                                         ),
-                                                      ),
-                                                    ],
+                                                      ],
+                                                    ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
                                           );
                                         },
@@ -450,8 +451,580 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                   );
                                 },
                               ),
-                              Container(),
-                              Container(),
+                              FutureBuilder<ApiCallResponse>(
+                                future: GetMyAppointmentApiCall.call(
+                                  token: FFAppState().userModel.token,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: SpinKitDualRing(
+                                          color: Color(0xFF092853),
+                                          size: 50.0,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final listViewGetMyAppointmentApiResponse =
+                                  snapshot.data!;
+                                  return Builder(
+                                    builder: (context) {
+                                      final lisy = getJsonField(
+                                        listViewGetMyAppointmentApiResponse
+                                            .jsonBody,
+                                        r'''$.myAppointment''',
+                                      ).toList();
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: lisy.length,
+                                        itemBuilder: (context, lisyIndex) {
+                                          final lisyItem = lisy[lisyIndex];
+                                          return Visibility(
+                                            visible: lisyItem['status'] == 'Canceled',
+                                            child: Padding(
+                                              padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 30.0, 30.0, 0.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme.of(
+                                                          context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          20.0),
+                                                    ),
+                                                    child: Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                              30.0,
+                                                              20.0,
+                                                              30.0,
+                                                              20.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                            MainAxisSize.max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    0.0,
+                                                                    15.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                          context)
+                                                                          .getText(
+                                                                        '0hq0yfi8' /* No : */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Rajdhani',
+                                                                        color:
+                                                                        Color(0xFF092853),
+                                                                        fontSize:
+                                                                        16.0,
+                                                                        fontWeight:
+                                                                        FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      getJsonField(
+                                                                        lisyItem,
+                                                                        r'''$.maintenance_type''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Rajdhani',
+                                                                        color:
+                                                                        Color(0xFF092853),
+                                                                        fontSize:
+                                                                        16.0,
+                                                                        fontWeight:
+                                                                        FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                                children: [
+                                                                  Expanded(
+                                                                    child: Text(
+                                                                      getJsonField(
+                                                                        lisyItem,
+                                                                        r'''$.details''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Heebo',
+                                                                        color:
+                                                                        Colors.black,
+                                                                        fontSize:
+                                                                        14.0,
+                                                                        fontWeight:
+                                                                        FontWeight.bold,
+                                                                        useGoogleFonts:
+                                                                        false,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .calendar_month,
+                                                                      color: Color(
+                                                                          0xFF092853),
+                                                                      size: 24.0,
+                                                                    ),
+                                                                    Text(
+                                                                      functions
+                                                                          .appointmentDateConverter(
+                                                                          getJsonField(
+                                                                            lisyItem,
+                                                                            r'''$.date''',
+                                                                          ).toString()),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Rajdhani',
+                                                                        color:
+                                                                        Color(0xFF092853),
+                                                                        fontSize:
+                                                                        16.0,
+                                                                        fontWeight:
+                                                                        FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                              15.0,
+                                                              20.0,
+                                                              15.0,
+                                                              20.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                            MainAxisSize.max,
+                                                            mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                            crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                            children: [
+                                                              Flexible(
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                                  children: [
+                                                                    SizedBox(
+                                                                      width:
+                                                                      135.0,
+                                                                      child:
+                                                                      Divider(
+                                                                        height:
+                                                                        0.0,
+                                                                        thickness:
+                                                                        8.0,
+                                                                        color: Color(
+                                                                            0xFF092853),
+                                                                      ),
+                                                                    ),
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                      children: [
+                                                                        SizedBox(
+                                                                          height:
+                                                                          100.0,
+                                                                          child:
+                                                                          VerticalDivider(
+                                                                            width:
+                                                                            0.0,
+                                                                            thickness:
+                                                                            8.0,
+                                                                            color:
+                                                                            Color(0xFF092853),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                                children: [
+                                                                  MyRatingComponentWidget(
+                                                                    key: Key(
+                                                                        'Keyi2n_${lisyIndex}_of_${lisy.length}'),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
+                              FutureBuilder<ApiCallResponse>(
+                                future: GetMyAppointmentApiCall.call(
+                                  token: FFAppState().userModel.token,
+                                ),
+                                builder: (context, snapshot) {
+                                  // Customize what your widget looks like when it's loading.
+                                  if (!snapshot.hasData) {
+                                    return Center(
+                                      child: SizedBox(
+                                        width: 50.0,
+                                        height: 50.0,
+                                        child: SpinKitDualRing(
+                                          color: Color(0xFF092853),
+                                          size: 50.0,
+                                        ),
+                                      ),
+                                    );
+                                  }
+                                  final listViewGetMyAppointmentApiResponse =
+                                  snapshot.data!;
+                                  return Builder(
+                                    builder: (context) {
+                                      final lisy = getJsonField(
+                                        listViewGetMyAppointmentApiResponse
+                                            .jsonBody,
+                                        r'''$.myAppointment''',
+                                      ).toList();
+                                      return ListView.builder(
+                                        padding: EdgeInsets.zero,
+                                        scrollDirection: Axis.vertical,
+                                        itemCount: lisy.length,
+                                        itemBuilder: (context, lisyIndex) {
+                                          final lisyItem = lisy[lisyIndex];
+                                          return Visibility(
+                                            visible: lisyItem['status'] == 'Requested',
+                                            child: Padding(
+                                              padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 30.0, 30.0, 0.0),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  Container(
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme.of(
+                                                          context)
+                                                          .secondaryBackground,
+                                                      borderRadius:
+                                                      BorderRadius.circular(
+                                                          20.0),
+                                                    ),
+                                                    child: Stack(
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                              30.0,
+                                                              20.0,
+                                                              30.0,
+                                                              20.0),
+                                                          child: Column(
+                                                            mainAxisSize:
+                                                            MainAxisSize.max,
+                                                            children: [
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    0.0,
+                                                                    15.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  children: [
+                                                                    Text(
+                                                                      FFLocalizations.of(
+                                                                          context)
+                                                                          .getText(
+                                                                        '0hq0yfi8' /* No : */,
+                                                                      ),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Rajdhani',
+                                                                        color:
+                                                                        Color(0xFF092853),
+                                                                        fontSize:
+                                                                        16.0,
+                                                                        fontWeight:
+                                                                        FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                    Text(
+                                                                      getJsonField(
+                                                                        lisyItem,
+                                                                        r'''$.maintenance_type''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Rajdhani',
+                                                                        color:
+                                                                        Color(0xFF092853),
+                                                                        fontSize:
+                                                                        16.0,
+                                                                        fontWeight:
+                                                                        FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                                children: [
+                                                                  Expanded(
+                                                                    child: Text(
+                                                                      getJsonField(
+                                                                        lisyItem,
+                                                                        r'''$.details''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Heebo',
+                                                                        color:
+                                                                        Colors.black,
+                                                                        fontSize:
+                                                                        14.0,
+                                                                        fontWeight:
+                                                                        FontWeight.bold,
+                                                                        useGoogleFonts:
+                                                                        false,
+                                                                      ),
+                                                                    ),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                              Padding(
+                                                                padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                    0.0,
+                                                                    10.0,
+                                                                    0.0,
+                                                                    0.0),
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  children: [
+                                                                    Icon(
+                                                                      Icons
+                                                                          .calendar_month,
+                                                                      color: Color(
+                                                                          0xFF092853),
+                                                                      size: 24.0,
+                                                                    ),
+                                                                    Text(
+                                                                      functions
+                                                                          .appointmentDateConverter(
+                                                                          getJsonField(
+                                                                            lisyItem,
+                                                                            r'''$.date''',
+                                                                          ).toString()),
+                                                                      style: FlutterFlowTheme.of(
+                                                                          context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                        fontFamily:
+                                                                        'Rajdhani',
+                                                                        color:
+                                                                        Color(0xFF092853),
+                                                                        fontSize:
+                                                                        16.0,
+                                                                        fontWeight:
+                                                                        FontWeight.bold,
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                              15.0,
+                                                              20.0,
+                                                              15.0,
+                                                              20.0),
+                                                          child: Row(
+                                                            mainAxisSize:
+                                                            MainAxisSize.max,
+                                                            mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
+                                                            crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                            children: [
+                                                              Flexible(
+                                                                child: Column(
+                                                                  mainAxisSize:
+                                                                  MainAxisSize
+                                                                      .max,
+                                                                  crossAxisAlignment:
+                                                                  CrossAxisAlignment
+                                                                      .start,
+                                                                  children: [
+                                                                    SizedBox(
+                                                                      width:
+                                                                      135.0,
+                                                                      child:
+                                                                      Divider(
+                                                                        height:
+                                                                        0.0,
+                                                                        thickness:
+                                                                        8.0,
+                                                                        color: Color(
+                                                                            0xFF092853),
+                                                                      ),
+                                                                    ),
+                                                                    Row(
+                                                                      mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .min,
+                                                                      children: [
+                                                                        SizedBox(
+                                                                          height:
+                                                                          100.0,
+                                                                          child:
+                                                                          VerticalDivider(
+                                                                            width:
+                                                                            0.0,
+                                                                            thickness:
+                                                                            8.0,
+                                                                            color:
+                                                                            Color(0xFF092853),
+                                                                          ),
+                                                                        ),
+                                                                      ],
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                              Row(
+                                                                mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                                children: [
+                                                                  MyRatingComponentWidget(
+                                                                    key: Key(
+                                                                        'Keyi2n_${lisyIndex}_of_${lisy.length}'),
+                                                                  ),
+                                                                ],
+                                                              ),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      );
+                                    },
+                                  );
+                                },
+                              ),
                             ],
                           ),
                         ),
