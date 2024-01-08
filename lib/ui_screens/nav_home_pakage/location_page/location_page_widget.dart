@@ -159,7 +159,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                               0,
                                               0,
                                               0,
-                                              60.0,
+                                              75.0,
                                             ),
                                             shrinkWrap: true,
                                             scrollDirection: Axis.vertical,

@@ -137,7 +137,7 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
                                   0,
                                   0,
                                   0,
-                                  55.0,
+                                  75.0,
                                 ),
                                 shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
