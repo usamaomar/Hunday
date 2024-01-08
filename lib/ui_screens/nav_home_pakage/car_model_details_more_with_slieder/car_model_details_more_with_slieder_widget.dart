@@ -148,7 +148,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                   children: [
                     Padding(
                       padding:
-                      EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+                      EdgeInsetsDirectional.fromSTEB(0.0, 100, 0.0, 0.0),
                       child: Builder(
                         builder: (context) {
                           final listOfImages =getJsonField(
@@ -158,14 +158,11 @@ class _CarModelDetailsMoreWithSliederWidgetState
                           );
                           return Container(
                             width: double.infinity,
-                            height: 300.0,
+                            height: 240.0,
                             child: CarouselSlider.builder(
                               itemCount: listOfImages.length,
                               itemBuilder: (context, listOfImagesIndex, _) {
-                                // final listOfImagesItem =
-                                //     listOfImages[listOfImagesIndex];
                                 return ClipRRect(
-                                  borderRadius: BorderRadius.circular(8.0),
                                   child: Image.network(
                                     '${listOfImages[listOfImagesIndex]}',
                                     width: 300.0,
@@ -188,6 +185,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                 initialPage: min(1, listOfImages.length - 1),
                                 viewportFraction: 1.0,
                                 disableCenter: true,
+                                pageSnapping: true,
                                 enlargeCenterPage: true,
                                 enlargeFactor: 1.0,
                                 enableInfiniteScroll: true,
@@ -207,26 +205,23 @@ class _CarModelDetailsMoreWithSliederWidgetState
                         },
                       ),
                     ),
-                    Opacity(
-                      opacity: 0.9,
-                      child: Container(
-                        width: double.infinity,
-                        height: 100.0,
-                        decoration: BoxDecoration(
-                          color: FlutterFlowTheme
-                              .of(context)
-                              .white,
-                          boxShadow: [
-                            BoxShadow(
-                              blurRadius: 50.0,
-                              color: FlutterFlowTheme
-                                  .of(context)
-                                  .white,
-                              offset: Offset(0.0, 55.0),
-                              spreadRadius: 15.0,
-                            )
-                          ],
-                        ),
+                    Container(
+                      width: double.infinity,
+                      height: 50.0,
+                      decoration: BoxDecoration(
+                        color: FlutterFlowTheme
+                            .of(context)
+                            .white,
+                        boxShadow: [
+                          BoxShadow(
+                            blurRadius: 120.0,
+                            color: FlutterFlowTheme
+                                .of(context)
+                                .white,
+                            offset: Offset(0.0, 15.0),
+                            spreadRadius: 130.0,
+                          )
+                        ],
                       ),
                     ),
                   ],
@@ -234,9 +229,9 @@ class _CarModelDetailsMoreWithSliederWidgetState
                 Align(
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
-                    height: 500.0,
+                    height: 400.0,
                     constraints: BoxConstraints(
-                      maxHeight: 600.0,
+                      maxHeight: 500.0,
                     ),
                     decoration: BoxDecoration(),
                     child: Column(
