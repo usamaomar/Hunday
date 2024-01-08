@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -318,7 +319,22 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                         EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 0.0),
                     child: FFButtonWidget(
                       onPressed: () async {
-                        Navigator.pop(context);
+                        _model.apiResultvrn = await TestDriveApiCall.call(
+                          token: FFAppState().userModel.token,
+                          date: dateTimeFormat(
+                            'yyyy-MM-dd',
+                            getCurrentTimestamp,
+                            locale: FFLocalizations.of(context).languageCode,
+                          ),
+                          time: '00:00',
+                          note: _model.textController3.text,
+                          carModelId: 0,
+                        );
+                        if ((_model.apiResultvrn?.succeeded ?? true)) {
+                          Navigator.pop(context);
+                        }
+
+                        setState(() {});
                       },
                       text: FFLocalizations.of(context).getText(
                         '4nqcrahs' /* Send */,

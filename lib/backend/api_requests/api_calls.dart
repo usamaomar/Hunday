@@ -260,7 +260,6 @@ class TestDriveApiCall {
     String? time = '',
     String? token = '',
     String? note = '',
-    String? status = '',
     int? carModelId,
   }) async {
     final ffApiRequestBody = '''
@@ -268,8 +267,7 @@ class TestDriveApiCall {
   "car_model_id": ${carModelId},
   "date": "${date}",
   "time": "${time}",
-  "note": "${note}",
-  "status": "${status}"
+  "note": "${note}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'testDriveApi',
