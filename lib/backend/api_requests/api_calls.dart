@@ -271,7 +271,7 @@ class TestDriveApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'testDriveApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/testDrive/store',
+      apiUrl: 'https://hyundai.completechaintech.com/api/testDrive',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',

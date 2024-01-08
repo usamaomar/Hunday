@@ -12,7 +12,10 @@ import 'test_drive_component_model.dart';
 export 'test_drive_component_model.dart';
 
 class TestDriveComponentWidget extends StatefulWidget {
-  const TestDriveComponentWidget({Key? key}) : super(key: key);
+
+  final int modelId;
+
+    TestDriveComponentWidget({Key? key,required this.modelId}) : super(key: key);
 
   @override
   _TestDriveComponentWidgetState createState() =>
@@ -324,15 +327,16 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                           date: dateTimeFormat(
                             'yyyy-MM-dd',
                             getCurrentTimestamp,
-                            locale: FFLocalizations.of(context).languageCode,
+                            locale: 'en',
                           ),
                           time: '00:00',
                           note: _model.textController3.text,
-                          carModelId: 0,
+                          carModelId: widget.modelId,
                         );
-                        if ((_model.apiResultvrn?.succeeded ?? true)) {
-                          Navigator.pop(context);
-                        }
+                        Navigator.pop(context);
+                        // if ((_model.apiResultvrn?.succeeded ?? true)) {
+                        //   Navigator.pop(context);
+                        // }
 
                         setState(() {});
                       },

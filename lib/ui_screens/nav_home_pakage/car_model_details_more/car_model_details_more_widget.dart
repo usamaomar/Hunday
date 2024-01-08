@@ -803,7 +803,12 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                         child: Container(
                                                           height: 500.0,
                                                           child:
-                                                              TestDriveComponentWidget(),
+                                                              TestDriveComponentWidget(modelId: getJsonField(
+                                                                (_model.apiResultrr9
+                                                                    ?.jsonBody ??
+                                                                    ''),
+                                                                r'''$.car.car_model_id''',
+                                                              ),),
                                                         ),
                                                       );
                                                     },
