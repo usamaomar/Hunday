@@ -37,7 +37,6 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => HyndayAppBarModel());
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -53,11 +52,11 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 5.0),
       child: ClipRRect(
         child: Container(
           width: double.infinity,
-          decoration: BoxDecoration(),
+          decoration: const BoxDecoration(),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             mainAxisAlignment: MainAxisAlignment.start,
@@ -70,14 +69,14 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -88,7 +87,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                               context.pushNamed(
                                 'MyProfilePage',
                                 extra: <String, dynamic>{
-                                  kTransitionInfoKey: TransitionInfo(
+                                  kTransitionInfoKey: const TransitionInfo(
                                     hasTransition: true,
                                     transitionType: PageTransitionType.fade,
                                     duration: Duration(milliseconds: 0),
@@ -113,7 +112,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                           showGeneralDialog(
                             context: context,
                             barrierDismissible: true,
-                            transitionDuration: Duration(milliseconds: 500),
+                            transitionDuration: const Duration(milliseconds: 500),
                             barrierLabel:
                                 MaterialLocalizations.of(context).dialogLabel,
                             barrierColor: Colors.black.withOpacity(0),
@@ -129,7 +128,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                         shrinkWrap: true,
                                         children: <Widget>[
                                           Padding(
-                                            padding: EdgeInsets.fromLTRB(
+                                            padding: const EdgeInsets.fromLTRB(
                                                 15, 20, 15, 20),
                                             child: Row(
                                               mainAxisAlignment:
@@ -150,7 +149,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                                       .override(
                                                         fontFamily: 'HeeboBold',
                                                         color:
-                                                            Color(0xFF092853),
+                                                            const Color(0xFF092853),
                                                         fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -158,10 +157,10 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                                       ),
                                                 ),
                                                 InkWell(
-                                                  onTap: (){
+                                                  onTap: () {
                                                     context.safePop();
                                                   },
-                                                  child: Icon(
+                                                  child: const Icon(
                                                     Icons.close_outlined,
                                                     color: Color(0xFF3D6398),
                                                     size: 24.0,
@@ -172,33 +171,54 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                           ),
                                           Container(
                                             width: 200,
-                                            margin: EdgeInsets.fromLTRB(
+                                            margin: const EdgeInsets.fromLTRB(
                                                 20, 0, 20, 0),
                                             height: 1,
                                             color: Color(0xFF3D6398),
                                           ),
-                                          ListTile(
-                                            leading: Icon(
-                                              Icons.notifications,
-                                              color: Color(0xFF3D6398),
-                                              size: 24.0,
-                                            ),
-                                            title: Text('Item 1'),
-                                            onTap: () => Navigator.of(context)
-                                                .pop('item1'),
-                                            subtitle: Text('Item 1' ,style: FlutterFlowTheme.of(
-                                                context)
-                                                .bodyMedium
-                                                .override(
-                                              fontFamily: 'Rajdhani',
-                                              color:
-                                              Color(0xFF092853),
-                                              fontSize: 12,
-                                              fontWeight:
-                                              FontWeight.normal,
-                                              useGoogleFonts: false,
-                                            )),
-                                          )
+                                          ListView.builder(
+                                              shrinkWrap: true,
+                                              padding: EdgeInsets.zero,
+                                              scrollDirection: Axis.vertical,
+                                              itemCount: FFAppState()
+                                                  .localNotificationLost
+                                                  .length,
+                                              itemBuilder: (context,
+                                                  completedListIndex) {
+                                                final listModel = FFAppState()
+                                                        .localNotificationLost[
+                                                    completedListIndex];
+                                                return ListTile(
+                                                  leading: const Icon(
+                                                    Icons.notifications,
+                                                    color: Color(0xFF3D6398),
+                                                    size: 24.0,
+                                                  ),
+                                                  title:
+                                                      Text(listModel.title),
+                                                  onTap: () =>
+                                                      Navigator.of(context)
+                                                          .pop('item1'),
+                                                  subtitle: Text(
+                                                      '${listModel.date} ${listModel.time}',
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Rajdhani',
+                                                                color: const Color(
+                                                                    0xFF092853),
+                                                                fontSize: 12,
+                                                                fontWeight:
+                                                                    FontWeight
+                                                                        .normal,
+                                                                useGoogleFonts:
+                                                                    false,
+                                                              )),
+                                                );
+                                              })
                                         ],
                                       ),
                                     ),
@@ -213,7 +233,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                   parent: animation,
                                   curve: Curves.easeOut,
                                 ).drive(Tween<Offset>(
-                                  begin: Offset(0, -1.0),
+                                  begin: const Offset(0, -1.0),
                                   end: Offset.zero,
                                 )),
                                 child: child,
@@ -221,7 +241,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                             },
                           );
                         },
-                        child: Icon(
+                        child: const Icon(
                           Icons.notifications_sharp,
                           color: Color(0xFF092853),
                           size: 30.0,
@@ -249,7 +269,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 0.0),
+                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -261,7 +281,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                       onTap: () async {
                         context.safePop();
                       },
-                      child: Icon(
+                      child: const Icon(
                         Icons.keyboard_backspace,
                         color: Color(0xFF092853),
                         size: 40.0,
@@ -269,10 +289,10 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
                       child: Text(
                         widget.appBarTitle!,
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontFamily: 'HeeboBold',
                           color: Colors.black,
                           fontWeight: FontWeight.bold,

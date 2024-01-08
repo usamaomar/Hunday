@@ -112,7 +112,9 @@ class FFAppState extends ChangeNotifier {
   late SharedPreferences prefs;
 
   List<String> _textFromFrontDrivLisn = [];
+
   List<String> get textFromFrontDrivLisn => _textFromFrontDrivLisn;
+
   set textFromFrontDrivLisn(List<String> _value) {
     _textFromFrontDrivLisn = _value;
   }
@@ -176,7 +178,9 @@ class FFAppState extends ChangeNotifier {
     ShopListItemModelStruct.fromSerializableMap(jsonDecode(
         '{\"image_url\":\"https://picsum.photos/seed/379/600\",\"title\":\"Hello World2\",\"description\":\"Hello World\"}'))
   ];
+
   List<ShopListItemModelStruct> get itemsShopList => _itemsShopList;
+
   set itemsShopList(List<ShopListItemModelStruct> _value) {
     _itemsShopList = _value;
   }
@@ -207,7 +211,9 @@ class FFAppState extends ChangeNotifier {
 
   UserModelStruct _userModel =
       UserModelStruct.fromSerializableMap(jsonDecode('{}'));
+
   UserModelStruct get userModel => _userModel;
+
   set userModel(UserModelStruct _value) {
     _userModel = _value;
     prefs.setString('ff_userModel', _value.serialize());
@@ -219,13 +225,17 @@ class FFAppState extends ChangeNotifier {
   }
 
   dynamic _reservedUserModel;
+
   dynamic get reservedUserModel => _reservedUserModel;
+
   set reservedUserModel(dynamic _value) {
     _reservedUserModel = _value;
   }
 
   List<dynamic> _newsModelJsonList = [];
+
   List<dynamic> get newsModelJsonList => _newsModelJsonList;
+
   set newsModelJsonList(List<dynamic> _value) {
     _newsModelJsonList = _value;
     prefs.setStringList(
@@ -266,7 +276,9 @@ class FFAppState extends ChangeNotifier {
   }
 
   List<dynamic> _sharedLocationsJsonList = [];
+
   List<dynamic> get sharedLocationsJsonList => _sharedLocationsJsonList;
+
   set sharedLocationsJsonList(List<dynamic> _value) {
     _sharedLocationsJsonList = _value;
   }
@@ -296,7 +308,9 @@ class FFAppState extends ChangeNotifier {
   }
 
   List<bool> _listOfOpendItems = [];
+
   List<bool> get listOfOpendItems => _listOfOpendItems;
+
   set listOfOpendItems(List<bool> _value) {
     _listOfOpendItems = _value;
   }
@@ -325,7 +339,9 @@ class FFAppState extends ChangeNotifier {
   }
 
   List<dynamic> _listOfPublicOffers = [];
+
   List<dynamic> get listOfPublicOffers => _listOfPublicOffers;
+
   set listOfPublicOffers(List<dynamic> _value) {
     _listOfPublicOffers = _value;
   }
@@ -354,13 +370,17 @@ class FFAppState extends ChangeNotifier {
   }
 
   bool _isDarkMode = false;
+
   bool get isDarkMode => _isDarkMode;
+
   set isDarkMode(bool _value) {
     _isDarkMode = _value;
   }
 
   List<bool> _listOfCatalogOpendBool = [true, false, false, false];
+
   List<bool> get listOfCatalogOpendBool => _listOfCatalogOpendBool;
+
   set listOfCatalogOpendBool(List<bool> _value) {
     _listOfCatalogOpendBool = _value;
   }
@@ -389,13 +409,17 @@ class FFAppState extends ChangeNotifier {
   }
 
   String _password = '';
+
   String get password => _password;
+
   set password(String _value) {
     _password = _value;
   }
 
   List<dynamic> _listOfCarsModelAppState = [];
+
   List<dynamic> get listOfCarsModelAppState => _listOfCarsModelAppState;
+
   set listOfCarsModelAppState(List<dynamic> _value) {
     _listOfCarsModelAppState = _value;
   }
@@ -425,7 +449,9 @@ class FFAppState extends ChangeNotifier {
   }
 
   List<dynamic> _socialMediaJsonObject = [];
+
   List<dynamic> get socialMediaJsonObject => _socialMediaJsonObject;
+
   set socialMediaJsonObject(List<dynamic> _value) {
     _socialMediaJsonObject = _value;
   }
@@ -454,7 +480,9 @@ class FFAppState extends ChangeNotifier {
   }
 
   List<dynamic> _sliderList = [];
+
   List<dynamic> get sliderList => _sliderList;
+
   set sliderList(List<dynamic> _value) {
     _sliderList = _value;
     prefs.setStringList(
@@ -495,19 +523,25 @@ class FFAppState extends ChangeNotifier {
   }
 
   dynamic _firstImage;
+
   dynamic get firstImage => _firstImage;
+
   set firstImage(dynamic _value) {
     _firstImage = _value;
   }
 
   dynamic _secendImage;
+
   dynamic get secendImage => _secendImage;
+
   set secendImage(dynamic _value) {
     _secendImage = _value;
   }
 
   BiomatricModelStruct _biomatricDtateModel = BiomatricModelStruct();
+
   BiomatricModelStruct get biomatricDtateModel => _biomatricDtateModel;
+
   set biomatricDtateModel(BiomatricModelStruct _value) {
     _biomatricDtateModel = _value;
     prefs.setString('ff_biomatricDtateModel', _value.serialize());
@@ -520,60 +554,76 @@ class FFAppState extends ChangeNotifier {
   }
 
   bool _isFingerEnabled = false;
+
   bool get isFingerEnabled => _isFingerEnabled;
+
   set isFingerEnabled(bool _value) {
     _isFingerEnabled = _value;
     prefs.setBool('ff_isFingerEnabled', _value);
   }
 
   String _currentLanguge = '';
+
   String get currentLanguge => _currentLanguge;
+
   set currentLanguge(String _value) {
     _currentLanguge = _value;
     prefs.setString('ff_currentLanguge', _value);
   }
 
   String _FCM = '';
+
   String get FCM => _FCM;
+
   set FCM(String _value) {
     _FCM = _value;
     prefs.setString('ff_FCM', _value);
   }
 
   int _badgeCount = 0;
+
   int get badgeCount => _badgeCount;
+
   set badgeCount(int _value) {
     _badgeCount = _value;
     prefs.setInt('ff_badgeCount', _value);
   }
 
   String _paymentStatus = '';
+
   String get paymentStatus => _paymentStatus;
+
   set paymentStatus(String _value) {
     _paymentStatus = _value;
     prefs.setString('ff_paymentStatus', _value);
   }
 
   String _selectedTimeFromHundai = '';
+
   String get selectedTimeFromHundai => _selectedTimeFromHundai;
+
   set selectedTimeFromHundai(String _value) {
     _selectedTimeFromHundai = _value;
     prefs.setString('ff_selectedTimeFromHundai', _value);
   }
 
   List<NotificationModelStruct> _localNotificationLost = [];
+
   List<NotificationModelStruct> get localNotificationLost =>
       _localNotificationLost;
+
   set localNotificationLost(List<NotificationModelStruct> _value) {
     _localNotificationLost = _value;
     prefs.setStringList(
         'ff_localNotificationLost', _value.map((x) => x.serialize()).toList());
   }
 
-  void addToLocalNotificationLost(NotificationModelStruct _value) {
-    _localNotificationLost.add(_value);
-    prefs.setStringList('ff_localNotificationLost',
-        _localNotificationLost.map((x) => x.serialize()).toList());
+  void addToLocalNotificationLost(NotificationModelStruct _value) async {
+    await SharedPreferences.getInstance().then((value) {
+      _localNotificationLost.add(_value);
+      value.setStringList('ff_localNotificationLost',
+          _localNotificationLost.map((x) => x.serialize()).toList());
+    });
   }
 
   void removeFromLocalNotificationLost(NotificationModelStruct _value) {

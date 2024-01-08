@@ -365,9 +365,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                           setState(() {
                                                             FFAppState()
                                                                     .currentLanguge =
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode;
+                                                                'en';
                                                           });
                                                         } else {
                                                           setAppLanguage(
@@ -375,9 +373,7 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                           setState(() {
                                                             FFAppState()
                                                                     .currentLanguge =
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .languageCode;
+                                                                'ar';
                                                           });
                                                         }
 

@@ -6,11 +6,11 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:hyundai/backend/schema/structs/index.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_web_plugins/url_strategy.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -20,12 +20,15 @@ import 'index.dart';
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
   try {
     if (message != null &&
-        message.notification != null &&
-        message.notification?.title != null &&
-        message.notification?.body != null) {
-
-
-
+        message.data != null &&
+        message.data['body'] != null &&
+        message.data['title'] != null) {
+      FFAppState().addToLocalNotificationLost(NotificationModelStruct(
+          title: message.data['title'],
+          body: message.data['body'],
+          isClicked: false,
+          date: getCurrentDate(),
+          time: getCurrentTime()));
     }
   } catch (ex) {
     ex.toString();
@@ -35,18 +38,32 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  // usePathUrlStrategy();
+
 
   final appState = FFAppState(); // Initialize FFAppState
-  await appState.initializePersistedState();
+  await appState.initializePersistedState().then((value) => {
+        FirebaseMessaging.onBackgroundMessage(
+            _firebaseMessagingBackgroundHandler)
+      });
   await FlutterFlowTheme.initialize();
-
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
 
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
     child: MyApp(),
   ));
+}
+
+String getCurrentDate() {
+  DateTime now = DateTime.now();
+  String formattedDate = DateFormat('dd / MM / yyyy').format(now);
+  return formattedDate;
+}
+
+// Method to return current time as "12 : 30 PM"
+String getCurrentTime() {
+  DateTime now = DateTime.now();
+  String formattedTime = DateFormat('hh : mm a').format(now);
+  return formattedTime;
 }
 
 class MyApp extends StatefulWidget {
@@ -182,15 +199,14 @@ class _NavBarPageState extends State<NavBarPage> {
             ),
           ),
           CustomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/images/Group_70661.svg',
-              width: 20.0,
-              height: 20.0,
-              fit: BoxFit.contain,
-            ),
-            badgeCount: FFAppState().badgeCount ,
-            showBadge: true
-          ),
+              icon: SvgPicture.asset(
+                'assets/images/Group_70661.svg',
+                width: 20.0,
+                height: 20.0,
+                fit: BoxFit.contain,
+              ),
+              badgeCount: FFAppState().badgeCount,
+              showBadge: true),
           CustomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/images/Group_72107.svg',
@@ -202,7 +218,6 @@ class _NavBarPageState extends State<NavBarPage> {
           CustomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/images/Group_72269.svg',
-
               width: 20.0,
               height: 20.0,
               fit: BoxFit.contain,
