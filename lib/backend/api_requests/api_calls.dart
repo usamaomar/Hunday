@@ -292,39 +292,27 @@ class TestDriveApiCall {
 class StoreVehicleApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
-    String? ownerName = '',
-    String? address = '',
     String? carType = '',
     String? carModelId = '',
     String? carCategoryId = '',
-    String? color = '',
     String? yearOfManufacturing = '',
     String? registeredUntil = '',
     String? plateNumber = '',
-    String? registrationNumber = '',
     String? vinNumber = '',
     String? engineCapacity = '',
-    String? engineNumber = '',
     String? fuelTypeId = '',
-    String? insuranceCompany = '',
   }) async {
     final ffApiRequestBody = '''
 {
-  "owner_name": "${ownerName}",
-  "address": "${address}",
   "car_type": "${carType}",
   "car_model_id": "${carModelId}",
   "car_category_id": "${carCategoryId}",
-  "color": "${color}",
   "year_of_manufacturing": "${yearOfManufacturing}",
   "registered_until": "${registeredUntil}",
   "plate_number": "${plateNumber}",
-  "registration_number": "${registrationNumber}",
   "vin_number": "${vinNumber}",
   "engine_capacity": "${engineCapacity}",
-  "engine_number": "${engineNumber}",
-  "fuel_type_id": "${fuelTypeId}",
-  "insurance_company": "${insuranceCompany}"
+  "fuel_type_id": "${fuelTypeId}"
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'StoreVehicleApi',

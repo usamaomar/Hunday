@@ -1094,22 +1094,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ListOfStringItemsComponent
   {
-    'ni09c8q4': {
-      'en': 'Owner Name',
-      'ar': 'اسم المالك',
-    },
-    'to0sa4cw': {
-      'en': '',
-      'ar': '',
-    },
-    'mcl5jxqb': {
-      'en': 'Address',
-      'ar': 'عنوان',
-    },
-    '2kcb6rjt': {
-      'en': '',
-      'ar': '',
-    },
     '6xtulesf': {
       'en': 'Car Type',
       'ar': 'نوع السيارة',
@@ -1134,14 +1118,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Search for an item...',
       'ar': '',
     },
-    'wokz9wj7': {
-      'en': 'Car Color',
-      'ar': 'لون السيارة',
-    },
-    'dfqt325v': {
-      'en': '',
-      'ar': '',
-    },
     'fgn805t4': {
       'en': 'Year of Manufacturing',
       'ar': 'سنة التصنيع',
@@ -1158,27 +1134,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': '',
       'ar': '',
     },
-    'f7qr92bp': {
-      'en': 'Registration Number',
-      'ar': 'رقم التسجيل',
-    },
-    'edmm0k4l': {
-      'en': '',
-      'ar': '',
-    },
     'py8x535l': {
       'en': 'VIN Number',
       'ar': 'رقم المركبة',
     },
     'ydf9otge': {
-      'en': '',
-      'ar': '',
-    },
-    'nwqbaqum': {
-      'en': 'Engine Number',
-      'ar': 'رقم المحرك',
-    },
-    'sb3bt8mg': {
       'en': '',
       'ar': '',
     },
@@ -1200,14 +1160,6 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'vw2ha60o': {
       'en': 'Search for an item...',
-      'ar': '',
-    },
-    'op6qsa7d': {
-      'en': 'Insurance Company',
-      'ar': 'شركة التأمين',
-    },
-    '1894vfo9': {
-      'en': '',
       'ar': '',
     },
     'ndp3se3p': {
