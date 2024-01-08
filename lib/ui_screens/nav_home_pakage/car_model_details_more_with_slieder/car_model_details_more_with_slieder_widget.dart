@@ -151,12 +151,11 @@ class _CarModelDetailsMoreWithSliederWidgetState
                       EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
                       child: Builder(
                         builder: (context) {
-                          final listOfImages = jsonDecode(getJsonField(
+                          final listOfImages =getJsonField(
                             (widget.carJsonItem ?? ''),
-                            r'''$.slider_image''',
+                            r'''$.full_slider''',
                             true,
-                          )[0]);
-
+                          );
                           return Container(
                             width: double.infinity,
                             height: 300.0,

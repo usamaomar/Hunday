@@ -1350,7 +1350,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'hzhy9oyu': {
       'en': 'Save',
-      'ar': 'يحفظ',
+      'ar': 'حفظ',
     },
   },
   // carDeteailsComponents
@@ -1427,7 +1427,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2ksh7kyf': {
       'en': 'Save',
-      'ar': 'يحفظ',
+      'ar': 'حفظ',
     },
   },
   // FromGallerCard
@@ -1454,7 +1454,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2l3ucgna': {
       'en': 'Save',
-      'ar': 'يحفظ',
+      'ar': 'حفظ',
     },
   },
   // EmptyListComponent

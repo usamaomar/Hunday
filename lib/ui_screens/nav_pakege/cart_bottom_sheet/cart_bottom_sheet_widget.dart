@@ -91,22 +91,16 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                   (_model.apiResultx44?.jsonBody ?? ''),
                   r'''$.cart''',
                 ))
-                .totalPrice;
+                .subTotal;
           });
-          FFAppState()
-              .update(() {
-            FFAppState().badgeCount =
-                _model.listOfCartItemsLocal.length;
+          FFAppState().update(() {
+            FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
           });
-        }else{
-          FFAppState()
-              .update(() {
-            FFAppState().badgeCount =
-                0;
+        } else {
+          FFAppState().update(() {
+            FFAppState().badgeCount = 0;
           });
         }
-
-
       }
     });
 
@@ -712,7 +706,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                                   (_model.apiResultx4488?.jsonBody ?? ''),
                                                                                   r'''$.cart''',
                                                                                 ))
-                                                                                .totalPrice;
+                                                                                .subTotal;
                                                                           });
                                                                           FFAppState()
                                                                               .update(() {
@@ -874,7 +868,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                                     (_model.apiResultx448866?.jsonBody ?? ''),
                                                                                     r'''$.cart''',
                                                                                   ))
-                                                                                  .totalPrice;
+                                                                                  .subTotal;
                                                                             });
                                                                           }
                                                                         }
@@ -951,122 +945,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                   highlightColor:
                                                       Colors.transparent,
                                                   onTap: () async {
-                                                    setState(() {
-                                                      _model
-                                                          .updateListOfCartItemsLocalAtIndex(
-                                                        seedCartListIndex,
-                                                        (e) =>
-                                                            e..isLoading = true,
-                                                      );
-                                                    });
-                                                    _model.apiResultxxf2Copy =
-                                                        await RemoveItemFromCartApiCall
-                                                            .call(
-                                                      token: FFAppState()
-                                                          .userModel
-                                                          .token,
-                                                      partId: seedCartListItem
-                                                          .id
-                                                          .toString(),
-                                                      quantity: '0',
-                                                    );
-                                                    if ((_model
-                                                            .apiResultxxf2Copy
-                                                            ?.succeeded ??
-                                                        true)) {
-                                                      _model.apiResultx448866Copy =
-                                                          await GetMyCartApiCall
-                                                              .call(
-                                                        token: FFAppState()
-                                                            .userModel
-                                                            .token,
-                                                      );
-                                                      if ((_model
-                                                              .apiResultx448866Copy
-                                                              ?.succeeded ??
-                                                          true)) {
-                                                        if (getJsonField(
-                                                                  (_model.apiResultx448866Copy
-                                                                          ?.jsonBody ??
-                                                                      ''),
-                                                                  r'''$.cart''',
-                                                                ) ==
-                                                                null
-                                                            ? true
-                                                            : false) {
-                                                          _model.updatePage(() {
-                                                            _model.listOfCartItemsLocal =
-                                                                [];
-                                                          });
-                                                          setState(() {
-                                                            _model.totalPrice =
-                                                                0.0;
-                                                          });
-                                                        } else {
-                                                          setState(() {
-                                                            _model.listOfCartItemsLocal =
-                                                                functions
-                                                                    .convertFromJsonToCartObject(
-                                                                        getJsonField(
-                                                                      (_model.apiResultx448866Copy
-                                                                              ?.jsonBody ??
-                                                                          ''),
-                                                                      r'''$.cart''',
-                                                                    ))
-                                                                    .cartItems
-                                                                    .toList()
-                                                                    .cast<
-                                                                        PartModelStruct>();
-                                                          });
-                                                          setState(() {
-                                                            _model.totalPrice =
-                                                                functions
-                                                                    .convertFromJsonToCartObject(
-                                                                        getJsonField(
-                                                                      (_model.apiResultx448866Copy
-                                                                              ?.jsonBody ??
-                                                                          ''),
-                                                                      r'''$.cart''',
-                                                                    ))
-                                                                    .totalPrice;
-                                                          });
-                                                        }
-                                                      }
-                                                    } else {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (dialogContext) {
-                                                          return Dialog(
-                                                            insetPadding:
-                                                                EdgeInsets.zero,
-                                                            backgroundColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            alignment: AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                            child:
-                                                                Modal06BasicInformationWidget(
-                                                              body: (_model
-                                                                      .apiResultxxf2Copy
-                                                                      ?.bodyText ??
-                                                                  ''),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ).then((value) =>
-                                                          setState(() {}));
-                                                    }
-
-                                                    FFAppState().update(() {
-                                                      FFAppState().badgeCount =
-                                                          _model
-                                                              .listOfCartItemsLocal
-                                                              .length;
-                                                    });
                                                     await showDialog(
                                                       context: context,
                                                       builder: (dialogContext) {
@@ -1083,7 +961,152 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                       context)),
                                                           child:
                                                               DeleteDialogWidget(
-                                                            title: '',
+                                                            title: FFLocalizations
+                                                                    .of(context)
+                                                                .getVariableText(
+                                                              enText:
+                                                                  'Are you sure you want to remove product from cart',
+                                                              arText:
+                                                                  'هل انت متأكد من انك تود ازالة المنتج من السلة',
+                                                            ),
+                                                            confirmTextButton:
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText: 'Yes',
+                                                              arText: 'نعم',
+                                                            ),
+                                                            rejectTextButton:
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText: 'No',
+                                                              arText: 'لا',
+                                                            ),
+                                                            onConfirmTextButton:
+                                                                () async {
+                                                              setState(() {
+                                                                _model
+                                                                    .updateListOfCartItemsLocalAtIndex(
+                                                                  seedCartListIndex,
+                                                                  (e) => e
+                                                                    ..isLoading =
+                                                                        true,
+                                                                );
+                                                              });
+                                                              _model.apiResultxxf2Copy =
+                                                                  await RemoveItemFromCartApiCall
+                                                                      .call(
+                                                                token:
+                                                                    FFAppState()
+                                                                        .userModel
+                                                                        .token,
+                                                                partId: seedCartListItem
+                                                                    .id
+                                                                    .toString(),
+                                                                quantity: '0',
+                                                              );
+                                                              if ((_model
+                                                                      .apiResultxxf2Copy
+                                                                      ?.succeeded ??
+                                                                  true)) {
+                                                                _model.apiResultx448866Copy =
+                                                                    await GetMyCartApiCall
+                                                                        .call(
+                                                                  token: FFAppState()
+                                                                      .userModel
+                                                                      .token,
+                                                                );
+                                                                if ((_model
+                                                                        .apiResultx448866Copy
+                                                                        ?.succeeded ??
+                                                                    true)) {
+                                                                  if (getJsonField(
+                                                                            (_model.apiResultx448866Copy?.jsonBody ??
+                                                                                ''),
+                                                                            r'''$.cart''',
+                                                                          ) ==
+                                                                          null
+                                                                      ? true
+                                                                      : false) {
+                                                                    _model
+                                                                        .updatePage(
+                                                                            () {
+                                                                      _model.listOfCartItemsLocal =
+                                                                          [];
+                                                                    });
+                                                                    setState(
+                                                                        () {
+                                                                      _model.totalPrice =
+                                                                          0.0;
+                                                                    });
+                                                                  } else {
+                                                                    setState(
+                                                                        () {
+                                                                      _model.listOfCartItemsLocal = functions
+                                                                          .convertFromJsonToCartObject(getJsonField(
+                                                                            (_model.apiResultx448866Copy?.jsonBody ??
+                                                                                ''),
+                                                                            r'''$.cart''',
+                                                                          ))
+                                                                          .cartItems
+                                                                          .toList()
+                                                                          .cast<PartModelStruct>();
+                                                                    });
+                                                                    setState(
+                                                                        () {
+                                                                      _model.totalPrice = functions
+                                                                          .convertFromJsonToCartObject(getJsonField(
+                                                                            (_model.apiResultx448866Copy?.jsonBody ??
+                                                                                ''),
+                                                                            r'''$.cart''',
+                                                                          ))
+                                                                          .subTotal;
+                                                                    });
+                                                                  }
+                                                                }
+                                                              } else {
+                                                                await showDialog(
+                                                                  context:
+                                                                      context,
+                                                                  builder:
+                                                                      (dialogContext) {
+                                                                    return Dialog(
+                                                                      insetPadding:
+                                                                          EdgeInsets
+                                                                              .zero,
+                                                                      backgroundColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      alignment: AlignmentDirectional(
+                                                                              0.0,
+                                                                              0.0)
+                                                                          .resolve(
+                                                                              Directionality.of(context)),
+                                                                      child:
+                                                                          Modal06BasicInformationWidget(
+                                                                        body: (_model.apiResultxxf2Copy?.bodyText ??
+                                                                            ''),
+                                                                      ),
+                                                                    );
+                                                                  },
+                                                                ).then((value) =>
+                                                                    setState(
+                                                                        () {}));
+                                                              }
+
+                                                              FFAppState()
+                                                                  .update(() {
+                                                                FFAppState()
+                                                                        .badgeCount =
+                                                                    _model
+                                                                        .listOfCartItemsLocal
+                                                                        .length;
+                                                              });
+
+
+                                                              Navigator.pop(dialogContext);
+                                                            },
                                                           ),
                                                         );
                                                       },
@@ -1102,7 +1125,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                         );
                                                       }
                                                     });
-
 
                                                     setState(() {});
                                                   },

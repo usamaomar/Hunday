@@ -15,11 +15,13 @@ class DeleteDialogWidget extends StatefulWidget {
     required this.title,
     required this.confirmTextButton,
     required this.rejectTextButton,
+    required this.onConfirmTextButton,
   }) : super(key: key);
 
   final String? title;
   final String? confirmTextButton;
   final String? rejectTextButton;
+  final dynamic Function()? onConfirmTextButton;
 
   @override
   _DeleteDialogWidgetState createState() => _DeleteDialogWidgetState();
@@ -56,6 +58,7 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget> {
     return Padding(
       padding: EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
       child: Container(
+        height: 250,
         decoration: BoxDecoration(),
         child: Card(
           clipBehavior: Clip.antiAliasWithSaveLayer,
@@ -94,9 +97,7 @@ class _DeleteDialogWidgetState extends State<DeleteDialogWidget> {
                   children: [
                     Flexible(
                       child: FFButtonWidget(
-                        onPressed: () {
-                          print('Button pressed ...');
-                        },
+                        onPressed: widget.onConfirmTextButton,
                         text: widget.confirmTextButton!,
                         options: FFButtonOptions(
                           width: 90.0,

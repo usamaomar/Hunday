@@ -686,7 +686,10 @@ class _ListOfStringItemsComponentWidgetState
                                       e)
                                           .toList(),
                                       onChanged: (val) => setState(
-                                              () => _model.dropDownValueYearOfCreation = val),
+                                              () {
+                                                _model.dropDownValueYearOfCreation = val;
+                                                _model.yearOfManufacturingString = val ?? '2000';
+                                              }),
                                       height: 40.0,
                                       textStyle:
                                       FlutterFlowTheme.of(
@@ -801,8 +804,7 @@ class _ListOfStringItemsComponentWidgetState
                                   dateTimeFormat(
                                     'yMd',
                                     _model.datePicked2,
-                                    locale: FFLocalizations.of(context)
-                                        .languageCode,
+                                    locale: 'en',
                                   ),
                                   'dd/MM/yyyy',
                                 );
