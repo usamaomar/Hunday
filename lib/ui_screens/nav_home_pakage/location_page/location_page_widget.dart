@@ -159,7 +159,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                               0,
                                               0,
                                               0,
-                                              75.0,
+                                              100.0,
                                             ),
                                             shrinkWrap: true,
                                             scrollDirection: Axis.vertical,
@@ -377,7 +377,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                           15.0,
                                                                           0.0,
                                                                           15.0,
-                                                                          15.0),
+                                                                          5.0),
                                                                       child:
                                                                           Row(
                                                                         mainAxisSize:
@@ -755,7 +755,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                           );
                                         },
                                       ),
-                                    ].addToEnd(SizedBox(height: 55.0)),
+                                    ].addToEnd(SizedBox(height: 85.0)),
                                   ),
                                 ),
                               ),

@@ -864,8 +864,13 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        await launchURL(
-                                                            'https://www.hyundai.com/worldwide/en/brand-journal/lifestyle/david-de-rothschild-on-sustainable-activities');
+                                                        if(FFAppState().currentLanguge == 'en'){
+                                                          await launchURL(
+                                                              'https://www.hyundai.com/worldwide/en/brand-journal/lifestyle/david-de-rothschild-on-sustainable-activities');
+                                                        }else{
+                                                          await launchURL(
+                                                              'https://www.hyundai.com/worldwide/ar/brand-journal/lifestyle/david-de-rothschild-on-sustainable-activities');
+                                                        }
                                                       },
                                                       child: Text(
                                                         FFLocalizations.of(

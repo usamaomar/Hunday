@@ -342,11 +342,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                         ).toString(),
                                                         getJsonField(
                                                           sliderSlideListItem,
-                                                          r'''$.slogan_en''',
+                                                          r'''$.slogan_ar''',
                                                         ).toString(),
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .languageCode),
+                                                        FFAppState().currentLanguge),
                                                     textAlign: TextAlign.center,
                                                     maxLines: 2,
                                                     style: FlutterFlowTheme.of(
