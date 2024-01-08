@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -27,6 +28,8 @@ class TestDriveComponentModel
   String? Function(BuildContext, String?)? textController3Validator;
   // State field(s) for Checkbox widget.
   bool? checkboxValue;
+  // Stores action output result for [Backend Call - API (testDriveApi)] action in Button widget.
+  ApiCallResponse? apiResultvrn;
 
   /// Initialization and disposal methods.
 
