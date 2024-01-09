@@ -12,6 +12,14 @@ import 'package:provider/provider.dart';
 
 class TestDriveComponentModel
     extends FlutterFlowModel<TestDriveComponentWidget> {
+  ///  Local state fields for this component.
+
+  bool nameIsFilled = true;
+
+  bool mobileIsFilled = true;
+
+  bool noteIsFilled = true;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.
