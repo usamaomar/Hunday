@@ -6,14 +6,11 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'list_of_string_items_component_model.dart';
 export 'list_of_string_items_component_model.dart';
@@ -74,29 +71,50 @@ class _ListOfStringItemsComponentWidgetState
             ))
             .toList()
             .cast<FuelTypeModelStruct>();
-        _model.selectedCarModel = _model.carModelList[0];
-        _model.selectedCarCategories = _model.carCategoriesList[0];
-        _model.selectedFuelType = _model.fuelTypesList[0];
+        ///
+        if (_model.carInfoLocalModel?.carModelId == 0) {
+          _model.selectedCarModel = _model.carModelList[0];
+        }else{
+          _model.selectedCarModel = _model.carModelList
+              .where((e) => e.id == _model.carInfoLocalModel?.carModelId)
+              .single;
+        }
+        ///
+        if (_model.carInfoLocalModel?.carCategoryId == 0) {
+          _model.selectedCarCategories = _model.carCategoriesList[0];
+        }else{
+          _model.selectedCarCategories = _model.carCategoriesList
+              .where((e) => e.id == _model.carInfoLocalModel?.carCategoryId)
+              .single;
+        }
+        ///
+        if (_model.carInfoLocalModel?.fuelTypeId == 0) {
+          _model.selectedFuelType = _model.fuelTypesList[0];
+        } else {
+          _model.selectedFuelType = _model.fuelTypesList
+              .where((e) => e.id == _model.carInfoLocalModel?.fuelTypeId)
+              .single;
+        }
       });
       setState(() {
         _model.yearOfManufacturingString =
-            _model.carInfoLocalModel!.yearOfManufacturing;
-        _model.registeredUntil = _model.carInfoLocalModel!.registeredUntil;
+            _model.carInfoLocalModel?.yearOfManufacturing ?? '';
+        _model.registeredUntil = _model.carInfoLocalModel?.registeredUntil ?? '';
       });
       setState(() {
-        _model.textController1?.text = _model.carInfoLocalModel!.plateNumber;
+        _model.textController1?.text = _model.carInfoLocalModel?.plateNumber ?? '';
       });
       setState(() {
-        _model.textController2?.text = _model.carInfoLocalModel!.vinNumber;
+        _model.textController2?.text = _model.carInfoLocalModel?.vinNumber ?? '';
       });
       setState(() {
         _model.textFieldCapacityController?.text =
             _model.carInfoLocalModel!.engineCapacity;
       });
       setState(() {
-        _model.selectedStringCarModel = _model.selectedCarModel!.name;
-        _model.selectedStringCarCategory = _model.selectedCarCategories!.name;
-        _model.selectedStringFuelType = _model.selectedFuelType!.name;
+        _model.selectedStringCarModel = _model.selectedCarModel?.name ?? '';
+        _model.selectedStringCarCategory = _model.selectedCarCategories?.name ?? '';
+        _model.selectedStringFuelType = _model.selectedFuelType?.name ?? '';
       });
       setState(() {});
     });
@@ -313,6 +331,7 @@ class _ListOfStringItemsComponentWidgetState
                                   width: 270.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
+                                  hintText: _model.selectedStringCarCategory,
                                   icon: Icon(
                                     Icons.keyboard_arrow_down_rounded,
                                     color: FlutterFlowTheme.of(context)
@@ -356,8 +375,7 @@ class _ListOfStringItemsComponentWidgetState
                             ),
                           ),
                           Padding(
-                            padding:
-                            EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -365,45 +383,37 @@ class _ListOfStringItemsComponentWidgetState
                                 Expanded(
                                   child: Opacity(
                                     opacity: 0.8,
-                                    child: FlutterFlowDropDown<
-                                        String>(
+                                    child: FlutterFlowDropDown<String>(
                                       controller: _model
-                                          .dropDownValueYearOfCreationController ??=
-                                          FormFieldController<
-                                              String>(null),
+                                              .dropDownValueYearOfCreationController ??=
+                                          FormFieldController<String>(null),
                                       options: generateDates()
-                                          .map((e) =>
-                                      e)
+                                          .map((e) => e)
                                           .toList(),
-                                      onChanged: (val) => setState(
-                                              () {
-                                                _model.dropDownValueYearOfCreation = val;
-                                                _model.yearOfManufacturingString = val ?? '2000';
-                                              }),
+                                      onChanged: (val) => setState(() {
+                                        _model.dropDownValueYearOfCreation =
+                                            val;
+                                        _model.yearOfManufacturingString =
+                                            val ?? '2000';
+                                      }),
                                       height: 40.0,
-                                      textStyle:
-                                      FlutterFlowTheme.of(
-                                          context)
+                                      textStyle: FlutterFlowTheme.of(context)
                                           .bodyMedium,
                                       hintText:
-                                      _model.yearOfManufacturingString,
-                                      icon:Icon(
+                                          _model.yearOfManufacturingString,
+                                      icon: Icon(
                                         Icons.calendar_month,
                                         color: Color(0xFF092853),
                                         size: 24.0,
                                       ),
-                                      fillColor: FlutterFlowTheme
-                                          .of(context)
+                                      fillColor: FlutterFlowTheme.of(context)
                                           .secondaryBackground,
                                       elevation: 2.0,
-                                      borderColor:
-                                      Color(0xFFE1E1E1),
+                                      borderColor: Color(0xFFE1E1E1),
                                       borderWidth: 1.0,
                                       borderRadius: 5.0,
-                                      margin:
-                                      EdgeInsetsDirectional
-                                          .fromSTEB(5.0, 4.0,
-                                          5.0, 4.0),
+                                      margin: EdgeInsetsDirectional.fromSTEB(
+                                          5.0, 4.0, 5.0, 4.0),
                                       hidesUnderline: true,
                                       isSearchable: false,
                                       isMultiSelect: false,
@@ -858,6 +868,7 @@ class _ListOfStringItemsComponentWidgetState
                                         .secondaryText,
                                     size: 24.0,
                                   ),
+                                  hintText: _model.selectedStringFuelType,
                                   fillColor: FlutterFlowTheme.of(context)
                                       .secondaryBackground,
                                   elevation: 2.0,
@@ -972,6 +983,35 @@ class _ListOfStringItemsComponentWidgetState
     );
   }
 
+  // String extractManufacturingYearFromVIN(String vin) {
+  //   // Check if the VIN is valid (you may want to implement additional validation)
+  //   if (vin.length != 17) {
+  //      return '';
+  //   }
+  //
+  //   // Extract the 10th character from the VIN (position 9 in zero-based indexing)
+  //   String yearCharacter = vin[9];
+  //
+  //   // Check if the character is a digit
+  //   if (!RegExp(r'\d').hasMatch(yearCharacter)) {
+  //     return '';
+  //   }
+  //
+  //   // Convert the character to an integer
+  //   int yearDigit = int.parse(yearCharacter);
+  //
+  //   // Determine the year based on the VIN convention
+  //   // Note: This is a simplified example and may not cover all cases
+  //   // You might want to consult the VIN standards for a more comprehensive implementation
+  //   if (yearDigit >= 0 && yearDigit <= 9) {
+  //     // For years 0-9, assume the year is 2010 + yearDigit
+  //     return "20${yearDigit.toString().padLeft(2, '0')}";
+  //   } else {
+  //     // For years A-Y, assume the year is 1980 + (A=1, B=2, ..., Y=25)
+  //     return (1980 + yearDigit - 1).toString();
+  //   }
+  // }
+
   List<String> generateDates() {
     List<String> yearList = [];
     // Get the current year
@@ -983,5 +1023,4 @@ class _ListOfStringItemsComponentWidgetState
     }
     return yearList;
   }
-
 }

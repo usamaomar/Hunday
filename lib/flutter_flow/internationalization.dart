@@ -1111,7 +1111,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     '5r2w1sdp': {
-      'en': 'Car Catedory',
+      'en': 'Car Category',
       'ar': 'فئة السيارة',
     },
     'hbc49vtj': {

@@ -219,7 +219,7 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
 
                       itemBuilder: (context, _, listLocsIndex) {
                         final listLocsItem = _model
-                            .listViewPagingController!.itemList![listLocsIndex];
+                            .listViewPagingController?.itemList?[listLocsIndex];
                         return Container(
                           decoration: BoxDecoration(),
                           child: Visibility(

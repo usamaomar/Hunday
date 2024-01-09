@@ -196,14 +196,15 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                                             return;
                                           }
                                         }
-
-                                        setState(() {
-                                          _model.frontFaceImage =
-                                              _model.uploadedLocalFile1;
-                                        });
-                                        setState(() {
-                                          _model.isFrontAdded = true;
-                                        });
+                                        if (_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false) {
+                                          setState(() {
+                                            _model.frontFaceImage =
+                                                _model.uploadedLocalFile1;
+                                          });
+                                          setState(() {
+                                            _model.isFrontAdded = true;
+                                          });
+                                        }
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         'ssqteoc6' /* Choose File */,
@@ -336,14 +337,15 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                                             return;
                                           }
                                         }
-
-                                        setState(() {
-                                          _model.backFaceImage =
-                                              _model.uploadedLocalFile2;
-                                        });
-                                        setState(() {
-                                          _model.isBackAdded = true;
-                                        });
+                                        if (_model.uploadedLocalFile2.bytes?.isNotEmpty ?? false) {
+                                          setState(() {
+                                            _model.backFaceImage =
+                                                _model.uploadedLocalFile2;
+                                          });
+                                          setState(() {
+                                            _model.isBackAdded = true;
+                                          });
+                                        }
                                       },
                                       text: FFLocalizations.of(context).getText(
                                         's0cyrb39' /* Choose File */,

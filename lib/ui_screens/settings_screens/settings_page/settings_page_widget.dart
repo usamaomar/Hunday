@@ -380,6 +380,9 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                         _model.updateResponse =
                                                             await UpdateUserApiCall
                                                                 .call(
+                                                          name: FFAppState()
+                                                              .userModel
+                                                              .name,
                                                           email: FFAppState()
                                                               .userModel
                                                               .email,
@@ -392,9 +395,8 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                           phone: FFAppState()
                                                               .userModel
                                                               .phone,
-                                                          lang: FFLocalizations
-                                                                  .of(context)
-                                                              .languageCode,
+                                                          lang: FFAppState()
+                                                              .currentLanguge,
                                                         );
                                                         _shouldSetState = true;
                                                         if ((_model
@@ -864,10 +866,12 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        if(FFAppState().currentLanguge == 'en'){
+                                                        if (FFAppState()
+                                                                .currentLanguge ==
+                                                            'en') {
                                                           await launchURL(
                                                               'https://www.hyundai.com/worldwide/en/brand-journal/lifestyle/david-de-rothschild-on-sustainable-activities');
-                                                        }else{
+                                                        } else {
                                                           await launchURL(
                                                               'https://www.hyundai.com/worldwide/ar/brand-journal/lifestyle/david-de-rothschild-on-sustainable-activities');
                                                         }

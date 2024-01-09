@@ -383,7 +383,7 @@ String convertJsonToStringInternal(dynamic json) {
       json.forEach((key, value) {
         if (value is List) {
           // If the value is a list, convert it to a comma-separated string
-          lines.add('${value.join(', ')}');
+          lines.add('${key} : ${value.join(', ')}');
         } else if (value is Map) {
           // If the value is another object, recursively convert it
           lines.add('${convertJsonToStringInternal(value)}');
@@ -414,7 +414,7 @@ CartItemModelStruct convertFromJsonToCartObject(dynamic jsonObject) {
       shippingCost: jsonObject['shippingCost'].toDouble(),
       discountRate: jsonObject['discountRate'].toString(),
       couponCode: jsonObject['coupon'] !=null ? jsonObject['coupon']['coupon_code'] : jsonObject['coupon'],
-      totalPrice: double.parse(jsonObject['totalPrice']));
+      totalPrice: jsonObject['totalPrice'].toDouble());
 }
 
 List<DeliveryPriceModelStruct> convertFromJsonListToAddressListModels(

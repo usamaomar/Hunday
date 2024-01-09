@@ -404,11 +404,25 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).white,
-                                                                              borderRadius: BorderRadius.only(
-                                                                                bottomLeft: Radius.circular(10.0),
-                                                                                bottomRight: Radius.circular(0.0),
-                                                                                topLeft: Radius.circular(10.0),
-                                                                                topRight: Radius.circular(0.0),
+                                                                              borderRadius:FFAppState().currentLanguge == 'en' ?
+                                                                              BorderRadius.only(
+                                                                                bottomLeft:
+                                                                                Radius.circular(10.0),
+                                                                                bottomRight:
+                                                                                Radius.circular(0.0),
+                                                                                topLeft:
+                                                                                Radius.circular(10.0),
+                                                                                topRight:
+                                                                                Radius.circular(0.0),
+                                                                              ) :  BorderRadius.only(
+                                                                                bottomLeft:
+                                                                                Radius.circular(0.0),
+                                                                                bottomRight:
+                                                                                Radius.circular(10.0),
+                                                                                topLeft:
+                                                                                Radius.circular(0.0),
+                                                                                topRight:
+                                                                                Radius.circular(10.0),
                                                                               ),
                                                                             ),
                                                                             child:
@@ -456,7 +470,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           BoxDecoration(
                                                                         color: Color(
                                                                             0xFF3D6398),
-                                                                        borderRadius:
+
+                                                                        borderRadius: FFAppState().currentLanguge == 'en' ?
                                                                             BorderRadius.only(
                                                                           bottomLeft:
                                                                               Radius.circular(10.0),
@@ -466,6 +481,15 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               Radius.circular(10.0),
                                                                           topRight:
                                                                               Radius.circular(0.0),
+                                                                        ) :  BorderRadius.only(
+                                                                          bottomLeft:
+                                                                          Radius.circular(0.0),
+                                                                          bottomRight:
+                                                                          Radius.circular(10.0),
+                                                                          topLeft:
+                                                                          Radius.circular(0.0),
+                                                                          topRight:
+                                                                          Radius.circular(10.0),
                                                                         ),
                                                                       ),
                                                                       child:

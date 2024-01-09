@@ -142,9 +142,9 @@ class _Modal06BasicInformationWidgetState
                                     .labelLarge
                                     .override(
                                       fontFamily: 'Plus Jakarta Sans',
-                                      color: Color(0xFF57636C),
+                                      color: Color(0xFF000000),
                                       fontSize: 16.0,
-                                      fontWeight: FontWeight.w500,
+                                      fontWeight: FontWeight.bold,
                                     ),
                               ),
                             ),
