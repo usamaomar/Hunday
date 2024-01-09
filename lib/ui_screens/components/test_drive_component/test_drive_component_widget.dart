@@ -413,7 +413,7 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                         // }}
 
                         setState(() {});
-                      },
+                      }},
                       text: FFLocalizations.of(context).getText(
                         '4nqcrahs' /* Send */,
                       ),
