@@ -53,6 +53,7 @@ class CartBottomSheetModel extends FlutterFlowModel<CartBottomSheetWidget> {
   ApiCallResponse? apiResultxxf2Copy;
   // Stores action output result for [Backend Call - API (getMyCartApi)] action in Column widget.
   ApiCallResponse? apiResultx448866Copy;
+  ApiCallResponse? apiResult2kt;
 
   /// Initialization and disposal methods.
 

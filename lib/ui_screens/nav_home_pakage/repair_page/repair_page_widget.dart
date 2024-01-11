@@ -299,9 +299,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                     dateTimeFormat(
                                                   'yyyy/MM/dd',
                                                   _model.datePicked,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
+                                                  locale: 'en',
                                                 );
                                               });
                                             },
@@ -417,9 +415,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                                 dateTimeFormat(
                                                               'yyyy-MM-dd',
                                                               _model.datePicked,
-                                                              locale: FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode,
+                                                              locale: 'en',
                                                             ),
                                                             serviceType:
                                                                 'repair',

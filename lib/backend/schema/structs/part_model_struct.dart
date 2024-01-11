@@ -174,10 +174,10 @@ class PartModelStruct extends BaseStruct {
         status: castToType<int>(data['status']),
         fullImage: data['full_image'] as String?,
         name: data['name'] as String?,
-        specialPrice: castToType<double>(data['special_price']),
+        specialPrice: data['special_price'] ?? 0,
         quantity: castToType<int>(data['quantity']),
         price: castToType<double>(data['price']),
-        discAmount: castToType<double>(data['disc_amount']),
+        discAmount:  data['disc_amount'].toDouble()?? 0.0,
         isLoading: data['isLoading'] as bool?,
       );
 

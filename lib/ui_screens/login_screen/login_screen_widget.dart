@@ -504,10 +504,14 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                     FFAppState()
                                                             .biomatricDtateModel =
                                                         BiomatricModelStruct(
-                                                      phoneNumber: _model
-                                                          .editTextValuesModel
-                                                          .textController
-                                                          .text,
+                                                      phoneNumber: UserModelStruct
+                                                          .maybeFromMap(
+                                                          getJsonField(
+                                                            (_model.loginApiRes
+                                                                ?.jsonBody ??
+                                                                ''),
+                                                            r'''$.user''',
+                                                          ))?.phone,
                                                       password: _model
                                                           .textController.text,
                                                     );
@@ -815,45 +819,33 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                   r'''$.user''',
                                                 ))!;
                                               });
-                                              setState(() {
-                                                FFAppState().biomatricDtateModel = BiomatricModelStruct(
-                                                  phoneNumber: _model.editTextValuesModel.textController.text,
-                                                  password: _model.textController.text,
-                                                );
-                                              });
-                                              if (FFAppState().userModel.token != null &&
-                                                  FFAppState().userModel.token != '') {
-                                                setState(() {
-                                                  FFAppState().password = _model.textController.text;
-                                                });
-                                              } else {
+                                              if (FFAppState().userModel.token.isEmpty) {
                                                 await showDialog(
-                                                context: context,
-                                                builder: (alertDialogContext) {
-                                                  return AlertDialog(
-                                                    title: Text(FFLocalizations.of(context).getVariableText(
-                                                      enText: 'Error',
-                                                      arText: 'مشكلة خادم',
-                                                    )),
-                                                    content: Text(FFLocalizations.of(context).getVariableText(
-                                                      enText: 'Bad Access',
-                                                      arText: 'عملية دخول خاطئة',
-                                                    )),
-                                                    actions: [
-                                                      TextButton(
-                                                        onPressed: () => Navigator.pop(alertDialogContext),
-                                                        child: Text(FFLocalizations.of(context).getVariableText(
-                                                          enText: 'Ok',
-                                                          arText: 'حسنا',
-                                                        )),
-                                                      ),
-                                                    ],
-                                                  );
-                                                },
+                                                  context: context,
+                                                  builder: (alertDialogContext) {
+                                                    return AlertDialog(
+                                                      title: Text(FFLocalizations.of(context).getVariableText(
+                                                        enText: 'Error',
+                                                        arText: 'مشكلة خادم',
+                                                      )),
+                                                      content: Text(FFLocalizations.of(context).getVariableText(
+                                                        enText: 'Bad Access',
+                                                        arText: 'عملية دخول خاطئة',
+                                                      )),
+                                                      actions: [
+                                                        TextButton(
+                                                          onPressed: () => Navigator.pop(alertDialogContext),
+                                                          child: Text(FFLocalizations.of(context).getVariableText(
+                                                            enText: 'Ok',
+                                                            arText: 'حسنا',
+                                                          )),
+                                                        ),
+                                                      ],
+                                                    );
+                                                  },
                                                 );
                                                 return;
                                               }
-
                                               if (Navigator.of(context).canPop()) {
                                                 context.pop();
                                               }
@@ -867,7 +859,6 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                   ),
                                                 },
                                               );
-
                                               return;
                                             } else {
                                               await showDialog(

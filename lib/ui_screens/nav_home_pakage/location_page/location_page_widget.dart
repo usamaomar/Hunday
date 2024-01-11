@@ -250,7 +250,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                               Text(
                                                                                 getJsonField(
                                                                                   locationListItem,
-                                                                                  r'''$.address''',
+                                                                                  r'''$.name''',
                                                                                 ).toString().maybeHandleOverflow(maxChars: 25),
                                                                                 textAlign: TextAlign.start,
                                                                                 maxLines: 1,
@@ -720,7 +720,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                   Text(
                                                                     getJsonField(
                                                                       locationListItem,
-                                                                      r'''$.address''',
+                                                                      r'''$.name''',
                                                                     ).toString().maybeHandleOverflow(
                                                                         maxChars:
                                                                             25),

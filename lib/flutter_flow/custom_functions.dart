@@ -326,9 +326,10 @@ List<ServiceTypeModelStruct> fromJsonListToServiceTypeModel(
 ServiceTypeModelStruct getSelectedServiceType(
   String serviceTypeName,
   List<ServiceTypeModelStruct> serviceTypeList,
+    String lang
 ) {
   ServiceTypeModelStruct vehicle =
-      serviceTypeList.firstWhere((c) => c.nameAr == serviceTypeName);
+      serviceTypeList.firstWhere((c) => (lang == 'en' ? c.nameEn : c.nameAr) == serviceTypeName);
   return vehicle;
 }
 
@@ -413,6 +414,7 @@ CartItemModelStruct convertFromJsonToCartObject(dynamic jsonObject) {
       tax: jsonObject['tax'].toString(),
       shippingCost: jsonObject['shippingCost'].toDouble(),
       discountRate: jsonObject['discountRate'].toString(),
+      discountAmount: jsonObject['discountAmount'].toString(),
       couponCode: jsonObject['coupon'] !=null ? jsonObject['coupon']['coupon_code'] : jsonObject['coupon'],
       totalPrice: jsonObject['totalPrice'].toDouble());
 }

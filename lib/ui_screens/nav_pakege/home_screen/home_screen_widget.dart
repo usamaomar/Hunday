@@ -1,5 +1,6 @@
 import 'package:hyundai/ui_screens/components/progress_component/progress_component_widget.dart';
 
+import '../../components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '../../components/thank_you_component/thank_you_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
@@ -75,6 +76,23 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
               ).toString().toString(),
           );
         });
+
+        if (FFAppState().currentLanguge.isEmpty) {
+          FFAppState().currentLanguge = FFAppState().userModel.language.isEmpty
+              ? FFLocalizations.of(context).languageCode
+              : FFAppState().userModel.language;
+          await UpdateUserApiCall.call(
+            name: FFAppState().userModel.name,
+            email: FFAppState().userModel.email,
+            bod: FFAppState().userModel.bod,
+            token: FFAppState().userModel.token,
+            phone: FFAppState().userModel.phone,
+            lang: FFAppState().currentLanguge,
+          );
+          setAppLanguage(context, FFAppState().currentLanguge);
+        } else {
+          setAppLanguage(context, FFAppState().currentLanguge);
+        }
       } else {
         setState(() {
           FFAppState().userModel =
@@ -157,53 +175,49 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
     _model.apiResult8am = await GetPaymentStatusApiCall.call(
       token: FFAppState().userModel.token,
     );
-
-
     if ((_model.apiResult8am?.succeeded ?? true)) {
       isLoading = false;
-      print('${_model.apiResult8am?.bodyText}');
-      print('---------------------------------');
-      print('${_model.apiResult8am?.jsonBody}');
       await showDialog(
         context: context,
         builder: (dialogContext) {
-          return Dialog(child: GestureDetector(
-            onTap: () => _model.unfocusNode.canRequestFocus
-                ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                : FocusScope.of(context).unfocus(),
-            child: ThankYouComponentWidget(),
-          ),);
+          return Dialog(
+            child: GestureDetector(
+              onTap: () => _model.unfocusNode.canRequestFocus
+                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                  : FocusScope.of(context).unfocus(),
+              child: ThankYouComponentWidget(),
+            ),
+          );
         },
       ).then((value) => setState(() {
             FFAppState().update(() {
               FFAppState().badgeCount = 0;
             });
+            context.pushReplacementNamed('HomeScreen');
           }));
     } else {
       isLoading = false;
       await showDialog(
-          context: context,
-          builder: (alertDialogContext) {
-            return AlertDialog(
-              title: Text(FFLocalizations.of(context).getVariableText(
-                enText: 'Error',
-                arText: 'مشكلة خادم',
-              )),
-              content: Text(FFLocalizations.of(context).getVariableText(
-                enText: 'Issue With Payment Method',
-                arText: 'مشكلة في عملية الدفع',
-              )),
-              actions: [
-                TextButton(
-                  onPressed: () => Navigator.pop(alertDialogContext),
-                  child: Text(FFLocalizations.of(context).getVariableText(
-                    enText: 'Ok',
-                    arText: 'حسنا',
-                  )),
-                ),
-              ],
-            );
-          });
+        context: context,
+        builder: (dialogContext) {
+          return Dialog(
+            insetPadding: EdgeInsets.zero,
+            backgroundColor: Colors.transparent,
+            alignment: AlignmentDirectional(0.0, 0.0)
+                .resolve(Directionality.of(context)),
+            child: GestureDetector(
+              onTap: () => _model.unfocusNode.canRequestFocus
+                  ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                  : FocusScope.of(context).unfocus(),
+              child: Modal06BasicInformationWidget(
+                body: (_model.apiResult8am?.bodyText ?? ''),
+              ),
+            ),
+          );
+        },
+      ).then((value) {
+        context.pushReplacementNamed('HomeScreen');
+      });
     }
   }
 
@@ -344,7 +358,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                           sliderSlideListItem,
                                                           r'''$.slogan_ar''',
                                                         ).toString(),
-                                                        FFAppState().currentLanguge),
+                                                        FFAppState()
+                                                            .currentLanguge),
                                                     textAlign: TextAlign.center,
                                                     maxLines: 2,
                                                     style: FlutterFlowTheme.of(
@@ -494,7 +509,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                 context: context,
                                                 builder: (dialogContext) {
                                                   return Dialog(
-                                                    child: ScannedCardAnimationComponentWidget(),
+                                                    child:
+                                                        ScannedCardAnimationComponentWidget(),
                                                   );
                                                 },
                                               ).then(

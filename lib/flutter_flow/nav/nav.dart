@@ -5,7 +5,6 @@ import 'package:go_router/go_router.dart';
 import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 
-
 import '/index.dart';
 import '/main.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -35,14 +34,27 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       initialLocation: '/',
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
-      errorBuilder: (context, state) => SplashPageWidget(),
+      errorBuilder: (context, state) {
+        if (state.allParams.isNotEmpty && state.allParams['id']!=null && state.allParams['resourcePath']!=null) {
+          final String? id = state.allParams['id'];
+          final String? resourcePath = state.allParams['resourcePath'];
+          return NavBarPage(
+            initialPage: 'HomeScreen',
+            page: HomeScreenWidget(
+              deepLinkId: id ?? 'link',
+            ),
+          );
+        } else
+          return SplashPageWidget();
+      },
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, params) {
             final String? id = params.getParam('id', ParamType.String);
-            final String? resourcePath = params.getParam('resourcePath', ParamType.String);
+            final String? resourcePath =
+                params.getParam('resourcePath', ParamType.String);
             print("_initialize => id =$id");
             print("_initialize => resourcePath =$resourcePath");
             if (id != null) {
@@ -297,16 +309,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                     ),
             ),
             FFRoute(
-              name: 'CarModelDetailsPdfViewr',
-              path: 'carModelDetailsPdfViewr',
-              builder: (context, params) => NavBarPage(
-                initialPage: '',
-                page: CarModelDetailsPdfViewrWidget(
-                  pdfLink: params.getParam('pdfLink', ParamType.String),
-                ),
-              ),
-            ),
-            FFRoute(
               name: 'RegularPage',
               path: 'regularPage',
               builder: (context, params) => NavBarPage(
@@ -359,7 +361,6 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 builder: (context, params) {
                   String? id = params.getParam('deepLinkId', ParamType.String);
                   print("sheckOutPagePage -> id= ${id}");
-
                   return SheckOutPagePageWidget(
                     deepLinkId: id,
                   );

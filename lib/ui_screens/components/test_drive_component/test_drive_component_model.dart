@@ -19,6 +19,9 @@ class TestDriveComponentModel
 
   bool noteIsFilled = true;
 
+
+  bool youWillBeContaced = true;
+
   ///  State fields for stateful widgets in this component.
 
   // State field(s) for TextField widget.

@@ -1,3 +1,4 @@
+import '../../components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -200,7 +201,38 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                           children: [
                             FFButtonWidget(
                               onPressed: () async {
-                                Navigator.pop(context);
+                                _model.apiResult2kt = await VehicleApiCall.call(
+                                  token: FFAppState().userModel.token,
+                                );
+                                if ((_model.apiResult2kt?.succeeded ?? true)) {
+                                  if (getJsonField(
+                                            (_model.apiResult2kt?.jsonBody ??
+                                                ''),
+                                            r'''$.vehicles''',
+                                          ) !=
+                                          null &&
+                                      (getJsonField(
+                                        (_model.apiResult2kt?.jsonBody ?? ''),
+                                        r'''$.vehicles''',
+                                      ) as List)
+                                          .isNotEmpty) {
+                                    context.pushNamed('ShopPage');
+                                  }else{
+                                    await showDialog(
+                                      barrierColor:
+                                      Colors.transparent,
+                                      barrierDismissible: false,
+                                      context: context,
+                                      builder: (dialogContext) {
+                                        return Dialog(
+                                          child:
+                                          ScannedCardAnimationComponentWidget(),
+                                        );
+                                      },
+                                    ).then(
+                                            (value) => setState(() {}));
+                                  }
+                                }
                               },
                               text: FFLocalizations.of(context).getText(
                                 'eqnxfwdp' /* Add New Item */,
@@ -404,26 +436,19 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                             decoration:
                                                                                 BoxDecoration(
                                                                               color: FlutterFlowTheme.of(context).white,
-                                                                              borderRadius:FFAppState().currentLanguge == 'en' ?
-                                                                              BorderRadius.only(
-                                                                                bottomLeft:
-                                                                                Radius.circular(10.0),
-                                                                                bottomRight:
-                                                                                Radius.circular(0.0),
-                                                                                topLeft:
-                                                                                Radius.circular(10.0),
-                                                                                topRight:
-                                                                                Radius.circular(0.0),
-                                                                              ) :  BorderRadius.only(
-                                                                                bottomLeft:
-                                                                                Radius.circular(0.0),
-                                                                                bottomRight:
-                                                                                Radius.circular(10.0),
-                                                                                topLeft:
-                                                                                Radius.circular(0.0),
-                                                                                topRight:
-                                                                                Radius.circular(10.0),
-                                                                              ),
+                                                                              borderRadius: FFAppState().currentLanguge == 'en'
+                                                                                  ? BorderRadius.only(
+                                                                                      bottomLeft: Radius.circular(10.0),
+                                                                                      bottomRight: Radius.circular(0.0),
+                                                                                      topLeft: Radius.circular(10.0),
+                                                                                      topRight: Radius.circular(0.0),
+                                                                                    )
+                                                                                  : BorderRadius.only(
+                                                                                      bottomLeft: Radius.circular(0.0),
+                                                                                      bottomRight: Radius.circular(10.0),
+                                                                                      topLeft: Radius.circular(0.0),
+                                                                                      topRight: Radius.circular(10.0),
+                                                                                    ),
                                                                             ),
                                                                             child:
                                                                                 Align(
@@ -470,27 +495,20 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           BoxDecoration(
                                                                         color: Color(
                                                                             0xFF3D6398),
-
-                                                                        borderRadius: FFAppState().currentLanguge == 'en' ?
-                                                                            BorderRadius.only(
-                                                                          bottomLeft:
-                                                                              Radius.circular(10.0),
-                                                                          bottomRight:
-                                                                              Radius.circular(0.0),
-                                                                          topLeft:
-                                                                              Radius.circular(10.0),
-                                                                          topRight:
-                                                                              Radius.circular(0.0),
-                                                                        ) :  BorderRadius.only(
-                                                                          bottomLeft:
-                                                                          Radius.circular(0.0),
-                                                                          bottomRight:
-                                                                          Radius.circular(10.0),
-                                                                          topLeft:
-                                                                          Radius.circular(0.0),
-                                                                          topRight:
-                                                                          Radius.circular(10.0),
-                                                                        ),
+                                                                        borderRadius: FFAppState().currentLanguge ==
+                                                                                'en'
+                                                                            ? BorderRadius.only(
+                                                                                bottomLeft: Radius.circular(10.0),
+                                                                                bottomRight: Radius.circular(0.0),
+                                                                                topLeft: Radius.circular(10.0),
+                                                                                topRight: Radius.circular(0.0),
+                                                                              )
+                                                                            : BorderRadius.only(
+                                                                                bottomLeft: Radius.circular(0.0),
+                                                                                bottomRight: Radius.circular(10.0),
+                                                                                topLeft: Radius.circular(0.0),
+                                                                                topRight: Radius.circular(10.0),
+                                                                              ),
                                                                       ),
                                                                       child:
                                                                           Align(
@@ -632,7 +650,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                 constraints:
                                                                     BoxConstraints(
                                                                   maxWidth:
-                                                                      140.0,
+                                                                      100.0,
                                                                 ),
                                                                 decoration:
                                                                     BoxDecoration(
@@ -1128,8 +1146,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                         .length;
                                                               });
 
-
-                                                              Navigator.pop(dialogContext);
+                                                              Navigator.pop(
+                                                                  dialogContext);
                                                             },
                                                           ),
                                                         );

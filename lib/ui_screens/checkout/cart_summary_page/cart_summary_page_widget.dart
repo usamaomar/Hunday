@@ -5,15 +5,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'cart_summary_page_model.dart';
 export 'cart_summary_page_model.dart';
@@ -215,58 +212,58 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                               ],
                                             ),
                                           ),
-                                          if (_model.cartObject?.couponCode !=
-                                                  null &&
-                                              _model.cartObject?.couponCode !=
-                                                  '')
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      30.0, 10.0, 30.0, 0.0),
-                                              child: Row(
-                                                mainAxisSize: MainAxisSize.max,
-                                                children: [
-                                                  ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            8.0),
-                                                    child: SvgPicture.asset(
-                                                      'assets/images/Group_73011.svg',
-                                                      width: 20.0,
-                                                      height: 20.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(10.0, 0.0,
-                                                                10.0, 0.0),
-                                                    child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'rfsw40l6' /* Discounted item—no additional ... */,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'HeeboBold',
-                                                            color: Color(
-                                                                0xFF092853),
-                                                            fontSize: 11.0,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            useGoogleFonts:
-                                                                false,
-                                                          ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                            ),
+                                          // if (_model.cartObject?.couponCode !=
+                                          //         null &&
+                                          //     _model.cartObject?.couponCode !=
+                                          //         '')
+                                          //   Padding(
+                                          //     padding: EdgeInsetsDirectional
+                                          //         .fromSTEB(
+                                          //             30.0, 10.0, 30.0, 0.0),
+                                          //     child: Row(
+                                          //       mainAxisSize: MainAxisSize.max,
+                                          //       children: [
+                                          //         ClipRRect(
+                                          //           borderRadius:
+                                          //               BorderRadius.circular(
+                                          //                   8.0),
+                                          //           child: SvgPicture.asset(
+                                          //             'assets/images/Group_73011.svg',
+                                          //             width: 20.0,
+                                          //             height: 20.0,
+                                          //             fit: BoxFit.cover,
+                                          //           ),
+                                          //         ),
+                                          //         Padding(
+                                          //           padding:
+                                          //               EdgeInsetsDirectional
+                                          //                   .fromSTEB(10.0, 0.0,
+                                          //                       10.0, 0.0),
+                                          //           child: Text(
+                                          //             FFLocalizations.of(
+                                          //                     context)
+                                          //                 .getText(
+                                          //               'rfsw40l6' /* Discounted item—no additional ... */,
+                                          //             ),
+                                          //             style: FlutterFlowTheme
+                                          //                     .of(context)
+                                          //                 .bodyMedium
+                                          //                 .override(
+                                          //                   fontFamily:
+                                          //                       'HeeboBold',
+                                          //                   color: Color(
+                                          //                       0xFF092853),
+                                          //                   fontSize: 11.0,
+                                          //                   fontWeight:
+                                          //                       FontWeight.bold,
+                                          //                   useGoogleFonts:
+                                          //                       false,
+                                          //                 ),
+                                          //           ),
+                                          //         ),
+                                          //       ],
+                                          //     ),
+                                          //   ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -349,26 +346,29 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        if (false)
-                                                                          Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
-                                                                                10.0,
-                                                                                0.0,
-                                                                                10.0,
-                                                                                0.0),
-                                                                            child:
-                                                                                ClipRRect(
-                                                                              borderRadius: BorderRadius.circular(8.0),
-                                                                              child: SvgPicture.asset(
-                                                                                'assets/images/Group_73011.svg',
-                                                                                width: 20.0,
-                                                                                height: 20.0,
-                                                                                fit: BoxFit.cover,
-                                                                              ),
-                                                                            ),
-                                                                          ),
+                                                                        // if (_model.cartObject?.couponCode !=
+                                                                        //     null &&
+                                                                        //     _model.cartObject?.couponCode !=
+                                                                        //         '' && listCartItemItem.specialPrice > 0.0)
+                                                                        //   Padding(
+                                                                        //     padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        //         10.0,
+                                                                        //         0.0,
+                                                                        //         10.0,
+                                                                        //         0.0),
+                                                                        //     child:
+                                                                        //         ClipRRect(
+                                                                        //       borderRadius: BorderRadius.circular(8.0),
+                                                                        //       child: SvgPicture.asset(
+                                                                        //         'assets/images/Group_73011.svg',
+                                                                        //         width: 20.0,
+                                                                        //         height: 20.0,
+                                                                        //         fit: BoxFit.cover,
+                                                                        //       ),
+                                                                        //     ),
+                                                                        //   ),
                                                                         Text(
-                                                                          '${(listCartItemItem.discAmount <= 0.0) ? listCartItemItem.price.toString() : listCartItemItem.discAmount.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                          '${(listCartItemItem.specialPrice <= 0.0) ? listCartItemItem.price.toString() : listCartItemItem.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                             enText:
                                                                                 'JD',
                                                                             arText:
@@ -1246,7 +1246,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                         ),
                                                   ),
                                                   Text(
-                                                    '${_model.couponModel?.discountamount?.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                    '${_model.cartObject?.discountAmount.toString()} ${FFLocalizations.of(context).getVariableText(
                                                       enText: 'JD',
                                                       arText: ' د.أ',
                                                     )}',

@@ -683,18 +683,10 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              context.pushNamed(
-                                                'CarModelDetailsPdfViewr',
-                                                queryParameters: {
-                                                  'pdfLink': serializeParam(
-                                                    getJsonField(
-                                                      _model.detailsJsonObject,
-                                                      r'''$.full_catalog''',
-                                                    ).toString(),
-                                                    ParamType.String,
-                                                  ),
-                                                }.withoutNulls,
-                                              );
+                                              await launchURL(getJsonField(
+                                                _model.detailsJsonObject,
+                                                r'''$.full_catalog''',
+                                              ).toString());
                                             },
                                             child: Material(
                                               color: Colors.transparent,

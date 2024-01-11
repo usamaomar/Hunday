@@ -628,12 +628,6 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                     onTap: () async {
                                                       await launchURL(
                                                           'https://hyundai.completechaintech.com');
-                                                      // await Share.share(
-                                                      //   'myapp://test.com${GoRouter.of(context).location}',
-                                                      //   sharePositionOrigin:
-                                                      //       getWidgetBoundingBox(
-                                                      //           context),
-                                                      // );
                                                     },
                                                     child: Text(
                                                       FFLocalizations.of(
@@ -733,27 +727,14 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                     ?.succeeded ??
                                                                 true)) {
                                                               await showDialog(
-                                                                context:
-                                                                    context,
-
-                                                                builder:
-                                                                    (dialogContext) {
-                                                                  return Material(
-                                                                    color: Colors
-                                                                        .transparent,
-                                                                    child:
-                                                                        GestureDetector(
-                                                                      onTap: () => _model
-                                                                              .unfocusNode
-                                                                              .canRequestFocus
-                                                                          ? FocusScope.of(context).requestFocus(_model
-                                                                              .unfocusNode)
-                                                                          : FocusScope.of(context)
-                                                                              .unfocus(),
-                                                                      child:
-                                                                          ThankYouComponentWidget(),
-                                                                    ),
-                                                                  );
+                                                                context: context,
+                                                                builder: (dialogContext) {
+                                                                  return Dialog(child: GestureDetector(
+                                                                    onTap: () => _model.unfocusNode.canRequestFocus
+                                                                        ? FocusScope.of(context).requestFocus(_model.unfocusNode)
+                                                                        : FocusScope.of(context).unfocus(),
+                                                                    child: ThankYouComponentWidget(),
+                                                                  ),);
                                                                 },
                                                               ).then((value) {
                                                                 FFAppState()
@@ -796,16 +777,6 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                       () {}));
                                                             }
                                                           }
-                                                          // context.pushNamed(
-                                                          //   'SheckOutPagePage',
-                                                          //   queryParameters: {
-                                                          //     'json':
-                                                          //     serializeParam(
-                                                          //       widget.json,
-                                                          //       ParamType.JSON,
-                                                          //     ),
-                                                          //   }.withoutNulls,
-                                                          // );
                                                         } else {
                                                           await showDialog(
                                                             context: context,

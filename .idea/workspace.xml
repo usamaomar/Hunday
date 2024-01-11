@@ -5,7 +5,36 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/images/xxxx.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/backend/schema/structs/part_model_struct.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/schema/structs/part_model_struct.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/custom_functions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/custom_functions.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/flutter_flow_pdf_viewer.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/flutter_flow_pdf_viewer.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/nav/nav.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/nav/nav.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/test_drive_component/test_drive_component_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/test_drive_component/test_drive_component_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/test_drive_component/test_drive_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/test_drive_component/test_drive_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/thank_you_component/thank_you_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/thank_you_component/thank_you_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more/car_model_details_more_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more/car_model_details_more_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_pdf_viewr/car_model_details_pdf_viewr_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_pdf_viewr/car_model_details_pdf_viewr_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_pdf_viewr/car_model_details_pdf_viewr_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_pdf_viewr/car_model_details_pdf_viewr_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/location_page/location_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/location_page/location_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/offers_details_page/offers_details_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/offers_details_page/offers_details_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/offers_page/offers_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/offers_page/offers_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/regular_page/regular_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/regular_page/regular_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/repair_page/repair_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/repair_page/repair_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/settings_screens/my_vehicles_details_page/my_vehicles_details_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/settings_screens/my_vehicles_details_page/my_vehicles_details_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/settings_screens/my_vehicles_page/my_vehicles_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/settings_screens/my_vehicles_page/my_vehicles_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -278,23 +307,6 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more/car_model_details_more_widget.dart</url>
-          <line>805</line>
-          <option name="timeStamp" value="462" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart</url>
-          <line>369</line>
-          <option name="timeStamp" value="484" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart</url>
-          <line>370</line>
-          <option name="timeStamp" value="485" />
-        </line-breakpoint>
-      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
         <breakpoint type="python-exception">

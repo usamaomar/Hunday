@@ -217,7 +217,7 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
                                                                         listOfOffersItem,
                                                                         r'''$.name_ar''',
                                                                       ).toString(),
-                                                                      FFLocalizations.of(context).languageCode),
+                                                                      FFAppState().currentLanguge),
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium

@@ -1340,7 +1340,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'j8gvjivm': {
       'en': 'Mobile',
-      'ar': 'متحرك',
+      'ar': 'رقم الهاتف',
     },
     '2cld7qli': {
       'en': 'Notes',

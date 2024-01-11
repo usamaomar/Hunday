@@ -231,7 +231,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                   FormFieldController<String>(
                                                       null),
                                               options: _model.serviceTypeList
-                                                  .map((e) => e.nameAr)
+                                                  .map((e) =>e.name )
                                                   .toList(),
                                               onChanged: (val) async {
                                                 setState(() => _model
@@ -242,7 +242,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                           _model
                                                               .dropDownValue1!,
                                                           _model.serviceTypeList
-                                                              .toList());
+                                                              .toList(),FFAppState().currentLanguge);
                                                 });
                                               },
                                               width: double.infinity,
@@ -434,9 +434,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                     dateTimeFormat(
                                                   'yyyy/MM/dd',
                                                   _model.datePicked,
-                                                  locale: FFLocalizations.of(
-                                                          context)
-                                                      .languageCode,
+                                                  locale: 'en',
                                                 );
                                               });
                                             },
@@ -552,9 +550,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                                 dateTimeFormat(
                                                               'yyyy-MM-dd',
                                                               _model.datePicked,
-                                                              locale: FFLocalizations
-                                                                      .of(context)
-                                                                  .languageCode,
+                                                              locale: 'en',
                                                             ),
                                                             serviceType:
                                                                 'regular',

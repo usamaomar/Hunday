@@ -118,11 +118,10 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
               child: Stack(
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(8.0),
                     child: Image.asset(
                       'assets/images/M04_Hyundai_Elantra2023_Via_Augusta_FINAL_srgb@2x.png',
                       height: double.infinity,
-                      fit: BoxFit.fill,
+                      fit: BoxFit.cover,
                     ),
                   ),
                   Align(

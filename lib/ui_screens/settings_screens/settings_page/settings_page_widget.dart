@@ -782,11 +782,17 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                       setState(() {
                                                         FFAppState()
                                                                 .isFingerEnabled =
-                                                            true;
+                                                            false;
                                                       });
                                                     }
 
                                                     setState(() {});
+                                                  }else{
+                                                    setState(() {
+                                                      FFAppState()
+                                                          .isFingerEnabled =
+                                                      false;
+                                                    });
                                                   }
                                                 },
                                                 activeColor: Color(0xFF4B9246),

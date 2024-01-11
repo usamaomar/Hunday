@@ -269,9 +269,7 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                                                     .localJson,
                                                                 r'''$.name_ar''',
                                                               ).toString(),
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode),
+                                                              FFAppState().currentLanguge),
                                                       style: FlutterFlowTheme
                                                               .of(context)
                                                           .bodyMedium
@@ -305,9 +303,7 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                                                     .localJson,
                                                                 r'''$.description_ar''',
                                                               ).toString(),
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .languageCode),
+                                                          FFAppState().currentLanguge),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -329,10 +325,10 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
                                           ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(0.0),
-                                            child: SvgPicture.asset(
+                                            child:FFAppState().currentLanguge == 'en' ? SvgPicture.asset(
                                               'assets/images/text_(2).svg',
                                               fit: BoxFit.cover,
-                                            ),
+                                            ) : Container()
                                           ),
                                         ],
                                       ),

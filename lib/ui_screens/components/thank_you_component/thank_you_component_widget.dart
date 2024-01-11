@@ -79,7 +79,7 @@ class _ThankYouComponentWidgetState extends State<ThankYouComponentWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(55.0, 35.0, 55.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(15.0, 35.0, 15.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.min,
                   mainAxisAlignment: MainAxisAlignment.center,

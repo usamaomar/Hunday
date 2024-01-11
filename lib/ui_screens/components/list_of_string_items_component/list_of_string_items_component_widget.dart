@@ -109,7 +109,7 @@ class _ListOfStringItemsComponentWidgetState
       });
       setState(() {
         _model.textFieldCapacityController?.text =
-            _model.carInfoLocalModel!.engineCapacity;
+            _model.carInfoLocalModel?.engineCapacity ??'';
       });
       setState(() {
         _model.selectedStringCarModel = _model.selectedCarModel?.name ?? '';
