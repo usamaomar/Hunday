@@ -23,6 +23,9 @@ class MyVehicleModelStruct extends BaseStruct {
     String? engineNumber,
     int? fuelTypeId,
     String? insuranceCompany,
+    CarModelStruct? fuelType,
+    CarModelStruct? carCategory,
+    CarModelStruct? carModel,
   })  : _id = id,
         _userId = userId,
         _ownerName = ownerName,
@@ -38,7 +41,10 @@ class MyVehicleModelStruct extends BaseStruct {
         _engineCapacity = engineCapacity,
         _engineNumber = engineNumber,
         _fuelTypeId = fuelTypeId,
-        _insuranceCompany = insuranceCompany;
+        _insuranceCompany = insuranceCompany,
+        _fuelType = fuelType,
+        _carCategory = carCategory,
+        _carModel = carModel;
 
   // "id" field.
   int? _id;
@@ -144,6 +150,30 @@ class MyVehicleModelStruct extends BaseStruct {
   set insuranceCompany(String? val) => _insuranceCompany = val;
   bool hasInsuranceCompany() => _insuranceCompany != null;
 
+  // "fuel_type" field.
+  CarModelStruct? _fuelType;
+  CarModelStruct get fuelType => _fuelType ?? CarModelStruct();
+  set fuelType(CarModelStruct? val) => _fuelType = val;
+  void updateFuelType(Function(CarModelStruct) updateFn) =>
+      updateFn(_fuelType ??= CarModelStruct());
+  bool hasFuelType() => _fuelType != null;
+
+  // "car_category" field.
+  CarModelStruct? _carCategory;
+  CarModelStruct get carCategory => _carCategory ?? CarModelStruct();
+  set carCategory(CarModelStruct? val) => _carCategory = val;
+  void updateCarCategory(Function(CarModelStruct) updateFn) =>
+      updateFn(_carCategory ??= CarModelStruct());
+  bool hasCarCategory() => _carCategory != null;
+
+  // "car_model" field.
+  CarModelStruct? _carModel;
+  CarModelStruct get carModel => _carModel ?? CarModelStruct();
+  set carModel(CarModelStruct? val) => _carModel = val;
+  void updateCarModel(Function(CarModelStruct) updateFn) =>
+      updateFn(_carModel ??= CarModelStruct());
+  bool hasCarModel() => _carModel != null;
+
   static MyVehicleModelStruct fromMap(Map<String, dynamic> data) =>
       MyVehicleModelStruct(
         id: castToType<int>(data['id']),
@@ -162,6 +192,9 @@ class MyVehicleModelStruct extends BaseStruct {
         engineNumber: data['engine_number'] as String?,
         fuelTypeId: castToType<int>(data['fuel_type_id']),
         insuranceCompany: data['insurance_company'] as String?,
+        fuelType: CarModelStruct.maybeFromMap(data['fuel_type']),
+        carCategory: CarModelStruct.maybeFromMap(data['car_category']),
+        carModel: CarModelStruct.maybeFromMap(data['car_model']),
       );
 
   static MyVehicleModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -185,6 +218,9 @@ class MyVehicleModelStruct extends BaseStruct {
         'engine_number': _engineNumber,
         'fuel_type_id': _fuelTypeId,
         'insurance_company': _insuranceCompany,
+        'fuel_type': _fuelType?.toMap(),
+        'car_category': _carCategory?.toMap(),
+        'car_model': _carModel?.toMap(),
       }.withoutNulls;
 
   @override
@@ -252,6 +288,18 @@ class MyVehicleModelStruct extends BaseStruct {
         'insurance_company': serializeParam(
           _insuranceCompany,
           ParamType.String,
+        ),
+        'fuel_type': serializeParam(
+          _fuelType,
+          ParamType.DataStruct,
+        ),
+        'car_category': serializeParam(
+          _carCategory,
+          ParamType.DataStruct,
+        ),
+        'car_model': serializeParam(
+          _carModel,
+          ParamType.DataStruct,
         ),
       }.withoutNulls;
 
@@ -337,6 +385,24 @@ class MyVehicleModelStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        fuelType: deserializeStructParam(
+          data['fuel_type'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: CarModelStruct.fromSerializableMap,
+        ),
+        carCategory: deserializeStructParam(
+          data['car_category'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: CarModelStruct.fromSerializableMap,
+        ),
+        carModel: deserializeStructParam(
+          data['car_model'],
+          ParamType.DataStruct,
+          false,
+          structBuilder: CarModelStruct.fromSerializableMap,
+        ),
       );
 
   @override
@@ -360,7 +426,10 @@ class MyVehicleModelStruct extends BaseStruct {
         engineCapacity == other.engineCapacity &&
         engineNumber == other.engineNumber &&
         fuelTypeId == other.fuelTypeId &&
-        insuranceCompany == other.insuranceCompany;
+        insuranceCompany == other.insuranceCompany &&
+        fuelType == other.fuelType &&
+        carCategory == other.carCategory &&
+        carModel == other.carModel;
   }
 
   @override
@@ -380,7 +449,10 @@ class MyVehicleModelStruct extends BaseStruct {
         engineCapacity,
         engineNumber,
         fuelTypeId,
-        insuranceCompany
+        insuranceCompany,
+        fuelType,
+        carCategory,
+        carModel
       ]);
 }
 
@@ -401,6 +473,9 @@ MyVehicleModelStruct createMyVehicleModelStruct({
   String? engineNumber,
   int? fuelTypeId,
   String? insuranceCompany,
+  CarModelStruct? fuelType,
+  CarModelStruct? carCategory,
+  CarModelStruct? carModel,
 }) =>
     MyVehicleModelStruct(
       id: id,
@@ -419,4 +494,7 @@ MyVehicleModelStruct createMyVehicleModelStruct({
       engineNumber: engineNumber,
       fuelTypeId: fuelTypeId,
       insuranceCompany: insuranceCompany,
+      fuelType: fuelType ?? CarModelStruct(),
+      carCategory: carCategory ?? CarModelStruct(),
+      carModel: carModel ?? CarModelStruct(),
     );
