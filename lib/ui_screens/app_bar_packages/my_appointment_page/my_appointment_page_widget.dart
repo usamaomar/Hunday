@@ -5,10 +5,12 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/rating_component/rating_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'my_appointment_page_model.dart';
@@ -428,10 +430,71 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                                               mainAxisSize:
                                                                   MainAxisSize
                                                                       .max,
+                                                              mainAxisAlignment:
+                                                                  MainAxisAlignment
+                                                                      .end,
                                                               children: [
                                                                 MyRatingComponentWidget(
                                                                   key: Key(
                                                                       'Keyi2n_${lisyIndex}_of_${lisy.length}'),
+                                                                ),
+                                                                Align(
+                                                                  alignment:
+                                                                      AlignmentDirectional(
+                                                                          1.0,
+                                                                          0.0),
+                                                                  child:
+                                                                      Builder(
+                                                                    builder:
+                                                                        (context) =>
+                                                                            InkWell(
+                                                                      splashColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      focusColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      hoverColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      highlightColor:
+                                                                          Colors
+                                                                              .transparent,
+                                                                      onTap:
+                                                                          () async {
+                                                                        await showDialog(
+                                                                          context:
+                                                                              context,
+                                                                          builder:
+                                                                              (dialogContext) {
+                                                                            return Dialog(
+                                                                              insetPadding: EdgeInsets.zero,
+                                                                              backgroundColor: Colors.transparent,
+                                                                              alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                              child: GestureDetector(
+                                                                                onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                child: RatingComponentWidget(
+                                                                                  id: '',
+                                                                                ),
+                                                                              ),
+                                                                            );
+                                                                          },
+                                                                        ).then((value) =>
+                                                                            setState(() {}));
+                                                                      },
+                                                                      child:
+                                                                          ClipRRect(
+                                                                        borderRadius:
+                                                                            BorderRadius.circular(8.0),
+                                                                        child: SvgPicture
+                                                                            .asset(
+                                                                          'assets/images/Group_73000.svg',
+                                                                          fit: BoxFit
+                                                                              .cover,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                  ),
                                                                 ),
                                                               ],
                                                             ),

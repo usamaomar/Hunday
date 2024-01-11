@@ -5,11 +5,13 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
+import '/ui_screens/components/rating_component/rating_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'my_appointment_page_widget.dart' show MyAppointmentPageWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 

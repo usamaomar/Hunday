@@ -1423,6 +1423,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'نعم',
     },
   },
+  // ratingComponent
+  {
+    'a78ezigy': {
+      'en': 'Feedback',
+      'ar': 'تعليق',
+    },
+    'prpj44fo': {
+      'en': 'What is Your Rate?',
+      'ar': 'ما هو تقييمك؟',
+    },
+    'c2rubek4': {
+      'en': 'Label here...fdfvfdvdfvfdvfdvfdvfdvfdvfdvfdvfdvfdvf',
+      'ar': '',
+    },
+    '1uhf3p34': {
+      'en': 'Save',
+      'ar': 'حفظ',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {
