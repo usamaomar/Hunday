@@ -151,7 +151,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                 children: [
                                   Text(
                                     valueOrDefault<String>(
-                                      '${_model.localMyPart?.price?.toString()} ${FFLocalizations.of(context).getVariableText(
+                                      '${(_model.localMyPart?.specialPrice ?? 0) > 0 ?  _model.localMyPart?.specialPrice :  _model.localMyPart?.price.toString()} ${FFLocalizations.of(context).getVariableText(
                                         enText: 'JOD',
                                         arText: 'دينار',
                                       )}',

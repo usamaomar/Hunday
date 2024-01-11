@@ -101,7 +101,6 @@ class _MyVehiclesDetailsPageWidgetState
               child: Stack(
                 children: [
                   ClipRRect(
-
                     child: Image.asset(
                       'assets/images/M04_Hyundai_Elantra2023_Via_Augusta_FINAL_srgb@2x.png',
                       height: double.infinity,
@@ -144,9 +143,8 @@ class _MyVehiclesDetailsPageWidgetState
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15.0, 18.0, 15.0, 0.0),
                                     child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'h5tps4y9' /* - */,
-                                      ),
+                                      _model.myVehicleModel?.carModel.name ??
+                                          '-',
                                       textAlign: TextAlign.start,
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
@@ -199,10 +197,9 @@ class _MyVehiclesDetailsPageWidgetState
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 5.0, 0.0, 0.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'paplehe5' /* - */,
-                                                ),
+                                                _model.myVehicleModel
+                                                        ?.carCategory.name ??
+                                                    '-',
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -536,10 +533,9 @@ class _MyVehiclesDetailsPageWidgetState
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 5.0, 0.0, 0.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'ul6rt32s' /* - */,
-                                                ),
+                                                _model.myVehicleModel?.fuelType
+                                                        .name ??
+                                                    '-',
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -563,7 +559,7 @@ class _MyVehiclesDetailsPageWidgetState
                                     child: Container(
                                       width: double.infinity,
                                       decoration: BoxDecoration(
-                                        color: Color(0xFFF8F8F8),
+                                        color: Color(0xFFEBEEF1),
                                       ),
                                       child: Padding(
                                         padding: EdgeInsets.all(5.0),

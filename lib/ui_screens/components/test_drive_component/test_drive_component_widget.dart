@@ -467,6 +467,7 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                 ),
+                )
               ],
             ),
           ),

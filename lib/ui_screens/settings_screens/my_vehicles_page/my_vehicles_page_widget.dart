@@ -175,7 +175,6 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                         );
                                       },
                                     ).then((value) => setState(() {}));
-
                                     _model.apiResultoqe12 =
                                         await VehicleApiCall.call(
                                       token: FFAppState().userModel.token,
@@ -195,7 +194,6 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                             .cast<MyVehicleModelStruct>();
                                       });
                                     }
-
                                     setState(() {});
                                   },
                                   text: FFLocalizations.of(context).getText(

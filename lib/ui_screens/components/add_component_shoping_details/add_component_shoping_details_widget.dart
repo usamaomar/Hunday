@@ -11,12 +11,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import 'add_component_shoping_details_model.dart';
 export 'add_component_shoping_details_model.dart';
 
@@ -88,7 +85,6 @@ class _AddComponentShopingDetailsWidgetState
         });
       }
     });
-//year_of_manufacturing
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -98,14 +94,12 @@ class _AddComponentShopingDetailsWidgetState
   @override
   void dispose() {
     _model.maybeDispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
     return Align(
       alignment: AlignmentDirectional(0, 1),
       child: Padding(
@@ -520,10 +514,9 @@ class _AddComponentShopingDetailsWidgetState
                                                                 .end,
                                                         children: [
                                                           if (listLcsItem
-                                                                      .specialPrice !=
-                                                                  null
-                                                              ? false
-                                                              : true)
+                                                                      .specialPrice>0
+                                                              ? true
+                                                              : false)
                                                             Row(
                                                               mainAxisSize:
                                                                   MainAxisSize
@@ -533,8 +526,8 @@ class _AddComponentShopingDetailsWidgetState
                                                                       .end,
                                                               children: [
                                                                 Card(
-                                                                  clipBehavior:
-                                                                      Clip.antiAliasWithSaveLayer,
+                                                                  margin: EdgeInsets.zero,
+
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -573,12 +566,15 @@ class _AddComponentShopingDetailsWidgetState
                                                                             5),
                                                                         child:
                                                                             Text(
-                                                                          listLcsItem.specialPrice != null
-                                                                              ? '${listLcsItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                          listLcsItem.specialPrice>=0
+                                                                              ? '${listLcsItem.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                                   enText: 'JOD',
                                                                                   arText: 'دينار',
                                                                                 )}'
-                                                                              : '0',
+                                                                              :'0 ${FFLocalizations.of(context).getVariableText(
+                                                                            enText: 'JOD',
+                                                                            arText: 'دينار',
+                                                                          )}',
                                                                           textAlign:
                                                                               TextAlign.center,
                                                                           style: FlutterFlowTheme.of(context)
@@ -587,7 +583,7 @@ class _AddComponentShopingDetailsWidgetState
                                                                                 fontFamily: 'Poppins',
                                                                                 color: FlutterFlowTheme.of(context).error,
                                                                                 fontWeight: FontWeight.w600,
-                                                                                decoration: TextDecoration.lineThrough,
+
                                                                               ),
                                                                         ),
                                                                       ),
@@ -751,13 +747,12 @@ class _AddComponentShopingDetailsWidgetState
                                                                           .center,
                                                                   children: [
                                                                     Text(
-                                                                      (listLcsItem.specialPrice == null) ||
-                                                                              (listLcsItem.specialPrice == 0.0)
+                                                                      listLcsItem.specialPrice <=0
                                                                           ? '${listLcsItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                               enText: 'JOD',
                                                                               arText: 'دينار',
                                                                             )}'
-                                                                          : '${listLcsItem.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
+                                                                          : '${listLcsItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                               enText: 'JOD',
                                                                               arText: 'دينار',
                                                                             )}',
@@ -772,6 +767,7 @@ class _AddComponentShopingDetailsWidgetState
                                                                                 'Poppins',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).white,
+                                                                        decoration:  listLcsItem.specialPrice <=0 ?  TextDecoration.none:TextDecoration.lineThrough,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                           ),

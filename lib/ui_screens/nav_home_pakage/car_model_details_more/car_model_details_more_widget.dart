@@ -275,13 +275,13 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                       _model
                                                           .detailsJsonObject,
                                                       r'''$.fuel_id''',
-                                                    ) == 3 ? SvgPicture.asset(
-                                                      'assets/images/enfs.svg',
+                                                    ) == 3 ?SvgPicture.asset(
+                                                      'assets/images/bats.svg',
                                                       width: 100.0,
                                                       height: 40.0,
                                                       fit: BoxFit.scaleDown,
-                                                    ) : SvgPicture.asset(
-                                                      'assets/images/Group_70647.svg',
+                                                    )  : SvgPicture.asset(
+                                                      'assets/images/enfs.svg',
                                                       width: 100.0,
                                                       height: 40.0,
                                                       fit: BoxFit.scaleDown,
@@ -376,16 +376,16 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                         .detailsJsonObject,
                                                     r'''$.fuel_id''',
                                                   ) == 3 ? SvgPicture.asset(
-                                                    'assets/images/ger.svg',
-                                                    width: 100.0,
-                                                    height: 40.0,
-                                                    fit: BoxFit.scaleDown,
-                                                  ) : SvgPicture.asset(
                                                     'assets/images/Group_70650.svg',
                                                     width: 100.0,
                                                     height: 40.0,
                                                     fit: BoxFit.scaleDown,
-                                                  ),
+                                                  ) :SvgPicture.asset(
+                                                    'assets/images/ger.svg',
+                                                    width: 100.0,
+                                                    height: 40.0,
+                                                    fit: BoxFit.scaleDown,
+                                                  ) ,
                                                 ),
                                                 Row(
                                                   mainAxisSize:
