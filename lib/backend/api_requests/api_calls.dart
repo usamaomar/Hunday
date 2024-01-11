@@ -1352,6 +1352,38 @@ class AddCouponApiCall {
   }
 }
 
+class AddReviewApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+    String? feedback = '',
+    String? id = '',
+    int? rating,
+  }) async {
+    final ffApiRequestBody = '''
+{
+  "rating": ${rating},
+  "feedback": "${feedback}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'addReviewApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/review/${id}',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class RemoveCouponApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
