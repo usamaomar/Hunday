@@ -836,7 +836,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               _model.listOfCartItemsLocal = [];
                                                                             });
                                                                             setState(() {
-                                                                              _model.totalPrice = 0.0;
+                                                                              _model.totalPrice = 0;
                                                                             });
                                                                           } else {
                                                                             setState(() {
@@ -973,7 +973,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                           });
                                                           setState(() {
                                                             _model.totalPrice =
-                                                                0.0;
+                                                                0;
                                                           });
                                                         } else {
                                                           setState(() {
