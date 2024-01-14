@@ -1367,7 +1367,7 @@ class AddReviewApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'addReviewApi',
       apiUrl: 'https://hyundai.completechaintech.com/api/review/${id}',
-      callType: ApiCallType.POST,
+      callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer ${token}',
         'Accept': 'application/json',

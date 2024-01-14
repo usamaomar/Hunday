@@ -478,6 +478,10 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                     setState(() {});
                                                   return;
                                                 }
+
+
+
+
                                                 _model.loginApiRes =
                                                     await LoginApiCall.call(
                                                   phone: _model.phoneNumber,
@@ -489,6 +493,23 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 if ((_model.loginApiRes
                                                         ?.succeeded ??
                                                     true)) {
+
+
+                                                  UserModelStruct userModel =
+                                                  UserModelStruct
+                                                      .maybeFromMap(
+                                                      getJsonField(
+                                                        (_model.loginApiRes
+                                                            ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.user''',
+                                                      ))!;
+
+
+
+
+
+
                                                   setState(() {
                                                     FFAppState().userModel =
                                                         UserModelStruct

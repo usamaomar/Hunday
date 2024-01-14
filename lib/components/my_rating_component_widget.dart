@@ -10,7 +10,10 @@ import 'my_rating_component_model.dart';
 export 'my_rating_component_model.dart';
 
 class MyRatingComponentWidget extends StatefulWidget {
-  const MyRatingComponentWidget({Key? key}) : super(key: key);
+
+  final double value;
+
+  const MyRatingComponentWidget({Key? key,required this.value}) : super(key: key);
 
   @override
   _MyRatingComponentWidgetState createState() =>
@@ -30,7 +33,7 @@ class _MyRatingComponentWidgetState extends State<MyRatingComponentWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => MyRatingComponentModel());
-
+    _model.ratingBarValue = widget.value;
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -52,6 +55,7 @@ class _MyRatingComponentWidgetState extends State<MyRatingComponentWidget> {
         Icons.star_rounded,
         color: Color(0xFF092853),
       ),
+      ignoreGestures : true,
       direction: Axis.horizontal,
       initialRating: _model.ratingBarValue ??= 5.0,
       unratedColor: FlutterFlowTheme.of(context).accent3,

@@ -1,3 +1,6 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/widgets.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/components/my_rating_component_widget.dart';
 import '/flutter_flow/flutter_flow_button_tabbar.dart';
@@ -427,75 +430,85 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                                                   ],
                                                                 ),
                                                               ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                    MainAxisSize
-                                                                        .max,
-                                                                mainAxisAlignment:
-                                                                  MainAxisAlignment
-                                                                      .end,children: [
-                                                                  MyRatingComponentWidget(
-                                                                    key: Key(
-                                                                        'Keyi2n_${lisyIndex}_of_${lisy.length}'),),
-                                                                Align(
-                                                                  alignment:
-                                                                      AlignmentDirectional(
-                                                                          1.0,
-                                                                          0.0),
-                                                                  child:
-                                                                      Builder(
-                                                                    builder:
-                                                                        (context) =>
-                                                                            InkWell(
-                                                                      splashColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      focusColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      hoverColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      highlightColor:
-                                                                          Colors
-                                                                              .transparent,
-                                                                      onTap:
-                                                                          () async {
-                                                                        await showDialog(
-                                                                          context:
-                                                                              context,
-                                                                          builder:
-                                                                              (dialogContext) {
-                                                                            return Dialog(
-                                                                              insetPadding: EdgeInsets.zero,
-                                                                              backgroundColor: Colors.transparent,
-                                                                              alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                              child: GestureDetector(
-                                                                                onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                child: RatingComponentWidget(
-                                                                                  id: '',
-                                                                                ),
-                                                                              ),
-                                                                            );
-                                                                          },
-                                                                        ).then((value) =>
-                                                                            setState(() {}));
-                                                                      },
+                                                              Visibility(
+                                                                visible : true,
+                                                                child: Row(
+                                                                  mainAxisSize:
+                                                                      MainAxisSize
+                                                                          .max,
+                                                                  mainAxisAlignment:
+                                                                    MainAxisAlignment
+                                                                        .end,children: [
+                                                                  Visibility(
+                                                                      visible : lisyItem['rate'] != 0,
+                                                                      child: MyRatingComponentWidget(
+                                                                        value: lisyItem['rate'].toDouble(),
+                                                                        key: Key(
+                                                                            'Keyi2n_${lisyIndex}_of_${lisy.length}'),),
+                                                                    ),
+                                                                   Visibility(
+                                                                    visible : lisyItem['rate'] == 0,
+                                                                    child: Align(
+                                                                      alignment:
+                                                                          AlignmentDirectional(
+                                                                              1.0,
+                                                                              0.0),
                                                                       child:
-                                                                          ClipRRect(
-                                                                        borderRadius:
-                                                                            BorderRadius.circular(8.0),
-                                                                        child: SvgPicture
-                                                                            .asset(
-                                                                          'assets/images/Group_73000.svg',
-                                                                          fit: BoxFit
-                                                                              .cover,
+                                                                          Builder(
+                                                                        builder:
+                                                                            (context) =>
+                                                                                InkWell(
+                                                                          splashColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          focusColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          hoverColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          highlightColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                          onTap:
+                                                                              () async {
+                                                                            await showDialog(
+                                                                              context:
+                                                                                  context,
+                                                                              builder:
+                                                                                  (dialogContext) {
+                                                                                return Dialog(
+                                                                                  insetPadding: EdgeInsets.zero,
+                                                                                  backgroundColor: Colors.transparent,
+                                                                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                  child: GestureDetector(
+                                                                                    onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                    child: RatingComponentWidget(
+                                                                                      id: lisyItem['id'].toString(),
+                                                                                    ),
+                                                                                  ),
+                                                                                );
+                                                                              },
+                                                                            ).then((value) =>
+                                                                                setState(() {}));
+                                                                          },
+                                                                          child:
+                                                                              ClipRRect(
+                                                                            borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                            child: SvgPicture
+                                                                                .asset(
+                                                                              'assets/images/Group_73000.svg',
+                                                                              fit: BoxFit
+                                                                                  .cover,
+                                                                            ),
+                                                                          ),
                                                                         ),
                                                                       ),
-                                                                    ),
+                                                                      ),
                                                                   ),
-                                                                  ),
-                                                                ],
+                                                                  ],
+                                                                ),
                                                               ),
                                                             ],
                                                           ),
@@ -779,6 +792,7 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                                                     .max,
                                                                 children: [
                                                                   MyRatingComponentWidget(
+                                                                    value: lisyItem['rate'].toDouble(),
                                                                     key: Key(
                                                                         'Keyi2n_${lisyIndex}_of_${lisy.length}'),
                                                                   ),
@@ -1066,8 +1080,70 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                                                     .max,
                                                                 children: [
                                                                   MyRatingComponentWidget(
+                                                                    value: lisyItem['rate'].toDouble(),
                                                                     key: Key(
                                                                         'Keyi2n_${lisyIndex}_of_${lisy.length}'),
+                                                                  ),
+                                                                  Visibility(
+                                                                    visible : lisyItem['rate'] == 0,
+                                                                    child: Align(
+                                                                      alignment:
+                                                                      AlignmentDirectional(
+                                                                          1.0,
+                                                                          0.0),
+                                                                      child:
+                                                                      Builder(
+                                                                        builder:
+                                                                            (context) =>
+                                                                            InkWell(
+                                                                              splashColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                              focusColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                              hoverColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                              highlightColor:
+                                                                              Colors
+                                                                                  .transparent,
+                                                                              onTap:
+                                                                                  () async {
+                                                                                await showDialog(
+                                                                                  context:
+                                                                                  context,
+                                                                                  builder:
+                                                                                      (dialogContext) {
+                                                                                    return Dialog(
+                                                                                      insetPadding: EdgeInsets.zero,
+                                                                                      backgroundColor: Colors.transparent,
+                                                                                      alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                      child: GestureDetector(
+                                                                                        onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                        child: RatingComponentWidget(
+                                                                                          id: lisyItem['id'].toString(),
+                                                                                        ),
+                                                                                      ),
+                                                                                    );
+                                                                                  },
+                                                                                ).then((value) =>
+                                                                                    setState(() {}));
+                                                                              },
+                                                                              child:
+                                                                              ClipRRect(
+                                                                                borderRadius:
+                                                                                BorderRadius.circular(8.0),
+                                                                                child: SvgPicture
+                                                                                    .asset(
+                                                                                  'assets/images/Group_73000.svg',
+                                                                                  fit: BoxFit
+                                                                                      .cover,
+                                                                                ),
+                                                                              ),
+                                                                            ),
+                                                                      ),
+                                                                    ),
                                                                   ),
                                                                 ],
                                                               ),

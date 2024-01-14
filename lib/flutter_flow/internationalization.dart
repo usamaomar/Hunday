@@ -1438,8 +1438,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'ما هو تقييمك؟',
     },
     'c2rubek4': {
-      'en': 'Label here...fdfvfdvdfvfdvfdvfdvfdvfdvfdvfdvfdvfdvf',
-      'ar': '',
+      'en': 'Text Here ...',
+      'ar': 'النص هنا...',
     },
     '1uhf3p34': {
       'en': 'Save',
