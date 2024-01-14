@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_verification_code/flutter_verification_code.dart';
 
 import '/backend/api_requests/api_calls.dart';
 import '/components/my_rating_component_widget.dart';
@@ -430,85 +431,83 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                                                   ],
                                                                 ),
                                                               ),
-                                                              Visibility(
-                                                                visible : true,
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .max,
-                                                                  mainAxisAlignment:
-                                                                    MainAxisAlignment
-                                                                        .end,children: [
+                                                              Row(
+                                                                mainAxisSize:
+                                                                MainAxisSize
+                                                                    .max,
+                                                                children: [
                                                                   Visibility(
-                                                                      visible : lisyItem['rate'] != 0,
-                                                                      child: MyRatingComponentWidget(
-                                                                        value: lisyItem['rate'].toDouble(),
-                                                                        key: Key(
-                                                                            'Keyi2n_${lisyIndex}_of_${lisy.length}'),),
+                                                                    visible : lisyItem['rate'] > 0,
+                                                                    child: MyRatingComponentWidget(
+                                                                      value: lisyItem['rate'].toDouble(),
+                                                                      key: Key(
+                                                                          'Keyi2n_${lisyIndex}_of_${lisy.length}'),
                                                                     ),
-                                                                   Visibility(
+                                                                  ),
+                                                                  Visibility(
                                                                     visible : lisyItem['rate'] == 0,
                                                                     child: Align(
                                                                       alignment:
-                                                                          AlignmentDirectional(
-                                                                              1.0,
-                                                                              0.0),
+                                                                      AlignmentDirectional(
+                                                                          1.0,
+                                                                          0.0),
                                                                       child:
-                                                                          Builder(
+                                                                      Builder(
                                                                         builder:
                                                                             (context) =>
-                                                                                InkWell(
-                                                                          splashColor:
+                                                                            InkWell(
+                                                                              splashColor:
                                                                               Colors
                                                                                   .transparent,
-                                                                          focusColor:
+                                                                              focusColor:
                                                                               Colors
                                                                                   .transparent,
-                                                                          hoverColor:
+                                                                              hoverColor:
                                                                               Colors
                                                                                   .transparent,
-                                                                          highlightColor:
+                                                                              highlightColor:
                                                                               Colors
                                                                                   .transparent,
-                                                                          onTap:
-                                                                              () async {
-                                                                            await showDialog(
-                                                                              context:
+                                                                              onTap:
+                                                                                  () async {
+                                                                                await showDialog(
+                                                                                  context:
                                                                                   context,
-                                                                              builder:
-                                                                                  (dialogContext) {
-                                                                                return Dialog(
-                                                                                  insetPadding: EdgeInsets.zero,
-                                                                                  backgroundColor: Colors.transparent,
-                                                                                  alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                                  child: GestureDetector(
-                                                                                    onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                    child: RatingComponentWidget(
-                                                                                      id: lisyItem['id'].toString(),
-                                                                                    ),
-                                                                                  ),
-                                                                                );
+                                                                                  builder:
+                                                                                      (dialogContext) {
+                                                                                    return Dialog(
+                                                                                      insetPadding: EdgeInsets.zero,
+                                                                                      backgroundColor: Colors.transparent,
+                                                                                      alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
+                                                                                      child: GestureDetector(
+                                                                                        onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
+                                                                                        child: RatingComponentWidget(
+                                                                                          id: lisyItem['id'].toString(),
+                                                                                        ),
+                                                                                      ),
+                                                                                    );
+                                                                                  },
+                                                                                ).then((value) =>
+                                                                                    setState(() {
+                                                                                      Navigator.pop(context);
+                                                                                    }));
                                                                               },
-                                                                            ).then((value) =>
-                                                                                setState(() {}));
-                                                                          },
-                                                                          child:
+                                                                              child:
                                                                               ClipRRect(
-                                                                            borderRadius:
+                                                                                borderRadius:
                                                                                 BorderRadius.circular(8.0),
-                                                                            child: SvgPicture
-                                                                                .asset(
-                                                                              'assets/images/Group_73000.svg',
-                                                                              fit: BoxFit
-                                                                                  .cover,
+                                                                                child: SvgPicture
+                                                                                    .asset(
+                                                                                  'assets/images/Group_73000.svg',
+                                                                                  fit: BoxFit
+                                                                                      .cover,
+                                                                                ),
+                                                                              ),
                                                                             ),
-                                                                          ),
-                                                                        ),
                                                                       ),
-                                                                      ),
+                                                                    ),
                                                                   ),
-                                                                  ],
-                                                                ),
+                                                                ],
                                                               ),
                                                             ],
                                                           ),
@@ -1073,79 +1072,6 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                                                     ),
                                                                   ],
                                                                 ),
-                                                              ),
-                                                              Row(
-                                                                mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
-                                                                children: [
-                                                                  MyRatingComponentWidget(
-                                                                    value: lisyItem['rate'].toDouble(),
-                                                                    key: Key(
-                                                                        'Keyi2n_${lisyIndex}_of_${lisy.length}'),
-                                                                  ),
-                                                                  Visibility(
-                                                                    visible : lisyItem['rate'] == 0,
-                                                                    child: Align(
-                                                                      alignment:
-                                                                      AlignmentDirectional(
-                                                                          1.0,
-                                                                          0.0),
-                                                                      child:
-                                                                      Builder(
-                                                                        builder:
-                                                                            (context) =>
-                                                                            InkWell(
-                                                                              splashColor:
-                                                                              Colors
-                                                                                  .transparent,
-                                                                              focusColor:
-                                                                              Colors
-                                                                                  .transparent,
-                                                                              hoverColor:
-                                                                              Colors
-                                                                                  .transparent,
-                                                                              highlightColor:
-                                                                              Colors
-                                                                                  .transparent,
-                                                                              onTap:
-                                                                                  () async {
-                                                                                await showDialog(
-                                                                                  context:
-                                                                                  context,
-                                                                                  builder:
-                                                                                      (dialogContext) {
-                                                                                    return Dialog(
-                                                                                      insetPadding: EdgeInsets.zero,
-                                                                                      backgroundColor: Colors.transparent,
-                                                                                      alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
-                                                                                      child: GestureDetector(
-                                                                                        onTap: () => _model.unfocusNode.canRequestFocus ? FocusScope.of(context).requestFocus(_model.unfocusNode) : FocusScope.of(context).unfocus(),
-                                                                                        child: RatingComponentWidget(
-                                                                                          id: lisyItem['id'].toString(),
-                                                                                        ),
-                                                                                      ),
-                                                                                    );
-                                                                                  },
-                                                                                ).then((value) =>
-                                                                                    setState(() {}));
-                                                                              },
-                                                                              child:
-                                                                              ClipRRect(
-                                                                                borderRadius:
-                                                                                BorderRadius.circular(8.0),
-                                                                                child: SvgPicture
-                                                                                    .asset(
-                                                                                  'assets/images/Group_73000.svg',
-                                                                                  fit: BoxFit
-                                                                                      .cover,
-                                                                                ),
-                                                                              ),
-                                                                            ),
-                                                                      ),
-                                                                    ),
-                                                                  ),
-                                                                ],
                                                               ),
                                                             ],
                                                           ),

@@ -1,5 +1,6 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 
+import '../components/verify_bottom_dialog/verify_bottom_dialog_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -48,7 +49,6 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
       setState(() {
         FFAppState().isDarkMode = false;
       });
-
     });
 
     _model.textController ??= TextEditingController();
@@ -479,9 +479,6 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                   return;
                                                 }
 
-
-
-
                                                 _model.loginApiRes =
                                                     await LoginApiCall.call(
                                                   phone: _model.phoneNumber,
@@ -493,130 +490,160 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 if ((_model.loginApiRes
                                                         ?.succeeded ??
                                                     true)) {
-
-
                                                   UserModelStruct userModel =
-                                                  UserModelStruct
-                                                      .maybeFromMap(
-                                                      getJsonField(
-                                                        (_model.loginApiRes
-                                                            ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.user''',
-                                                      ))!;
-
-
-
-
-
-
-                                                  setState(() {
-                                                    FFAppState().userModel =
-                                                        UserModelStruct
-                                                            .maybeFromMap(
-                                                                getJsonField(
-                                                      (_model.loginApiRes
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                      r'''$.user''',
-                                                    ))!;
-                                                  });
-                                                  setState(() {
-                                                    FFAppState()
-                                                            .biomatricDtateModel =
-                                                        BiomatricModelStruct(
-                                                      phoneNumber: UserModelStruct
+                                                      UserModelStruct
                                                           .maybeFromMap(
-                                                          getJsonField(
-                                                            (_model.loginApiRes
-                                                                ?.jsonBody ??
-                                                                ''),
-                                                            r'''$.user''',
-                                                          ))?.phone,
-                                                      password: _model
-                                                          .textController.text,
-                                                    );
-                                                  });
-                                                  if (FFAppState()
-                                                              .userModel
-                                                              .token !=
-                                                          null &&
-                                                      FFAppState()
-                                                              .userModel
-                                                              .token !=
-                                                          '') {
+                                                              getJsonField(
+                                                    (_model.loginApiRes
+                                                            ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.user''',
+                                                  ))!;
+                                                  if (userModel.status !=
+                                                      'VERIFYNEEDED') {
                                                     setState(() {
-                                                      FFAppState().password =
-                                                          _model.textController
-                                                              .text;
+                                                      FFAppState().userModel =
+                                                          userModel;
                                                     });
-                                                  } else {
-                                                    await showDialog(
-                                                      context: context,
-                                                      builder:
-                                                          (alertDialogContext) {
-                                                        return AlertDialog(
-                                                          title: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getVariableText(
-                                                            enText: 'Error',
-                                                            arText:
-                                                                'مشكلة خادم',
-                                                          )),
-                                                          content: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getVariableText(
-                                                            enText:
-                                                                'Bad Access',
-                                                            arText:
-                                                                'عملية دخول خاطئة',
-                                                          )),
-                                                          actions: [
-                                                            TextButton(
-                                                              onPressed: () =>
-                                                                  Navigator.pop(
-                                                                      alertDialogContext),
-                                                              child: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getVariableText(
-                                                                enText: 'Ok',
-                                                                arText: 'حسنا',
-                                                              )),
-                                                            ),
-                                                          ],
-                                                        );
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .biomatricDtateModel =
+                                                          BiomatricModelStruct(
+                                                        phoneNumber:
+                                                            UserModelStruct
+                                                                .maybeFromMap(
+                                                                    getJsonField(
+                                                          (_model.loginApiRes
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.user''',
+                                                        ))?.phone,
+                                                        password: _model
+                                                            .textController
+                                                            .text,
+                                                      );
+                                                    });
+                                                    if (FFAppState()
+                                                                .userModel
+                                                                .token !=
+                                                            null &&
+                                                        FFAppState()
+                                                                .userModel
+                                                                .token !=
+                                                            '') {
+                                                      setState(() {
+                                                        FFAppState().password =
+                                                            _model
+                                                                .textController
+                                                                .text;
+                                                      });
+                                                    } else {
+                                                      await showDialog(
+                                                        context: context,
+                                                        builder:
+                                                            (alertDialogContext) {
+                                                          return AlertDialog(
+                                                            title: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText: 'Error',
+                                                              arText:
+                                                                  'مشكلة خادم',
+                                                            )),
+                                                            content: Text(
+                                                                FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                              enText:
+                                                                  'Bad Access',
+                                                              arText:
+                                                                  'عملية دخول خاطئة',
+                                                            )),
+                                                            actions: [
+                                                              TextButton(
+                                                                onPressed: () =>
+                                                                    Navigator.pop(
+                                                                        alertDialogContext),
+                                                                child: Text(FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                  enText: 'Ok',
+                                                                  arText:
+                                                                      'حسنا',
+                                                                )),
+                                                              ),
+                                                            ],
+                                                          );
+                                                        },
+                                                      );
+                                                      if (_shouldSetState)
+                                                        setState(() {});
+                                                      return;
+                                                    }
+
+                                                    if (Navigator.of(context)
+                                                        .canPop()) {
+                                                      context.pop();
+                                                    }
+                                                    context
+                                                        .pushReplacementNamed(
+                                                      'HomeScreen',
+                                                      extra: <String, dynamic>{
+                                                        kTransitionInfoKey:
+                                                            TransitionInfo(
+                                                          hasTransition: true,
+                                                          transitionType:
+                                                              PageTransitionType
+                                                                  .fade,
+                                                          duration: Duration(
+                                                              milliseconds: 0),
+                                                        ),
                                                       },
                                                     );
                                                     if (_shouldSetState)
                                                       setState(() {});
                                                     return;
+                                                  } else {
+                                                    setState(() {
+                                                      FFAppState()
+                                                              .reservedUserModel =
+                                                          userModel;
+                                                    });
+                                                    await showModalBottomSheet(
+                                                      isScrollControlled: true,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      enableDrag: false,
+                                                      context: context,
+                                                      builder: (context) {
+                                                        return GestureDetector(
+                                                          onTap: () => _model
+                                                                  .unfocusNode
+                                                                  .canRequestFocus
+                                                              ? FocusScope.of(
+                                                                      context)
+                                                                  .requestFocus(
+                                                                      _model
+                                                                          .unfocusNode)
+                                                              : FocusScope.of(
+                                                                      context)
+                                                                  .unfocus(),
+                                                          child: Padding(
+                                                            padding: MediaQuery
+                                                                .viewInsetsOf(
+                                                                    context),
+                                                            child: Container(
+                                                              height: 400.0,
+                                                              child:
+                                                                  VerifyBottomDialogWidget(),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        safeSetState(() {}));
                                                   }
-
-                                                  if (Navigator.of(context)
-                                                      .canPop()) {
-                                                    context.pop();
-                                                  }
-                                                  context.pushReplacementNamed(
-                                                    'HomeScreen',
-                                                    extra: <String, dynamic>{
-                                                      kTransitionInfoKey:
-                                                          TransitionInfo(
-                                                        hasTransition: true,
-                                                        transitionType:
-                                                            PageTransitionType
-                                                                .fade,
-                                                        duration: Duration(
-                                                            milliseconds: 0),
-                                                      ),
-                                                    },
-                                                  );
-
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
                                                 } else {
                                                   await showDialog(
                                                     context: context,
@@ -808,55 +835,96 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                 Visibility(
                                   visible: FFAppState().isFingerEnabled,
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional
-                                        .fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 20.0, 20.0, 8.0),
                                     child: InkWell(
-                                      onTap: () async{
-                                        if (FFAppState().isFingerEnabled == true ? true : false) {
-                                          final _localAuth = LocalAuthentication();
-                                          bool _isBiometricSupported = await _localAuth.isDeviceSupported();
-                                          bool canCheckBiometrics = await _localAuth.canCheckBiometrics;
-                                          if (_isBiometricSupported && canCheckBiometrics) {
-                                            _model.outs = await _localAuth.authenticate(
-                                                localizedReason: FFLocalizations.of(context).getText(
-                                                  'c2pz80f3' /* we would like to take biometri... */,
-                                                ),
-                                                options: const AuthenticationOptions(biometricOnly: true));
+                                      onTap: () async {
+                                        if (FFAppState().isFingerEnabled == true
+                                            ? true
+                                            : false) {
+                                          final _localAuth =
+                                              LocalAuthentication();
+                                          bool _isBiometricSupported =
+                                              await _localAuth
+                                                  .isDeviceSupported();
+                                          bool canCheckBiometrics =
+                                              await _localAuth
+                                                  .canCheckBiometrics;
+                                          if (_isBiometricSupported &&
+                                              canCheckBiometrics) {
+                                            _model.outs =
+                                                await _localAuth.authenticate(
+                                                    localizedReason:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getText(
+                                                      'c2pz80f3' /* we would like to take biometri... */,
+                                                    ),
+                                                    options:
+                                                        const AuthenticationOptions(
+                                                            biometricOnly:
+                                                                true));
                                             setState(() {});
                                           }
 
                                           if (_model.outs == true) {
-                                            _model.loginApiRes5 = await LoginApiCall.call(
-                                              phone: FFAppState().biomatricDtateModel.phoneNumber,
-                                              password: FFAppState().biomatricDtateModel.password,
+                                            _model.loginApiRes5 =
+                                                await LoginApiCall.call(
+                                              phone: FFAppState()
+                                                  .biomatricDtateModel
+                                                  .phoneNumber,
+                                              password: FFAppState()
+                                                  .biomatricDtateModel
+                                                  .password,
                                               fcm: FFAppState().FCM,
                                             );
-                                            if ((_model.loginApiRes5?.succeeded ?? true)) {
+                                            if ((_model
+                                                    .loginApiRes5?.succeeded ??
+                                                true)) {
                                               setState(() {
                                                 FFAppState().userModel =
-                                                UserModelStruct.maybeFromMap(getJsonField(
-                                                  (_model.loginApiRes5?.jsonBody ?? ''),
+                                                    UserModelStruct
+                                                        .maybeFromMap(
+                                                            getJsonField(
+                                                  (_model.loginApiRes5
+                                                          ?.jsonBody ??
+                                                      ''),
                                                   r'''$.user''',
                                                 ))!;
                                               });
-                                              if (FFAppState().userModel.token.isEmpty) {
+                                              if (FFAppState()
+                                                  .userModel
+                                                  .token
+                                                  .isEmpty) {
                                                 await showDialog(
                                                   context: context,
-                                                  builder: (alertDialogContext) {
+                                                  builder:
+                                                      (alertDialogContext) {
                                                     return AlertDialog(
-                                                      title: Text(FFLocalizations.of(context).getVariableText(
+                                                      title: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
                                                         enText: 'Error',
                                                         arText: 'مشكلة خادم',
                                                       )),
-                                                      content: Text(FFLocalizations.of(context).getVariableText(
+                                                      content: Text(
+                                                          FFLocalizations.of(
+                                                                  context)
+                                                              .getVariableText(
                                                         enText: 'Bad Access',
-                                                        arText: 'عملية دخول خاطئة',
+                                                        arText:
+                                                            'عملية دخول خاطئة',
                                                       )),
                                                       actions: [
                                                         TextButton(
-                                                          onPressed: () => Navigator.pop(alertDialogContext),
-                                                          child: Text(FFLocalizations.of(context).getVariableText(
+                                                          onPressed: () =>
+                                                              Navigator.pop(
+                                                                  alertDialogContext),
+                                                          child: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
                                                             enText: 'Ok',
                                                             arText: 'حسنا',
                                                           )),
@@ -867,41 +935,62 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 );
                                                 return;
                                               }
-                                              if (Navigator.of(context).canPop()) {
+                                              if (Navigator.of(context)
+                                                  .canPop()) {
                                                 context.pop();
                                               }
                                               context.pushReplacementNamed(
                                                 'HomeScreen',
                                                 extra: <String, dynamic>{
-                                                  kTransitionInfoKey: TransitionInfo(
+                                                  kTransitionInfoKey:
+                                                      TransitionInfo(
                                                     hasTransition: true,
-                                                    transitionType: PageTransitionType.fade,
-                                                    duration: Duration(milliseconds: 0),
+                                                    transitionType:
+                                                        PageTransitionType.fade,
+                                                    duration: Duration(
+                                                        milliseconds: 0),
                                                   ),
                                                 },
                                               );
                                               return;
                                             } else {
                                               await showDialog(
-                                              context: context,
-                                              builder: (dialogContext) {
-                                                return Dialog(
-                                                  insetPadding: EdgeInsets.zero,
-                                                  backgroundColor: Colors.transparent,
-                                                  alignment: AlignmentDirectional(0.0, 0.0)
-                                                      .resolve(Directionality.of(context)),
-                                                  child: GestureDetector(
-                                                    onTap: () => _model.unfocusNode.canRequestFocus
-                                                        ? FocusScope.of(context)
-                                                        .requestFocus(_model.unfocusNode)
-                                                        : FocusScope.of(context).unfocus(),
-                                                    child: Modal06BasicInformationWidget(
-                                                      body: (_model.loginApiRes5?.bodyText ?? ''),
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    insetPadding:
+                                                        EdgeInsets.zero,
+                                                    backgroundColor:
+                                                        Colors.transparent,
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                                0.0, 0.0)
+                                                            .resolve(
+                                                                Directionality.of(
+                                                                    context)),
+                                                    child: GestureDetector(
+                                                      onTap: () => _model
+                                                              .unfocusNode
+                                                              .canRequestFocus
+                                                          ? FocusScope.of(
+                                                                  context)
+                                                              .requestFocus(_model
+                                                                  .unfocusNode)
+                                                          : FocusScope.of(
+                                                                  context)
+                                                              .unfocus(),
+                                                      child:
+                                                          Modal06BasicInformationWidget(
+                                                        body: (_model
+                                                                .loginApiRes5
+                                                                ?.bodyText ??
+                                                            ''),
+                                                      ),
                                                     ),
-                                                  ),
-                                                );
-                                              },
-                                              ).then((value) => setState(() {}));
+                                                  );
+                                                },
+                                              ).then(
+                                                  (value) => setState(() {}));
 
                                               return;
                                             }
@@ -910,7 +999,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                       },
                                       child: ClipRRect(
                                         borderRadius:
-                                        BorderRadius.circular(0.0),
+                                            BorderRadius.circular(0.0),
                                         child: SvgPicture.asset(
                                           'assets/images/fings.svg',
                                           fit: BoxFit.scaleDown,
@@ -926,18 +1015,19 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                         30.0, 40.0, 30.0, 0.0),
                                     child: Row(
                                       mainAxisSize: MainAxisSize.max,
-                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
                                       children: [
                                         RichText(
                                           textScaleFactor:
-                                          MediaQuery.of(context)
-                                              .textScaleFactor,
+                                              MediaQuery.of(context)
+                                                  .textScaleFactor,
                                           text: TextSpan(
                                             children: [
                                               TextSpan(
                                                 text:
-                                                FFLocalizations.of(context)
-                                                    .getText(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
                                                   'n5n9ddjw4q' /* Already have an account?   */,
                                                 ),
                                                 style: TextStyle(),
@@ -946,9 +1036,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                             style: FlutterFlowTheme.of(context)
                                                 .bodyMedium
                                                 .override(
-                                              fontFamily: 'Heebo',
-                                              useGoogleFonts: false,
-                                            ),
+                                                  fontFamily: 'Heebo',
+                                                  useGoogleFonts: false,
+                                                ),
                                           ),
                                         )
                                       ],

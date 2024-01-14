@@ -1,3 +1,4 @@
+import '../modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -247,8 +248,32 @@ class _RatingComponentWidgetState extends State<RatingComponentWidget> {
                           ),
                         );
                         Navigator.pop(context);
+                      }else{
+                        await showDialog(
+                          context: context,
+                          builder: (dialogContext) {
+                            return Dialog(
+                              insetPadding:
+                              EdgeInsets.zero,
+                              backgroundColor:
+                              Colors.transparent,
+                              alignment:
+                              AlignmentDirectional(
+                                  0.0, 0.0)
+                                  .resolve(
+                                  Directionality.of(
+                                      context)),
+                              child: Modal06BasicInformationWidget(
+                                body: (_model
+                                    .apiResult4ki
+                                    ?.bodyText ??
+                                    ''),
+                              ),
+                            );
+                          },
+                        ).then((value) =>
+                            setState(() {}));
                       }
-
                       setState(() {});
                     },
                     text: FFLocalizations.of(context).getText(

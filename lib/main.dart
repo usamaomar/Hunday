@@ -5,6 +5,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hyundai/backend/schema/structs/index.dart';
 import 'package:provider/provider.dart';
@@ -80,17 +81,84 @@ class _MyAppState extends State<MyApp> {
   ThemeMode _themeMode = FlutterFlowTheme.themeMode;
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
+  FlutterLocalNotificationsPlugin? fltNotification;
 
   @override
   void initState() {
+
+    handleInAppMessage();
+
     FirebaseMessaging.instance.getToken().then((fbToken) {
       FFAppState().FCM = fbToken ?? 'null';
     });
     // initUniLinks();
     super.initState();
-
+    initMessaging();
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
+  }
+
+
+  void handleInAppMessage() {
+    FirebaseMessaging.instance.getInitialMessage().then((message) => {
+      if (message != null) {
+        _firebaseMessagingInAppHandler(message)
+      }
+    });
+    FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      _firebaseMessagingInAppHandler(message);
+    });
+    FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      _firebaseMessagingInAppHandler(message);
+    });
+  }
+
+
+  Future<void> _firebaseMessagingInAppHandler(RemoteMessage message) async {
+    try {
+      if (message.notification != null &&
+          message.notification?.title != null &&
+          message.notification?.body != null) {
+        FFAppState().addToLocalNotificationLost(NotificationModelStruct(
+            title: message.data['title'],
+            body: message.data['body'],
+            isClicked: false,
+            date: getCurrentDate(),
+            time: getCurrentTime()));
+        showNotification(message);
+      }
+    } catch (ex) {
+      ex.toString();
+    }
+  }
+
+
+  void showNotification(RemoteMessage message) async {
+    try {
+      if (message.notification?.title != null && message.notification?.body != null) {
+        var androidDetails =
+        AndroidNotificationDetails('channelId', 'channelName');
+        var iosDetails = IOSNotificationDetails(presentAlert : true,presentBadge : true,presentSound : true,subtitle:message.notification?.title,  );
+        var generalNotificationDetails =
+        NotificationDetails(android: androidDetails, iOS: iosDetails);
+        await fltNotification?.show(0, message.notification?.title, message.notification?.body,
+            generalNotificationDetails,
+            payload: 'Notification');
+      }
+    } catch (ex) {
+      ex.toString();
+    }
+  }
+
+  void initMessaging() async {
+    var androidInit = AndroidInitializationSettings('launch_background');
+    var iosInit = IOSInitializationSettings(requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,);
+    var initSetting =
+    InitializationSettings(android: androidInit, iOS: iosInit);
+    fltNotification = FlutterLocalNotificationsPlugin();
+    fltNotification?.initialize(initSetting);
   }
 
   void setLocale(String language) {
