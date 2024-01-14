@@ -17,6 +17,7 @@ class UserModelStruct extends BaseStruct {
     String? bod,
     String? language,
     String? profilePhotoUrl,
+    String? status,
   })  : _name = name,
         _email = email,
         _phone = phone,
@@ -26,7 +27,8 @@ class UserModelStruct extends BaseStruct {
         _countryCode = countryCode,
         _bod = bod,
         _language = language,
-        _profilePhotoUrl = profilePhotoUrl;
+        _profilePhotoUrl = profilePhotoUrl,
+        _status = status;
 
   // "name" field.
   String? _name;
@@ -89,6 +91,12 @@ class UserModelStruct extends BaseStruct {
   set profilePhotoUrl(String? val) => _profilePhotoUrl = val;
   bool hasProfilePhotoUrl() => _profilePhotoUrl != null;
 
+  // "status" field.
+  String? _status;
+  String get status => _status ?? '';
+  set status(String? val) => _status = val;
+  bool hasStatus() => _status != null;
+
   static UserModelStruct fromMap(Map<String, dynamic> data) => UserModelStruct(
         name: data['name'] as String?,
         email: data['email'] as String?,
@@ -100,6 +108,7 @@ class UserModelStruct extends BaseStruct {
         bod: data['bod'] as String?,
         language: data['language'] as String?,
         profilePhotoUrl: data['profile_photo_url'] as String?,
+        status: data['status'] as String?,
       );
 
   static UserModelStruct? maybeFromMap(dynamic data) => data is Map
@@ -117,6 +126,7 @@ class UserModelStruct extends BaseStruct {
         'bod': _bod,
         'language': _language,
         'profile_photo_url': _profilePhotoUrl,
+        'status': _status,
       }.withoutNulls;
 
   @override
@@ -159,6 +169,10 @@ class UserModelStruct extends BaseStruct {
         ),
         'profile_photo_url': serializeParam(
           _profilePhotoUrl,
+          ParamType.String,
+        ),
+        'status': serializeParam(
+          _status,
           ParamType.String,
         ),
       }.withoutNulls;
@@ -215,6 +229,11 @@ class UserModelStruct extends BaseStruct {
           ParamType.String,
           false,
         ),
+        status: deserializeParam(
+          data['status'],
+          ParamType.String,
+          false,
+        ),
       );
 
   @override
@@ -232,7 +251,8 @@ class UserModelStruct extends BaseStruct {
         countryCode == other.countryCode &&
         bod == other.bod &&
         language == other.language &&
-        profilePhotoUrl == other.profilePhotoUrl;
+        profilePhotoUrl == other.profilePhotoUrl &&
+        status == other.status;
   }
 
   @override
@@ -246,7 +266,8 @@ class UserModelStruct extends BaseStruct {
         countryCode,
         bod,
         language,
-        profilePhotoUrl
+        profilePhotoUrl,
+        status
       ]);
 }
 
@@ -261,6 +282,7 @@ UserModelStruct createUserModelStruct({
   String? bod,
   String? language,
   String? profilePhotoUrl,
+  String? status,
 }) =>
     UserModelStruct(
       name: name,
@@ -273,4 +295,5 @@ UserModelStruct createUserModelStruct({
       bod: bod,
       language: language,
       profilePhotoUrl: profilePhotoUrl,
+      status: status,
     );
