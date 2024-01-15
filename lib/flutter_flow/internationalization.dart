@@ -1001,6 +1001,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // NotificationPage
+  {
+    'msx02ztx': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // Fild
   {
     '12neuu73': {
