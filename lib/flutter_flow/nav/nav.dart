@@ -340,6 +340,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => SheckOutPagePageWidget(
                 deepLinkId: params.getParam('deepLinkId', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'NotificationPage',
+              path: 'notificationPage',
+              builder: (context, params) => NotificationPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
