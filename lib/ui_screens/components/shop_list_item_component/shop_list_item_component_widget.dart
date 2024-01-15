@@ -79,6 +79,12 @@ class _ShopListItemComponentWidgetState
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(0.0),
                         child: Image.network(
+                          errorBuilder: (context, error, stackTrace) {
+                            return const SizedBox(
+                              width: 50,
+                              height: 50,
+                            );
+                          },
                           widget.imagePath!,
                           width: 50.0,
                           height: 50.0,

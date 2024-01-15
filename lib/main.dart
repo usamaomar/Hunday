@@ -137,7 +137,7 @@ class _MyAppState extends State<MyApp> {
     try {
       if (message.notification?.title != null && message.notification?.body != null) {
         var androidDetails =
-        AndroidNotificationDetails('channelId', 'channelName');
+        AndroidNotificationDetails('channelId', 'channelName',importance: Importance.max);
         var iosDetails = IOSNotificationDetails(presentAlert : true,presentBadge : true,presentSound : true,subtitle:message.notification?.title,  );
         var generalNotificationDetails =
         NotificationDetails(android: androidDetails, iOS: iosDetails);

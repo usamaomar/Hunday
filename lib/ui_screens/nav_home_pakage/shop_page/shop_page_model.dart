@@ -68,7 +68,7 @@ class ShopPageModel extends FlutterFlowModel<ShopPageWidget> {
   ) {
     final controller = PagingController<ApiPagingParams, dynamic>(
       firstPageKey: ApiPagingParams(
-        nextPageNumber: 0,
+        nextPageNumber: 1,
         numItems: 0,
         lastResponse: null,
       ),

@@ -12,6 +12,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'about_app_page_model.dart';
 export 'about_app_page_model.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 
 class AboutAppPageWidget extends StatefulWidget {
   const AboutAppPageWidget({Key? key}) : super(key: key);
@@ -333,11 +334,13 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                                 children: [
                                                   Flexible(
                                                     child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        's2jkoquf' /* Lorem ipsum dolor sit amet, co... */,
-                                                      ),
+                                              functions
+                                                  .getSettingByKey(
+                                                  FFAppState().currentLanguge == 'en' ? 'about_app_en' :  'about_app_ar',
+                                                  FFAppState()
+                                                      .socialMediaJsonObject
+                                                      .toList())
+                                                  .toString(),
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)

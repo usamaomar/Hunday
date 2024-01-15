@@ -81,6 +81,8 @@ class RegularPageModel extends FlutterFlowModel<RegularPageWidget> {
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
 
+  ApiCallResponse? apiDateTimes;
+
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {

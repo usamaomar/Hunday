@@ -36,21 +36,18 @@ class _ErrorNetwokDialogComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => ErrorNetwokDialogComponentModel());
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.maybeDispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
     return Row(
       mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,

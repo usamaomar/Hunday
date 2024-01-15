@@ -62,6 +62,7 @@ class RepairPageModel extends FlutterFlowModel<RepairPageWidget> {
   ApiCallResponse? apiResult6ff;
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
+  ApiCallResponse? apiDateTimes;
 
   /// Initialization and disposal methods.
 

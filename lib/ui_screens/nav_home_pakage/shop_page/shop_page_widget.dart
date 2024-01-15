@@ -58,7 +58,6 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
     }
 
     context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -178,7 +177,7 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
                         token: FFAppState().userModel.token,
                         page: valueOrDefault<int>(
                           nextPageMarker.nextPageNumber,
-                          -1,
+                          0,
                         ),
                       ),
                     ),

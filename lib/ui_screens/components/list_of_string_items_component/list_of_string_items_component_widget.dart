@@ -265,8 +265,13 @@ class _ListOfStringItemsComponentWidgetState
                                   options: _model.carModelList
                                       .map((e) => e.name)
                                       .toList(),
-                                  onChanged: (val) => setState(
-                                      () => _model.dropDownValue1 = val),
+                                  onChanged: (val) {
+                                    setState(() {
+                                      _model.selectedCarModel =   _model.carModelList
+                                          .where((e) => e.name == val).single;
+                                      _model.dropDownValue1 = val;
+                                    });
+                                  },
                                   width: 270.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
@@ -326,8 +331,13 @@ class _ListOfStringItemsComponentWidgetState
                                   options: _model.carCategoriesList
                                       .map((e) => e.name)
                                       .toList(),
-                                  onChanged: (val) => setState(
-                                      () => _model.dropDownValue2 = val),
+                                  onChanged: (val) {
+                                    setState(() {
+                                      _model.selectedCarCategories = _model.carCategoriesList
+                                          .where((e) => e.name == val).single;
+                                      _model.dropDownValue2 = val;
+                                    });
+                                  },
                                   width: 270.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
@@ -461,7 +471,7 @@ class _ListOfStringItemsComponentWidgetState
                                     context,
                                     child!,
                                     headerBackgroundColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                        FlutterFlowTheme.of(context).white,
                                     headerForegroundColor:
                                         FlutterFlowTheme.of(context).info,
                                     headerTextStyle:
@@ -479,9 +489,9 @@ class _ListOfStringItemsComponentWidgetState
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
                                     selectedDateTimeBackgroundColor:
-                                        FlutterFlowTheme.of(context).secondary,
+                                        FlutterFlowTheme.of(context).accent4,
                                     selectedDateTimeForegroundColor:
-                                        FlutterFlowTheme.of(context).white,
+                                        FlutterFlowTheme.of(context).primary,
                                     actionButtonForegroundColor:
                                         FlutterFlowTheme.of(context)
                                             .primaryText,
@@ -857,8 +867,13 @@ class _ListOfStringItemsComponentWidgetState
                                   options: _model.fuelTypesList
                                       .map((e) => e.name)
                                       .toList(),
-                                  onChanged: (val) => setState(
-                                      () => _model.dropDownValue3 = val),
+                                  onChanged: (val) {
+                                    setState(() {
+                                      _model.selectedFuelType = _model.fuelTypesList
+                                          .where((e) => e.name == val).single;
+                                      _model.dropDownValue3 = val;
+                                    });
+                                  },
                                   width: 270.0,
                                   textStyle:
                                       FlutterFlowTheme.of(context).bodyMedium,
@@ -898,14 +913,10 @@ class _ListOfStringItemsComponentWidgetState
                                   _model.apiResult4m8 =
                                       await StoreVehicleApiCall.call(
                                     token: FFAppState().userModel.token,
-                                    carType: _model.selectedCarModel?.name,
-                                    carModelId:
-                                        _model.selectedCarModel?.id?.toString(),
-                                    carCategoryId: _model
-                                        .selectedCarCategories?.id
-                                        ?.toString(),
-                                    yearOfManufacturing:
-                                        _model.yearOfManufacturingString,
+                                    carType:_model.dropDownValue1 ?? _model.selectedCarModel?.name,
+                                    carModelId: _model.selectedCarModel?.id?.toString(),
+                                    carCategoryId: _model.selectedCarCategories?.id?.toString(),
+                                    yearOfManufacturing: _model.yearOfManufacturingString,
                                     registeredUntil:
                                         functions.convertDateFormat(
                                             _model.registeredUntil),
@@ -919,7 +930,6 @@ class _ListOfStringItemsComponentWidgetState
                                   if ((_model.apiResult4m8?.succeeded ??
                                       true)) {
                                     context.pushNamed('ShopPage');
-
                                     Navigator.pop(context);
                                   } else {
                                     await showDialog(

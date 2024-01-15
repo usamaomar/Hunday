@@ -231,7 +231,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                   FormFieldController<String>(
                                                       null),
                                               options: _model.serviceTypeList
-                                                  .map((e) =>e.name )
+                                                  .map((e) => e.name)
                                                   .toList(),
                                               onChanged: (val) async {
                                                 setState(() => _model
@@ -242,7 +242,9 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                           _model
                                                               .dropDownValue1!,
                                                           _model.serviceTypeList
-                                                              .toList(),FFAppState().currentLanguge);
+                                                              .toList(),
+                                                          FFAppState()
+                                                              .currentLanguge);
                                                 });
                                               },
                                               width: double.infinity,
@@ -368,7 +370,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                   await showDatePicker(
                                                 context: context,
                                                 initialDate:
-                                                    getCurrentTimestamp,
+                                                _model.datePicked ?? getCurrentTimestamp,
                                                 firstDate: getCurrentTimestamp,
                                                 lastDate: DateTime(2050),
                                                 builder: (context, child) {
@@ -437,6 +439,20 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                   locale: 'en',
                                                 );
                                               });
+
+                                              _model.apiDateTimes =
+                                                  await CheckAvailableTimeCall
+                                                      .call(
+                                                token: FFAppState()
+                                                    .userModel
+                                                    .token,
+                                                serviceType: 'regular',
+                                                date: dateTimeFormat(
+                                                  'yyyy-MM-dd',
+                                                  _model.datePicked,
+                                                  locale: 'en',
+                                                ),
+                                              );
                                             },
                                             child: Container(
                                               height: 40.0,
@@ -546,14 +562,20 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                                   .unfocus(),
                                                           child:
                                                               TimeComponentListWidget(
-                                                            date:
-                                                                dateTimeFormat(
-                                                              'yyyy-MM-dd',
-                                                              _model.datePicked,
-                                                              locale: 'en',
-                                                            ),
-                                                            serviceType:
-                                                                'regular',
+                                                            list: getJsonField(
+                                                                      _model
+                                                                          .apiDateTimes
+                                                                          ?.jsonBody,
+                                                                      r'''$.availableTime''',
+                                                                    ) ==
+                                                                    null
+                                                                ? []
+                                                                : getJsonField(
+                                                                    _model
+                                                                        .apiDateTimes
+                                                                        ?.jsonBody,
+                                                                    r'''$.availableTime''',
+                                                                  ).toList(),
                                                           ),
                                                         ),
                                                       );
@@ -681,8 +703,8 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                       token: FFAppState()
                                                           .userModel
                                                           .token,
-                                                      date:
-                                                      conveFrom('${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}'),
+                                                      date: conveFrom(
+                                                          '${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}'),
                                                       serviceTypeId: _model
                                                           .selectedServiceType
                                                           ?.id,
@@ -735,8 +757,9 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                           .canPop()) {
                                                         context.pop();
                                                       }
-                                                      context.pushReplacementNamed(
-                                                          'HomeScreen');
+                                                      context
+                                                          .pushReplacementNamed(
+                                                              'HomeScreen');
                                                     } else {
                                                       await showDialog(
                                                         context: context,
@@ -864,14 +887,11 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
     );
   }
 
-
-  String conveFrom(String value){
-    DateTime startDate = DateFormat("yyyy/MM/dd HH:mm").parse(value.split(' - ')[0]);
-    String formattedDateString = DateFormat("yyyy-MM-dd HH:mm:ss").format(startDate);
+  String conveFrom(String value) {
+    DateTime startDate =
+        DateFormat("yyyy/MM/dd HH:mm").parse(value.split(' - ')[0]);
+    String formattedDateString =
+        DateFormat("yyyy-MM-dd HH:mm:ss").format(startDate);
     return formattedDateString;
   }
-
-
 }
-
-

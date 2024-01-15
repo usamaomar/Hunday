@@ -722,7 +722,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                 children: [
                                                   Padding(
                                                     padding:
-                                                    EdgeInsetsDirectional
+                                                    const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                         15.0,
                                                         10.0,

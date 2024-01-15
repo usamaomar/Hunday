@@ -1279,6 +1279,8 @@ class CheckAvailableTimeCall {
 "serviceType": "${serviceType}" ,
 "date": "${date}"
 }''';
+    print("makeApiCall = ${ffApiRequestBody.toString()}");
+
     return ApiManager.instance.makeApiCall(
       callName: 'checkAvailableTime',
       apiUrl:
@@ -1288,13 +1290,16 @@ class CheckAvailableTimeCall {
         'Authorization': 'Bearer ${token}',
         'Accept': 'application/json',
       },
-      params: {},
+      params: {
+        'serviceType':serviceType ,
+        'date': date,
+      },
       body: ffApiRequestBody,
       bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,
-      cache: false,
+      cache: true,
       alwaysAllowBody: false,
     );
   }
@@ -1408,7 +1413,7 @@ class RemoveCouponApiCall {
 }
 
 class ApiPagingParams {
-  int nextPageNumber = 0;
+  int nextPageNumber = 1;
   int numItems = 0;
   dynamic lastResponse;
 

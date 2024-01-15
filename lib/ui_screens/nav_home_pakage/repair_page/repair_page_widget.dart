@@ -280,8 +280,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                   await showDatePicker(
                                                 context: context,
                                                 initialDate:
-                                                    getCurrentTimestamp,
-                                                firstDate: getCurrentTimestamp,
+                                                _model.datePicked ?? getCurrentTimestamp,                                                firstDate: getCurrentTimestamp,
                                                 lastDate: DateTime(2050),
                                               );
 
@@ -302,6 +301,22 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                   locale: 'en',
                                                 );
                                               });
+
+
+                                                _model.apiDateTimes =
+                                                    await CheckAvailableTimeCall
+                                                        .call(
+                                                  token: FFAppState()
+                                                      .userModel
+                                                      .token,
+                                                  serviceType: 'repair',
+                                                  date: dateTimeFormat(
+                                                    'yyyy-MM-dd',
+                                                    _model.datePicked,
+                                                    locale: 'en',
+                                                  ),
+                                                );
+
                                             },
                                             child: Container(
                                               height: 40.0,
@@ -411,14 +426,17 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                                   .unfocus(),
                                                           child:
                                                               TimeComponentListWidget(
-                                                            date:
-                                                                dateTimeFormat(
-                                                              'yyyy-MM-dd',
-                                                              _model.datePicked,
-                                                              locale: 'en',
-                                                            ),
-                                                            serviceType:
-                                                                'repair',
+                                                            list:getJsonField(
+                                                              _model
+                                                                  .apiDateTimes
+                                                                  ?.jsonBody,
+                                                              r'''$.availableTime''',
+                                                            )==null ? [] :  getJsonField(
+                                                              _model
+                                                                  .apiDateTimes
+                                                                  ?.jsonBody,
+                                                              r'''$.availableTime''',
+                                                            ).toList(),
                                                           ),
                                                         ),
                                                       );
@@ -648,8 +666,8 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                       token: FFAppState()
                                                           .userModel
                                                           .token,
-                                                      date:
-                                                      conveFrom('${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}'),
+                                                      date: conveFrom(
+                                                          '${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}'),
                                                       details: _model
                                                           .textController.text,
                                                       vehicleId: _model
@@ -701,8 +719,9 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                           .canPop()) {
                                                         context.pop();
                                                       }
-                                                      context.pushReplacementNamed(
-                                                          'HomeScreen');
+                                                      context
+                                                          .pushReplacementNamed(
+                                                              'HomeScreen');
                                                     } else {
                                                       await showDialog(
                                                         context: context,
@@ -814,7 +833,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                           appBarTitle:
                               FFLocalizations.of(context).getVariableText(
                             enText: 'Repair',
-                            arText: 'بصلح',
+                            arText: 'اصلاح',
                           ),
                           isMyProfileOpend: false,
                         ),
@@ -830,10 +849,12 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
     );
   }
 
-  String conveFrom(String value){
-    DateTime startDate = DateFormat("yyyy/MM/dd HH:mm").parse(value.split(' - ')[0]);
+  String conveFrom(String value) {
+    DateTime startDate =
+        DateFormat("yyyy/MM/dd HH:mm").parse(value.split(' - ')[0]);
     // Format the new date string
-    String formattedDateString = DateFormat("yyyy-MM-dd HH:mm:ss").format(startDate);
+    String formattedDateString =
+        DateFormat("yyyy-MM-dd HH:mm:ss").format(startDate);
     return formattedDateString;
   }
 }
