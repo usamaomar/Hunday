@@ -595,18 +595,67 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed(
-                                          'MaintenancePage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
-                                            ),
-                                          },
-                                        );
+                                          _model.apiResult2kt =
+                                          await VehicleApiCall.call(
+                                            token: FFAppState().userModel.token,
+                                          );
+                                          if ((_model.apiResult2kt?.succeeded ??
+                                              true)) {
+                                            if (getJsonField(
+                                              (_model.apiResult2kt
+                                                  ?.jsonBody ??
+                                                  ''),
+                                              r'''$.vehicles''',
+                                            ) !=
+                                                null &&
+                                                (getJsonField(
+                                                  (_model.apiResult2kt
+                                                      ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.vehicles''',
+                                                ) as List)
+                                                    .isNotEmpty) {
+
+
+                                              context.pushNamed(
+                                                'MaintenancePage',
+                                                extra: <String, dynamic>{
+                                                  kTransitionInfoKey: TransitionInfo(
+                                                    hasTransition: true,
+                                                    transitionType:
+                                                    PageTransitionType.fade,
+                                                    duration:
+                                                    Duration(milliseconds: 0),
+                                                  ),
+                                                },
+                                              );
+                                            } else {
+                                              await showDialog(
+                                                barrierColor:
+                                                Colors.transparent,
+                                                barrierDismissible: false,
+                                                context: context,
+                                                builder: (dialogContext) {
+                                                  return Dialog(
+                                                    child:
+                                                    ScannedCardAnimationComponentWidget(),
+                                                  );
+                                                },
+                                              ).then(
+                                                      (value) => setState(() {}));
+                                            }
+                                          }
+                                          setState(() {});
+
+
+
+
+
+
+
+
+
+
                                       },
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,

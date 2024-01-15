@@ -1,3 +1,5 @@
+import 'package:easy_debounce/easy_debounce.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_drop_down.dart';
@@ -55,13 +57,19 @@ class _AddComponentShopingDetailsWidgetState
       );
       if ((_model.apiResultjaz?.succeeded ?? true)) {
         setState(() {
-          _model.listOfPartsModelLocal = functions
-              .fromJsonArrayToPartModelList(getJsonField(
-                (_model.apiResultjaz?.jsonBody ?? ''),
-                r'''$.parts''',
-              ))
-              .toList()
-              .cast<PartModelStruct>();
+          _model.listOfPartsModelLocal = getJsonField(
+                    (_model.apiResultjaz?.jsonBody ?? ''),
+                    r'''$.parts''',
+                  ) ==
+                  null
+              ? []
+              : functions
+                  .fromJsonArrayToPartModelList(getJsonField(
+                    (_model.apiResultjaz?.jsonBody ?? ''),
+                    r'''$.parts''',
+                  ))
+                  .toList()
+                  .cast<PartModelStruct>();
         });
       }
       _model.apiResultoqe = await VehicleApiCall.call(
@@ -76,9 +84,6 @@ class _AddComponentShopingDetailsWidgetState
               ))
               .toList()
               .cast<MyVehicleModelStruct>();
-
-
-
         });
         setState(() {
           _model.titleHeade = widget.titleh!;
@@ -202,6 +207,44 @@ class _AddComponentShopingDetailsWidgetState
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       8.0, 0.0, 8.0, 0.0),
                                   child: TextFormField(
+                                    onChanged: (value) => EasyDebounce.debounce(
+                                      '_model.textController',
+                                      Duration(milliseconds: 500),
+                                      () async {
+                                        _model.apiResultjaz =
+                                            await PartsApiCall.call(
+                                          token: FFAppState().userModel.token,
+                                          id: widget.partId,
+                                          vehicleId: _model.dropDownValue,
+                                          searchKey: value,
+                                        );
+                                        if ((_model.apiResultjaz?.succeeded ??
+                                            true)) {
+                                          setState(() {
+                                            _model.listOfPartsModelLocal =
+                                                getJsonField(
+                                                          (_model.apiResultjaz
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.parts''',
+                                                        ) ==
+                                                        null
+                                                    ? []
+                                                    : functions
+                                                        .fromJsonArrayToPartModelList(
+                                                            getJsonField(
+                                                          (_model.apiResultjaz
+                                                                  ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.parts''',
+                                                        ))
+                                                        .toList()
+                                                        .cast<
+                                                            PartModelStruct>();
+                                          });
+                                        }
+                                      },
+                                    ),
                                     controller: _model.textController,
                                     focusNode: _model.textFieldFocusNode,
                                     obscureText: false,
@@ -289,8 +332,35 @@ class _AddComponentShopingDetailsWidgetState
                                           functions.getSelectedVehicle(
                                               _model.dropDownValue!,
                                               _model.listOfMyVehicle.toList());
-                                      _model.selectedYear =_model.selectedVehicleModel?.yearOfManufacturing ?? '-';
+                                      _model.selectedYear = _model
+                                              .selectedVehicleModel
+                                              ?.yearOfManufacturing ??
+                                          '-';
                                     });
+                                    _model.apiResultjaz =
+                                        await PartsApiCall.call(
+                                      token: FFAppState().userModel.token,
+                                      id: widget.partId,
+                                      vehicleId: val,
+                                    );
+                                    if ((_model.apiResultjaz?.succeeded ??
+                                        true)) {
+                                      setState(() {
+                                        _model.listOfPartsModelLocal = getJsonField(
+                                          (_model.apiResultjaz?.jsonBody ??
+                                              ''),
+                                          r'''$.parts''',
+                                        ) ==null ? [] : functions
+                                            .fromJsonArrayToPartModelList(
+                                                getJsonField(
+                                              (_model.apiResultjaz?.jsonBody ??
+                                                  ''),
+                                              r'''$.parts''',
+                                            ))
+                                            .toList()
+                                            .cast<PartModelStruct>();
+                                      });
+                                    }
                                   },
                                   height: 50.0,
                                   textStyle:
@@ -337,8 +407,7 @@ class _AddComponentShopingDetailsWidgetState
                             ),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
-                              mainAxisAlignment:
-                                  MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -358,8 +427,8 @@ class _AddComponentShopingDetailsWidgetState
                                             ),
                                       '-',
                                     ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium,
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
                                   ),
                                 ),
                                 Padding(
@@ -514,7 +583,8 @@ class _AddComponentShopingDetailsWidgetState
                                                                 .end,
                                                         children: [
                                                           if (listLcsItem
-                                                                      .specialPrice>0
+                                                                      .specialPrice >
+                                                                  0
                                                               ? true
                                                               : false)
                                                             Row(
@@ -526,8 +596,9 @@ class _AddComponentShopingDetailsWidgetState
                                                                       .end,
                                                               children: [
                                                                 Card(
-                                                                  margin: EdgeInsets.zero,
-
+                                                                  margin:
+                                                                      EdgeInsets
+                                                                          .zero,
                                                                   color: FlutterFlowTheme.of(
                                                                           context)
                                                                       .secondaryBackground,
@@ -566,15 +637,15 @@ class _AddComponentShopingDetailsWidgetState
                                                                             5),
                                                                         child:
                                                                             Text(
-                                                                          listLcsItem.specialPrice>=0
+                                                                          listLcsItem.specialPrice >= 0
                                                                               ? '${listLcsItem.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                                   enText: 'JOD',
                                                                                   arText: 'دينار',
                                                                                 )}'
-                                                                              :'0 ${FFLocalizations.of(context).getVariableText(
-                                                                            enText: 'JOD',
-                                                                            arText: 'دينار',
-                                                                          )}',
+                                                                              : '0 ${FFLocalizations.of(context).getVariableText(
+                                                                                  enText: 'JOD',
+                                                                                  arText: 'دينار',
+                                                                                )}',
                                                                           textAlign:
                                                                               TextAlign.center,
                                                                           style: FlutterFlowTheme.of(context)
@@ -583,7 +654,6 @@ class _AddComponentShopingDetailsWidgetState
                                                                                 fontFamily: 'Poppins',
                                                                                 color: FlutterFlowTheme.of(context).error,
                                                                                 fontWeight: FontWeight.w600,
-
                                                                               ),
                                                                         ),
                                                                       ),
@@ -747,7 +817,8 @@ class _AddComponentShopingDetailsWidgetState
                                                                           .center,
                                                                   children: [
                                                                     Text(
-                                                                      listLcsItem.specialPrice <=0
+                                                                      listLcsItem.specialPrice <=
+                                                                              0
                                                                           ? '${listLcsItem.price.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                               enText: 'JOD',
                                                                               arText: 'دينار',
@@ -767,7 +838,9 @@ class _AddComponentShopingDetailsWidgetState
                                                                                 'Poppins',
                                                                             color:
                                                                                 FlutterFlowTheme.of(context).white,
-                                                                        decoration:  listLcsItem.specialPrice <=0 ?  TextDecoration.none:TextDecoration.lineThrough,
+                                                                            decoration: listLcsItem.specialPrice <= 0
+                                                                                ? TextDecoration.none
+                                                                                : TextDecoration.lineThrough,
                                                                             fontWeight:
                                                                                 FontWeight.w600,
                                                                           ),

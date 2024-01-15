@@ -158,7 +158,9 @@ class _MyAppState extends State<MyApp> {
     var initSetting =
     InitializationSettings(android: androidInit, iOS: iosInit);
     fltNotification = FlutterLocalNotificationsPlugin();
-    fltNotification?.initialize(initSetting);
+    fltNotification?.initialize(initSetting,onSelectNotification: (value){
+      context.pushReplacementNamed('HomeScreen');
+    });
   }
 
   void setLocale(String language) {

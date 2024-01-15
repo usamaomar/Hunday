@@ -955,6 +955,8 @@ class PartsApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
     int? id,
+    String? vehicleId,
+    String? searchKey,
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'PartsApi',
@@ -967,6 +969,8 @@ class PartsApiCall {
       params: {
         'token': token,
         'id': id,
+        'vehicle_id': vehicleId,
+        'search_key': searchKey,
       },
       returnBody: true,
       encodeBodyUtf8: false,
