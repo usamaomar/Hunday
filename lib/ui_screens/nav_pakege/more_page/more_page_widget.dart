@@ -361,6 +361,71 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                       highlightColor: Colors.transparent,
                       onTap: () async {
                         context.pushNamed(
+                          'NotificationPage',
+                          extra: <String, dynamic>{
+                            kTransitionInfoKey: TransitionInfo(
+                              hasTransition: true,
+                              transitionType: PageTransitionType.fade,
+                              duration: Duration(milliseconds: 0),
+                            ),
+                          },
+                        );
+                      },
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color:
+                              FlutterFlowTheme.of(context).secondaryBackground,
+                        ),
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 15.0, 0.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.notifications_active_sharp,
+                                color:
+                                    FlutterFlowTheme.of(context).secondaryText,
+                                size: 30.0,
+                              ),
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    10.0, 0.0, 10.0, 0.0),
+                                child: Text(
+                                  FFLocalizations.of(context).getText(
+                                    '2jxn0p4u' /* Notification */,
+                                  ),
+                                  style: TextStyle(
+                                    fontFamily: 'Heebo Regular',
+                                    fontSize: 16.0,
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
+                      child: Container(
+                        width: double.infinity,
+                        height: 0.5,
+                        decoration: BoxDecoration(
+                          color: Color(0xFF8C8D8E),
+                        ),
+                      ),
+                    ),
+                    InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        context.pushNamed(
                           'SettingsPage',
                           extra: <String, dynamic>{
                             kTransitionInfoKey: TransitionInfo(
@@ -395,7 +460,7 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                                     10.0, 0.0, 10.0, 0.0),
                                 child: Text(
                                   FFLocalizations.of(context).getText(
-                                    '2jxn0p4u' /* Settings */,
+                                    'rtfhfshd' /* Settings */,
                                   ),
                                   style: TextStyle(
                                     fontFamily: 'Heebo Regular',
