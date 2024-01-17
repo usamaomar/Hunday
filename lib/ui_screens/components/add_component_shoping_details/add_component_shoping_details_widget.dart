@@ -392,7 +392,7 @@ class _AddComponentShopingDetailsWidgetState
                                   borderWidth: 1.0,
                                   borderRadius: 5.0,
                                   margin: EdgeInsetsDirectional.fromSTEB(
-                                      0.0, 0.0, 0.0, 0.0),
+                                      10.0, 0.0, 5.0, 0.0),
                                   hidesUnderline: true,
                                   isSearchable: false,
                                   isMultiSelect: false,

@@ -1,3 +1,7 @@
+import 'package:flutter/cupertino.dart';
+
+import '../../../backend/api_requests/api_calls.dart';
+import '../../../backend/api_requests/api_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:aligned_tooltip/aligned_tooltip.dart';
@@ -69,14 +73,15 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                   borderRadius: BorderRadius.circular(0.0),
                 ),
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(30.0, 0.0, 30.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      30.0, 0.0, 30.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       Padding(
-                        padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
+                        padding: const EdgeInsetsDirectional.fromSTEB(
+                            0.0, 5.0, 0.0, 0.0),
                         child: InkWell(
                           splashColor: Colors.transparent,
                           focusColor: Colors.transparent,
@@ -112,7 +117,8 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                           showGeneralDialog(
                             context: context,
                             barrierDismissible: true,
-                            transitionDuration: const Duration(milliseconds: 500),
+                            transitionDuration:
+                                const Duration(milliseconds: 500),
                             barrierLabel:
                                 MaterialLocalizations.of(context).dialogLabel,
                             barrierColor: Colors.black.withOpacity(0),
@@ -148,8 +154,8 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'HeeboBold',
-                                                        color:
-                                                            const Color(0xFF092853),
+                                                        color: const Color(
+                                                            0xFF092853),
                                                         fontSize: 18,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -172,53 +178,180 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                           Container(
                                             width: 200,
                                             margin: const EdgeInsets.fromLTRB(
-                                                20, 0, 20, 0),
+                                                20, 0, 20, 30),
                                             height: 1,
                                             color: Color(0xFF3D6398),
                                           ),
-                                          ListView.builder(
-                                              shrinkWrap: true,
-                                              padding: EdgeInsets.zero,
-                                              scrollDirection: Axis.vertical,
-                                              itemCount: FFAppState()
-                                                  .localNotificationLost
-                                                  .length,
-                                              itemBuilder: (context,
-                                                  completedListIndex) {
-                                                final listModel = FFAppState()
-                                                        .localNotificationLost[
-                                                    completedListIndex];
-                                                return ListTile(
-                                                  leading: const Icon(
-                                                    Icons.notifications,
-                                                    color: Color(0xFF3D6398),
-                                                    size: 24.0,
+
+
+
+
+
+                                          FutureBuilder<ApiCallResponse>(
+                                            future: MyNotificationsApiCall.call(
+                                              token: FFAppState().userModel.token,
+                                            ),
+                                            builder: (context, snapshot) {
+                                              // Customize what your widget looks like when it's loading.
+                                              if (!snapshot.hasData) {
+                                                return Center(
+                                                  child: SizedBox(
+                                                    width: 50.0,
+                                                    height: 50.0,
+                                                    child: SpinKitDualRing(
+                                                      color: Color(0xFF092853),
+                                                      size: 50.0,
+                                                    ),
                                                   ),
-                                                  title:
-                                                      Text(listModel.title),
-                                                  onTap: () =>
-                                                      Navigator.of(context)
-                                                          .pop('item1'),
-                                                  subtitle: Text(
-                                                      '${listModel.date} ${listModel.time}',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Rajdhani',
-                                                                color: const Color(
-                                                                    0xFF092853),
-                                                                fontSize: 12,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                                useGoogleFonts:
-                                                                    false,
-                                                              )),
                                                 );
-                                              })
+                                              }
+                                              final listViewMyNotificationsApiResponse = snapshot.data!;
+                                              return Builder(
+                                                builder: (context) {
+                                                  final linst = getJsonField(
+                                                    listViewMyNotificationsApiResponse.jsonBody,
+                                                    r'''$.notifications''',
+                                                  ).toList();
+                                                  return ListView.builder(
+                                                    padding: EdgeInsets.zero,
+                                                    shrinkWrap: true,
+                                                    scrollDirection: Axis.vertical,
+                                                    itemCount: linst.length,
+                                                    itemBuilder: (context, linstIndex) {
+                                                      final linstItem = linst[linstIndex];
+                                                      return Padding(
+                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                            30.0, 0.0, 30.0, 0.0),
+                                                        child: Row(
+                                                          mainAxisSize: MainAxisSize.max,
+                                                          crossAxisAlignment: CrossAxisAlignment.start,
+                                                          children: [
+                                                            Icon(
+                                                              Icons.notifications_sharp,
+                                                              color: Color(0xFF3D6398),
+                                                              size: 24.0,
+                                                            ),
+                                                            Flexible(
+                                                              child: Padding(
+                                                                padding: EdgeInsetsDirectional.fromSTEB(
+                                                                    10.0, 0.0, 0.0, 0.0),
+                                                                child: Column(
+                                                                  mainAxisSize: MainAxisSize.max,
+                                                                  crossAxisAlignment:
+                                                                  CrossAxisAlignment.start,
+                                                                  children: [
+                                                                    Text(
+                                                                      getJsonField(
+                                                                        linstItem,
+                                                                        r'''$.title''',
+                                                                      ).toString(),
+                                                                      style: FlutterFlowTheme.of(context)
+                                                                          .bodyMedium
+                                                                          .override(
+                                                                        fontFamily: 'HeeboBold',
+                                                                        fontWeight: FontWeight.bold,
+                                                                        useGoogleFonts: false,
+                                                                      ),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding:
+                                                                      EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0, 10.0, 0.0, 10.0),
+                                                                      child: Text(
+                                                                        getJsonField(
+                                                                          linstItem,
+                                                                          r'''$.body''',
+                                                                        ).toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                          fontFamily: 'Heebo Regular',
+                                                                          fontWeight: FontWeight.normal,
+                                                                          useGoogleFonts: false,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Padding(
+                                                                      padding:
+                                                                      EdgeInsetsDirectional.fromSTEB(
+                                                                          0.0, 0.0, 0.0, 10.0),
+                                                                      child: Text(
+                                                                        getJsonField(
+                                                                          linstItem,
+                                                                          r'''$.sent_at''',
+                                                                        ).toString(),
+                                                                        style: FlutterFlowTheme.of(context)
+                                                                            .bodyMedium
+                                                                            .override(
+                                                                          fontFamily: 'Heebo Regular',
+                                                                          color: Color(0xFF3D6398),
+                                                                          fontSize: 13.0,
+                                                                          fontWeight: FontWeight.w300,
+                                                                          useGoogleFonts: false,
+                                                                        ),
+                                                                      ),
+                                                                    ),
+                                                                    Opacity(
+                                                                      opacity: 0.2,
+                                                                      child: Divider(
+                                                                        thickness: 1.0,
+                                                                        color: Color(0xFF3D6398),
+                                                                      ),
+                                                                    ),
+                                                                  ],
+                                                                ),
+                                                              ),
+                                                            ),
+                                                          ],
+                                                        ),
+                                                      );
+                                                    },
+                                                  );
+                                                },
+                                              );
+                                            },
+                                          ),
+
+
+
+                                          InkWell(
+                                            onTap: () {
+                                              context.pushNamed('notificationPage');
+                                            },
+                                            child: Padding(
+                                              padding: EdgeInsets.fromLTRB(
+                                                  0, 20, 0, 20),
+                                              child: Row(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                      enText: 'See All',
+                                                      arText: 'مشاهدة الكل',
+                                                    ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'HeeboBold',
+                                                          color: const Color(
+                                                              0xFF1E4E93),
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          )
                                         ],
                                       ),
                                     ),
@@ -269,7 +402,8 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 0.0),
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 0.0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
@@ -288,8 +422,8 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                       ),
                     ),
                     Padding(
-                      padding:
-                          const EdgeInsetsDirectional.fromSTEB(10.0, 0.0, 10.0, 0.0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(
+                          10.0, 0.0, 10.0, 0.0),
                       child: Text(
                         widget.appBarTitle!,
                         style: const TextStyle(

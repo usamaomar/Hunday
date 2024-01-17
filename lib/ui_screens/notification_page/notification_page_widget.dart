@@ -48,9 +48,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
         ),
       );
     }
-
     context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -75,6 +73,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                   isMyProfileOpend: true,
                 ),
               ),
+              Container(height: 20,),
               FutureBuilder<ApiCallResponse>(
                 future: MyNotificationsApiCall.call(
                   token: FFAppState().userModel.token,

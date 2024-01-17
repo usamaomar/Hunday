@@ -28,12 +28,12 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
         message.data != null &&
         message.data['body'] != null &&
         message.data['title'] != null) {
-      FFAppState().addToLocalNotificationLost(NotificationModelStruct(
-          title: message.data['title'],
-          body: message.data['body'],
-          isClicked: false,
-          date: getCurrentDate(),
-          time: getCurrentTime()));
+      // FFAppState().addToLocalNotificationLost(NotificationModelStruct(
+      //     title: message.data['title'],
+      //     body: message.data['body'],
+      //     isClicked: false,
+      //     date: getCurrentDate(),
+      //     time: getCurrentTime()));
     }
   } catch (ex) {
     ex.toString();
@@ -118,12 +118,12 @@ class _MyAppState extends State<MyApp> {
       if (message.notification != null &&
           message.notification?.title != null &&
           message.notification?.body != null) {
-        FFAppState().addToLocalNotificationLost(NotificationModelStruct(
-            title: message.data['title'],
-            body: message.data['body'],
-            isClicked: false,
-            date: getCurrentDate(),
-            time: getCurrentTime()));
+        // FFAppState().addToLocalNotificationLost(NotificationModelStruct(
+        //     title: message.data['title'],
+        //     body: message.data['body'],
+        //     isClicked: false,
+        //     date: getCurrentDate(),
+        //     time: getCurrentTime()));
         showNotification(message);
       }
     } catch (ex) {
