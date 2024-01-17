@@ -215,7 +215,9 @@ class _AddComponentShopingDetailsWidgetState
                                             await PartsApiCall.call(
                                           token: FFAppState().userModel.token,
                                           id: widget.partId,
-                                          vehicleId: _model.dropDownValue,
+                                          vehicleId: _model
+                                              .selectedVehicleModel?.id
+                                              .toString(),
                                           searchKey: value,
                                         );
                                         if ((_model.apiResultjaz?.succeeded ??
@@ -341,24 +343,31 @@ class _AddComponentShopingDetailsWidgetState
                                         await PartsApiCall.call(
                                       token: FFAppState().userModel.token,
                                       id: widget.partId,
-                                      vehicleId: val,
+                                      vehicleId: _model.selectedVehicleModel?.id
+                                          .toString(),
                                     );
                                     if ((_model.apiResultjaz?.succeeded ??
                                         true)) {
                                       setState(() {
-                                        _model.listOfPartsModelLocal = getJsonField(
-                                          (_model.apiResultjaz?.jsonBody ??
-                                              ''),
-                                          r'''$.parts''',
-                                        ) ==null ? [] : functions
-                                            .fromJsonArrayToPartModelList(
-                                                getJsonField(
-                                              (_model.apiResultjaz?.jsonBody ??
-                                                  ''),
-                                              r'''$.parts''',
-                                            ))
-                                            .toList()
-                                            .cast<PartModelStruct>();
+                                        _model.listOfPartsModelLocal =
+                                            getJsonField(
+                                                      (_model.apiResultjaz
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.parts''',
+                                                    ) ==
+                                                    null
+                                                ? []
+                                                : functions
+                                                    .fromJsonArrayToPartModelList(
+                                                        getJsonField(
+                                                      (_model.apiResultjaz
+                                                              ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.parts''',
+                                                    ))
+                                                    .toList()
+                                                    .cast<PartModelStruct>();
                                       });
                                     }
                                   },

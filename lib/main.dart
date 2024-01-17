@@ -4,14 +4,18 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:hyundai/backend/schema/structs/index.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:uni_links/uni_links.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -39,7 +43,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState().then((value) => {
@@ -82,29 +85,26 @@ class _MyAppState extends State<MyApp> {
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
   FlutterLocalNotificationsPlugin? fltNotification;
+  GlobalKey<NavigatorState> scaffoldKey = GlobalKey<NavigatorState>();
 
   @override
   void initState() {
-
     handleInAppMessage();
 
     FirebaseMessaging.instance.getToken().then((fbToken) {
       FFAppState().FCM = fbToken ?? 'null';
     });
-    // initUniLinks();
-    super.initState();
     initMessaging();
+    super.initState();
+
     _appStateNotifier = AppStateNotifier.instance;
     _router = createRouter(_appStateNotifier);
   }
 
-
   void handleInAppMessage() {
     FirebaseMessaging.instance.getInitialMessage().then((message) => {
-      if (message != null) {
-        _firebaseMessagingInAppHandler(message)
-      }
-    });
+          if (message != null) {_firebaseMessagingInAppHandler(message)}
+        });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       _firebaseMessagingInAppHandler(message);
     });
@@ -112,7 +112,6 @@ class _MyAppState extends State<MyApp> {
       _firebaseMessagingInAppHandler(message);
     });
   }
-
 
   Future<void> _firebaseMessagingInAppHandler(RemoteMessage message) async {
     try {
@@ -132,18 +131,22 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-
   void showNotification(RemoteMessage message) async {
     try {
-      if (message.notification?.title != null && message.notification?.body != null) {
+      if (message.notification?.title != null &&
+          message.notification?.body != null) {
         var androidDetails =
-        AndroidNotificationDetails('channelId', 'channelName',importance: Importance.max);
-        var iosDetails = IOSNotificationDetails(presentAlert : true,presentBadge : true,presentSound : true,subtitle:message.notification?.title,  );
+            AndroidNotificationDetails('channelId', 'channelName', icon: "");
+        var iosDetails = DarwinNotificationDetails(
+          presentAlert: true,
+          presentBadge: true,
+          presentSound: true,
+          subtitle: message.notification?.title,
+        );
         var generalNotificationDetails =
-        NotificationDetails(android: androidDetails, iOS: iosDetails);
-        await fltNotification?.show(0, message.notification?.title, message.notification?.body,
-            generalNotificationDetails,
-            payload: 'Notification');
+            NotificationDetails(android: androidDetails, iOS: iosDetails);
+        await fltNotification?.show(0, message.notification?.title,
+            message.notification?.body, generalNotificationDetails,payload: 'Notification');
       }
     } catch (ex) {
       ex.toString();
@@ -151,16 +154,27 @@ class _MyAppState extends State<MyApp> {
   }
 
   void initMessaging() async {
-    var androidInit = AndroidInitializationSettings('launch_background');
-    var iosInit = IOSInitializationSettings(requestAlertPermission: true,
-      requestBadgePermission: true,
-      requestSoundPermission: true,);
-    var initSetting =
-    InitializationSettings(android: androidInit, iOS: iosInit);
-    fltNotification = FlutterLocalNotificationsPlugin();
-    fltNotification?.initialize(initSetting,onSelectNotification: (value){
-      context.pushReplacementNamed('HomeScreen');
-    });
+    try {
+      var androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
+      var iosInit = DarwinInitializationSettings(
+        requestAlertPermission: true,
+        requestBadgePermission: true,
+        requestSoundPermission: true,
+      );
+      var initSetting =
+          InitializationSettings(android: androidInit, iOS: iosInit);
+      fltNotification = FlutterLocalNotificationsPlugin();
+      fltNotification?.initialize(initSetting,
+          onDidReceiveNotificationResponse: onDidReceiveNotificationResponse );
+    } catch (ex) {
+      ex.toString();
+    }
+  }
+
+  void onDidReceiveNotificationResponse(dynamic notificationResponse) async {
+    _router.pushNamed(
+      'notificationPage'
+    );
   }
 
   void setLocale(String language) {
@@ -175,6 +189,7 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
+      key: scaffoldKey,
       title: 'hyundai',
       localizationsDelegates: [
         FFLocalizationsDelegate(),
@@ -303,3 +318,5 @@ class _NavBarPageState extends State<NavBarPage> {
     );
   }
 }
+
+

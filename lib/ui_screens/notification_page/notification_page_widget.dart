@@ -68,8 +68,8 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                 updateCallback: () => setState(() {}),
                 child: HyndayAppBarWidget(
                   appBarTitle: FFLocalizations.of(context).getVariableText(
-                    enText: 'My Profile',
-                    arText: 'ملفي',
+                    enText: 'Notification',
+                    arText: 'تنبيهاتي',
                   ),
                   isMyProfileOpend: true,
                 ),

@@ -33,7 +33,6 @@ class HomeScreenWidget extends StatefulWidget {
 class _HomeScreenWidgetState extends State<HomeScreenWidget> {
   late HomeScreenModel _model;
   bool isLoading = false;
-  final scaffoldKey = GlobalKey<ScaffoldState>();
 
   @override
   void initState() {
@@ -245,8 +244,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
-        key: scaffoldKey,
-        backgroundColor: Color(0xFFAFC3E1),
+         backgroundColor: Color(0xFFAFC3E1),
         body: SafeArea(
           top: true,
           child: Stack(
