@@ -689,6 +689,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'عن التطبيق',
     },
     '2jxn0p4u': {
+      'en': 'Notification',
+      'ar': 'إشعار',
+    },
+    'rtfhfshd': {
       'en': 'Settings',
       'ar': 'اعدادات',
     },
