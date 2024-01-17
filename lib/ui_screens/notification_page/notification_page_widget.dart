@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -56,7 +57,7 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
+        backgroundColor: FlutterFlowTheme.of(context).white,
         body: SafeArea(
           top: true,
           child: Column(
@@ -73,6 +74,130 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                   ),
                   isMyProfileOpend: true,
                 ),
+              ),
+              FutureBuilder<ApiCallResponse>(
+                future: MyNotificationsApiCall.call(
+                  token: FFAppState().userModel.token,
+                ),
+                builder: (context, snapshot) {
+                  // Customize what your widget looks like when it's loading.
+                  if (!snapshot.hasData) {
+                    return Center(
+                      child: SizedBox(
+                        width: 50.0,
+                        height: 50.0,
+                        child: SpinKitDualRing(
+                          color: Color(0xFF092853),
+                          size: 50.0,
+                        ),
+                      ),
+                    );
+                  }
+                  final listViewMyNotificationsApiResponse = snapshot.data!;
+                  return Builder(
+                    builder: (context) {
+                      final linst = getJsonField(
+                        listViewMyNotificationsApiResponse.jsonBody,
+                        r'''$.notifications''',
+                      ).toList();
+                      return ListView.builder(
+                        padding: EdgeInsets.zero,
+                        shrinkWrap: true,
+                        scrollDirection: Axis.vertical,
+                        itemCount: linst.length,
+                        itemBuilder: (context, linstIndex) {
+                          final linstItem = linst[linstIndex];
+                          return Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(
+                                30.0, 0.0, 30.0, 0.0),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Icon(
+                                  Icons.notifications_sharp,
+                                  color: Color(0xFF3D6398),
+                                  size: 24.0,
+                                ),
+                                Flexible(
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        10.0, 0.0, 0.0, 0.0),
+                                    child: Column(
+                                      mainAxisSize: MainAxisSize.max,
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          getJsonField(
+                                            linstItem,
+                                            r'''$.title''',
+                                          ).toString(),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium
+                                              .override(
+                                                fontFamily: 'HeeboBold',
+                                                fontWeight: FontWeight.bold,
+                                                useGoogleFonts: false,
+                                              ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 10.0, 0.0, 10.0),
+                                          child: Text(
+                                            getJsonField(
+                                              linstItem,
+                                              r'''$.body''',
+                                            ).toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Heebo Regular',
+                                                  fontWeight: FontWeight.normal,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0.0, 0.0, 0.0, 10.0),
+                                          child: Text(
+                                            getJsonField(
+                                              linstItem,
+                                              r'''$.sent_at''',
+                                            ).toString(),
+                                            style: FlutterFlowTheme.of(context)
+                                                .bodyMedium
+                                                .override(
+                                                  fontFamily: 'Heebo Regular',
+                                                  color: Color(0xFF3D6398),
+                                                  fontSize: 13.0,
+                                                  fontWeight: FontWeight.w300,
+                                                  useGoogleFonts: false,
+                                                ),
+                                          ),
+                                        ),
+                                        Opacity(
+                                          opacity: 0.2,
+                                          child: Divider(
+                                            thickness: 1.0,
+                                            color: Color(0xFF3D6398),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          );
+                        },
+                      );
+                    },
+                  );
+                },
               ),
             ],
           ),

@@ -951,6 +951,8 @@ class PartsApiCall {
   static Future<ApiCallResponse> call({
     String? token = '',
     int? id,
+    String? vehicleId = '',
+    String? searchKey = '',
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'PartsApi',
@@ -963,6 +965,47 @@ class PartsApiCall {
       params: {
         'token': token,
         'id': id,
+        'vehicle_id': vehicleId,
+        'search_key': searchKey,
+      },
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static dynamic? detailsModel(dynamic response) => getJsonField(
+        response,
+        r'''$.car''',
+      );
+  static String? performanceModel(dynamic response) =>
+      castToType<String>(getJsonField(
+        response,
+        r'''$.car.performance''',
+      ));
+  static List? carsSlider(dynamic response) => getJsonField(
+        response,
+        r'''$.car.car_sliders''',
+        true,
+      ) as List?;
+}
+
+class MyNotificationsApiCall {
+  static Future<ApiCallResponse> call({
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'MyNotificationsApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/myNotifications',
+      callType: ApiCallType.GET,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'token': token,
       },
       returnBody: true,
       encodeBodyUtf8: false,
