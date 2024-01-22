@@ -1,14 +1,12 @@
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
+
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'about_app_page_model.dart';
 export 'about_app_page_model.dart';
@@ -333,20 +331,11 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                                 mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   Flexible(
-                                                    child: Text(
-                                              functions
-                                                  .getSettingByKey(
-                                                  FFAppState().currentLanguge == 'en' ? 'about_app_en' :  'about_app_ar',
-                                                  FFAppState()
-                                                      .socialMediaJsonObject
-                                                      .toList())
-                                                  .toString(),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
-                                                    ),
-                                                  ),
+                                                      child: HtmlWidget(
+                                                    '''
+  ${functions.getSettingByKey(FFAppState().currentLanguge == 'en' ? 'about_app_en' : 'about_app_ar', FFAppState().socialMediaJsonObject.toList())}
+  ''',
+                                                  )),
                                                 ],
                                               ),
                                             ),

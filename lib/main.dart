@@ -4,18 +4,14 @@ import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
 import 'package:hyundai/backend/schema/structs/index.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:uni_links/uni_links.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
@@ -242,7 +238,7 @@ class _NavBarPageState extends State<NavBarPage> {
   Widget build(BuildContext context) {
     final tabs = {
       'HomeScreen': HomeScreenWidget(),
-      'ChatPage': ChatPageWidget(),
+      // 'ChatPage': ChatPageWidget(),
       'CartPage': CartPageWidget(),
       'MyVehiclesPage': MyVehiclesPageWidget(),
       'MorePage': MorePageWidget(),
@@ -275,14 +271,14 @@ class _NavBarPageState extends State<NavBarPage> {
               fit: BoxFit.contain,
             ),
           ),
-          CustomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/images/Group_71272.svg',
-              width: 20.0,
-              height: 20.0,
-              fit: BoxFit.contain,
-            ),
-          ),
+          // CustomNavigationBarItem(
+          //   icon: SvgPicture.asset(
+          //     'assets/images/Group_71272.svg',
+          //     width: 20.0,
+          //     height: 20.0,
+          //     fit: BoxFit.contain,
+          //   ),
+          // ),
           CustomNavigationBarItem(
               icon: SvgPicture.asset(
                 'assets/images/Group_70661.svg',

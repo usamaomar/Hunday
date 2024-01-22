@@ -325,7 +325,7 @@ class _AddComponentShopingDetailsWidgetState
                                   controller: _model.dropDownValueController ??=
                                       FormFieldController<String>(null),
                                   options: _model.listOfMyVehicle
-                                      .map((e) => e.plateNumber)
+                                      .map((e) => '${e.carModel.name}/${e.plateNumber}')
                                       .toList(),
                                   onChanged: (val) async {
                                     setState(() => _model.dropDownValue = val);

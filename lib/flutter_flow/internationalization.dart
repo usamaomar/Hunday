@@ -1363,7 +1363,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '4nqcrahs': {
       'en': 'Send',
-      'ar': 'يرسل',
+      'ar': 'ارسال',
     },
   },
   // ScanNowCard

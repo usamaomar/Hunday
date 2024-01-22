@@ -182,11 +182,6 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                             height: 1,
                                             color: Color(0xFF3D6398),
                                           ),
-
-
-
-
-
                                           FutureBuilder<ApiCallResponse>(
                                             future: MyNotificationsApiCall.call(
                                               token: FFAppState().userModel.token,
@@ -216,7 +211,7 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                                     padding: EdgeInsets.zero,
                                                     shrinkWrap: true,
                                                     scrollDirection: Axis.vertical,
-                                                    itemCount: linst.length,
+                                                    itemCount: linst.length > 4 ?   3 : linst.length,
                                                     itemBuilder: (context, linstIndex) {
                                                       final linstItem = linst[linstIndex];
                                                       return Padding(
@@ -311,9 +306,6 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                               );
                                             },
                                           ),
-
-
-
                                           InkWell(
                                             onTap: () {
                                               context.pushNamed('notificationPage');

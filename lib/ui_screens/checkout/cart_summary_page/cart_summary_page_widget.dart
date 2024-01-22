@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'cart_summary_page_model.dart';
 export 'cart_summary_page_model.dart';
@@ -212,58 +211,6 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                               ],
                                             ),
                                           ),
-                                          // if (_model.cartObject?.couponCode !=
-                                          //         null &&
-                                          //     _model.cartObject?.couponCode !=
-                                          //         '')
-                                          //   Padding(
-                                          //     padding: EdgeInsetsDirectional
-                                          //         .fromSTEB(
-                                          //             30.0, 10.0, 30.0, 0.0),
-                                          //     child: Row(
-                                          //       mainAxisSize: MainAxisSize.max,
-                                          //       children: [
-                                          //         ClipRRect(
-                                          //           borderRadius:
-                                          //               BorderRadius.circular(
-                                          //                   8.0),
-                                          //           child: SvgPicture.asset(
-                                          //             'assets/images/Group_73011.svg',
-                                          //             width: 20.0,
-                                          //             height: 20.0,
-                                          //             fit: BoxFit.cover,
-                                          //           ),
-                                          //         ),
-                                          //         Padding(
-                                          //           padding:
-                                          //               EdgeInsetsDirectional
-                                          //                   .fromSTEB(10.0, 0.0,
-                                          //                       10.0, 0.0),
-                                          //           child: Text(
-                                          //             FFLocalizations.of(
-                                          //                     context)
-                                          //                 .getText(
-                                          //               'rfsw40l6' /* Discounted item—no additional ... */,
-                                          //             ),
-                                          //             style: FlutterFlowTheme
-                                          //                     .of(context)
-                                          //                 .bodyMedium
-                                          //                 .override(
-                                          //                   fontFamily:
-                                          //                       'HeeboBold',
-                                          //                   color: Color(
-                                          //                       0xFF092853),
-                                          //                   fontSize: 11.0,
-                                          //                   fontWeight:
-                                          //                       FontWeight.bold,
-                                          //                   useGoogleFonts:
-                                          //                       false,
-                                          //                 ),
-                                          //           ),
-                                          //         ),
-                                          //       ],
-                                          //     ),
-                                          //   ),
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
@@ -292,6 +239,7 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                       shrinkWrap: true,
                                                       scrollDirection:
                                                           Axis.vertical,
+                                                      physics: NeverScrollableScrollPhysics(),
                                                       itemCount:
                                                           listCartItem.length,
                                                       itemBuilder: (context,
@@ -324,49 +272,61 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                       MainAxisAlignment
                                                                           .spaceBetween,
                                                                   children: [
-                                                                    Text(
-                                                                      listCartItemItem
-                                                                          .name,
-                                                                      style: FlutterFlowTheme.of(
+                                                                    ClipRRect(
+                                                                      child: Container(
+                                                                        constraints:
+                                                                        BoxConstraints(
+                                                                          maxWidth:
+                                                                          150.0,
+                                                                        ),
+                                                                        child: Text(
+                                                                          listCartItemItem.name,
+                                                                          maxLines: 4,
+                                                                          style: FlutterFlowTheme.of(
                                                                               context)
-                                                                          .bodyMedium
-                                                                          .override(
+                                                                              .bodyMedium
+                                                                              .override(
                                                                             fontFamily:
-                                                                                'HeeboBold',
+                                                                            'HeeboBold',
                                                                             color:
-                                                                                Color(0xFF4E4E4E),
+                                                                            Color(0xFF4E4E4E),
                                                                             fontWeight:
-                                                                                FontWeight.bold,
+                                                                            FontWeight.bold,
                                                                             useGoogleFonts:
-                                                                                false,
+                                                                            false,
                                                                           ),
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                     Row(
                                                                       mainAxisSize:
                                                                           MainAxisSize
                                                                               .max,
                                                                       children: [
-                                                                        // if (_model.cartObject?.couponCode !=
-                                                                        //     null &&
-                                                                        //     _model.cartObject?.couponCode !=
-                                                                        //         '' && listCartItemItem.specialPrice > 0.0)
-                                                                        //   Padding(
-                                                                        //     padding: EdgeInsetsDirectional.fromSTEB(
-                                                                        //         10.0,
-                                                                        //         0.0,
-                                                                        //         10.0,
-                                                                        //         0.0),
-                                                                        //     child:
-                                                                        //         ClipRRect(
-                                                                        //       borderRadius: BorderRadius.circular(8.0),
-                                                                        //       child: SvgPicture.asset(
-                                                                        //         'assets/images/Group_73011.svg',
-                                                                        //         width: 20.0,
-                                                                        //         height: 20.0,
-                                                                        //         fit: BoxFit.cover,
-                                                                        //       ),
-                                                                        //     ),
-                                                                        //   ),
+                                                                        Padding(
+                                                                          padding: EdgeInsets.fromLTRB(
+                                                                              5,
+                                                                              0,
+                                                                              5,
+                                                                              0),
+                                                                          child:
+                                                                              Row(
+                                                                            children: [
+                                                                              Text(listCartItemItem.quantity.toString(),
+                                                                                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                                                                                        fontFamily: 'HeeboBold',
+                                                                                        color: Color(0xFF000000),
+                                                                                        fontWeight: FontWeight.normal,
+                                                                                        useGoogleFonts: false,
+                                                                                      )),
+                                                                              Icon(
+                                                                                Icons.close,
+                                                                                size: 20,
+                                                                                color: Colors.black,
+                                                                              ),
+                                                                            ],
+                                                                          ),
+                                                                        ),
                                                                         Text(
                                                                           '${(listCartItemItem.specialPrice <= 0.0) ? listCartItemItem.price.toString() : listCartItemItem.specialPrice.toString()} ${FFLocalizations.of(context).getVariableText(
                                                                             enText:
@@ -926,8 +886,8 @@ class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>
                                                                             10.0),
                                                                         child:
                                                                             Text(
-                                                                          _model
-                                                                              .couponModel?.couponCode??'',
+                                                                          _model.couponModel?.couponCode ??
+                                                                              '',
                                                                           style: FlutterFlowTheme.of(context)
                                                                               .bodyMedium
                                                                               .override(

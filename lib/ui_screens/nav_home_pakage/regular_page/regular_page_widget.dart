@@ -1,3 +1,5 @@
+import 'package:percent_indicator/circular_percent_indicator.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -32,6 +34,7 @@ class RegularPageWidget extends StatefulWidget {
 class _RegularPageWidgetState extends State<RegularPageWidget>
     with TickerProviderStateMixin {
   late RegularPageModel _model;
+  bool isLoading = false;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -45,6 +48,19 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
           duration: 500.ms,
           begin: Offset(0.0, 650.0),
           end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'progressBarOnPageLoadAnimation': AnimationInfo(
+      loop: true,
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        RotateEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 390.ms,
+          begin: 0.0,
+          end: 1.0,
         ),
       ],
     ),
@@ -298,8 +314,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                             String>(null),
                                                     options: _model
                                                         .listOfMyVehicle
-                                                        .map((e) =>
-                                                            e.plateNumber)
+                                                        .map((e) => '${e.carModel.name}/${e.plateNumber}')
                                                         .toList(),
                                                     onChanged: (val) async {
                                                       setState(() => _model
@@ -370,56 +385,40 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                   await showDatePicker(
                                                 context: context,
                                                 initialDate:
-                                                _model.datePicked ?? getCurrentTimestamp,
-                                                firstDate: getCurrentTimestamp,
+                                                    _model.datePicked ??
+                                                        getTomorrow,
+                                                firstDate: getTomorrow,
                                                 lastDate: DateTime(2050),
-                                                builder: (context, child) {
-                                                  return wrapInMaterialDatePickerTheme(
-                                                    context,
-                                                    child!,
-                                                    headerBackgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primary,
-                                                    headerForegroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .info,
-                                                    headerTextStyle:
-                                                        FlutterFlowTheme.of(
-                                                                context)
+                                                    builder: (context, child) {
+                                                      return wrapInMaterialDatePickerTheme(
+                                                        context,
+                                                        child!,
+                                                        headerBackgroundColor:
+                                                        FlutterFlowTheme.of(context).white,
+                                                        headerForegroundColor:
+                                                        FlutterFlowTheme.of(context).info,
+                                                        headerTextStyle:
+                                                        FlutterFlowTheme.of(context)
                                                             .headlineLarge
                                                             .override(
-                                                              fontFamily:
-                                                                  'Poppins',
-                                                              fontSize: 32.0,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w600,
-                                                            ),
-                                                    pickerBackgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 32.0,
+                                                          fontWeight: FontWeight.w600,
+                                                        ),
+                                                        pickerBackgroundColor:
+                                                        FlutterFlowTheme.of(context)
                                                             .secondaryBackground,
-                                                    pickerForegroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
+                                                        pickerForegroundColor:
+                                                        Colors.black,
+                                                        selectedDateTimeBackgroundColor:Colors.white,
+                                                        selectedDateTimeForegroundColor:
+                                                        Colors.black,
+                                                        actionButtonForegroundColor:
+                                                        FlutterFlowTheme.of(context)
                                                             .primaryText,
-                                                    selectedDateTimeBackgroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .accent4,
-                                                    selectedDateTimeForegroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .info,
-                                                    actionButtonForegroundColor:
-                                                        FlutterFlowTheme.of(
-                                                                context)
-                                                            .primaryText,
-                                                    iconSize: 24.0,
-                                                  );
-                                                },
+                                                        iconSize: 24.0,
+                                                      );
+                                                    },
                                               );
 
                                               if (_datePickedDate != null) {
@@ -439,7 +438,9 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                   locale: 'en',
                                                 );
                                               });
-
+                                              setState(() {
+                                                isLoading = true;
+                                              });
                                               _model.apiDateTimes =
                                                   await CheckAvailableTimeCall
                                                       .call(
@@ -453,6 +454,10 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                   locale: 'en',
                                                 ),
                                               );
+
+                                              setState(() {
+                                                isLoading = false;
+                                              });
                                             },
                                             child: Container(
                                               height: 40.0,
@@ -534,6 +539,10 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                             ''
                                                     ? true
                                                     : false) {
+                                                  if (isLoading) {
+                                                    return;
+                                                  }
+
                                                   await showDialog(
                                                     context: context,
                                                     builder: (dialogContext) {
@@ -611,75 +620,102 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                   );
                                                 }
                                               },
-                                              child: Container(
-                                                height: 40.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
+                                              child: Stack(
+                                                alignment: Alignment(1, 1),
+                                                children: [
+                                                  Container(
+                                                    height: 40.0,
+                                                    decoration: BoxDecoration(
+                                                      color: FlutterFlowTheme.of(
                                                           context)
-                                                      .white,
-                                                  borderRadius:
+                                                          .white,
+                                                      borderRadius:
                                                       BorderRadius.circular(
                                                           8.0),
-                                                  border: Border.all(
-                                                    color: Color(0xFF646464),
-                                                    width: 1.0,
-                                                  ),
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize:
+                                                      border: Border.all(
+                                                        color: Color(0xFF646464),
+                                                        width: 1.0,
+                                                      ),
+                                                    ),
+                                                    child: Row(
+                                                      mainAxisSize:
                                                       MainAxisSize.max,
-                                                  mainAxisAlignment:
+                                                      mainAxisAlignment:
                                                       MainAxisAlignment
                                                           .spaceBetween,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
+                                                      children: [
+                                                        Padding(
+                                                          padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        FFAppState().selectedTimeFromHundai !=
-                                                                    null &&
+                                                              10.0,
+                                                              0.0,
+                                                              0.0,
+                                                              0.0),
+                                                          child: Text(
+                                                            FFAppState().selectedTimeFromHundai !=
+                                                                null &&
                                                                 FFAppState()
-                                                                        .selectedTimeFromHundai !=
+                                                                    .selectedTimeFromHundai !=
                                                                     ''
-                                                            ? FFAppState()
+                                                                ? FFAppState()
                                                                 .selectedTimeFromHundai
-                                                            : FFLocalizations
-                                                                    .of(context)
+                                                                : FFLocalizations
+                                                                .of(context)
                                                                 .getVariableText(
-                                                                enText: 'Time',
-                                                                arText: 'الوقت',
-                                                              ),
-                                                        style:
+                                                              enText: 'Time',
+                                                              arText: 'الوقت',
+                                                            ),
+                                                            style:
                                                             FlutterFlowTheme.of(
-                                                                    context)
+                                                                context)
                                                                 .bodyMedium,
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
                                                           EdgeInsetsDirectional
                                                               .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: Icon(
-                                                        Icons
-                                                            .access_time_filled,
-                                                        color:
+                                                              0.0,
+                                                              0.0,
+                                                              10.0,
+                                                              0.0),
+                                                          child: Icon(
+                                                            Icons
+                                                                .access_time_filled,
+                                                            color:
                                                             FlutterFlowTheme.of(
-                                                                    context)
+                                                                context)
                                                                 .secondaryText,
-                                                        size: 20.0,
-                                                      ),
+                                                            size: 20.0,
+                                                          ),
+                                                        ),
+                                                      ],
                                                     ),
-                                                  ],
-                                                ),
+                                                  ),
+                                                  Align(
+                                                    child: Visibility(
+                                                      visible: isLoading,
+                                                      child:
+                                                      CircularPercentIndicator(
+                                                        percent: 0.7,
+                                                        radius: 12.5,
+                                                        lineWidth: 3.0,
+                                                        animation: true,
+                                                        animateFromLastPercent:
+                                                        true,
+                                                        progressColor:
+                                                        FlutterFlowTheme.of(
+                                                            context)
+                                                            .ahayundai,
+                                                        backgroundColor:
+                                                        Color(0xFF7C91BB),
+                                                      ).animateOnPageLoad(
+                                                          animationsMap[
+                                                          'progressBarOnPageLoadAnimation']!),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
@@ -886,6 +922,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
       ),
     );
   }
+
 
   String conveFrom(String value) {
     DateTime startDate =

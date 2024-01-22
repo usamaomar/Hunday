@@ -293,7 +293,7 @@ MyVehicleModelStruct getSelectedVehicle(
   List<MyVehicleModelStruct> listOfVehicle,
 ) {
   MyVehicleModelStruct vehicle =
-      listOfVehicle.firstWhere((c) => c.plateNumber == platenumber);
+      listOfVehicle.firstWhere((c) => '${c.carModel.name}/${c.plateNumber}' == platenumber);
   return vehicle;
 }
 

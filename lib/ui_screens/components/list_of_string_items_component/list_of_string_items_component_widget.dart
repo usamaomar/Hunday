@@ -471,30 +471,28 @@ class _ListOfStringItemsComponentWidgetState
                                     context,
                                     child!,
                                     headerBackgroundColor:
-                                        FlutterFlowTheme.of(context).white,
+                                    FlutterFlowTheme.of(context).white,
                                     headerForegroundColor:
-                                        FlutterFlowTheme.of(context).info,
+                                    FlutterFlowTheme.of(context).info,
                                     headerTextStyle:
-                                        FlutterFlowTheme.of(context)
-                                            .headlineLarge
-                                            .override(
-                                              fontFamily: 'Poppins',
-                                              fontSize: 32.0,
-                                              fontWeight: FontWeight.w600,
-                                            ),
+                                    FlutterFlowTheme.of(context)
+                                        .headlineLarge
+                                        .override(
+                                      fontFamily: 'Poppins',
+                                      fontSize: 32.0,
+                                      fontWeight: FontWeight.w600,
+                                    ),
                                     pickerBackgroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .secondaryBackground,
+                                    FlutterFlowTheme.of(context)
+                                        .secondaryBackground,
                                     pickerForegroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
-                                    selectedDateTimeBackgroundColor:
-                                        FlutterFlowTheme.of(context).accent4,
+                                    Colors.black,
+                                    selectedDateTimeBackgroundColor:Colors.white,
                                     selectedDateTimeForegroundColor:
-                                        FlutterFlowTheme.of(context).primary,
+                                    Colors.black,
                                     actionButtonForegroundColor:
-                                        FlutterFlowTheme.of(context)
-                                            .primaryText,
+                                    FlutterFlowTheme.of(context)
+                                        .primaryText,
                                     iconSize: 24.0,
                                   );
                                 },

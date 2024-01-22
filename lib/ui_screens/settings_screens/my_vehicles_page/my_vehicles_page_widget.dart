@@ -268,7 +268,7 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                                       .fromSTEB(15.0, 18.0,
                                                           15.0, 0.0),
                                                   child: Text(
-                                                    localsItem.insuranceCompany,
+                                                    localsItem.carModel.name,
                                                     textAlign: TextAlign.start,
                                                     style: FlutterFlowTheme.of(
                                                             context)

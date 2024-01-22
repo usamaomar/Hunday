@@ -1,3 +1,6 @@
+import 'package:flutter/widgets.dart';
+import 'package:percent_indicator/circular_percent_indicator.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -30,6 +33,7 @@ class RepairPageWidget extends StatefulWidget {
 class _RepairPageWidgetState extends State<RepairPageWidget>
     with TickerProviderStateMixin {
   late RepairPageModel _model;
+  bool isLoading = false;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -43,6 +47,19 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
           duration: 500.ms,
           begin: Offset(0.0, 650.0),
           end: Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+    'progressBarOnPageLoadAnimation': AnimationInfo(
+      loop: true,
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        RotateEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 390.ms,
+          begin: 0.0,
+          end: 1.0,
         ),
       ],
     ),
@@ -219,7 +236,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                       null),
                                               options: _model
                                                   .listOfMyVehicleModels
-                                                  .map((e) => e.plateNumber)
+                                                  .map((e) => '${e.carModel.name}/${e.plateNumber}')
                                                   .toList(),
                                               onChanged: (val) async {
                                                 setState(() =>
@@ -280,8 +297,41 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                   await showDatePicker(
                                                 context: context,
                                                 initialDate:
-                                                _model.datePicked ?? getCurrentTimestamp,                                                firstDate: getCurrentTimestamp,
+                                                    _model.datePicked ??
+                                                        getTomorrow,
+                                                firstDate: getTomorrow,
                                                 lastDate: DateTime(2050),
+                                                    builder: (context, child) {
+                                                      return wrapInMaterialDatePickerTheme(
+                                                        context,
+                                                        child!,
+                                                        headerBackgroundColor:
+                                                        FlutterFlowTheme.of(context).white,
+                                                        headerForegroundColor:
+                                                        FlutterFlowTheme.of(context).info,
+                                                        headerTextStyle:
+                                                        FlutterFlowTheme.of(context)
+                                                            .headlineLarge
+                                                            .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 32.0,
+                                                          fontWeight: FontWeight.w600,
+                                                        ),
+                                                        pickerBackgroundColor:
+                                                        FlutterFlowTheme.of(context)
+                                                            .secondaryBackground,
+                                                        pickerForegroundColor:
+                                                        Colors.black,
+                                                        selectedDateTimeBackgroundColor:Colors.white,
+                                                        selectedDateTimeForegroundColor:
+                                                        Colors.black,
+                                                        actionButtonForegroundColor:
+                                                        FlutterFlowTheme.of(context)
+                                                            .primaryText,
+                                                        iconSize: 24.0,
+                                                      );
+                                                    },
+
                                               );
 
                                               if (_datePickedDate != null) {
@@ -302,21 +352,26 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                 );
                                               });
 
+                                              setState(() {
+                                                isLoading = true;
+                                              });
+                                              _model.apiDateTimes =
+                                                  await CheckAvailableTimeCall
+                                                      .call(
+                                                token: FFAppState()
+                                                    .userModel
+                                                    .token,
+                                                serviceType: 'repair',
+                                                date: dateTimeFormat(
+                                                  'yyyy-MM-dd',
+                                                  _model.datePicked,
+                                                  locale: 'en',
+                                                ),
+                                              );
 
-                                                _model.apiDateTimes =
-                                                    await CheckAvailableTimeCall
-                                                        .call(
-                                                  token: FFAppState()
-                                                      .userModel
-                                                      .token,
-                                                  serviceType: 'repair',
-                                                  date: dateTimeFormat(
-                                                    'yyyy-MM-dd',
-                                                    _model.datePicked,
-                                                    locale: 'en',
-                                                  ),
-                                                );
-
+                                              setState(() {
+                                                isLoading = false;
+                                              });
                                             },
                                             child: Container(
                                               height: 40.0,
@@ -398,6 +453,9 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                             ''
                                                     ? true
                                                     : false) {
+                                                  if (isLoading) {
+                                                    return;
+                                                  }
                                                   await showDialog(
                                                     context: context,
                                                     builder: (dialogContext) {
@@ -426,17 +484,20 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                                   .unfocus(),
                                                           child:
                                                               TimeComponentListWidget(
-                                                            list:getJsonField(
-                                                              _model
-                                                                  .apiDateTimes
-                                                                  ?.jsonBody,
-                                                              r'''$.availableTime''',
-                                                            )==null ? [] :  getJsonField(
-                                                              _model
-                                                                  .apiDateTimes
-                                                                  ?.jsonBody,
-                                                              r'''$.availableTime''',
-                                                            ).toList(),
+                                                            list: getJsonField(
+                                                                      _model
+                                                                          .apiDateTimes
+                                                                          ?.jsonBody,
+                                                                      r'''$.availableTime''',
+                                                                    ) ==
+                                                                    null
+                                                                ? []
+                                                                : getJsonField(
+                                                                    _model
+                                                                        .apiDateTimes
+                                                                        ?.jsonBody,
+                                                                    r'''$.availableTime''',
+                                                                  ).toList(),
                                                           ),
                                                         ),
                                                       );
@@ -472,75 +533,104 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                   );
                                                 }
                                               },
-                                              child: Container(
-                                                height: 40.0,
-                                                decoration: BoxDecoration(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .white,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          8.0),
-                                                  border: Border.all(
-                                                    color: Color(0xFF646464),
-                                                    width: 1.0,
-                                                  ),
-                                                ),
-                                                child: Row(
-                                                  mainAxisSize:
-                                                      MainAxisSize.max,
-                                                  mainAxisAlignment:
-                                                      MainAxisAlignment
-                                                          .spaceBetween,
-                                                  children: [
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  10.0,
-                                                                  0.0,
-                                                                  0.0,
-                                                                  0.0),
-                                                      child: Text(
-                                                        FFAppState().selectedTimeFromHundai !=
-                                                                    null &&
-                                                                FFAppState()
-                                                                        .selectedTimeFromHundai !=
-                                                                    ''
-                                                            ? FFAppState()
-                                                                .selectedTimeFromHundai
-                                                            : FFLocalizations
-                                                                    .of(context)
-                                                                .getVariableText(
-                                                                enText: 'Time',
-                                                                arText: 'الوقت',
-                                                              ),
-                                                        style:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .bodyMedium,
-                                                      ),
-                                                    ),
-                                                    Padding(
-                                                      padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  0.0,
-                                                                  0.0,
-                                                                  10.0,
-                                                                  0.0),
-                                                      child: Icon(
-                                                        Icons
-                                                            .access_time_filled,
+                                              child: Stack(
+                                                alignment: Alignment(1, 1),
+                                                children: [
+                                                  Container(
+                                                    height: 40.0,
+                                                    decoration: BoxDecoration(
+                                                      color:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8.0),
+                                                      border: Border.all(
                                                         color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .secondaryText,
-                                                        size: 20.0,
+                                                            Color(0xFF646464),
+                                                        width: 1.0,
                                                       ),
                                                     ),
-                                                  ],
-                                                ),
+                                                    child: Row(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceBetween,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      10.0,
+                                                                      0.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: Text(
+                                                            FFAppState().selectedTimeFromHundai !=
+                                                                        null &&
+                                                                    FFAppState()
+                                                                            .selectedTimeFromHundai !=
+                                                                        ''
+                                                                ? FFAppState()
+                                                                    .selectedTimeFromHundai
+                                                                : FFLocalizations.of(
+                                                                        context)
+                                                                    .getVariableText(
+                                                                    enText:
+                                                                        'Time',
+                                                                    arText:
+                                                                        'الوقت',
+                                                                  ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium,
+                                                          ),
+                                                        ),
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      0.0,
+                                                                      10.0,
+                                                                      0.0),
+                                                          child: Icon(
+                                                            Icons
+                                                                .access_time_filled,
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .secondaryText,
+                                                            size: 20.0,
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Align(
+                                                    child: Visibility(
+                                                      visible: isLoading,
+                                                      child:
+                                                          CircularPercentIndicator(
+                                                        percent: 0.7,
+                                                        radius: 12.5,
+                                                        lineWidth: 3.0,
+                                                        animation: true,
+                                                        animateFromLastPercent:
+                                                            true,
+                                                        progressColor:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .ahayundai,
+                                                        backgroundColor:
+                                                            Color(0xFF7C91BB),
+                                                      ).animateOnPageLoad(
+                                                              animationsMap[
+                                                                  'progressBarOnPageLoadAnimation']!),
+                                                    ),
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),

@@ -637,6 +637,36 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                     getCurrentTimestamp,
                                                 firstDate: DateTime(1900),
                                                 lastDate: getCurrentTimestamp,
+                                                    builder: (context, child) {
+                                                      return wrapInMaterialDatePickerTheme(
+                                                        context,
+                                                        child!,
+                                                        headerBackgroundColor:
+                                                        FlutterFlowTheme.of(context).white,
+                                                        headerForegroundColor:
+                                                        FlutterFlowTheme.of(context).info,
+                                                        headerTextStyle:
+                                                        FlutterFlowTheme.of(context)
+                                                            .headlineLarge
+                                                            .override(
+                                                          fontFamily: 'Poppins',
+                                                          fontSize: 32.0,
+                                                          fontWeight: FontWeight.w600,
+                                                        ),
+                                                        pickerBackgroundColor:
+                                                        FlutterFlowTheme.of(context)
+                                                            .secondaryBackground,
+                                                        pickerForegroundColor:
+                                                        Colors.black,
+                                                        selectedDateTimeBackgroundColor:Colors.white,
+                                                        selectedDateTimeForegroundColor:
+                                                        Colors.black,
+                                                        actionButtonForegroundColor:
+                                                        FlutterFlowTheme.of(context)
+                                                            .primaryText,
+                                                        iconSize: 24.0,
+                                                      );
+                                                    },
                                               );
 
                                               if (_datePickedDate != null) {
@@ -1197,6 +1227,104 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                   child: Builder(
                                     builder: (context) => FFButtonWidget(
                                       onPressed: () async {
+
+
+                                        if(_model.datePicked == null){
+                                          await showDialog(
+                                            context: context,
+                                            builder:
+                                                (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    FFLocalizations.of(
+                                                        context)
+                                                        .getVariableText(
+                                                      enText: 'Error',
+                                                      arText: 'خطأ',
+                                                    )),
+                                                content: Text(
+                                                    FFLocalizations.of(
+                                                        context)
+                                                        .getVariableText(
+                                                      enText:
+                                                      'Please Select the Date Of Birth',
+                                                      arText:
+                                                      'الرجاء تحديد تاريخ الميلاد',
+                                                    )),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text(
+                                                        FFLocalizations.of(
+                                                            context)
+                                                            .getVariableText(
+                                                          enText: 'ok',
+                                                          arText: 'حسنا',
+                                                        )),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          return;
+
+                                        }
+
+                                        if(_model.dropDownValue == null || _model.dropDownValue?.isEmpty == true){
+                                          await showDialog(
+                                            context: context,
+                                            builder:
+                                                (alertDialogContext) {
+                                              return AlertDialog(
+                                                title: Text(
+                                                    FFLocalizations.of(
+                                                        context)
+                                                        .getVariableText(
+                                                      enText: 'Error',
+                                                      arText: 'خطأ',
+                                                    )),
+                                                content: Text(
+                                                    FFLocalizations.of(
+                                                        context)
+                                                        .getVariableText(
+                                                      enText:
+                                                      'Please Select Your Gender',
+                                                      arText:
+                                                      'يرجى تحديد جنسك',
+                                                    )),
+                                                actions: [
+                                                  TextButton(
+                                                    onPressed: () =>
+                                                        Navigator.pop(
+                                                            alertDialogContext),
+                                                    child: Text(
+                                                        FFLocalizations.of(
+                                                            context)
+                                                            .getVariableText(
+                                                          enText: 'ok',
+                                                          arText: 'حسنا',
+                                                        )),
+                                                  ),
+                                                ],
+                                              );
+                                            },
+                                          );
+
+                                          return;
+
+                                        }
+
+
+
+
+
+
+
+
+
                                         var _shouldSetState = false;
                                         if (_model.textController.text ==
                                                 null ||

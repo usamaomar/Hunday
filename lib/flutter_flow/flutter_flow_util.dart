@@ -290,6 +290,13 @@ DateTime dateTimeFromSecondsSinceEpoch(int seconds) {
   return DateTime.fromMillisecondsSinceEpoch(seconds * 1000);
 }
 
+DateTime get getTomorrow {
+  final now = DateTime.now();
+  final tomorrow = now.add(Duration(days: 1));
+  return tomorrow;
+}
+
+
 extension DateTimeConversionExtension on DateTime {
   int get secondsSinceEpoch => (millisecondsSinceEpoch / 1000).round();
 }
