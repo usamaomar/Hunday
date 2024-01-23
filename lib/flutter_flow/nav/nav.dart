@@ -119,7 +119,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'aboutAppPage',
               builder: (context, params) => NavBarPage(
                 initialPage: '',
-                page: AboutAppPageWidget(),
+                page: AboutAppPageWidget(
+                  title: params.getParam('title', ParamType.String),
+                  body: params.getParam('body', ParamType.String),
+                ),
               ),
             ),
             FFRoute(
