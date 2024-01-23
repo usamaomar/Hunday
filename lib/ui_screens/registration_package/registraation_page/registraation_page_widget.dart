@@ -1312,19 +1312,8 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                               );
                                             },
                                           );
-
                                           return;
-
                                         }
-
-
-
-
-
-
-
-
-
                                         var _shouldSetState = false;
                                         if (_model.textController.text ==
                                                 null ||
@@ -1480,7 +1469,6 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                     setState(() {});
                                                   return;
                                                 }
-
                                                 _model.apiResult7h5 =
                                                     await RegisterApiCall.call(
                                                   phone:
