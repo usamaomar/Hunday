@@ -1,20 +1,25 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class CouponModelStruct extends BaseStruct {
+class CouponModelStruct extends FFFirebaseStruct {
   CouponModelStruct({
     int? id,
     String? couponCode,
     String? discountRate,
     double? discountamount,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _couponCode = couponCode,
         _discountRate = discountRate,
-        _discountamount = discountamount;
+        _discountamount = discountamount,
+        super(firestoreUtilData);
 
   // "id" field.
   int? _id;
@@ -128,10 +133,82 @@ CouponModelStruct createCouponModelStruct({
   String? couponCode,
   String? discountRate,
   double? discountamount,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     CouponModelStruct(
       id: id,
       couponCode: couponCode,
       discountRate: discountRate,
       discountamount: discountamount,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+CouponModelStruct? updateCouponModelStruct(
+  CouponModelStruct? couponModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    couponModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addCouponModelStructData(
+  Map<String, dynamic> firestoreData,
+  CouponModelStruct? couponModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (couponModel == null) {
+    return;
+  }
+  if (couponModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && couponModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final couponModelData =
+      getCouponModelFirestoreData(couponModel, forFieldValue);
+  final nestedData =
+      couponModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = couponModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getCouponModelFirestoreData(
+  CouponModelStruct? couponModel, [
+  bool forFieldValue = false,
+]) {
+  if (couponModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(couponModel.toMap());
+
+  // Add any Firestore field values
+  couponModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getCouponModelListFirestoreData(
+  List<CouponModelStruct>? couponModels,
+) =>
+    couponModels?.map((e) => getCouponModelFirestoreData(e, true)).toList() ??
+    [];

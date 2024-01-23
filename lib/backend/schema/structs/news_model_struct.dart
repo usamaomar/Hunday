@@ -1,11 +1,14 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class NewsModelStruct extends BaseStruct {
+class NewsModelStruct extends FFFirebaseStruct {
   NewsModelStruct({
     int? id,
     String? titleEn,
@@ -22,6 +25,7 @@ class NewsModelStruct extends BaseStruct {
     String? fullThumbImage,
     String? title,
     String? description,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _titleEn = titleEn,
         _titleAr = titleAr,
@@ -36,7 +40,8 @@ class NewsModelStruct extends BaseStruct {
         _fullMainImage = fullMainImage,
         _fullThumbImage = fullThumbImage,
         _title = title,
-        _description = description;
+        _description = description,
+        super(firestoreUtilData);
 
   // "id" field.
   int? _id;
@@ -372,6 +377,10 @@ NewsModelStruct createNewsModelStruct({
   String? fullThumbImage,
   String? title,
   String? description,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     NewsModelStruct(
       id: id,
@@ -389,4 +398,69 @@ NewsModelStruct createNewsModelStruct({
       fullThumbImage: fullThumbImage,
       title: title,
       description: description,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+NewsModelStruct? updateNewsModelStruct(
+  NewsModelStruct? newsModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    newsModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addNewsModelStructData(
+  Map<String, dynamic> firestoreData,
+  NewsModelStruct? newsModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (newsModel == null) {
+    return;
+  }
+  if (newsModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && newsModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final newsModelData = getNewsModelFirestoreData(newsModel, forFieldValue);
+  final nestedData = newsModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = newsModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getNewsModelFirestoreData(
+  NewsModelStruct? newsModel, [
+  bool forFieldValue = false,
+]) {
+  if (newsModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(newsModel.toMap());
+
+  // Add any Firestore field values
+  newsModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getNewsModelListFirestoreData(
+  List<NewsModelStruct>? newsModels,
+) =>
+    newsModels?.map((e) => getNewsModelFirestoreData(e, true)).toList() ?? [];

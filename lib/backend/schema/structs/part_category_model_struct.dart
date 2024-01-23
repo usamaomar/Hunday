@@ -1,11 +1,14 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class PartCategoryModelStruct extends BaseStruct {
+class PartCategoryModelStruct extends FFFirebaseStruct {
   PartCategoryModelStruct({
     int? id,
     String? nameEn,
@@ -17,6 +20,7 @@ class PartCategoryModelStruct extends BaseStruct {
     String? fullIcon,
     String? name,
     String? description,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _nameEn = nameEn,
         _nameAr = nameAr,
@@ -26,7 +30,8 @@ class PartCategoryModelStruct extends BaseStruct {
         _status = status,
         _fullIcon = fullIcon,
         _name = name,
-        _description = description;
+        _description = description,
+        super(firestoreUtilData);
 
   // "id" field.
   int? _id;
@@ -264,6 +269,10 @@ PartCategoryModelStruct createPartCategoryModelStruct({
   String? fullIcon,
   String? name,
   String? description,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     PartCategoryModelStruct(
       id: id,
@@ -276,4 +285,74 @@ PartCategoryModelStruct createPartCategoryModelStruct({
       fullIcon: fullIcon,
       name: name,
       description: description,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+PartCategoryModelStruct? updatePartCategoryModelStruct(
+  PartCategoryModelStruct? partCategoryModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    partCategoryModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addPartCategoryModelStructData(
+  Map<String, dynamic> firestoreData,
+  PartCategoryModelStruct? partCategoryModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (partCategoryModel == null) {
+    return;
+  }
+  if (partCategoryModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && partCategoryModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final partCategoryModelData =
+      getPartCategoryModelFirestoreData(partCategoryModel, forFieldValue);
+  final nestedData =
+      partCategoryModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = partCategoryModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getPartCategoryModelFirestoreData(
+  PartCategoryModelStruct? partCategoryModel, [
+  bool forFieldValue = false,
+]) {
+  if (partCategoryModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(partCategoryModel.toMap());
+
+  // Add any Firestore field values
+  partCategoryModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getPartCategoryModelListFirestoreData(
+  List<PartCategoryModelStruct>? partCategoryModels,
+) =>
+    partCategoryModels
+        ?.map((e) => getPartCategoryModelFirestoreData(e, true))
+        .toList() ??
+    [];

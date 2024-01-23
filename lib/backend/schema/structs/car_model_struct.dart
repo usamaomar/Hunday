@@ -1,11 +1,14 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class CarModelStruct extends BaseStruct {
+class CarModelStruct extends FFFirebaseStruct {
   CarModelStruct({
     String? fullName,
     String? fullImage,
@@ -15,6 +18,7 @@ class CarModelStruct extends BaseStruct {
     int? status,
     String? modelCode,
     String? name,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _fullName = fullName,
         _fullImage = fullImage,
         _id = id,
@@ -22,7 +26,8 @@ class CarModelStruct extends BaseStruct {
         _nameAr = nameAr,
         _status = status,
         _modelCode = modelCode,
-        _name = name;
+        _name = name,
+        super(firestoreUtilData);
 
   // "fullName" field.
   String? _fullName;
@@ -209,6 +214,10 @@ CarModelStruct createCarModelStruct({
   int? status,
   String? modelCode,
   String? name,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     CarModelStruct(
       fullName: fullName,
@@ -219,4 +228,69 @@ CarModelStruct createCarModelStruct({
       status: status,
       modelCode: modelCode,
       name: name,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+CarModelStruct? updateCarModelStruct(
+  CarModelStruct? carModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    carModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addCarModelStructData(
+  Map<String, dynamic> firestoreData,
+  CarModelStruct? carModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (carModel == null) {
+    return;
+  }
+  if (carModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && carModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final carModelData = getCarModelFirestoreData(carModel, forFieldValue);
+  final nestedData = carModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = carModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getCarModelFirestoreData(
+  CarModelStruct? carModel, [
+  bool forFieldValue = false,
+]) {
+  if (carModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(carModel.toMap());
+
+  // Add any Firestore field values
+  carModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getCarModelListFirestoreData(
+  List<CarModelStruct>? carModels,
+) =>
+    carModels?.map((e) => getCarModelFirestoreData(e, true)).toList() ?? [];

@@ -1,22 +1,27 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class FuelTypeModelStruct extends BaseStruct {
+class FuelTypeModelStruct extends FFFirebaseStruct {
   FuelTypeModelStruct({
     int? id,
     String? nameEn,
     String? nameAr,
     int? status,
     String? name,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _nameEn = nameEn,
         _nameAr = nameAr,
         _status = status,
-        _name = name;
+        _name = name,
+        super(firestoreUtilData);
 
   // "id" field.
   int? _id;
@@ -148,6 +153,10 @@ FuelTypeModelStruct createFuelTypeModelStruct({
   String? nameAr,
   int? status,
   String? name,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     FuelTypeModelStruct(
       id: id,
@@ -155,4 +164,74 @@ FuelTypeModelStruct createFuelTypeModelStruct({
       nameAr: nameAr,
       status: status,
       name: name,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+FuelTypeModelStruct? updateFuelTypeModelStruct(
+  FuelTypeModelStruct? fuelTypeModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    fuelTypeModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addFuelTypeModelStructData(
+  Map<String, dynamic> firestoreData,
+  FuelTypeModelStruct? fuelTypeModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (fuelTypeModel == null) {
+    return;
+  }
+  if (fuelTypeModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && fuelTypeModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final fuelTypeModelData =
+      getFuelTypeModelFirestoreData(fuelTypeModel, forFieldValue);
+  final nestedData =
+      fuelTypeModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = fuelTypeModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getFuelTypeModelFirestoreData(
+  FuelTypeModelStruct? fuelTypeModel, [
+  bool forFieldValue = false,
+]) {
+  if (fuelTypeModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(fuelTypeModel.toMap());
+
+  // Add any Firestore field values
+  fuelTypeModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getFuelTypeModelListFirestoreData(
+  List<FuelTypeModelStruct>? fuelTypeModels,
+) =>
+    fuelTypeModels
+        ?.map((e) => getFuelTypeModelFirestoreData(e, true))
+        .toList() ??
+    [];

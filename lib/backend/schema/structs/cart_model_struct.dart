@@ -1,22 +1,27 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class CartModelStruct extends BaseStruct {
+class CartModelStruct extends FFFirebaseStruct {
   CartModelStruct({
     int? id,
     int? userId,
     int? partId,
     int? quantity,
     PartModelStruct? part,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _userId = userId,
         _partId = partId,
         _quantity = quantity,
-        _part = part;
+        _part = part,
+        super(firestoreUtilData);
 
   // "id" field.
   int? _id;
@@ -152,11 +157,88 @@ CartModelStruct createCartModelStruct({
   int? partId,
   int? quantity,
   PartModelStruct? part,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     CartModelStruct(
       id: id,
       userId: userId,
       partId: partId,
       quantity: quantity,
-      part: part ?? PartModelStruct(),
+      part: part ?? (clearUnsetFields ? PartModelStruct() : null),
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+CartModelStruct? updateCartModelStruct(
+  CartModelStruct? cartModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    cartModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addCartModelStructData(
+  Map<String, dynamic> firestoreData,
+  CartModelStruct? cartModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (cartModel == null) {
+    return;
+  }
+  if (cartModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && cartModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final cartModelData = getCartModelFirestoreData(cartModel, forFieldValue);
+  final nestedData = cartModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = cartModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getCartModelFirestoreData(
+  CartModelStruct? cartModel, [
+  bool forFieldValue = false,
+]) {
+  if (cartModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(cartModel.toMap());
+
+  // Handle nested data for "part" field.
+  addPartModelStructData(
+    firestoreData,
+    cartModel.hasPart() ? cartModel.part : null,
+    'part',
+    forFieldValue,
+  );
+
+  // Add any Firestore field values
+  cartModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getCartModelListFirestoreData(
+  List<CartModelStruct>? cartModels,
+) =>
+    cartModels?.map((e) => getCartModelFirestoreData(e, true)).toList() ?? [];

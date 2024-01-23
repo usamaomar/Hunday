@@ -1,14 +1,19 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class TestStruct extends BaseStruct {
+class TestStruct extends FFFirebaseStruct {
   TestStruct({
     List<CarModelStruct>? listOfCarModel,
-  }) : _listOfCarModel = listOfCarModel;
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
+  })  : _listOfCarModel = listOfCarModel,
+        super(firestoreUtilData);
 
   // "listOfCarModel" field.
   List<CarModelStruct>? _listOfCarModel;
@@ -65,4 +70,74 @@ class TestStruct extends BaseStruct {
   int get hashCode => const ListEquality().hash([listOfCarModel]);
 }
 
-TestStruct createTestStruct() => TestStruct();
+TestStruct createTestStruct({
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
+}) =>
+    TestStruct(
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
+    );
+
+TestStruct? updateTestStruct(
+  TestStruct? test, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    test
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addTestStructData(
+  Map<String, dynamic> firestoreData,
+  TestStruct? test,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (test == null) {
+    return;
+  }
+  if (test.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields = !forFieldValue && test.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final testData = getTestFirestoreData(test, forFieldValue);
+  final nestedData = testData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = test.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getTestFirestoreData(
+  TestStruct? test, [
+  bool forFieldValue = false,
+]) {
+  if (test == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(test.toMap());
+
+  // Add any Firestore field values
+  test.firestoreUtilData.fieldValues.forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getTestListFirestoreData(
+  List<TestStruct>? tests,
+) =>
+    tests?.map((e) => getTestFirestoreData(e, true)).toList() ?? [];

@@ -14,7 +14,14 @@ import 'about_app_page_model.dart';
 export 'about_app_page_model.dart';
 
 class AboutAppPageWidget extends StatefulWidget {
-  const AboutAppPageWidget({Key? key}) : super(key: key);
+  const AboutAppPageWidget({
+    Key? key,
+    required this.title,
+    required this.body,
+  }) : super(key: key);
+
+  final String? title;
+  final String? body;
 
   @override
   _AboutAppPageWidgetState createState() => _AboutAppPageWidgetState();

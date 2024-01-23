@@ -1,20 +1,25 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class ServiceTypeModelStruct extends BaseStruct {
+class ServiceTypeModelStruct extends FFFirebaseStruct {
   ServiceTypeModelStruct({
     int? id,
     String? nameEn,
     String? nameAr,
     String? name,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _nameEn = nameEn,
         _nameAr = nameAr,
-        _name = name;
+        _name = name,
+        super(firestoreUtilData);
 
   // "id" field.
   int? _id;
@@ -126,10 +131,84 @@ ServiceTypeModelStruct createServiceTypeModelStruct({
   String? nameEn,
   String? nameAr,
   String? name,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     ServiceTypeModelStruct(
       id: id,
       nameEn: nameEn,
       nameAr: nameAr,
       name: name,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+ServiceTypeModelStruct? updateServiceTypeModelStruct(
+  ServiceTypeModelStruct? serviceTypeModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    serviceTypeModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addServiceTypeModelStructData(
+  Map<String, dynamic> firestoreData,
+  ServiceTypeModelStruct? serviceTypeModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (serviceTypeModel == null) {
+    return;
+  }
+  if (serviceTypeModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && serviceTypeModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final serviceTypeModelData =
+      getServiceTypeModelFirestoreData(serviceTypeModel, forFieldValue);
+  final nestedData =
+      serviceTypeModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = serviceTypeModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getServiceTypeModelFirestoreData(
+  ServiceTypeModelStruct? serviceTypeModel, [
+  bool forFieldValue = false,
+]) {
+  if (serviceTypeModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(serviceTypeModel.toMap());
+
+  // Add any Firestore field values
+  serviceTypeModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getServiceTypeModelListFirestoreData(
+  List<ServiceTypeModelStruct>? serviceTypeModels,
+) =>
+    serviceTypeModels
+        ?.map((e) => getServiceTypeModelFirestoreData(e, true))
+        .toList() ??
+    [];

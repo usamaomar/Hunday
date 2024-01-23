@@ -1,22 +1,27 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class DeliveryPriceModelStruct extends BaseStruct {
+class DeliveryPriceModelStruct extends FFFirebaseStruct {
   DeliveryPriceModelStruct({
     int? id,
     String? nameEn,
     String? nameAr,
     double? price,
     String? name,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _nameEn = nameEn,
         _nameAr = nameAr,
         _price = price,
-        _name = name;
+        _name = name,
+        super(firestoreUtilData);
 
   // "id" field.
   int? _id;
@@ -149,6 +154,10 @@ DeliveryPriceModelStruct createDeliveryPriceModelStruct({
   String? nameAr,
   double? price,
   String? name,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     DeliveryPriceModelStruct(
       id: id,
@@ -156,4 +165,75 @@ DeliveryPriceModelStruct createDeliveryPriceModelStruct({
       nameAr: nameAr,
       price: price,
       name: name,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+DeliveryPriceModelStruct? updateDeliveryPriceModelStruct(
+  DeliveryPriceModelStruct? deliveryPriceModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    deliveryPriceModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addDeliveryPriceModelStructData(
+  Map<String, dynamic> firestoreData,
+  DeliveryPriceModelStruct? deliveryPriceModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (deliveryPriceModel == null) {
+    return;
+  }
+  if (deliveryPriceModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && deliveryPriceModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final deliveryPriceModelData =
+      getDeliveryPriceModelFirestoreData(deliveryPriceModel, forFieldValue);
+  final nestedData =
+      deliveryPriceModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields =
+      deliveryPriceModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getDeliveryPriceModelFirestoreData(
+  DeliveryPriceModelStruct? deliveryPriceModel, [
+  bool forFieldValue = false,
+]) {
+  if (deliveryPriceModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(deliveryPriceModel.toMap());
+
+  // Add any Firestore field values
+  deliveryPriceModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getDeliveryPriceModelListFirestoreData(
+  List<DeliveryPriceModelStruct>? deliveryPriceModels,
+) =>
+    deliveryPriceModels
+        ?.map((e) => getDeliveryPriceModelFirestoreData(e, true))
+        .toList() ??
+    [];
