@@ -13,7 +13,14 @@ export 'about_app_page_model.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 
 class AboutAppPageWidget extends StatefulWidget {
-  const AboutAppPageWidget({Key? key}) : super(key: key);
+  const AboutAppPageWidget({
+    Key? key,
+    required this.title,
+    required this.body,
+  }) : super(key: key);
+
+  final String? title;
+  final String? body;
 
   @override
   _AboutAppPageWidgetState createState() => _AboutAppPageWidgetState();

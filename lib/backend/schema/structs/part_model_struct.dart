@@ -1,11 +1,14 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class PartModelStruct extends BaseStruct {
+class PartModelStruct extends FFFirebaseStruct {
   PartModelStruct({
     int? id,
     String? nameEn,
@@ -25,6 +28,7 @@ class PartModelStruct extends BaseStruct {
     double? price,
     double? discAmount,
     bool? isLoading,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _nameEn = nameEn,
         _nameAr = nameAr,
@@ -42,7 +46,8 @@ class PartModelStruct extends BaseStruct {
         _quantity = quantity,
         _price = price,
         _discAmount = discAmount,
-        _isLoading = isLoading;
+        _isLoading = isLoading,
+        super(firestoreUtilData);
 
   // "id" field.
   int? _id;
@@ -444,6 +449,10 @@ PartModelStruct createPartModelStruct({
   double? price,
   double? discAmount,
   bool? isLoading,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     PartModelStruct(
       id: id,
@@ -464,4 +473,69 @@ PartModelStruct createPartModelStruct({
       price: price,
       discAmount: discAmount,
       isLoading: isLoading,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+PartModelStruct? updatePartModelStruct(
+  PartModelStruct? partModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    partModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addPartModelStructData(
+  Map<String, dynamic> firestoreData,
+  PartModelStruct? partModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (partModel == null) {
+    return;
+  }
+  if (partModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && partModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final partModelData = getPartModelFirestoreData(partModel, forFieldValue);
+  final nestedData = partModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = partModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getPartModelFirestoreData(
+  PartModelStruct? partModel, [
+  bool forFieldValue = false,
+]) {
+  if (partModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(partModel.toMap());
+
+  // Add any Firestore field values
+  partModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getPartModelListFirestoreData(
+  List<PartModelStruct>? partModels,
+) =>
+    partModels?.map((e) => getPartModelFirestoreData(e, true)).toList() ?? [];

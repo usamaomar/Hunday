@@ -1,18 +1,23 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class ShopListItemModelStruct extends BaseStruct {
+class ShopListItemModelStruct extends FFFirebaseStruct {
   ShopListItemModelStruct({
     String? imageUrl,
     String? title,
     String? description,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _imageUrl = imageUrl,
         _title = title,
-        _description = description;
+        _description = description,
+        super(firestoreUtilData);
 
   // "image_url" field.
   String? _imageUrl;
@@ -104,9 +109,83 @@ ShopListItemModelStruct createShopListItemModelStruct({
   String? imageUrl,
   String? title,
   String? description,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     ShopListItemModelStruct(
       imageUrl: imageUrl,
       title: title,
       description: description,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+ShopListItemModelStruct? updateShopListItemModelStruct(
+  ShopListItemModelStruct? shopListItemModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    shopListItemModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addShopListItemModelStructData(
+  Map<String, dynamic> firestoreData,
+  ShopListItemModelStruct? shopListItemModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (shopListItemModel == null) {
+    return;
+  }
+  if (shopListItemModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && shopListItemModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final shopListItemModelData =
+      getShopListItemModelFirestoreData(shopListItemModel, forFieldValue);
+  final nestedData =
+      shopListItemModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = shopListItemModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getShopListItemModelFirestoreData(
+  ShopListItemModelStruct? shopListItemModel, [
+  bool forFieldValue = false,
+]) {
+  if (shopListItemModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(shopListItemModel.toMap());
+
+  // Add any Firestore field values
+  shopListItemModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getShopListItemModelListFirestoreData(
+  List<ShopListItemModelStruct>? shopListItemModels,
+) =>
+    shopListItemModels
+        ?.map((e) => getShopListItemModelFirestoreData(e, true))
+        .toList() ??
+    [];

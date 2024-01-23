@@ -1,5 +1,6 @@
 import '../../components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
+import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';

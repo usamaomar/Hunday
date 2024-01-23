@@ -1,16 +1,21 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class LoginModelStruct extends BaseStruct {
+class LoginModelStruct extends FFFirebaseStruct {
   LoginModelStruct({
     String? accessToken,
     String? tokenType,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _accessToken = accessToken,
-        _tokenType = tokenType;
+        _tokenType = tokenType,
+        super(firestoreUtilData);
 
   // "access_token" field.
   String? _accessToken;
@@ -82,8 +87,77 @@ class LoginModelStruct extends BaseStruct {
 LoginModelStruct createLoginModelStruct({
   String? accessToken,
   String? tokenType,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     LoginModelStruct(
       accessToken: accessToken,
       tokenType: tokenType,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+LoginModelStruct? updateLoginModelStruct(
+  LoginModelStruct? loginModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    loginModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addLoginModelStructData(
+  Map<String, dynamic> firestoreData,
+  LoginModelStruct? loginModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (loginModel == null) {
+    return;
+  }
+  if (loginModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && loginModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final loginModelData = getLoginModelFirestoreData(loginModel, forFieldValue);
+  final nestedData = loginModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = loginModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getLoginModelFirestoreData(
+  LoginModelStruct? loginModel, [
+  bool forFieldValue = false,
+]) {
+  if (loginModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(loginModel.toMap());
+
+  // Add any Firestore field values
+  loginModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getLoginModelListFirestoreData(
+  List<LoginModelStruct>? loginModels,
+) =>
+    loginModels?.map((e) => getLoginModelFirestoreData(e, true)).toList() ?? [];

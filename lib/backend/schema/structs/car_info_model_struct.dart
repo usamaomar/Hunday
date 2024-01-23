@@ -1,11 +1,14 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class CarInfoModelStruct extends BaseStruct {
+class CarInfoModelStruct extends FFFirebaseStruct {
   CarInfoModelStruct({
     String? ownerName,
     String? address,
@@ -23,6 +26,7 @@ class CarInfoModelStruct extends BaseStruct {
     int? fuelTypeId,
     String? m1,
     String? m2,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _ownerName = ownerName,
         _address = address,
         _color = color,
@@ -38,7 +42,8 @@ class CarInfoModelStruct extends BaseStruct {
         _carCategoryId = carCategoryId,
         _fuelTypeId = fuelTypeId,
         _m1 = m1,
-        _m2 = m2;
+        _m2 = m2,
+        super(firestoreUtilData);
 
   // "owner_name" field.
   String? _ownerName;
@@ -397,6 +402,10 @@ CarInfoModelStruct createCarInfoModelStruct({
   int? fuelTypeId,
   String? m1,
   String? m2,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     CarInfoModelStruct(
       ownerName: ownerName,
@@ -415,4 +424,72 @@ CarInfoModelStruct createCarInfoModelStruct({
       fuelTypeId: fuelTypeId,
       m1: m1,
       m2: m2,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+CarInfoModelStruct? updateCarInfoModelStruct(
+  CarInfoModelStruct? carInfoModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    carInfoModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addCarInfoModelStructData(
+  Map<String, dynamic> firestoreData,
+  CarInfoModelStruct? carInfoModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (carInfoModel == null) {
+    return;
+  }
+  if (carInfoModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && carInfoModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final carInfoModelData =
+      getCarInfoModelFirestoreData(carInfoModel, forFieldValue);
+  final nestedData =
+      carInfoModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = carInfoModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getCarInfoModelFirestoreData(
+  CarInfoModelStruct? carInfoModel, [
+  bool forFieldValue = false,
+]) {
+  if (carInfoModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(carInfoModel.toMap());
+
+  // Add any Firestore field values
+  carInfoModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getCarInfoModelListFirestoreData(
+  List<CarInfoModelStruct>? carInfoModels,
+) =>
+    carInfoModels?.map((e) => getCarInfoModelFirestoreData(e, true)).toList() ??
+    [];

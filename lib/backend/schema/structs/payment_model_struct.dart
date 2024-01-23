@@ -1,11 +1,14 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class PaymentModelStruct extends BaseStruct {
+class PaymentModelStruct extends FFFirebaseStruct {
   PaymentModelStruct({
     String? buildNumber,
     String? timestamp,
@@ -13,12 +16,14 @@ class PaymentModelStruct extends BaseStruct {
     String? id,
     PaymentResultStruct? result,
     String? merchantTransactionId,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _buildNumber = buildNumber,
         _timestamp = timestamp,
         _ndc = ndc,
         _id = id,
         _result = result,
-        _merchantTransactionId = merchantTransactionId;
+        _merchantTransactionId = merchantTransactionId,
+        super(firestoreUtilData);
 
   // "buildNumber" field.
   String? _buildNumber;
@@ -170,12 +175,92 @@ PaymentModelStruct createPaymentModelStruct({
   String? id,
   PaymentResultStruct? result,
   String? merchantTransactionId,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     PaymentModelStruct(
       buildNumber: buildNumber,
       timestamp: timestamp,
       ndc: ndc,
       id: id,
-      result: result ?? PaymentResultStruct(),
+      result: result ?? (clearUnsetFields ? PaymentResultStruct() : null),
       merchantTransactionId: merchantTransactionId,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+PaymentModelStruct? updatePaymentModelStruct(
+  PaymentModelStruct? paymentModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    paymentModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addPaymentModelStructData(
+  Map<String, dynamic> firestoreData,
+  PaymentModelStruct? paymentModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (paymentModel == null) {
+    return;
+  }
+  if (paymentModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && paymentModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final paymentModelData =
+      getPaymentModelFirestoreData(paymentModel, forFieldValue);
+  final nestedData =
+      paymentModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = paymentModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getPaymentModelFirestoreData(
+  PaymentModelStruct? paymentModel, [
+  bool forFieldValue = false,
+]) {
+  if (paymentModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(paymentModel.toMap());
+
+  // Handle nested data for "result" field.
+  addPaymentResultStructData(
+    firestoreData,
+    paymentModel.hasResult() ? paymentModel.result : null,
+    'result',
+    forFieldValue,
+  );
+
+  // Add any Firestore field values
+  paymentModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getPaymentModelListFirestoreData(
+  List<PaymentModelStruct>? paymentModels,
+) =>
+    paymentModels?.map((e) => getPaymentModelFirestoreData(e, true)).toList() ??
+    [];

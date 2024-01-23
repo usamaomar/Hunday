@@ -1,11 +1,14 @@
 // ignore_for_file: unnecessary_getters_setters
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+import '/backend/schema/util/firestore_util.dart';
 import '/backend/schema/util/schema_util.dart';
 
 import 'index.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 
-class AddressModelStruct extends BaseStruct {
+class AddressModelStruct extends FFFirebaseStruct {
   AddressModelStruct({
     int? id,
     String? name,
@@ -14,13 +17,15 @@ class AddressModelStruct extends BaseStruct {
     int? cityId,
     String? streetAddress,
     int? buildingNumber,
+    FirestoreUtilData firestoreUtilData = const FirestoreUtilData(),
   })  : _id = id,
         _name = name,
         _email = email,
         _phone = phone,
         _cityId = cityId,
         _streetAddress = streetAddress,
-        _buildingNumber = buildingNumber;
+        _buildingNumber = buildingNumber,
+        super(firestoreUtilData);
 
   // "id" field.
   int? _id;
@@ -192,6 +197,10 @@ AddressModelStruct createAddressModelStruct({
   int? cityId,
   String? streetAddress,
   int? buildingNumber,
+  Map<String, dynamic> fieldValues = const {},
+  bool clearUnsetFields = true,
+  bool create = false,
+  bool delete = false,
 }) =>
     AddressModelStruct(
       id: id,
@@ -201,4 +210,72 @@ AddressModelStruct createAddressModelStruct({
       cityId: cityId,
       streetAddress: streetAddress,
       buildingNumber: buildingNumber,
+      firestoreUtilData: FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+        delete: delete,
+        fieldValues: fieldValues,
+      ),
     );
+
+AddressModelStruct? updateAddressModelStruct(
+  AddressModelStruct? addressModel, {
+  bool clearUnsetFields = true,
+  bool create = false,
+}) =>
+    addressModel
+      ?..firestoreUtilData = FirestoreUtilData(
+        clearUnsetFields: clearUnsetFields,
+        create: create,
+      );
+
+void addAddressModelStructData(
+  Map<String, dynamic> firestoreData,
+  AddressModelStruct? addressModel,
+  String fieldName, [
+  bool forFieldValue = false,
+]) {
+  firestoreData.remove(fieldName);
+  if (addressModel == null) {
+    return;
+  }
+  if (addressModel.firestoreUtilData.delete) {
+    firestoreData[fieldName] = FieldValue.delete();
+    return;
+  }
+  final clearFields =
+      !forFieldValue && addressModel.firestoreUtilData.clearUnsetFields;
+  if (clearFields) {
+    firestoreData[fieldName] = <String, dynamic>{};
+  }
+  final addressModelData =
+      getAddressModelFirestoreData(addressModel, forFieldValue);
+  final nestedData =
+      addressModelData.map((k, v) => MapEntry('$fieldName.$k', v));
+
+  final mergeFields = addressModel.firestoreUtilData.create || clearFields;
+  firestoreData
+      .addAll(mergeFields ? mergeNestedFields(nestedData) : nestedData);
+}
+
+Map<String, dynamic> getAddressModelFirestoreData(
+  AddressModelStruct? addressModel, [
+  bool forFieldValue = false,
+]) {
+  if (addressModel == null) {
+    return {};
+  }
+  final firestoreData = mapToFirestore(addressModel.toMap());
+
+  // Add any Firestore field values
+  addressModel.firestoreUtilData.fieldValues
+      .forEach((k, v) => firestoreData[k] = v);
+
+  return forFieldValue ? mergeNestedFields(firestoreData) : firestoreData;
+}
+
+List<Map<String, dynamic>> getAddressModelListFirestoreData(
+  List<AddressModelStruct>? addressModels,
+) =>
+    addressModels?.map((e) => getAddressModelFirestoreData(e, true)).toList() ??
+    [];
