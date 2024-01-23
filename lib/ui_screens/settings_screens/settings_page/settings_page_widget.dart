@@ -868,8 +868,21 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        await launchURL(
-                                                            'https://www.hyundai.com/worldwide/en/brand-journal/lifestyle/david-de-rothschild-on-sustainable-activities');
+                                                        context.pushNamed(
+                                                          'AboutAppPage',
+                                                          queryParameters: {
+                                                            'title':
+                                                                serializeParam(
+                                                              '---',
+                                                              ParamType.String,
+                                                            ),
+                                                            'body':
+                                                                serializeParam(
+                                                              '---',
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
                                                       },
                                                       child: Text(
                                                         FFLocalizations.of(

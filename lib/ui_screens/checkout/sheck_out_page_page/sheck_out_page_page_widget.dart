@@ -15,7 +15,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:share_plus/share_plus.dart';
 import 'sheck_out_page_page_model.dart';
 export 'sheck_out_page_page_model.dart';
 
@@ -546,47 +545,48 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
-                                                Builder(
-                                                  builder: (context) => InkWell(
-                                                    splashColor:
-                                                        Colors.transparent,
-                                                    focusColor:
-                                                        Colors.transparent,
-                                                    hoverColor:
-                                                        Colors.transparent,
-                                                    highlightColor:
-                                                        Colors.transparent,
-                                                    onTap: () async {
-                                                      await launchURL(
-                                                          'https://hyundai.completechaintech.com');
-                                                      await Share.share(
-                                                        'myapp://test.com${GoRouter.of(context).location}',
-                                                        sharePositionOrigin:
-                                                            getWidgetBoundingBox(
-                                                                context),
-                                                      );
-                                                    },
-                                                    child: Text(
-                                                      FFLocalizations.of(
-                                                              context)
-                                                          .getText(
-                                                        'c4kn7j9t' /* Terms & Conditions */,
-                                                      ),
-                                                      style: FlutterFlowTheme
-                                                              .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                            fontFamily:
-                                                                'HeeboBold',
-                                                            color: Color(
-                                                                0xFF3D6398),
-                                                            fontSize: 16.0,
-                                                            fontWeight:
-                                                                FontWeight.bold,
-                                                            useGoogleFonts:
-                                                                false,
-                                                          ),
+                                                InkWell(
+                                                  splashColor:
+                                                      Colors.transparent,
+                                                  focusColor:
+                                                      Colors.transparent,
+                                                  hoverColor:
+                                                      Colors.transparent,
+                                                  highlightColor:
+                                                      Colors.transparent,
+                                                  onTap: () async {
+                                                    context.pushNamed(
+                                                      'AboutAppPage',
+                                                      queryParameters: {
+                                                        'title': serializeParam(
+                                                          '---',
+                                                          ParamType.String,
+                                                        ),
+                                                        'body': serializeParam(
+                                                          '---',
+                                                          ParamType.String,
+                                                        ),
+                                                      }.withoutNulls,
+                                                    );
+                                                  },
+                                                  child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'c4kn7j9t' /* Terms & Conditions */,
                                                     ),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'HeeboBold',
+                                                          color:
+                                                              Color(0xFF3D6398),
+                                                          fontSize: 16.0,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          useGoogleFonts: false,
+                                                        ),
                                                   ),
                                                 ),
                                               ],
