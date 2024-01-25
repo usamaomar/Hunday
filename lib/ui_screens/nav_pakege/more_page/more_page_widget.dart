@@ -312,7 +312,25 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('AboutAppPage');
+                            context.pushNamed(
+                              'AboutAppPage',
+                              queryParameters: {
+                                'title':
+                                serializeParam(
+                                  FFLocalizations.of(context)
+                                      .getVariableText(
+                                    enText: 'About App',
+                                    arText: 'عن التطبيق',
+                                  ),
+                                  ParamType.String,
+                                ),
+                                'body':
+                                serializeParam(
+                                  functions.getSettingByKey(FFAppState().currentLanguge == 'en' ? 'about_app_en' : 'about_app_ar', FFAppState().socialMediaJsonObject.toList()),
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
+                            );
                           },
                           child: Row(
                             mainAxisSize: MainAxisSize.max,

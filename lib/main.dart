@@ -17,6 +17,7 @@ import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
+import 'dart:io' show Platform;
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
   try {
@@ -38,7 +39,16 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  if (Platform.isIOS) {
+    await Firebase.initializeApp(
+        options: FirebaseOptions(
+            apiKey: "AIzaSyBXCycCdO_1va9JT98V_gAeXi6_S9szxYg",
+            appId: "1:779673897933:ios:5905b34966b0810185d284",
+            messagingSenderId: "779673897933",
+            projectId: "com.comc.hyundai"));
+  } else {
+    await Firebase.initializeApp();
+  }
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState().then((value) => {

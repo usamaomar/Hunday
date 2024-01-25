@@ -19,6 +19,7 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'sheck_out_page_page_model.dart';
 export 'sheck_out_page_page_model.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
 
 class SheckOutPagePageWidget extends StatefulWidget {
   const SheckOutPagePageWidget({
@@ -627,8 +628,25 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
-                                                      await launchURL(
-                                                          'https://hyundai.completechaintech.com');
+                                                      context.pushNamed(
+                                                        'AboutAppPage',
+                                                        queryParameters: {
+                                                          'title':
+                                                          serializeParam(
+                                                            FFLocalizations.of(context)
+                                                                .getVariableText(
+                                                              enText: 'Privacy & Terms',
+                                                              arText: 'الشروط والاحكام',
+                                                            ),
+                                                            ParamType.String,
+                                                          ),
+                                                          'body':
+                                                          serializeParam(
+                                                            functions.getSettingByKey(FFAppState().currentLanguge == 'en' ? 'condition_en' : 'condition_ar', FFAppState().socialMediaJsonObject.toList()),
+                                                            ParamType.String,
+                                                          ),
+                                                        }.withoutNulls,
+                                                      );
                                                     },
                                                     child: Text(
                                                       FFLocalizations.of(

@@ -16,6 +16,8 @@ import 'package:local_auth/local_auth.dart';
 import 'package:provider/provider.dart';
 import 'settings_page_model.dart';
 export 'settings_page_model.dart';
+import '/flutter_flow/custom_functions.dart' as functions;
+
 
 class SettingsPageWidget extends StatefulWidget {
   const SettingsPageWidget({Key? key}) : super(key: key);
@@ -872,15 +874,25 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                                       highlightColor:
                                                           Colors.transparent,
                                                       onTap: () async {
-                                                        if (FFAppState()
-                                                                .currentLanguge ==
-                                                            'en') {
-                                                          await launchURL(
-                                                              'https://www.hyundai.com/worldwide/en/brand-journal/lifestyle/david-de-rothschild-on-sustainable-activities');
-                                                        } else {
-                                                          await launchURL(
-                                                              'https://www.hyundai.com/worldwide/ar/brand-journal/lifestyle/david-de-rothschild-on-sustainable-activities');
-                                                        }
+                                                        context.pushNamed(
+                                                          'AboutAppPage',
+                                                          queryParameters: {
+                                                            'title':
+                                                            serializeParam(
+                                                              FFLocalizations.of(context)
+                                                                  .getVariableText(
+                                                                enText: 'Privacy & Terms',
+                                                                arText: 'الشروط والاحكام',
+                                                              ),
+                                                              ParamType.String,
+                                                            ),
+                                                            'body':
+                                                            serializeParam(
+                                                              functions.getSettingByKey(FFAppState().currentLanguge == 'en' ? 'condition_en' : 'condition_ar', FFAppState().socialMediaJsonObject.toList()),
+                                                              ParamType.String,
+                                                            ),
+                                                          }.withoutNulls,
+                                                        );
                                                       },
                                                       child: Text(
                                                         FFLocalizations.of(

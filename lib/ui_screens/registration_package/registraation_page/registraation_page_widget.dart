@@ -966,19 +966,8 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
-                                        context.pushNamed(
-                                          'AboutAppPage',
-                                          queryParameters: {
-                                            'title': serializeParam(
-                                              '---',
-                                              ParamType.String,
-                                            ),
-                                            'body': serializeParam(
-                                              '---',
-                                              ParamType.String,
-                                            ),
-                                          }.withoutNulls,
-                                        );
+                                        await launchURL(
+                                            'https://hyundai.completechaintech.com/privacyPolicy/termsFeed');
                                       },
                                       child: RichText(
                                         textScaleFactor: MediaQuery.of(context)

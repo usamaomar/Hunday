@@ -239,11 +239,8 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                                             children: [
                                                               Expanded(
                                                                 child: Text(
-                                                                  FFLocalizations.of(
-                                                                          context)
-                                                                      .getText(
-                                                                    'ccaswkvd' /* About App */,
-                                                                  ),
+                                                                  widget.title ??
+                                                                      '',
                                                                   style: FlutterFlowTheme.of(
                                                                           context)
                                                                       .bodyMedium
@@ -340,7 +337,7 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                                   Flexible(
                                                       child: HtmlWidget(
                                                     '''
-  ${functions.getSettingByKey(FFAppState().currentLanguge == 'en' ? 'about_app_en' : 'about_app_ar', FFAppState().socialMediaJsonObject.toList())}
+  ${widget.body}
   ''',
                                                   )),
                                                 ],
@@ -368,11 +365,7 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                   model: _model.hyndayAppBarModel,
                                   updateCallback: () => setState(() {}),
                                   child: HyndayAppBarWidget(
-                                    appBarTitle: FFLocalizations.of(context)
-                                        .getVariableText(
-                                      enText: 'About App',
-                                      arText: 'عن التطبيق',
-                                    ),
+                                    appBarTitle: widget.title,
                                     isMyProfileOpend: false,
                                   ),
                                 ),
