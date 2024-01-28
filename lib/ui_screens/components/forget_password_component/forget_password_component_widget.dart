@@ -12,10 +12,10 @@ import 'forget_password_component_model.dart';
 export 'forget_password_component_model.dart';
 
 class ForgetPasswordComponentWidget extends StatefulWidget {
-  const ForgetPasswordComponentWidget({Key? key}) : super(key: key);
+  const ForgetPasswordComponentWidget({super.key});
 
   @override
-  _ForgetPasswordComponentWidgetState createState() =>
+  State<ForgetPasswordComponentWidget> createState() =>
       _ForgetPasswordComponentWidgetState();
 }
 

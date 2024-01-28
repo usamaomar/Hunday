@@ -10,10 +10,10 @@ import 'my_orders_and_appointments_component_model.dart';
 export 'my_orders_and_appointments_component_model.dart';
 
 class MyOrdersAndAppointmentsComponentWidget extends StatefulWidget {
-  const MyOrdersAndAppointmentsComponentWidget({Key? key}) : super(key: key);
+  const MyOrdersAndAppointmentsComponentWidget({super.key});
 
   @override
-  _MyOrdersAndAppointmentsComponentWidgetState createState() =>
+  State<MyOrdersAndAppointmentsComponentWidget> createState() =>
       _MyOrdersAndAppointmentsComponentWidgetState();
 }
 

@@ -20,10 +20,10 @@ import 'cart_summary_page_model.dart';
 export 'cart_summary_page_model.dart';
 
 class CartSummaryPageWidget extends StatefulWidget {
-  const CartSummaryPageWidget({Key? key}) : super(key: key);
+  const CartSummaryPageWidget({super.key});
 
   @override
-  _CartSummaryPageWidgetState createState() => _CartSummaryPageWidgetState();
+  State<CartSummaryPageWidget> createState() => _CartSummaryPageWidgetState();
 }
 
 class _CartSummaryPageWidgetState extends State<CartSummaryPageWidget>

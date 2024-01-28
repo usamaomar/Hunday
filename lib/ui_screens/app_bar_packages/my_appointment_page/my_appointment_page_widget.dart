@@ -17,10 +17,10 @@ import 'my_appointment_page_model.dart';
 export 'my_appointment_page_model.dart';
 
 class MyAppointmentPageWidget extends StatefulWidget {
-  const MyAppointmentPageWidget({Key? key}) : super(key: key);
+  const MyAppointmentPageWidget({super.key});
 
   @override
-  _MyAppointmentPageWidgetState createState() =>
+  State<MyAppointmentPageWidget> createState() =>
       _MyAppointmentPageWidgetState();
 }
 
@@ -468,6 +468,7 @@ class _MyAppointmentPageWidgetState extends State<MyAppointmentPageWidget>
                                                                           builder:
                                                                               (dialogContext) {
                                                                             return Dialog(
+                                                                              elevation: 0,
                                                                               insetPadding: EdgeInsets.zero,
                                                                               backgroundColor: Colors.transparent,
                                                                               alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),

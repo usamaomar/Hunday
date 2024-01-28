@@ -11,10 +11,10 @@ import 'test_drive_component_model.dart';
 export 'test_drive_component_model.dart';
 
 class TestDriveComponentWidget extends StatefulWidget {
-  const TestDriveComponentWidget({Key? key}) : super(key: key);
+  const TestDriveComponentWidget({super.key});
 
   @override
-  _TestDriveComponentWidgetState createState() =>
+  State<TestDriveComponentWidget> createState() =>
       _TestDriveComponentWidgetState();
 }
 
@@ -397,7 +397,7 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                     ScaffoldMessenger.of(context).showSnackBar(
                       SnackBar(
                         content: Text(
-                          '',
+                          '-',
                           style: TextStyle(
                             color: FlutterFlowTheme.of(context).primaryText,
                           ),

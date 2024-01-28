@@ -20,14 +20,14 @@ export 'sheck_out_page_page_model.dart';
 
 class SheckOutPagePageWidget extends StatefulWidget {
   const SheckOutPagePageWidget({
-    Key? key,
+    super.key,
     this.deepLinkId,
-  }) : super(key: key);
+  });
 
   final String? deepLinkId;
 
   @override
-  _SheckOutPagePageWidgetState createState() => _SheckOutPagePageWidgetState();
+  State<SheckOutPagePageWidget> createState() => _SheckOutPagePageWidgetState();
 }
 
 class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
@@ -676,6 +676,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                             builder:
                                                                 (dialogContext) {
                                                               return Dialog(
+                                                                elevation: 0,
                                                                 insetPadding:
                                                                     EdgeInsets
                                                                         .zero,

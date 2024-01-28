@@ -22,16 +22,16 @@ export 'add_component_shoping_details_model.dart';
 
 class AddComponentShopingDetailsWidget extends StatefulWidget {
   const AddComponentShopingDetailsWidget({
-    Key? key,
+    super.key,
     required this.partId,
     required this.titleh,
-  }) : super(key: key);
+  });
 
   final int? partId;
   final String? titleh;
 
   @override
-  _AddComponentShopingDetailsWidgetState createState() =>
+  State<AddComponentShopingDetailsWidget> createState() =>
       _AddComponentShopingDetailsWidgetState();
 }
 
@@ -685,6 +685,8 @@ class _AddComponentShopingDetailsWidgetState
                                                                       builder:
                                                                           (dialogContext) {
                                                                         return Dialog(
+                                                                          elevation:
+                                                                              0,
                                                                           insetPadding:
                                                                               EdgeInsets.zero,
                                                                           backgroundColor:

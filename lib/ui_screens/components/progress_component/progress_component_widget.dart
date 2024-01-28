@@ -13,10 +13,10 @@ import 'progress_component_model.dart';
 export 'progress_component_model.dart';
 
 class ProgressComponentWidget extends StatefulWidget {
-  const ProgressComponentWidget({Key? key}) : super(key: key);
+  const ProgressComponentWidget({super.key});
 
   @override
-  _ProgressComponentWidgetState createState() =>
+  State<ProgressComponentWidget> createState() =>
       _ProgressComponentWidgetState();
 }
 

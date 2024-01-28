@@ -18,10 +18,10 @@ import 'news_page_model.dart';
 export 'news_page_model.dart';
 
 class NewsPageWidget extends StatefulWidget {
-  const NewsPageWidget({Key? key}) : super(key: key);
+  const NewsPageWidget({super.key});
 
   @override
-  _NewsPageWidgetState createState() => _NewsPageWidgetState();
+  State<NewsPageWidget> createState() => _NewsPageWidgetState();
 }
 
 class _NewsPageWidgetState extends State<NewsPageWidget>

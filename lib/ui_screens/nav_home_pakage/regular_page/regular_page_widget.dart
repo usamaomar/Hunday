@@ -24,10 +24,10 @@ import 'regular_page_model.dart';
 export 'regular_page_model.dart';
 
 class RegularPageWidget extends StatefulWidget {
-  const RegularPageWidget({Key? key}) : super(key: key);
+  const RegularPageWidget({super.key});
 
   @override
-  _RegularPageWidgetState createState() => _RegularPageWidgetState();
+  State<RegularPageWidget> createState() => _RegularPageWidgetState();
 }
 
 class _RegularPageWidgetState extends State<RegularPageWidget>
@@ -525,6 +525,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                     context: context,
                                                     builder: (dialogContext) {
                                                       return Dialog(
+                                                        elevation: 0,
                                                         insetPadding:
                                                             EdgeInsets.zero,
                                                         backgroundColor:
@@ -748,6 +749,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                                         builder:
                                                             (dialogContext) {
                                                           return Dialog(
+                                                            elevation: 0,
                                                             insetPadding:
                                                                 EdgeInsets.zero,
                                                             backgroundColor:

@@ -10,10 +10,10 @@ import 'my_rating_component_model.dart';
 export 'my_rating_component_model.dart';
 
 class MyRatingComponentWidget extends StatefulWidget {
-  const MyRatingComponentWidget({Key? key}) : super(key: key);
+  const MyRatingComponentWidget({super.key});
 
   @override
-  _MyRatingComponentWidgetState createState() =>
+  State<MyRatingComponentWidget> createState() =>
       _MyRatingComponentWidgetState();
 }
 

@@ -17,10 +17,10 @@ import 'shop_page_model.dart';
 export 'shop_page_model.dart';
 
 class ShopPageWidget extends StatefulWidget {
-  const ShopPageWidget({Key? key}) : super(key: key);
+  const ShopPageWidget({super.key});
 
   @override
-  _ShopPageWidgetState createState() => _ShopPageWidgetState();
+  State<ShopPageWidget> createState() => _ShopPageWidgetState();
 }
 
 class _ShopPageWidgetState extends State<ShopPageWidget> {

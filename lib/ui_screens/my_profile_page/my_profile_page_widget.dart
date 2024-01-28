@@ -17,10 +17,10 @@ import 'my_profile_page_model.dart';
 export 'my_profile_page_model.dart';
 
 class MyProfilePageWidget extends StatefulWidget {
-  const MyProfilePageWidget({Key? key}) : super(key: key);
+  const MyProfilePageWidget({super.key});
 
   @override
-  _MyProfilePageWidgetState createState() => _MyProfilePageWidgetState();
+  State<MyProfilePageWidget> createState() => _MyProfilePageWidgetState();
 }
 
 class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
@@ -398,6 +398,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                             context: context,
                                             builder: (dialogContext) {
                                               return Dialog(
+                                                elevation: 0,
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,

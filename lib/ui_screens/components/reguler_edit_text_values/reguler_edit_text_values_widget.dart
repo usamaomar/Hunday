@@ -10,16 +10,16 @@ export 'reguler_edit_text_values_model.dart';
 
 class RegulerEditTextValuesWidget extends StatefulWidget {
   const RegulerEditTextValuesWidget({
-    Key? key,
+    super.key,
     required this.titleahint,
     this.isErrorColor,
-  }) : super(key: key);
+  });
 
   final String? titleahint;
   final Color? isErrorColor;
 
   @override
-  _RegulerEditTextValuesWidgetState createState() =>
+  State<RegulerEditTextValuesWidget> createState() =>
       _RegulerEditTextValuesWidgetState();
 }
 

@@ -11,18 +11,18 @@ export 'delete_dialog_model.dart';
 
 class DeleteDialogWidget extends StatefulWidget {
   const DeleteDialogWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.confirmTextButton,
     required this.rejectTextButton,
-  }) : super(key: key);
+  });
 
   final String? title;
   final String? confirmTextButton;
   final String? rejectTextButton;
 
   @override
-  _DeleteDialogWidgetState createState() => _DeleteDialogWidgetState();
+  State<DeleteDialogWidget> createState() => _DeleteDialogWidgetState();
 }
 
 class _DeleteDialogWidgetState extends State<DeleteDialogWidget> {

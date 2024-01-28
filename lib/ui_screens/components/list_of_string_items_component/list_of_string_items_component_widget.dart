@@ -21,14 +21,14 @@ export 'list_of_string_items_component_model.dart';
 
 class ListOfStringItemsComponentWidget extends StatefulWidget {
   const ListOfStringItemsComponentWidget({
-    Key? key,
+    super.key,
     required this.jsonData,
-  }) : super(key: key);
+  });
 
   final dynamic jsonData;
 
   @override
-  _ListOfStringItemsComponentWidgetState createState() =>
+  State<ListOfStringItemsComponentWidget> createState() =>
       _ListOfStringItemsComponentWidgetState();
 }
 
@@ -961,6 +961,7 @@ class _ListOfStringItemsComponentWidgetState
                                       context: context,
                                       builder: (dialogContext) {
                                         return Dialog(
+                                          elevation: 0,
                                           insetPadding: EdgeInsets.zero,
                                           backgroundColor: Colors.transparent,
                                           alignment: AlignmentDirectional(

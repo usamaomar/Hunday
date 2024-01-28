@@ -14,10 +14,10 @@ import 'more_page_model.dart';
 export 'more_page_model.dart';
 
 class MorePageWidget extends StatefulWidget {
-  const MorePageWidget({Key? key}) : super(key: key);
+  const MorePageWidget({super.key});
 
   @override
-  _MorePageWidgetState createState() => _MorePageWidgetState();
+  State<MorePageWidget> createState() => _MorePageWidgetState();
 }
 
 class _MorePageWidgetState extends State<MorePageWidget> {
@@ -312,7 +312,19 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
-                            context.pushNamed('AboutAppPage');
+                            context.pushNamed(
+                              'AboutAppPage',
+                              queryParameters: {
+                                'title': serializeParam(
+                                  '',
+                                  ParamType.String,
+                                ),
+                                'body': serializeParam(
+                                  '',
+                                  ParamType.String,
+                                ),
+                              }.withoutNulls,
+                            );
                           },
                           child: Row(
                             mainAxisSize: MainAxisSize.max,

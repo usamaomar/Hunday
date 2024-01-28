@@ -13,14 +13,14 @@ export 'rating_component_model.dart';
 
 class RatingComponentWidget extends StatefulWidget {
   const RatingComponentWidget({
-    Key? key,
+    super.key,
     this.id,
-  }) : super(key: key);
+  });
 
   final String? id;
 
   @override
-  _RatingComponentWidgetState createState() => _RatingComponentWidgetState();
+  State<RatingComponentWidget> createState() => _RatingComponentWidgetState();
 }
 
 class _RatingComponentWidgetState extends State<RatingComponentWidget> {

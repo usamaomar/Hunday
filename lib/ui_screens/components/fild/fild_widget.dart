@@ -10,16 +10,16 @@ export 'fild_model.dart';
 
 class FildWidget extends StatefulWidget {
   const FildWidget({
-    Key? key,
+    super.key,
     required this.titleahint,
     this.leadingIcon,
-  }) : super(key: key);
+  });
 
   final String? titleahint;
   final Widget? leadingIcon;
 
   @override
-  _FildWidgetState createState() => _FildWidgetState();
+  State<FildWidget> createState() => _FildWidgetState();
 }
 
 class _FildWidgetState extends State<FildWidget> {

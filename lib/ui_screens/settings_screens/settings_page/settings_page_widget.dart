@@ -18,10 +18,10 @@ import 'settings_page_model.dart';
 export 'settings_page_model.dart';
 
 class SettingsPageWidget extends StatefulWidget {
-  const SettingsPageWidget({Key? key}) : super(key: key);
+  const SettingsPageWidget({super.key});
 
   @override
-  _SettingsPageWidgetState createState() => _SettingsPageWidgetState();
+  State<SettingsPageWidget> createState() => _SettingsPageWidgetState();
 }
 
 class _SettingsPageWidgetState extends State<SettingsPageWidget>

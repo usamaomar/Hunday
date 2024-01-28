@@ -11,10 +11,10 @@ import 'news_bottom_sheet_component_model.dart';
 export 'news_bottom_sheet_component_model.dart';
 
 class NewsBottomSheetComponentWidget extends StatefulWidget {
-  const NewsBottomSheetComponentWidget({Key? key}) : super(key: key);
+  const NewsBottomSheetComponentWidget({super.key});
 
   @override
-  _NewsBottomSheetComponentWidgetState createState() =>
+  State<NewsBottomSheetComponentWidget> createState() =>
       _NewsBottomSheetComponentWidgetState();
 }
 

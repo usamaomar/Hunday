@@ -16,10 +16,10 @@ import 'from_galler_card_model.dart';
 export 'from_galler_card_model.dart';
 
 class FromGallerCardWidget extends StatefulWidget {
-  const FromGallerCardWidget({Key? key}) : super(key: key);
+  const FromGallerCardWidget({super.key});
 
   @override
-  _FromGallerCardWidgetState createState() => _FromGallerCardWidgetState();
+  State<FromGallerCardWidget> createState() => _FromGallerCardWidgetState();
 }
 
 class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
@@ -446,6 +446,7 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                                   context: context,
                                   builder: (dialogContext) {
                                     return Dialog(
+                                      elevation: 0,
                                       insetPadding: EdgeInsets.zero,
                                       backgroundColor: Colors.transparent,
                                       alignment: AlignmentDirectional(0.0, 0.0)

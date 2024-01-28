@@ -19,14 +19,14 @@ export 'my_vehicles_details_page_model.dart';
 
 class MyVehiclesDetailsPageWidget extends StatefulWidget {
   const MyVehiclesDetailsPageWidget({
-    Key? key,
+    super.key,
     required this.vehicleObject,
-  }) : super(key: key);
+  });
 
   final dynamic vehicleObject;
 
   @override
-  _MyVehiclesDetailsPageWidgetState createState() =>
+  State<MyVehiclesDetailsPageWidget> createState() =>
       _MyVehiclesDetailsPageWidgetState();
 }
 

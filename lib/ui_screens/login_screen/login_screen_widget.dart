@@ -22,10 +22,10 @@ import 'login_screen_model.dart';
 export 'login_screen_model.dart';
 
 class LoginScreenWidget extends StatefulWidget {
-  const LoginScreenWidget({Key? key}) : super(key: key);
+  const LoginScreenWidget({super.key});
 
   @override
-  _LoginScreenWidgetState createState() => _LoginScreenWidgetState();
+  State<LoginScreenWidget> createState() => _LoginScreenWidgetState();
 }
 
 class _LoginScreenWidgetState extends State<LoginScreenWidget> {
@@ -129,6 +129,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
               context: context,
               builder: (dialogContext) {
                 return Dialog(
+                  elevation: 0,
                   insetPadding: EdgeInsets.zero,
                   backgroundColor: Colors.transparent,
                   alignment: AlignmentDirectional(0.0, 0.0)
@@ -698,6 +699,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                     context: context,
                                                     builder: (dialogContext) {
                                                       return Dialog(
+                                                        elevation: 0,
                                                         insetPadding:
                                                             EdgeInsets.zero,
                                                         backgroundColor:

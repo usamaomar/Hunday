@@ -12,10 +12,10 @@ import 'bottom_nav_bar_component_model.dart';
 export 'bottom_nav_bar_component_model.dart';
 
 class BottomNavBarComponentWidget extends StatefulWidget {
-  const BottomNavBarComponentWidget({Key? key}) : super(key: key);
+  const BottomNavBarComponentWidget({super.key});
 
   @override
-  _BottomNavBarComponentWidgetState createState() =>
+  State<BottomNavBarComponentWidget> createState() =>
       _BottomNavBarComponentWidgetState();
 }
 

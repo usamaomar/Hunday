@@ -10,16 +10,16 @@ export 'dash_board_input_fieald_model.dart';
 
 class DashBoardInputFiealdWidget extends StatefulWidget {
   const DashBoardInputFiealdWidget({
-    Key? key,
+    super.key,
     required this.title,
     this.textFieald,
-  }) : super(key: key);
+  });
 
   final String? title;
   final String? textFieald;
 
   @override
-  _DashBoardInputFiealdWidgetState createState() =>
+  State<DashBoardInputFiealdWidget> createState() =>
       _DashBoardInputFiealdWidgetState();
 }
 

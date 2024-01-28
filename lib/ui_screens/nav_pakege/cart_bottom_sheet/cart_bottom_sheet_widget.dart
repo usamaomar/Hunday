@@ -23,15 +23,14 @@ export 'cart_bottom_sheet_model.dart';
 
 class CartBottomSheetWidget extends StatefulWidget {
   const CartBottomSheetWidget({
-    Key? key,
+    super.key,
     bool? isComponentView,
-  })  : this.isComponentView = isComponentView ?? true,
-        super(key: key);
+  }) : this.isComponentView = isComponentView ?? true;
 
   final bool isComponentView;
 
   @override
-  _CartBottomSheetWidgetState createState() => _CartBottomSheetWidgetState();
+  State<CartBottomSheetWidget> createState() => _CartBottomSheetWidgetState();
 }
 
 class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
@@ -709,6 +708,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           builder:
                                                                               (dialogContext) {
                                                                             return Dialog(
+                                                                              elevation: 0,
                                                                               insetPadding: EdgeInsets.zero,
                                                                               backgroundColor: Colors.transparent,
                                                                               alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
@@ -837,7 +837,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                               _model.listOfCartItemsLocal = [];
                                                                             });
                                                                             setState(() {
-                                                                              _model.totalPrice = 0;
+                                                                              _model.totalPrice = 0.0;
                                                                             });
                                                                           } else {
                                                                             setState(() {
@@ -867,6 +867,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           builder:
                                                                               (dialogContext) {
                                                                             return Dialog(
+                                                                              elevation: 0,
                                                                               insetPadding: EdgeInsets.zero,
                                                                               backgroundColor: Colors.transparent,
                                                                               alignment: AlignmentDirectional(0.0, 0.0).resolve(Directionality.of(context)),
@@ -974,7 +975,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                           });
                                                           setState(() {
                                                             _model.totalPrice =
-                                                                0;
+                                                                0.0;
                                                           });
                                                         } else {
                                                           setState(() {
@@ -1012,6 +1013,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                         builder:
                                                             (dialogContext) {
                                                           return Dialog(
+                                                            elevation: 0,
                                                             insetPadding:
                                                                 EdgeInsets.zero,
                                                             backgroundColor:
@@ -1053,6 +1055,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                       context: context,
                                                       builder: (dialogContext) {
                                                         return Dialog(
+                                                          elevation: 0,
                                                           insetPadding:
                                                               EdgeInsets.zero,
                                                           backgroundColor:
@@ -1066,6 +1069,10 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                           child:
                                                               DeleteDialogWidget(
                                                             title: '',
+                                                            confirmTextButton:
+                                                                '',
+                                                            rejectTextButton:
+                                                                '',
                                                           ),
                                                         );
                                                       },

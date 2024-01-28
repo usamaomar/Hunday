@@ -19,10 +19,10 @@ import 'location_page_model.dart';
 export 'location_page_model.dart';
 
 class LocationPageWidget extends StatefulWidget {
-  const LocationPageWidget({Key? key}) : super(key: key);
+  const LocationPageWidget({super.key});
 
   @override
-  _LocationPageWidgetState createState() => _LocationPageWidgetState();
+  State<LocationPageWidget> createState() => _LocationPageWidgetState();
 }
 
 class _LocationPageWidgetState extends State<LocationPageWidget> {

@@ -12,10 +12,10 @@ import 'thank_you_component_model.dart';
 export 'thank_you_component_model.dart';
 
 class ThankYouComponentWidget extends StatefulWidget {
-  const ThankYouComponentWidget({Key? key}) : super(key: key);
+  const ThankYouComponentWidget({super.key});
 
   @override
-  _ThankYouComponentWidgetState createState() =>
+  State<ThankYouComponentWidget> createState() =>
       _ThankYouComponentWidgetState();
 }
 

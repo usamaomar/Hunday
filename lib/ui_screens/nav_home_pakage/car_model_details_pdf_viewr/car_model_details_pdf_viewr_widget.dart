@@ -13,14 +13,14 @@ export 'car_model_details_pdf_viewr_model.dart';
 
 class CarModelDetailsPdfViewrWidget extends StatefulWidget {
   const CarModelDetailsPdfViewrWidget({
-    Key? key,
+    super.key,
     required this.pdfLink,
-  }) : super(key: key);
+  });
 
   final String? pdfLink;
 
   @override
-  _CarModelDetailsPdfViewrWidgetState createState() =>
+  State<CarModelDetailsPdfViewrWidget> createState() =>
       _CarModelDetailsPdfViewrWidgetState();
 }
 

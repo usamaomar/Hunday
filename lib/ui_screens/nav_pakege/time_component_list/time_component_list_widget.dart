@@ -11,16 +11,16 @@ export 'time_component_list_model.dart';
 
 class TimeComponentListWidget extends StatefulWidget {
   const TimeComponentListWidget({
-    Key? key,
+    super.key,
     required this.date,
     required this.serviceType,
-  }) : super(key: key);
+  });
 
   final String? date;
   final String? serviceType;
 
   @override
-  _TimeComponentListWidgetState createState() =>
+  State<TimeComponentListWidget> createState() =>
       _TimeComponentListWidgetState();
 }
 

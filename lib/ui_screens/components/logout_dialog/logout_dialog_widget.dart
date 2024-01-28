@@ -12,18 +12,18 @@ export 'logout_dialog_model.dart';
 
 class LogoutDialogWidget extends StatefulWidget {
   const LogoutDialogWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.confirmTextButton,
     required this.rejectTextButton,
-  }) : super(key: key);
+  });
 
   final String? title;
   final String? confirmTextButton;
   final String? rejectTextButton;
 
   @override
-  _LogoutDialogWidgetState createState() => _LogoutDialogWidgetState();
+  State<LogoutDialogWidget> createState() => _LogoutDialogWidgetState();
 }
 
 class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {

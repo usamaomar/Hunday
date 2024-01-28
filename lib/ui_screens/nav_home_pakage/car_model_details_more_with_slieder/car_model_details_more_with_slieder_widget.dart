@@ -22,14 +22,14 @@ export 'car_model_details_more_with_slieder_model.dart';
 
 class CarModelDetailsMoreWithSliederWidget extends StatefulWidget {
   const CarModelDetailsMoreWithSliederWidget({
-    Key? key,
+    super.key,
     required this.carJsonItem,
-  }) : super(key: key);
+  });
 
   final dynamic carJsonItem;
 
   @override
-  _CarModelDetailsMoreWithSliederWidgetState createState() =>
+  State<CarModelDetailsMoreWithSliederWidget> createState() =>
       _CarModelDetailsMoreWithSliederWidgetState();
 }
 
@@ -550,6 +550,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                   context: context,
                                                   builder: (dialogContext) {
                                                     return Dialog(
+                                                      elevation: 0,
                                                       insetPadding:
                                                           EdgeInsets.zero,
                                                       backgroundColor:
@@ -733,6 +734,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                     context: context,
                                                     builder: (dialogContext) {
                                                       return Dialog(
+                                                        elevation: 0,
                                                         insetPadding:
                                                             EdgeInsets.zero,
                                                         backgroundColor:

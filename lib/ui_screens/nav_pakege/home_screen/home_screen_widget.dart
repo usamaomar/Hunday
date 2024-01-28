@@ -19,14 +19,14 @@ export 'home_screen_model.dart';
 
 class HomeScreenWidget extends StatefulWidget {
   const HomeScreenWidget({
-    Key? key,
+    super.key,
     this.deepLinkId,
-  }) : super(key: key);
+  });
 
   final String? deepLinkId;
 
   @override
-  _HomeScreenWidgetState createState() => _HomeScreenWidgetState();
+  State<HomeScreenWidget> createState() => _HomeScreenWidgetState();
 }
 
 class _HomeScreenWidgetState extends State<HomeScreenWidget> {
@@ -214,6 +214,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 ),
                 ClipRRect(
                   child: Container(
+                    constraints: BoxConstraints(
+                      minHeight: 220.0,
+                    ),
                     decoration: BoxDecoration(),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
@@ -424,6 +427,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                             context: context,
                                             builder: (dialogContext) {
                                               return Dialog(
+                                                elevation: 0,
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,

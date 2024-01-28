@@ -11,10 +11,10 @@ import 'maintenance_page_model.dart';
 export 'maintenance_page_model.dart';
 
 class MaintenancePageWidget extends StatefulWidget {
-  const MaintenancePageWidget({Key? key}) : super(key: key);
+  const MaintenancePageWidget({super.key});
 
   @override
-  _MaintenancePageWidgetState createState() => _MaintenancePageWidgetState();
+  State<MaintenancePageWidget> createState() => _MaintenancePageWidgetState();
 }
 
 class _MaintenancePageWidgetState extends State<MaintenancePageWidget> {

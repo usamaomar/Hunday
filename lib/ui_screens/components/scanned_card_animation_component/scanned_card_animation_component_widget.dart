@@ -13,10 +13,10 @@ import 'scanned_card_animation_component_model.dart';
 export 'scanned_card_animation_component_model.dart';
 
 class ScannedCardAnimationComponentWidget extends StatefulWidget {
-  const ScannedCardAnimationComponentWidget({Key? key}) : super(key: key);
+  const ScannedCardAnimationComponentWidget({super.key});
 
   @override
-  _ScannedCardAnimationComponentWidgetState createState() =>
+  State<ScannedCardAnimationComponentWidget> createState() =>
       _ScannedCardAnimationComponentWidgetState();
 }
 
@@ -117,6 +117,7 @@ class _ScannedCardAnimationComponentWidgetState
                                   context: context,
                                   builder: (dialogContext) {
                                     return Dialog(
+                                      elevation: 0,
                                       insetPadding: EdgeInsets.zero,
                                       backgroundColor: Colors.transparent,
                                       alignment: AlignmentDirectional(0.0, 0.0)
@@ -174,6 +175,7 @@ class _ScannedCardAnimationComponentWidgetState
                                   context: context,
                                   builder: (dialogContext) {
                                     return Dialog(
+                                      elevation: 0,
                                       insetPadding: EdgeInsets.zero,
                                       backgroundColor: Colors.transparent,
                                       alignment: AlignmentDirectional(0.0, 0.0)

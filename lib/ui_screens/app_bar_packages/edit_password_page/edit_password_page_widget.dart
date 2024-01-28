@@ -14,10 +14,10 @@ import 'edit_password_page_model.dart';
 export 'edit_password_page_model.dart';
 
 class EditPasswordPageWidget extends StatefulWidget {
-  const EditPasswordPageWidget({Key? key}) : super(key: key);
+  const EditPasswordPageWidget({super.key});
 
   @override
-  _EditPasswordPageWidgetState createState() => _EditPasswordPageWidgetState();
+  State<EditPasswordPageWidget> createState() => _EditPasswordPageWidgetState();
 }
 
 class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {

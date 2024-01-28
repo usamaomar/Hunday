@@ -13,14 +13,14 @@ export 'car_deteails_components_model.dart';
 
 class CarDeteailsComponentsWidget extends StatefulWidget {
   const CarDeteailsComponentsWidget({
-    Key? key,
+    super.key,
     required this.carJsonId,
-  }) : super(key: key);
+  });
 
   final String? carJsonId;
 
   @override
-  _CarDeteailsComponentsWidgetState createState() =>
+  State<CarDeteailsComponentsWidget> createState() =>
       _CarDeteailsComponentsWidgetState();
 }
 

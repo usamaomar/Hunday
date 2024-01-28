@@ -23,10 +23,10 @@ import 'shipping_address_page_model.dart';
 export 'shipping_address_page_model.dart';
 
 class ShippingAddressPageWidget extends StatefulWidget {
-  const ShippingAddressPageWidget({Key? key}) : super(key: key);
+  const ShippingAddressPageWidget({super.key});
 
   @override
-  _ShippingAddressPageWidgetState createState() =>
+  State<ShippingAddressPageWidget> createState() =>
       _ShippingAddressPageWidgetState();
 }
 
@@ -829,6 +829,7 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                           builder:
                                                               (dialogContext) {
                                                             return Dialog(
+                                                              elevation: 0,
                                                               insetPadding:
                                                                   EdgeInsets
                                                                       .zero,

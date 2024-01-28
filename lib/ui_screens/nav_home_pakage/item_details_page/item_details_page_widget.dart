@@ -19,16 +19,16 @@ export 'item_details_page_model.dart';
 
 class ItemDetailsPageWidget extends StatefulWidget {
   const ItemDetailsPageWidget({
-    Key? key,
+    super.key,
     required this.jsonObject,
     required this.titleHeader,
-  }) : super(key: key);
+  });
 
   final dynamic jsonObject;
   final String? titleHeader;
 
   @override
-  _ItemDetailsPageWidgetState createState() => _ItemDetailsPageWidgetState();
+  State<ItemDetailsPageWidget> createState() => _ItemDetailsPageWidgetState();
 }
 
 class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
@@ -632,6 +632,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                             context: context,
                                             builder: (dialogContext) {
                                               return Dialog(
+                                                elevation: 0,
                                                 insetPadding: EdgeInsets.zero,
                                                 backgroundColor:
                                                     Colors.transparent,
