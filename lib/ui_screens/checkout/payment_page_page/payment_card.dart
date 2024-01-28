@@ -156,14 +156,14 @@ class CardUtils {
         img = 'jcb.png';
         break;
       case CardType.Others:
-        icon = new Icon(
+        icon = Icon(
           Icons.credit_card,
           size: 40.0,
           color: Colors.grey[600],
         );
         break;
       default:
-        icon = new Icon(
+        icon = Icon(
           Icons.warning,
           size: 40.0,
           color: Colors.grey[600],
@@ -172,7 +172,7 @@ class CardUtils {
     }
     Widget? widget;
     if (img.isNotEmpty) {
-      widget = new Image.asset(
+      widget = Image.asset(
         'assets/images/$img',
         width: 40.0,
       );

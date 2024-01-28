@@ -34,7 +34,10 @@ class PaymentPagePageModel extends FlutterFlowModel<PaymentPagePageWidget> {
   final unfocusNode = FocusNode();
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
-  TextEditingController? textController;
+  TextEditingController? cardHolderTextController;
+  TextEditingController? cardNumberTextController;
+  TextEditingController? cardCvvTextController;
+  TextEditingController? cardDateTextController;
   String? Function(BuildContext, String?)? textControllerValidator;
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;
@@ -48,7 +51,10 @@ class PaymentPagePageModel extends FlutterFlowModel<PaymentPagePageWidget> {
   void dispose() {
     unfocusNode.dispose();
     textFieldFocusNode?.dispose();
-    textController?.dispose();
+    cardHolderTextController?.dispose();
+    cardNumberTextController?.dispose();
+    cardCvvTextController?.dispose();
+    cardDateTextController?.dispose();
 
     hyndayAppBarModel.dispose();
   }

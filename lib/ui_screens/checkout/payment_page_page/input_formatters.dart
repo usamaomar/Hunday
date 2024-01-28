@@ -11,7 +11,7 @@ class CardMonthInputFormatter extends TextInputFormatter {
       return newValue;
     }
 
-    var buffer = new StringBuffer();
+    var buffer = StringBuffer();
     for (int i = 0; i < newText.length; i++) {
       buffer.write(newText[i]);
       var nonZeroIndex = i + 1;
@@ -23,7 +23,7 @@ class CardMonthInputFormatter extends TextInputFormatter {
     var string = buffer.toString();
     return newValue.copyWith(
         text: string,
-        selection: new TextSelection.collapsed(offset: string.length));
+        selection: TextSelection.collapsed(offset: string.length));
   }
 }
 
@@ -37,7 +37,7 @@ class CardNumberInputFormatter extends TextInputFormatter {
       return newValue;
     }
 
-    var buffer = new StringBuffer();
+    var buffer = StringBuffer();
     for (int i = 0; i < text.length; i++) {
       buffer.write(text[i]);
       var nonZeroIndex = i + 1;
@@ -49,6 +49,37 @@ class CardNumberInputFormatter extends TextInputFormatter {
     var string = buffer.toString();
     return newValue.copyWith(
         text: string,
-        selection: new TextSelection.collapsed(offset: string.length));
+        selection: TextSelection.collapsed(offset: string.length));
+  }
+}
+
+class ArabicCardNumberInputFormatter extends TextInputFormatter {
+  @override
+  TextEditingValue formatEditUpdate(
+      TextEditingValue oldValue, TextEditingValue newValue) {
+    var text = newValue.text;
+    int chunkSize = 4;
+
+    if (newValue.selection.baseOffset == 0) {
+      return newValue;
+    }
+
+    var buffer = StringBuffer();
+    var nonZeroIndex = 0;
+
+    for (int i = 0; i < text.length; i++) {
+      buffer.write(text[i]);
+      nonZeroIndex++;
+
+      if (nonZeroIndex % chunkSize == 0 && nonZeroIndex != text.length) {
+        buffer.write(' '); // Add space.
+      }
+    }
+
+    var formattedString = buffer.toString();
+    return newValue.copyWith(
+      text: formattedString,
+      selection: TextSelection.collapsed(offset: formattedString.length),
+    );
   }
 }

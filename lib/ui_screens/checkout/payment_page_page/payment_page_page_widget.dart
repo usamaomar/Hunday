@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hyundai/ui_screens/checkout/payment_page_page/payment_card.dart';
-
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
@@ -9,17 +8,13 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'input_formatters.dart';
 import 'my_strings.dart';
 import 'payment_page_page_model.dart';
 export 'payment_page_page_model.dart';
-import 'dart:io' show Platform;
 
 class PaymentPagePageWidget extends StatefulWidget {
   const PaymentPagePageWidget({
@@ -38,14 +33,12 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
   late PaymentPagePageModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
-  var _formKey = new GlobalKey<FormState>();
-  var numberController = new TextEditingController();
-  var _paymentCard = PaymentCard();
-  var _autoValidateMode = AutovalidateMode.disabled;
-
-  var _card = new PaymentCard();
-
+  final _paymentCard = PaymentCard();
+  final _card = PaymentCard();
+  bool isCardHolder = false;
+  bool isCarNumber = false;
+  bool isCardCvv = false;
+  bool isCardDate = false;
 
   final animationsMap = {
     'columnOnPageLoadAnimation': AnimationInfo(
@@ -66,74 +59,40 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentPagePageModel());
-
-    _model.textController ??= TextEditingController();
+    _model.cardHolderTextController ??= TextEditingController();
+    _model.cardNumberTextController ??= TextEditingController();
+    _model.cardCvvTextController ??= TextEditingController();
+    _model.cardDateTextController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
-
     _paymentCard.type = CardType.Others;
-    numberController.addListener(_getCardTypeFrmNumber);
-
+    _model.cardNumberTextController?.addListener(_getCardTypeFrmNumber);
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
-    numberController.removeListener(_getCardTypeFrmNumber);
-    numberController.dispose();
+    _model.cardNumberTextController?.removeListener(_getCardTypeFrmNumber);
+    _model.cardNumberTextController?.dispose();
     super.dispose();
   }
 
-
   void _getCardTypeFrmNumber() {
-    String input = CardUtils.getCleanedNumber(numberController.text);
+    String input =
+        CardUtils.getCleanedNumber(_model.cardNumberTextController?.text ?? '');
     CardType cardType = CardUtils.getCardTypeFrmNumber(input);
     setState(() {
       this._paymentCard.type = cardType;
     });
   }
 
-  void _validateInputs() {
-    final FormState form = _formKey.currentState!;
-    if (!form.validate()) {
-      setState(() {
-        _autoValidateMode =
-            AutovalidateMode.always; // Start validating on every change.
-      });
-      _showInSnackBar('Please fix the errors in red before submitting.');
-    } else {
-      form.save();
-      // Encrypt and send send payment details to payment gateway
-      _showInSnackBar('Payment card is valid');
-    }
-  }
-
-  Widget _getPayButton() {
-    if (Platform.isIOS) {
-      return CupertinoButton(
-        onPressed: _validateInputs,
-        color: CupertinoColors.activeBlue,
-        child: const Text(
-          Strings.pay,
-          style: const TextStyle(fontSize: 17.0),
-        ),
-      );
-    } else {
-      return ElevatedButton(
-        onPressed: _validateInputs,
-        child: Text(
-          Strings.pay.toUpperCase(),
-          style: const TextStyle(fontSize: 17.0),
-        ),
-      );
-    }
-  }
-
-  void _showInSnackBar(String value) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      content: Text(value),
-      duration: Duration(seconds: 3),
-    ));
+  void holderState() {
+    setState(() {
+      isCardHolder = _model.cardHolderTextController.text.isEmpty;
+      isCarNumber = _model.cardNumberTextController.text.isEmpty;
+      isCardCvv = _model.cardCvvTextController.text.isEmpty;
+      isCardDate = _model.cardDateTextController.text.isEmpty;
+    });
   }
 
   @override
@@ -148,7 +107,6 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
     }
 
     context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -168,13 +126,14 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
                 ),
               ),
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
+                alignment: const AlignmentDirectional(0.0, 1.0),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 150.0, 0.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(
+                      0.0, 150.0, 0.0, 0.0),
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
+                        alignment: const AlignmentDirectional(0.0, 1.0),
                         child: SingleChildScrollView(
                           child: Column(
                             mainAxisSize: MainAxisSize.max,
@@ -185,8 +144,9 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
                                 mainAxisAlignment: MainAxisAlignment.end,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
-                                        50.0, 0.0, 50.0, 0.0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            50.0, 0.0, 50.0, 0.0),
                                     child: ClipRRect(
                                       borderRadius: BorderRadius.circular(0.0),
                                       child: Image.asset(
@@ -202,13 +162,13 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
                               Align(
                                 alignment: AlignmentDirectional(0.0, 1.0),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
                                     decoration: BoxDecoration(
-                                      color: Color(0xFFC1D6EF),
-                                      borderRadius: BorderRadius.only(
+                                      color: const Color(0xFFC1D6EF),
+                                      borderRadius: const BorderRadius.only(
                                         bottomLeft: Radius.circular(0.0),
                                         bottomRight: Radius.circular(0.0),
                                         topLeft: Radius.circular(25.0),
@@ -223,9 +183,9 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
                                         mainAxisSize: MainAxisSize.max,
                                         children: [
                                           Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 20.0, 30.0, 0.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(
+                                                20.0, 20.0, 20.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -250,106 +210,630 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
                                               ],
                                             ),
                                           ),
-                                          TextFormField(
-                                            decoration: const InputDecoration(
-                                              border: const UnderlineInputBorder(),
-                                              filled: true,
-                                              icon: Icon(
-                                                Icons.person,
-                                                size: 40.0,
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                20, 20, 20, 0),
+                                            child: TextFormField(
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  isCardHolder = _model
+                                                      .cardHolderTextController
+                                                      .text
+                                                      .isEmpty;
+                                                });
+                                              },
+                                              controller: _model
+                                                  .cardHolderTextController,
+                                              decoration: InputDecoration(
+                                                filled: true,
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText: 'Card Holder',
+                                                  arText: 'حامل البطاقة',
+                                                ),
+                                                errorText: isCardHolder
+                                                    ? FFLocalizations.of(
+                                                            context)
+                                                        .getVariableText(
+                                                        enText:
+                                                            'Card holder is missing',
+                                                        arText:
+                                                            'حامل البطاقة غير موجود',
+                                                      )
+                                                    : '',
+                                                enabledBorder: isCardHolder
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .white,
+                                                focusedBorder: isCardHolder
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                errorBorder: isCardHolder
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                focusedErrorBorder: isCardHolder
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
                                               ),
-                                              hintText: 'What name is written on card?',
-                                              labelText: 'Card Name',
+                                              onSaved: (String? value) {
+                                                _card.name = value;
+                                              },
+                                              keyboardType: TextInputType.text,
+                                              validator: (String? value) =>
+                                                  value!.isEmpty
+                                                      ? Strings.fieldReq
+                                                      : null,
                                             ),
-                                            onSaved: (String? value) {
-                                              _card.name = value;
-                                            },
-                                            keyboardType: TextInputType.text,
-                                            validator: (String? value) =>
-                                            value!.isEmpty ? Strings.fieldReq : null,
                                           ),
-                                          SizedBox(
-                                            height: 30.0,
-                                          ),
-                                          TextFormField(
-                                            keyboardType: TextInputType.number,
-                                            inputFormatters: [
-                                              FilteringTextInputFormatter.digitsOnly,
-                                              new LengthLimitingTextInputFormatter(19),
-                                              new CardNumberInputFormatter()
-                                            ],
-                                            controller: numberController,
-                                            decoration: InputDecoration(
-                                              border: const UnderlineInputBorder(),
-                                              filled: true,
-                                              icon: CardUtils.getCardIcon(_paymentCard.type),
-                                              hintText: 'What number is written on card?',
-                                              labelText: 'Number',
-                                            ),
-                                            onSaved: (String? value) {
-                                              print('onSaved = $value');
-                                              print('Num controller has = ${numberController.text}');
-                                              _paymentCard.number = CardUtils.getCleanedNumber(value!);
-                                            },
-                                            validator: CardUtils.validateCardNum,
-                                          ),
-                                          new SizedBox(
-                                            height: 30.0,
-                                          ),
-                                          new TextFormField(
-                                            inputFormatters: [
-                                              FilteringTextInputFormatter.digitsOnly,
-                                              new LengthLimitingTextInputFormatter(4),
-                                            ],
-                                            decoration: new InputDecoration(
-                                              border: const UnderlineInputBorder(),
-                                              filled: true,
-                                              icon: new Image.asset(
-                                                'assets/images/card_cvv.png',
-                                                width: 40.0,
-                                                color: Colors.grey[600],
-                                              ),
-                                              hintText: 'Number behind the card',
-                                              labelText: 'CVV',
-                                            ),
-                                            validator: CardUtils.validateCVV,
-                                            keyboardType: TextInputType.number,
-                                            onSaved: (value) {
-                                              _paymentCard.cvv = int.parse(value!);
-                                            },
-                                          ),
-                                          new SizedBox(
-                                            height: 30.0,
-                                          ),
-                                          new TextFormField(
-                                            inputFormatters: [
-                                              FilteringTextInputFormatter.digitsOnly,
-                                              new LengthLimitingTextInputFormatter(4),
-                                              new CardMonthInputFormatter()
-                                            ],
-                                            decoration: new InputDecoration(
-                                              border: const UnderlineInputBorder(),
-                                              filled: true,
-                                              icon: new Image.asset(
-                                                'assets/images/calender.png',
-                                                width: 40.0,
-                                                color: Colors.grey[600],
-                                              ),
-                                              hintText: 'MM/YY',
-                                              labelText: 'Expiry Date',
-                                            ),
-                                            validator: CardUtils.validateDate,
-                                            keyboardType: TextInputType.number,
-                                            onSaved: (value) {
-                                              List<int> expiryDate = CardUtils.getExpiryDate(value!);
-                                              _paymentCard.month = expiryDate[0];
-                                              _paymentCard.year = expiryDate[1];
-                                            },
+                                          const SizedBox(
+                                            height: 5.0,
                                           ),
                                           Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 30.5, 30.0, 0.0),
+                                            padding: EdgeInsets.fromLTRB(
+                                                20, 0, 20, 0),
+                                            child: Stack(
+                                              alignment:
+                                                  FFAppState().currentLanguge ==
+                                                          'en'
+                                                      ? Alignment.centerRight
+                                                      : Alignment.centerLeft,
+                                              children: [
+                                                TextFormField(
+                                                  onChanged: (value) {
+                                                    setState(() {
+                                                      isCarNumber = _model
+                                                          .cardNumberTextController
+                                                          .text
+                                                          .isEmpty;
+                                                    });
+                                                  },
+                                                  keyboardType:
+                                                      TextInputType.number,
+                                                  inputFormatters: [
+                                                    FilteringTextInputFormatter
+                                                        .digitsOnly,
+                                                    LengthLimitingTextInputFormatter(
+                                                        19),
+                                                    CardNumberInputFormatter()
+                                                  ],
+                                                  controller: _model
+                                                      .cardNumberTextController,
+                                                  decoration: InputDecoration(
+                                                    filled: true,
+                                                    hintText:
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                      enText: 'Card Number',
+                                                      arText: 'رقم البطاقة',
+                                                    ),
+                                                    errorText: isCarNumber
+                                                        ? FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                            enText:
+                                                                'Card Number is missing',
+                                                            arText:
+                                                                'رقم البطاقة فارغ',
+                                                          )
+                                                        : '',
+                                                    enabledBorder: isCarNumber
+                                                        ? OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFEF2121),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          )
+                                                        : OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFC3C1C1),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                    fillColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .white,
+                                                    focusedBorder: isCarNumber
+                                                        ? OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFEF2121),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          )
+                                                        : OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFC3C1C1),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                    errorBorder: isCarNumber
+                                                        ? OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFEF2121),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          )
+                                                        : OutlineInputBorder(
+                                                            borderSide:
+                                                                const BorderSide(
+                                                              color: Color(
+                                                                  0xFFC3C1C1),
+                                                              width: 1.0,
+                                                            ),
+                                                            borderRadius:
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
+                                                          ),
+                                                    focusedErrorBorder:
+                                                        isCarNumber
+                                                            ? OutlineInputBorder(
+                                                                borderSide:
+                                                                    const BorderSide(
+                                                                  color: Color(
+                                                                      0xFFEF2121),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0),
+                                                              )
+                                                            : OutlineInputBorder(
+                                                                borderSide:
+                                                                    const BorderSide(
+                                                                  color: Color(
+                                                                      0xFFC3C1C1),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            5.0),
+                                                              ),
+                                                  ),
+                                                  onSaved: (String? value) {
+                                                    _paymentCard.number =
+                                                        CardUtils
+                                                            .getCleanedNumber(
+                                                                value!);
+                                                  },
+                                                  validator:
+                                                      CardUtils.validateCardNum,
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsets.fromLTRB(
+                                                      20, 0, 20, 20),
+                                                  child: Align(
+                                                    alignment: FFAppState()
+                                                                .currentLanguge ==
+                                                            'en'
+                                                        ? Alignment.topRight
+                                                        : Alignment.topLeft,
+                                                    child:
+                                                        CardUtils.getCardIcon(
+                                                            _paymentCard.type),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 5.0,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                20, 0, 20, 0),
+                                            child: TextFormField(
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  isCardCvv = _model
+                                                      .cardCvvTextController
+                                                      .text
+                                                      .isEmpty;
+                                                });
+                                              },
+                                              controller:
+                                                  _model.cardCvvTextController,
+                                              inputFormatters: [
+                                                FilteringTextInputFormatter
+                                                    .digitsOnly,
+                                                LengthLimitingTextInputFormatter(
+                                                    4),
+                                              ],
+                                              decoration: InputDecoration(
+                                                filled: true,
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText: 'CVV',
+                                                  arText: 'رقم خلف البطاقة',
+                                                ),
+                                                errorText: isCardCvv
+                                                    ? FFLocalizations.of(
+                                                            context)
+                                                        .getVariableText(
+                                                        enText:
+                                                            'CVV is missing',
+                                                        arText:
+                                                            'رقم خلف البطاقة غير موجود',
+                                                      )
+                                                    : '',
+                                                enabledBorder: isCardCvv
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .white,
+                                                focusedBorder: isCardCvv
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                errorBorder: isCardCvv
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                focusedErrorBorder: isCardCvv
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                              ),
+                                              validator: CardUtils.validateCVV,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              onSaved: (value) {
+                                                _paymentCard.cvv =
+                                                    int.parse(value!);
+                                              },
+                                            ),
+                                          ),
+                                          const SizedBox(
+                                            height: 5.0,
+                                          ),
+                                          Padding(
+                                            padding: EdgeInsets.fromLTRB(
+                                                20, 0, 20, 0),
+                                            child: TextFormField(
+                                              onChanged: (value) {
+                                                setState(() {
+                                                  isCardDate = _model
+                                                      .cardDateTextController
+                                                      .text
+                                                      .isEmpty;
+                                                });
+                                              },
+                                              controller:
+                                                  _model.cardDateTextController,
+                                              inputFormatters: [
+                                                FilteringTextInputFormatter
+                                                    .digitsOnly,
+                                                LengthLimitingTextInputFormatter(
+                                                    4),
+                                                CardMonthInputFormatter()
+                                              ],
+                                              decoration: InputDecoration(
+                                                filled: true,
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                  enText: 'MM/YY',
+                                                  arText: 'شهر/سنة',
+                                                ),
+                                                errorText: isCardDate
+                                                    ? FFLocalizations.of(
+                                                            context)
+                                                        .getVariableText(
+                                                        enText:
+                                                            'Date is missing',
+                                                        arText:
+                                                            'التاريخ غير موجود',
+                                                      )
+                                                    : '',
+                                                enabledBorder: isCardDate
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                fillColor:
+                                                    FlutterFlowTheme.of(context)
+                                                        .white,
+                                                focusedBorder: isCardDate
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                errorBorder: isCardDate
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                                focusedErrorBorder: isCardDate
+                                                    ? OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFEF2121),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      )
+                                                    : OutlineInputBorder(
+                                                        borderSide:
+                                                            const BorderSide(
+                                                          color:
+                                                              Color(0xFFC3C1C1),
+                                                          width: 1.0,
+                                                        ),
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(5.0),
+                                                      ),
+                                              ),
+                                              validator: CardUtils.validateDate,
+                                              keyboardType:
+                                                  TextInputType.number,
+                                              onSaved: (value) {
+                                                List<int> expiryDate =
+                                                    CardUtils.getExpiryDate(
+                                                        value!);
+                                                _paymentCard.month =
+                                                    expiryDate[0];
+                                                _paymentCard.year =
+                                                    expiryDate[1];
+                                              },
+                                            ),
+                                          ),
+                                          Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(
+                                                30.0, 30.5, 30.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               mainAxisAlignment:
@@ -357,7 +841,19 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
                                               children: [
                                                 FFButtonWidget(
                                                   onPressed: () {
-                                                    print('Button pressed ...');
+                                                    holderState();
+                                                    if (!isCardHolder &&
+                                                        !isCarNumber &&
+                                                        !isCardCvv &&
+                                                        !isCardDate) {
+
+
+
+
+
+                                                    } else {
+                                                      holderState();
+                                                    }
                                                   },
                                                   text: FFLocalizations.of(
                                                           context)
@@ -367,13 +863,13 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
                                                   options: FFButtonOptions(
                                                     height: 40.0,
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(50.0, 0.0,
-                                                                50.0, 0.0),
+                                                            50.0, 0.0),
                                                     iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
+                                                        const EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            0.0, 0.0, 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
                                                             context)
                                                         .ahayundai,
@@ -384,7 +880,8 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
                                                           fontFamily: 'Poppins',
                                                           color: Colors.white,
                                                         ),
-                                                    borderSide: BorderSide(
+                                                    borderSide:
+                                                        const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 1.0,
                                                     ),
@@ -428,6 +925,7 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
                             arText: 'الدفع',
                           ),
                           isMyProfileOpend: false,
+                          isIconsHidden: false,
                         ),
                       ),
                     ],

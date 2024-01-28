@@ -688,7 +688,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                   builder: (context) =>
                                                       FFButtonWidget(
                                                     onPressed: () async {
-                                                      context.pushReplacementNamed(
+                                                      context.pushNamed(
                                                           'PaymentPagePage');
 
 
@@ -986,10 +986,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   payRequestNowReadyUI(
       {required String checkoutId, required merchantId}) async {
-
-
     PaymentResultData paymentResultData;
-
     paymentResultData = await flutterHyperPay.customUICards(customUI:  CustomUI(
       brandName: "VISA",
       checkoutId: checkoutId,
@@ -1000,7 +997,6 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
       cvv: "123",
       enabledTokenization: false, // default
     ),);
-
     if (paymentResultData.paymentResult == PaymentResult.success ||
         paymentResultData.paymentResult == PaymentResult.sync) {
       print("object");
