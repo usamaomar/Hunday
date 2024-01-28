@@ -19,9 +19,11 @@ class PaymentPagePageWidget extends StatefulWidget {
   const PaymentPagePageWidget({
     super.key,
     this.deepLinkId,
+    required this.checkoutId,
   });
 
   final String? deepLinkId;
+  final String? checkoutId;
 
   @override
   State<PaymentPagePageWidget> createState() => _PaymentPagePageWidgetState();
@@ -52,6 +54,19 @@ class _PaymentPagePageWidgetState extends State<PaymentPagePageWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => PaymentPagePageModel());
+
+    // On page load action.
+    SchedulerBinding.instance.addPostFrameCallback((_) async {
+      context.pushNamed(
+        'PaymentPagePage',
+        queryParameters: {
+          'checkoutId': serializeParam(
+            'cc',
+            ParamType.String,
+          ),
+        }.withoutNulls,
+      );
+    });
 
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
