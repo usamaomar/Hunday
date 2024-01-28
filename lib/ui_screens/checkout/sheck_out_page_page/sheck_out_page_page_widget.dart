@@ -688,6 +688,12 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                   builder: (context) =>
                                                       FFButtonWidget(
                                                     onPressed: () async {
+                                                      context.pushReplacementNamed(
+                                                          'PaymentPagePage');
+
+
+
+                                                      return;
                                                       var _shouldSetState =
                                                           false;
                                                       if (_model
@@ -878,6 +884,11 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
                                                       if (_shouldSetState)
                                                         setState(() {});
+
+
+
+
+
                                                     },
                                                     text: FFLocalizations.of(
                                                             context)
