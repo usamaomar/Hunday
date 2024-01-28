@@ -15,10 +15,10 @@ import 'verify_bottom_dialog_model.dart';
 export 'verify_bottom_dialog_model.dart';
 
 class VerifyBottomDialogWidget extends StatefulWidget {
-  const VerifyBottomDialogWidget({Key? key}) : super(key: key);
+  const VerifyBottomDialogWidget({super.key});
 
   @override
-  _VerifyBottomDialogWidgetState createState() =>
+  State<VerifyBottomDialogWidget> createState() =>
       _VerifyBottomDialogWidgetState();
 }
 
@@ -212,6 +212,7 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                                 context: context,
                                 builder: (dialogContext) {
                                   return Dialog(
+                                    elevation: 0,
                                     insetPadding: EdgeInsets.zero,
                                     backgroundColor: Colors.transparent,
                                     alignment: AlignmentDirectional(0.0, 0.0)

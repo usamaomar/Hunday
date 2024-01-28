@@ -11,14 +11,14 @@ export 'error_netwok_dialog_component_model.dart';
 
 class ErrorNetwokDialogComponentWidget extends StatefulWidget {
   const ErrorNetwokDialogComponentWidget({
-    Key? key,
+    super.key,
     required this.body,
-  }) : super(key: key);
+  });
 
   final String? body;
 
   @override
-  _ErrorNetwokDialogComponentWidgetState createState() =>
+  State<ErrorNetwokDialogComponentWidget> createState() =>
       _ErrorNetwokDialogComponentWidgetState();
 }
 

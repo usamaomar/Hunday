@@ -1012,6 +1012,25 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // PaymentPagePage
+  {
+    'jso9ic4z': {
+      'en': 'Pay Now',
+      'ar': 'ادفع الآن',
+    },
+    '3iobzvz8': {
+      'en': 'Label here...',
+      'ar': '',
+    },
+    'm0mdulr1': {
+      'en': 'Pay Now',
+      'ar': 'ادفع الآن',
+    },
+    'm07toug2': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // Fild
   {
     '12neuu73': {

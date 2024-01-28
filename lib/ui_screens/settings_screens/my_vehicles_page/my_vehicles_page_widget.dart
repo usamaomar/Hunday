@@ -22,15 +22,14 @@ export 'my_vehicles_page_model.dart';
 
 class MyVehiclesPageWidget extends StatefulWidget {
   const MyVehiclesPageWidget({
-    Key? key,
+    super.key,
     bool? isBarHidden,
-  })  : this.isBarHidden = isBarHidden ?? false,
-        super(key: key);
+  }) : this.isBarHidden = isBarHidden ?? false;
 
   final bool isBarHidden;
 
   @override
-  _MyVehiclesPageWidgetState createState() => _MyVehiclesPageWidgetState();
+  State<MyVehiclesPageWidget> createState() => _MyVehiclesPageWidgetState();
 }
 
 class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
@@ -156,6 +155,7 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                       context: context,
                                       builder: (dialogContext) {
                                         return Dialog(
+                                          elevation: 0,
                                           insetPadding: EdgeInsets.zero,
                                           backgroundColor: Colors.transparent,
                                           alignment: AlignmentDirectional(

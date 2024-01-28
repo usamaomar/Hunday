@@ -10,10 +10,10 @@ import 'loading_dialog_model.dart';
 export 'loading_dialog_model.dart';
 
 class LoadingDialogWidget extends StatefulWidget {
-  const LoadingDialogWidget({Key? key}) : super(key: key);
+  const LoadingDialogWidget({super.key});
 
   @override
-  _LoadingDialogWidgetState createState() => _LoadingDialogWidgetState();
+  State<LoadingDialogWidget> createState() => _LoadingDialogWidgetState();
 }
 
 class _LoadingDialogWidgetState extends State<LoadingDialogWidget> {

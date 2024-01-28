@@ -373,6 +373,13 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'NotificationPage',
               path: 'notificationPage',
               builder: (context, params) => NotificationPageWidget(),
+            ),
+            FFRoute(
+              name: 'PaymentPagePage',
+              path: 'paymentPagePage',
+              builder: (context, params) => PaymentPagePageWidget(
+                deepLinkId: params.getParam('deepLinkId', ParamType.String),
+              ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

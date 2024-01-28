@@ -18,16 +18,16 @@ export 'news_details_page_model.dart';
 
 class NewsDetailsPageWidget extends StatefulWidget {
   const NewsDetailsPageWidget({
-    Key? key,
+    super.key,
     required this.itemIndex,
     required this.itemId,
-  }) : super(key: key);
+  });
 
   final int? itemIndex;
   final String? itemId;
 
   @override
-  _NewsDetailsPageWidgetState createState() => _NewsDetailsPageWidgetState();
+  State<NewsDetailsPageWidget> createState() => _NewsDetailsPageWidgetState();
 }
 
 class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>

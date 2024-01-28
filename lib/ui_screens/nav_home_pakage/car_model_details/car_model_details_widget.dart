@@ -17,14 +17,14 @@ export 'car_model_details_model.dart';
 
 class CarModelDetailsWidget extends StatefulWidget {
   const CarModelDetailsWidget({
-    Key? key,
+    super.key,
     required this.carJsonItem,
-  }) : super(key: key);
+  });
 
   final dynamic carJsonItem;
 
   @override
-  _CarModelDetailsWidgetState createState() => _CarModelDetailsWidgetState();
+  State<CarModelDetailsWidget> createState() => _CarModelDetailsWidgetState();
 }
 
 class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>

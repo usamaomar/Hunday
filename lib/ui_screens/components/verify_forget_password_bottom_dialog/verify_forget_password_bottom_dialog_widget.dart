@@ -17,14 +17,14 @@ export 'verify_forget_password_bottom_dialog_model.dart';
 
 class VerifyForgetPasswordBottomDialogWidget extends StatefulWidget {
   const VerifyForgetPasswordBottomDialogWidget({
-    Key? key,
+    super.key,
     required this.phoneNumber,
-  }) : super(key: key);
+  });
 
   final String? phoneNumber;
 
   @override
-  _VerifyForgetPasswordBottomDialogWidgetState createState() =>
+  State<VerifyForgetPasswordBottomDialogWidget> createState() =>
       _VerifyForgetPasswordBottomDialogWidgetState();
 }
 
@@ -197,6 +197,7 @@ class _VerifyForgetPasswordBottomDialogWidgetState
                                 context: context,
                                 builder: (dialogContext) {
                                   return Dialog(
+                                    elevation: 0,
                                     insetPadding: EdgeInsets.zero,
                                     backgroundColor: Colors.transparent,
                                     alignment: AlignmentDirectional(0.0, 0.0)

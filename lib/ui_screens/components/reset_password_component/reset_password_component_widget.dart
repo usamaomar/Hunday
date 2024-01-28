@@ -12,10 +12,10 @@ import 'reset_password_component_model.dart';
 export 'reset_password_component_model.dart';
 
 class ResetPasswordComponentWidget extends StatefulWidget {
-  const ResetPasswordComponentWidget({Key? key}) : super(key: key);
+  const ResetPasswordComponentWidget({super.key});
 
   @override
-  _ResetPasswordComponentWidgetState createState() =>
+  State<ResetPasswordComponentWidget> createState() =>
       _ResetPasswordComponentWidgetState();
 }
 

@@ -71,3 +71,5 @@ export '/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart
     show SheckOutPagePageWidget;
 export '/ui_screens/notification_page/notification_page_widget.dart'
     show NotificationPageWidget;
+export '/ui_screens/checkout/payment_page_page/payment_page_page_widget.dart'
+    show PaymentPagePageWidget;

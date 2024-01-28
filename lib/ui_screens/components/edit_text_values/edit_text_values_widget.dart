@@ -10,16 +10,16 @@ export 'edit_text_values_model.dart';
 
 class EditTextValuesWidget extends StatefulWidget {
   const EditTextValuesWidget({
-    Key? key,
+    super.key,
     required this.titleahint,
     this.leadingIcon,
-  }) : super(key: key);
+  });
 
   final String? titleahint;
   final Widget? leadingIcon;
 
   @override
-  _EditTextValuesWidgetState createState() => _EditTextValuesWidgetState();
+  State<EditTextValuesWidget> createState() => _EditTextValuesWidgetState();
 }
 
 class _EditTextValuesWidgetState extends State<EditTextValuesWidget> {

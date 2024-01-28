@@ -13,14 +13,14 @@ export 'modal06_basic_information_model.dart';
 
 class Modal06BasicInformationWidget extends StatefulWidget {
   const Modal06BasicInformationWidget({
-    Key? key,
+    super.key,
     required this.body,
-  }) : super(key: key);
+  });
 
   final String? body;
 
   @override
-  _Modal06BasicInformationWidgetState createState() =>
+  State<Modal06BasicInformationWidget> createState() =>
       _Modal06BasicInformationWidgetState();
 }
 

@@ -12,10 +12,10 @@ import 'chat_page_model.dart';
 export 'chat_page_model.dart';
 
 class ChatPageWidget extends StatefulWidget {
-  const ChatPageWidget({Key? key}) : super(key: key);
+  const ChatPageWidget({super.key});
 
   @override
-  _ChatPageWidgetState createState() => _ChatPageWidgetState();
+  State<ChatPageWidget> createState() => _ChatPageWidgetState();
 }
 
 class _ChatPageWidgetState extends State<ChatPageWidget> {

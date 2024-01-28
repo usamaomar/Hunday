@@ -14,10 +14,10 @@ import 'car_model_page_model.dart';
 export 'car_model_page_model.dart';
 
 class CarModelPageWidget extends StatefulWidget {
-  const CarModelPageWidget({Key? key}) : super(key: key);
+  const CarModelPageWidget({super.key});
 
   @override
-  _CarModelPageWidgetState createState() => _CarModelPageWidgetState();
+  State<CarModelPageWidget> createState() => _CarModelPageWidgetState();
 }
 
 class _CarModelPageWidgetState extends State<CarModelPageWidget> {
@@ -189,6 +189,9 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(15.0),
                                             child: Container(
+                                              constraints: BoxConstraints(
+                                                minWidth: 180.0,
+                                              ),
                                               decoration: BoxDecoration(
                                                 color: Color(0x74FFFEFE),
                                                 boxShadow: [

@@ -10,16 +10,16 @@ export 'phone_edit_text_values_model.dart';
 
 class PhoneEditTextValuesWidget extends StatefulWidget {
   const PhoneEditTextValuesWidget({
-    Key? key,
+    super.key,
     required this.titleahint,
     this.isErrorColor,
-  }) : super(key: key);
+  });
 
   final String? titleahint;
   final Color? isErrorColor;
 
   @override
-  _PhoneEditTextValuesWidgetState createState() =>
+  State<PhoneEditTextValuesWidget> createState() =>
       _PhoneEditTextValuesWidgetState();
 }
 

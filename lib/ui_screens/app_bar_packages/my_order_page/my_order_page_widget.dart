@@ -14,10 +14,10 @@ import 'my_order_page_model.dart';
 export 'my_order_page_model.dart';
 
 class MyOrderPageWidget extends StatefulWidget {
-  const MyOrderPageWidget({Key? key}) : super(key: key);
+  const MyOrderPageWidget({super.key});
 
   @override
-  _MyOrderPageWidgetState createState() => _MyOrderPageWidgetState();
+  State<MyOrderPageWidget> createState() => _MyOrderPageWidgetState();
 }
 
 class _MyOrderPageWidgetState extends State<MyOrderPageWidget>

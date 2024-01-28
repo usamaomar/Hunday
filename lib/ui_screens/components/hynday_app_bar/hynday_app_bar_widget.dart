@@ -16,16 +16,16 @@ export 'hynday_app_bar_model.dart';
 
 class HyndayAppBarWidget extends StatefulWidget {
   const HyndayAppBarWidget({
-    Key? key,
+    super.key,
     required this.appBarTitle,
     this.isMyProfileOpend,
-  }) : super(key: key);
+  });
 
   final String? appBarTitle;
   final bool? isMyProfileOpend;
 
   @override
-  _HyndayAppBarWidgetState createState() => _HyndayAppBarWidgetState();
+  State<HyndayAppBarWidget> createState() => _HyndayAppBarWidgetState();
 }
 
 class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {

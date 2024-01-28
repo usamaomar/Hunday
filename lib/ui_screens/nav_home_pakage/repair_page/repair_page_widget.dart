@@ -25,10 +25,10 @@ import 'repair_page_model.dart';
 export 'repair_page_model.dart';
 
 class RepairPageWidget extends StatefulWidget {
-  const RepairPageWidget({Key? key}) : super(key: key);
+  const RepairPageWidget({super.key});
 
   @override
-  _RepairPageWidgetState createState() => _RepairPageWidgetState();
+  State<RepairPageWidget> createState() => _RepairPageWidgetState();
 }
 
 class _RepairPageWidgetState extends State<RepairPageWidget>
@@ -461,6 +461,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                     context: context,
                                                     builder: (dialogContext) {
                                                       return Dialog(
+                                                        elevation: 0,
                                                         insetPadding:
                                                             EdgeInsets.zero,
                                                         backgroundColor:
@@ -819,6 +820,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                         builder:
                                                             (dialogContext) {
                                                           return Dialog(
+                                                            elevation: 0,
                                                             insetPadding:
                                                                 EdgeInsets.zero,
                                                             backgroundColor:

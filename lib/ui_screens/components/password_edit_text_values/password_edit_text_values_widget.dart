@@ -10,16 +10,16 @@ export 'password_edit_text_values_model.dart';
 
 class PasswordEditTextValuesWidget extends StatefulWidget {
   const PasswordEditTextValuesWidget({
-    Key? key,
+    super.key,
     required this.titleahint,
     this.isErrorColor,
-  }) : super(key: key);
+  });
 
   final String? titleahint;
   final Color? isErrorColor;
 
   @override
-  _PasswordEditTextValuesWidgetState createState() =>
+  State<PasswordEditTextValuesWidget> createState() =>
       _PasswordEditTextValuesWidgetState();
 }
 

@@ -20,10 +20,10 @@ import '/flutter_flow/custom_functions.dart' as functions;
 
 
 class SettingsPageWidget extends StatefulWidget {
-  const SettingsPageWidget({Key? key}) : super(key: key);
+  const SettingsPageWidget({super.key});
 
   @override
-  _SettingsPageWidgetState createState() => _SettingsPageWidgetState();
+  State<SettingsPageWidget> createState() => _SettingsPageWidgetState();
 }
 
 class _SettingsPageWidgetState extends State<SettingsPageWidget>

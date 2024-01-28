@@ -28,10 +28,10 @@ import 'registraation_page_model.dart';
 export 'registraation_page_model.dart';
 
 class RegistraationPageWidget extends StatefulWidget {
-  const RegistraationPageWidget({Key? key}) : super(key: key);
+  const RegistraationPageWidget({super.key});
 
   @override
-  _RegistraationPageWidgetState createState() =>
+  State<RegistraationPageWidget> createState() =>
       _RegistraationPageWidgetState();
 }
 
@@ -1564,6 +1564,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                     context: context,
                                                     builder: (dialogContext) {
                                                       return Dialog(
+                                                        elevation: 0,
                                                         insetPadding:
                                                             EdgeInsets.zero,
                                                         backgroundColor:

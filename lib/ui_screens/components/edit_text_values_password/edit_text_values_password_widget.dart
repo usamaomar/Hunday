@@ -10,16 +10,16 @@ export 'edit_text_values_password_model.dart';
 
 class EditTextValuesPasswordWidget extends StatefulWidget {
   const EditTextValuesPasswordWidget({
-    Key? key,
+    super.key,
     required this.titleahint,
     this.leadingIcon,
-  }) : super(key: key);
+  });
 
   final String? titleahint;
   final Widget? leadingIcon;
 
   @override
-  _EditTextValuesPasswordWidgetState createState() =>
+  State<EditTextValuesPasswordWidget> createState() =>
       _EditTextValuesPasswordWidgetState();
 }
 

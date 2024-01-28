@@ -14,16 +14,16 @@ import '/flutter_flow/custom_functions.dart' as functions;
 
 class AboutAppPageWidget extends StatefulWidget {
   const AboutAppPageWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.body,
-  }) : super(key: key);
+  });
 
   final String? title;
   final String? body;
 
   @override
-  _AboutAppPageWidgetState createState() => _AboutAppPageWidgetState();
+  State<AboutAppPageWidget> createState() => _AboutAppPageWidgetState();
 }
 
 class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
@@ -186,6 +186,9 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                         5.0, 0.0, 5.0, 5.0),
                                     child: Container(
                                       width: double.infinity,
+                                      constraints: BoxConstraints(
+                                        minHeight: 0.0,
+                                      ),
                                       decoration: BoxDecoration(
                                         color:
                                             FlutterFlowTheme.of(context).white,

@@ -16,10 +16,10 @@ import 'scan_now_card_model.dart';
 export 'scan_now_card_model.dart';
 
 class ScanNowCardWidget extends StatefulWidget {
-  const ScanNowCardWidget({Key? key}) : super(key: key);
+  const ScanNowCardWidget({super.key});
 
   @override
-  _ScanNowCardWidgetState createState() => _ScanNowCardWidgetState();
+  State<ScanNowCardWidget> createState() => _ScanNowCardWidgetState();
 }
 
 class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
@@ -403,6 +403,7 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                                   context: context,
                                   builder: (dialogContext) {
                                     return Dialog(
+                                      elevation: 0,
                                       insetPadding: EdgeInsets.zero,
                                       backgroundColor: Colors.transparent,
                                       alignment: AlignmentDirectional(0.0, 0.0)

@@ -16,10 +16,10 @@ import 'offers_page_model.dart';
 export 'offers_page_model.dart';
 
 class OffersPageWidget extends StatefulWidget {
-  const OffersPageWidget({Key? key}) : super(key: key);
+  const OffersPageWidget({super.key});
 
   @override
-  _OffersPageWidgetState createState() => _OffersPageWidgetState();
+  State<OffersPageWidget> createState() => _OffersPageWidgetState();
 }
 
 class _OffersPageWidgetState extends State<OffersPageWidget> {

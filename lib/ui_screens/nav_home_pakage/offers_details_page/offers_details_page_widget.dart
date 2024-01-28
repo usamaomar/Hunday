@@ -21,14 +21,14 @@ export 'offers_details_page_model.dart';
 
 class OffersDetailsPageWidget extends StatefulWidget {
   const OffersDetailsPageWidget({
-    Key? key,
+    super.key,
     required this.id,
-  }) : super(key: key);
+  });
 
   final String? id;
 
   @override
-  _OffersDetailsPageWidgetState createState() =>
+  State<OffersDetailsPageWidget> createState() =>
       _OffersDetailsPageWidgetState();
 }
 

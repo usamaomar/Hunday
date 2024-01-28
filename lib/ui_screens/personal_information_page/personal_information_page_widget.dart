@@ -13,10 +13,10 @@ import 'personal_information_page_model.dart';
 export 'personal_information_page_model.dart';
 
 class PersonalInformationPageWidget extends StatefulWidget {
-  const PersonalInformationPageWidget({Key? key}) : super(key: key);
+  const PersonalInformationPageWidget({super.key});
 
   @override
-  _PersonalInformationPageWidgetState createState() =>
+  State<PersonalInformationPageWidget> createState() =>
       _PersonalInformationPageWidgetState();
 }
 

@@ -36,7 +36,7 @@ class CartBottomSheetModel extends FlutterFlowModel<CartBottomSheetWidget> {
           int index, Function(PartModelStruct) updateFn) =>
       listOfCartItemsLocal[index] = updateFn(listOfCartItemsLocal[index]);
 
-  double totalPrice = 0;
+  double totalPrice = 0.0;
 
   ///  State fields for stateful widgets in this component.
 

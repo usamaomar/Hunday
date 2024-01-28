@@ -17,14 +17,14 @@ export 'splash_page_model.dart';
 
 class SplashPageWidget extends StatefulWidget {
   const SplashPageWidget({
-    Key? key,
+    super.key,
     this.deepLinkId,
-  }) : super(key: key);
+  });
 
   final String? deepLinkId;
 
   @override
-  _SplashPageWidgetState createState() => _SplashPageWidgetState();
+  State<SplashPageWidget> createState() => _SplashPageWidgetState();
 }
 
 class _SplashPageWidgetState extends State<SplashPageWidget> {

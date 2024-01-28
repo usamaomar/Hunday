@@ -10,18 +10,18 @@ export 'shop_list_item_component_model.dart';
 
 class ShopListItemComponentWidget extends StatefulWidget {
   const ShopListItemComponentWidget({
-    Key? key,
+    super.key,
     required this.imagePath,
     required this.title,
     required this.description,
-  }) : super(key: key);
+  });
 
   final String? imagePath;
   final String? title;
   final String? description;
 
   @override
-  _ShopListItemComponentWidgetState createState() =>
+  State<ShopListItemComponentWidget> createState() =>
       _ShopListItemComponentWidgetState();
 }
 

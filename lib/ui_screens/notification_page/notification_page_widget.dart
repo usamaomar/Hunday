@@ -10,10 +10,10 @@ import 'notification_page_model.dart';
 export 'notification_page_model.dart';
 
 class NotificationPageWidget extends StatefulWidget {
-  const NotificationPageWidget({Key? key}) : super(key: key);
+  const NotificationPageWidget({super.key});
 
   @override
-  _NotificationPageWidgetState createState() => _NotificationPageWidgetState();
+  State<NotificationPageWidget> createState() => _NotificationPageWidgetState();
 }
 
 class _NotificationPageWidgetState extends State<NotificationPageWidget> {
