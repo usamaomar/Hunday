@@ -35,6 +35,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) {
+        print(state.error.toString());
         if (state.allParams.isNotEmpty && state.allParams['id']!=null && state.allParams['resourcePath']!=null) {
           final String? id = state.allParams['id'];
           final String? resourcePath = state.allParams['resourcePath'];

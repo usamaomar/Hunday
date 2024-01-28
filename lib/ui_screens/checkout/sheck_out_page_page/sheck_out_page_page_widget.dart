@@ -1,4 +1,5 @@
 import 'package:hyperpay_plugin/flutter_hyperpay.dart';
+import 'package:hyperpay_plugin/model/custom_ui.dart';
 import 'package:hyperpay_plugin/model/ready_ui.dart';
 
 import '../../components/modal06_basic_information/modal06_basic_information_widget.dart';
@@ -974,47 +975,72 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   payRequestNowReadyUI(
       {required String checkoutId, required merchantId}) async {
-    // FFAppState().paymentStatus = 'paymentInit';
-    await flutterHyperPay
-        .readyUICards(
-      readyUI: ReadyUI(
-          brandsName: ["VISA", "MASTER"],
-          checkoutId: checkoutId,
-          merchantIdApplePayIOS: merchantId,
-          countryCodeApplePayIOS: InAppPaymentSetting.countryCode,
-          // applePay
-          themColorHexIOS: "#000000",
-          // FOR IOS ONLY
-          setStorePaymentDetailsMode:
-              false // store payment details for future use
-          ),
-    )
-        .then((value) async {
-      if (value.errorString?.isNotEmpty == true && value.errorString != null) {
-        await showDialog(
-            context: context,
-            builder: (alertDialogContext) {
-              return AlertDialog(
-                title: Text(FFLocalizations.of(context).getVariableText(
-                  enText: 'Error',
-                  arText: 'مشكلة خادم',
-                )),
-                content: Text(FFLocalizations.of(context).getVariableText(
-                  enText: 'Issue With Payment Method',
-                  arText: 'مشكلة في عملية الدفع',
-                )),
-                actions: [
-                  TextButton(
-                    onPressed: () => Navigator.pop(alertDialogContext),
-                    child: Text(FFLocalizations.of(context).getVariableText(
-                      enText: 'Ok',
-                      arText: 'حسنا',
-                    )),
-                  ),
-                ],
-              );
-            });
-      }
-    });
+
+
+    PaymentResultData paymentResultData;
+
+    paymentResultData = await flutterHyperPay.customUICards(customUI:  CustomUI(
+      brandName: "VISA",
+      checkoutId: checkoutId,
+      cardNumber: "4111111111111111",
+      holderName: "test name",
+      month: "01",
+      year: "2025",
+      cvv: "123",
+      enabledTokenization: false, // default
+    ),);
+
+    if (paymentResultData.paymentResult == PaymentResult.success ||
+        paymentResultData.paymentResult == PaymentResult.sync) {
+      print("object");
+    }else{
+      print("object");
+    }
+    
+    
+  
+    // await flutterHyperPay
+    //     .readyUICards(
+    //   readyUI: ReadyUI(
+    //       brandsName: ["VISA", "MASTER"],
+    //       checkoutId: checkoutId,
+    //       merchantIdApplePayIOS: merchantId,
+    //       countryCodeApplePayIOS: InAppPaymentSetting.countryCode,
+    //       // applePay
+    //       themColorHexIOS: "#000000",
+    //       companyNameApplePayIOS : "Huyndai",
+    //       // FOR IOS ONLY
+    //       setStorePaymentDetailsMode:
+    //           false // store payment details for future use
+    //       ),
+    // ).then((value) async {
+    //   if (value.errorString?.isNotEmpty == true && value.errorString != null) {
+    //     await showDialog(
+    //         context: context,
+    //         builder: (alertDialogContext) {
+    //           return AlertDialog(
+    //             title: Text(FFLocalizations.of(context).getVariableText(
+    //               enText: 'Error',
+    //               arText: 'مشكلة خادم',
+    //             )),
+    //             content: Text(FFLocalizations.of(context).getVariableText(
+    //               enText: 'Issue With Payment Method',
+    //               arText: 'مشكلة في عملية الدفع',
+    //             )),
+    //             actions: [
+    //               TextButton(
+    //                 onPressed: () => Navigator.pop(alertDialogContext),
+    //                 child: Text(FFLocalizations.of(context).getVariableText(
+    //                   enText: 'Ok',
+    //                   arText: 'حسنا',
+    //                 )),
+    //               ),
+    //             ],
+    //           );
+    //         });
+    //   }
+    // }).catchError((onError){
+    //     print("object");
+    // });
   }
 }

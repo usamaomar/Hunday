@@ -10,6 +10,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:hyundai/backend/schema/structs/index.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
@@ -39,6 +40,7 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  usePathUrlStrategy();
   if (Platform.isIOS) {
     await Firebase.initializeApp(
         options: FirebaseOptions(
