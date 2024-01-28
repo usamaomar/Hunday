@@ -379,6 +379,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'paymentPagePage',
               builder: (context, params) => PaymentPagePageWidget(
                 deepLinkId: params.getParam('deepLinkId', ParamType.String),
+                checkoutId: params.getParam('checkoutId', ParamType.String),
               ),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
