@@ -1,4 +1,5 @@
 import 'dart:async';
+// import 'dart:js';
 
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,27 +22,65 @@ import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 import 'dart:io' show Platform;
 
+@pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
   try {
-    if (message != null &&
-        message.data != null &&
-        message.data['body'] != null &&
-        message.data['title'] != null) {
-      // FFAppState().addToLocalNotificationLost(NotificationModelStruct(
-      //     title: message.data['title'],
-      //     body: message.data['body'],
-      //     isClicked: false,
-      //     date: getCurrentDate(),
-      //     time: getCurrentTime()));
+    showNotification(message);
+  } catch (ex) {
+    ex.toString();
+  }
+}
+
+
+void showNotification(RemoteMessage? message) async {
+  try {
+    await Firebase.initializeApp();
+    FlutterLocalNotificationsPlugin? fltNotification;
+    var androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
+    var iosInit = const DarwinInitializationSettings(
+      requestAlertPermission: true,
+      requestBadgePermission: true,
+      requestSoundPermission: true,
+    );
+    var initSetting =
+    InitializationSettings(android: androidInit, iOS: iosInit);
+    fltNotification = FlutterLocalNotificationsPlugin();
+    fltNotification.initialize(initSetting);
+    await fltNotification.cancelAll();
+    if (message?.notification?.title != null &&
+        message?.notification?.body != null) {
+      var androidDetails =
+      AndroidNotificationDetails('channelId', 'channelName', icon: "");
+      var iosDetails = DarwinNotificationDetails(
+        presentAlert: true,
+        presentBadge: true,
+        presentSound: true,
+        subtitle: message?.notification?.title,
+      );
+      var generalNotificationDetails =
+      NotificationDetails(android: androidDetails, iOS: iosDetails);
+      await fltNotification.show(0, '${message?.notification?.title}',
+          message?.notification?.body, generalNotificationDetails,
+          payload: 'Notification');
+      FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+        print("onMessageOpenedApp");
+        Map<String , dynamic> value = {'id':'ooosaaamaaa'};
+        // _router.pushNamed('notificationPage',extra:value);
+        scaffoldKey.currentState?.pushNamed('notificationPage',arguments:value);
+      });
     }
   } catch (ex) {
     ex.toString();
   }
 }
 
+final scaffoldKey = GlobalKey<NavigatorState>();
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
+
+
   if (Platform.isIOS) {
     await Firebase.initializeApp(
         options: FirebaseOptions(
@@ -55,15 +94,21 @@ void main() async {
 
   final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState().then((value) => {
-        FirebaseMessaging.onBackgroundMessage(
-            _firebaseMessagingBackgroundHandler)
-      });
-  await FlutterFlowTheme.initialize();
 
+      });
+  FirebaseMessaging.onBackgroundMessage(
+      _firebaseMessagingBackgroundHandler);
+  await FlutterFlowTheme.initialize();
+  initPushNotifications();
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
     child: MyApp(),
   ));
+}
+
+Future initPushNotifications() async {
+  await FirebaseMessaging.instance.setForegroundNotificationPresentationOptions(
+      alert: true, badge: true, sound: true);
 }
 
 String getCurrentDate() {
@@ -90,11 +135,9 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
-  ThemeMode _themeMode = FlutterFlowTheme.themeMode;
   late AppStateNotifier _appStateNotifier;
   late GoRouter _router;
   FlutterLocalNotificationsPlugin? fltNotification;
-  GlobalKey<NavigatorState> scaffoldKey = GlobalKey<NavigatorState>();
 
   @override
   void initState() {
@@ -107,19 +150,44 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     _appStateNotifier = AppStateNotifier.instance;
-    _router = createRouter( _appStateNotifier);
+    _router = createRouter(_appStateNotifier);
   }
 
   void handleInAppMessage() {
     FirebaseMessaging.instance.getInitialMessage().then((message) => {
-          if (message != null) {_firebaseMessagingInAppHandler(message)}
+          if (message != null) {
+
+        print("getInitialMessage"),
+            _firebaseMessagingInAppHandler(message)}
         });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+      print("onMessage");
       _firebaseMessagingInAppHandler(message);
     });
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-      _firebaseMessagingInAppHandler(message);
+      print("onMessageOpenedApp");
+      handleMessage(message);
     });
+  }
+
+  void handleMessage(RemoteMessage? message) {
+    Map<String , dynamic> value = {'id':'ooosaaamaaa'};
+    _router.pushNamed('notificationPage',extra:value);
+    scaffoldKey.currentState?.pushNamed('notificationPage',arguments:value);
+
+  }
+
+  Future<void> runs(RemoteMessage? message) async {
+    try {
+      if (message != null &&
+          message.data != null &&
+          message.data['body'] != null &&
+          message.data['title'] != null) {
+        _firebaseMessagingInAppHandler(message);
+      }
+    } catch (ex) {
+      ex.toString();
+    }
   }
 
   Future<void> _firebaseMessagingInAppHandler(RemoteMessage message) async {
@@ -166,7 +234,7 @@ class _MyAppState extends State<MyApp> {
   void initMessaging() async {
     try {
       var androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
-      var iosInit = DarwinInitializationSettings(
+      var iosInit = const DarwinInitializationSettings(
         requestAlertPermission: true,
         requestBadgePermission: true,
         requestSoundPermission: true,
@@ -181,8 +249,12 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
+
+
   void onDidReceiveNotificationResponse(dynamic notificationResponse) async {
-    _router.pushNamed('notificationPage');
+    Map<String , dynamic> value = {'id':'ooosaaamaaa'};
+    _router.pushNamed('notificationPage',extra: value);
+    scaffoldKey.currentState?.pushNamed('notificationPage',arguments: value);
   }
 
   void setLocale(String language) {
@@ -190,7 +262,6 @@ class _MyAppState extends State<MyApp> {
   }
 
   void setThemeMode(ThemeMode mode) => setState(() {
-        _themeMode = mode;
         FlutterFlowTheme.saveThemeMode(mode);
       });
 
@@ -201,10 +272,9 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
     ]);
     return MaterialApp.router(
-
       key: scaffoldKey,
       title: 'hyundai',
-      localizationsDelegates: [
+      localizationsDelegates: const [
         FFLocalizationsDelegate(),
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
@@ -231,12 +301,13 @@ class _MyAppState extends State<MyApp> {
 }
 
 class NavBarPage extends StatefulWidget {
-  const NavBarPage({Key? key, this.initialPage, this.page, this.updateBadgeValue}) : super(key: key);
+  const NavBarPage(
+      {Key? key, this.initialPage, this.page, this.updateBadgeValue})
+      : super(key: key);
 
   final String? initialPage;
   final Widget? page;
   final Function()? updateBadgeValue;
-
 
   @override
   _NavBarPageState createState() => _NavBarPageState();
@@ -252,7 +323,6 @@ class _NavBarPageState extends State<NavBarPage> {
     super.initState();
     _currentPageName = widget.initialPage ?? _currentPageName;
     _currentPage = widget.page;
-
   }
 
   @override
@@ -271,7 +341,6 @@ class _NavBarPageState extends State<NavBarPage> {
     final MediaQueryData queryData = MediaQuery.of(context);
 
     return Scaffold(
-
       body: SafeArea(
         top: false,
         bottom: true,
