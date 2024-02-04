@@ -5,22 +5,61 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/images/american_express.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/calender.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/card_cvv.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/dinners_club.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/discover.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/jcb.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/mastercard.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/verve.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/images/visa.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/images/fdc.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/ui_screens/components/customs/CustomNavs.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/cart_summary_page/cart_summary_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/payment_page_page/input_formatters.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/payment_page_page/input_formatters.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/android/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/src/main/res/values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Runner-Bridging-Header.h" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Runner-Bridging-Header.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/Runner.entitlements" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Runner.entitlements" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/ar.lproj/InfoPlist.strings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Runner/en.lproj/InfoPlist.strings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/backend/schema/structs/part_model_struct.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/backend/schema/structs/part_model_struct.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/nav/nav.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/nav/nav.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/app_bar_packages/edit_password_page/edit_password_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/app_bar_packages/edit_password_page/edit_password_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/app_bar_packages/edit_profile_page/edit_profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/app_bar_packages/edit_profile_page/edit_profile_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/app_bar_packages/my_order_page/my_order_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/app_bar_packages/my_order_page/my_order_page_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/payment_page_page/payment_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/payment_page_page/payment_card.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/payment_page_page/payment_page_page_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/payment_page_page/payment_page_page_model.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/payment_page_page/payment_page_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/payment_page_page/payment_page_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/shipping_address_page/shipping_address_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/shipping_address_page/shipping_address_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/add_component_shoping_details/add_component_shoping_details_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/add_component_shoping_details/add_component_shoping_details_widget.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/password_edit_text_values/password_edit_text_values_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/password_edit_text_values/password_edit_text_values_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/phone_edit_text_values/phone_edit_text_values_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/phone_edit_text_values/phone_edit_text_values_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details/car_model_details_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details/car_model_details_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more/car_model_details_more_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more/car_model_details_more_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_page/car_model_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_page/car_model_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/empty_list_component/empty_list_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/empty_list_component/empty_list_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/item_details_page/item_details_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/item_details_page/item_details_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/location_page/location_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/location_page/location_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/news_bottom_sheet_component/news_bottom_sheet_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/news_bottom_sheet_component/news_bottom_sheet_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/news_details_page/news_details_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/news_details_page/news_details_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/news_page/news_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/news_page/news_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/offers_page/offers_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/offers_page/offers_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/regular_page/regular_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/regular_page/regular_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/repair_page/repair_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/repair_page/repair_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/shop_page/shop_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/shop_page/shop_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_page/cart_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_page/cart_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/more_page/more_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/more_page/more_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/notification_page/notification_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/notification_page/notification_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/registration_package/registraation_page/registraation_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/registration_package/registraation_page/registraation_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/settings_screens/about_app_page/about_app_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/settings_screens/about_app_page/about_app_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/settings_screens/settings_page/settings_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +80,9 @@
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/location_page/location_page_widget.dart" root0="SKIP_INSPECTION" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -305,24 +347,64 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart</url>
-          <line>1007</line>
-          <option name="timeStamp" value="15" />
+          <url>file://$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart</url>
+          <line>511</line>
+          <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart</url>
-          <line>1005</line>
-          <option name="timeStamp" value="16" />
+          <url>file://$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart</url>
+          <line>512</line>
+          <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart</url>
-          <line>1003</line>
-          <option name="timeStamp" value="17" />
+          <url>file://$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart</url>
+          <line>513</line>
+          <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/ui_screens/checkout/sheck_out_page_page/sheck_out_page_page_widget.dart</url>
-          <line>992</line>
-          <option name="timeStamp" value="18" />
+          <url>file://$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart</url>
+          <line>514</line>
+          <option name="timeStamp" value="45" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart</url>
+          <line>504</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart</url>
+          <line>505</line>
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart</url>
+          <line>506</line>
+          <option name="timeStamp" value="48" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart</url>
+          <line>508</line>
+          <option name="timeStamp" value="49" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart</url>
+          <line>507</line>
+          <option name="timeStamp" value="50" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/main.dart</url>
+          <line>161</line>
+          <option name="timeStamp" value="59" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/main.dart</url>
+          <line>184</line>
+          <option name="timeStamp" value="60" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/main.dart</url>
+          <line>138</line>
+          <option name="timeStamp" value="61" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

@@ -124,7 +124,7 @@ class _OffersPageWidgetState extends State<OffersPageWidget> {
                                 )?.toList() ??
                                 [];
                             if (listOfOffers.isEmpty) {
-                              return EmptyListComponentWidget();
+                              return EmptyListComponentWidget(color: Colors.white,);
                             }
                             return RefreshIndicator(
                               onRefresh: () async {

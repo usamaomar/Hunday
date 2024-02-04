@@ -36,6 +36,11 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
   late RepairPageModel _model;
   bool isLoading = false;
 
+  bool? isServiceNtSelected;
+  bool? isDateNtSelected;
+  bool? isTimeNtSelected;
+  bool? isNoteNtSelected;
+
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
   final animationsMap = {
@@ -93,7 +98,21 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
+          isServiceNtSelected = false;
+          isDateNtSelected = false;
+          isTimeNtSelected = false;
+          isNoteNtSelected = false;
+        }));
+  }
+
+  void holderState() {
+    setState(() {
+      isServiceNtSelected = _model.dropDownValue?.isEmpty;
+      isDateNtSelected = _model.selectedDate.isEmpty;
+      isTimeNtSelected = FFAppState().selectedTimeFromHundai.isEmpty;
+      isNoteNtSelected = _model.textController?.text.isEmpty;
+    });
   }
 
   @override
@@ -143,11 +162,12 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                       alignment: AlignmentDirectional(0.0, 1.0),
                       child: SingleChildScrollView(
                         child: Column(
-                          mainAxisSize: MainAxisSize.max,
+                          mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Container(
                               decoration: BoxDecoration(),
+                              margin: EdgeInsets.fromLTRB(0, 100, 0, 0),
                               child: Stack(
                                 alignment: AlignmentDirectional(0.0, 1.0),
                                 children: [
@@ -213,167 +233,183 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                     5.0, 0.0, 5.0, 0.0),
                                 child: Container(
                                   width: double.infinity,
-                                  constraints: BoxConstraints(
-                                    maxHeight: 600.0,
-                                  ),
                                   decoration: BoxDecoration(
                                     color: Color(0xFFC1D6EF),
                                     borderRadius: BorderRadius.circular(0.0),
                                   ),
-                                  child: SingleChildScrollView(
-                                    child: Column(
-                                      mainAxisSize: MainAxisSize.max,
-                                      children: [
-                                        Opacity(
-                                          opacity: 0.8,
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 20.0, 30.0, 0.0),
-                                            child: FlutterFlowDropDown<String>(
-                                              controller: _model
-                                                      .dropDownValueController ??=
-                                                  FormFieldController<String>(
-                                                      null),
-                                              options: _model
-                                                  .listOfMyVehicleModels
-                                                  .map((e) => '${e.carModel.name}/${e.plateNumber}')
-                                                  .toList(),
-                                              onChanged: (val) async {
-                                                setState(() =>
-                                                    _model.dropDownValue = val);
-                                                setState(() {
-                                                  _model.selectedVehicleModel =
-                                                      functions.getSelectedVehicle(
-                                                          _model.dropDownValue!,
-                                                          _model
-                                                              .listOfMyVehicleModels
-                                                              .toList());
-                                                });
-                                              },
-                                              width: double.infinity,
-                                              height: 40.0,
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                'v3cn7fl3' /* License Plate */,
-                                              ),
-                                              icon: Icon(
-                                                Icons.arrow_drop_down,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 24.0,
-                                              ),
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .white,
-                                              elevation: 2.0,
-                                              borderColor: Color(0xFF646464),
-                                              borderWidth: 1.0,
-                                              borderRadius: 8.0,
-                                              margin: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      16.0, 4.0, 16.0, 4.0),
-                                              hidesUnderline: true,
-                                              isSearchable: false,
-                                              isMultiSelect: false,
-                                            ),
-                                          ),
-                                        ),
-                                        Padding(
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.max,
+                                    children: [
+                                      Opacity(
+                                        opacity: 0.8,
+                                        child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
-                                                  30.0, 20.0, 30.0, 20.0),
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              final _datePickedDate =
-                                                  await showDatePicker(
-                                                context: context,
-                                                initialDate:
-                                                    _model.datePicked ??
-                                                        getTomorrow,
-                                                firstDate: getTomorrow,
-                                                lastDate: DateTime(2050),
-                                                    builder: (context, child) {
-                                                      return wrapInMaterialDatePickerTheme(
-                                                        context,
-                                                        child!,
-                                                        headerBackgroundColor:
-                                                        FlutterFlowTheme.of(context).white,
-                                                        headerForegroundColor:
-                                                        FlutterFlowTheme.of(context).info,
-                                                        headerTextStyle:
-                                                        FlutterFlowTheme.of(context)
-                                                            .headlineLarge
-                                                            .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 32.0,
-                                                          fontWeight: FontWeight.w600,
-                                                        ),
-                                                        pickerBackgroundColor:
-                                                        FlutterFlowTheme.of(context)
-                                                            .secondaryBackground,
-                                                        pickerForegroundColor:
-                                                        Colors.black,
-                                                        selectedDateTimeBackgroundColor:Colors.white,
-                                                        selectedDateTimeForegroundColor:
-                                                        Colors.black,
-                                                        actionButtonForegroundColor:
-                                                        FlutterFlowTheme.of(context)
-                                                            .primaryText,
-                                                        iconSize: 24.0,
-                                                      );
-                                                    },
-
-                                              );
-
-                                              if (_datePickedDate != null) {
-                                                safeSetState(() {
-                                                  _model.datePicked = DateTime(
-                                                    _datePickedDate.year,
-                                                    _datePickedDate.month,
-                                                    _datePickedDate.day,
-                                                  );
-                                                });
-                                              }
+                                                  30.0, 20.0, 30.0, 0.0),
+                                          child: FlutterFlowDropDown<String>(
+                                            controller: _model
+                                                    .dropDownValueController ??=
+                                                FormFieldController<String>(
+                                                    null),
+                                            options: _model
+                                                .listOfMyVehicleModels
+                                                .map((e) =>
+                                                    '${e.carModel.name}/${e.plateNumber}')
+                                                .toList(),
+                                            onChanged: (val) async {
+                                              setState(() =>
+                                                  _model.dropDownValue = val);
                                               setState(() {
-                                                _model.selectedDate =
-                                                    dateTimeFormat(
-                                                  'yyyy/MM/dd',
-                                                  _model.datePicked,
-                                                  locale: 'en',
-                                                );
+                                                _model.selectedVehicleModel =
+                                                    functions.getSelectedVehicle(
+                                                        _model.dropDownValue!,
+                                                        _model
+                                                            .listOfMyVehicleModels
+                                                            .toList());
                                               });
 
                                               setState(() {
-                                                isLoading = true;
-                                              });
-                                              _model.apiDateTimes =
-                                                  await CheckAvailableTimeCall
-                                                      .call(
-                                                token: FFAppState()
-                                                    .userModel
-                                                    .token,
-                                                serviceType: 'repair',
-                                                date: dateTimeFormat(
-                                                  'yyyy-MM-dd',
-                                                  _model.datePicked,
-                                                  locale: 'en',
-                                                ),
-                                              );
-
-                                              setState(() {
-                                                isLoading = false;
+                                                isServiceNtSelected = _model
+                                                    .dropDownValue?.isEmpty;
                                               });
                                             },
+                                            width: double.infinity,
+                                            height: 40.0,
+                                            textStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .bodyMedium,
+                                            hintText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              'v3cn7fl3' /* License Plate */,
+                                            ),
+                                            icon: Icon(
+                                              Icons.arrow_drop_down,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .secondaryText,
+                                              size: 24.0,
+                                            ),
+                                            fillColor:
+                                                FlutterFlowTheme.of(context)
+                                                    .white,
+                                            elevation: 2.0,
+                                            borderColor:
+                                                (isServiceNtSelected ?? true)
+                                                    ? Color(0xFFEF2121)
+                                                    : Colors.transparent,
+                                            borderWidth: 1.0,
+                                            borderRadius: 8.0,
+                                            margin:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    16.0, 4.0, 16.0, 4.0),
+                                            hidesUnderline: true,
+                                            isSearchable: false,
+                                            isMultiSelect: false,
+                                          ),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            30.0, 20.0, 30.0, 20.0),
+                                        child: InkWell(
+                                          splashColor: Colors.transparent,
+                                          focusColor: Colors.transparent,
+                                          hoverColor: Colors.transparent,
+                                          highlightColor: Colors.transparent,
+                                          onTap: () async {
+                                            final _datePickedDate =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate: _model.datePicked ??
+                                                  getTomorrow,
+                                              firstDate: getTomorrow,
+                                              lastDate: DateTime(2050),
+                                              builder: (context, child) {
+                                                return wrapInMaterialDatePickerTheme(
+                                                  context,
+                                                  child!,
+                                                  headerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .white,
+                                                  headerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  headerTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .headlineLarge
+                                                          .override(
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            fontSize: 32.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                  pickerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .secondaryBackground,
+                                                  pickerForegroundColor:
+                                                      Colors.black,
+                                                  selectedDateTimeBackgroundColor:
+                                                      Colors.white,
+                                                  selectedDateTimeForegroundColor:
+                                                      Colors.black,
+                                                  actionButtonForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .primaryText,
+                                                  iconSize: 24.0,
+                                                );
+                                              },
+                                            );
+
+                                            if (_datePickedDate != null) {
+                                              safeSetState(() {
+                                                _model.datePicked = DateTime(
+                                                  _datePickedDate.year,
+                                                  _datePickedDate.month,
+                                                  _datePickedDate.day,
+                                                );
+                                              });
+                                            }
+                                            setState(() {
+                                              _model.selectedDate =
+                                                  dateTimeFormat(
+                                                'yyyy/MM/dd',
+                                                _model.datePicked,
+                                                locale: 'en',
+                                              );
+                                            });
+
+                                            setState(() {
+                                              isLoading = true;
+                                            });
+                                            _model.apiDateTimes =
+                                                await CheckAvailableTimeCall
+                                                    .call(
+                                              token:
+                                                  FFAppState().userModel.token,
+                                              serviceType: 'repair',
+                                              date: dateTimeFormat(
+                                                'yyyy-MM-dd',
+                                                _model.datePicked,
+                                                locale: 'en',
+                                              ),
+                                            );
+
+                                            setState(() {
+                                              isLoading = false;
+                                            });
+
+                                            isDateNtSelected =
+                                                _model.selectedDate.isEmpty;
+                                          },
+                                          child: Opacity(
+                                            opacity: 0.8,
                                             child: Container(
                                               height: 40.0,
                                               decoration: BoxDecoration(
@@ -383,9 +419,11 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                 borderRadius:
                                                     BorderRadius.circular(8.0),
                                                 border: Border.all(
-                                                  color: Color(0xFF646464),
-                                                  width: 1.0,
-                                                ),
+                                                    color: (isDateNtSelected ??
+                                                            true)
+                                                        ? Color(0xFFEF2121)
+                                                        : Colors.transparent,
+                                                    width: 1),
                                               ),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -436,109 +474,113 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                             ),
                                           ),
                                         ),
-                                        Builder(
-                                          builder: (context) => Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    30.0, 0.0, 30.0, 20.0),
-                                            child: InkWell(
-                                              splashColor: Colors.transparent,
-                                              focusColor: Colors.transparent,
-                                              hoverColor: Colors.transparent,
-                                              highlightColor:
-                                                  Colors.transparent,
-                                              onTap: () async {
-                                                if (_model.selectedDate !=
-                                                            null &&
-                                                        _model.selectedDate !=
-                                                            ''
-                                                    ? true
-                                                    : false) {
-                                                  if (isLoading) {
-                                                    return;
-                                                  }
-                                                  await showDialog(
-                                                    context: context,
-                                                    builder: (dialogContext) {
-                                                      return Dialog(
-                                                        elevation: 0,
-                                                        insetPadding:
-                                                            EdgeInsets.zero,
-                                                        backgroundColor:
-                                                            Colors.transparent,
-                                                        alignment:
-                                                            AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                        child: GestureDetector(
-                                                          onTap: () => _model
-                                                                  .unfocusNode
-                                                                  .canRequestFocus
-                                                              ? FocusScope.of(
-                                                                      context)
-                                                                  .requestFocus(
-                                                                      _model
-                                                                          .unfocusNode)
-                                                              : FocusScope.of(
-                                                                      context)
-                                                                  .unfocus(),
-                                                          child:
-                                                              TimeComponentListWidget(
-                                                            list: getJsonField(
-                                                                      _model
-                                                                          .apiDateTimes
-                                                                          ?.jsonBody,
-                                                                      r'''$.availableTime''',
-                                                                    ) ==
-                                                                    null
-                                                                ? []
-                                                                : getJsonField(
+                                      ),
+                                      Builder(
+                                        builder: (context) => Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  30.0, 0.0, 30.0, 20.0),
+                                          child: InkWell(
+                                            splashColor: Colors.transparent,
+                                            focusColor: Colors.transparent,
+                                            hoverColor: Colors.transparent,
+                                            highlightColor: Colors.transparent,
+                                            onTap: () async {
+                                              if (_model.selectedDate != null &&
+                                                      _model.selectedDate != ''
+                                                  ? true
+                                                  : false) {
+                                                if (isLoading) {
+                                                  return;
+                                                }
+                                                await showDialog(
+                                                  context: context,
+                                                  builder: (dialogContext) {
+                                                    return Dialog(
+                                                      elevation: 0,
+                                                      insetPadding:
+                                                          EdgeInsets.zero,
+                                                      backgroundColor:
+                                                          Colors.transparent,
+                                                      alignment:
+                                                          AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                      child: GestureDetector(
+                                                        onTap: () => _model
+                                                                .unfocusNode
+                                                                .canRequestFocus
+                                                            ? FocusScope.of(
+                                                                    context)
+                                                                .requestFocus(_model
+                                                                    .unfocusNode)
+                                                            : FocusScope.of(
+                                                                    context)
+                                                                .unfocus(),
+                                                        child:
+                                                            TimeComponentListWidget(
+                                                          list: getJsonField(
                                                                     _model
                                                                         .apiDateTimes
                                                                         ?.jsonBody,
                                                                     r'''$.availableTime''',
-                                                                  ).toList(),
-                                                          ),
-                                                        ),
-                                                      );
-                                                    },
-                                                  ).then((value) =>
-                                                      setState(() {}));
-                                                } else {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getVariableText(
-                                                          enText:
-                                                              'Date is Not Selected',
-                                                          arText:
-                                                              'قم بتعيين التاريخ',
-                                                        ),
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .white,
+                                                                  ) ==
+                                                                  null
+                                                              ? []
+                                                              : getJsonField(
+                                                                  _model
+                                                                      .apiDateTimes
+                                                                      ?.jsonBody,
+                                                                  r'''$.availableTime''',
+                                                                ).toList(),
                                                         ),
                                                       ),
-                                                      duration: Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .secondary,
+                                                    );
+                                                  },
+                                                ).then((value) => setState(() {
+                                                      isTimeNtSelected =
+                                                          FFAppState()
+                                                              .selectedTimeFromHundai
+                                                              .isEmpty;
+                                                    }));
+                                              } else {
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getVariableText(
+                                                        enText:
+                                                            'Date is Not Selected',
+                                                        arText:
+                                                            'قم بتعيين التاريخ',
+                                                      ),
+                                                      style: TextStyle(
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .white,
+                                                      ),
                                                     ),
-                                                  );
-                                                }
-                                              },
-                                              child: Stack(
-                                                alignment: Alignment(1, 1),
-                                                children: [
-                                                  Container(
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                        FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondary,
+                                                  ),
+                                                );
+                                              }
+                                            },
+                                            child: Stack(
+                                              alignment: Alignment(1, 1),
+                                              children: [
+                                                Opacity(
+                                                  opacity: 0.8,
+                                                  child: Container(
                                                     height: 40.0,
                                                     decoration: BoxDecoration(
                                                       color:
@@ -550,7 +592,12 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                               8.0),
                                                       border: Border.all(
                                                         color:
-                                                            Color(0xFF646464),
+                                                            (isTimeNtSelected ??
+                                                                    true)
+                                                                ? Color(
+                                                                    0xFFEF2121)
+                                                                : Colors
+                                                                    .transparent,
                                                         width: 1.0,
                                                       ),
                                                     ),
@@ -610,34 +657,37 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                       ],
                                                     ),
                                                   ),
-                                                  Align(
-                                                    child: Visibility(
-                                                      visible: isLoading,
-                                                      child:
-                                                          CircularPercentIndicator(
-                                                        percent: 0.7,
-                                                        radius: 12.5,
-                                                        lineWidth: 3.0,
-                                                        animation: true,
-                                                        animateFromLastPercent:
-                                                            true,
-                                                        progressColor:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .ahayundai,
-                                                        backgroundColor:
-                                                            Color(0xFF7C91BB),
-                                                      ).animateOnPageLoad(
-                                                              animationsMap[
-                                                                  'progressBarOnPageLoadAnimation']!),
-                                                    ),
+                                                ),
+                                                Align(
+                                                  child: Visibility(
+                                                    visible: isLoading,
+                                                    child:
+                                                        CircularPercentIndicator(
+                                                      percent: 0.7,
+                                                      radius: 12.5,
+                                                      lineWidth: 3.0,
+                                                      animation: true,
+                                                      animateFromLastPercent:
+                                                          true,
+                                                      progressColor:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .ahayundai,
+                                                      backgroundColor:
+                                                          Color(0xFF7C91BB),
+                                                    ).animateOnPageLoad(
+                                                            animationsMap[
+                                                                'progressBarOnPageLoadAnimation']!),
                                                   ),
-                                                ],
-                                              ),
+                                                ),
+                                              ],
                                             ),
                                           ),
                                         ),
-                                        Padding(
+                                      ),
+                                      Opacity(
+                                        opacity: 0.8,
+                                        child: Padding(
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   30.0, 0.0, 30.0, 0.0),
@@ -648,12 +698,22 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                 child: TextFormField(
                                                   controller:
                                                       _model.textController,
+                                                  onChanged: (calue) {
+                                                    isNoteNtSelected = _model
+                                                        .textController
+                                                        ?.text
+                                                        .isEmpty;
+                                                  },
                                                   focusNode:
                                                       _model.textFieldFocusNode,
                                                   textInputAction:
                                                       TextInputAction.done,
                                                   obscureText: false,
                                                   decoration: InputDecoration(
+                                                    contentPadding:
+                                                        const EdgeInsets
+                                                            .fromLTRB(
+                                                            10, 15, 10, 50),
                                                     labelText:
                                                         FFLocalizations.of(
                                                                 context)
@@ -669,52 +729,112 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                                 context)
                                                             .labelMedium,
                                                     enabledBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Color(0xFF646464),
-                                                        width: 1.0,
-                                                      ),
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                    ),
+                                                        (isNoteNtSelected ??
+                                                                true)
+                                                            ? OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0xFFEF2121),
+                                                                  width: 1.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              )
+                                                            : OutlineInputBorder(
+                                                                borderSide:
+                                                                    BorderSide(
+                                                                  color: Color(
+                                                                      0xFF646464),
+                                                                  width: 0.0,
+                                                                ),
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            8.0),
+                                                              ),
                                                     focusedBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            Color(0xFF646464),
+                                                    (isNoteNtSelected ??
+                                                        true)
+                                                        ? OutlineInputBorder(
+                                                      borderSide:
+                                                      BorderSide(
+                                                        color: Color(
+                                                            0xFFEF2121),
                                                         width: 1.0,
                                                       ),
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
+                                                      BorderRadius
+                                                          .circular(
+                                                          8.0),
+                                                    )
+                                                        : OutlineInputBorder(
+                                                      borderSide:
+                                                      BorderSide(
+                                                        color: Color(
+                                                            0xFF646464),
+                                                        width: 0.0,
+                                                      ),
+                                                      borderRadius:
+                                                      BorderRadius
+                                                          .circular(
+                                                          8.0),
                                                     ),
                                                     errorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
+                                                    (isNoteNtSelected ??
+                                                        true)
+                                                        ? OutlineInputBorder(
+                                                      borderSide:
+                                                      BorderSide(
+                                                        color: Color(
+                                                            0xFFEF2121),
                                                         width: 1.0,
                                                       ),
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
+                                                      BorderRadius
+                                                          .circular(
+                                                          8.0),
+                                                    )
+                                                        : OutlineInputBorder(
+                                                      borderSide:
+                                                      BorderSide(
+                                                        color: Color(
+                                                            0xFF646464),
+                                                        width: 0.0,
+                                                      ),
+                                                      borderRadius:
+                                                      BorderRadius
+                                                          .circular(
+                                                          8.0),
                                                     ),
                                                     focusedErrorBorder:
-                                                        OutlineInputBorder(
-                                                      borderSide: BorderSide(
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .error,
+                                                    (isNoteNtSelected ??
+                                                        true)
+                                                        ? OutlineInputBorder(
+                                                      borderSide:
+                                                      BorderSide(
+                                                        color: Color(
+                                                            0xFFEF2121),
                                                         width: 1.0,
                                                       ),
                                                       borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
+                                                      BorderRadius
+                                                          .circular(
+                                                          8.0),
+                                                    )
+                                                        : OutlineInputBorder(
+                                                      borderSide:
+                                                      BorderSide(
+                                                        color: Color(
+                                                            0xFF646464),
+                                                        width: 0.0,
+                                                      ),
+                                                      borderRadius:
+                                                      BorderRadius
+                                                          .circular(
+                                                          8.0),
                                                     ),
                                                     filled: true,
                                                     fillColor:
@@ -727,7 +847,7 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'Poppins',
-                                                        lineHeight: 5.0,
+                                                        lineHeight: 1.0,
                                                       ),
                                                   textAlign: TextAlign.center,
                                                   maxLines: null,
@@ -739,167 +859,222 @@ class _RepairPageWidgetState extends State<RepairPageWidget>
                                             ],
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  30.0, 30.5, 30.0, 0.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.start,
-                                            children: [
-                                              Builder(
-                                                builder: (context) =>
-                                                    FFButtonWidget(
-                                                  onPressed: () async {
-                                                    _model.apiResult6ff =
-                                                        await RepairServiceApiCall
-                                                            .call(
-                                                      token: FFAppState()
-                                                          .userModel
-                                                          .token,
-                                                      date: conveFrom(
-                                                          '${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}'),
-                                                      details: _model
-                                                          .textController.text,
-                                                      vehicleId: _model
-                                                          .selectedVehicleModel
-                                                          ?.id,
-                                                    );
-                                                    if ((_model.apiResult6ff
-                                                            ?.succeeded ??
-                                                        true)) {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (alertDialogContext) {
-                                                          return AlertDialog(
-                                                            title: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getVariableText(
-                                                              enText: 'Aleart',
-                                                              arText: 'تنبيه',
-                                                            )),
-                                                            content: Text(
-                                                                FFLocalizations.of(
-                                                                        context)
-                                                                    .getVariableText(
-                                                              enText:
-                                                                  'Your Requst is Sent',
-                                                              arText:
-                                                                  'تم ارسال المعلومات',
-                                                            )),
-                                                            actions: [
-                                                              TextButton(
-                                                                onPressed: () =>
-                                                                    Navigator.pop(
-                                                                        alertDialogContext),
-                                                                child: Text(FFLocalizations.of(
-                                                                        context)
-                                                                    .getVariableText(
-                                                                  enText: 'Ok',
-                                                                  arText:
-                                                                      'حسنا',
-                                                                )),
-                                                              ),
-                                                            ],
-                                                          );
-                                                        },
-                                                      );
-                                                      if (Navigator.of(context)
-                                                          .canPop()) {
-                                                        context.pop();
-                                                      }
-                                                      context
-                                                          .pushReplacementNamed(
-                                                              'HomeScreen');
-                                                    } else {
-                                                      await showDialog(
-                                                        context: context,
-                                                        builder:
-                                                            (dialogContext) {
-                                                          return Dialog(
-                                                            elevation: 0,
-                                                            insetPadding:
-                                                                EdgeInsets.zero,
-                                                            backgroundColor:
-                                                                Colors
-                                                                    .transparent,
-                                                            alignment: AlignmentDirectional(
-                                                                    0.0, 0.0)
-                                                                .resolve(
-                                                                    Directionality.of(
-                                                                        context)),
-                                                            child:
-                                                                GestureDetector(
-                                                              onTap: () => _model
-                                                                      .unfocusNode
-                                                                      .canRequestFocus
-                                                                  ? FocusScope.of(
-                                                                          context)
-                                                                      .requestFocus(
-                                                                          _model
-                                                                              .unfocusNode)
-                                                                  : FocusScope.of(
-                                                                          context)
-                                                                      .unfocus(),
-                                                              child:
-                                                                  Modal06BasicInformationWidget(
-                                                                body: (_model
-                                                                        .apiResult6ff
-                                                                        ?.bodyText ??
-                                                                    ''),
-                                                              ),
-                                                            ),
-                                                          );
-                                                        },
-                                                      ).then((value) =>
-                                                          setState(() {}));
-                                                    }
+                                      ),
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            30.0, 30.5, 30.0, 75.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.start,
+                                          children: [
+                                            Builder(
+                                              builder: (context) =>
+                                                  FFButtonWidget(
+                                                onPressed: () async {
+                                                  holderState();
 
-                                                    setState(() {});
-                                                  },
-                                                  text: FFLocalizations.of(
+                                                  if ((isServiceNtSelected ??
+                                                              true) ==
+                                                          true ||
+                                                      (isNoteNtSelected ??
+                                                              true) ==
+                                                          true ||
+                                                      (isDateNtSelected ??
+                                                              true) ==
+                                                          true ||
+                                                      (isTimeNtSelected ??
+                                                              true) ==
+                                                          true) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                            enText: 'Aleart',
+                                                            arText: 'تنبيه',
+                                                          )),
+                                                          content: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                            enText:
+                                                                'Select From Items',
+                                                            arText:
+                                                                'يرجى التأكد من اختيار البيانات',
+                                                          )),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getVariableText(
+                                                                enText: 'Ok',
+                                                                arText: 'حسنا',
+                                                              )),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                    return;
+                                                  }
+
+                                                  _model.apiResult6ff =
+                                                      await RepairServiceApiCall
+                                                          .call(
+                                                    token: FFAppState()
+                                                        .userModel
+                                                        .token,
+                                                    date: _model.selectedDate
+                                                            .isNotEmpty
+                                                        ? conveFrom(
+                                                            '${_model.selectedDate} ${FFAppState().selectedTimeFromHundai}')
+                                                        : '',
+                                                    details: _model
+                                                        .textController.text,
+                                                    vehicleId: _model
+                                                        .selectedVehicleModel
+                                                        ?.id,
+                                                  );
+                                                  if ((_model.apiResult6ff
+                                                          ?.succeeded ??
+                                                      true)) {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder:
+                                                          (alertDialogContext) {
+                                                        return AlertDialog(
+                                                          title: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                            enText: 'Aleart',
+                                                            arText: 'تنبيه',
+                                                          )),
+                                                          content: Text(
+                                                              FFLocalizations.of(
+                                                                      context)
+                                                                  .getVariableText(
+                                                            enText:
+                                                                'Your Requst is Sent',
+                                                            arText:
+                                                                'تم ارسال المعلومات',
+                                                          )),
+                                                          actions: [
+                                                            TextButton(
+                                                              onPressed: () =>
+                                                                  Navigator.pop(
+                                                                      alertDialogContext),
+                                                              child: Text(
+                                                                  FFLocalizations.of(
+                                                                          context)
+                                                                      .getVariableText(
+                                                                enText: 'Ok',
+                                                                arText: 'حسنا',
+                                                              )),
+                                                            ),
+                                                          ],
+                                                        );
+                                                      },
+                                                    );
+                                                    if (Navigator.of(context)
+                                                        .canPop()) {
+                                                      context.pop();
+                                                    }
+                                                    context
+                                                        .pushReplacementNamed(
+                                                            'HomeScreen');
+                                                  } else {
+                                                    await showDialog(
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          elevation: 0,
+                                                          insetPadding:
+                                                              EdgeInsets.zero,
+                                                          backgroundColor:
+                                                              Colors
+                                                                  .transparent,
+                                                          alignment: AlignmentDirectional(
+                                                                  0.0, 0.0)
+                                                              .resolve(
+                                                                  Directionality.of(
+                                                                      context)),
+                                                          child:
+                                                              GestureDetector(
+                                                            onTap: () => _model
+                                                                    .unfocusNode
+                                                                    .canRequestFocus
+                                                                ? FocusScope.of(
+                                                                        context)
+                                                                    .requestFocus(
+                                                                        _model
+                                                                            .unfocusNode)
+                                                                : FocusScope.of(
+                                                                        context)
+                                                                    .unfocus(),
+                                                            child:
+                                                                Modal06BasicInformationWidget(
+                                                              body: (_model
+                                                                      .apiResult6ff
+                                                                      ?.bodyText ??
+                                                                  ''),
+                                                            ),
+                                                          ),
+                                                        );
+                                                      },
+                                                    ).then((value) =>
+                                                        setState(() {}));
+                                                  }
+
+                                                  setState(() {});
+                                                },
+                                                text:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  'q4gc7rvw' /* Book Now */,
+                                                ),
+                                                options: FFButtonOptions(
+                                                  height: 40.0,
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          50.0, 0.0, 50.0, 0.0),
+                                                  iconPadding:
+                                                      EdgeInsetsDirectional
+                                                          .fromSTEB(0.0, 0.0,
+                                                              0.0, 0.0),
+                                                  color: FlutterFlowTheme.of(
                                                           context)
-                                                      .getText(
-                                                    'q4gc7rvw' /* Book Now */,
+                                                      .ahayundai,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .titleSmall
+                                                      .override(
+                                                        fontFamily: 'Poppins',
+                                                        color: Colors.white,
+                                                      ),
+                                                  borderSide: BorderSide(
+                                                    color: Colors.transparent,
+                                                    width: 1.0,
                                                   ),
-                                                  options: FFButtonOptions(
-                                                    height: 40.0,
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(50.0, 0.0,
-                                                                50.0, 0.0),
-                                                    iconPadding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 0.0,
-                                                                0.0, 0.0),
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .ahayundai,
-                                                    textStyle: FlutterFlowTheme
-                                                            .of(context)
-                                                        .titleSmall
-                                                        .override(
-                                                          fontFamily: 'Poppins',
-                                                          color: Colors.white,
-                                                        ),
-                                                    borderSide: BorderSide(
-                                                      color: Colors.transparent,
-                                                      width: 1.0,
-                                                    ),
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5.0),
-                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5.0),
                                                 ),
                                               ),
-                                            ],
-                                          ),
+                                            ),
+                                          ],
                                         ),
-                                      ].addToEnd(SizedBox(height: 75.0)),
-                                    ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ),

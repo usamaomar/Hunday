@@ -124,14 +124,17 @@ class _NewsPageWidgetState extends State<NewsPageWidget>
               height: double.infinity,
               child: Stack(
                 children: [
-                  Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
-                    child: wrapWithModel(
-                      model: _model.newsBottomSheetComponentModel,
-                      updateCallback: () => setState(() {}),
-                      child: NewsBottomSheetComponentWidget(),
-                    ).animateOnPageLoad(animationsMap[
-                        'newsBottomSheetComponentOnPageLoadAnimation']!),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 100, 0, 0),
+                    child: Align(
+                      alignment: AlignmentDirectional(0.0, 1.0),
+                      child: wrapWithModel(
+                        model: _model.newsBottomSheetComponentModel,
+                        updateCallback: () => setState(() {}),
+                        child: NewsBottomSheetComponentWidget(),
+                      ).animateOnPageLoad(animationsMap[
+                          'newsBottomSheetComponentOnPageLoadAnimation']!),
+                    ),
                   ),
                   Column(
                     mainAxisSize: MainAxisSize.max,

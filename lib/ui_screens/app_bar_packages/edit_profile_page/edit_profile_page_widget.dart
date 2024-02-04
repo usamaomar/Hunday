@@ -94,30 +94,27 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
             children: [
               Column(
                 mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      wrapWithModel(
-                        model: _model.hyndayAppBarModel,
-                        updateCallback: () => setState(() {}),
-                        child: HyndayAppBarWidget(
-                          appBarTitle:
-                              FFLocalizations.of(context).getVariableText(
-                            enText: 'My Profile',
-                            arText: 'ملفي',
-                          ),
-                          isMyProfileOpend: true,
-                        ),
+                  wrapWithModel(
+                    model: _model.hyndayAppBarModel,
+                    updateCallback: () => setState(() {}),
+                    child: HyndayAppBarWidget(
+                      appBarTitle: FFLocalizations.of(context).getVariableText(
+                        enText: 'My Profile',
+                        arText: 'ملفي',
                       ),
-                      Column(
+                      isMyProfileOpend: true,
+                    ),
+                  ),
+                  Expanded(
+                    child: SingleChildScrollView(
+                      child: Column(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 30.0, 0.0, 0.0),
+                                0.0, 0.0, 0.0, 0.0),
                             child: Container(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
@@ -413,74 +410,24 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 8.0, 0.0),
-                                          child: TextFormField(
-                                            controller: _model.textController3,
-                                            focusNode:
-                                                _model.textFieldFocusNode3,
-                                            onChanged: (_) =>
-                                                EasyDebounce.debounce(
-                                              '_model.textController3',
-                                              Duration(milliseconds: 500),
-                                              () => setState(() {}),
-                                            ),
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              labelStyle:
+                                          child: Container(
+                                            padding: EdgeInsets.fromLTRB(10, 15, 10, 15),
+                                            decoration: BoxDecoration(
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .labelMedium,
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .labelMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Heebo Regular',
-                                                        fontSize: 13.0,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
+                                                      .white,
+                                              borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                              border: Border.all(
                                                   color: Color(0xFFE1E1E1),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(3.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0xFF747474),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(3.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(3.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .error,
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(3.0),
-                                              ),
+                                                  width: 1),
                                             ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium,
-                                            validator: _model
-                                                .textController3Validator
-                                                .asValidator(context),
+                                            child: Text(
+                                              '${_model.textController3.text}',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium,
+                                            ),
                                           ),
                                         ),
                                       ),
@@ -492,7 +439,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                30.0, 50.0, 30.0, 0.0),
+                                30.0, 50.0, 30.0, 100.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -552,38 +499,33 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                                                           .textController2.text,
                                                   );
                                                 });
-                                                if (_model.localPhoneNumber !=
-                                                    FFAppState()
-                                                        .userModel
-                                                        .phone) {
-                                                  ScaffoldMessenger.of(context)
-                                                      .showSnackBar(
-                                                    SnackBar(
-                                                      content: Text(
-                                                        FFLocalizations.of(
-                                                                context)
-                                                            .getVariableText(
-                                                          enText:
-                                                              'Data has been updated correctly',
-                                                          arText:
-                                                              'تم تحديث البيانات بشكل صحيح',
-                                                        ),
-                                                        style: TextStyle(
-                                                          color: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .white,
-                                                        ),
+                                                ScaffoldMessenger.of(context)
+                                                    .showSnackBar(
+                                                  SnackBar(
+                                                    content: Text(
+                                                      FFLocalizations.of(
+                                                          context)
+                                                          .getVariableText(
+                                                        enText:
+                                                        'Data has been updated correctly',
+                                                        arText:
+                                                        'تم تحديث البيانات بشكل صحيح',
                                                       ),
-                                                      duration: Duration(
-                                                          milliseconds: 4000),
-                                                      backgroundColor:
-                                                          Color(0xFFC1D6EF),
+                                                      style: TextStyle(
+                                                        color: FlutterFlowTheme
+                                                            .of(context)
+                                                            .white,
+                                                      ),
                                                     ),
-                                                  );
-                                                  if (_shouldSetState)
-                                                    setState(() {});
-                                                  return;
-                                                }
+                                                    duration: Duration(
+                                                        milliseconds: 4000),
+                                                    backgroundColor:
+                                                    Color(0xFFC1D6EF),
+                                                  ),
+                                                );
+                                                if (_shouldSetState)
+                                                  setState(() {});
+                                                return;
                                               } else {
                                                 await showDialog(
                                                   context: context,
@@ -784,7 +726,7 @@ class _EditProfilePageWidgetState extends State<EditProfilePageWidget> {
                           ),
                         ],
                       ),
-                    ],
+                    ),
                   ),
                 ],
               ),

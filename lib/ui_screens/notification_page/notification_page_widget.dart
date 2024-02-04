@@ -56,24 +56,24 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).white,
         body: SafeArea(
           top: true,
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                wrapWithModel(
-                  model: _model.hyndayAppBarModel,
-                  updateCallback: () => setState(() {}),
-                  child: HyndayAppBarWidget(
-                    appBarTitle: FFLocalizations.of(context).getVariableText(
-                      enText: 'Notification',
-                      arText: 'تنبيهاتي',
-                    ),
-                    isMyProfileOpend: true,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              wrapWithModel(
+                model: _model.hyndayAppBarModel,
+                updateCallback: () => setState(() {}),
+                child: HyndayAppBarWidget(
+                  appBarTitle: FFLocalizations.of(context).getVariableText(
+                    enText: 'Notification',
+                    arText: 'تنبيهاتي',
                   ),
+                  isMyProfileOpend: true,
                 ),
-                Container(height: 10,),
-                FutureBuilder<ApiCallResponse>(
+              ),
+              Container(height: 10,),
+              Expanded(
+                child: FutureBuilder<ApiCallResponse>(
                   future: MyNotificationsApiCall.call(
                     token: FFAppState().userModel.token,
                   ),
@@ -195,8 +195,8 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                     );
                   },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         ),
       ),

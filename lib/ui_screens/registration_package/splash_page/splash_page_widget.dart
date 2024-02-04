@@ -107,9 +107,9 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                       flex: 1,
                       child: Lottie.network(
                         'https://lottie.host/b4e379f4-beb9-4ed4-9686-87f8e18dd09a/YmcSTeqvAH.json',
-                        height: 150.0,
-                        fit: BoxFit.cover,
+                        fit: BoxFit.fill,
                         animate: true,
+                        repeat: false
                       ),
                     ),
                   ],

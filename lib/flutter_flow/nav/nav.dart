@@ -19,6 +19,7 @@ class AppStateNotifier extends ChangeNotifier {
   AppStateNotifier._();
 
   static AppStateNotifier? _instance;
+  Function()? updateBadgeValue;
 
   static AppStateNotifier get instance => _instance ??= AppStateNotifier._();
 
@@ -36,7 +37,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) {
         print(state.error.toString());
-        if (state.allParams.isNotEmpty && state.allParams['id']!=null && state.allParams['resourcePath']!=null) {
+        if (state.allParams.isNotEmpty &&
+            state.allParams['id'] != null &&
+            state.allParams['resourcePath'] != null) {
           final String? id = state.allParams['id'];
           final String? resourcePath = state.allParams['resourcePath'];
           return NavBarPage(
@@ -298,8 +301,10 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'CartPage')
                   : NavBarPage(
+                      updateBadgeValue: appStateNotifier.updateBadgeValue,
                       initialPage: 'CartPage',
-                      page: CartPageWidget(),
+                      page: CartPageWidget(
+                          updateBadgeValue: appStateNotifier.updateBadgeValue),
                     ),
             ),
             FFRoute(

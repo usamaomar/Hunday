@@ -42,7 +42,6 @@ class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
@@ -56,9 +55,7 @@ class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {
         ),
       );
     }
-
     context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -84,441 +81,475 @@ class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {
               ),
               Expanded(
                 child: SingleChildScrollView(
-                  child: Column(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Padding(
-                        padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                FlutterFlowTheme.of(context).white,
-                                Color(0xFF6585B2)
-                              ],
-                              stops: [0.0, 1.0],
-                              begin: AlignmentDirectional(0.87, -1.0),
-                              end: AlignmentDirectional(-0.87, 1.0),
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, 50),
+                    child: Column(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 10.0, 0.0, 0.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  FlutterFlowTheme.of(context).white,
+                                  Color(0xFF6585B2)
+                                ],
+                                stops: [0.0, 1.0],
+                                begin: AlignmentDirectional(0.87, -1.0),
+                                end: AlignmentDirectional(-0.87, 1.0),
+                              ),
                             ),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                20.0, 30.0, 20.0, 30.0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  FFAppState().userModel.name,
-                                  style: FlutterFlowTheme.of(context)
-                                      .bodyMedium
-                                      .override(
-                                        fontFamily: 'HeeboBold',
-                                        color:
-                                            FlutterFlowTheme.of(context).white,
-                                        fontSize: 20.0,
-                                        useGoogleFonts: false,
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 30.0, 30.0, 0.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Padding(
+                            child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  0.0, 5.0, 0.0, 10.0),
+                                  20.0, 30.0, 20.0, 30.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 children: [
-                                  Icon(
-                                    Icons.person,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        10.0, 0.0, 10.0, 0.0),
-                                    child: Text(
-                                      FFLocalizations.of(context).getText(
-                                        'bfuzctld' /* Edit Password */,
-                                      ),
-                                      style: GoogleFonts.getFont(
-                                        'Poppins',
-                                        color: Color(0xFF092853),
-                                        fontWeight: FontWeight.bold,
-                                        fontSize: 16.0,
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            Container(
-                              width: double.infinity,
-                              height: 0.5,
-                              decoration: BoxDecoration(
-                                color: Color(0xFF092853),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 15.0, 20.0, 0.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: TextFormField(
-                                        controller: _model.textController1,
-                                        focusNode: _model.textFieldFocusNode1,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          '_model.textController1',
-                                          Duration(milliseconds: 500),
-                                          () => setState(() {}),
-                                        ),
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          isDense: true,
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            '86cmjy7m' /* Old Password */,
-                                          ),
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Heebo Regular',
-                                                    fontSize: 13.0,
-                                                    useGoogleFonts: false,
-                                                  ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFFE1E1E1),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF747474),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                        validator: _model
-                                            .textController1Validator
-                                            .asValidator(context),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            20.0, 15.0, 20.0, 0.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.max,
-                          children: [
-                            Align(
-                              alignment: AlignmentDirectional(0.0, -1.0),
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceAround,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Expanded(
-                                    child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          8.0, 0.0, 8.0, 0.0),
-                                      child: TextFormField(
-                                        controller: _model.textController2,
-                                        focusNode: _model.textFieldFocusNode2,
-                                        onChanged: (_) => EasyDebounce.debounce(
-                                          '_model.textController2',
-                                          Duration(milliseconds: 500),
-                                          () => setState(() {}),
-                                        ),
-                                        obscureText: false,
-                                        decoration: InputDecoration(
-                                          isDense: true,
-                                          labelText: FFLocalizations.of(context)
-                                              .getText(
-                                            '12fz7gae' /* New Password */,
-                                          ),
-                                          labelStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium,
-                                          hintStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .labelMedium
-                                                  .override(
-                                                    fontFamily: 'Heebo Regular',
-                                                    fontSize: 13.0,
-                                                    useGoogleFonts: false,
-                                                  ),
-                                          enabledBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFFE1E1E1),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                          focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color: Color(0xFF747474),
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                          errorBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                          focusedErrorBorder:
-                                              OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .error,
-                                              width: 1.0,
-                                            ),
-                                            borderRadius:
-                                                BorderRadius.circular(3.0),
-                                          ),
-                                        ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .bodyMedium,
-                                        validator: _model
-                                            .textController2Validator
-                                            .asValidator(context),
-                                      ),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 50.0, 30.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            FFButtonWidget(
-                              onPressed: () async {
-                                var _shouldSetState = false;
-                                Navigator.pop(context);
-                                if (FFAppState().password ==
-                                    _model.textController1.text) {
-                                  _model.apiResetPasswordInter =
-                                      await ChangePasswordApiCall.call(
-                                    password: _model.textController2.text,
-                                    passwordConfirmation:
-                                        _model.textController2.text,
-                                    token: FFAppState().userModel.token,
-                                  );
-                                  _shouldSetState = true;
-                                  if ((_model
-                                          .apiResetPasswordInter?.succeeded ??
-                                      true)) {
-                                    setState(() {
-                                      FFAppState().userModel =
-                                          UserModelStruct.fromSerializableMap(
-                                              jsonDecode('{}'));
-                                      FFAppState().reservedUserModel = null;
-                                    });
-
-                                    context.goNamed('loginScreen');
-
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text(
-                                              FFLocalizations.of(context)
-                                                  .getVariableText(
-                                            enText: 'Rest Password',
-                                            arText: 'تعيين كلمة المرور',
-                                          )),
-                                          content: Text(
-                                              FFLocalizations.of(context)
-                                                  .getVariableText(
-                                            enText:
-                                                'Your password is reset , log in ',
-                                            arText:
-                                                'تم اعادة تعيين كلمة المرور قم بتسجيل الدخول ',
-                                          )),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getVariableText(
-                                                enText: 'Ok',
-                                                arText: 'حسنا',
-                                              )),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                  } else {
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text(
-                                              FFLocalizations.of(context)
-                                                  .getVariableText(
-                                            enText: 'Error',
-                                            arText: 'مشكلة خادم',
-                                          )),
-                                          content: Text(getJsonField(
-                                            (_model.apiResetPasswordInter
-                                                    ?.jsonBody ??
-                                                ''),
-                                            r'''$''',
-                                          ).toString()),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getVariableText(
-                                                enText: 'Ok',
-                                                arText: 'حسنا',
-                                              )),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                    if (_shouldSetState) setState(() {});
-                                    return;
-                                  }
-                                } else {
-                                  ScaffoldMessenger.of(context).showSnackBar(
-                                    SnackBar(
-                                      content: Text(
-                                        FFLocalizations.of(context)
-                                            .getVariableText(
-                                          enText: 'Old password is not correct',
-                                          arText: 'الباسورد القديم غير صحيح',
-                                        ),
-                                        style: TextStyle(
+                                  Text(
+                                    FFAppState().userModel.name,
+                                    style: FlutterFlowTheme.of(context)
+                                        .bodyMedium
+                                        .override(
+                                          fontFamily: 'HeeboBold',
                                           color: FlutterFlowTheme.of(context)
                                               .white,
+                                          fontSize: 20.0,
+                                          useGoogleFonts: false,
                                         ),
-                                      ),
-                                      duration: Duration(milliseconds: 4000),
-                                      backgroundColor: Color(0xFFC1D6EF),
-                                    ),
-                                  );
-                                  if (_shouldSetState) setState(() {});
-                                  return;
-                                }
-
-                                if (_shouldSetState) setState(() {});
-                              },
-                              text: FFLocalizations.of(context).getText(
-                                'vuuexi7y' /* Save */,
-                              ),
-                              options: FFButtonOptions(
-                                height: 40.0,
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    35.0, 0.0, 35.0, 0.0),
-                                iconPadding: EdgeInsetsDirectional.fromSTEB(
-                                    0.0, 0.0, 0.0, 0.0),
-                                color: (_model.textController1.text != null &&
-                                            _model.textController1.text !=
-                                                '') &&
-                                        (_model.textController2.text != null &&
-                                            _model.textController2.text != '')
-                                    ? Color(0xFF092853)
-                                    : Color(0xFFF3F3F3),
-                                textStyle: FlutterFlowTheme.of(context)
-                                    .titleSmall
-                                    .override(
-                                      fontFamily: 'Poppins',
-                                      color: Colors.white,
-                                    ),
-                                elevation: 3.0,
-                                borderRadius: BorderRadius.circular(5.0),
+                                  ),
+                                ],
                               ),
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                    ],
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 30.0, 30.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    0.0, 5.0, 0.0, 10.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.max,
+                                  children: [
+                                    Icon(
+                                      Icons.person,
+                                      color: FlutterFlowTheme.of(context)
+                                          .secondaryText,
+                                      size: 24.0,
+                                    ),
+                                    Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          10.0, 0.0, 10.0, 0.0),
+                                      child: Text(
+                                        FFLocalizations.of(context).getText(
+                                          'bfuzctld' /* Edit Password */,
+                                        ),
+                                        style: GoogleFonts.getFont(
+                                          'Poppins',
+                                          color: Color(0xFF092853),
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 16.0,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              Container(
+                                width: double.infinity,
+                                height: 0.5,
+                                decoration: BoxDecoration(
+                                  color: Color(0xFF092853),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 15.0, 20.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.0, -1.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 8.0, 0.0),
+                                        child: TextFormField(
+                                          controller: _model.textController1,
+                                          focusNode: _model.textFieldFocusNode1,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.textController1',
+                                            Duration(milliseconds: 500),
+                                            () => setState(() {}),
+                                          ),
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            isDense: true,
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '86cmjy7m' /* Old Password */,
+                                            ),
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          'Heebo Regular',
+                                                      fontSize: 13.0,
+                                                      useGoogleFonts: false,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFFE1E1E1),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFF747474),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                          validator: _model
+                                              .textController1Validator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              20.0, 15.0, 20.0, 0.0),
+                          child: Column(
+                            mainAxisSize: MainAxisSize.max,
+                            children: [
+                              Align(
+                                alignment: AlignmentDirectional(0.0, -1.0),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceAround,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Expanded(
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            8.0, 0.0, 8.0, 0.0),
+                                        child: TextFormField(
+                                          controller: _model.textController2,
+                                          focusNode: _model.textFieldFocusNode2,
+                                          onChanged: (_) =>
+                                              EasyDebounce.debounce(
+                                            '_model.textController2',
+                                            Duration(milliseconds: 500),
+                                            () => setState(() {}),
+                                          ),
+                                          obscureText: false,
+                                          decoration: InputDecoration(
+                                            isDense: true,
+                                            labelText:
+                                                FFLocalizations.of(context)
+                                                    .getText(
+                                              '12fz7gae' /* New Password */,
+                                            ),
+                                            labelStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium,
+                                            hintStyle:
+                                                FlutterFlowTheme.of(context)
+                                                    .labelMedium
+                                                    .override(
+                                                      fontFamily:
+                                                          'Heebo Regular',
+                                                      fontSize: 13.0,
+                                                      useGoogleFonts: false,
+                                                    ),
+                                            enabledBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFFE1E1E1),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            focusedBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color: Color(0xFF747474),
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            errorBorder: OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                            focusedErrorBorder:
+                                                OutlineInputBorder(
+                                              borderSide: BorderSide(
+                                                color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .error,
+                                                width: 1.0,
+                                              ),
+                                              borderRadius:
+                                                  BorderRadius.circular(3.0),
+                                            ),
+                                          ),
+                                          style: FlutterFlowTheme.of(context)
+                                              .bodyMedium,
+                                          validator: _model
+                                              .textController2Validator
+                                              .asValidator(context),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              30.0, 50.0, 30.0, 0.0),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.max,
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              FFButtonWidget(
+                                onPressed: () async {
+                                  if (_model.textController1.text != null &&
+                                      _model.textController1.text != '' &&
+                                      _model.textController2.text != null &&
+                                      _model.textController2.text != '') {
+                                    var _shouldSetState = false;
+
+                                    if (FFAppState().password ==
+                                        _model.textController1.text) {
+                                      _model.apiResetPasswordInter =
+                                          await ChangePasswordApiCall.call(
+                                        password: _model.textController2.text,
+                                        passwordConfirmation:
+                                            _model.textController2.text,
+                                        token: FFAppState().userModel.token,
+                                      );
+                                      _shouldSetState = true;
+                                      if ((_model.apiResetPasswordInter
+                                              ?.succeeded ??
+                                          true)) {
+                                        await showDialog(
+                                          barrierDismissible: false,
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                enText: 'Rest Password',
+                                                arText: 'تعيين كلمة المرور',
+                                              )),
+                                              content: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                enText:
+                                                    'Your password is reset , log in ',
+                                                arText:
+                                                    'تم اعادة تعيين كلمة المرور قم بتسجيل الدخول ',
+                                              )),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: (){
+                                                    FFAppState().userModel =
+                                                        UserModelStruct.fromSerializableMap(
+                                                            jsonDecode('{}'));
+                                                    while (context.canPop() == true) {
+                                                      context.pop();
+                                                    }
+                                                    context.pushReplacement('loginScreen');
+                                                  },
+                                                  child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getVariableText(
+                                                    enText: 'Ok',
+                                                    arText: 'حسنا',
+                                                  )),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                      } else {
+                                        await showDialog(
+                                          context: context,
+                                          builder: (alertDialogContext) {
+                                            return AlertDialog(
+                                              title: Text(
+                                                  FFLocalizations.of(context)
+                                                      .getVariableText(
+                                                enText: 'Error',
+                                                arText: 'مشكلة خادم',
+                                              )),
+                                              content: Text(getJsonField(
+                                                (_model.apiResetPasswordInter
+                                                        ?.jsonBody ??
+                                                    ''),
+                                                r'''$''',
+                                              ).toString()),
+                                              actions: [
+                                                TextButton(
+                                                  onPressed: () =>
+                                                      Navigator.pop(
+                                                          alertDialogContext),
+                                                  child: Text(
+                                                      FFLocalizations.of(
+                                                              context)
+                                                          .getVariableText(
+                                                    enText: 'Ok',
+                                                    arText: 'حسنا',
+                                                  )),
+                                                ),
+                                              ],
+                                            );
+                                          },
+                                        );
+                                        if (_shouldSetState) setState(() {});
+                                        return;
+                                      }
+                                    } else {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text(
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                                  enText: 'Alert',
+                                                  arText: 'تنبيه',
+                                                )),
+                                            content: Text(FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText:
+                                              'Old password is not correct',
+                                              arText:
+                                              'الباسورد القديم غير صحيح',
+                                            )),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () =>
+                                                    Navigator.pop(
+                                                        alertDialogContext),
+                                                child: Text(
+                                                    FFLocalizations.of(
+                                                        context)
+                                                        .getVariableText(
+                                                      enText: 'Ok',
+                                                      arText: 'حسنا',
+                                                    )),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      if (_shouldSetState) setState(() {});
+                                      return;
+                                    }
+
+                                    if (_shouldSetState) setState(() {});
+                                  }
+                                },
+                                text: FFLocalizations.of(context).getText(
+                                  'vuuexi7y' /* Save */,
+                                ),
+                                options: FFButtonOptions(
+                                  height: 40.0,
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      35.0, 0.0, 35.0, 0.0),
+                                  iconPadding: EdgeInsetsDirectional.fromSTEB(
+                                      0.0, 0.0, 0.0, 0.0),
+                                  color: (_model.textController1.text != null &&
+                                              _model.textController1.text !=
+                                                  '') &&
+                                          (_model.textController2.text !=
+                                                  null &&
+                                              _model.textController2.text != '')
+                                      ? Color(0xFF092853)
+                                      : Color(0xFFF3F3F3),
+                                  textStyle: FlutterFlowTheme.of(context)
+                                      .titleSmall
+                                      .override(
+                                        fontFamily: 'Poppins',
+                                        color: Colors.white,
+                                      ),
+                                  elevation: 3.0,
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

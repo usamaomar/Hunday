@@ -179,7 +179,7 @@ class PartModelStruct extends FFFirebaseStruct {
         status: castToType<int>(data['status']),
         fullImage: data['full_image'] as String?,
         name: data['name'] as String?,
-        specialPrice: data['special_price'] ?? 0,
+        specialPrice: data['special_price'].toDouble() ?? 0,
         quantity: castToType<int>(data['quantity']),
         price: castToType<double>(data['price']),
         discAmount:  data['disc_amount'].toDouble()?? 0.0,

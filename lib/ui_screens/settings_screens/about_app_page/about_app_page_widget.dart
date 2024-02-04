@@ -1,5 +1,4 @@
 import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
-
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -10,7 +9,6 @@ import 'package:flutter_animate/flutter_animate.dart';
 import 'package:provider/provider.dart';
 import 'about_app_page_model.dart';
 export 'about_app_page_model.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 
 class AboutAppPageWidget extends StatefulWidget {
   const AboutAppPageWidget({
@@ -109,79 +107,77 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                         Align(
                           alignment: AlignmentDirectional(0.0, 1.0),
                           child: Container(
-                            constraints: BoxConstraints(
-                              maxHeight: 550.0,
-                            ),
                             decoration: BoxDecoration(),
-                            child: Column(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Stack(
-                                  alignment: AlignmentDirectional(0.0, 1.0),
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          5.0, 0.0, 5.0, 0.0),
-                                      child: Container(
-                                        width: double.infinity,
-                                        height: 30.0,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius: BorderRadius.only(
-                                            bottomLeft: Radius.circular(0.0),
-                                            bottomRight: Radius.circular(0.0),
-                                            topLeft: Radius.circular(20.0),
-                                            topRight: Radius.circular(20.0),
+                            child: SingleChildScrollView(
+                              child: Column(
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Stack(
+                                    alignment: AlignmentDirectional(0.0, 1.0),
+                                    children: [
+                                      Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            5.0, 0.0, 5.0, 0.0),
+                                        child: Container(
+                                          width: double.infinity,
+                                          height: 30.0,
+                                          decoration: BoxDecoration(
+                                            color: FlutterFlowTheme.of(context)
+                                                .secondaryBackground,
+                                            borderRadius: BorderRadius.only(
+                                              bottomLeft: Radius.circular(0.0),
+                                              bottomRight: Radius.circular(0.0),
+                                              topLeft: Radius.circular(20.0),
+                                              topRight: Radius.circular(20.0),
+                                            ),
                                           ),
                                         ),
                                       ),
-                                    ),
-                                    Align(
-                                      alignment:
-                                          AlignmentDirectional(-1.0, 0.0),
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            30.0, 0.0, 30.0, 0.0),
-                                        child: Row(
-                                          mainAxisSize: MainAxisSize.min,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Flexible(
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: Container(
-                                                  decoration: BoxDecoration(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
-                                                  ),
-                                                  child: ClipRRect(
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            0.0),
-                                                    child: Image.asset(
-                                                      'assets/images/Group_72654@2x.png',
-                                                      width: 300.0,
-                                                      height: 200.0,
-                                                      fit: BoxFit.contain,
+                                      Align(
+                                        alignment:
+                                            AlignmentDirectional(-1.0, 0.0),
+                                        child: Padding(
+                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                              30.0, 100.0, 30.0, 0.0),
+                                          child: Row(
+                                            mainAxisSize: MainAxisSize.min,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.end,
+                                            children: [
+                                              Flexible(
+                                                child: ClipRRect(
+                                                  borderRadius:
+                                                      BorderRadius.circular(0.0),
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                    ),
+                                                    child: ClipRRect(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              0.0),
+                                                      child: Image.asset(
+                                                        'assets/images/Group_72654@2x.png',
+                                                        width: 300.0,
+                                                        height: 200.0,
+                                                        fit: BoxFit.contain,
+                                                      ),
                                                     ),
                                                   ),
                                                 ),
                                               ),
-                                            ),
-                                          ],
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                Expanded(
-                                  child: Padding(
+                                    ],
+                                  ),
+                                  Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         5.0, 0.0, 5.0, 5.0),
                                     child: Container(
@@ -199,6 +195,7 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             5.0, 0.0, 5.0, 0.0),
                                         child: ListView(
+                                          physics: NeverScrollableScrollPhysics(),
                                           padding: EdgeInsets.fromLTRB(
                                             0,
                                             0,
@@ -340,8 +337,8 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                                   Flexible(
                                                       child: HtmlWidget(
                                                     '''
-  ${widget.body}
-  ''',
+                                                                ${widget.body}
+                                                                ''',
                                                   )),
                                                 ],
                                               ),
@@ -351,8 +348,8 @@ class _AboutAppPageWidgetState extends State<AboutAppPageWidget>
                                       ),
                                     ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ).animateOnPageLoad(
                               animationsMap['containerOnPageLoadAnimation']!),

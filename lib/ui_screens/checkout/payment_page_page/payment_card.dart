@@ -31,6 +31,31 @@ enum CardType {
   Invalid
 }
 
+extension CardTypeToString on CardType {
+  String toName() {
+    switch (this) {
+      case CardType.Master:
+        return 'Master'.toUpperCase();
+      case CardType.Visa:
+        return 'Visa'.toUpperCase();
+      case CardType.Verve:
+        return 'Verve'.toUpperCase();
+      case CardType.Discover:
+        return 'Discover'.toUpperCase();
+      case CardType.AmericanExpress:
+        return 'AmericanExpress'.toUpperCase();
+      case CardType.DinersClub:
+        return 'DinersClub'.toUpperCase();
+      case CardType.Jcb:
+        return 'Jcb'.toUpperCase();
+      case CardType.Others:
+        return 'Others'.toUpperCase();
+      case CardType.Invalid:
+        return 'Invalid'.toUpperCase();
+    }
+  }
+}
+
 class CardUtils {
   static String? validateCVV(String? value) {
     if (value == null || value.isEmpty) {

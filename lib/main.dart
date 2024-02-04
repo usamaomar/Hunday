@@ -8,6 +8,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hyundai/backend/schema/structs/index.dart';
+import 'package:hyundai/ui_screens/components/customs/CustomNavs.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
@@ -106,7 +107,7 @@ class _MyAppState extends State<MyApp> {
     super.initState();
 
     _appStateNotifier = AppStateNotifier.instance;
-    _router = createRouter(_appStateNotifier);
+    _router = createRouter( _appStateNotifier);
   }
 
   void handleInAppMessage() {
@@ -126,12 +127,12 @@ class _MyAppState extends State<MyApp> {
       if (message.notification != null &&
           message.notification?.title != null &&
           message.notification?.body != null) {
-        // FFAppState().addToLocalNotificationLost(NotificationModelStruct(
-        //     title: message.data['title'],
-        //     body: message.data['body'],
-        //     isClicked: false,
-        //     date: getCurrentDate(),
-        //     time: getCurrentTime()));
+        FFAppState().addToLocalNotificationLost(NotificationModelStruct(
+            title: '',
+            body: '',
+            isClicked: false,
+            date: getCurrentDate(),
+            time: getCurrentTime()));
         showNotification(message);
       }
     } catch (ex) {
@@ -154,7 +155,8 @@ class _MyAppState extends State<MyApp> {
         var generalNotificationDetails =
             NotificationDetails(android: androidDetails, iOS: iosDetails);
         await fltNotification?.show(0, message.notification?.title,
-            message.notification?.body, generalNotificationDetails,payload: 'Notification');
+            message.notification?.body, generalNotificationDetails,
+            payload: 'Notification');
       }
     } catch (ex) {
       ex.toString();
@@ -173,16 +175,14 @@ class _MyAppState extends State<MyApp> {
           InitializationSettings(android: androidInit, iOS: iosInit);
       fltNotification = FlutterLocalNotificationsPlugin();
       fltNotification?.initialize(initSetting,
-          onDidReceiveNotificationResponse: onDidReceiveNotificationResponse );
+          onDidReceiveNotificationResponse: onDidReceiveNotificationResponse);
     } catch (ex) {
       ex.toString();
     }
   }
 
   void onDidReceiveNotificationResponse(dynamic notificationResponse) async {
-    _router.pushNamed(
-      'notificationPage'
-    );
+    _router.pushNamed('notificationPage');
   }
 
   void setLocale(String language) {
@@ -196,7 +196,12 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return MaterialApp.router(
+
       key: scaffoldKey,
       title: 'hyundai',
       localizationsDelegates: [
@@ -218,17 +223,20 @@ class _MyAppState extends State<MyApp> {
         brightness: Brightness.dark,
         scrollbarTheme: ScrollbarThemeData(),
       ),
-      themeMode: _themeMode,
+      // themeMode: _themeMode,
+      themeMode: ThemeMode.light,
       routerConfig: _router,
     );
   }
 }
 
 class NavBarPage extends StatefulWidget {
-  NavBarPage({Key? key, this.initialPage, this.page}) : super(key: key);
+  const NavBarPage({Key? key, this.initialPage, this.page, this.updateBadgeValue}) : super(key: key);
 
   final String? initialPage;
   final Widget? page;
+  final Function()? updateBadgeValue;
+
 
   @override
   _NavBarPageState createState() => _NavBarPageState();
@@ -244,6 +252,7 @@ class _NavBarPageState extends State<NavBarPage> {
     super.initState();
     _currentPageName = widget.initialPage ?? _currentPageName;
     _currentPage = widget.page;
+
   }
 
   @override
@@ -262,13 +271,18 @@ class _NavBarPageState extends State<NavBarPage> {
     final MediaQueryData queryData = MediaQuery.of(context);
 
     return Scaffold(
-      body: MediaQuery(
-          data: queryData
-              .removeViewInsets(removeBottom: true)
-              .removeViewPadding(removeBottom: true),
-          child: _currentPage ?? tabs[_currentPageName]!),
+
+      body: SafeArea(
+        top: false,
+        bottom: true,
+        child: MediaQuery(
+            data: queryData
+                .removeViewInsets(removeBottom: true)
+                .removeViewPadding(removeBottom: true),
+            child: _currentPage ?? tabs[_currentPageName]!),
+      ),
       extendBody: true,
-      bottomNavigationBar: CustomNavigationBar(
+      bottomNavigationBar: CustomNavs(
         currentIndex: currentIndex,
         onTap: (i) => setState(() {
           _currentPage = null;
@@ -326,5 +340,3 @@ class _NavBarPageState extends State<NavBarPage> {
     );
   }
 }
-
-

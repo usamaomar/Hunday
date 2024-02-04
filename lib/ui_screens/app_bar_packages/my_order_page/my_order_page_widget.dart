@@ -187,12 +187,17 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                   return Builder(
                                     builder: (context) {
                                       final completedList = getJsonField(
-                                        listViewGetMyOrderApiResponse.jsonBody,
-                                        r'''$.myOrders.completed''',
-                                      )== null ? [] :  getJsonField(
-                                        listViewGetMyOrderApiResponse.jsonBody,
-                                        r'''$.myOrders.completed''',
-                                      ).toList();
+                                                listViewGetMyOrderApiResponse
+                                                    .jsonBody,
+                                                r'''$.myOrders.completed''',
+                                              ) ==
+                                              null
+                                          ? []
+                                          : getJsonField(
+                                              listViewGetMyOrderApiResponse
+                                                  .jsonBody,
+                                              r'''$.myOrders.completed''',
+                                            ).toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
                                         scrollDirection: Axis.vertical,
@@ -323,33 +328,16 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                                       0.0,
                                                                       0.0),
                                                           child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
+                                                            mainAxisAlignment:
+                                                                MainAxisAlignment
+                                                                    .spaceBetween,
                                                             children: [
                                                               Text(
-                                                                FFLocalizations.of(
-                                                                        context)
+                                                                '${FFLocalizations.of(
+                                                                    context)
                                                                     .getText(
                                                                   'lyiy9dln' /* Total : */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Rajdhani',
-                                                                      color: Color(
-                                                                          0xFFD60000),
-                                                                      fontSize:
-                                                                          16.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                              Text(
-                                                                '${getJsonField(
+                                                                )} ${getJsonField(
                                                                   completedListItem,
                                                                   r'''$.totalPrice''',
                                                                 ).toString()} ${FFLocalizations.of(context).getVariableText(
@@ -371,42 +359,30 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                                               .bold,
                                                                     ),
                                                               ),
-                                                              Expanded(
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .min,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .end,
-                                                                  children: [
-                                                                    Text(
-                                                                      '${FFLocalizations.of(context).getVariableText(
-                                                                        enText:
-                                                                            'Date : ',
-                                                                        arText:
-                                                                            'التاريخ : ',
-                                                                      )} ${getJsonField(
-                                                                        completedListItem,
-                                                                        r'''$.created_at''',
-                                                                      ).toString()}',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Rajdhani',
-                                                                            color:
-                                                                                Color(0xFF092853),
-                                                                            fontSize:
-                                                                                16.0,
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                          ),
+                                                              Text(
+                                                                '${FFLocalizations.of(context).getVariableText(
+                                                                  enText:
+                                                                      'Date : ',
+                                                                  arText:
+                                                                      'التاريخ : ',
+                                                                )} ${functions.convertDateFormatOrders(getJsonField(
+                                                                  completedListItem,
+                                                                  r'''$.created_at''',
+                                                                ).toString())}',
+                                                                style: FlutterFlowTheme.of(
+                                                                        context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                      fontFamily:
+                                                                          'Rajdhani',
+                                                                      color: Color(
+                                                                          0xFF092853),
+                                                                      fontSize:
+                                                                          16.0,
+                                                                      fontWeight:
+                                                                          FontWeight.bold,
                                                                     ),
-                                                                  ],
-                                                                ),
-                                                              ),
+                                                              )
                                                             ],
                                                           ),
                                                         ),
@@ -521,12 +497,17 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                   return Builder(
                                     builder: (context) {
                                       final completedList = getJsonField(
-                                        listViewGetMyOrderApiResponse.jsonBody,
-                                        r'''$.myOrders.cenceled''',
-                                      ) == null ? [] : getJsonField(
-                                        listViewGetMyOrderApiResponse.jsonBody,
-                                        r'''$.myOrders.cenceled''',
-                                      ).toList();
+                                                listViewGetMyOrderApiResponse
+                                                    .jsonBody,
+                                                r'''$.myOrders.cenceled''',
+                                              ) ==
+                                              null
+                                          ? []
+                                          : getJsonField(
+                                              listViewGetMyOrderApiResponse
+                                                  .jsonBody,
+                                              r'''$.myOrders.cenceled''',
+                                            ).toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
                                         scrollDirection: Axis.vertical,
@@ -657,33 +638,16 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                                       0.0,
                                                                       0.0),
                                                           child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
+                                                            mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                             children: [
                                                               Text(
-                                                                FFLocalizations.of(
-                                                                        context)
+                                                                '${FFLocalizations.of(
+                                                                    context)
                                                                     .getText(
-                                                                  's989ymiy' /* Total : */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Rajdhani',
-                                                                      color: Color(
-                                                                          0xFFD60000),
-                                                                      fontSize:
-                                                                          16.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                              Text(
-                                                                '${getJsonField(
+                                                                  'lyiy9dln' /* Total : */,
+                                                                )} ${getJsonField(
                                                                   completedListItem,
                                                                   r'''$.totalPrice''',
                                                                 ).toString()} ${FFLocalizations.of(context).getVariableText(
@@ -691,56 +655,44 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                                   arText: 'د.أ',
                                                                 )}',
                                                                 style: FlutterFlowTheme.of(
-                                                                        context)
+                                                                    context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Rajdhani',
-                                                                      color: Color(
-                                                                          0xFFD60000),
-                                                                      fontSize:
-                                                                          16.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                              Expanded(
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .min,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .end,
-                                                                  children: [
-                                                                    Text(
-                                                                      '${FFLocalizations.of(context).getVariableText(
-                                                                        enText:
-                                                                            'Date : ',
-                                                                        arText:
-                                                                            'التاريخ : ',
-                                                                      )} ${functions.convertDateFormatOrders(getJsonField(
-                                                                        completedListItem,
-                                                                        r'''$.created_at''',
-                                                                      ).toString())}',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Rajdhani',
-                                                                            color:
-                                                                                Color(0xFF092853),
-                                                                            fontSize:
-                                                                                16.0,
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                          ),
-                                                                    ),
-                                                                  ],
+                                                                  fontFamily:
+                                                                  'Rajdhani',
+                                                                  color: Color(
+                                                                      0xFFD60000),
+                                                                  fontSize:
+                                                                  16.0,
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
                                                                 ),
                                                               ),
+                                                              Text(
+                                                                '${FFLocalizations.of(context).getVariableText(
+                                                                  enText:
+                                                                  'Date : ',
+                                                                  arText:
+                                                                  'التاريخ : ',
+                                                                )} ${functions.convertDateFormatOrders(getJsonField(
+                                                                  completedListItem,
+                                                                  r'''$.created_at''',
+                                                                ).toString())}',
+                                                                style: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                  fontFamily:
+                                                                  'Rajdhani',
+                                                                  color: Color(
+                                                                      0xFF092853),
+                                                                  fontSize:
+                                                                  16.0,
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                ),
+                                                              )
                                                             ],
                                                           ),
                                                         ),
@@ -855,12 +807,17 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                   return Builder(
                                     builder: (context) {
                                       final completedList = getJsonField(
-                                        listViewGetMyOrderApiResponse.jsonBody,
-                                        r'''$.myOrders.requested''',
-                                      ) == null ? [] : getJsonField(
-                                        listViewGetMyOrderApiResponse.jsonBody,
-                                        r'''$.myOrders.requested''',
-                                      ).toList();
+                                                listViewGetMyOrderApiResponse
+                                                    .jsonBody,
+                                                r'''$.myOrders.requested''',
+                                              ) ==
+                                              null
+                                          ? []
+                                          : getJsonField(
+                                              listViewGetMyOrderApiResponse
+                                                  .jsonBody,
+                                              r'''$.myOrders.requested''',
+                                            ).toList();
                                       return ListView.builder(
                                         padding: EdgeInsets.zero,
                                         scrollDirection: Axis.vertical,
@@ -991,33 +948,16 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                                       0.0,
                                                                       0.0),
                                                           child: Row(
-                                                            mainAxisSize:
-                                                                MainAxisSize
-                                                                    .max,
+                                                            mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                                .spaceBetween,
                                                             children: [
                                                               Text(
-                                                                FFLocalizations.of(
-                                                                        context)
+                                                                '${FFLocalizations.of(
+                                                                    context)
                                                                     .getText(
-                                                                  'wb9dvh64' /* Total : */,
-                                                                ),
-                                                                style: FlutterFlowTheme.of(
-                                                                        context)
-                                                                    .bodyMedium
-                                                                    .override(
-                                                                      fontFamily:
-                                                                          'Rajdhani',
-                                                                      color: Color(
-                                                                          0xFFD60000),
-                                                                      fontSize:
-                                                                          16.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                              Text(
-                                                                '${getJsonField(
+                                                                  'lyiy9dln' /* Total : */,
+                                                                )} ${getJsonField(
                                                                   completedListItem,
                                                                   r'''$.totalPrice''',
                                                                 ).toString()} ${FFLocalizations.of(context).getVariableText(
@@ -1025,56 +965,44 @@ class _MyOrderPageWidgetState extends State<MyOrderPageWidget>
                                                                   arText: 'د.أ',
                                                                 )}',
                                                                 style: FlutterFlowTheme.of(
-                                                                        context)
+                                                                    context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                      fontFamily:
-                                                                          'Rajdhani',
-                                                                      color: Color(
-                                                                          0xFFD60000),
-                                                                      fontSize:
-                                                                          16.0,
-                                                                      fontWeight:
-                                                                          FontWeight
-                                                                              .bold,
-                                                                    ),
-                                                              ),
-                                                              Expanded(
-                                                                child: Row(
-                                                                  mainAxisSize:
-                                                                      MainAxisSize
-                                                                          .min,
-                                                                  mainAxisAlignment:
-                                                                      MainAxisAlignment
-                                                                          .end,
-                                                                  children: [
-                                                                    Text(
-                                                                      '${FFLocalizations.of(context).getVariableText(
-                                                                        enText:
-                                                                            'Date : ',
-                                                                        arText:
-                                                                            'التاريخ : ',
-                                                                      )} ${functions.convertDateFormatOrders(getJsonField(
-                                                                        completedListItem,
-                                                                        r'''$.created_at''',
-                                                                      ).toString())}',
-                                                                      style: FlutterFlowTheme.of(
-                                                                              context)
-                                                                          .bodyMedium
-                                                                          .override(
-                                                                            fontFamily:
-                                                                                'Rajdhani',
-                                                                            color:
-                                                                                Color(0xFF092853),
-                                                                            fontSize:
-                                                                                16.0,
-                                                                            fontWeight:
-                                                                                FontWeight.bold,
-                                                                          ),
-                                                                    ),
-                                                                  ],
+                                                                  fontFamily:
+                                                                  'Rajdhani',
+                                                                  color: Color(
+                                                                      0xFFD60000),
+                                                                  fontSize:
+                                                                  16.0,
+                                                                  fontWeight:
+                                                                  FontWeight
+                                                                      .bold,
                                                                 ),
                                                               ),
+                                                              Text(
+                                                                '${FFLocalizations.of(context).getVariableText(
+                                                                  enText:
+                                                                  'Date : ',
+                                                                  arText:
+                                                                  'التاريخ : ',
+                                                                )} ${functions.convertDateFormatOrders(getJsonField(
+                                                                  completedListItem,
+                                                                  r'''$.created_at''',
+                                                                ).toString())}',
+                                                                style: FlutterFlowTheme.of(
+                                                                    context)
+                                                                    .bodyMedium
+                                                                    .override(
+                                                                  fontFamily:
+                                                                  'Rajdhani',
+                                                                  color: Color(
+                                                                      0xFF092853),
+                                                                  fontSize:
+                                                                  16.0,
+                                                                  fontWeight:
+                                                                  FontWeight.bold,
+                                                                ),
+                                                              )
                                                             ],
                                                           ),
                                                         ),

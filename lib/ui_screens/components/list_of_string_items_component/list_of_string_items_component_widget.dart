@@ -72,25 +72,28 @@ class _ListOfStringItemsComponentWidgetState
             ))
             .toList()
             .cast<FuelTypeModelStruct>();
+
         ///
         if (_model.carInfoLocalModel?.carModelId == 0) {
-          _model.selectedCarModel = _model.carModelList[0];
-        }else{
+          // _model.selectedCarModel = _model.carModelList[0];
+        } else {
           _model.selectedCarModel = _model.carModelList
               .where((e) => e.id == _model.carInfoLocalModel?.carModelId)
               .single;
         }
+
         ///
         if (_model.carInfoLocalModel?.carCategoryId == 0) {
-          _model.selectedCarCategories = _model.carCategoriesList[0];
-        }else{
+          // _model.selectedCarCategories = _model.carCategoriesList[0];
+        } else {
           _model.selectedCarCategories = _model.carCategoriesList
               .where((e) => e.id == _model.carInfoLocalModel?.carCategoryId)
               .single;
         }
+
         ///
         if (_model.carInfoLocalModel?.fuelTypeId == 0) {
-          _model.selectedFuelType = _model.fuelTypesList[0];
+          // _model.selectedFuelType = _model.fuelTypesList[0];
         } else {
           _model.selectedFuelType = _model.fuelTypesList
               .where((e) => e.id == _model.carInfoLocalModel?.fuelTypeId)
@@ -100,21 +103,25 @@ class _ListOfStringItemsComponentWidgetState
       setState(() {
         _model.yearOfManufacturingString =
             _model.carInfoLocalModel?.yearOfManufacturing ?? '';
-        _model.registeredUntil = _model.carInfoLocalModel?.registeredUntil ?? '';
+        _model.registeredUntil =
+            _model.carInfoLocalModel?.registeredUntil ?? '';
       });
       setState(() {
-        _model.textController1?.text = _model.carInfoLocalModel?.plateNumber ?? '';
+        _model.textController1?.text =
+            _model.carInfoLocalModel?.plateNumber ?? '';
       });
       setState(() {
-        _model.textController2?.text = _model.carInfoLocalModel?.vinNumber ?? '';
+        _model.textController2?.text =
+            _model.carInfoLocalModel?.vinNumber ?? '';
       });
       setState(() {
         _model.textFieldCapacityController?.text =
-            _model.carInfoLocalModel?.engineCapacity ??'';
+            _model.carInfoLocalModel?.engineCapacity ?? '';
       });
       setState(() {
         _model.selectedStringCarModel = _model.selectedCarModel?.name ?? '';
-        _model.selectedStringCarCategory = _model.selectedCarCategories?.name ?? '';
+        _model.selectedStringCarCategory =
+            _model.selectedCarCategories?.name ?? '';
         _model.selectedStringFuelType = _model.selectedFuelType?.name ?? '';
       });
       setState(() {});
@@ -268,8 +275,10 @@ class _ListOfStringItemsComponentWidgetState
                                       .toList(),
                                   onChanged: (val) {
                                     setState(() {
-                                      _model.selectedCarModel =   _model.carModelList
-                                          .where((e) => e.name == val).single;
+                                      _model.selectedCarModel = _model
+                                          .carModelList
+                                          .where((e) => e.name == val)
+                                          .single;
                                       _model.dropDownValue1 = val;
                                     });
                                   },
@@ -334,8 +343,10 @@ class _ListOfStringItemsComponentWidgetState
                                       .toList(),
                                   onChanged: (val) {
                                     setState(() {
-                                      _model.selectedCarCategories = _model.carCategoriesList
-                                          .where((e) => e.name == val).single;
+                                      _model.selectedCarCategories = _model
+                                          .carCategoriesList
+                                          .where((e) => e.name == val)
+                                          .single;
                                       _model.dropDownValue2 = val;
                                     });
                                   },
@@ -472,28 +483,28 @@ class _ListOfStringItemsComponentWidgetState
                                     context,
                                     child!,
                                     headerBackgroundColor:
-                                    FlutterFlowTheme.of(context).white,
+                                        FlutterFlowTheme.of(context).white,
                                     headerForegroundColor:
-                                    FlutterFlowTheme.of(context).info,
+                                        FlutterFlowTheme.of(context).info,
                                     headerTextStyle:
-                                    FlutterFlowTheme.of(context)
-                                        .headlineLarge
-                                        .override(
-                                      fontFamily: 'Poppins',
-                                      fontSize: 32.0,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                        FlutterFlowTheme.of(context)
+                                            .headlineLarge
+                                            .override(
+                                              fontFamily: 'Poppins',
+                                              fontSize: 32.0,
+                                              fontWeight: FontWeight.w600,
+                                            ),
                                     pickerBackgroundColor:
-                                    FlutterFlowTheme.of(context)
-                                        .secondaryBackground,
-                                    pickerForegroundColor:
-                                    Colors.black,
-                                    selectedDateTimeBackgroundColor:Colors.white,
+                                        FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                    pickerForegroundColor: Colors.black,
+                                    selectedDateTimeBackgroundColor:
+                                        Colors.white,
                                     selectedDateTimeForegroundColor:
-                                    Colors.black,
+                                        Colors.black,
                                     actionButtonForegroundColor:
-                                    FlutterFlowTheme.of(context)
-                                        .primaryText,
+                                        FlutterFlowTheme.of(context)
+                                            .primaryText,
                                     iconSize: 24.0,
                                   );
                                 },
@@ -868,8 +879,10 @@ class _ListOfStringItemsComponentWidgetState
                                       .toList(),
                                   onChanged: (val) {
                                     setState(() {
-                                      _model.selectedFuelType = _model.fuelTypesList
-                                          .where((e) => e.name == val).single;
+                                      _model.selectedFuelType = _model
+                                          .fuelTypesList
+                                          .where((e) => e.name == val)
+                                          .single;
                                       _model.dropDownValue3 = val;
                                     });
                                   },
@@ -909,13 +922,294 @@ class _ListOfStringItemsComponentWidgetState
                             Builder(
                               builder: (context) => FFButtonWidget(
                                 onPressed: () async {
+                                  String? value = _model.dropDownValue1 ??
+                                      _model.selectedCarModel?.name;
+                                  if(value==null){
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'ALERT',
+                                            arText: 'تنبيه',
+                                          )),
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Select Car Type',
+                                                arText: 'قم بأختيار نوع سيارة',
+                                              )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+
+
+                                  if(_model
+                                      .selectedCarCategories?.id==0){
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'ALERT',
+                                            arText: 'تنبيه',
+                                          )),
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Select Car Category',
+                                                arText: 'قم بأختيار فئة السيارة',
+                                              )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+
+
+                                  if(_model
+                                      .yearOfManufacturingString.isEmpty){
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'ALERT',
+                                            arText: 'تنبيه',
+                                          )),
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Select Year Of Manufacturing',
+                                                arText: 'قم بأختيار سنة الصنع',
+                                              )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+
+                                  if(_model
+                                      .registeredUntil.isEmpty){
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'ALERT',
+                                            arText: 'تنبيه',
+                                          )),
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Select Registered Until',
+                                                arText: 'قم بأختيار مسجل لغاية',
+                                              )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+
+
+
+                                  if(_model.textController1.text.isEmpty){
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'ALERT',
+                                            arText: 'تنبيه',
+                                          )),
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Add Plate Number',
+                                                arText: 'قم بأضافة رقم المركبة',
+                                              )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+
+
+                                  if(_model.textController2.text.isEmpty){
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'ALERT',
+                                            arText: 'تنبيه',
+                                          )),
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Add Vin Number',
+                                                arText: 'قم بأضافة رقم الفن',
+                                              )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+
+
+                                  if(_model.textFieldCapacityController.text.isEmpty){
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'ALERT',
+                                            arText: 'تنبيه',
+                                          )),
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Add Engine Capacity',
+                                                arText: 'قم بأضافة سعة المحرك',
+                                              )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+
+                                  if((_model.selectedFuelType?.id??0) ==0){
+                                    await showDialog(
+                                      context: context,
+                                      builder: (alertDialogContext) {
+                                        return AlertDialog(
+                                          title: Text(FFLocalizations.of(context)
+                                              .getVariableText(
+                                            enText: 'ALERT',
+                                            arText: 'تنبيه',
+                                          )),
+                                          content: Text(
+                                              FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Add Fuel Type',
+                                                arText: 'قم بأضافة نوع الوقود',
+                                              )),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () => Navigator.pop(
+                                                  alertDialogContext),
+                                              child: Text(FFLocalizations.of(context)
+                                                  .getVariableText(
+                                                enText: 'Ok',
+                                                arText: 'حسنا',
+                                              )),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
+                                    return;
+                                  }
+
+
                                   _model.apiResult4m8 =
                                       await StoreVehicleApiCall.call(
                                     token: FFAppState().userModel.token,
-                                    carType:_model.dropDownValue1 ?? _model.selectedCarModel?.name,
-                                    carModelId: _model.selectedCarModel?.id?.toString(),
-                                    carCategoryId: _model.selectedCarCategories?.id?.toString(),
-                                    yearOfManufacturing: _model.yearOfManufacturingString,
+                                    carType: _model.dropDownValue1 ??
+                                        _model.selectedCarModel?.name,
+                                    carModelId:
+                                        _model.selectedCarModel?.id?.toString(),
+                                    carCategoryId: _model
+                                        .selectedCarCategories?.id
+                                        ?.toString(),
+                                    yearOfManufacturing:
+                                        _model.yearOfManufacturingString,
                                     registeredUntil:
                                         functions.convertDateFormat(
                                             _model.registeredUntil),

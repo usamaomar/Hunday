@@ -4,8 +4,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'news_bottom_sheet_component_model.dart';
 export 'news_bottom_sheet_component_model.dart';
@@ -46,7 +44,6 @@ class _NewsBottomSheetComponentWidgetState
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
     return Padding(
       padding: EdgeInsets.all(5.0),
       child: Material(
@@ -62,9 +59,6 @@ class _NewsBottomSheetComponentWidgetState
         ),
         child: Container(
           width: double.infinity,
-          constraints: BoxConstraints(
-            maxHeight: 550.0,
-          ),
           decoration: BoxDecoration(
             color: FlutterFlowTheme.of(context).white,
             borderRadius: BorderRadius.only(

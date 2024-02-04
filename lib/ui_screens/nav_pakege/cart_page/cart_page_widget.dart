@@ -11,7 +11,9 @@ import 'cart_page_model.dart';
 export 'cart_page_model.dart';
 
 class CartPageWidget extends StatefulWidget {
-  const CartPageWidget({super.key});
+  Function()? updateBadgeValue;
+
+    CartPageWidget({super.key,this.updateBadgeValue});
 
   @override
   State<CartPageWidget> createState() => _CartPageWidgetState();
@@ -71,6 +73,7 @@ class _CartPageWidgetState extends State<CartPageWidget> {
                 model: _model.cartBottomSheetModel,
                 updateCallback: () => setState(() {}),
                 child: CartBottomSheetWidget(
+                  updateBadgeValue : widget.updateBadgeValue,
                   isComponentView: false,
                 ),
               ),

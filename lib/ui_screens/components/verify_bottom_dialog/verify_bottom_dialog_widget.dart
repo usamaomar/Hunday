@@ -15,7 +15,10 @@ import 'verify_bottom_dialog_model.dart';
 export 'verify_bottom_dialog_model.dart';
 
 class VerifyBottomDialogWidget extends StatefulWidget {
-  const VerifyBottomDialogWidget({super.key});
+  String? phoneNumber;
+  String? password;
+
+  VerifyBottomDialogWidget({super.key, this.phoneNumber, this.password});
 
   @override
   State<VerifyBottomDialogWidget> createState() =>
@@ -194,6 +197,15 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                                     ).toString(),
                                 );
                               });
+                              if (widget.password != null) {
+                                setState(() {
+                                  FFAppState().biomatricDtateModel =
+                                      BiomatricModelStruct(
+                                    phoneNumber: widget.phoneNumber,
+                                    password: widget.password,
+                                  );
+                                });
+                              }
                               if (Navigator.of(context).canPop()) {
                                 context.pop();
                               }

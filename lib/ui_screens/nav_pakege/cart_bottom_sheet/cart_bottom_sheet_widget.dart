@@ -23,9 +23,14 @@ import 'cart_bottom_sheet_model.dart';
 export 'cart_bottom_sheet_model.dart';
 
 class CartBottomSheetWidget extends StatefulWidget {
-  const CartBottomSheetWidget({
+
+  Function()? updateBadgeValue;
+
+
+    CartBottomSheetWidget({
     Key? key,
     bool? isComponentView,
+    this.updateBadgeValue,
   })  : this.isComponentView = isComponentView ?? true,
         super(key: key);
 
@@ -751,10 +756,11 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                                 ))
                                                                                 .subTotal;
                                                                           });
-                                                                          FFAppState()
-                                                                              .update(() {
-                                                                            FFAppState().badgeCount =
-                                                                                _model.listOfCartItemsLocal.length;
+                                                                          SchedulerBinding.instance.addPostFrameCallback((_) async {
+                                                                            FFAppState().update(() {
+                                                                              FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
+                                                                              widget.updateBadgeValue?.call();
+                                                                            });
                                                                           });
                                                                         }
                                                                       } else {
@@ -947,12 +953,10 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           );
                                                                         }
                                                                       });
-                                                                      FFAppState()
-                                                                          .update(
-                                                                              () {
-                                                                        FFAppState().badgeCount = _model
-                                                                            .listOfCartItemsLocal
-                                                                            .length;
+                                                                      SchedulerBinding.instance.addPostFrameCallback((_) async {
+                                                                        FFAppState().update(() {
+                                                                          FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
+                                                                        });
                                                                       });
 
                                                                       setState(

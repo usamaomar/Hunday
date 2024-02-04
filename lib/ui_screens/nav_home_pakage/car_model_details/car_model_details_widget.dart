@@ -2,15 +2,12 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/nav_home_pakage/empty_list_component/empty_list_component_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'car_model_details_model.dart';
 export 'car_model_details_model.dart';
@@ -132,9 +129,6 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                 Align(
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
-                    constraints: BoxConstraints(
-                      maxHeight: 600.0,
-                    ),
                     decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -144,7 +138,7 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                           children: [
                             Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
-                                  5.0, 0.0, 5.0, 0.0),
+                                  5.0, 130.0, 5.0, 0.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 70.0,
@@ -172,12 +166,15 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                         borderRadius:
                                             BorderRadius.circular(0.0),
                                       ),
-                                      child: ClipRRect(
-                                        borderRadius:
-                                            BorderRadius.circular(0.0),
-                                        child: Image.asset(
-                                          'assets/images/the-new-sonata-dn8-2023-quater-view@2x.png',
-                                          fit: BoxFit.cover,
+                                      child: AspectRatio(
+                                        aspectRatio: 3.0,
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(0.0),
+                                          child: Image.asset(
+                                            'assets/images/the-new-sonata-dn8-2023-quater-view@2x.png',
+                                            fit: BoxFit.contain,
+                                          ),
                                         ),
                                       ),
                                     ),

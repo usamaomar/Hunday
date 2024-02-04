@@ -479,8 +479,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'الوضع الليلي',
     },
     'gup13knb': {
-      'en': 'Enable fingerprint',
-      'ar': 'تمكين بصمة الإصبع',
+      'en': 'Enable Biometric',
+      'ar': 'تمكين القياسات الحيوية',
     },
     '6yklnh8p': {
       'en': 'app is requesting your finger print ',

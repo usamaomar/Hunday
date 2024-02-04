@@ -238,18 +238,19 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
     }
 
     context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
-         backgroundColor: Color(0xFFAFC3E1),
+        backgroundColor : Colors.white,
         body: SafeArea(
           top: true,
-          child: Stack(
+          child:  Stack(
             children: [
               Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                height: double.infinity,
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
                     colors: [
@@ -282,770 +283,796 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       ],
                     ),
                     ClipRRect(
-                      child: Container(
-                        decoration: BoxDecoration(),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            if (FFAppState().sliderList.length > 0)
-                              Expanded(
-                                child: Builder(
-                                  builder: (context) {
-                                    final sliderSlideList = FFAppState()
-                                        .sliderList
-                                        .map((e) => e)
-                                        .toList();
-                                    return Container(
-                                      width: double.infinity,
-                                      child: CarouselSlider.builder(
-                                        itemCount: sliderSlideList.length,
-                                        itemBuilder:
-                                            (context, sliderSlideListIndex, _) {
-                                          final sliderSlideListItem =
-                                              sliderSlideList[
-                                                  sliderSlideListIndex];
-                                          return Column(
-                                            mainAxisSize: MainAxisSize.min,
-                                            children: [
-                                              Padding(
-                                                padding: EdgeInsetsDirectional
-                                                    .fromSTEB(
-                                                        30.0, 0.0, 30.0, 0.0),
-                                                child: ClipRRect(
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          5.0),
-                                                  child: CachedNetworkImage(
-                                                    fadeInDuration: Duration(
-                                                        milliseconds: 200),
-                                                    fadeOutDuration: Duration(
-                                                        milliseconds: 200),
-                                                    imageUrl: getJsonField(
-                                                      sliderSlideListItem,
-                                                      r'''$.full_image''',
-                                                    ).toString(),
-                                                    width: double.infinity,
-                                                    height: 150.0,
-                                                    fit: BoxFit.cover,
-                                                    errorWidget: (context,
-                                                            error,
-                                                            stackTrace) =>
-                                                        Image.asset(
-                                                      'assets/images/error_image.png',
-                                                      width: double.infinity,
-                                                      height: 150.0,
-                                                      fit: BoxFit.cover,
-                                                    ),
-                                                  ),
-                                                ),
-                                              ),
-                                              Flexible(
-                                                child: Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(30.0, 10.0,
-                                                          30.0, 10.0),
-                                                  child: Text(
-                                                    functions.getNameByLanguge(
-                                                        getJsonField(
-                                                          sliderSlideListItem,
-                                                          r'''$.slogan_en''',
-                                                        ).toString(),
-                                                        getJsonField(
-                                                          sliderSlideListItem,
-                                                          r'''$.slogan_ar''',
-                                                        ).toString(),
-                                                        FFAppState()
-                                                            .currentLanguge),
-                                                    textAlign: TextAlign.center,
-                                                    maxLines: 2,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'HeeboBold',
-                                                          color:
-                                                              Color(0xFF212427),
-                                                          fontSize: 16.0,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          useGoogleFonts: false,
-                                                        ),
-                                                  ),
-                                                ),
-                                              ),
-                                            ],
-                                          );
-                                        },
-                                        carouselController:
-                                            _model.carouselController ??=
-                                                CarouselController(),
-                                        options: CarouselOptions(
-                                          initialPage: min(
-                                              1, sliderSlideList.length - 1),
-                                          viewportFraction: 1.0,
-                                          disableCenter: true,
-                                          enlargeCenterPage: true,
-                                          enlargeFactor: 1.0,
-                                          enableInfiniteScroll: true,
-                                          scrollDirection: Axis.horizontal,
-                                          autoPlay: true,
-                                          autoPlayAnimationDuration:
-                                              Duration(milliseconds: 1000),
-                                          autoPlayInterval: Duration(
-                                              milliseconds: (1000 + 1000)),
-                                          autoPlayCurve: Curves.linear,
-                                          pauseAutoPlayInFiniteScroll: true,
-                                          onPageChanged: (index, _) => _model
-                                              .carouselCurrentIndex = index,
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ),
-                              ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Flexible(
-                      flex: 1,
-                      child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            30.0, 0.0, 30.0, 0.0),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.max,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          if (FFAppState().sliderList.length > 0)
                             Expanded(
-                              child: Container(
-                                height: 1.0,
-                                decoration: BoxDecoration(
-                                  color: Color(0xFF3D6398),
-                                  border: Border.all(
-                                    color: Color(0xFF3D6398),
-                                    width: 1.0,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    Row(
-                      mainAxisSize: MainAxisSize.max,
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Expanded(
-                          flex: 1,
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                30.0, 0.0, 30.0, 75.0),
-                            child: GridView(
-                              padding: EdgeInsets.zero,
-                              gridDelegate:
-                                  SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                                crossAxisSpacing: 10.0,
-                                mainAxisSpacing: 11.0,
-                                childAspectRatio: 0.71,
-                              ),
-                              shrinkWrap: true,
-                              scrollDirection: Axis.vertical,
-                              children: [
-                                Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(19.0),
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF3D6398),
-                                      borderRadius: BorderRadius.circular(19.0),
-                                      border: Border.all(
-                                        color: Color(0xFFAFC3E1),
-                                      ),
-                                    ),
-                                    child: Builder(
-                                      builder: (context) => InkWell(
-                                        splashColor: Colors.transparent,
-                                        focusColor: Colors.transparent,
-                                        hoverColor: Colors.transparent,
-                                        highlightColor: Colors.transparent,
-                                        onTap: () async {
-                                          _model.apiResult2kt =
-                                              await VehicleApiCall.call(
-                                            token: FFAppState().userModel.token,
-                                          );
-                                          if ((_model.apiResult2kt?.succeeded ??
-                                              true)) {
-                                            if (getJsonField(
-                                                      (_model.apiResult2kt
-                                                              ?.jsonBody ??
-                                                          ''),
-                                                      r'''$.vehicles''',
-                                                    ) !=
-                                                    null &&
-                                                (getJsonField(
-                                                  (_model.apiResult2kt
-                                                          ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.vehicles''',
-                                                ) as List)
-                                                    .isNotEmpty) {
-                                              context.pushNamed('ShopPage');
-                                            } else {
-                                              await showDialog(
-                                                barrierColor:
-                                                    Colors.transparent,
-                                                barrierDismissible: false,
-                                                context: context,
-                                                builder: (dialogContext) {
-                                                  return Dialog(
-                                                    child:
-                                                        ScannedCardAnimationComponentWidget(),
-                                                  );
-                                                },
-                                              ).then(
-                                                  (value) => setState(() {}));
-                                            }
-                                          }
-                                          setState(() {});
-                                        },
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
+                              child: Builder(
+                                builder: (context) {
+                                  final sliderSlideList = FFAppState()
+                                      .sliderList
+                                      .map((e) => e)
+                                      .toList();
+                                  return Container(
+                                    width: double.infinity,
+                                    child: CarouselSlider.builder(
+                                      itemCount: sliderSlideList.length,
+                                      itemBuilder: (context,
+                                          sliderSlideListIndex, _) {
+                                        final sliderSlideListItem =
+                                        sliderSlideList[
+                                        sliderSlideListIndex];
+                                        return Column(
+                                          mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                      20.0, 20.0, 20.0, 8.0),
+                                                  30.0, 5.0, 30.0, 0.0),
                                               child: ClipRRect(
                                                 borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                                child: SvgPicture.asset(
-                                                  'assets/images/Group_70549.svg',
-                                                  width: 100.0,
-                                                  height: 40.0,
-                                                  fit: BoxFit.scaleDown,
-                                                ),
-                                              ),
-                                            ),
-                                            Divider(
-                                              thickness: 1.0,
-                                              indent: 25.0,
-                                              endIndent: 25.0,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .accent4,
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Expanded(
-                                                  flex: 1,
-                                                  child: Text(
-                                                    FFLocalizations.of(context)
-                                                        .getText(
-                                                      '0pq4i1m3' /* Parts Shop */,
-                                                    ),
-                                                    textAlign: TextAlign.center,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily:
-                                                              'Seagoe Ui Bold',
-                                                          color: Colors.white,
-                                                          useGoogleFonts: false,
+                                                BorderRadius.circular(
+                                                    5.0),
+                                                child: AspectRatio(
+                                                  aspectRatio: 3,
+                                                  child: CachedNetworkImage(
+                                                    fadeInDuration:
+                                                    Duration(
+                                                        milliseconds:
+                                                        200),
+                                                    fadeOutDuration:
+                                                    Duration(
+                                                        milliseconds:
+                                                        200),
+                                                    imageUrl: getJsonField(
+                                                      sliderSlideListItem,
+                                                      r'''$.full_image''',
+                                                    ).toString(),
+                                                    fit: BoxFit.cover,
+                                                    errorWidget: (context,
+                                                        error,
+                                                        stackTrace) =>
+                                                        Image.asset(
+                                                          'assets/images/error_image.png',
+                                                          width:
+                                                          double.infinity,
+                                                          fit: BoxFit.cover,
                                                         ),
                                                   ),
                                                 ),
-                                              ],
+                                              ),
+                                            ),
+                                            Flexible(
+                                              child: Padding(
+                                                padding:
+                                                EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                    30.0,
+                                                    10.0,
+                                                    30.0,
+                                                    10.0),
+                                                child: Text(
+                                                  functions
+                                                      .getNameByLanguge(
+                                                      getJsonField(
+                                                        sliderSlideListItem,
+                                                        r'''$.slogan_en''',
+                                                      ).toString(),
+                                                      getJsonField(
+                                                        sliderSlideListItem,
+                                                        r'''$.slogan_ar''',
+                                                      ).toString(),
+                                                      FFAppState()
+                                                          .currentLanguge),
+                                                  textAlign:
+                                                  TextAlign.center,
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme
+                                                      .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                    fontFamily:
+                                                    'HeeboBold',
+                                                    color: Color(
+                                                        0xFF212427),
+                                                    fontSize: 16.0,
+                                                    fontWeight:
+                                                    FontWeight.bold,
+                                                    useGoogleFonts:
+                                                    false,
+                                                  ),
+                                                ),
+                                              ),
                                             ),
                                           ],
-                                        ),
+                                        );
+                                      },
+                                      carouselController:
+                                      _model.carouselController ??=
+                                          CarouselController(),
+                                      options: CarouselOptions(
+                                        initialPage: min(
+                                            1, sliderSlideList.length - 1),
+                                        viewportFraction: 1.0,
+                                        disableCenter: true,
+                                        aspectRatio: 2.5,
+                                        enlargeCenterPage: true,
+                                        enlargeFactor: 1.0,
+                                        enableInfiniteScroll: true,
+                                        scrollDirection: Axis.horizontal,
+                                        autoPlay: true,
+                                        autoPlayAnimationDuration:
+                                        Duration(milliseconds: 1000),
+                                        autoPlayInterval: Duration(
+                                            milliseconds: (1000 + 1000)),
+                                        autoPlayCurve: Curves.linear,
+                                        pauseAutoPlayInFiniteScroll: true,
+                                        onPageChanged: (index, _) => _model
+                                            .carouselCurrentIndex = index,
                                       ),
                                     ),
-                                  ),
+                                  );
+                                },
+                              ),
+                            ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: EdgeInsetsDirectional.fromSTEB(
+                          20.0, 0.0, 20.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: 1.0,
+                              decoration: BoxDecoration(
+                                color: Color(0xFF3D6398),
+                                border: Border.all(
+                                  color: Color(0xFF3D6398),
+                                  width: 1.0,
                                 ),
-                                Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(19.0),
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF3D6398),
-                                      borderRadius: BorderRadius.circular(19.0),
-                                      border: Border.all(
-                                        color: Color(0xFFAFC3E1),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Container(
+                      child: SingleChildScrollView(
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Expanded(
+                                  flex: 1,
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        30.0, 0.0, 30.0, 60.0),
+                                    child: GridView(
+                                      physics: NeverScrollableScrollPhysics(),
+                                      padding: EdgeInsets.zero,
+                                      gridDelegate:
+                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                        crossAxisCount: 3,
+                                        crossAxisSpacing: 5.0,
+                                        mainAxisSpacing: 5.0,
+                                        childAspectRatio: 0.8,
                                       ),
-                                    ),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                          _model.apiResult2kt =
-                                          await VehicleApiCall.call(
-                                            token: FFAppState().userModel.token,
-                                          );
-                                          if ((_model.apiResult2kt?.succeeded ??
-                                              true)) {
-                                            if (getJsonField(
-                                              (_model.apiResult2kt
-                                                  ?.jsonBody ??
-                                                  ''),
-                                              r'''$.vehicles''',
-                                            ) !=
-                                                null &&
-                                                (getJsonField(
-                                                  (_model.apiResult2kt
-                                                      ?.jsonBody ??
-                                                      ''),
-                                                  r'''$.vehicles''',
-                                                ) as List)
-                                                    .isNotEmpty) {
-
-
-                                              context.pushNamed(
-                                                'MaintenancePage',
-                                                extra: <String, dynamic>{
-                                                  kTransitionInfoKey: TransitionInfo(
-                                                    hasTransition: true,
-                                                    transitionType:
-                                                    PageTransitionType.fade,
-                                                    duration:
-                                                    Duration(milliseconds: 0),
-                                                  ),
-                                                },
-                                              );
-                                            } else {
-                                              await showDialog(
-                                                barrierColor:
-                                                Colors.transparent,
-                                                barrierDismissible: false,
-                                                context: context,
-                                                builder: (dialogContext) {
-                                                  return Dialog(
-                                                    child:
-                                                    ScannedCardAnimationComponentWidget(),
+                                      shrinkWrap: true,
+                                      scrollDirection: Axis.vertical,
+                                      children: [
+                                        Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(19.0),
+                                          ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF3D6398),
+                                              borderRadius:
+                                              BorderRadius.circular(19.0),
+                                              border: Border.all(
+                                                color: Color(0xFFAFC3E1),
+                                              ),
+                                            ),
+                                            child: Builder(
+                                              builder: (context) => InkWell(
+                                                splashColor: Colors.transparent,
+                                                focusColor: Colors.transparent,
+                                                hoverColor: Colors.transparent,
+                                                highlightColor: Colors.transparent,
+                                                onTap: () async {
+                                                  _model.apiResult2kt =
+                                                  await VehicleApiCall.call(
+                                                    token:
+                                                    FFAppState().userModel.token,
                                                   );
+                                                  if ((_model
+                                                      .apiResult2kt?.succeeded ??
+                                                      true)) {
+                                                    if (getJsonField(
+                                                      (_model.apiResult2kt
+                                                          ?.jsonBody ??
+                                                          ''),
+                                                      r'''$.vehicles''',
+                                                    ) !=
+                                                        null &&
+                                                        (getJsonField(
+                                                          (_model.apiResult2kt
+                                                              ?.jsonBody ??
+                                                              ''),
+                                                          r'''$.vehicles''',
+                                                        ) as List)
+                                                            .isNotEmpty) {
+                                                      context.pushNamed('ShopPage');
+                                                    } else {
+                                                      await showDialog(
+                                                        barrierColor:
+                                                        Colors.transparent,
+                                                        barrierDismissible: false,
+                                                        context: context,
+                                                        builder: (dialogContext) {
+                                                          return Dialog(
+                                                            child:
+                                                            ScannedCardAnimationComponentWidget(),
+                                                          );
+                                                        },
+                                                      ).then(
+                                                              (value) => setState(() {}));
+                                                    }
+                                                  }
+                                                  setState(() {});
                                                 },
-                                              ).then(
-                                                      (value) => setState(() {}));
-                                            }
-                                          }
-                                          setState(() {});
-
-
-
-
-
-
-
-
-
-
-                                      },
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 20.0, 20.0, 8.0),
-                                            child: SvgPicture.asset(
-                                              'assets/images/Group_70550.svg',
-                                              width: 100.0,
-                                              height: 40.0,
-                                              fit: BoxFit.scaleDown,
-                                            ),
-                                          ),
-                                          Divider(
-                                            thickness: 1.0,
-                                            indent: 25.0,
-                                            endIndent: 25.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '8io5q1kq' /* Services */,
-                                                  ),
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Seagoe Ui Bold',
-                                                        color: Colors.white,
-                                                        useGoogleFonts: false,
+                                                child: Column(
+                                                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                                  children: [
+                                                    Padding(
+                                                      padding: EdgeInsetsDirectional
+                                                          .fromSTEB(
+                                                          20.0, 20.0, 20.0, 8.0),
+                                                      child: AspectRatio(
+                                                        aspectRatio: 1.8,
+                                                        child: SvgPicture.asset(
+                                                          'assets/images/Group_70549.svg',
+                                                          fit: BoxFit.contain,
+                                                        ),
                                                       ),
+                                                    ),
+                                                    Divider(
+                                                      thickness: 1.0,
+                                                      indent: 25.0,
+                                                      endIndent: 25.0,
+                                                      color:
+                                                      FlutterFlowTheme.of(context)
+                                                          .accent4,
+                                                    ),
+                                                    Row(
+                                                      mainAxisSize: MainAxisSize.max,
+                                                      children: [
+                                                        Expanded(
+                                                          flex: 1,
+                                                          child: Text(
+                                                            FFLocalizations.of(
+                                                                context)
+                                                                .getText(
+                                                              '0pq4i1m3' /* Parts Shop */,
+                                                            ),
+                                                            textAlign:
+                                                            TextAlign.center,
+                                                            style: FlutterFlowTheme
+                                                                .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                              fontFamily:
+                                                              'Seagoe Ui Bold',
+                                                              color: Colors.white,
+                                                              useGoogleFonts:
+                                                              false,
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ],
                                                 ),
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(19.0),
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF3D6398),
-                                      borderRadius: BorderRadius.circular(19.0),
-                                      border: Border.all(
-                                        color: Color(0xFFAFC3E1),
-                                      ),
-                                    ),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'CarModelPage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType: PageTransitionType
-                                                  .bottomToTop,
-                                              duration:
-                                                  Duration(milliseconds: 500),
-                                            ),
-                                          },
-                                        );
-                                      },
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 20.0, 20.0, 8.0),
-                                            child: SvgPicture.asset(
-                                              'assets/images/Group_70551.svg',
-                                              width: 100.0,
-                                              height: 40.0,
-                                              fit: BoxFit.scaleDown,
                                             ),
                                           ),
-                                          Divider(
-                                            thickness: 1.0,
-                                            indent: 25.0,
-                                            endIndent: 25.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(19.0),
                                           ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'qts15g7r' /* Car model */,
-                                                  ),
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Seagoe Ui Bold',
-                                                        color: Colors.white,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF3D6398),
+                                              borderRadius:
+                                              BorderRadius.circular(19.0),
+                                              border: Border.all(
+                                                color: Color(0xFFAFC3E1),
                                               ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(19.0),
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF3D6398),
-                                      borderRadius: BorderRadius.circular(19.0),
-                                      border: Border.all(
-                                        color: Color(0xFFAFC3E1),
-                                      ),
-                                    ),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'LocationPage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
                                             ),
-                                          },
-                                        );
-                                      },
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 20.0, 20.0, 8.0),
-                                            child: Image.asset(
-                                              'assets/images/Group_70552@2x.png',
-                                              width: 100.0,
-                                              height: 40.0,
-                                              fit: BoxFit.scaleDown,
-                                            ),
-                                          ),
-                                          Divider(
-                                            thickness: 1.0,
-                                            indent: 25.0,
-                                            endIndent: 25.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    '2xlj2tf9' /* Locations */,
-                                                  ),
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Seagoe Ui Bold',
-                                                        color: Colors.white,
-                                                        useGoogleFonts: false,
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor: Colors.transparent,
+                                              onTap: () async {
+                                                _model.apiResult2kt =
+                                                await VehicleApiCall.call(
+                                                  token: FFAppState().userModel.token,
+                                                );
+                                                if ((_model.apiResult2kt?.succeeded ??
+                                                    true)) {
+                                                  if (getJsonField(
+                                                    (_model.apiResult2kt
+                                                        ?.jsonBody ??
+                                                        ''),
+                                                    r'''$.vehicles''',
+                                                  ) !=
+                                                      null &&
+                                                      (getJsonField(
+                                                        (_model.apiResult2kt
+                                                            ?.jsonBody ??
+                                                            ''),
+                                                        r'''$.vehicles''',
+                                                      ) as List)
+                                                          .isNotEmpty) {
+                                                    context.pushNamed(
+                                                      'MaintenancePage',
+                                                      extra: <String, dynamic>{
+                                                        kTransitionInfoKey:
+                                                        TransitionInfo(
+                                                          hasTransition: true,
+                                                          transitionType:
+                                                          PageTransitionType.fade,
+                                                          duration: Duration(
+                                                              milliseconds: 0),
+                                                        ),
+                                                      },
+                                                    );
+                                                  } else {
+                                                    await showDialog(
+                                                      barrierColor:
+                                                      Colors.transparent,
+                                                      barrierDismissible: false,
+                                                      context: context,
+                                                      builder: (dialogContext) {
+                                                        return Dialog(
+                                                          child:
+                                                          ScannedCardAnimationComponentWidget(),
+                                                        );
+                                                      },
+                                                    ).then(
+                                                            (value) => setState(() {}));
+                                                  }
+                                                }
+                                                setState(() {});
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        20.0, 20.0, 20.0, 8.0),
+                                                    child: AspectRatio(
+                                                      aspectRatio: 1.8,
+                                                      child: SvgPicture.asset(
+                                                        'assets/images/Group_70550.svg',
+                                                        fit: BoxFit.contain,
                                                       ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(19.0),
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF3D6398),
-                                      borderRadius: BorderRadius.circular(19.0),
-                                      border: Border.all(
-                                        color: Color(0xFFAFC3E1),
-                                      ),
-                                    ),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed('OffersPage');
-                                      },
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 20.0, 20.0, 8.0),
-                                            child: SvgPicture.asset(
-                                              'assets/images/Group_72070.svg',
-                                              width: 100.0,
-                                              height: 40.0,
-                                              fit: BoxFit.scaleDown,
-                                            ),
-                                          ),
-                                          Divider(
-                                            thickness: 1.0,
-                                            indent: 25.0,
-                                            endIndent: 25.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'xifs34ig' /* Monthly offers */,
+                                                    ),
                                                   ),
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Seagoe Ui Bold',
-                                                        color: Colors.white,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                                ),
-                                              ),
-                                            ],
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                                Material(
-                                  color: Colors.transparent,
-                                  elevation: 2.0,
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(19.0),
-                                  ),
-                                  child: Container(
-                                    decoration: BoxDecoration(
-                                      color: Color(0xFF3D6398),
-                                      borderRadius: BorderRadius.circular(19.0),
-                                      border: Border.all(
-                                        color: Color(0xFFAFC3E1),
-                                      ),
-                                    ),
-                                    child: InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed(
-                                          'NewsPage',
-                                          extra: <String, dynamic>{
-                                            kTransitionInfoKey: TransitionInfo(
-                                              hasTransition: true,
-                                              transitionType:
-                                                  PageTransitionType.fade,
-                                              duration:
-                                                  Duration(milliseconds: 0),
-                                            ),
-                                          },
-                                        );
-                                      },
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    20.0, 20.0, 20.0, 8.0),
-                                            child: SvgPicture.asset(
-                                              'assets/images/Group_70554.svg',
-                                              width: 100.0,
-                                              height: 40.0,
-                                              fit: BoxFit.scaleDown,
-                                            ),
-                                          ),
-                                          Divider(
-                                            thickness: 1.0,
-                                            indent: 25.0,
-                                            endIndent: 25.0,
-                                            color: FlutterFlowTheme.of(context)
-                                                .accent4,
-                                          ),
-                                          Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Expanded(
-                                                flex: 1,
-                                                child: Text(
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                    'rncq54oc' /* News */,
+                                                  Divider(
+                                                    thickness: 1.0,
+                                                    indent: 25.0,
+                                                    endIndent: 25.0,
+                                                    color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent4,
                                                   ),
-                                                  textAlign: TextAlign.center,
-                                                  style: FlutterFlowTheme.of(
-                                                          context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
+                                                  Row(
+                                                    mainAxisSize: MainAxisSize.max,
+                                                    children: [
+                                                      Expanded(
+                                                        flex: 1,
+                                                        child: Text(
+                                                          FFLocalizations.of(context)
+                                                              .getText(
+                                                            '8io5q1kq' /* Services */,
+                                                          ),
+                                                          textAlign: TextAlign.center,
+                                                          style: FlutterFlowTheme.of(
+                                                              context)
+                                                              .bodyMedium
+                                                              .override(
+                                                            fontFamily:
                                                             'Seagoe Ui Bold',
-                                                        color: Colors.white,
-                                                        useGoogleFonts: false,
+                                                            color: Colors.white,
+                                                            useGoogleFonts: false,
+                                                          ),
+                                                        ),
                                                       ),
-                                                ),
+                                                    ],
+                                                  ),
+                                                ],
                                               ),
-                                            ],
+                                            ),
                                           ),
-                                        ],
-                                      ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(19.0),
+                                          ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF3D6398),
+                                              borderRadius:
+                                              BorderRadius.circular(19.0),
+                                              border: Border.all(
+                                                color: Color(0xFFAFC3E1),
+                                              ),
+                                            ),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor: Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'CarModelPage',
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                      PageTransitionType
+                                                          .bottomToTop,
+                                                      duration:
+                                                      Duration(milliseconds: 500),
+                                                    ),
+                                                  },
+                                                );
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        20.0, 20.0, 20.0, 8.0),
+                                                    child: AspectRatio(
+                                                      aspectRatio: 1.8,
+                                                      child: SvgPicture.asset(
+                                                        'assets/images/Group_70551.svg',
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 1.0,
+                                                    indent: 25.0,
+                                                    endIndent: 25.0,
+                                                    color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent4,
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize: MainAxisSize.max,
+                                                    children: [
+                                                      Expanded(
+                                                        flex: 1,
+                                                        child: Text(
+                                                          FFLocalizations.of(context)
+                                                              .getText(
+                                                            'qts15g7r' /* Car model */,
+                                                          ),
+                                                          textAlign: TextAlign.center,
+                                                          style: FlutterFlowTheme.of(
+                                                              context)
+                                                              .bodyMedium
+                                                              .override(
+                                                            fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                            color: Colors.white,
+                                                            useGoogleFonts: false,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(19.0),
+                                          ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF3D6398),
+                                              borderRadius:
+                                              BorderRadius.circular(19.0),
+                                              border: Border.all(
+                                                color: Color(0xFFAFC3E1),
+                                              ),
+                                            ),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor: Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'LocationPage',
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                    const TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                      PageTransitionType.fade,
+                                                      duration:
+                                                      Duration(milliseconds: 0),
+                                                    ),
+                                                  },
+                                                );
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        20.0, 20.0, 20.0, 8.0),
+                                                    child: AspectRatio(
+                                                      aspectRatio: 1.8,
+                                                      child: Image.asset(
+                                                        'assets/images/Group_70552@2x.png',
+
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 1.0,
+                                                    indent: 25.0,
+                                                    endIndent: 25.0,
+                                                    color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent4,
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize: MainAxisSize.max,
+                                                    children: [
+                                                      Expanded(
+                                                        flex: 1,
+                                                        child: Text(
+                                                          FFLocalizations.of(context)
+                                                              .getText(
+                                                            '2xlj2tf9' /* Locations */,
+                                                          ),
+                                                          textAlign: TextAlign.center,
+                                                          style: FlutterFlowTheme.of(
+                                                              context)
+                                                              .bodyMedium
+                                                              .override(
+                                                            fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                            color: Colors.white,
+                                                            useGoogleFonts: false,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(19.0),
+                                          ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF3D6398),
+                                              borderRadius:
+                                              BorderRadius.circular(19.0),
+                                              border: Border.all(
+                                                color: Color(0xFFAFC3E1),
+                                              ),
+                                            ),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor: Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed('OffersPage');
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding: EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        20.0, 20.0, 20.0, 8.0),
+                                                    child: AspectRatio(
+                                                      aspectRatio: 1.8,
+                                                      child: SvgPicture.asset(
+                                                        'assets/images/Group_72070.svg',
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 1.0,
+                                                    indent: 25.0,
+                                                    endIndent: 25.0,
+                                                    color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent4,
+                                                  ),
+                                                  Text(
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                      'xifs34ig' /* Monthly offers */,
+                                                    ),
+                                                    textAlign: TextAlign.center,
+                                                    style: FlutterFlowTheme.of(
+                                                        context)
+                                                        .bodyMedium
+                                                        .override(
+                                                      fontFamily:
+                                                      'Seagoe Ui Bold',
+                                                      color: Colors.white,
+                                                      useGoogleFonts: false,
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                        Material(
+                                          color: Colors.transparent,
+                                          elevation: 2.0,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.circular(19.0),
+                                          ),
+                                          child: Container(
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFF3D6398),
+                                              borderRadius:
+                                              BorderRadius.circular(19.0),
+                                              border: Border.all(
+                                                color: Color(0xFFAFC3E1),
+                                              ),
+                                            ),
+                                            child: InkWell(
+                                              splashColor: Colors.transparent,
+                                              focusColor: Colors.transparent,
+                                              hoverColor: Colors.transparent,
+                                              highlightColor: Colors.transparent,
+                                              onTap: () async {
+                                                context.pushNamed(
+                                                  'NewsPage',
+                                                  extra: <String, dynamic>{
+                                                    kTransitionInfoKey:
+                                                    TransitionInfo(
+                                                      hasTransition: true,
+                                                      transitionType:
+                                                      PageTransitionType.fade,
+                                                      duration:
+                                                      Duration(milliseconds: 0),
+                                                    ),
+                                                  },
+                                                );
+                                              },
+                                              child: Column(
+                                                mainAxisAlignment: MainAxisAlignment.spaceAround,
+                                                crossAxisAlignment: CrossAxisAlignment.center,
+                                                children: [
+                                                  Padding(
+                                                    padding: const EdgeInsetsDirectional
+                                                        .fromSTEB(
+                                                        20.0, 20.0, 20.0, 8.0),
+                                                    child: AspectRatio(
+                                                      aspectRatio: 1.8,
+                                                      child: SvgPicture.asset(
+                                                        'assets/images/Group_70554.svg',
+                                                        fit: BoxFit.contain,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  Divider(
+                                                    thickness: 1.0,
+                                                    indent: 25.0,
+                                                    endIndent: 25.0,
+                                                    color:
+                                                    FlutterFlowTheme.of(context)
+                                                        .accent4,
+                                                  ),
+                                                  Row(
+                                                    mainAxisSize: MainAxisSize.max,
+                                                    children: [
+                                                      Expanded(
+                                                        flex: 1,
+                                                        child: Text(
+                                                          FFLocalizations.of(context)
+                                                              .getText(
+                                                            'rncq54oc' /* News */,
+                                                          ),
+                                                          textAlign: TextAlign.center,
+                                                          style: FlutterFlowTheme.of(
+                                                              context)
+                                                              .bodyMedium
+                                                              .override(
+                                                            fontFamily:
+                                                            'Seagoe Ui Bold',
+                                                            color: Colors.white,
+                                                            useGoogleFonts: false,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
                                     ),
                                   ),
                                 ),
                               ],
-                            ),
-                          ),
+                            )
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    )
                   ],
                 ),
               ),
               isLoading
                   ? Container(
-                      width: double.infinity,
-                      height: double.infinity,
-                      decoration: BoxDecoration(
-                        color: Color(0x6A030303),
-                      ),
-                      child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
-                          child: ProgressComponentWidget()),
-                    )
+                width: double.infinity,
+                height: double.infinity,
+                decoration: BoxDecoration(
+                  color: Color(0x6A030303),
+                ),
+                child: Align(
+                    alignment: AlignmentDirectional(0.0, 0.0),
+                    child: ProgressComponentWidget()),
+              )
                   : Container(),
             ],
           ),

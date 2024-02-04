@@ -38,6 +38,7 @@ class AddComponentShopingDetailsWidget extends StatefulWidget {
 class _AddComponentShopingDetailsWidgetState
     extends State<AddComponentShopingDetailsWidget> {
   late AddComponentShopingDetailsModel _model;
+  final GlobalKey dropdownKey = GlobalKey();
 
   @override
   void setState(VoidCallback callback) {
@@ -89,6 +90,20 @@ class _AddComponentShopingDetailsWidgetState
         setState(() {
           _model.titleHeade = widget.titleh!;
         });
+
+
+        // setState(() {
+        //
+        //   FlutterFlowDropDown state = dropdownKey.currentState as FlutterFlowDropDown;
+        //   state.onChanged!('${_model.listOfMyVehicle[0].carModel.name}/${_model.listOfMyVehicle[0].plateNumber}');
+        //   // _model.dropDownValueController?.indexOf(0);
+        //   //
+        //
+        //   // _model.dropDownValueController  =
+        //   //     FormFieldController<String>('${_model.listOfMyVehicle[0].carModel.name}/${_model.listOfMyVehicle[0].plateNumber}');
+        // });
+
+
       }
     });
     _model.textController ??= TextEditingController();
@@ -328,6 +343,7 @@ class _AddComponentShopingDetailsWidgetState
                                   options: _model.listOfMyVehicle
                                       .map((e) => '${e.carModel.name}/${e.plateNumber}')
                                       .toList(),
+                                  key: dropdownKey,
                                   onChanged: (val) async {
                                     setState(() => _model.dropDownValue = val);
                                     setState(() {

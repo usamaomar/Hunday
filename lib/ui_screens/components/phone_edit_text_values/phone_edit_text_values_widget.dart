@@ -65,6 +65,9 @@ class _PhoneEditTextValuesWidgetState extends State<PhoneEditTextValuesWidget> {
         children: [
           Expanded(
             child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -76,6 +79,7 @@ class _PhoneEditTextValuesWidgetState extends State<PhoneEditTextValuesWidget> {
                         border: Border.all(
                           color: widget.isErrorColor!,
                         ),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(

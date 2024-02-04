@@ -87,27 +87,53 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
           child: Stack(
             children: [
               Align(
-                alignment: AlignmentDirectional(0.0, 1.0),
-                child: Padding(
-                  padding: EdgeInsets.all(5.0),
-                  child: Material(
-                    color: Colors.transparent,
-                    elevation: 15.0,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.only(
-                        bottomLeft: Radius.circular(0.0),
-                        bottomRight: Radius.circular(0.0),
-                        topLeft: Radius.circular(20.0),
-                        topRight: Radius.circular(20.0),
+                alignment: Alignment.topCenter,
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    wrapWithModel(
+                      model: _model.hyndayAppBarModel,
+                      updateCallback: () => setState(() {}),
+                      child: HyndayAppBarWidget(
+                        appBarTitle: valueOrDefault<String>(
+                          widget.titleHeader,
+                          '-',
+                        ),
+                        isMyProfileOpend: false,
                       ),
                     ),
-                    child: Container(
-                      width: double.infinity,
-                      constraints: BoxConstraints(
-                        maxHeight: 370.0,
+                    Align(
+                      alignment: AlignmentDirectional(0.0, -1.0),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(8.0),
+                        child: AspectRatio(
+                          aspectRatio: 2.4,
+                          child: Image.network(
+                            _model.localMyPart != null
+                                ? _model.localMyPart!.fullImage
+                                : ' ',
+                            fit: BoxFit.contain,
+                            errorBuilder: (context, error, stackTrace) =>
+                                Image.asset(
+                              'assets/images/error_image.png',
+                              fit: BoxFit.contain,
+                            ),
+                          ),
+                        ),
                       ),
-                      decoration: BoxDecoration(
-                        color: Color(0xFFC1D6EF),
+                    ),
+                  ],
+                ),
+              ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: SingleChildScrollView(
+                  child: Padding(
+                    padding: EdgeInsets.fromLTRB(5, 280, 5, 5),
+                    child: Material(
+                      color: Colors.transparent,
+                      elevation: 15.0,
+                      shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.only(
                           bottomLeft: Radius.circular(0.0),
                           bottomRight: Radius.circular(0.0),
@@ -115,7 +141,17 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                           topRight: Radius.circular(20.0),
                         ),
                       ),
-                      child: SingleChildScrollView(
+                      child: Container(
+                        width: double.infinity,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFC1D6EF),
+                          borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(0.0),
+                            bottomRight: Radius.circular(0.0),
+                            topLeft: Radius.circular(20.0),
+                            topRight: Radius.circular(20.0),
+                          ),
+                        ),
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -152,7 +188,7 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                 children: [
                                   Text(
                                     valueOrDefault<String>(
-                                      '${(_model.localMyPart?.specialPrice ?? 0) > 0 ?  _model.localMyPart?.specialPrice :  _model.localMyPart?.price.toString()} ${FFLocalizations.of(context).getVariableText(
+                                      '${(_model.localMyPart?.specialPrice ?? 0) > 0 ? _model.localMyPart?.specialPrice : _model.localMyPart?.price.toString()} ${FFLocalizations.of(context).getVariableText(
                                         enText: 'JOD',
                                         arText: 'دينار',
                                       )}',
@@ -426,7 +462,9 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                               ),
                             ),
                             Visibility(
-                              visible: ((widget.yearOf?.isNotEmpty == true) && widget.yearOf!='-') ?? false,
+                              visible: ((widget.yearOf?.isNotEmpty == true) &&
+                                      widget.yearOf != '-') ??
+                                  false,
                               child: Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     25.0, 0.0, 25.0, 0.0),
@@ -464,7 +502,8 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                                       .bodyMedium
                                                       .override(
                                                         fontFamily: 'HeeboBold',
-                                                        color: Color(0xFF212427),
+                                                        color:
+                                                            Color(0xFF212427),
                                                         fontSize: 13.0,
                                                         fontWeight:
                                                             FontWeight.bold,
@@ -481,9 +520,8 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                               ),
                                             ),
                                             Padding(
-                                              padding:
-                                                  EdgeInsetsDirectional.fromSTEB(
-                                                      5.0, 0.0, 5.0, 0.0),
+                                              padding: EdgeInsetsDirectional
+                                                  .fromSTEB(5.0, 0.0, 5.0, 0.0),
                                               child: Text(
                                                 valueOrDefault<String>(
                                                   widget.yearOf,
@@ -546,10 +584,10 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                                                   .fromSTEB(
                                                       20.0, 0.0, 20.0, 0.0),
                                               child: Text(
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  'awj659y0' /* Model */,
-                                                ),
+                                                  FFLocalizations.of(context).getVariableText(
+                                                    enText: 'Part Number',
+                                                    arText: 'رقم القطعة',
+                                                  ),
                                                 style: FlutterFlowTheme.of(
                                                         context)
                                                     .bodyMedium
@@ -693,49 +731,6 @@ class _ItemDetailsPageWidgetState extends State<ItemDetailsPageWidget> {
                     ),
                   ),
                 ),
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    mainAxisSize: MainAxisSize.max,
-                    children: [
-                      wrapWithModel(
-                        model: _model.hyndayAppBarModel,
-                        updateCallback: () => setState(() {}),
-                        child: HyndayAppBarWidget(
-                          appBarTitle: valueOrDefault<String>(
-                            widget.titleHeader,
-                            '-',
-                          ),
-                          isMyProfileOpend: false,
-                        ),
-                      ),
-                      Align(
-                        alignment: AlignmentDirectional(0.0, -1.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: Image.network(
-                            _model.localMyPart != null
-                                ? _model.localMyPart!.fullImage
-                                : ' ',
-                            width: 300.0,
-                            height: 200.0,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) =>
-                                Image.asset(
-                              'assets/images/error_image.png',
-                              width: 300.0,
-                              height: 200.0,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
               ),
             ],
           ),

@@ -515,7 +515,7 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                     ),
                     Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 75.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,

@@ -189,9 +189,6 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                             borderRadius:
                                                 BorderRadius.circular(15.0),
                                             child: Container(
-                                              constraints: BoxConstraints(
-                                                minWidth: 180.0,
-                                              ),
                                               decoration: BoxDecoration(
                                                 color: Color(0x74FFFEFE),
                                                 boxShadow: [
@@ -234,20 +231,21 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                                       borderRadius:
                                                           BorderRadius.circular(
                                                               0.0),
-                                                      child: Image.network(
-                                                        getJsonField(
-                                                          gridOfCarModelsItemItem,
-                                                          r'''$.full_image''',
-                                                        ).toString(),
-                                                        width: 85.0,
-                                                        fit: BoxFit.contain,
-                                                        errorBuilder: (context,
-                                                                error,
-                                                                stackTrace) =>
-                                                            Image.asset(
-                                                          'assets/images/error_image.png',
-                                                          width: 85.0,
+                                                      child: AspectRatio(
+                                                        aspectRatio: 3.0,
+                                                        child: Image.network(
+                                                          getJsonField(
+                                                            gridOfCarModelsItemItem,
+                                                            r'''$.full_image''',
+                                                          ).toString(),
                                                           fit: BoxFit.contain,
+                                                          errorBuilder: (context,
+                                                                  error,
+                                                                  stackTrace) =>
+                                                              Image.asset(
+                                                            'assets/images/error_image.png',
+                                                            fit: BoxFit.contain,
+                                                          ),
                                                         ),
                                                       ),
                                                     ),

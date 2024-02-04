@@ -9,7 +9,11 @@ import 'empty_list_component_model.dart';
 export 'empty_list_component_model.dart';
 
 class EmptyListComponentWidget extends StatefulWidget {
-  const EmptyListComponentWidget({super.key});
+
+  final Color? color;
+
+
+    const EmptyListComponentWidget({super.key,this.color});
 
   @override
   State<EmptyListComponentWidget> createState() =>
@@ -58,6 +62,7 @@ class _EmptyListComponentWidgetState extends State<EmptyListComponentWidget> {
               style: FlutterFlowTheme.of(context).bodyMedium.override(
                     fontFamily: 'Heebo Regular',
                     fontSize: 16.0,
+                    color: widget.color ?? Colors.black87,
                     fontWeight: FontWeight.w200,
                     useGoogleFonts: false,
                   ),

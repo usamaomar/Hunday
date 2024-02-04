@@ -14,12 +14,9 @@ import '/ui_screens/components/reguler_edit_text_values/reguler_edit_text_values
 import '/ui_screens/components/verify_bottom_dialog/verify_bottom_dialog_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:aligned_tooltip/aligned_tooltip.dart';
-import 'package:flutter/foundation.dart';
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -108,7 +105,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
               width: double.infinity,
               height: double.infinity,
               decoration: BoxDecoration(
-                color: FlutterFlowTheme.of(context).secondaryBackground,
+                color: Colors.black,
                 image: DecorationImage(
                   fit: BoxFit.cover,
                   alignment: AlignmentDirectional(0.0, -1.0),
@@ -128,7 +125,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 50.0, 0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -274,104 +271,107 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                35.0, 0.0, 35.0, 0.0),
+                                30.0, 0.0, 30.0, 0.0),
                             child: Stack(
                               children: [
-                                Container(
-                                  decoration: BoxDecoration(
-                                    color: Color(0xB8FFFEFE),
-                                    borderRadius: BorderRadius.circular(0.0),
-                                    border: Border.all(
-                                      color: valueOrDefault<Color>(
-                                        _model.localEmailIsValid == true
-                                            ? Color(0x00FFFFFF)
-                                            : FlutterFlowTheme.of(context)
-                                                .error,
-                                        Color(0x000FFFFF),
-                                      ),
-                                      width: 1.0,
+                                Opacity(
+                                  opacity:0.8,
+                                  child: Card(
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(5),
                                     ),
-                                  ),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Expanded(
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  5.0, 0.0, 5.0, 0.0),
-                                          child: TextFormField(
-                                            controller: _model.textController,
-                                            focusNode:
-                                                _model.textFieldFocusNode,
-                                            obscureText: false,
-                                            decoration: InputDecoration(
-                                              isDense: true,
-                                              hintText:
-                                                  FFLocalizations.of(context)
-                                                      .getText(
-                                                '6zaw2uxi' /* Email */,
-                                              ),
-                                              hintStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodySmall
-                                                      .override(
-                                                        fontFamily: 'Heebo',
-                                                        color:
-                                                            Color(0xFFAAAAAA),
-                                                        fontSize: 14.0,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                              enabledBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                              ),
-                                              focusedBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                              ),
-                                              errorBorder: OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                              ),
-                                              focusedErrorBorder:
-                                                  OutlineInputBorder(
-                                                borderSide: BorderSide(
-                                                  color: Color(0x00000000),
-                                                  width: 1.0,
-                                                ),
-                                                borderRadius:
-                                                    BorderRadius.circular(0.0),
-                                              ),
-                                            ),
-                                            style: FlutterFlowTheme.of(context)
-                                                .titleSmall,
-                                            keyboardType:
-                                                TextInputType.emailAddress,
-                                            validator: _model
-                                                .textControllerValidator
-                                                .asValidator(context),
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Color(0xB8FFFEFE),
+                                        border: Border.all(
+                                          color: valueOrDefault<Color>(
+                                            _model.localEmailIsValid == true
+                                                ? Color(0xB8FFFEFE)
+                                                : FlutterFlowTheme.of(context)
+                                                    .error,
+                                            Color(0xB8FFFEFE),
                                           ),
+                                          width: 1.0,
                                         ),
+                                        borderRadius: BorderRadius.circular(5),
                                       ),
-                                    ],
+                                      child: Row(
+                                        mainAxisSize: MainAxisSize.max,
+                                        children: [
+                                          Expanded(
+                                            child: TextFormField(
+                                              controller: _model.textController,
+                                              focusNode:
+                                                  _model.textFieldFocusNode,
+                                              obscureText: false,
+                                              decoration: InputDecoration(
+                                                isDense: true,
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  '6zaw2uxi' /* Email */,
+                                                ),
+                                                hintStyle:
+                                                    FlutterFlowTheme.of(context)
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Heebo',
+                                                          color:
+                                                              Color(0xFFAAAAAA),
+                                                          fontSize: 14.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                enabledBorder: OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                                ),
+                                                focusedBorder: OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                                ),
+                                                errorBorder: OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                  BorderRadius.circular(5.0),
+                                                ),
+                                                focusedErrorBorder:
+                                                    OutlineInputBorder(
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0x00000000),
+                                                    width: 1.0,
+                                                  ),
+                                                  borderRadius:
+                                                      BorderRadius.circular(5.0),
+                                                ),
+                                              ),
+                                              style: FlutterFlowTheme.of(context)
+                                                  .titleSmall,
+                                              keyboardType:
+                                                  TextInputType.emailAddress,
+                                              validator: _model
+                                                  .textControllerValidator
+                                                  .asValidator(context),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
                                   ),
                                 ),
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
-                                      5.0, 15.0, 5.0, 0.0),
+                                      10.0, 15.0, 10.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.end,
@@ -437,7 +437,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 30.0, 0.0, 30.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.min,
@@ -466,7 +466,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             10.0, 15.0, 10.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -558,7 +558,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                             children: [
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       30.0, 0.0, 30.0, 0.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
@@ -569,175 +569,172 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                           opacity: 0.8,
                                           child: Padding(
                                             padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    5.0, 0.0, 5.0, 0.0),
-                                            child: FlutterFlowDropDown<String>(
-                                              controller: _model
-                                                      .dropDownValueController ??=
-                                                  FormFieldController<String>(
-                                                      null),
-                                              options: [
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '6a79dl98' /* Male */,
-                                                ),
-                                                FFLocalizations.of(context)
-                                                    .getText(
-                                                  '8tmgnkrr' /* Female */,
-                                                )
-                                              ],
-                                              onChanged: (val) => setState(() =>
-                                                  _model.dropDownValue = val),
-                                              textStyle:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
-                                              hintText:
+                                                const EdgeInsetsDirectional.fromSTEB(
+                                                    0.0, 0.0, 0.0, 0.0),
+                                            child: Card(
+                                              shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(5),
+                                              ),
+                                              clipBehavior: Clip.antiAliasWithSaveLayer,
+                                              child: FlutterFlowDropDown<String>(
+                                                controller: _model
+                                                        .dropDownValueController ??=
+                                                    FormFieldController<String>(
+                                                        null),
+                                                options: [
                                                   FFLocalizations.of(context)
                                                       .getText(
-                                                '1ok3uuc1' /* Gender */,
-                                              ),
-                                              icon: Icon(
-                                                Icons
-                                                    .keyboard_arrow_down_rounded,
-                                                color:
+                                                    '6a79dl98' /* Male */,
+                                                  ),
+                                                  FFLocalizations.of(context)
+                                                      .getText(
+                                                    '8tmgnkrr' /* Female */,
+                                                  )
+                                                ],
+                                                onChanged: (val) => setState(() =>
+                                                    _model.dropDownValue = val),
+                                                textStyle:
                                                     FlutterFlowTheme.of(context)
-                                                        .secondaryText,
-                                                size: 24.0,
+                                                        .bodyMedium.copyWith(color:  Color(0xFFAAAAAA)),
+                                                hintText:
+                                                    FFLocalizations.of(context)
+                                                        .getText(
+                                                  '1ok3uuc1' /* Gender */,
+                                                ),
+                                                icon: Icon(
+                                                  Icons
+                                                      .keyboard_arrow_down_rounded,
+                                                  color:
+                                                      FlutterFlowTheme.of(context)
+                                                          .secondaryText,
+                                                  size: 24.0,
+                                                ),
+                                                fillColor: const Color(0xB8FFFEFE),
+                                                elevation: 0.0,
+                                                borderColor: Colors.transparent,
+                                                borderWidth: 0.0,
+                                                borderRadius: 3.0,
+                                                margin: const EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        10.0, 0.0, 10.0, 0.0),
+                                                hidesUnderline: true,
+                                                isSearchable: false,
+                                                isMultiSelect: false,
                                               ),
-                                              fillColor:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              elevation: 0.0,
-                                              borderColor: Colors.transparent,
-                                              borderWidth: 0.0,
-                                              borderRadius: 3.0,
-                                              margin: EdgeInsetsDirectional
-                                                  .fromSTEB(
-                                                      10.0, 0.0, 10.0, 0.0),
-                                              hidesUnderline: true,
-                                              isSearchable: false,
-                                              isMultiSelect: false,
                                             ),
                                           ),
                                         ),
                                       ),
                                       Flexible(
-                                        child: Opacity(
-                                          opacity: 0.8,
-                                          child: InkWell(
-                                            splashColor: Colors.transparent,
-                                            focusColor: Colors.transparent,
-                                            hoverColor: Colors.transparent,
-                                            highlightColor: Colors.transparent,
-                                            onTap: () async {
-                                              final _datePickedDate =
-                                                  await showDatePicker(
-                                                context: context,
-                                                initialDate:
-                                                    getCurrentTimestamp,
-                                                firstDate: DateTime(1900),
-                                                lastDate: getCurrentTimestamp,
-                                                    builder: (context, child) {
-                                                      return wrapInMaterialDatePickerTheme(
-                                                        context,
-                                                        child!,
-                                                        headerBackgroundColor:
-                                                        FlutterFlowTheme.of(context).white,
-                                                        headerForegroundColor:
-                                                        FlutterFlowTheme.of(context).info,
-                                                        headerTextStyle:
-                                                        FlutterFlowTheme.of(context)
-                                                            .headlineLarge
-                                                            .override(
-                                                          fontFamily: 'Poppins',
-                                                          fontSize: 32.0,
-                                                          fontWeight: FontWeight.w600,
-                                                        ),
-                                                        pickerBackgroundColor:
-                                                        FlutterFlowTheme.of(context)
-                                                            .secondaryBackground,
-                                                        pickerForegroundColor:
-                                                        Colors.black,
-                                                        selectedDateTimeBackgroundColor:Colors.white,
-                                                        selectedDateTimeForegroundColor:
-                                                        Colors.black,
-                                                        actionButtonForegroundColor:
-                                                        FlutterFlowTheme.of(context)
-                                                            .primaryText,
-                                                        iconSize: 24.0,
-                                                      );
-                                                    },
-                                              );
-
-                                              if (_datePickedDate != null) {
-                                                safeSetState(() {
-                                                  _model.datePicked = DateTime(
-                                                    _datePickedDate.year,
-                                                    _datePickedDate.month,
-                                                    _datePickedDate.day,
-                                                  );
-                                                });
-                                              }
-                                              if (!functions.is18YearsOrOlder(
-                                                  _model.datePicked!
-                                                      .secondsSinceEpoch)) {
-                                                await showDialog(
-                                                  context: context,
-                                                  builder:
-                                                      (alertDialogContext) {
-                                                    return AlertDialog(
-                                                      title: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getVariableText(
-                                                        enText: 'Error',
-                                                        arText: 'خطأ',
-                                                      )),
-                                                      content: Text(
-                                                          FFLocalizations.of(
-                                                                  context)
-                                                              .getVariableText(
-                                                        enText:
-                                                            'Your age must be over 18 ',
-                                                        arText:
-                                                            'يجب أن يكون عمرك أكبر من 18 عامًا',
-                                                      )),
-                                                      actions: [
-                                                        TextButton(
-                                                          onPressed: () =>
-                                                              Navigator.pop(
-                                                                  alertDialogContext),
-                                                          child: Text(
-                                                              FFLocalizations.of(
-                                                                      context)
-                                                                  .getVariableText(
-                                                            enText: 'ok',
-                                                            arText: 'حسنا',
-                                                          )),
-                                                        ),
-                                                      ],
+                                        child: InkWell(
+                                          onTap: () async {
+                                            final _datePickedDate =
+                                                await showDatePicker(
+                                              context: context,
+                                              initialDate:
+                                                  getCurrentTimestamp,
+                                              firstDate: DateTime(1900),
+                                              lastDate: getCurrentTimestamp,
+                                                  builder: (context, child) {
+                                                    return wrapInMaterialDatePickerTheme(
+                                                      context,
+                                                      child!,
+                                                      headerBackgroundColor:
+                                                      FlutterFlowTheme.of(context).white,
+                                                      headerForegroundColor:
+                                                      FlutterFlowTheme.of(context).info,
+                                                      headerTextStyle:
+                                                      FlutterFlowTheme.of(context)
+                                                          .headlineLarge
+                                                          .override(
+                                                        fontFamily: 'Poppins',
+                                                        fontSize: 32.0,
+                                                        fontWeight: FontWeight.w600,
+                                                      ),
+                                                      pickerBackgroundColor:
+                                                      FlutterFlowTheme.of(context)
+                                                          .secondaryBackground,
+                                                      pickerForegroundColor:
+                                                      Colors.black,
+                                                      selectedDateTimeBackgroundColor:Colors.white,
+                                                      selectedDateTimeForegroundColor:
+                                                      Colors.black,
+                                                      actionButtonForegroundColor:
+                                                      FlutterFlowTheme.of(context)
+                                                          .primaryText,
+                                                      iconSize: 24.0,
                                                     );
                                                   },
+                                            );
+
+                                            if (_datePickedDate != null) {
+                                              safeSetState(() {
+                                                _model.datePicked = DateTime(
+                                                  _datePickedDate.year,
+                                                  _datePickedDate.month,
+                                                  _datePickedDate.day,
                                                 );
-                                                return;
-                                              }
-                                              setState(() {
-                                                _model.localDateOfBirth =
-                                                    functions
-                                                        .formatDateTimeDrop(
-                                                            _model.datePicked!);
                                               });
-                                            },
+                                            }
+                                            if (!functions.is18YearsOrOlder(
+                                                _model.datePicked!
+                                                    .secondsSinceEpoch)) {
+                                              await showDialog(
+                                                context: context,
+                                                builder:
+                                                    (alertDialogContext) {
+                                                  return AlertDialog(
+                                                    title: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                      enText: 'Error',
+                                                      arText: 'خطأ',
+                                                    )),
+                                                    content: Text(
+                                                        FFLocalizations.of(
+                                                                context)
+                                                            .getVariableText(
+                                                      enText:
+                                                          'Your age must be over 18 ',
+                                                      arText:
+                                                          'يجب أن يكون عمرك أكبر من 18 عامًا',
+                                                    )),
+                                                    actions: [
+                                                      TextButton(
+                                                        onPressed: () =>
+                                                            Navigator.pop(
+                                                                alertDialogContext),
+                                                        child: Text(
+                                                            FFLocalizations.of(
+                                                                    context)
+                                                                .getVariableText(
+                                                          enText: 'ok',
+                                                          arText: 'حسنا',
+                                                        )),
+                                                      ),
+                                                    ],
+                                                  );
+                                                },
+                                              );
+                                              return;
+                                            }
+                                            setState(() {
+                                              _model.localDateOfBirth =
+                                                  functions
+                                                      .formatDateTimeDrop(
+                                                          _model.datePicked!);
+                                            });
+                                          },
+                                          child: Opacity(
+                                            opacity: 0.8,
                                             child: Card(
-                                              clipBehavior:
-                                                  Clip.antiAliasWithSaveLayer,
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                              elevation: 0.0,
+
+                                            elevation: 0.0,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
-                                                    BorderRadius.circular(3.0),
+                                                    BorderRadius.circular(5.0),
+
                                               ),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -754,8 +751,8 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                           .bodyMedium
                                                           .override(
                                                             fontFamily: 'Heebo',
-                                                            color: Color(
-                                                                0xFF646464),
+                                                            color: const Color(
+                                                                0xFFAAAAAA),
                                                             useGoogleFonts:
                                                                 false,
                                                           ),
@@ -782,7 +779,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 30.0, 0.0, 30.0, 0.0),
                             child: ClipRRect(
                               child: Container(
@@ -819,7 +816,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         4.0, 18.0, 4.0, 0.0),
                                                 child: Row(
@@ -835,12 +832,12 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                         false)
                                                       Align(
                                                         alignment:
-                                                            AlignmentDirectional(
+                                                            const AlignmentDirectional(
                                                                 1.0, 0.0),
                                                         child: AlignedTooltip(
                                                           content: Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           5.0,
                                                                           10.0,
@@ -1058,7 +1055,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                30.0, 10.0, 30.0, 10.0),
+                                30.0, 10.0, 30.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -1132,7 +1129,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                30.0, 10.0, 30.0, 10.0),
+                                30.0, 0.0, 30.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -1218,7 +1215,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                           ),
                           Padding(
                             padding: EdgeInsetsDirectional.fromSTEB(
-                                30.0, 30.5, 30.0, 0.0),
+                                30.0, 10.5, 30.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -1347,14 +1344,15 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                               });
                                               setState(() {
                                                 _model.localPhoneNumber = functions
-                                                    .checkNumberAndValidate(_model
+                                                    .checkNumberAndValidate(
+                                                    replaceArabicNumerals( _model
                                                         .phoneEditTextValuesModel
                                                         .textController
-                                                        .text);
+                                                        .text)
+                                                   );
                                               });
                                               if (functions.checkNumberCount(
-                                                      _model
-                                                          .localPhoneNumber) !=
+                                                  replaceArabicNumerals(_model.localPhoneNumber)) !=
                                                   true) {
                                                 setState(() {
                                                   _model.localPhoneNumberValid =
@@ -1472,7 +1470,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 _model.apiResult7h5 =
                                                     await RegisterApiCall.call(
                                                   phone:
-                                                      _model.localPhoneNumber,
+                                                        replaceArabicNumerals(_model.localPhoneNumber),
                                                   name: _model
                                                       .regulerEditTextValuesModel
                                                       .textController
@@ -1511,22 +1509,6 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                         .textController
                                                         .text;
                                                   });
-                                                  setState(() {
-                                                    FFAppState()
-                                                            .biomatricDtateModel =
-                                                        BiomatricModelStruct(
-                                                      phoneNumber:getJsonField(
-                                                        (_model.apiResult7h5
-                                                            ?.jsonBody ??
-                                                            ''),
-                                                        r'''$.user.phone''',
-                                                      ),
-                                                      password: _model
-                                                          .passwordEditTextValuesModel1
-                                                          .textController
-                                                          .text,
-                                                    );
-                                                  });
                                                   await showModalBottomSheet(
                                                     isScrollControlled: true,
                                                     backgroundColor:
@@ -1552,7 +1534,15 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                           child: Container(
                                                             height: 400.0,
                                                             child:
-                                                                VerifyBottomDialogWidget(),
+                                                                VerifyBottomDialogWidget(password: _model
+                                                                    .passwordEditTextValuesModel1
+                                                                    .textController
+                                                                    .text,phoneNumber: getJsonField(
+                                                                  (_model.apiResult7h5
+                                                                      ?.jsonBody ??
+                                                                      ''),
+                                                                  r'''$.user.phone''',
+                                                                ),),
                                                           ),
                                                         ),
                                                       );
@@ -1675,5 +1665,28 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
         ),
       ),
     );
+  }
+
+  String replaceArabicNumerals(String input) {
+    Map<String, String> arabicToWesternNumerals = {
+      '١': '1',
+      '٢': '2',
+      '٣': '3',
+      '٤': '4',
+      '٥': '5',
+      '٦': '6',
+      '٧': '7',
+      '٨': '8',
+      '٩': '9',
+      '٠': '0',
+    };
+
+    String result = input;
+
+    arabicToWesternNumerals.forEach((arabic, western) {
+      result = result.replaceAll(arabic, western);
+    });
+
+    return result;
   }
 }

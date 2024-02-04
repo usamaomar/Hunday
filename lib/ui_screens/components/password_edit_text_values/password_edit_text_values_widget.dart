@@ -66,6 +66,9 @@ class _PasswordEditTextValuesWidgetState
         children: [
           Expanded(
             child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: Row(
                 mainAxisSize: MainAxisSize.max,
@@ -77,10 +80,11 @@ class _PasswordEditTextValuesWidgetState
                         border: Border.all(
                           color: widget.isErrorColor!,
                         ),
+                        borderRadius: BorderRadius.circular(5.0),
                       ),
                       child: Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
-                            10.0, 0.0, 10.0, 0.0),
+                            12.0, 0.0, 12.0, 0.0),
                         child: TextFormField(
                           controller: _model.textController,
                           focusNode: _model.textFieldFocusNode,

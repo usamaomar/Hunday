@@ -66,6 +66,9 @@ class _RegulerEditTextValuesWidgetState
         children: [
           Expanded(
             child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(5),
+              ),
               clipBehavior: Clip.antiAliasWithSaveLayer,
               child: Row(
                 mainAxisSize: MainAxisSize.max,

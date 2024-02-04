@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:hyperpay_plugin/flutter_hyperpay.dart';
 import 'package:hyperpay_plugin/model/custom_ui.dart';
 import 'package:hyperpay_plugin/model/ready_ui.dart';
@@ -21,6 +22,7 @@ import 'package:provider/provider.dart';
 import 'sheck_out_page_page_model.dart';
 export 'sheck_out_page_page_model.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
+import 'dart:io' show Platform;
 
 class SheckOutPagePageWidget extends StatefulWidget {
   const SheckOutPagePageWidget({
@@ -35,12 +37,12 @@ class SheckOutPagePageWidget extends StatefulWidget {
 }
 
 class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
-    with TickerProviderStateMixin {
+    with TickerProviderStateMixin  , WidgetsBindingObserver{
   late SheckOutPagePageModel _model;
   late FlutterHyperPay flutterHyperPay;
   bool isLoading = false;
   final scaffoldKey = GlobalKey<ScaffoldState>();
-
+  String? redirect;
   Map<String, AnimationInfo> animationsMap = {
     'columnOnPageLoadAnimation': AnimationInfo(
       trigger: AnimationTrigger.onPageLoad,
@@ -58,8 +60,11 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   @override
   void initState() {
+    WidgetsBinding.instance?.addObserver(this);
     super.initState();
     _model = createModel(context, () => SheckOutPagePageModel());
+
+    // if (Platform.isAndroid) {
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       flutterHyperPay = FlutterHyperPay(
         shopperResultUrl: InAppPaymentSetting.shopperResultUrl,
@@ -73,6 +78,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
         checks();
       }
     });
+    // }
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -88,7 +94,6 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
       print('${_model.apiResult8am?.jsonBody}');
       await showDialog(
         context: context,
-
         builder: (dialogContext) {
           return Material(
             color: Colors.transparent,
@@ -137,6 +142,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
   @override
   void dispose() {
     _model.dispose();
+    WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }
 
@@ -633,17 +639,27 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                         'AboutAppPage',
                                                         queryParameters: {
                                                           'title':
-                                                          serializeParam(
-                                                            FFLocalizations.of(context)
+                                                              serializeParam(
+                                                            FFLocalizations.of(
+                                                                    context)
                                                                 .getVariableText(
-                                                              enText: 'Privacy & Terms',
-                                                              arText: 'الشروط والاحكام',
+                                                              enText:
+                                                                  'Privacy & Terms',
+                                                              arText:
+                                                                  'الشروط والاحكام',
                                                             ),
                                                             ParamType.String,
                                                           ),
                                                           'body':
-                                                          serializeParam(
-                                                            functions.getSettingByKey(FFAppState().currentLanguge == 'en' ? 'condition_en' : 'condition_ar', FFAppState().socialMediaJsonObject.toList()),
+                                                              serializeParam(
+                                                            functions.getSettingByKey(
+                                                                FFAppState().currentLanguge ==
+                                                                        'en'
+                                                                    ? 'condition_en'
+                                                                    : 'condition_ar',
+                                                                FFAppState()
+                                                                    .socialMediaJsonObject
+                                                                    .toList()),
                                                             ParamType.String,
                                                           ),
                                                         }.withoutNulls,
@@ -688,12 +704,9 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                   builder: (context) =>
                                                       FFButtonWidget(
                                                     onPressed: () async {
-                                                      context.pushNamed(
-                                                          'PaymentPagePage');
-
-
-
-                                                      return;
+                                                      // context.pushNamed(
+                                                      //     'PaymentPagePage');
+                                                      // return;
                                                       var _shouldSetState =
                                                           false;
                                                       if (_model
@@ -753,14 +766,24 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                     ?.succeeded ??
                                                                 true)) {
                                                               await showDialog(
-                                                                context: context,
-                                                                builder: (dialogContext) {
-                                                                  return Dialog(child: GestureDetector(
-                                                                    onTap: () => _model.unfocusNode.canRequestFocus
-                                                                        ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-                                                                        : FocusScope.of(context).unfocus(),
-                                                                    child: ThankYouComponentWidget(),
-                                                                  ),);
+                                                                context:
+                                                                    context,
+                                                                builder:
+                                                                    (dialogContext) {
+                                                                  return Dialog(
+                                                                    child:
+                                                                        GestureDetector(
+                                                                      onTap: () => _model
+                                                                              .unfocusNode
+                                                                              .canRequestFocus
+                                                                          ? FocusScope.of(context).requestFocus(_model
+                                                                              .unfocusNode)
+                                                                          : FocusScope.of(context)
+                                                                              .unfocus(),
+                                                                      child:
+                                                                          ThankYouComponentWidget(),
+                                                                    ),
+                                                                  );
                                                                 },
                                                               ).then((value) {
                                                                 FFAppState()
@@ -775,7 +798,6 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                               await showDialog(
                                                                 context:
                                                                     context,
-
                                                                 builder:
                                                                     (dialogContext) {
                                                                   return Material(
@@ -884,11 +906,6 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
                                                       if (_shouldSetState)
                                                         setState(() {});
-
-
-
-
-
                                                     },
                                                     text: FFLocalizations.of(
                                                             context)
@@ -984,70 +1001,90 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     );
   }
 
+  static const platform = const MethodChannel("com.comc.hyundai/paymentMethod");
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+        if(redirect!=null){
+          context.pushReplacementNamed(
+            'HomeScreen',
+            queryParameters: {
+              'deepLinkId': serializeParam(
+                redirect,
+                ParamType.String,
+              ),
+            }.withoutNulls,
+          );
+        }
+    }
+  }
   payRequestNowReadyUI(
       {required String checkoutId, required merchantId}) async {
-    PaymentResultData paymentResultData;
-    paymentResultData = await flutterHyperPay.customUICards(customUI:  CustomUI(
-      brandName: "VISA",
-      checkoutId: checkoutId,
-      cardNumber: "4111111111111111",
-      holderName: "test name",
-      month: "01",
-      year: "2025",
-      cvv: "123",
-      enabledTokenization: false, // default
-    ),);
-    if (paymentResultData.paymentResult == PaymentResult.success ||
-        paymentResultData.paymentResult == PaymentResult.sync) {
-      print("object");
-    }else{
-      print("object");
+    if (Platform.isIOS || kDebugMode) {
+      var result =
+          await platform.invokeMethod('getPaymentMetod', <String, dynamic>{
+        'checkoutId': checkoutId,
+      }).then((value) {
+        //https://eu-test.oppwa.com/v1/checkouts/F7172ECA6D1F040A85FFB1BBAEC14673.uat01-vm-tx02/redirect
+      redirect = value;
+      }).catchError((onError) {
+        print("object");
+      });
+      // context.pushNamed(
+      //   'PaymentPagePage',
+      //   queryParameters: {
+      //     'checkoutId': serializeParam(
+      //       checkoutId,
+      //       ParamType.String,
+      //     ),
+      //   }.withoutNulls,
+      // );
+    } else {
+      await flutterHyperPay
+          .readyUICards(
+        readyUI: ReadyUI(
+            brandsName: ["VISA", "MASTER"],
+            checkoutId: checkoutId,
+            merchantIdApplePayIOS: merchantId,
+            countryCodeApplePayIOS: InAppPaymentSetting.countryCode,
+            // applePay
+            themColorHexIOS: "#000000",
+            companyNameApplePayIOS: "Huyndai",
+            // FOR IOS ONLY
+            setStorePaymentDetailsMode:
+                false // store payment details for future use
+            ),
+      )
+          .then((value) async {
+        if (value.errorString?.isNotEmpty == true &&
+            value.errorString != null) {
+          await showDialog(
+              context: context,
+              builder: (alertDialogContext) {
+                return AlertDialog(
+                  title: Text(FFLocalizations.of(context).getVariableText(
+                    enText: 'Error',
+                    arText: 'مشكلة خادم',
+                  )),
+                  content: Text(FFLocalizations.of(context).getVariableText(
+                    enText: 'Issue With Payment Method',
+                    arText: 'مشكلة في عملية الدفع',
+                  )),
+                  actions: [
+                    TextButton(
+                      onPressed: () => Navigator.pop(alertDialogContext),
+                      child: Text(FFLocalizations.of(context).getVariableText(
+                        enText: 'Ok',
+                        arText: 'حسنا',
+                      )),
+                    ),
+                  ],
+                );
+              });
+        }
+      }).catchError((onError) {
+        print("object");
+      });
     }
-    
-    
-  
-    // await flutterHyperPay
-    //     .readyUICards(
-    //   readyUI: ReadyUI(
-    //       brandsName: ["VISA", "MASTER"],
-    //       checkoutId: checkoutId,
-    //       merchantIdApplePayIOS: merchantId,
-    //       countryCodeApplePayIOS: InAppPaymentSetting.countryCode,
-    //       // applePay
-    //       themColorHexIOS: "#000000",
-    //       companyNameApplePayIOS : "Huyndai",
-    //       // FOR IOS ONLY
-    //       setStorePaymentDetailsMode:
-    //           false // store payment details for future use
-    //       ),
-    // ).then((value) async {
-    //   if (value.errorString?.isNotEmpty == true && value.errorString != null) {
-    //     await showDialog(
-    //         context: context,
-    //         builder: (alertDialogContext) {
-    //           return AlertDialog(
-    //             title: Text(FFLocalizations.of(context).getVariableText(
-    //               enText: 'Error',
-    //               arText: 'مشكلة خادم',
-    //             )),
-    //             content: Text(FFLocalizations.of(context).getVariableText(
-    //               enText: 'Issue With Payment Method',
-    //               arText: 'مشكلة في عملية الدفع',
-    //             )),
-    //             actions: [
-    //               TextButton(
-    //                 onPressed: () => Navigator.pop(alertDialogContext),
-    //                 child: Text(FFLocalizations.of(context).getVariableText(
-    //                   enText: 'Ok',
-    //                   arText: 'حسنا',
-    //                 )),
-    //               ),
-    //             ],
-    //           );
-    //         });
-    //   }
-    // }).catchError((onError){
-    //     print("object");
-    // });
   }
 }

@@ -443,10 +443,10 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 setState(() {
                                                   _model.phoneNumber = functions
                                                       .checkNumberAndValidate(
-                                                          _model.phoneNumber);
+                                                      replaceArabicNumerals(_model.phoneNumber));
                                                 });
                                                 if (functions.checkNumberCount(
-                                                        _model.phoneNumber) !=
+                                                    replaceArabicNumerals(_model.phoneNumber)) !=
                                                     true) {
                                                   ScaffoldMessenger.of(context)
                                                       .showSnackBar(
@@ -481,7 +481,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
 
                                                 _model.loginApiRes =
                                                     await LoginApiCall.call(
-                                                  phone: _model.phoneNumber,
+                                                  phone: replaceArabicNumerals(_model.phoneNumber),
                                                   password: _model
                                                       .textController.text,
                                                   fcm: FFAppState().FCM,
@@ -490,6 +490,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 if ((_model.loginApiRes
                                                         ?.succeeded ??
                                                     true)) {
+                                                  FFAppState().password = _model
+                                                      .textController
+                                                      .text;
                                                   UserModelStruct userModel =
                                                       UserModelStruct
                                                           .maybeFromMap(
@@ -881,6 +884,9 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                             if ((_model
                                                     .loginApiRes5?.succeeded ??
                                                 true)) {
+                                              FFAppState().password = FFAppState()
+                                                  .biomatricDtateModel
+                                                  .password;
                                               setState(() {
                                                 FFAppState().userModel =
                                                     UserModelStruct
@@ -1060,4 +1066,29 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
       ),
     );
   }
+
+
+  String replaceArabicNumerals(String input) {
+    Map<String, String> arabicToWesternNumerals = {
+      '١': '1',
+      '٢': '2',
+      '٣': '3',
+      '٤': '4',
+      '٥': '5',
+      '٦': '6',
+      '٧': '7',
+      '٨': '8',
+      '٩': '9',
+      '٠': '0',
+    };
+
+    String result = input;
+
+    arabicToWesternNumerals.forEach((arabic, western) {
+      result = result.replaceAll(arabic, western);
+    });
+
+    return result;
+  }
+
 }
