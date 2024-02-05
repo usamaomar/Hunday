@@ -12,6 +12,7 @@ import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
+import 'package:redux/redux.dart';
 
 const kTransitionInfoKey = '__transition_info__';
 
@@ -20,6 +21,15 @@ class AppStateNotifier extends ChangeNotifier {
 
   static AppStateNotifier? _instance;
   Function()? updateBadgeValue;
+  Store? store;
+
+  void setStore(Store store) {
+    this.store = store;
+  }
+
+  Store? getStore() {
+    return store;
+  }
 
   static AppStateNotifier get instance => _instance ??= AppStateNotifier._();
 
@@ -301,6 +311,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => params.isEmpty
                   ? NavBarPage(initialPage: 'CartPage')
                   : NavBarPage(
+                      store: appStateNotifier.getStore(),
                       updateBadgeValue: appStateNotifier.updateBadgeValue,
                       initialPage: 'CartPage',
                       page: CartPageWidget(

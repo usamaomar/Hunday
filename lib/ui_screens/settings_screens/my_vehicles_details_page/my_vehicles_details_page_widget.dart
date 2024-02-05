@@ -164,60 +164,60 @@ class _MyVehiclesDetailsPageWidgetState
                                     endIndent: 30.0,
                                     color: FlutterFlowTheme.of(context).accent4,
                                   ),
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 3.0, 15.0, 0.0),
-                                    child: Container(
-                                      width: double.infinity,
-                                      decoration: BoxDecoration(
-                                        color: Color(0xFFEBEEF1),
-                                      ),
-                                      child: Padding(
-                                        padding: EdgeInsets.all(5.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'wwqyjst1' /* Car Category */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'HeeboBold',
-                                                        fontWeight:
-                                                            FontWeight.bold,
-                                                        useGoogleFonts: false,
-                                                      ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 5.0, 0.0, 0.0),
-                                              child: Text(
-                                                _model.myVehicleModel
-                                                        ?.carCategory.name ??
-                                                    '-',
-                                                style: FlutterFlowTheme.of(
-                                                        context)
-                                                    .bodyMedium
-                                                    .override(
-                                                      fontFamily: 'HeeboBold',
-                                                      color: Color(0xFF3D6398),
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      useGoogleFonts: false,
-                                                    ),
-                                              ),
-                                            ),
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                                  // Padding(
+                                  //   padding: EdgeInsetsDirectional.fromSTEB(
+                                  //       15.0, 3.0, 15.0, 0.0),
+                                  //   child: Container(
+                                  //     width: double.infinity,
+                                  //     decoration: BoxDecoration(
+                                  //       color: Color(0xFFEBEEF1),
+                                  //     ),
+                                  //     child: Padding(
+                                  //       padding: EdgeInsets.all(5.0),
+                                  //       child: Column(
+                                  //         mainAxisSize: MainAxisSize.max,
+                                  //         crossAxisAlignment:
+                                  //             CrossAxisAlignment.start,
+                                  //         children: [
+                                  //           Text(
+                                  //             FFLocalizations.of(context)
+                                  //                 .getText(
+                                  //               'wwqyjst1' /* Car Category */,
+                                  //             ),
+                                  //             style:
+                                  //                 FlutterFlowTheme.of(context)
+                                  //                     .bodyMedium
+                                  //                     .override(
+                                  //                       fontFamily: 'HeeboBold',
+                                  //                       fontWeight:
+                                  //                           FontWeight.bold,
+                                  //                       useGoogleFonts: false,
+                                  //                     ),
+                                  //           ),
+                                  //           Padding(
+                                  //             padding: EdgeInsetsDirectional
+                                  //                 .fromSTEB(0.0, 5.0, 0.0, 0.0),
+                                  //             child: Text(
+                                  //               _model.myVehicleModel
+                                  //                       ?.carCategory.name ??
+                                  //                   '-',
+                                  //               style: FlutterFlowTheme.of(
+                                  //                       context)
+                                  //                   .bodyMedium
+                                  //                   .override(
+                                  //                     fontFamily: 'HeeboBold',
+                                  //                     color: Color(0xFF3D6398),
+                                  //                     fontWeight:
+                                  //                         FontWeight.bold,
+                                  //                     useGoogleFonts: false,
+                                  //                   ),
+                                  //             ),
+                                  //           ),
+                                  //         ],
+                                  //       ),
+                                  //     ),
+                                  //   ),
+                                  // ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
                                         15.0, 3.0, 15.0, 0.0),

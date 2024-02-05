@@ -66,10 +66,10 @@ class ListOfStringItemsComponentModel
   void updateSelectedCarModelStruct(Function(CarModelStruct) updateFn) =>
       updateFn(selectedCarModel ??= CarModelStruct());
 
-  CarCategoriesStruct? selectedCarCategories;
-  void updateSelectedCarCategoriesStruct(
-          Function(CarCategoriesStruct) updateFn) =>
-      updateFn(selectedCarCategories ??= CarCategoriesStruct());
+  // CarCategoriesStruct? selectedCarCategories;
+  // void updateSelectedCarCategoriesStruct(
+  //         Function(CarCategoriesStruct) updateFn) =>
+  //     updateFn(selectedCarCategories ??= CarCategoriesStruct());
 
   FuelTypeModelStruct? selectedFuelType;
   void updateSelectedFuelTypeStruct(Function(FuelTypeModelStruct) updateFn) =>
@@ -81,7 +81,7 @@ class ListOfStringItemsComponentModel
 
   String selectedStringCarModel = '';
 
-  String selectedStringCarCategory = '';
+  // String selectedStringCarCategory = '';
 
   String selectedStringFuelType = '';
 

@@ -82,14 +82,14 @@ class _ListOfStringItemsComponentWidgetState
               .single;
         }
 
-        ///
-        if (_model.carInfoLocalModel?.carCategoryId == 0) {
-          // _model.selectedCarCategories = _model.carCategoriesList[0];
-        } else {
-          _model.selectedCarCategories = _model.carCategoriesList
-              .where((e) => e.id == _model.carInfoLocalModel?.carCategoryId)
-              .single;
-        }
+        // ///
+        // if (_model.carInfoLocalModel?.carCategoryId == 0) {
+        //   // _model.selectedCarCategories = _model.carCategoriesList[0];
+        // } else {
+        //   _model.selectedCarCategories = _model.carCategoriesList
+        //       .where((e) => e.id == _model.carInfoLocalModel?.carCategoryId)
+        //       .single;
+        // }
 
         ///
         if (_model.carInfoLocalModel?.fuelTypeId == 0) {
@@ -120,8 +120,8 @@ class _ListOfStringItemsComponentWidgetState
       });
       setState(() {
         _model.selectedStringCarModel = _model.selectedCarModel?.name ?? '';
-        _model.selectedStringCarCategory =
-            _model.selectedCarCategories?.name ?? '';
+        // _model.selectedStringCarCategory =
+        //     _model.selectedCarCategories?.name ?? '';
         _model.selectedStringFuelType = _model.selectedFuelType?.name ?? '';
       });
       setState(() {});
@@ -309,74 +309,74 @@ class _ListOfStringItemsComponentWidgetState
                           ),
                         ],
                       ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                '5r2w1sdp' /* Car Catedory */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFF3D6398),
-                                  ),
-                            ),
-                          ),
-                          Container(
-                            height: 40.0,
-                            decoration: BoxDecoration(),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                FlutterFlowDropDown<String>(
-                                  controller:
-                                      _model.dropDownValueController2 ??=
-                                          FormFieldController<String>(null),
-                                  options: _model.carCategoriesList
-                                      .map((e) => e.name)
-                                      .toList(),
-                                  onChanged: (val) {
-                                    setState(() {
-                                      _model.selectedCarCategories = _model
-                                          .carCategoriesList
-                                          .where((e) => e.name == val)
-                                          .single;
-                                      _model.dropDownValue2 = val;
-                                    });
-                                  },
-                                  width: 270.0,
-                                  textStyle:
-                                      FlutterFlowTheme.of(context).bodyMedium,
-                                  hintText: _model.selectedStringCarCategory,
-                                  icon: Icon(
-                                    Icons.keyboard_arrow_down_rounded,
-                                    color: FlutterFlowTheme.of(context)
-                                        .secondaryText,
-                                    size: 24.0,
-                                  ),
-                                  fillColor: FlutterFlowTheme.of(context)
-                                      .secondaryBackground,
-                                  elevation: 2.0,
-                                  borderColor: Color(0xFFE1E1E1),
-                                  borderWidth: 1.0,
-                                  borderRadius: 5.0,
-                                  margin: EdgeInsetsDirectional.fromSTEB(
-                                      16.0, 4.0, 16.0, 4.0),
-                                  hidesUnderline: true,
-                                  isSearchable: false,
-                                  isMultiSelect: false,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                      // Column(
+                      //   mainAxisSize: MainAxisSize.min,
+                      //   crossAxisAlignment: CrossAxisAlignment.start,
+                      //   children: [
+                      //     Padding(
+                      //       padding: EdgeInsetsDirectional.fromSTEB(
+                      //           0.0, 10.0, 0.0, 10.0),
+                      //       child: Text(
+                      //         FFLocalizations.of(context).getText(
+                      //           '5r2w1sdp' /* Car Catedory */,
+                      //         ),
+                      //         style: FlutterFlowTheme.of(context)
+                      //             .bodyMedium
+                      //             .override(
+                      //               fontFamily: 'Poppins',
+                      //               color: Color(0xFF3D6398),
+                      //             ),
+                      //       ),
+                      //     ),
+                      //     Container(
+                      //       height: 40.0,
+                      //       decoration: BoxDecoration(),
+                      //       child: Row(
+                      //         mainAxisSize: MainAxisSize.max,
+                      //         children: [
+                      //           FlutterFlowDropDown<String>(
+                      //             controller:
+                      //                 _model.dropDownValueController2 ??=
+                      //                     FormFieldController<String>(null),
+                      //             options: _model.carCategoriesList
+                      //                 .map((e) => e.name)
+                      //                 .toList(),
+                      //             onChanged: (val) {
+                      //               setState(() {
+                      //                 _model.selectedCarCategories = _model
+                      //                     .carCategoriesList
+                      //                     .where((e) => e.name == val)
+                      //                     .single;
+                      //                 _model.dropDownValue2 = val;
+                      //               });
+                      //             },
+                      //             width: 270.0,
+                      //             textStyle:
+                      //                 FlutterFlowTheme.of(context).bodyMedium,
+                      //             hintText: _model.selectedStringCarCategory,
+                      //             icon: Icon(
+                      //               Icons.keyboard_arrow_down_rounded,
+                      //               color: FlutterFlowTheme.of(context)
+                      //                   .secondaryText,
+                      //               size: 24.0,
+                      //             ),
+                      //             fillColor: FlutterFlowTheme.of(context)
+                      //                 .secondaryBackground,
+                      //             elevation: 2.0,
+                      //             borderColor: Color(0xFFE1E1E1),
+                      //             borderWidth: 1.0,
+                      //             borderRadius: 5.0,
+                      //             margin: EdgeInsetsDirectional.fromSTEB(
+                      //                 16.0, 4.0, 16.0, 4.0),
+                      //             hidesUnderline: true,
+                      //             isSearchable: false,
+                      //             isMultiSelect: false,
+                      //           ),
+                      //         ],
+                      //       ),
+                      //     ),
+                      //   ],
+                      // ),
                       Column(
                         mainAxisSize: MainAxisSize.min,
                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -476,7 +476,7 @@ class _ListOfStringItemsComponentWidgetState
                               final _datePicked2Date = await showDatePicker(
                                 context: context,
                                 initialDate: getCurrentTimestamp,
-                                firstDate: getCurrentTimestamp,
+                                firstDate: DateTime(1995),
                                 lastDate: DateTime(2050),
                                 builder: (context, child) {
                                   return wrapInMaterialDatePickerTheme(
@@ -958,39 +958,39 @@ class _ListOfStringItemsComponentWidgetState
                                   }
 
 
-                                  if(_model
-                                      .selectedCarCategories?.id==0){
-                                    await showDialog(
-                                      context: context,
-                                      builder: (alertDialogContext) {
-                                        return AlertDialog(
-                                          title: Text(FFLocalizations.of(context)
-                                              .getVariableText(
-                                            enText: 'ALERT',
-                                            arText: 'تنبيه',
-                                          )),
-                                          content: Text(
-                                              FFLocalizations.of(context)
-                                                  .getVariableText(
-                                                enText: 'Select Car Category',
-                                                arText: 'قم بأختيار فئة السيارة',
-                                              )),
-                                          actions: [
-                                            TextButton(
-                                              onPressed: () => Navigator.pop(
-                                                  alertDialogContext),
-                                              child: Text(FFLocalizations.of(context)
-                                                  .getVariableText(
-                                                enText: 'Ok',
-                                                arText: 'حسنا',
-                                              )),
-                                            ),
-                                          ],
-                                        );
-                                      },
-                                    );
-                                    return;
-                                  }
+                                  // if(_model
+                                  //     .selectedCarCategories?.id==0){
+                                  //   await showDialog(
+                                  //     context: context,
+                                  //     builder: (alertDialogContext) {
+                                  //       return AlertDialog(
+                                  //         title: Text(FFLocalizations.of(context)
+                                  //             .getVariableText(
+                                  //           enText: 'ALERT',
+                                  //           arText: 'تنبيه',
+                                  //         )),
+                                  //         content: Text(
+                                  //             FFLocalizations.of(context)
+                                  //                 .getVariableText(
+                                  //               enText: 'Select Car Category',
+                                  //               arText: 'قم بأختيار فئة السيارة',
+                                  //             )),
+                                  //         actions: [
+                                  //           TextButton(
+                                  //             onPressed: () => Navigator.pop(
+                                  //                 alertDialogContext),
+                                  //             child: Text(FFLocalizations.of(context)
+                                  //                 .getVariableText(
+                                  //               enText: 'Ok',
+                                  //               arText: 'حسنا',
+                                  //             )),
+                                  //           ),
+                                  //         ],
+                                  //       );
+                                  //     },
+                                  //   );
+                                  //   return;
+                                  // }
 
 
                                   if(_model
@@ -1163,7 +1163,6 @@ class _ListOfStringItemsComponentWidgetState
                                     );
                                     return;
                                   }
-
                                   if((_model.selectedFuelType?.id??0) ==0){
                                     await showDialog(
                                       context: context,
@@ -1205,9 +1204,9 @@ class _ListOfStringItemsComponentWidgetState
                                         _model.selectedCarModel?.name,
                                     carModelId:
                                         _model.selectedCarModel?.id?.toString(),
-                                    carCategoryId: _model
-                                        .selectedCarCategories?.id
-                                        ?.toString(),
+                                    // carCategoryId: _model
+                                    //     .selectedCarCategories?.id
+                                    //     ?.toString(),
                                     yearOfManufacturing:
                                         _model.yearOfManufacturingString,
                                     registeredUntil:

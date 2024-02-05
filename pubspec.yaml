@@ -106,6 +106,9 @@ dependencies:
   get: ^4.6.6
   http: ^0.13.5
   flutter_widget_from_html: ^0.14.11
+  flutter_redux: 0.8.2
+
+
 
 
   # The following adds the Cupertino Icons font to your application.

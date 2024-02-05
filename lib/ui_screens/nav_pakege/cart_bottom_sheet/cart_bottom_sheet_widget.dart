@@ -1,3 +1,5 @@
+import 'package:flutter_redux/flutter_redux.dart';
+
 import '../../components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
@@ -68,7 +70,9 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
 
   @override
   void initState() {
+
     super.initState();
+
     _model = createModel(context, () => CartBottomSheetModel());
 
     // On component load action.
@@ -102,6 +106,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
           });
           FFAppState().update(() {
             FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
+
+            // AppStateNotifier.instance.updates();
           });
         } else {
           FFAppState().update(() {
@@ -757,6 +763,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                                 .subTotal;
                                                                           });
                                                                           SchedulerBinding.instance.addPostFrameCallback((_) async {
+                                                                            StoreProvider.of<dynamic>(context).dispatch("Update");
                                                                             FFAppState().update(() {
                                                                               FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
                                                                               widget.updateBadgeValue?.call();
@@ -954,6 +961,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                         }
                                                                       });
                                                                       SchedulerBinding.instance.addPostFrameCallback((_) async {
+                                                                        StoreProvider.of<dynamic>(context).dispatch("Update");
                                                                         FFAppState().update(() {
                                                                           FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
                                                                         });
@@ -1109,9 +1117,11 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                             r'''$.cart''',
                                                                           ))
                                                                           .subTotal;
+                                                                      StoreProvider.of<dynamic>(context).dispatch("action");
                                                                     });
                                                                   }
                                                                 }
+
                                                               } else {
                                                                 await showDialog(
                                                                   context:
@@ -1150,7 +1160,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                         .listOfCartItemsLocal
                                                                         .length;
                                                               });
-
                                                               Navigator.pop(
                                                                   dialogContext);
                                                             },

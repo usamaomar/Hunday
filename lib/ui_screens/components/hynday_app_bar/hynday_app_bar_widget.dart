@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../../backend/api_requests/api_calls.dart';
 import '../../../backend/api_requests/api_manager.dart';
@@ -362,7 +363,12 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                                             ),
                                             InkWell(
                                               onTap: () {
-                                                FFAppState().localNotificationLost.clear();
+                                                FFAppState()
+                                                    .localNotificationLost
+                                                    .clear();
+                                                FFAppState()
+                                                    .localNotificationLost = [];
+                                                StoreProvider.of<dynamic>(context).dispatch("action");
                                                 context.pushNamed(
                                                     'notificationPage');
                                               },
@@ -425,19 +431,26 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                               },
                             );
                           },
-                          child: badges.Badge(
-                            badgeStyle:
-                                badges.BadgeStyle(padding: EdgeInsets.all(5)),
-                            badgeAnimation: badges.BadgeAnimation.scale(),
-                            badgeContent: Text(
-                              '${FFAppState().localNotificationLost.length}',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            child: Icon(
-                              Icons.notifications_sharp,
-                              color: Color(0xFF092853),
-                              size: 30.0,
-                            ),
+                          child: StoreConnector<dynamic, dynamic>(
+                            distinct: true,
+                            converter: (store) => store.state,
+                            builder: (context, storeEvent) {
+                              return badges.Badge(
+                                badgeStyle: badges.BadgeStyle(
+                                    padding: EdgeInsets.all(5)),
+                                badgeAnimation: badges.BadgeAnimation.scale(),
+                                badgeContent: Text(
+                                  '${FFAppState().localNotificationLost.length}',
+                                  style: TextStyle(
+                                      color: Colors.white, fontSize: 12),
+                                ),
+                                child: Icon(
+                                  Icons.notifications_sharp,
+                                  color: Color(0xFF092853),
+                                  size: 30.0,
+                                ),
+                              );
+                            },
                           ),
                         ),
                       ),

@@ -47,9 +47,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         token: FFAppState().userModel.token,
       );
       if ((_model.localTestAuth2?.succeeded ?? true)) {
-        FFAppState().update(() {
-          FFAppState().badgeCount = 0;
-        });
+        // FFAppState().update(() {
+        //   FFAppState().badgeCount = 0;
+        // });
         setState(() {
           FFAppState().updateUserModelStruct(
             (e) => e

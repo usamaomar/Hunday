@@ -1,12 +1,11 @@
 import 'dart:async';
-// import 'dart:js';
-
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:hyundai/backend/schema/structs/index.dart';
 import 'package:hyundai/ui_screens/components/customs/CustomNavs.dart';
@@ -16,11 +15,14 @@ import 'package:flutter_web_plugins/url_strategy.dart';
 
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
+import 'flutter_flow/flutter_flow_timer.dart';
 import 'flutter_flow/flutter_flow_util.dart';
 import 'flutter_flow/internationalization.dart';
 import 'flutter_flow/nav/nav.dart';
 import 'index.dart';
 import 'dart:io' show Platform;
+import 'package:redux/redux.dart';
+import 'package:badges/badges.dart' as badges;
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
@@ -30,7 +32,6 @@ Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
     ex.toString();
   }
 }
-
 
 void showNotification(RemoteMessage? message) async {
   try {
@@ -43,14 +44,15 @@ void showNotification(RemoteMessage? message) async {
       requestSoundPermission: true,
     );
     var initSetting =
-    InitializationSettings(android: androidInit, iOS: iosInit);
+        InitializationSettings(android: androidInit, iOS: iosInit);
     fltNotification = FlutterLocalNotificationsPlugin();
     fltNotification.initialize(initSetting);
     await fltNotification.cancelAll();
     if (message?.notification?.title != null &&
         message?.notification?.body != null) {
-      var androidDetails =
-      AndroidNotificationDetails('channelId', 'channelName', icon: "");
+      var androidDetails = const AndroidNotificationDetails(
+          'channelId', 'channelName',
+          icon: "");
       var iosDetails = DarwinNotificationDetails(
         presentAlert: true,
         presentBadge: true,
@@ -58,15 +60,16 @@ void showNotification(RemoteMessage? message) async {
         subtitle: message?.notification?.title,
       );
       var generalNotificationDetails =
-      NotificationDetails(android: androidDetails, iOS: iosDetails);
+          NotificationDetails(android: androidDetails, iOS: iosDetails);
       await fltNotification.show(0, '${message?.notification?.title}',
           message?.notification?.body, generalNotificationDetails,
           payload: 'Notification');
       FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
         print("onMessageOpenedApp");
-        Map<String , dynamic> value = {'id':'ooosaaamaaa'};
+        Map<String, dynamic> value = {'id': 'ooosaaamaaa'};
         // _router.pushNamed('notificationPage',extra:value);
-        scaffoldKey.currentState?.pushNamed('notificationPage',arguments:value);
+        scaffoldKey.currentState
+            ?.pushNamed('notificationPage', arguments: value);
       });
     }
   } catch (ex) {
@@ -76,14 +79,18 @@ void showNotification(RemoteMessage? message) async {
 
 final scaffoldKey = GlobalKey<NavigatorState>();
 
+dynamic counterReducer(dynamic state, dynamic storeEventValue) {
+  String storeEvent = storeEventValue;
+  return storeEvent;
+}
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
 
-
   if (Platform.isIOS) {
     await Firebase.initializeApp(
-        options: FirebaseOptions(
+        options: const FirebaseOptions(
             apiKey: "AIzaSyBXCycCdO_1va9JT98V_gAeXi6_S9szxYg",
             appId: "1:779673897933:ios:5905b34966b0810185d284",
             messagingSenderId: "779673897933",
@@ -93,16 +100,17 @@ void main() async {
   }
 
   final appState = FFAppState(); // Initialize FFAppState
-  await appState.initializePersistedState().then((value) => {
-
-      });
-  FirebaseMessaging.onBackgroundMessage(
-      _firebaseMessagingBackgroundHandler);
+  await appState.initializePersistedState().then((value) => {});
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await FlutterFlowTheme.initialize();
   initPushNotifications();
+  final store = Store<dynamic>(counterReducer, initialState: String);
+
   runApp(ChangeNotifierProvider(
     create: (context) => appState,
-    child: MyApp(),
+    child: MyApp(
+      store: store,
+    ),
   ));
 }
 
@@ -126,6 +134,11 @@ String getCurrentTime() {
 
 class MyApp extends StatefulWidget {
   // This widget is the root of your application.
+
+  final Store store;
+
+  MyApp({required this.store});
+
   @override
   State<MyApp> createState() => _MyAppState();
 
@@ -149,16 +162,17 @@ class _MyAppState extends State<MyApp> {
     initMessaging();
     super.initState();
 
-    _appStateNotifier = AppStateNotifier.instance;
+    _appStateNotifier = AppStateNotifier.instance..setStore(widget.store);
     _router = createRouter(_appStateNotifier);
   }
 
   void handleInAppMessage() {
     FirebaseMessaging.instance.getInitialMessage().then((message) => {
-          if (message != null) {
-
-        print("getInitialMessage"),
-            _firebaseMessagingInAppHandler(message)}
+          if (message != null)
+            {
+              print("getInitialMessage"),
+              _firebaseMessagingInAppHandler(message)
+            }
         });
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       print("onMessage");
@@ -171,16 +185,14 @@ class _MyAppState extends State<MyApp> {
   }
 
   void handleMessage(RemoteMessage? message) {
-    Map<String , dynamic> value = {'id':'ooosaaamaaa'};
-    _router.pushNamed('notificationPage',extra:value);
-    scaffoldKey.currentState?.pushNamed('notificationPage',arguments:value);
-
+    Map<String, dynamic> value = {'id': 'ooosaaamaaa'};
+    _router.pushNamed('notificationPage', extra: value);
+    scaffoldKey.currentState?.pushNamed('notificationPage', arguments: value);
   }
 
   Future<void> runs(RemoteMessage? message) async {
     try {
       if (message != null &&
-          message.data != null &&
           message.data['body'] != null &&
           message.data['title'] != null) {
         _firebaseMessagingInAppHandler(message);
@@ -249,12 +261,10 @@ class _MyAppState extends State<MyApp> {
     }
   }
 
-
-
   void onDidReceiveNotificationResponse(dynamic notificationResponse) async {
-    Map<String , dynamic> value = {'id':'ooosaaamaaa'};
-    _router.pushNamed('notificationPage',extra: value);
-    scaffoldKey.currentState?.pushNamed('notificationPage',arguments: value);
+    Map<String, dynamic> value = {'id': 'ooosaaamaaa'};
+    _router.pushNamed('notificationPage', extra: value);
+    scaffoldKey.currentState?.pushNamed('notificationPage', arguments: value);
   }
 
   void setLocale(String language) {
@@ -271,58 +281,100 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitUp,
       DeviceOrientation.portraitDown,
     ]);
-    return MaterialApp.router(
-      key: scaffoldKey,
-      title: 'hyundai',
-      localizationsDelegates: const [
-        FFLocalizationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
-      locale: _locale,
-      supportedLocales: const [
-        Locale('en'),
-        Locale('ar'),
-      ],
-      theme: ThemeData(
-        brightness: Brightness.light,
-        scrollbarTheme: ScrollbarThemeData(),
+    return StoreProvider<dynamic>(
+      store: widget.store ,
+      child: MaterialApp.router(
+        key: scaffoldKey,
+        title: 'hyundai',
+        localizationsDelegates: const [
+          FFLocalizationsDelegate(),
+          GlobalMaterialLocalizations.delegate,
+          GlobalWidgetsLocalizations.delegate,
+          GlobalCupertinoLocalizations.delegate,
+        ],
+        locale: _locale,
+        supportedLocales: const [
+          Locale('en'),
+          Locale('ar'),
+        ],
+        theme: ThemeData(
+          brightness: Brightness.light,
+          scrollbarTheme: ScrollbarThemeData(),
+        ),
+        darkTheme: ThemeData(
+          brightness: Brightness.dark,
+          scrollbarTheme: ScrollbarThemeData(),
+        ),
+        // themeMode: _themeMode,
+        themeMode: ThemeMode.light,
+        routerConfig: _router,
       ),
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        scrollbarTheme: ScrollbarThemeData(),
-      ),
-      // themeMode: _themeMode,
-      themeMode: ThemeMode.light,
-      routerConfig: _router,
     );
   }
 }
 
 class NavBarPage extends StatefulWidget {
-  const NavBarPage(
-      {Key? key, this.initialPage, this.page, this.updateBadgeValue})
+  NavBarPage(
+      {Key? key,
+      this.initialPage,
+      this.page,
+      this.updateBadgeValue,
+      this.store})
       : super(key: key);
 
   final String? initialPage;
   final Widget? page;
   final Function()? updateBadgeValue;
+  Store? store;
 
   @override
   _NavBarPageState createState() => _NavBarPageState();
 }
 
 /// This is the private State class that goes with NavBarPage.
-class _NavBarPageState extends State<NavBarPage> {
+class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
   String _currentPageName = 'HomeScreen';
   late Widget? _currentPage;
+  int count = 0;
+  Timer? _timer;
+  late FlutterFlowTimerController timerController;
 
   @override
   void initState() {
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
     _currentPageName = widget.initialPage ?? _currentPageName;
     _currentPage = widget.page;
+    count = FFAppState().badgeCount;
+    // startTime();
+  }
+
+  startTime() async {
+    Timer.periodic(Duration(seconds: 2), (timer) {
+      updateCount();
+    });
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+
+    super.dispose();
+  }
+
+  int timerMilliseconds = 6000;
+
+  void updateCount() {
+    // setState(() {
+    //   count = FFAppState().badgeCount;
+    // });
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // updateCount();
+    }
   }
 
   @override
@@ -356,6 +408,7 @@ class _NavBarPageState extends State<NavBarPage> {
         onTap: (i) => setState(() {
           _currentPage = null;
           _currentPageName = tabs.keys.toList()[i];
+          count = FFAppState().badgeCount;
         }),
         items: [
           CustomNavigationBarItem(
@@ -375,14 +428,31 @@ class _NavBarPageState extends State<NavBarPage> {
           //   ),
           // ),
           CustomNavigationBarItem(
-              icon: SvgPicture.asset(
-                'assets/images/Group_70661.svg',
-                width: 20.0,
-                height: 20.0,
-                fit: BoxFit.contain,
-              ),
-              badgeCount: FFAppState().badgeCount,
-              showBadge: true),
+            icon: Stack(
+              children: [
+                StoreConnector<dynamic, dynamic>(
+                  distinct: true,
+                  converter: (store) => store.state,
+                  builder: (context, storeEvent) {
+                    return  badges.Badge(
+                      badgeStyle: badges.BadgeStyle(padding: EdgeInsets.all(5)),
+                      badgeAnimation: badges.BadgeAnimation.scale(),
+                      badgeContent: Text(
+                        '${FFAppState().badgeCount}',
+                        style: TextStyle(color: Colors.white, fontSize: 12),
+                      ),
+                      child: SvgPicture.asset(
+                        'assets/images/Group_70661.svg',
+                        width: 20.0,
+                        height: 20.0,
+                        fit: BoxFit.contain,
+                      ),
+                    );
+                  },
+                )
+              ],
+            ),
+          ),
           CustomNavigationBarItem(
             icon: SvgPicture.asset(
               'assets/images/Group_72107.svg',
