@@ -604,6 +604,16 @@ class FFAppState extends ChangeNotifier {
     prefs.setStringList('ff_localNotificationLost',
         _localNotificationLost.map((x) => x.serialize()).toList());
   }
+
+  StateCaseModelStruct _stateCaseModel = StateCaseModelStruct();
+  StateCaseModelStruct get stateCaseModel => _stateCaseModel;
+  set stateCaseModel(StateCaseModelStruct _value) {
+    _stateCaseModel = _value;
+  }
+
+  void updateStateCaseModelStruct(Function(StateCaseModelStruct) updateFn) {
+    updateFn(_stateCaseModel);
+  }
 }
 
 LatLng? _latLngFromString(String? val) {
