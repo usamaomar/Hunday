@@ -85,6 +85,10 @@ dynamic counterReducer(dynamic state, dynamic storeEventValue) {
 }
 
 void main() async {
+
+
+
+
   WidgetsFlutterBinding.ensureInitialized();
   usePathUrlStrategy();
 
@@ -112,6 +116,11 @@ void main() async {
       store: store,
     ),
   ));
+}
+
+
+void stateCase(bool isLive){
+
 }
 
 Future initPushNotifications() async {

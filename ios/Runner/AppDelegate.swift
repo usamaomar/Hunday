@@ -38,7 +38,7 @@ import Flutter
     private func recivePayment(result: @escaping FlutterResult,  call: FlutterMethodCall){
         
         
-        let provider = OPPPaymentProvider (mode: OPPProviderMode.test)
+        let provider = OPPPaymentProvider (mode: OPPProviderMode.live)
         let checkoutSettings = OPPCheckoutSettings()
         checkoutSettings.paymentBrands = ["VISA","MASTER"]
         checkoutSettings.shopperResultURL = "com.comc.hyundai.payments://result"

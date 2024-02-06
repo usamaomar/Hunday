@@ -455,13 +455,13 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                 Expanded(
                                   flex: 1,
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         30.0, 0.0, 30.0, 60.0),
                                     child: GridView(
                                       physics: NeverScrollableScrollPhysics(),
                                       padding: EdgeInsets.zero,
                                       gridDelegate:
-                                      SliverGridDelegateWithFixedCrossAxisCount(
+                                      const SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 3,
                                         crossAxisSpacing: 5.0,
                                         mainAxisSpacing: 5.0,

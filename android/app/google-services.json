@@ -1,15 +1,16 @@
 {
   "project_info": {
     "project_number": "779673897933",
+    "firebase_url": "https://hunday-45504-default-rtdb.firebaseio.com",
     "project_id": "hunday-45504",
     "storage_bucket": "hunday-45504.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:779673897933:android:ccefe97b63d61f1a85d284",
+        "mobilesdk_app_id": "1:779673897933:android:06102cd5a7f5e83c85d284",
         "android_client_info": {
-          "package_name": "com.mycompany.hyundai"
+          "package_name": "com.mycompany.hyundai.android"
         }
       },
       "oauth_client": [],

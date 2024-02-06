@@ -10,6 +10,7 @@ export 'api_manager.dart' show ApiCallResponse;
 const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 
 class LoginApiCall {
+
   static Future<ApiCallResponse> call({
     String? phone = '0777882330',
     String? password = 'password',
@@ -23,7 +24,7 @@ class LoginApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LoginApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/login',
+      apiUrl: '${baseUrl}/api/login',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -90,7 +91,7 @@ class RegisterApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RegisterApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/register',
+      apiUrl: '${baseUrl}/api/register',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -141,7 +142,7 @@ class GetMobileNumberCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GetMobileNumber',
       apiUrl:
-          'https://hyundai.completechaintech.com/api/forgetPassword/getMobileNumber',
+          '${baseUrl}/api/forgetPassword/getMobileNumber',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -169,7 +170,7 @@ class GetVerifiedCodeApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GetVerifiedCodeApi',
       apiUrl:
-          'https://hyundai.completechaintech.com/api/forgetPassword/getVerifiedCode',
+          '${baseUrl}/api/forgetPassword/getVerifiedCode',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -203,7 +204,7 @@ class ChangePasswordApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'ChangePasswordApi',
       apiUrl:
-          'https://hyundai.completechaintech.com/api/forgetPassword/changePassword',
+          '${baseUrl}/api/forgetPassword/changePassword',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -234,7 +235,7 @@ class LicenseScanApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'licenseScanApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/vehicle/licenseScan',
+      apiUrl: '${baseUrl}/api/vehicle/licenseScan',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -271,7 +272,7 @@ class TestDriveApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'testDriveApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/testDrive',
+      apiUrl: '${baseUrl}/api/testDrive',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -321,7 +322,7 @@ class StoreVehicleApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'StoreVehicleApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/vehicle/store',
+      apiUrl: '${baseUrl}/api/vehicle/store',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -350,7 +351,7 @@ class AddToCartApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'AddToCartApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/addToCart',
+      apiUrl: '${baseUrl}/api/addToCart',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -374,7 +375,7 @@ class ClearAllCartApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'ClearAllCart Api',
-      apiUrl: 'https://hyundai.completechaintech.com/api/clearAllCart',
+      apiUrl: '${baseUrl}/api/clearAllCart',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -404,7 +405,7 @@ class RemoveItemFromCartApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RemoveItemFromCartApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/removeFromCart',
+      apiUrl: '${baseUrl}/api/removeFromCart',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -437,7 +438,7 @@ class RegularServiceApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RegularServiceApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/regular/service',
+      apiUrl: '${baseUrl}/api/regular/service',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -474,7 +475,7 @@ class RepairServiceApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RepairServiceApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/repair/service',
+      apiUrl: '${baseUrl}/api/repair/service',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -498,7 +499,7 @@ class GetMyCartApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getMyCartApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/myCart',
+      apiUrl: '${baseUrl}/api/myCart',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -534,7 +535,7 @@ class UpdateUserApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'UpdateUserApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/user',
+      apiUrl: '${baseUrl}/api/user',
       callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -563,7 +564,7 @@ class TestAuthUserApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'TestAuthUserApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/myProfile',
+      apiUrl: '${baseUrl}/api/myProfile',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -585,7 +586,7 @@ class NewsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'NewsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/news',
+      apiUrl: '${baseUrl}/api/news',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -614,7 +615,7 @@ class DetailsNewsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'DetailsNewsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/news/${id}',
+      apiUrl: '${baseUrl}/api/news/${id}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -647,7 +648,7 @@ class LocationApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'LocationApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/location',
+      apiUrl: '${baseUrl}/api/location',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -675,7 +676,7 @@ class OfferApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'OfferApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/offer',
+      apiUrl: '${baseUrl}/api/offer',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -704,7 +705,7 @@ class OfferDetailsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'OfferDetailsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/offer/${id}',
+      apiUrl: '${baseUrl}/api/offer/${id}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -733,7 +734,7 @@ class SettingApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'SettingApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/setting',
+      apiUrl: '${baseUrl}/api/setting',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -761,7 +762,7 @@ class SliderApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'SliderApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/slider',
+      apiUrl: '${baseUrl}/api/slider',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -821,7 +822,7 @@ class CarModelsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'CarModelsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/carCategory',
+      apiUrl: '${baseUrl}/api/carCategory',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -851,7 +852,7 @@ class GetCarsApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GetCarsApi',
       apiUrl:
-          'https://hyundai.completechaintech.com/api/carCategory/${id}/cars',
+          '${baseUrl}/api/carCategory/${id}/cars',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -882,7 +883,7 @@ class GetCarDetailsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetCarDetailsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/car/${id}',
+      apiUrl: '${baseUrl}/api/car/${id}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -922,7 +923,7 @@ class PartsCategoryApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'PartsCategoryApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/partsCategory',
+      apiUrl: '${baseUrl}/api/partsCategory',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -965,7 +966,7 @@ class PartsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'PartsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/part/${id}',
+      apiUrl: '${baseUrl}/api/part/${id}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1007,7 +1008,7 @@ class MyNotificationsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'MyNotificationsApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/myNotifications',
+      apiUrl: '${baseUrl}/api/myNotifications',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1049,7 +1050,7 @@ class UpdateCartApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'UpdateCart Api',
-      apiUrl: 'https://hyundai.completechaintech.com/api/updateCart/${id}',
+      apiUrl: '${baseUrl}/api/updateCart/${id}',
       callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1092,7 +1093,7 @@ class VehicleApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'VehicleApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/vehicle',
+      apiUrl: '${baseUrl}/api/vehicle',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1116,7 +1117,7 @@ class ServiceTypeApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'ServiceTypeApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/serviceType',
+      apiUrl: '${baseUrl}/api/serviceType',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1140,7 +1141,7 @@ class DeliveryPricesApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'deliveryPrices Api',
-      apiUrl: 'https://hyundai.completechaintech.com/api/deliveryPrices',
+      apiUrl: '${baseUrl}/api/deliveryPrices',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1164,7 +1165,7 @@ class GetAddressApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getAddressApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/address',
+      apiUrl: '${baseUrl}/api/address',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1188,7 +1189,7 @@ class GetPaymentStatusApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getPaymentStatusApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/paymentStatus',
+      apiUrl: '${baseUrl}/api/paymentStatus',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1212,7 +1213,7 @@ class GetMyOrderApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getMyOrderApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/myOrder',
+      apiUrl: '${baseUrl}/api/myOrder',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1236,7 +1237,7 @@ class GetMyAppointmentApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getMyAppointmentApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/myAppointment',
+      apiUrl: '${baseUrl}/api/myAppointment',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1260,7 +1261,7 @@ class GetPaymentIdApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getPaymentIdApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/payment',
+      apiUrl: '${baseUrl}/api/payment',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1298,7 +1299,7 @@ class AddAddressApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addAddressApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/address',
+      apiUrl: '${baseUrl}/api/address',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1332,7 +1333,7 @@ class CheckAvailableTimeCall {
     return ApiManager.instance.makeApiCall(
       callName: 'checkAvailableTime',
       apiUrl:
-          'https://hyundai.completechaintech.com/api/service/checkAvailableTime',
+          '${baseUrl}/api/service/checkAvailableTime',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1359,7 +1360,7 @@ class CashOnDeliveryApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'cashOnDeliveryApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/cashOnDelivery',
+      apiUrl: '${baseUrl}/api/cashOnDelivery',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1387,7 +1388,7 @@ class AddCouponApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addCouponApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/addCoupon',
+      apiUrl: '${baseUrl}/api/addCoupon',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1419,7 +1420,7 @@ class AddReviewApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addReviewApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/review/${id}',
+      apiUrl: '${baseUrl}/api/review/${id}',
       callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1443,7 +1444,7 @@ class RemoveCouponApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'removeCouponApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/removeCoupon',
+      apiUrl: '$baseUrl/api/removeCoupon',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',

@@ -60,7 +60,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
 
   @override
   void initState() {
-    WidgetsBinding.instance?.addObserver(this);
+    WidgetsBinding.instance.addObserver(this);
     super.initState();
     _model = createModel(context, () => SheckOutPagePageModel());
 
@@ -69,7 +69,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
       flutterHyperPay = FlutterHyperPay(
         shopperResultUrl: InAppPaymentSetting.shopperResultUrl,
         // return back to app
-        paymentMode: PaymentMode.test,
+        paymentMode: PaymentMode.live,
         // test or live
         lang: InAppPaymentSetting.getLang(),
       );

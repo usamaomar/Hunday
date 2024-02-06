@@ -145,7 +145,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'auqle7ga': {
       'en': 'Sign Up',
-      'ar': 'اذا اشترك الأن',
+      'ar': 'انضم الينا',
     },
     't5xax01h': {
       'en': 'Home',
@@ -223,27 +223,27 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     '0pq4i1m3': {
       'en': 'Parts Shop',
-      'ar': 'اقسام المحل',
+      'ar': 'متجر قطع الغيار',
     },
     '8io5q1kq': {
       'en': 'Services',
-      'ar': 'خدمات',
+      'ar': 'خدمات الصيانة',
     },
     'qts15g7r': {
       'en': 'Car model',
-      'ar': 'متجر قطع ',
+      'ar': 'موديلات المركبات ',
     },
     '2xlj2tf9': {
       'en': 'Locations',
-      'ar': 'مناطق البيع',
+      'ar': 'مواقعنا',
     },
     'xifs34ig': {
       'en': 'Monthly offers',
-      'ar': 'العروض الشهريه',
+      'ar': 'اخر العروض',
     },
     'rncq54oc': {
       'en': 'News',
-      'ar': 'الاخبار',
+      'ar': 'اخر الاخبار',
     },
     'x8otlfzl': {
       'en': '',
@@ -507,7 +507,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1x66u28j': {
       'en': 'Regular',
-      'ar': 'عادي',
+      'ar': 'صيانة دورية',
     },
     'xdtk43lc': {
       'en': 'Repair',
@@ -526,7 +526,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'v3cn7fl3': {
       'en': 'License Plate',
-      'ar': 'لوحة الترخيص',
+      'ar': 'رقم اللوحة / موديل المركبة',
     },
     'scxw8d5x': {
       'en': 'Search for an item...',
@@ -674,7 +674,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'gn9dd2uh': {
       'en': 'My Profile',
-      'ar': 'ملف الشخصي',
+      'ar': 'ملفي الشخصي',
     },
     'zsl2n2ki': {
       'en': 'My Orders',
@@ -690,7 +690,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2jxn0p4u': {
       'en': 'Notification',
-      'ar': 'إشعار',
+      'ar': 'إشعاراتي',
     },
     'rtfhfshd': {
       'en': 'Settings',
@@ -790,7 +790,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'w5s8atya': {
       'en': 'Discount Code',
-      'ar': 'الرقم التسلسلي للخصم',
+      'ar': 'رمز قسيمة الخصم',
     },
     'afzcb7rj': {
       'en': 'Add Coupon',
@@ -830,7 +830,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '2sx1fy0c': {
       'en': 'VAT/Tax',
-      'ar': 'ضريبة القيمة المضافة',
+      'ar': 'ضريبة المبيعات',
     },
     'qjum9ia7': {
       'en': 'Coupon',
@@ -880,7 +880,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nbroyo6w': {
       'en': 'Vin . No',
-      'ar': 'رقم . المركبة',
+      'ar': 'رقم الشاصي',
     },
     'o4jbzhjp': {
       'en': 'Plate . No',
@@ -911,7 +911,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'snefw7t4': {
       'en': 'Car Type',
-      'ar': 'نوع السيارة',
+      'ar': 'موديل السيارة',
     },
     'u3gfgsq5': {
       'en': '-',
@@ -931,7 +931,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '1uf8k20q': {
       'en': 'Year of Menufacturing',
-      'ar': 'سنة التصنيع',
+      'ar': 'سنة الصنع',
     },
     'chfp6y8s': {
       'en': 'Registered Until',
@@ -943,7 +943,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'xnun2lk7': {
       'en': 'Enging Capacity',
-      'ar': 'القدرة الهندسية',
+      'ar': 'سعة المحرك',
     },
     'b24zprrk': {
       'en': 'Fuel Type',
@@ -951,7 +951,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'ul6rt32s': {
       'en': '-',
-      'ar': 'رقم . اللوحة',
+      'ar': 'رقم الشاصي',
     },
     'mxlgzph1': {
       'en': 'Registration Number',
@@ -990,11 +990,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'nmxvz08q': {
       'en': 'By clicking the button you agree to',
-      'ar': 'بالنقر على الزر فإنك توافق على لدينا',
+      'ar': 'الموافقة على الشروط والأحكام',
     },
     'c4kn7j9t': {
       'en': 'Terms & Conditions',
-      'ar': 'البنود و الظروف',
+      'ar': 'رابط الشروط والأحكام',
     },
     '7cavw78u': {
       'en': 'Complete your purchase',
@@ -1253,7 +1253,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'eqnxfwdp': {
       'en': 'Add New Item',
-      'ar': 'أضف أداة جديدة',
+      'ar': 'اضف قطعة جديدة',
     },
     'g0l0qlnf': {
       'en': 'Total',
@@ -1261,7 +1261,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'qpf5wtpv': {
       'en': 'Proceed To Checkout',
-      'ar': 'الشروع في الخروج',
+      'ar': 'استكمال الدفع',
     },
   },
   // Modal06BasicInformation
@@ -1461,7 +1461,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'a78ezigy': {
       'en': 'Feedback',
-      'ar': 'تعليق',
+      'ar': 'تقييم',
     },
     'prpj44fo': {
       'en': 'What is Your Rate?',
