@@ -446,7 +446,7 @@ class _AddComponentShopingDetailsWidgetState
                                           : valueOrDefault<String>(
                                               FFLocalizations.of(context)
                                                   .getVariableText(
-                                                enText: 'Year of Creation',
+                                                enText: ' Model year',
                                                 arText: 'سنة الصنع',
                                               ),
                                               '٫',

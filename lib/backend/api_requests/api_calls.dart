@@ -24,7 +24,7 @@ class LoginApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'LoginApi',
-      apiUrl: '${baseUrl}/api/login',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/login',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -91,7 +91,7 @@ class RegisterApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RegisterApi',
-      apiUrl: '${baseUrl}/api/register',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/register',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -142,7 +142,7 @@ class GetMobileNumberCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GetMobileNumber',
       apiUrl:
-          '${baseUrl}/api/forgetPassword/getMobileNumber',
+          '${FFAppState().stateCaseModel.baseUrl}/api/forgetPassword/getMobileNumber',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -170,7 +170,7 @@ class GetVerifiedCodeApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GetVerifiedCodeApi',
       apiUrl:
-          '${baseUrl}/api/forgetPassword/getVerifiedCode',
+          '${FFAppState().stateCaseModel.baseUrl}/api/forgetPassword/getVerifiedCode',
       callType: ApiCallType.POST,
       headers: {},
       params: {},
@@ -204,7 +204,7 @@ class ChangePasswordApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'ChangePasswordApi',
       apiUrl:
-          '${baseUrl}/api/forgetPassword/changePassword',
+          '${FFAppState().stateCaseModel.baseUrl}/api/forgetPassword/changePassword',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -235,7 +235,7 @@ class LicenseScanApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'licenseScanApi',
-      apiUrl: '${baseUrl}/api/vehicle/licenseScan',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/vehicle/licenseScan',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -272,7 +272,7 @@ class TestDriveApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'testDriveApi',
-      apiUrl: '${baseUrl}/api/testDrive',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/testDrive',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -322,7 +322,7 @@ class StoreVehicleApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'StoreVehicleApi',
-      apiUrl: '${baseUrl}/api/vehicle/store',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/vehicle/store',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -351,7 +351,7 @@ class AddToCartApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'AddToCartApi',
-      apiUrl: '${baseUrl}/api/addToCart',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/addToCart',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -375,7 +375,7 @@ class ClearAllCartApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'ClearAllCart Api',
-      apiUrl: '${baseUrl}/api/clearAllCart',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/clearAllCart',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -405,7 +405,7 @@ class RemoveItemFromCartApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RemoveItemFromCartApi',
-      apiUrl: '${baseUrl}/api/removeFromCart',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/removeFromCart',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -438,7 +438,7 @@ class RegularServiceApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RegularServiceApi',
-      apiUrl: '${baseUrl}/api/regular/service',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/regular/service',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -475,7 +475,7 @@ class RepairServiceApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'RepairServiceApi',
-      apiUrl: '${baseUrl}/api/repair/service',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/repair/service',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -499,7 +499,7 @@ class GetMyCartApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getMyCartApi',
-      apiUrl: '${baseUrl}/api/myCart',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/myCart',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -535,7 +535,7 @@ class UpdateUserApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'UpdateUserApi',
-      apiUrl: '${baseUrl}/api/user',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/user',
       callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -564,7 +564,7 @@ class TestAuthUserApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'TestAuthUserApi',
-      apiUrl: '${baseUrl}/api/myProfile',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/myProfile',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -586,7 +586,7 @@ class NewsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'NewsApi',
-      apiUrl: '${baseUrl}/api/news',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/news',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -615,7 +615,7 @@ class DetailsNewsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'DetailsNewsApi',
-      apiUrl: '${baseUrl}/api/news/${id}',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/news/${id}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -648,7 +648,7 @@ class LocationApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'LocationApi',
-      apiUrl: '${baseUrl}/api/location',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/location',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -676,7 +676,7 @@ class OfferApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'OfferApi',
-      apiUrl: '${baseUrl}/api/offer',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/offer',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -705,7 +705,7 @@ class OfferDetailsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'OfferDetailsApi',
-      apiUrl: '${baseUrl}/api/offer/${id}',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/offer/${id}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -734,7 +734,7 @@ class SettingApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'SettingApi',
-      apiUrl: '${baseUrl}/api/setting',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/setting',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -762,7 +762,7 @@ class SliderApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'SliderApi',
-      apiUrl: '${baseUrl}/api/slider',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/slider',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -822,7 +822,7 @@ class CarModelsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'CarModelsApi',
-      apiUrl: '${baseUrl}/api/carCategory',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/carCategory',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -852,7 +852,7 @@ class GetCarsApiCall {
     return ApiManager.instance.makeApiCall(
       callName: 'GetCarsApi',
       apiUrl:
-          '${baseUrl}/api/carCategory/${id}/cars',
+          '${FFAppState().stateCaseModel.baseUrl}/api/carCategory/${id}/cars',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -883,7 +883,7 @@ class GetCarDetailsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'GetCarDetailsApi',
-      apiUrl: '${baseUrl}/api/car/${id}',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/car/${id}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -923,7 +923,7 @@ class PartsCategoryApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'PartsCategoryApi',
-      apiUrl: '${baseUrl}/api/partsCategory',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/partsCategory',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -966,7 +966,7 @@ class PartsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'PartsApi',
-      apiUrl: '${baseUrl}/api/part/${id}',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/part/${id}',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1008,7 +1008,7 @@ class MyNotificationsApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'MyNotificationsApi',
-      apiUrl: '${baseUrl}/api/myNotifications',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/myNotifications',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1025,7 +1025,7 @@ class MyNotificationsApiCall {
     );
   }
 
-  static dynamic? detailsModel(dynamic response) => getJsonField(
+  static dynamic detailsModel(dynamic response) => getJsonField(
         response,
         r'''$.car''',
       );
@@ -1050,7 +1050,7 @@ class UpdateCartApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'UpdateCart Api',
-      apiUrl: '${baseUrl}/api/updateCart/${id}',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/updateCart/${id}',
       callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1093,7 +1093,7 @@ class VehicleApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'VehicleApi',
-      apiUrl: '${baseUrl}/api/vehicle',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/vehicle',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1117,7 +1117,7 @@ class ServiceTypeApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'ServiceTypeApi',
-      apiUrl: '${baseUrl}/api/serviceType',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/serviceType',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1141,7 +1141,7 @@ class DeliveryPricesApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'deliveryPrices Api',
-      apiUrl: '${baseUrl}/api/deliveryPrices',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/deliveryPrices',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1165,7 +1165,7 @@ class GetAddressApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getAddressApi',
-      apiUrl: '${baseUrl}/api/address',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/address',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1189,7 +1189,7 @@ class GetPaymentStatusApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getPaymentStatusApi',
-      apiUrl: '${baseUrl}/api/paymentStatus',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/paymentStatus',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1213,7 +1213,7 @@ class GetMyOrderApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getMyOrderApi',
-      apiUrl: '${baseUrl}/api/myOrder',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/myOrder',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1237,7 +1237,7 @@ class GetMyAppointmentApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getMyAppointmentApi',
-      apiUrl: '${baseUrl}/api/myAppointment',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/myAppointment',
       callType: ApiCallType.GET,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1261,7 +1261,7 @@ class GetPaymentIdApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'getPaymentIdApi',
-      apiUrl: '${baseUrl}/api/payment',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/payment',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1299,7 +1299,7 @@ class AddAddressApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addAddressApi',
-      apiUrl: '${baseUrl}/api/address',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/address',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1333,7 +1333,7 @@ class CheckAvailableTimeCall {
     return ApiManager.instance.makeApiCall(
       callName: 'checkAvailableTime',
       apiUrl:
-          '${baseUrl}/api/service/checkAvailableTime',
+          '${FFAppState().stateCaseModel.baseUrl}/api/service/checkAvailableTime',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1360,7 +1360,7 @@ class CashOnDeliveryApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'cashOnDeliveryApi',
-      apiUrl: '${baseUrl}/api/cashOnDelivery',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/cashOnDelivery',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1388,7 +1388,7 @@ class AddCouponApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addCouponApi',
-      apiUrl: '${baseUrl}/api/addCoupon',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/addCoupon',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1420,7 +1420,7 @@ class AddReviewApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'addReviewApi',
-      apiUrl: '${baseUrl}/api/review/${id}',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/review/${id}',
       callType: ApiCallType.PUT,
       headers: {
         'Authorization': 'Bearer ${token}',
@@ -1444,7 +1444,7 @@ class RemoveCouponApiCall {
   }) async {
     return ApiManager.instance.makeApiCall(
       callName: 'removeCouponApi',
-      apiUrl: '$baseUrl/api/removeCoupon',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/removeCoupon',
       callType: ApiCallType.POST,
       headers: {
         'Authorization': 'Bearer ${token}',

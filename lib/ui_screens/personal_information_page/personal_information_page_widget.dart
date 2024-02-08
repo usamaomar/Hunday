@@ -30,14 +30,12 @@ class _PersonalInformationPageWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => PersonalInformationPageModel());
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 

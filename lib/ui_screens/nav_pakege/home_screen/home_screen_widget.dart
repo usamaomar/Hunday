@@ -277,7 +277,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                               0.0, 25.0, 0.0, 0.0),
                           child: SvgPicture.asset(
                             'assets/images/Group_70060.svg',
-                            fit: BoxFit.fitWidth,
+                            fit: BoxFit.cover,
                           ),
                         ),
                       ],
@@ -288,7 +288,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          if (FFAppState().sliderList.length > 0)
+                          if (FFAppState().sliderList.isNotEmpty)
                             Expanded(
                               child: Builder(
                                 builder: (context) {
@@ -456,7 +456,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                   flex: 1,
                                   child: Padding(
                                     padding: const EdgeInsetsDirectional.fromSTEB(
-                                        30.0, 0.0, 30.0, 60.0),
+                                        30.0, 0.0, 30.0, 0.0),
                                     child: GridView(
                                       physics: NeverScrollableScrollPhysics(),
                                       padding: EdgeInsets.zero,
@@ -465,7 +465,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                         crossAxisCount: 3,
                                         crossAxisSpacing: 5.0,
                                         mainAxisSpacing: 5.0,
-                                        childAspectRatio: 0.8,
+                                        childAspectRatio: 0.825,
                                       ),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,

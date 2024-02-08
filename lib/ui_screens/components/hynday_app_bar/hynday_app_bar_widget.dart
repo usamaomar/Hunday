@@ -459,15 +459,19 @@ class _HyndayAppBarWidgetState extends State<HyndayAppBarWidget> {
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            ClipRRect(
-                              borderRadius: BorderRadius.circular(8.0),
-                              child: SvgPicture.asset(
-                                'assets/images/Group_70674.svg',
-                                width: 80.0,
-                                height: 20.0,
-                                fit: BoxFit.contain,
-                              ),
-                            ),
+                            // ClipRRect(
+                            //   borderRadius: BorderRadius.circular(8.0),
+                            //   child: SvgPicture.asset(
+                            //     'assets/images/Group_70674.svg',
+                            //     width: 80.0,
+                            //     height: 20.0,
+                            //     fit: BoxFit.contain,
+                            //   ),
+                            // ),
+                            Container(
+                              width: 80.0,
+                              height: 20.0,
+                            )
                           ],
                         ),
                       ),

@@ -198,7 +198,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                         height: 30.0,
                                         decoration: BoxDecoration(
                                           color: Color(0xFFC1D6EF),
-                                          borderRadius: BorderRadius.only(
+                                          borderRadius: const BorderRadius.only(
                                             bottomLeft: Radius.circular(0.0),
                                             bottomRight: Radius.circular(0.0),
                                             topLeft: Radius.circular(20.0),
@@ -217,7 +217,7 @@ class _RegularPageWidgetState extends State<RegularPageWidget>
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             50.0, 0.0, 50.0, 0.0),
                                         child: ClipRRect(
                                           borderRadius:

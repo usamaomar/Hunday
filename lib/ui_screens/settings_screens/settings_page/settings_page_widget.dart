@@ -47,22 +47,15 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
 
   @override
   void initState() {
-
     super.initState();
     _model = createModel(context, () => SettingsPageModel());
-
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {
-      canSupport().then((value) {
-        canSupportVals = value;
-      });
-    }));
   }
 
   Future<bool> canSupport() async {
     final _localAuth = LocalAuthentication();
     bool _isBiometricSupported = await _localAuth.isDeviceSupported();
     bool canCheckBiometrics = await _localAuth.canCheckBiometrics;
-    return _isBiometricSupported && canCheckBiometrics;
+    return _isBiometricSupported || canCheckBiometrics;
   }
 
   @override
@@ -663,154 +656,159 @@ class _SettingsPageWidgetState extends State<SettingsPageWidget>
                                       //   endIndent: 15.0,
                                       //   color: Color(0xFFABADAE),
                                       // ),
-                                      Visibility(
-                                        visible:  canSupportVals,
-                                        child: Padding(
-                                          padding:
-                                          EdgeInsetsDirectional.fromSTEB(
-                                              15.0, 10.0, 15.0, 10.0),
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            mainAxisAlignment:
-                                            MainAxisAlignment
-                                                .spaceBetween,
-                                            children: [
-                                              Row(
-                                                mainAxisSize:
-                                                MainAxisSize.max,
+                                      FutureBuilder(
+                                        future: canSupport(),
+                                        builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+                                          return Visibility(
+                                            visible : snapshot.connectionState.name == 'done' && snapshot.data == true,
+                                            child: Padding(
+                                              padding:
+                                              const EdgeInsetsDirectional.fromSTEB(
+                                                  15.0, 10.0, 15.0, 10.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                mainAxisAlignment:
+                                                MainAxisAlignment
+                                                    .spaceBetween,
                                                 children: [
-                                                  Container(
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme
-                                                          .of(context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                      BorderRadius
-                                                          .circular(3.0),
-                                                      border: Border.all(
-                                                        color: FlutterFlowTheme
-                                                            .of(context)
-                                                            .ahayundai,
-                                                        width: 0.5,
+                                                  Row(
+                                                    mainAxisSize:
+                                                    MainAxisSize.max,
+                                                    children: [
+                                                      Container(
+                                                        decoration: BoxDecoration(
+                                                          color: FlutterFlowTheme
+                                                              .of(context)
+                                                              .secondaryBackground,
+                                                          borderRadius:
+                                                          BorderRadius
+                                                              .circular(3.0),
+                                                          border: Border.all(
+                                                            color: FlutterFlowTheme
+                                                                .of(context)
+                                                                .ahayundai,
+                                                            width: 0.5,
+                                                          ),
+                                                        ),
+                                                        child: Padding(
+                                                          padding:
+                                                          EdgeInsets.all(5.0),
+                                                          child: Icon(
+                                                            Icons.fingerprint,
+                                                            color:
+                                                            Color(0xFF3D6398),
+                                                            size: 20.0,
+                                                          ),
+                                                        ),
                                                       ),
-                                                    ),
-                                                    child: Padding(
-                                                      padding:
-                                                      EdgeInsets.all(5.0),
-                                                      child: Icon(
-                                                        Icons.fingerprint,
-                                                        color:
-                                                        Color(0xFF3D6398),
-                                                        size: 20.0,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                  Padding(
-                                                    padding:
-                                                    EdgeInsetsDirectional
-                                                        .fromSTEB(
-                                                        10.0,
-                                                        0.0,
-                                                        10.0,
-                                                        0.0),
-                                                    child: Text(
-                                                      FFLocalizations.of(
-                                                          context)
-                                                          .getText(
-                                                        'gup13knb' /* Enable fingerprint */,
-                                                      ),
-                                                      textAlign:
-                                                      TextAlign.start,
-                                                      style: FlutterFlowTheme
-                                                          .of(context)
-                                                          .bodyMedium
-                                                          .override(
-                                                        fontFamily:
-                                                        'HeeboBold',
-                                                        color: Color(
-                                                            0xFF3D6398),
-                                                        fontSize: 14.0,
-                                                        fontWeight:
-                                                        FontWeight
-                                                            .bold,
-                                                        useGoogleFonts:
-                                                        false,
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              ),
-                                              Switch.adaptive(
-                                                value: _model.switchValue2 ??=
-                                                    FFAppState()
-                                                        .isFingerEnabled,
-                                                onChanged: (newValue) async {
-                                                  setState(() =>
-                                                  _model.switchValue2 =
-                                                  newValue!);
-                                                  if (newValue!) {
-                                                    final _localAuth =
-                                                    LocalAuthentication();
-                                                    bool
-                                                    _isBiometricSupported =
-                                                    await _localAuth
-                                                        .isDeviceSupported();
-                                                    bool canCheckBiometrics =
-                                                    await _localAuth
-                                                        .canCheckBiometrics;
-                                                    if (_isBiometricSupported &&
-                                                        canCheckBiometrics) {
-                                                      _model.allowsBes = await _localAuth
-                                                          .authenticate(
-                                                          localizedReason:
+                                                      Padding(
+                                                        padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                            10.0,
+                                                            0.0,
+                                                            10.0,
+                                                            0.0),
+                                                        child: Text(
                                                           FFLocalizations.of(
                                                               context)
                                                               .getText(
-                                                            '6yklnh8p' /* app is requesting your finger ... */,
+                                                            'gup13knb' /* Enable fingerprint */,
                                                           ),
-                                                          options: const AuthenticationOptions(
-                                                              biometricOnly:
-                                                              true));
-                                                      setState(() {});
-                                                    }
-
-                                                    if (_model.allowsBes ==
-                                                        true) {
-                                                      setState(() {
+                                                          textAlign:
+                                                          TextAlign.start,
+                                                          style: FlutterFlowTheme
+                                                              .of(context)
+                                                              .bodyMedium
+                                                              .override(
+                                                            fontFamily:
+                                                            'HeeboBold',
+                                                            color: Color(
+                                                                0xFF3D6398),
+                                                            fontSize: 14.0,
+                                                            fontWeight:
+                                                            FontWeight
+                                                                .bold,
+                                                            useGoogleFonts:
+                                                            false,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                  Switch.adaptive(
+                                                    value: _model.switchValue2 ??=
                                                         FFAppState()
-                                                            .isFingerEnabled =
-                                                        true;
-                                                      });
-                                                    } else {
-                                                      setState(() {
-                                                        FFAppState()
-                                                            .isFingerEnabled =
-                                                        false;
-                                                      });
-                                                    }
+                                                            .isFingerEnabled,
+                                                    onChanged: (newValue) async {
+                                                      setState(() =>
+                                                      _model.switchValue2 =
+                                                      newValue!);
+                                                      if (newValue!) {
+                                                        final _localAuth =
+                                                        LocalAuthentication();
+                                                        bool
+                                                        _isBiometricSupported =
+                                                        await _localAuth
+                                                            .isDeviceSupported();
+                                                        bool canCheckBiometrics =
+                                                        await _localAuth
+                                                            .canCheckBiometrics;
+                                                        if (_isBiometricSupported &&
+                                                            canCheckBiometrics) {
+                                                          _model.allowsBes = await _localAuth
+                                                              .authenticate(
+                                                              localizedReason:
+                                                              FFLocalizations.of(
+                                                                  context)
+                                                                  .getText(
+                                                                '6yklnh8p' /* app is requesting your finger ... */,
+                                                              ),
+                                                              options: const AuthenticationOptions(
+                                                                  biometricOnly:
+                                                                  true));
+                                                          setState(() {});
+                                                        }
 
-                                                    setState(() {});
-                                                  } else {
-                                                    setState(() {
-                                                      FFAppState()
-                                                          .isFingerEnabled =
-                                                      false;
-                                                    });
-                                                  }
-                                                },
-                                                activeColor: Color(0xFFFFFF),
-                                                activeTrackColor:
-                                                Color(0xFF4caf50),
-                                                inactiveTrackColor:
-                                                Color(0xFFABADAE),
-                                                inactiveThumbColor:
-                                                FlutterFlowTheme.of(
-                                                    context)
-                                                    .secondaryText,
+                                                        if (_model.allowsBes ==
+                                                            true) {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .isFingerEnabled =
+                                                            true;
+                                                          });
+                                                        } else {
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .isFingerEnabled =
+                                                            false;
+                                                          });
+                                                        }
+
+                                                        setState(() {});
+                                                      } else {
+                                                        setState(() {
+                                                          FFAppState()
+                                                              .isFingerEnabled =
+                                                          false;
+                                                        });
+                                                      }
+                                                    },
+                                                    activeColor: Color(0xFFFFFF),
+                                                    activeTrackColor:
+                                                    Color(0xFF4caf50),
+                                                    inactiveTrackColor:
+                                                    Color(0xFFABADAE),
+                                                    inactiveThumbColor:
+                                                    FlutterFlowTheme.of(
+                                                        context)
+                                                        .secondaryText,
+                                                  ),
+                                                ],
                                               ),
-                                            ],
-                                          ),
-                                        ),
+                                            ),
+                                          );
+                                        },
                                       ),
                                       Divider(
                                         height: 0.0,

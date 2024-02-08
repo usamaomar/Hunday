@@ -12,7 +12,6 @@ import 'package:hyundai/ui_screens/components/customs/CustomNavs.dart';
 import 'package:provider/provider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'flutter_flow/flutter_flow_theme.dart';
 import 'flutter_flow/flutter_flow_timer.dart';
@@ -85,11 +84,9 @@ dynamic counterReducer(dynamic state, dynamic storeEventValue) {
 }
 
 void main() async {
-
-
-
-
   WidgetsFlutterBinding.ensureInitialized();
+  final appState = FFAppState();
+  stateCase(true);
   usePathUrlStrategy();
 
   if (Platform.isIOS) {
@@ -103,7 +100,6 @@ void main() async {
     await Firebase.initializeApp();
   }
 
-  final appState = FFAppState(); // Initialize FFAppState
   await appState.initializePersistedState().then((value) => {});
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   await FlutterFlowTheme.initialize();
@@ -118,9 +114,14 @@ void main() async {
   ));
 }
 
-
-void stateCase(bool isLive){
-
+void stateCase(bool isLive) {
+  if (isLive) {
+    FFAppState().stateCaseModel = StateCaseModelStruct(
+        baseUrl: 'https://trade-hyundaijo.com', isLive: isLive);
+  } else {
+    FFAppState().stateCaseModel = StateCaseModelStruct(
+        baseUrl: 'https://hyundai.completechaintech.com', isLive: isLive);
+  }
 }
 
 Future initPushNotifications() async {
@@ -291,7 +292,7 @@ class _MyAppState extends State<MyApp> {
       DeviceOrientation.portraitDown,
     ]);
     return StoreProvider<dynamic>(
-      store: widget.store ,
+      store: widget.store,
       child: MaterialApp.router(
         key: scaffoldKey,
         title: 'hyundai',
@@ -443,7 +444,7 @@ class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
                   distinct: true,
                   converter: (store) => store.state,
                   builder: (context, storeEvent) {
-                    return  badges.Badge(
+                    return badges.Badge(
                       badgeStyle: badges.BadgeStyle(padding: EdgeInsets.all(5)),
                       badgeAnimation: badges.BadgeAnimation.scale(),
                       badgeContent: Text(

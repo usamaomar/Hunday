@@ -4,6 +4,7 @@ import 'dart:core';
 import 'dart:typed_data';
 
 import 'package:collection/collection.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 import 'package:equatable/equatable.dart';
 import 'package:http_parser/http_parser.dart';
@@ -377,7 +378,10 @@ class ApiManager {
         -1,
       );
     }
-    // print("result = ${result.jsonBody}\n result = ${result.response?.body}\n");
+    if(kDebugMode) {
+      print(
+          "result = ${result.jsonBody}\n result = ${result.response?.body}\n");
+    }
     return result;
   }
 }

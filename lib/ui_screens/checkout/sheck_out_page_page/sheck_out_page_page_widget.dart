@@ -37,7 +37,7 @@ class SheckOutPagePageWidget extends StatefulWidget {
 }
 
 class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
-    with TickerProviderStateMixin  , WidgetsBindingObserver{
+    with TickerProviderStateMixin, WidgetsBindingObserver {
   late SheckOutPagePageModel _model;
   late FlutterHyperPay flutterHyperPay;
   bool isLoading = false;
@@ -68,8 +68,9 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       flutterHyperPay = FlutterHyperPay(
         shopperResultUrl: InAppPaymentSetting.shopperResultUrl,
-        // return back to app
-        paymentMode: PaymentMode.live,
+        paymentMode: FFAppState().stateCaseModel.isLive
+            ? PaymentMode.live
+            : PaymentMode.test,
         // test or live
         lang: InAppPaymentSetting.getLang(),
       );
@@ -883,7 +884,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                                                                           context)
                                                                       .getVariableText(
                                                                 enText:
-                                                                    'Dont forget to applay on privacy and policy',
+                                                                    'Don\'t forget to read our Privacy and Policy',
                                                                 arText:
                                                                     'لا تنسى الموافقة على الشروط والاحكام',
                                                               )),
@@ -1002,43 +1003,38 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
   }
 
   static const platform = const MethodChannel("com.comc.hyundai/paymentMethod");
+
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-        if(redirect!=null){
-          context.pushReplacementNamed(
-            'HomeScreen',
-            queryParameters: {
-              'deepLinkId': serializeParam(
-                redirect,
-                ParamType.String,
-              ),
-            }.withoutNulls,
-          );
-        }
+      if (redirect != null) {
+        context.pushReplacementNamed(
+          'HomeScreen',
+          queryParameters: {
+            'deepLinkId': serializeParam(
+              redirect,
+              ParamType.String,
+            ),
+          }.withoutNulls,
+        );
+      }
     }
   }
+
   payRequestNowReadyUI(
       {required String checkoutId, required merchantId}) async {
-    if (Platform.isIOS || kDebugMode) {
-      var result =
-          await platform.invokeMethod('getPaymentMetod', <String, dynamic>{
-        'checkoutId': checkoutId,
-      }).then((value) {
-        //https://eu-test.oppwa.com/v1/checkouts/F7172ECA6D1F040A85FFB1BBAEC14673.uat01-vm-tx02/redirect
-      redirect = value;
+    if (Platform.isIOS) {
+      await platform.invokeMethod(
+          FFAppState().stateCaseModel.isLive
+              ? 'getPaymentLive'
+              : 'getPaymentMetod',
+          <String, dynamic>{
+            'checkoutId': checkoutId,
+          }).then((value) {
+        redirect = value;
       }).catchError((onError) {
         print("object");
       });
-      // context.pushNamed(
-      //   'PaymentPagePage',
-      //   queryParameters: {
-      //     'checkoutId': serializeParam(
-      //       checkoutId,
-      //       ParamType.String,
-      //     ),
-      //   }.withoutNulls,
-      // );
     } else {
       await flutterHyperPay
           .readyUICards(

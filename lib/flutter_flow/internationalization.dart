@@ -724,7 +724,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3jd0kk0r': {
       'en': 'Car Model / License Plate',
-      'ar': 'نموذج السيارة/لوحة الترخيص',
+      'ar': 'رقم اللوحه/ موديل المركبه',
     },
     'exh9lqzu': {
       'en': 'Search for an item...',
@@ -930,19 +930,19 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'لون السيارة',
     },
     '1uf8k20q': {
-      'en': 'Year of Menufacturing',
+      'en': ' Model year',
       'ar': 'سنة الصنع',
     },
     'chfp6y8s': {
       'en': 'Registered Until',
-      'ar': 'مسجل حتى',
+      'ar': 'مسجل لغاية',
     },
     '02vir69e': {
       'en': 'Plate Number',
       'ar': 'رقم المحرك',
     },
     'xnun2lk7': {
-      'en': 'Enging Capacity',
+      'en': 'Engine Capacity',
       'ar': 'سعة المحرك',
     },
     'b24zprrk': {
@@ -958,8 +958,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'رقم التسجيل',
     },
     '7pcq4s78': {
-      'en': 'VIN Number',
-      'ar': 'رقم المركبة',
+      'en': 'Vin number',
+      'ar': 'رقم الشاصي',
     },
     'lp1r5j5x': {
       'en': 'Engine Number',
@@ -1153,16 +1153,16 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'fgn805t4': {
-      'en': 'Year of Manufacturing',
-      'ar': 'سنة التصنيع',
+      'en': 'Model year',
+      'ar': 'سنة الصنع',
     },
     'qveofh35': {
       'en': 'Registered Until',
-      'ar': 'مسجل حتى',
+      'ar': 'مسجل لغاية',
     },
     'inti40rk': {
       'en': 'Plate Number',
-      'ar': 'رقم لوحة',
+      'ar': 'رقم اللوحة',
     },
     'o2hm26dg': {
       'en': '',
@@ -1170,7 +1170,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'py8x535l': {
       'en': 'VIN Number',
-      'ar': 'رقم المركبة',
+      'ar': 'رقم الشاصي',
     },
     'ydf9otge': {
       'en': '',
@@ -1185,8 +1185,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
     'acbq9clz': {
-      'en': 'Fule Type',
-      'ar': 'نوع فول',
+      'en': 'Fuel type',
+      'ar': 'نوع الوقود',
     },
     'c1jll0cs': {
       'en': 'Option 1',
@@ -1212,11 +1212,11 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'i3kbyih3': {
       'en': 'My Order',
-      'ar': 'طلبي',
+      'ar': 'طلباتي',
     },
     'c4hbd3hr': {
       'en': 'My Appointment',
-      'ar': 'تعييني',
+      'ar': 'مواعيدي',
     },
   },
   // NewsBottomSheetComponent

@@ -1224,8 +1224,6 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                   child: Builder(
                                     builder: (context) => FFButtonWidget(
                                       onPressed: () async {
-
-
                                         if(_model.datePicked == null){
                                           await showDialog(
                                             context: context,
@@ -1265,52 +1263,50 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                               );
                                             },
                                           );
-
-                                          return;
-
-                                        }
-
-                                        if(_model.dropDownValue == null || _model.dropDownValue?.isEmpty == true){
-                                          await showDialog(
-                                            context: context,
-                                            builder:
-                                                (alertDialogContext) {
-                                              return AlertDialog(
-                                                title: Text(
-                                                    FFLocalizations.of(
-                                                        context)
-                                                        .getVariableText(
-                                                      enText: 'Error',
-                                                      arText: 'خطأ',
-                                                    )),
-                                                content: Text(
-                                                    FFLocalizations.of(
-                                                        context)
-                                                        .getVariableText(
-                                                      enText:
-                                                      'Please Select Your Gender',
-                                                      arText:
-                                                      'يرجى تحديد جنسك',
-                                                    )),
-                                                actions: [
-                                                  TextButton(
-                                                    onPressed: () =>
-                                                        Navigator.pop(
-                                                            alertDialogContext),
-                                                    child: Text(
-                                                        FFLocalizations.of(
-                                                            context)
-                                                            .getVariableText(
-                                                          enText: 'ok',
-                                                          arText: 'حسنا',
-                                                        )),
-                                                  ),
-                                                ],
-                                              );
-                                            },
-                                          );
                                           return;
                                         }
+
+                                        // if(_model.dropDownValue == null || _model.dropDownValue?.isEmpty == true){
+                                        //   await showDialog(
+                                        //     context: context,
+                                        //     builder:
+                                        //         (alertDialogContext) {
+                                        //       return AlertDialog(
+                                        //         title: Text(
+                                        //             FFLocalizations.of(
+                                        //                 context)
+                                        //                 .getVariableText(
+                                        //               enText: 'Error',
+                                        //               arText: 'خطأ',
+                                        //             )),
+                                        //         content: Text(
+                                        //             FFLocalizations.of(
+                                        //                 context)
+                                        //                 .getVariableText(
+                                        //               enText:
+                                        //               'Please Select Your Gender',
+                                        //               arText:
+                                        //               'يرجى تحديد جنسك',
+                                        //             )),
+                                        //         actions: [
+                                        //           TextButton(
+                                        //             onPressed: () =>
+                                        //                 Navigator.pop(
+                                        //                     alertDialogContext),
+                                        //             child: Text(
+                                        //                 FFLocalizations.of(
+                                        //                     context)
+                                        //                     .getVariableText(
+                                        //                   enText: 'ok',
+                                        //                   arText: 'حسنا',
+                                        //                 )),
+                                        //           ),
+                                        //         ],
+                                        //       );
+                                        //     },
+                                        //   );
+                                        //   return;
+                                        // }
                                         var _shouldSetState = false;
                                         if (_model.textController.text ==
                                                 null ||
