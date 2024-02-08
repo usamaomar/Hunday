@@ -1472,6 +1472,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'حفظ',
     },
   },
+  // DeleteAcctounComponent
+  {
+    'p2kvejv5': {
+      'en': 'Delete Account',
+      'ar': 'حذف الحساب',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {
