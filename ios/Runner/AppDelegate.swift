@@ -16,10 +16,7 @@ import Flutter
       paymentChannel.setMethodCallHandler({
           (call: FlutterMethodCall,result : @escaping FlutterResult) -> Void in
           self._result = result
-          guard let method = call.method else {
-          result(FlutterMethodNotImplemented)
-          return
-          }
+          let method = call.method
           
           switch method {
               case "getPaymentMetod":
