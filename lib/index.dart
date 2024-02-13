@@ -73,3 +73,5 @@ export '/ui_screens/notification_page/notification_page_widget.dart'
     show NotificationPageWidget;
 export '/ui_screens/checkout/payment_page_page/payment_page_page_widget.dart'
     show PaymentPagePageWidget;
+export '/ui_screens/components/chat_input_component/chat_input_component_widget.dart'
+    show ChatInputComponentWidget;

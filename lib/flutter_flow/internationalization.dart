@@ -1020,13 +1020,24 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     '3iobzvz8': {
       'en': 'Label here...',
-      'ar': '',
+      'ar': 'رسالة ...',
     },
     'm0mdulr1': {
       'en': 'Pay Now',
       'ar': 'ادفع الآن',
     },
     'm07toug2': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
+  // ChatInputComponent
+  {
+    'u6fjtru6': {
+      'en': 'Message ...',
+      'ar': 'رسالة ...',
+    },
+    'iitztydi': {
       'en': 'Home',
       'ar': '',
     },
