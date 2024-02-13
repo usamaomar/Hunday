@@ -1029,6 +1029,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   },
   // ChatInputComponent
   {
+    'kxvtaikg': {
+      'en': '',
+      'ar': 'رسالة ...',
+    },
     'u6fjtru6': {
       'en': 'Message ...',
       'ar': 'رسالة ...',

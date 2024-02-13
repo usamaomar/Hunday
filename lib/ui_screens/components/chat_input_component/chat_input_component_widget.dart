@@ -85,23 +85,42 @@ class _ChatInputComponentWidgetState extends State<ChatInputComponentWidget> {
                       child: TextFormField(
                         controller: _model.textController,
                         focusNode: _model.textFieldFocusNode,
+                        textInputAction: TextInputAction.send,
                         obscureText: false,
                         decoration: InputDecoration(
-                          labelText: FFLocalizations.of(context).getText(
+                          hintText: FFLocalizations.of(context).getText(
                             'u6fjtru6' /* Message ... */,
                           ),
-                          labelStyle:
-                              FlutterFlowTheme.of(context).labelMedium.override(
-                                    fontFamily: 'HeeboBold',
-                                    color: Color(0xFF092853),
-                                    fontSize: 13.0,
-                                    useGoogleFonts: false,
-                                  ),
-                          hintStyle: FlutterFlowTheme.of(context).labelMedium,
-                          enabledBorder: InputBorder.none,
-                          focusedBorder: InputBorder.none,
-                          errorBorder: InputBorder.none,
-                          focusedErrorBorder: InputBorder.none,
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00FF5963),
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(0.0),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00FF5963),
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(0.0),
+                          ),
+                          errorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00FF5963),
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(0.0),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                              color: Color(0x00FF5963),
+                              width: 2.0,
+                            ),
+                            borderRadius: BorderRadius.circular(0.0),
+                          ),
+                          filled: true,
+                          fillColor: Color(0x00FF5963),
                           contentPadding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 15.0, 0.0),
                         ),
