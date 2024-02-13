@@ -356,6 +356,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
                 deepLinkId: params.getParam('deepLinkId', ParamType.String),
                 checkoutId: params.getParam('checkoutId', ParamType.String),
               ),
+            ),
+            FFRoute(
+              name: 'ChatInputComponent',
+              path: 'chatInputComponent',
+              builder: (context, params) => ChatInputComponentWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
