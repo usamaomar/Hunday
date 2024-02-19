@@ -36,12 +36,14 @@ class ShopPageModel extends FlutterFlowModel<ShopPageWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     hyndayAppBarModel = createModel(context, () => HyndayAppBarModel());
     shopListItemComponentModels =
         FlutterFlowDynamicModels(() => ShopListItemComponentModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     hyndayAppBarModel.dispose();

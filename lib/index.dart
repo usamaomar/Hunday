@@ -75,3 +75,5 @@ export '/ui_screens/checkout/payment_page_page/payment_page_page_widget.dart'
     show PaymentPagePageWidget;
 export '/ui_screens/components/chat_input_component/chat_input_component_widget.dart'
     show ChatInputComponentWidget;
+export '/ui_screens/registration_package/start_page/start_page_widget.dart'
+    show StartPageWidget;

@@ -18,10 +18,12 @@ class CartPageModel extends FlutterFlowModel<CartPageWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     cartBottomSheetModel = createModel(context, () => CartBottomSheetModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     cartBottomSheetModel.dispose();

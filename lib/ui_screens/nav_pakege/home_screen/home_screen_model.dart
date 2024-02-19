@@ -58,8 +58,10 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     unfocusNode.dispose();
   }

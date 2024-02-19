@@ -64,6 +64,60 @@ class LoginApiCall {
       );
 }
 
+class GuestRegisterApiCall {
+  static Future<ApiCallResponse> call({
+    String? appVersion = '',
+    String? lang = '',
+    String? fcm = '',
+  }) async {
+    final ffApiRequestBody = '''
+{ 
+  "lang": "${lang}",
+  "app_version": "${appVersion}",
+  "fcm": "${fcm}"
+}''';
+    return ApiManager.instance.makeApiCall(
+      callName: 'GuestRegisterApi',
+      apiUrl: 'https://hyundai.completechaintech.com/api/guest/register',
+      callType: ApiCallType.POST,
+      headers: {},
+      params: {},
+      body: ffApiRequestBody,
+      bodyType: BodyType.JSON,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+
+  static dynamic userJsonModel(dynamic response) => getJsonField(
+        response,
+        r'''$''',
+      );
+  static dynamic id(dynamic response) => getJsonField(
+        response,
+        r'''$.id''',
+      );
+  static dynamic name(dynamic response) => getJsonField(
+        response,
+        r'''$.name''',
+      );
+  static dynamic email(dynamic response) => getJsonField(
+        response,
+        r'''$.email''',
+      );
+  static dynamic phone(dynamic response) => getJsonField(
+        response,
+        r'''$.phone''',
+      );
+  static dynamic token(dynamic response) => getJsonField(
+        response,
+        r'''$.token''',
+      );
+}
+
 class RegisterApiCall {
   static Future<ApiCallResponse> call({
     String? phone = '',

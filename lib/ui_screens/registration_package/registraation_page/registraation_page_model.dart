@@ -73,6 +73,7 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     regulerEditTextValuesModel =
         createModel(context, () => RegulerEditTextValuesModel());
@@ -84,6 +85,7 @@ class RegistraationPageModel extends FlutterFlowModel<RegistraationPageWidget> {
         createModel(context, () => PasswordEditTextValuesModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     regulerEditTextValuesModel.dispose();
