@@ -67,81 +67,64 @@ class _StartPageWidgetState extends State<StartPageWidget> {
               end: AlignmentDirectional(0, 1.0),
             ),
           ),
-          child: SingleChildScrollView(
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Flexible(
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 50.0, 0.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: SvgPicture.asset(
-                            'assets/images/Group_70060.svg',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                Flexible(
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
-                            0.0, 100.0, 0.0, 0.0),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(8.0),
-                          child: SvgPicture.asset(
-                            'assets/images/Mask_Group_70091.svg',
-                            fit: BoxFit.contain,
-                          ),
-                        ),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Padding(
+                padding:
+                    const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(8.0),
+                      child: SvgPicture.asset(
+                        'assets/images/Group_70060.svg',
+                        fit: BoxFit.cover,
                       ),
-                    ],
-                  ),
-                ),
-                Flexible(
-                  child: Padding(
-                    padding:
-                        EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Flexible(
-                          child: Text(
-                            FFLocalizations.of(context).getText(
-                              'w66lu1y3' /* If you are a Hyundai car owner... */,
-                            ),
-                            textAlign: TextAlign.center,
-                            style: FlutterFlowTheme.of(context)
-                                .bodyMedium
-                                .override(
-                                  fontFamily: 'HeeboBold',
-                                  color: Color(0xFF212427),
-                                  fontSize: 16.0,
-                                  fontWeight: FontWeight.bold,
-                                  useGoogleFonts: false,
-                                ),
-                          ),
-                        ),
-                      ],
                     ),
-                  ),
+                  ],
                 ),
-                Flexible(
-                  child: Padding(
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: SvgPicture.asset(
+                  'assets/images/Mask_Group_70091.svg',
+                  fit: BoxFit.cover,
+                ),
+              ),
+              Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Flexible(
+                      child: Text(
+                        FFLocalizations.of(context).getText(
+                          'w66lu1y3' /* If you are a Hyundai car owner... */,
+                        ),
+                        textAlign: TextAlign.center,
+                        style: FlutterFlowTheme.of(context).bodyMedium.override(
+                              fontFamily: 'HeeboBold',
+                              color: Color(0xFF212427),
+                              fontSize: 16.0,
+                              fontWeight: FontWeight.bold,
+                              useGoogleFonts: false,
+                            ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(40.0, 30.0, 40.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(40.0, 20.0, 40.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -179,9 +162,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                       ],
                     ),
                   ),
-                ),
-                Flexible(
-                  child: Padding(
+                  Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(40.0, 20.0, 40.0, 0.0),
                     child: Row(
@@ -223,11 +204,9 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                       ],
                     ),
                   ),
-                ),
-                Flexible(
-                  child: Padding(
+                  Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(40.0, 20.0, 40.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(40.0, 20.0, 40.0, 5.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -236,7 +215,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                             onPressed: () async {
                               _model.apiResult1zf =
                                   await GuestRegisterApiCall.call(
-                                appVersion: version ?? '',
+                                appVersion: FFAppState().versionNumber ?? '',
                                 lang: FFAppState().currentLanguge,
                                 fcm: FFAppState().FCM,
                               );
@@ -276,9 +255,9 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                       ],
                     ),
                   ),
-                ),
-              ],
-            ),
+                ],
+              )
+            ],
           ),
         ),
       ),

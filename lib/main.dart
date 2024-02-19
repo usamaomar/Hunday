@@ -87,10 +87,8 @@ dynamic counterReducer(dynamic state, dynamic storeEventValue) {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   PackageInfo packageInfo = await PackageInfo.fromPlatform();
-  String appName = packageInfo.appName;
-  String packageName = packageInfo.packageName;
   String version = packageInfo.version;
-  String buildNumber = packageInfo.buildNumber;
+  FFAppState().versionNumber = version;
   final appState = FFAppState();
   stateCase(false);
   usePathUrlStrategy();
