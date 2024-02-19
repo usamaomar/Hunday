@@ -141,7 +141,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                     if (FFAppState().userModel.token.isNotEmpty) {
                       context.pushReplacementNamed('HomeScreen');
                     } else {
-                      context.pushReplacementNamed('loginScreen');
+                      context.pushReplacementNamed('startPage');
                     }
                   },
                   textAlign: TextAlign.start,

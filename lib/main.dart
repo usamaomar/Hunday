@@ -22,6 +22,7 @@ import 'index.dart';
 import 'dart:io' show Platform;
 import 'package:redux/redux.dart';
 import 'package:badges/badges.dart' as badges;
+import 'package:package_info_plus/package_info_plus.dart';
 
 @pragma('vm:entry-point')
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage? message) async {
@@ -85,6 +86,11 @@ dynamic counterReducer(dynamic state, dynamic storeEventValue) {
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  PackageInfo packageInfo = await PackageInfo.fromPlatform();
+  String appName = packageInfo.appName;
+  String packageName = packageInfo.packageName;
+  String version = packageInfo.version;
+  String buildNumber = packageInfo.buildNumber;
   final appState = FFAppState();
   stateCase(false);
   usePathUrlStrategy();

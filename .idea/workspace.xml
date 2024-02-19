@@ -6,23 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="x">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/android/app/release/app-release.apk" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/release/app-release.apk" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/android/app/release/output-metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/android/app/release/output-metadata.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/add_component_shoping_details/add_component_shoping_details_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/add_component_shoping_details/add_component_shoping_details_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/car_deteails_components/car_deteails_components_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/car_deteails_components/car_deteails_components_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/delete_acctoun_component/delete_acctoun_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/delete_acctoun_component/delete_acctoun_component_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/test_drive_component/test_drive_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/test_drive_component/test_drive_component_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/my_profile_page/my_profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/my_profile_page/my_profile_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details/car_model_details_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details/car_model_details_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/chat_page/chat_page_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/chat_page/chat_page_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/chat_page/chat_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/chat_page/chat_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_pdf_viewr/car_model_details_pdf_viewr_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_pdf_viewr/car_model_details_pdf_viewr_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/registration_package/splash_page/splash_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/registration_package/start_page/start_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/registration_package/start_page/start_page_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +27,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="flutterflow" />
+        <entry key="$PROJECT_DIR$" value="develop" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -311,6 +299,43 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/registration_package/start_page/start_page_widget.dart</url>
+          <line>236</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/registration_package/start_page/start_page_widget.dart</url>
+          <line>238</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/registration_package/start_page/start_page_widget.dart</url>
+          <line>237</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/registration_package/start_page/start_page_widget.dart</url>
+          <line>239</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/registration_package/start_page/start_page_widget.dart</url>
+          <line>242</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/registration_package/start_page/start_page_widget.dart</url>
+          <line>243</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/registration_package/start_page/start_page_widget.dart</url>
+          <line>246</line>
+          <option name="timeStamp" value="17" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
         <breakpoint type="python-exception">

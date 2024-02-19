@@ -27,7 +27,6 @@ class _StartPageWidgetState extends State<StartPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => StartPageModel());
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -149,7 +148,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                         Expanded(
                           child: FFButtonWidget(
                             onPressed: () async {
-                              context.pushNamed('loginScreen');
+                              context.pushReplacementNamed('loginScreen');
                             },
                             text: FFLocalizations.of(context).getText(
                               'tak69zzg' /* Login */,
@@ -191,7 +190,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                         Expanded(
                           child: FFButtonWidget(
                             onPressed: () async {
-                              context.pushNamed('registraationPage');
+                              context.pushReplacementNamed('registraationPage');
                             },
                             text: FFLocalizations.of(context).getText(
                               '0lrrev87' /* Sign Up */,
@@ -237,12 +236,12 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                             onPressed: () async {
                               _model.apiResult1zf =
                                   await GuestRegisterApiCall.call(
-                                appVersion: '١',
+                                appVersion: version ?? '',
                                 lang: FFAppState().currentLanguge,
                                 fcm: FFAppState().FCM,
                               );
                               if ((_model.apiResult1zf?.succeeded ?? true)) {
-                                context.pushNamed('HomeScreen');
+                                context.pushReplacementNamed('HomeScreen');
                               }
 
                               setState(() {});
