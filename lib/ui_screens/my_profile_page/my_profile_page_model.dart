@@ -27,12 +27,14 @@ class MyProfilePageModel extends FlutterFlowModel<MyProfilePageWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     hyndayAppBarModel = createModel(context, () => HyndayAppBarModel());
     myOrdersAndAppointmentsComponentModel =
         createModel(context, () => MyOrdersAndAppointmentsComponentModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     hyndayAppBarModel.dispose();

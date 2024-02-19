@@ -1042,6 +1042,31 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': '',
     },
   },
+  // startPage
+  {
+    'w66lu1y3': {
+      'en':
+          'If you are a Hyundai car owner Login, Sign up or continue as a guest',
+      'ar':
+          'إذا كنت مالك سيارة Hyundai، قم بتسجيل الدخول أو قم بالتسجيل أو الاستمرار كضيف',
+    },
+    'tak69zzg': {
+      'en': 'Login',
+      'ar': 'تسجيل الدخول',
+    },
+    '0lrrev87': {
+      'en': 'Sign Up',
+      'ar': 'اشتراك',
+    },
+    '6po5rtz9': {
+      'en': 'Continue as a guest',
+      'ar': 'استمر كضيف',
+    },
+    'yblbzlly': {
+      'en': 'Home',
+      'ar': '',
+    },
+  },
   // Fild
   {
     '12neuu73': {

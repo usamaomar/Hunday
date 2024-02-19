@@ -29,11 +29,13 @@ class ResetPasswordComponentModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     passwordVisibility1 = false;
     passwordVisibility2 = false;
   }
 
+  @override
   void dispose() {
     textFieldFocusNode1?.dispose();
     textController1?.dispose();

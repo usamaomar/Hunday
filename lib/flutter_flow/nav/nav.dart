@@ -361,6 +361,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               name: 'ChatInputComponent',
               path: 'chatInputComponent',
               builder: (context, params) => ChatInputComponentWidget(),
+            ),
+            FFRoute(
+              name: 'startPage',
+              path: 'startPage',
+              builder: (context, params) => StartPageWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

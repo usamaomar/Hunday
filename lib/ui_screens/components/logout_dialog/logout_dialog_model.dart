@@ -12,8 +12,10 @@ import 'package:provider/provider.dart';
 class LogoutDialogModel extends FlutterFlowModel<LogoutDialogWidget> {
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {}
 
   /// Action blocks are added here.

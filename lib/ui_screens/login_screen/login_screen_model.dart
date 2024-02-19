@@ -45,11 +45,13 @@ class LoginScreenModel extends FlutterFlowModel<LoginScreenWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     editTextValuesModel = createModel(context, () => EditTextValuesModel());
     passwordVisibility = false;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     editTextValuesModel.dispose();

@@ -44,12 +44,14 @@ class NewsPageModel extends FlutterFlowModel<NewsPageWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     newsBottomSheetComponentModel =
         createModel(context, () => NewsBottomSheetComponentModel());
     hyndayAppBarModel = createModel(context, () => HyndayAppBarModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     newsBottomSheetComponentModel.dispose();

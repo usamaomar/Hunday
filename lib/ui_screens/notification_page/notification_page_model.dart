@@ -19,10 +19,12 @@ class NotificationPageModel extends FlutterFlowModel<NotificationPageWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     hyndayAppBarModel = createModel(context, () => HyndayAppBarModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     hyndayAppBarModel.dispose();

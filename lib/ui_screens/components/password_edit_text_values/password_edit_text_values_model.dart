@@ -20,10 +20,12 @@ class PasswordEditTextValuesModel
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     passwordVisibility = false;
   }
 
+  @override
   void dispose() {
     textFieldFocusNode?.dispose();
     textController?.dispose();
