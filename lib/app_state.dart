@@ -663,6 +663,12 @@ class FFAppState extends ChangeNotifier {
   void updateStateCaseModelStruct(Function(StateCaseModelStruct) updateFn) {
     updateFn(_stateCaseModel);
   }
+
+  String _versionNumber = '';
+  String get versionNumber => _versionNumber;
+  set versionNumber(String _value) {
+    _versionNumber = _value;
+  }
 }
 
 void _safeInit(Function() initializeField) {
