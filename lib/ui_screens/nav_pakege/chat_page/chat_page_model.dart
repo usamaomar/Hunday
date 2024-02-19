@@ -11,15 +11,25 @@ import 'package:provider/provider.dart';
 class ChatPageModel extends FlutterFlowModel<ChatPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
+  late   FocusNode? unfocusNode = FocusNode();
+  List<Map<Object?, Object?>> mapValue = [];
+  int? adminUnRead = 0;
+  String? adminUnReadKey = '';
+  FocusNode? textFieldFocusNode;
+  TextEditingController? textController;
+  String? Function(BuildContext, String?)? textControllerValidator;
 
   /// Initialization and disposal methods.
 
   void initState(BuildContext context) {}
 
   void dispose() {
-    unfocusNode.dispose();
+    unfocusNode?.dispose();
+    textFieldFocusNode?.dispose();
+    textController?.dispose();
   }
+
+
 
   /// Action blocks are added here.
 

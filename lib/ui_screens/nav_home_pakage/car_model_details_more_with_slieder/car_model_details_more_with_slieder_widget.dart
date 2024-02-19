@@ -397,7 +397,6 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                   Expanded(
                                                     flex: 1,
                                                     child: Text(
-
                                                       getJsonField(
                                                         _model
                                                             .detailsJsonObject,

@@ -36,7 +36,7 @@ void showNotification(RemoteMessage? message) async {
   try {
     await Firebase.initializeApp();
     FlutterLocalNotificationsPlugin? fltNotification;
-    var androidInit = AndroidInitializationSettings('@mipmap/ic_launcher');
+    var androidInit = const AndroidInitializationSettings('@mipmap/ic_launcher');
     var iosInit = const DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
@@ -86,7 +86,7 @@ dynamic counterReducer(dynamic state, dynamic storeEventValue) {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final appState = FFAppState();
-  stateCase(true);
+  stateCase(false);
   usePathUrlStrategy();
 
   if (Platform.isIOS) {
@@ -391,7 +391,8 @@ class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final tabs = {
       'HomeScreen': HomeScreenWidget(),
-      // 'ChatPage': ChatPageWidget(),
+      if(!FFAppState().stateCaseModel.isLive)
+      'ChatPage': ChatPageWidget(),
       'CartPage': CartPageWidget(),
       'MyVehiclesPage': MyVehiclesPageWidget(),
       'MorePage': MorePageWidget(),
@@ -429,14 +430,15 @@ class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
               fit: BoxFit.contain,
             ),
           ),
-          // CustomNavigationBarItem(
-          //   icon: SvgPicture.asset(
-          //     'assets/images/Group_71272.svg',
-          //     width: 20.0,
-          //     height: 20.0,
-          //     fit: BoxFit.contain,
-          //   ),
-          // ),
+          if(!FFAppState().stateCaseModel.isLive)
+          CustomNavigationBarItem(
+            icon: SvgPicture.asset(
+              'assets/images/Group_71272.svg',
+              width: 20.0,
+              height: 20.0,
+              fit: BoxFit.contain,
+            ),
+          ),
           CustomNavigationBarItem(
             icon: Stack(
               children: [

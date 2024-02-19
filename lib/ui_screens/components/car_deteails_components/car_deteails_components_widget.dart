@@ -591,7 +591,7 @@ class _CarDeteailsComponentsWidgetState
                           Stack(
                             children: [
                               if (FFAppState().listOfCatalogOpendBool[3])
-                                Padding(
+                                const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 15.0, 0.0),
                                   child: Icon(
@@ -600,7 +600,7 @@ class _CarDeteailsComponentsWidgetState
                                     size: 24.0,
                                   ),
                                 ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 0.0, 15.0, 0.0),
                                 child: Icon(
@@ -612,7 +612,7 @@ class _CarDeteailsComponentsWidgetState
                             ],
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 15.0, 0.0, 15.0),
                             child: Text(
                               FFLocalizations.of(context).getText(
@@ -652,8 +652,8 @@ class _CarDeteailsComponentsWidgetState
                           child: Container(
                             decoration: BoxDecoration(
                               color: performancesIndex == 0
-                                  ? Color(0xFFF9F9F9)
-                                  : Color(0xFFF1F1F1),
+                                  ? const Color(0xFFF9F9F9)
+                                  : const Color(0xFFF1F1F1),
                               borderRadius: BorderRadius.circular(0.0),
                             ),
                             child: Padding(
@@ -665,7 +665,7 @@ class _CarDeteailsComponentsWidgetState
                                     .bodyMedium
                                     .override(
                                       fontFamily: 'Heebo Regular',
-                                      color: Color(0xFF363636),
+                                      color: const Color(0xFF363636),
                                       fontSize: 14.0,
                                       fontWeight: FontWeight.normal,
                                       useGoogleFonts: false,

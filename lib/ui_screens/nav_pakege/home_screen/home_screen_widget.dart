@@ -273,7 +273,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 25.0, 0.0, 0.0),
                           child: SvgPicture.asset(
                             'assets/images/Group_70060.svg',
@@ -309,7 +309,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                           mainAxisSize: MainAxisSize.min,
                                           children: [
                                             Padding(
-                                              padding: EdgeInsetsDirectional
+                                              padding: const EdgeInsetsDirectional
                                                   .fromSTEB(
                                                   30.0, 5.0, 30.0, 0.0),
                                               child: ClipRRect(
@@ -320,11 +320,11 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                   aspectRatio: 3,
                                                   child: CachedNetworkImage(
                                                     fadeInDuration:
-                                                    Duration(
+                                                    const Duration(
                                                         milliseconds:
                                                         200),
                                                     fadeOutDuration:
-                                                    Duration(
+                                                    const Duration(
                                                         milliseconds:
                                                         200),
                                                     imageUrl: getJsonField(
@@ -348,7 +348,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                             Flexible(
                                               child: Padding(
                                                 padding:
-                                                EdgeInsetsDirectional
+                                                const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                     30.0,
                                                     10.0,
@@ -376,7 +376,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                                       .override(
                                                     fontFamily:
                                                     'HeeboBold',
-                                                    color: Color(
+                                                    color: const Color(
                                                         0xFF212427),
                                                     fontSize: 16.0,
                                                     fontWeight:
@@ -422,7 +422,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                       ),
                     ),
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(
+                      padding: const EdgeInsetsDirectional.fromSTEB(
                           20.0, 0.0, 20.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
@@ -458,7 +458,7 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                     padding: const EdgeInsetsDirectional.fromSTEB(
                                         30.0, 0.0, 30.0, 0.0),
                                     child: GridView(
-                                      physics: NeverScrollableScrollPhysics(),
+                                      physics: const NeverScrollableScrollPhysics(),
                                       padding: EdgeInsets.zero,
                                       gridDelegate:
                                       const SliverGridDelegateWithFixedCrossAxisCount(

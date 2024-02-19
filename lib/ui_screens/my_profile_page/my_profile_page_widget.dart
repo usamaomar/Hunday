@@ -1,3 +1,5 @@
+import 'package:hyundai/ui_screens/components/delete_acctoun_component/delete_acctoun_component_widget.dart';
+
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -384,6 +386,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                       ),
                                     ),
                                   ),
+                                  DeleteAcctounComponentWidget(),
                                   Builder(
                                     builder: (context) => Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(

@@ -181,6 +181,11 @@ class _TestDriveComponentWidgetState extends State<TestDriveComponentWidget> {
                   child: TextFormField(
                     controller: _model.textController2,
                     focusNode: _model.textFieldFocusNode2,
+                    inputFormatters: [
+                      FilteringTextInputFormatter
+                          .digitsOnly
+                    ],
+                    keyboardType: TextInputType.number,
                     obscureText: false,
                     textInputAction: TextInputAction.next,
                     decoration: InputDecoration(

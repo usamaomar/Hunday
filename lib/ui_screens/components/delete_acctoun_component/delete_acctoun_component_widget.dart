@@ -1,3 +1,4 @@
+import '../../../backend/schema/structs/user_model_struct.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -63,8 +64,8 @@ class _DeleteAcctounComponentWidgetState
                       arText: 'اتنبيه',
                     )),
                     content: Text(FFLocalizations.of(context).getVariableText(
-                      enText: 'your account will be deleted within 48 hours',
-                      arText: 'سيتم حذف حسابك خلال 48 ساعة',
+                      enText: 'your account will be deleted if you login within 48 hours your account will not scheduled for deletion',
+                      arText: 'سيتم حذف حسابك إذا قمت بتسجيل الدخول خلال 48 ساعة، ولن تتم جدولة حسابك للحذف',
                     )),
                     actions: [
                       TextButton(
@@ -93,21 +94,28 @@ class _DeleteAcctounComponentWidgetState
               token: FFAppState().userModel.token,
             );
             if ((_model.apiResultzzx?.succeeded ?? true)) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text(
-                    FFLocalizations.of(context).getVariableText(
-                      enText: 'Success',
-                      arText: 'عملية ناجحة',
-                    ),
-                    style: TextStyle(
-                      color: FlutterFlowTheme.of(context).secondaryBackground,
-                    ),
-                  ),
-                  duration: Duration(milliseconds: 4000),
-                  backgroundColor: FlutterFlowTheme.of(context).info,
-                ),
-              );
+              // ScaffoldMessenger.of(context).showSnackBar(
+              //   SnackBar(
+              //     content: Text(
+              //       FFLocalizations.of(context).getVariableText(
+              //         enText: 'Success',
+              //         arText: 'عملية ناجحة',
+              //       ),
+              //       style: TextStyle(
+              //         color: FlutterFlowTheme.of(context).secondaryBackground,
+              //       ),
+              //     ),
+              //     duration: Duration(milliseconds: 4000),
+              //     backgroundColor: FlutterFlowTheme.of(context).info,
+              //   ),
+              // );
+              FFAppState().userModel =
+                  UserModelStruct.fromSerializableMap(
+                      jsonDecode('{}'));
+              while (context.canPop() == true) {
+                context.pop();
+              }
+              context.pushReplacement('splashPage');
             }
           }
 

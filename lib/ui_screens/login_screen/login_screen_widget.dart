@@ -611,7 +611,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                     setState(() {
                                                       FFAppState()
                                                               .reservedUserModel =
-                                                          userModel;
+                                                          userModel.toSerializableMap();
                                                     });
                                                     await showModalBottomSheet(
                                                       isScrollControlled: true,

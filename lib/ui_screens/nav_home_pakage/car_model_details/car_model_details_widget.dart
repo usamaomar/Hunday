@@ -129,6 +129,7 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                 Align(
                   alignment: AlignmentDirectional(0.0, 1.0),
                   child: Container(
+                    margin: EdgeInsets.fromLTRB(0, 40, 0, 0),
                     decoration: BoxDecoration(),
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
@@ -137,12 +138,12 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                           alignment: AlignmentDirectional(0.0, 1.0),
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   5.0, 130.0, 5.0, 0.0),
                               child: Container(
                                 width: double.infinity,
                                 height: 70.0,
-                                decoration: BoxDecoration(
+                                decoration: const BoxDecoration(
                                   color: Color(0xFFC1D6EF),
                                   borderRadius: BorderRadius.only(
                                     bottomLeft: Radius.circular(0.0),
@@ -187,12 +188,12 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                         ),
                         Expanded(
                           child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 5.0, 0.0, 5.0, 5.0),
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: Color(0xFFC1D6EF),
+                                color: const Color(0xFFC1D6EF),
                                 borderRadius: BorderRadius.circular(0.0),
                               ),
                               child: Padding(
@@ -208,7 +209,7 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                       return EmptyListComponentWidget();
                                     }
                                     return ListView.builder(
-                                      padding: EdgeInsets.fromLTRB(
+                                      padding: const EdgeInsets.fromLTRB(
                                         0,
                                         0,
                                         0,
@@ -224,7 +225,7 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                 listOfLocalCarsIndex];
                                         return Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   20.0, 0.0, 20.0, 0.0),
                                           child: InkWell(
                                             splashColor: Colors.transparent,

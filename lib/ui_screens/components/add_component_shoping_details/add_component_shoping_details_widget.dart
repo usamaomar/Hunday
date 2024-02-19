@@ -86,24 +86,11 @@ class _AddComponentShopingDetailsWidgetState
               ))
               .toList()
               .cast<MyVehicleModelStruct>();
+          setFirstValue('${_model.listOfMyVehicle[0].carModel.name}/${_model.listOfMyVehicle[0].plateNumber}');
         });
         setState(() {
           _model.titleHeade = widget.titleh!;
         });
-
-
-        // setState(() {
-        //
-        //   FlutterFlowDropDown state = dropdownKey.currentState as FlutterFlowDropDown;
-        //   state.onChanged!('${_model.listOfMyVehicle[0].carModel.name}/${_model.listOfMyVehicle[0].plateNumber}');
-        //   // _model.dropDownValueController?.indexOf(0);
-        //   //
-        //
-        //   // _model.dropDownValueController  =
-        //   //     FormFieldController<String>('${_model.listOfMyVehicle[0].carModel.name}/${_model.listOfMyVehicle[0].plateNumber}');
-        // });
-
-
       }
     });
     _model.textController ??= TextEditingController();
@@ -111,6 +98,16 @@ class _AddComponentShopingDetailsWidgetState
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
+
+
+  void setFirstValue(String? value) async{
+    setState(() {
+      _model.dropDownValueController?.value = value;
+    });
+  }
+
+
+
 
   @override
   void dispose() {
