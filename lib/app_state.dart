@@ -102,6 +102,9 @@ class FFAppState extends ChangeNotifier {
               .toList() ??
           _localNotificationLost;
     });
+    _safeInit(() {
+      _isGust = prefs.getBool('ff_isGust') ?? _isGust;
+    });
   }
 
   void update(VoidCallback callback) {
@@ -668,6 +671,13 @@ class FFAppState extends ChangeNotifier {
   String get versionNumber => _versionNumber;
   set versionNumber(String _value) {
     _versionNumber = _value;
+  }
+
+  bool _isGust = false;
+  bool get isGust => _isGust;
+  set isGust(bool _value) {
+    _isGust = _value;
+    prefs.setBool('ff_isGust', _value);
   }
 }
 
