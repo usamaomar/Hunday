@@ -1,3 +1,4 @@
+import 'package:fbroadcast/fbroadcast.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
 import '../../components/scanned_card_animation_component/scanned_card_animation_component_widget.dart';
@@ -42,8 +43,7 @@ class CartBottomSheetWidget extends StatefulWidget {
   _CartBottomSheetWidgetState createState() => _CartBottomSheetWidgetState();
 }
 
-class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
-    with TickerProviderStateMixin {
+class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
   late CartBottomSheetModel _model;
 
   final animationsMap = {
@@ -62,11 +62,11 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
     ),
   };
 
-  @override
-  void setState(VoidCallback callback) {
-    super.setState(callback);
-    _model.onUpdate();
-  }
+  // @override
+  // void setState(VoidCallback callback) {
+  //   super.setState(callback);
+  //   _model.onUpdate();
+  // }
 
   @override
   void initState() {
@@ -106,12 +106,13 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
           });
           FFAppState().update(() {
             FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
+            FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
 
-            // AppStateNotifier.instance.updates();
           });
         } else {
           FFAppState().update(() {
             FFAppState().badgeCount = 0;
+            FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
           });
         }
       }
@@ -766,6 +767,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                             StoreProvider.of<dynamic>(context).dispatch("Update");
                                                                             FFAppState().update(() {
                                                                               FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
+                                                                              FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
                                                                               widget.updateBadgeValue?.call();
                                                                             });
                                                                           });
@@ -954,17 +956,20 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                             .isNotEmpty) {
                                                                           _model
                                                                               .updateListOfCartItemsLocalAtIndex(
-                                                                            seedCartListIndex,
+                                                                            seedCartListIndex == _model.listOfCartItemsLocal.length ? seedCartListIndex - 1 : seedCartListIndex,
                                                                             (e) => e
                                                                               ..isLoading = false,
                                                                           );
                                                                         }
                                                                       });
                                                                       SchedulerBinding.instance.addPostFrameCallback((_) async {
-                                                                        StoreProvider.of<dynamic>(context).dispatch("Update");
-                                                                        FFAppState().update(() {
-                                                                          FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
-                                                                        });
+                                                                        FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
+                                                                        FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
+                                                                        // StoreProvider.of<dynamic>(context).dispatch("Update");
+                                                                        // FFAppState().update(() {
+                                                                        //   FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
+                                                                        //   FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
+                                                                        // });
                                                                       });
 
                                                                       setState(
@@ -1118,6 +1123,8 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                                           ))
                                                                           .subTotal;
                                                                       StoreProvider.of<dynamic>(context).dispatch("action");
+                                                                      FFAppState().badgeCount =  _model.listOfCartItemsLocal.length;
+                                                                      FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
                                                                     });
                                                                   }
                                                                 }
@@ -1174,8 +1181,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget>
                                                           .listOfCartItemsLocal
                                                           .isNotEmpty) {
                                                         _model
-                                                            .updateListOfCartItemsLocalAtIndex(
-                                                          seedCartListIndex,
+                                                            .updateListOfCartItemsLocalAtIndex(seedCartListIndex == _model.listOfCartItemsLocal.length ? seedCartListIndex - 1 : seedCartListIndex,
                                                           (e) => e
                                                             ..isLoading = false,
                                                         );

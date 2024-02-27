@@ -1,3 +1,4 @@
+import '../../components/login_card_animation_component/login_card_animation_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -249,7 +250,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                         crossAxisCount: 3,
                                         crossAxisSpacing: 10.0,
                                         mainAxisSpacing: 11.0,
-                                        childAspectRatio: 0.9,
+                                        childAspectRatio: 0.8,
                                       ),
                                       shrinkWrap: true,
                                       scrollDirection: Axis.vertical,
@@ -681,9 +682,9 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                   ),
                                   Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        0.0, 20.0, 0.0, 0.0),
+                                        5.0, 20.0, 5.0, 0.0),
                                     child: Row(
-                                      mainAxisSize: MainAxisSize.min,
+                                      mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                                       children: [
                                         InkWell(
@@ -785,6 +786,20 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                     highlightColor:
                                                     Colors.transparent,
                                                     onTap: () async {
+                                                      if (FFAppState().isGust == true) {
+                                                        await showDialog(
+                                                          barrierColor: Colors.transparent,
+                                                          barrierDismissible: false,
+                                                          context: context,
+                                                          builder: (dialogContext) {
+                                                            return const Dialog(
+                                                              child:
+                                                              LoginCardAnimationComponentWidget(),
+                                                            );
+                                                          },
+                                                        ).then((value) => setState(() {}));
+                                                        return;
+                                                      }
                                                       await showDialog(
                                                         context: context,
                                                         builder: (
@@ -837,13 +852,13 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                         ),
                                                         child: Row(
                                                           mainAxisSize:
-                                                          MainAxisSize.max,
+                                                          MainAxisSize.min,
                                                           children: [
                                                             Padding(
                                                               padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                  15.0,
+                                                                  10.0,
                                                                   10.0,
                                                                   0.0,
                                                                   10.0),
@@ -866,9 +881,9 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                                               padding:
                                                               EdgeInsetsDirectional
                                                                   .fromSTEB(
-                                                                  20.0,
+                                                                  10.0,
                                                                   0.0,
-                                                                  20.0,
+                                                                  10.0,
                                                                   0.0),
                                                               child: Text(
                                                                 FFLocalizations

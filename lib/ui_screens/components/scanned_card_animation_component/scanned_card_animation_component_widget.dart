@@ -41,31 +41,25 @@ class _ScannedCardAnimationComponentWidgetState
   @override
   void dispose() {
     _model.maybeDispose();
-
     super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
-    return Container(
-      height: 250.0,
-      decoration: BoxDecoration(
-        color: Color(0x81FFFFFF),
-        borderRadius: BorderRadius.circular(20.0),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20.0),
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(20.0),
+      child: Container(
+        color: const Color(0x99FFFFFF),
         child: BackdropFilter(
           filter: ImageFilter.blur(
-            sigmaX: 30.0,
-            sigmaY: 30.0,
+            sigmaX: 10.0,
+            sigmaY: 10.0,
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 0.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 20.0),
             child: Column(
-              mainAxisSize: MainAxisSize.max,
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Flexible(

@@ -1,3 +1,4 @@
+import '../../components/login_card_animation_component/login_card_animation_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -246,7 +247,7 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                             crossAxisCount: 3,
                                             crossAxisSpacing: 10.0,
                                             mainAxisSpacing: 11.0,
-                                            childAspectRatio: 0.9,
+                                            childAspectRatio: 0.8,
                                           ),
                                           shrinkWrap: true,
                                           scrollDirection: Axis.vertical,
@@ -761,7 +762,6 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                 ),
                                               ),
                                             ),
-
                                               Visibility(
                                                 visible:  (_model.detailsJsonObject?['test_drive'] ?? 0) == 1,
                                                 child: Builder(
@@ -772,6 +772,20 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
+                                                      if (FFAppState().isGust == true) {
+                                                        await showDialog(
+                                                          barrierColor: Colors.transparent,
+                                                          barrierDismissible: false,
+                                                          context: context,
+                                                          builder: (dialogContext) {
+                                                            return const Dialog(
+                                                              child:
+                                                              LoginCardAnimationComponentWidget(),
+                                                            );
+                                                          },
+                                                        ).then((value) => setState(() {}));
+                                                        return;
+                                                      }
                                                       await showDialog(
                                                         context: context,
                                                         builder: (dialogContext) {

@@ -584,7 +584,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                         setState(() {});
                                                       return;
                                                     }
-
+                                                    FFAppState().isGust = false;
                                                     if (Navigator.of(context)
                                                         .canPop()) {
                                                       context.pop();
@@ -686,7 +686,6 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                     },
                                                   ).then((value) =>
                                                       setState(() {}));
-
                                                   if (_shouldSetState)
                                                     setState(() {});
                                                   return;
@@ -941,6 +940,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                 );
                                                 return;
                                               }
+                                              FFAppState().isGust = false;
                                               if (Navigator.of(context)
                                                   .canPop()) {
                                                 context.pop();

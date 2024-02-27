@@ -2,7 +2,6 @@ import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import '/ui_screens/nav_home_pakage/empty_list_component/empty_list_component_widget.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
@@ -10,8 +9,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'news_details_page_model.dart';
 export 'news_details_page_model.dart';
@@ -69,7 +66,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                 (_model.responses?.jsonBody ?? ''),
                 r'''$.details.news_gallery''',
                 true,
-              )!)
+              ) ?? [])
               .toList()
               .cast<String>();
         });
@@ -82,7 +79,6 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 
@@ -98,7 +94,6 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
     }
 
     context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -219,7 +214,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                               ),
                               Expanded(
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       5.0, 0.0, 5.0, 0.0),
                                   child: Container(
                                     width: double.infinity,
@@ -231,12 +226,12 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                       ),
                                     ),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           20.0, 0.0, 20.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
-                                            MainAxisAlignment.spaceBetween,
+                                            MainAxisAlignment.spaceAround,
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
@@ -277,7 +272,6 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                           ),
                                           Container(
                                             width: double.infinity,
-                                            height: 100.0,
                                             decoration: BoxDecoration(
                                               color: FlutterFlowTheme.of(context)
                                                   .secondaryBackground,
@@ -317,7 +311,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                           Padding(
                                             padding:
                                                 EdgeInsetsDirectional.fromSTEB(
-                                                    1.0, 0.0, 1.0, 20.0),
+                                                    1.0, 0.0, 1.0, 0.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.min,
                                               mainAxisAlignment:
@@ -358,7 +352,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                                     imagesListIndex];
                                                             return Padding(
                                                               padding:
-                                                                  EdgeInsetsDirectional
+                                                                  const EdgeInsetsDirectional
                                                                       .fromSTEB(
                                                                           0.0,
                                                                           5.0,
@@ -369,7 +363,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                                 height: 95.0,
                                                                 decoration:
                                                                     BoxDecoration(
-                                                                  color: Color(
+                                                                  color: const Color(
                                                                       0xFFF5F0F0),
                                                                   borderRadius:
                                                                       BorderRadius
@@ -385,7 +379,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                                       .network(
                                                                     imagesListItem,
                                                                     fit: BoxFit
-                                                                        .cover,
+                                                                        .contain,
                                                                     errorBuilder: (context,
                                                                             error,
                                                                             stackTrace) =>
@@ -393,7 +387,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                                             .asset(
                                                                       'assets/images/error_image.png',
                                                                       fit: BoxFit
-                                                                          .cover,
+                                                                          .contain,
                                                                     ),
                                                                   ),
                                                                 ),
@@ -409,8 +403,6 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                             ),
                                           ),
                                         ]
-                                            .addToStart(SizedBox(height: 15.0))
-                                            .addToEnd(SizedBox(height: 60.0)),
                                       ),
                                     ),
                                   ),

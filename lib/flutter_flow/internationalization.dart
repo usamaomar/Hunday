@@ -111,6 +111,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'en': 'Login',
       'ar': 'تسجيل',
     },
+    'okssl': {
+      'en': 'Unlock the full experience! Please log in to access exclusive features',
+      'ar': 'فتح التجربة الكاملة! يرجى تسجيل الدخول للوصول إلى الميزات الحصرية',
+    },
     'ia2zdqa6': {
       'en': 'Welcome to Hyundai',
       'ar': 'مرحبا بكم في هيونداي',

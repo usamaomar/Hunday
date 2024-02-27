@@ -79,7 +79,6 @@ class _OffersDetailsPageWidgetState extends State<OffersDetailsPageWidget>
   @override
   void dispose() {
     _model.dispose();
-
     super.dispose();
   }
 

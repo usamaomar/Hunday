@@ -49,6 +49,7 @@ class HomeScreenModel extends FlutterFlowModel<HomeScreenWidget> {
   CarouselController? carouselController;
 
   ApiCallResponse? apiResult8am;
+  double aspectRatio = 0;
 
 
   int carouselCurrentIndex = 1;

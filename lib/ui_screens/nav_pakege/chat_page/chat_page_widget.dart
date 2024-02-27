@@ -558,16 +558,8 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
     DateTime dateFromListSaved =
         DateTime(dateFromList.year, dateFromList.month, dateFromList.day);
     if (dateFromServiceSaved.isAtSameMomentAs(dateFromListSaved)) {
-      // print(
-      //     'ELSE  = ${dateFromListSaved.year},${dateFromListSaved.month},${dateFromListSaved.day}');
-      // print(
-      //     'ELSE  dateFromList= ${dateFromList.year},${dateFromList.month},${dateFromList.day}');
       return false;
     } else {
-      // print(
-      //     'isAfter = ${dateFromListSaved.year},${dateFromListSaved.month},${dateFromListSaved.day}');
-      // print(
-      //     'isAfter = dateFromList ${dateFromList.year},${dateFromList.month},${dateFromList.day}');
       mainValue = int.parse(mapValue['time'].toString());
       return true;
     }
@@ -581,12 +573,10 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
 
   bool hasNextUser(List<Map<Object?, Object?>> mapValue, int index) {
     if (index >= 0 && index < mapValue.length - 1) {
-      // Check if the next item has 'is_admin' property set to false
       if (mapValue[index + 1]['is_admin'] == false) {
         return true;
       }
     }
-    // If any condition fails or index is out of bounds, return false
     return false;
   }
 }

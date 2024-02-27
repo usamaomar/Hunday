@@ -32,7 +32,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
 
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if (FFAppState().listOfCarsModelAppState.length <= 0) {
+      if (FFAppState().listOfCarsModelAppState.isEmpty) {
         setState(() {
           _model.listOfCarModels =
               FFAppState().listOfCarsModelAppState.toList().cast<dynamic>();
@@ -119,22 +119,21 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                       Expanded(
                         flex: 1,
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
-                              30.0, 20.0, 30.0, 75.0),
+                          padding: const EdgeInsetsDirectional.fromSTEB(
+                              30.0, 10.0, 30.0, 0.0),
                           child: Builder(
                             builder: (context) {
                               final gridOfCarModelsItem =
                                   _model.listOfCarModels.map((e) => e).toList();
                               return GridView.builder(
                                 padding: EdgeInsets.zero,
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
+                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                                   crossAxisCount: 3,
                                   crossAxisSpacing: 10.0,
                                   mainAxisSpacing: 10.0,
-                                  childAspectRatio: 0.75,
+                                  childAspectRatio: 0.85,
                                 ),
-                                shrinkWrap: true,
+                                shrinkWrap: false,
                                 scrollDirection: Axis.vertical,
                                 itemCount: gridOfCarModelsItem.length,
                                 itemBuilder:

@@ -1,3 +1,4 @@
+import '../components/login_card_animation_component/login_card_animation_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -160,6 +161,23 @@ class _PersonalInformationPageWidgetState
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
+
+                                          if (FFAppState().isGust == true) {
+                                            await showDialog(
+                                              barrierColor: Colors.transparent,
+                                              barrierDismissible: false,
+                                              context: context,
+                                              builder: (dialogContext) {
+                                                return const Dialog(
+                                                  child:
+                                                  LoginCardAnimationComponentWidget(),
+                                                );
+                                              },
+                                            ).then((value) => setState(() {}));
+                                            return;
+                                          }
+
+
                                           context.pushNamed(
                                             'EditProfilePage',
                                             extra: <String, dynamic>{

@@ -1,12 +1,11 @@
+import '../../components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'start_page_model.dart';
 export 'start_page_model.dart';
@@ -131,7 +130,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                         Expanded(
                           child: FFButtonWidget(
                             onPressed: () async {
-                              context.pushReplacementNamed('loginScreen');
+                              context.pushNamed('loginScreen');
                             },
                             text: FFLocalizations.of(context).getText(
                               'tak69zzg' /* Login */,
@@ -171,7 +170,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                         Expanded(
                           child: FFButtonWidget(
                             onPressed: () async {
-                              context.pushReplacementNamed('registraationPage');
+                              context.pushNamed('registraationPage');
                             },
                             text: FFLocalizations.of(context).getText(
                               '0lrrev87' /* Sign Up */,
@@ -216,14 +215,52 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                               _model.apiResult1zf =
                                   await GuestRegisterApiCall.call(
                                 appVersion: FFAppState().versionNumber ?? '',
-                                lang: FFAppState().currentLanguge,
+                                lang: FFAppState().currentLanguge.isEmpty ? 'en' : FFAppState().currentLanguge,
                                 fcm: FFAppState().FCM,
                               );
                               if ((_model.apiResult1zf?.succeeded ?? true)) {
-                                context.pushReplacementNamed('HomeScreen');
+                                FFAppState().isGust = true;
+                                context.pushNamed('HomeScreen');
+                              }else{
+                                await showDialog(
+                                  context: context,
+                                  builder: (dialogContext) {
+                                    return Dialog(
+                                      insetPadding:
+                                      EdgeInsets.zero,
+                                      backgroundColor:
+                                      Colors.transparent,
+                                      alignment:
+                                      AlignmentDirectional(
+                                          0.0, 0.0)
+                                          .resolve(
+                                          Directionality.of(
+                                              context)),
+                                      child: GestureDetector(
+                                        onTap: () => _model
+                                            .unfocusNode
+                                            .canRequestFocus
+                                            ? FocusScope.of(
+                                            context)
+                                            .requestFocus(
+                                            _model
+                                                .unfocusNode)
+                                            : FocusScope.of(
+                                            context)
+                                            .unfocus(),
+                                        child:
+                                        Modal06BasicInformationWidget(
+                                          body: (_model
+                                              .apiResult1zf
+                                              ?.bodyText ??
+                                              ''),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).then((value) =>
+                                    setState(() {}));
                               }
-
-                              setState(() {});
                             },
                             text: FFLocalizations.of(context).getText(
                               '6po5rtz9' /* Continue as a guest */,

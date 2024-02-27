@@ -109,6 +109,7 @@ dependencies:
   flutter_redux: 0.8.2
   firebase_database: ^10.4.5
   flutter_chat_bubble: ^2.0.2
+  fbroadcast: ^2.0.0
 
 
 

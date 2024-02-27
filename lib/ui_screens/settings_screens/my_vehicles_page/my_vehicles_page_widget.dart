@@ -1,3 +1,4 @@
+import '../../components/login_card_animation_component/login_card_animation_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -149,6 +150,19 @@ class _MyVehiclesPageWidgetState extends State<MyVehiclesPageWidget>
                                     30.0, 20.0, 30.0, 0.0),
                                 child: FFButtonWidget(
                                   onPressed: () async {
+                                    if (FFAppState().isGust == true) {
+                                      await showDialog(
+                                        barrierColor: Colors.transparent,
+                                        barrierDismissible: false,
+                                        context: context,
+                                        builder: (dialogContext) {
+                                          return Dialog(
+                                            child: LoginCardAnimationComponentWidget(),
+                                          );
+                                        },
+                                      ).then((value) => setState(() {}));
+                                      return;
+                                    }
                                     await showDialog(
                                       barrierColor: Colors.transparent,
                                       barrierDismissible: false,

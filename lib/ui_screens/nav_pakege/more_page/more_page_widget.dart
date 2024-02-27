@@ -1,3 +1,4 @@
+import '../../components/login_card_animation_component/login_card_animation_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -119,6 +120,23 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+
+                        if (FFAppState().isGust == true) {
+                          await showDialog(
+                            barrierColor: Colors.transparent,
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (dialogContext) {
+                              return const Dialog(
+                                child:
+                                LoginCardAnimationComponentWidget(),
+                              );
+                            },
+                          ).then((value) => setState(() {}));
+                          return;
+                        }
+
+
                         context.pushNamed(
                           'MyProfilePage',
                           extra: <String, dynamic>{
@@ -184,6 +202,24 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+
+
+                        if (FFAppState().isGust == true) {
+                          await showDialog(
+                            barrierColor: Colors.transparent,
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (dialogContext) {
+                              return const Dialog(
+                                child:
+                                LoginCardAnimationComponentWidget(),
+                              );
+                            },
+                          ).then((value) => setState(() {}));
+                          return;
+                        }
+
+
                         context.pushNamed(
                           'MyOrderPage',
                           extra: <String, dynamic>{
@@ -249,6 +285,23 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                       hoverColor: Colors.transparent,
                       highlightColor: Colors.transparent,
                       onTap: () async {
+
+                        if (FFAppState().isGust == true) {
+                          await showDialog(
+                            barrierColor: Colors.transparent,
+                            barrierDismissible: false,
+                            context: context,
+                            builder: (dialogContext) {
+                              return const Dialog(
+                                child:
+                                LoginCardAnimationComponentWidget(),
+                              );
+                            },
+                          ).then((value) => setState(() {}));
+                          return;
+                        }
+
+
                         context.pushNamed('MyAppointmentPage');
                       },
                       child: Container(
@@ -312,6 +365,23 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                           hoverColor: Colors.transparent,
                           highlightColor: Colors.transparent,
                           onTap: () async {
+
+                            if (FFAppState().isGust == true) {
+                              await showDialog(
+                                barrierColor: Colors.transparent,
+                                barrierDismissible: false,
+                                context: context,
+                                builder: (dialogContext) {
+                                  return const Dialog(
+                                    child:
+                                    LoginCardAnimationComponentWidget(),
+                                  );
+                                },
+                              ).then((value) => setState(() {}));
+                              return;
+                            }
+
+
                             context.pushNamed(
                               'AboutAppPage',
                               queryParameters: {
@@ -437,7 +507,7 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                         ),
                       ),
                     ),
-                    InkWell(
+                    FFAppState().isGust ? Container() : InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
                       hoverColor: Colors.transparent,
@@ -491,7 +561,7 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                         ),
                       ),
                     ),
-                    Padding(
+                    FFAppState().isGust ? Container() :   Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 15.0, 0.0, 0.0),
                       child: Container(
@@ -502,7 +572,7 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                         ),
                       ),
                     ),
-                    Padding(
+                    FFAppState().isGust ? Container() :  Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(60.0, 25.0, 60.0, 0.0),
                       child: Container(
@@ -513,7 +583,7 @@ class _MorePageWidgetState extends State<MorePageWidget> {
                         ),
                       ),
                     ),
-                    Padding(
+                    FFAppState().isGust ? Container() : Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 75.0),
                       child: Row(

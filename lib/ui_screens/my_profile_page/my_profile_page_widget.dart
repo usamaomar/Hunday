@@ -1,5 +1,6 @@
 import 'package:hyundai/ui_screens/components/delete_acctoun_component/delete_acctoun_component_widget.dart';
 
+import '../components/login_card_animation_component/login_card_animation_component_widget.dart';
 import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -108,68 +109,76 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  gradient: LinearGradient(
-                                    colors: [
-                                      FlutterFlowTheme.of(context).white,
-                                      Color(0xFF6585B2)
-                                    ],
-                                    stops: [0.0, 1.0],
-                                    begin: AlignmentDirectional(0.87, -1.0),
-                                    end: AlignmentDirectional(-0.87, 1.0),
-                                  ),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      20.0, 30.0, 20.0, 30.0),
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.max,
-                                    children: [
-                                      Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            FFAppState().userModel.name,
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'HeeboBold',
-                                                  color: FlutterFlowTheme.of(
-                                                          context)
-                                                      .white,
-                                                  fontSize: 20.0,
-                                                  useGoogleFonts: false,
-                                                ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 5.0, 0.0, 0.0),
-                                            child: Text(
-                                              functions.formatPhoneNumber(
-                                                  FFAppState().userModel.phone),
-                                              style: FlutterFlowTheme.of(
-                                                      context)
-                                                  .bodyMedium
-                                                  .override(
-                                                    fontFamily: 'Heebo Regular',
-                                                    color: FlutterFlowTheme.of(
-                                                            context)
-                                                        .white,
-                                                    fontSize: 14.0,
-                                                    useGoogleFonts: false,
-                                                  ),
-                                            ),
-                                          ),
-                                        ],
+                              FFAppState().isGust == true
+                                  ? Container()
+                                  : Container(
+                                      decoration: BoxDecoration(
+                                        gradient: LinearGradient(
+                                          colors: [
+                                            FlutterFlowTheme.of(context).white,
+                                            Color(0xFF6585B2)
+                                          ],
+                                          stops: [0.0, 1.0],
+                                          begin:
+                                              AlignmentDirectional(0.87, -1.0),
+                                          end: AlignmentDirectional(-0.87, 1.0),
+                                        ),
                                       ),
-                                    ],
-                                  ),
-                                ),
-                              ),
+                                      child: Padding(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 30.0, 20.0, 30.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Column(
+                                              mainAxisSize: MainAxisSize.max,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  FFAppState().userModel.name,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'HeeboBold',
+                                                        color:
+                                                            FlutterFlowTheme.of(
+                                                                    context)
+                                                                .white,
+                                                        fontSize: 20.0,
+                                                        useGoogleFonts: false,
+                                                      ),
+                                                ),
+                                                Padding(
+                                                  padding: EdgeInsetsDirectional
+                                                      .fromSTEB(
+                                                          0.0, 5.0, 0.0, 0.0),
+                                                  child: Text(
+                                                    functions.formatPhoneNumber(
+                                                        FFAppState()
+                                                            .userModel
+                                                            .phone),
+                                                    style: FlutterFlowTheme.of(
+                                                            context)
+                                                        .bodyMedium
+                                                        .override(
+                                                          fontFamily:
+                                                              'Heebo Regular',
+                                                          color: FlutterFlowTheme
+                                                                  .of(context)
+                                                              .white,
+                                                          fontSize: 14.0,
+                                                          useGoogleFonts: false,
+                                                        ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
                               ListView(
                                 padding: EdgeInsets.zero,
                                 primary: false,
@@ -185,6 +194,21 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        if (FFAppState().isGust == true) {
+                                          await showDialog(
+                                            barrierColor: Colors.transparent,
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return const Dialog(
+                                                child:
+                                                    LoginCardAnimationComponentWidget(),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+                                          return;
+                                        }
+
                                         context.pushNamed(
                                           'PersonalInformationPage',
                                           extra: <String, dynamic>{
@@ -256,6 +280,21 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        if (FFAppState().isGust == true) {
+                                          await showDialog(
+                                            barrierColor: Colors.transparent,
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return const Dialog(
+                                                child:
+                                                    LoginCardAnimationComponentWidget(),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+                                          return;
+                                        }
+
                                         context.pushNamed(
                                           'EditPasswordPage',
                                           extra: <String, dynamic>{
@@ -327,6 +366,21 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                       hoverColor: Colors.transparent,
                                       highlightColor: Colors.transparent,
                                       onTap: () async {
+                                        if (FFAppState().isGust == true) {
+                                          await showDialog(
+                                            barrierColor: Colors.transparent,
+                                            barrierDismissible: false,
+                                            context: context,
+                                            builder: (dialogContext) {
+                                              return const Dialog(
+                                                child:
+                                                    LoginCardAnimationComponentWidget(),
+                                              );
+                                            },
+                                          ).then((value) => setState(() {}));
+                                          return;
+                                        }
+
                                         context.pushNamed(
                                           'MyVehiclesPage',
                                           queryParameters: {
@@ -386,7 +440,6 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                       ),
                                     ),
                                   ),
-                                  DeleteAcctounComponentWidget(),
                                   Builder(
                                     builder: (context) => Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
@@ -504,20 +557,27 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                       ),
                                     ),
                                   ),
+                                  FFAppState().isGust == true
+                                      ? Container()
+                                      : const DeleteAcctounComponentWidget(),
                                 ],
                               ),
                             ].addToEnd(SizedBox(height: 350.0)),
                           ),
                         ),
-                        Align(
-                          alignment: AlignmentDirectional(0.0, 1.0),
-                          child: wrapWithModel(
-                            model: _model.myOrdersAndAppointmentsComponentModel,
-                            updateCallback: () => setState(() {}),
-                            child: MyOrdersAndAppointmentsComponentWidget(),
-                          ).animateOnPageLoad(animationsMap[
-                              'myOrdersAndAppointmentsComponentOnPageLoadAnimation']!),
-                        ),
+                        FFAppState().isGust == true
+                            ? Container()
+                            : Align(
+                                alignment: AlignmentDirectional(0.0, 1.0),
+                                child: wrapWithModel(
+                                  model: _model
+                                      .myOrdersAndAppointmentsComponentModel,
+                                  updateCallback: () => setState(() {}),
+                                  child:
+                                      MyOrdersAndAppointmentsComponentWidget(),
+                                ).animateOnPageLoad(animationsMap[
+                                    'myOrdersAndAppointmentsComponentOnPageLoadAnimation']!),
+                              ),
                       ],
                     ),
                   ),

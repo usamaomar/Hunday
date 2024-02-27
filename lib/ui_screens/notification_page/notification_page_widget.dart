@@ -91,7 +91,10 @@ class _NotificationPageWidgetState extends State<NotificationPageWidget> {
                       );
                     }
                     final listViewMyNotificationsApiResponse = snapshot.data!;
-                    return Builder(
+                    return getJsonField(
+                      listViewMyNotificationsApiResponse.jsonBody,
+                      r'''$.notifications''',
+                    )==null ? Container() :  Builder(
                       builder: (context) {
                         final linst = getJsonField(
                           listViewMyNotificationsApiResponse.jsonBody,

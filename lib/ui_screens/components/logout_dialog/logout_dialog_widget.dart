@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'logout_dialog_model.dart';
 export 'logout_dialog_model.dart';
@@ -96,6 +94,7 @@ class _LogoutDialogWidgetState extends State<LogoutDialogWidget> {
                     Flexible(
                       child: FFButtonWidget(
                         onPressed: () async {
+                          FFAppState().isGust = false;
                           FFAppState().userModel =
                               UserModelStruct.fromSerializableMap(
                                   jsonDecode('{}'));

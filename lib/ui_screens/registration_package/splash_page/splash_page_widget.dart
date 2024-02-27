@@ -55,14 +55,13 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
     });
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      if(widget.deepLinkId==null){
+      if (widget.deepLinkId == null) {
         _model.timerController.onStartTimer();
       }
       if (FFAppState().currentLanguge != null &&
           FFAppState().currentLanguge != '') {
         setAppLanguage(context, FFAppState().currentLanguge);
       }
-
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -106,11 +105,10 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                     Expanded(
                       flex: 1,
                       child: Lottie.network(
-                        'https://lottie.host/b4e379f4-beb9-4ed4-9686-87f8e18dd09a/YmcSTeqvAH.json',
-                        fit: BoxFit.fill,
-                        animate: true,
-                        repeat: false
-                      ),
+                          'https://lottie.host/b4e379f4-beb9-4ed4-9686-87f8e18dd09a/YmcSTeqvAH.json',
+                          fit: BoxFit.fill,
+                          animate: true,
+                          repeat: false),
                     ),
                   ],
                 ),
@@ -138,7 +136,9 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
                   onEnded: () async {
                     _model.timerController.onStopTimer();
                     print('timer stopped');
-                    if (FFAppState().userModel.token.isNotEmpty) {
+                    if (FFAppState().isGust) {
+                      context.pushReplacementNamed('HomeScreen');
+                    } else if (FFAppState().userModel.token.isNotEmpty) {
                       context.pushReplacementNamed('HomeScreen');
                     } else {
                       context.pushReplacementNamed('startPage');

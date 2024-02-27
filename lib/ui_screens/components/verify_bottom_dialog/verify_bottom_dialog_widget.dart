@@ -206,6 +206,7 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
                                   );
                                 });
                               }
+                              FFAppState().isGust = false;
                               if (Navigator.of(context).canPop()) {
                                 context.pop();
                               }

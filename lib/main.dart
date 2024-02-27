@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:custom_navigation_bar/custom_navigation_bar.dart';
+import 'package:fbroadcast/fbroadcast.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
@@ -90,7 +91,7 @@ void main() async {
   String version = packageInfo.version;
   FFAppState().versionNumber = version;
   final appState = FFAppState();
-  stateCase(false);
+  stateCase(true);
   usePathUrlStrategy();
 
   if (Platform.isIOS) {
@@ -356,6 +357,12 @@ class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
   @override
   void initState() {
     WidgetsBinding.instance.addObserver(this);
+
+    FBroadcast.instance().register('Key_msg', (value, callback) {
+      setState(() {
+      });
+    });
+
     super.initState();
     _currentPageName = widget.initialPage ?? _currentPageName;
     _currentPage = widget.page;
@@ -395,8 +402,8 @@ class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final tabs = {
       'HomeScreen': HomeScreenWidget(),
-      if(!FFAppState().stateCaseModel.isLive)
-      'ChatPage': ChatPageWidget(),
+      // if(!FFAppState().isGust)
+      // 'ChatPage': ChatPageWidget(),
       'CartPage': CartPageWidget(),
       'MyVehiclesPage': MyVehiclesPageWidget(),
       'MorePage': MorePageWidget(),
@@ -434,37 +441,57 @@ class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
               fit: BoxFit.contain,
             ),
           ),
-          if(!FFAppState().stateCaseModel.isLive)
-          CustomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/images/Group_71272.svg',
-              width: 20.0,
-              height: 20.0,
-              fit: BoxFit.contain,
-            ),
-          ),
+          // if(!FFAppState().isGust)
+          // CustomNavigationBarItem(
+          //   icon: SvgPicture.asset(
+          //     'assets/images/Group_71272.svg',
+          //     width: 20.0,
+          //     height: 20.0,
+          //     fit: BoxFit.contain,
+          //   ),
+          // ),
+          // CustomNavigationBarItem(
+          //   icon: Stack(
+          //     children: [
+          //       StoreConnector<dynamic, dynamic>(
+          //         distinct: true,
+          //         converter: (store) => store.state,
+          //         builder: (context, storeEvent) {
+          //           return badges.Badge(
+          //             badgeStyle: badges.BadgeStyle(padding: EdgeInsets.all(5)),
+          //             badgeAnimation: badges.BadgeAnimation.scale(),
+          //             badgeContent: Text(
+          //               '${FFAppState().badgeCount}',
+          //               style: TextStyle(color: Colors.white, fontSize: 12),
+          //             ),
+          //             child: SvgPicture.asset(
+          //               'assets/images/Group_70661.svg',
+          //               width: 20.0,
+          //               height: 20.0,
+          //               fit: BoxFit.contain,
+          //             ),
+          //           );
+          //         },
+          //       )
+          //     ],
+          //   ),
+          // ),
           CustomNavigationBarItem(
             icon: Stack(
               children: [
-                StoreConnector<dynamic, dynamic>(
-                  distinct: true,
-                  converter: (store) => store.state,
-                  builder: (context, storeEvent) {
-                    return badges.Badge(
-                      badgeStyle: badges.BadgeStyle(padding: EdgeInsets.all(5)),
-                      badgeAnimation: badges.BadgeAnimation.scale(),
-                      badgeContent: Text(
-                        '${FFAppState().badgeCount}',
-                        style: TextStyle(color: Colors.white, fontSize: 12),
-                      ),
-                      child: SvgPicture.asset(
-                        'assets/images/Group_70661.svg',
-                        width: 20.0,
-                        height: 20.0,
-                        fit: BoxFit.contain,
-                      ),
-                    );
-                  },
+                badges.Badge(
+                  badgeStyle: badges.BadgeStyle(padding: EdgeInsets.all(5)),
+                  badgeAnimation: badges.BadgeAnimation.scale(),
+                  badgeContent: Text(
+                    '${FFAppState().badgeCount}',
+                    style: TextStyle(color: Colors.white, fontSize: 12),
+                  ),
+                  child: SvgPicture.asset(
+                    'assets/images/Group_70661.svg',
+                    width: 20.0,
+                    height: 20.0,
+                    fit: BoxFit.contain,
+                  ),
                 )
               ],
             ),
