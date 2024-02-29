@@ -1,3 +1,4 @@
+import '../blur_card_animation_component/blur_card_animation_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -182,7 +183,9 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                                   }
                                 }
 
-                                if (_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false) {
+                                if (_model
+                                        .uploadedLocalFile1.bytes?.isNotEmpty ??
+                                    false) {
                                   setState(() {
                                     _model.frontFaceImage =
                                         _model.uploadedLocalFile1;
@@ -300,7 +303,9 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                                     return;
                                   }
                                 }
-                                if (_model.uploadedLocalFile2.bytes?.isNotEmpty ?? false) {
+                                if (_model
+                                        .uploadedLocalFile2.bytes?.isNotEmpty ??
+                                    false) {
                                   setState(() {
                                     _model.backFaceImage =
                                         _model.uploadedLocalFile2;
@@ -378,6 +383,40 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                               );
                               _shouldSetState = true;
                               if ((_model.apiResultixl1?.succeeded ?? true)) {
+                                if (getJsonField(
+                                      (_model.apiResultixl1?.jsonBody ?? ''),
+                                      r'''$.info.is_hyundai''',
+                                    ) ==
+                                    false) {
+                                  await showDialog(
+                                    barrierColor: Colors.transparent,
+                                    barrierDismissible: false,
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        child: BlurCardAnimationComponentWidget(
+                                            title: FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText:
+                                                  'This Application Only Accepts HYUNDAI Cars',
+                                              arText:
+                                                  'يقبل هذا التطبيق سيارات HYUNDAI فقط',
+                                            ),
+                                            buttonText:
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                              enText: 'Ok',
+                                              arText: 'حسنا',
+                                            ),
+                                            actionOk: () {
+                                              Navigator.pop(context);
+                                            }),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+                                  return;
+                                }
+
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
                                   backgroundColor: Color(0x0E000000),

@@ -120,7 +120,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                         flex: 1,
                         child: Padding(
                           padding: const EdgeInsetsDirectional.fromSTEB(
-                              30.0, 10.0, 30.0, 0.0),
+                              30.0, 10.0, 30.0, 5.0),
                           child: Builder(
                             builder: (context) {
                               final gridOfCarModelsItem =
@@ -133,7 +133,7 @@ class _CarModelPageWidgetState extends State<CarModelPageWidget> {
                                   mainAxisSpacing: 10.0,
                                   childAspectRatio: 0.85,
                                 ),
-                                shrinkWrap: false,
+                                shrinkWrap: true,
                                 scrollDirection: Axis.vertical,
                                 itemCount: gridOfCarModelsItem.length,
                                 itemBuilder:

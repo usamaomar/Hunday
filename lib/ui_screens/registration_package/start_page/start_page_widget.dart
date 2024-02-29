@@ -1,3 +1,4 @@
+import '../../../main.dart';
 import '../../components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -9,6 +10,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'start_page_model.dart';
 export 'start_page_model.dart';
+import 'dart:io' show Platform;
 
 class StartPageWidget extends StatefulWidget {
   const StartPageWidget({super.key});
@@ -214,8 +216,8 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                             onPressed: () async {
                               _model.apiResult1zf =
                                   await GuestRegisterApiCall.call(
-                                appVersion: FFAppState().versionNumber ?? '',
-                                lang: FFAppState().currentLanguge.isEmpty ? 'en' : FFAppState().currentLanguge,
+                                appVersion: FFAppState().versionNumber ?? '1.0.0',
+                                lang: FFAppState().currentLanguge.isEmpty ? Localizations.localeOf(context).languageCode : FFAppState().currentLanguge,
                                 fcm: FFAppState().FCM,
                               );
                               if ((_model.apiResult1zf?.succeeded ?? true)) {

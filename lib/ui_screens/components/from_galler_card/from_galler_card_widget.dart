@@ -1,3 +1,4 @@
+import '../blur_card_animation_component/blur_card_animation_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
@@ -423,6 +424,44 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                               );
                               _shouldSetState = true;
                               if ((_model.apiResultixl?.succeeded ?? true)) {
+
+
+                                if (getJsonField(
+                                  (_model.apiResultixl?.jsonBody ?? ''),
+                                  r'''$.info.is_hyundai''',
+                                ) ==
+                                    false) {
+                                  await showDialog(
+                                    barrierColor: Colors.transparent,
+                                    barrierDismissible: false,
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        child: BlurCardAnimationComponentWidget(
+                                            title: FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText:
+                                              'This Application Only Accepts HYUNDAI Cars',
+                                              arText:
+                                              'يقبل هذا التطبيق سيارات HYUNDAI فقط',
+                                            ),
+                                            buttonText:
+                                            FFLocalizations.of(context)
+                                                .getVariableText(
+                                              enText: 'Ok',
+                                              arText: 'حسنا',
+                                            ),
+                                            actionOk: () {
+                                              Navigator.pop(context);
+                                            }),
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
+                                  return;
+                                }
+
+
+
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
                                   backgroundColor: Color(0x0E000000),

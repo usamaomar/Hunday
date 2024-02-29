@@ -76,9 +76,7 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
         ),
       );
     }
-
     context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -146,39 +144,38 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                       if (locationList.isEmpty) {
                                         return Container(
                                           height: 300.0,
-                                          child: const EmptyListComponentWidget(),
+                                          child:
+                                              const EmptyListComponentWidget(),
                                         );
                                       }
                                       return ListView.builder(
-                                        physics: const NeverScrollableScrollPhysics(),
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
                                         shrinkWrap: true,
                                         scrollDirection: Axis.vertical,
                                         itemCount: locationList.length,
                                         itemBuilder:
                                             (context, locationListIndex) {
                                           final locationListItem =
-                                          locationList[
-                                          locationListIndex];
+                                              locationList[locationListIndex];
                                           return Container(
                                             decoration: BoxDecoration(),
                                             child: Padding(
                                               padding: EdgeInsetsDirectional
                                                   .fromSTEB(
-                                                  30.0, 0.0, 30.0, 0.0),
+                                                      30.0, 0.0, 30.0, 0.0),
                                               child: Column(
-                                                mainAxisSize:
-                                                MainAxisSize.max,
+                                                mainAxisSize: MainAxisSize.max,
                                                 children: [
                                                   if (FFAppState()
-                                                      .listOfOpendItems[
-                                                  locationListIndex])
+                                                          .listOfOpendItems[
+                                                      locationListIndex])
                                                     Container(
                                                       decoration:
-                                                      BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: Column(
                                                         mainAxisSize:
-                                                        MainAxisSize
-                                                            .max,
+                                                            MainAxisSize.max,
                                                         children: [
                                                           InkWell(
                                                             splashColor: Colors
@@ -188,68 +185,71 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                             hoverColor: Colors
                                                                 .transparent,
                                                             highlightColor:
-                                                            Colors
-                                                                .transparent,
-                                                            onTap:
-                                                                () async {
+                                                                Colors
+                                                                    .transparent,
+                                                            onTap: () async {
                                                               setState(() {
                                                                 FFAppState().listOfOpendItems = functions
                                                                     .updateAtIndexAndClearOthers(
-                                                                    FFAppState()
-                                                                        .listOfOpendItems
-                                                                        .toList(),
-                                                                    locationListIndex)
+                                                                        FFAppState()
+                                                                            .listOfOpendItems
+                                                                            .toList(),
+                                                                        locationListIndex)
                                                                     .toList()
                                                                     .cast<
-                                                                    bool>();
+                                                                        bool>();
                                                               });
                                                             },
                                                             child: Stack(
                                                               children: [
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                                                      0.0,
-                                                                      20.0,
-                                                                      0.0,
-                                                                      0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          0.0,
+                                                                          20.0,
+                                                                          0.0,
+                                                                          0.0),
                                                                   child:
-                                                                  Container(
+                                                                      Container(
                                                                     width: double
                                                                         .infinity,
                                                                     height:
-                                                                    33.0,
+                                                                        33.0,
                                                                     decoration:
-                                                                    BoxDecoration(
-                                                                      color:
-                                                                      Color(0xFF3D6398),
+                                                                        BoxDecoration(
+                                                                      color: Color(
+                                                                          0xFF3D6398),
                                                                       borderRadius:
-                                                                      BorderRadius.circular(5.0),
+                                                                          BorderRadius.circular(
+                                                                              5.0),
                                                                     ),
                                                                     child:
-                                                                    Padding(
+                                                                        Padding(
                                                                       padding: EdgeInsetsDirectional.fromSTEB(
                                                                           50.0,
                                                                           0.0,
                                                                           0.0,
                                                                           0.0),
                                                                       child:
-                                                                      Row(
+                                                                          Row(
                                                                         mainAxisSize:
-                                                                        MainAxisSize.min,
+                                                                            MainAxisSize.min,
                                                                         children: [
                                                                           Text(
                                                                             getJsonField(
                                                                               locationListItem,
                                                                               r'''$.name''',
                                                                             ).toString().maybeHandleOverflow(maxChars: 25),
-                                                                            textAlign: TextAlign.start,
-                                                                            maxLines: 1,
+                                                                            textAlign:
+                                                                                TextAlign.start,
+                                                                            maxLines:
+                                                                                1,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                              fontFamily: 'HeeboBold',
-                                                                              color: FlutterFlowTheme.of(context).white,
-                                                                              fontWeight: FontWeight.bold,
-                                                                              useGoogleFonts: false,
-                                                                            ),
+                                                                                  fontFamily: 'HeeboBold',
+                                                                                  color: FlutterFlowTheme.of(context).white,
+                                                                                  fontWeight: FontWeight.bold,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
                                                                           ),
                                                                         ],
                                                                       ),
@@ -257,32 +257,40 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                                                      10.0,
-                                                                      0.0,
-                                                                      10.0,
-                                                                      0.0),
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          10.0,
+                                                                          0.0,
+                                                                          10.0,
+                                                                          0.0),
                                                                   child:
-                                                                  Container(
+                                                                      Container(
                                                                     decoration:
-                                                                    BoxDecoration(),
-                                                                    alignment: AlignmentDirectional(
-                                                                        -1.0,
-                                                                        0.0),
+                                                                        BoxDecoration(),
+                                                                    alignment:
+                                                                        AlignmentDirectional(
+                                                                            -1.0,
+                                                                            0.0),
                                                                     child:
-                                                                    Stack(
+                                                                        Stack(
                                                                       children: [
                                                                         ClipRRect(
-                                                                          borderRadius: BorderRadius.circular(50.0),
-                                                                          child: Image.network(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(50.0),
+                                                                          child:
+                                                                              Image.network(
                                                                             getJsonField(
                                                                               locationListItem,
                                                                               r'''$.full_icon''',
                                                                             ).toString(),
-                                                                            width: 33.0,
-                                                                            height: 33.0,
-                                                                            fit: BoxFit.contain,
-                                                                            errorBuilder: (context, error, stackTrace) => Image.asset(
+                                                                            width:
+                                                                                33.0,
+                                                                            height:
+                                                                                33.0,
+                                                                            fit:
+                                                                                BoxFit.contain,
+                                                                            errorBuilder: (context, error, stackTrace) =>
+                                                                                Image.asset(
                                                                               'assets/images/error_image.png',
                                                                               width: 33.0,
                                                                               height: 33.0,
@@ -291,12 +299,17 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                           ),
                                                                         ),
                                                                         ClipRRect(
-                                                                          borderRadius: BorderRadius.circular(0.0),
-                                                                          child: SvgPicture.asset(
+                                                                          borderRadius:
+                                                                              BorderRadius.circular(0.0),
+                                                                          child:
+                                                                              SvgPicture.asset(
                                                                             'assets/images/Group_72991_(1).svg',
-                                                                            width: 33.0,
-                                                                            height: 44.0,
-                                                                            fit: BoxFit.cover,
+                                                                            width:
+                                                                                33.0,
+                                                                            height:
+                                                                                44.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
                                                                           ),
                                                                         ),
                                                                       ],
@@ -307,84 +320,97 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                             ),
                                                           ),
                                                           Container(
-                                                            width: double
-                                                                .infinity,
+                                                            width:
+                                                                double.infinity,
                                                             decoration:
-                                                            BoxDecoration(
-                                                              color: FlutterFlowTheme.of(
-                                                                  context)
+                                                                BoxDecoration(
+                                                              color: FlutterFlowTheme
+                                                                      .of(context)
                                                                   .secondaryBackground,
                                                               borderRadius:
-                                                              BorderRadius
-                                                                  .circular(
-                                                                  5.0),
+                                                                  BorderRadius
+                                                                      .circular(
+                                                                          5.0),
                                                             ),
                                                             child: Column(
                                                               mainAxisSize:
-                                                              MainAxisSize
-                                                                  .max,
+                                                                  MainAxisSize
+                                                                      .max,
                                                               children: [
                                                                 Padding(
                                                                   padding:
-                                                                  EdgeInsets.all(
-                                                                      15.0),
+                                                                      EdgeInsets
+                                                                          .all(
+                                                                              15.0),
                                                                   child:
-                                                                  ClipRRect(
+                                                                      ClipRRect(
                                                                     borderRadius:
-                                                                    BorderRadius.circular(11.0),
+                                                                        BorderRadius.circular(
+                                                                            11.0),
                                                                     child:
-                                                                    CachedNetworkImage(
+                                                                        CachedNetworkImage(
                                                                       fadeInDuration:
-                                                                      Duration(milliseconds: 500),
+                                                                          Duration(
+                                                                              milliseconds: 500),
                                                                       fadeOutDuration:
-                                                                      Duration(milliseconds: 500),
+                                                                          Duration(
+                                                                              milliseconds: 500),
                                                                       imageUrl:
-                                                                      getJsonField(
+                                                                          getJsonField(
                                                                         locationListItem,
                                                                         r'''$.full_image''',
                                                                       ).toString(),
                                                                       width:
-                                                                      285.0,
+                                                                          285.0,
                                                                       height:
-                                                                      162.0,
+                                                                          162.0,
                                                                       fit: BoxFit
                                                                           .cover,
-                                                                      errorWidget: (context, error, stackTrace) =>
-                                                                          Image.asset(
-                                                                            'assets/images/error_image.png',
-                                                                            width:
+                                                                      errorWidget: (context,
+                                                                              error,
+                                                                              stackTrace) =>
+                                                                          Image
+                                                                              .asset(
+                                                                        'assets/images/error_image.png',
+                                                                        width:
                                                                             285.0,
-                                                                            height:
+                                                                        height:
                                                                             162.0,
-                                                                            fit:
-                                                                            BoxFit.cover,
-                                                                          ),
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                      ),
                                                                     ),
                                                                   ),
                                                                 ),
                                                                 InkWell(
-                                                                  child: Padding(
-                                                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                  child:
+                                                                      Padding(
+                                                                    padding: const EdgeInsetsDirectional
+                                                                        .fromSTEB(
                                                                         15.0,
                                                                         0.0,
                                                                         15.0,
                                                                         5.0),
-                                                                    child:
-                                                                    Row(
+                                                                    child: Row(
                                                                       mainAxisSize:
-                                                                      MainAxisSize.max,
+                                                                          MainAxisSize
+                                                                              .max,
                                                                       mainAxisAlignment:
-                                                                      MainAxisAlignment.start,
+                                                                          MainAxisAlignment
+                                                                              .start,
                                                                       children: [
                                                                         ClipRRect(
                                                                           borderRadius:
-                                                                          BorderRadius.circular(8.0),
+                                                                              BorderRadius.circular(8.0),
                                                                           child:
-                                                                          SvgPicture.asset(
+                                                                              SvgPicture.asset(
                                                                             'assets/images/Group_72255.svg',
-                                                                            width: 19.0,
-                                                                            height: 26.0,
-                                                                            fit: BoxFit.cover,
+                                                                            width:
+                                                                                19.0,
+                                                                            height:
+                                                                                26.0,
+                                                                            fit:
+                                                                                BoxFit.cover,
                                                                           ),
                                                                         ),
                                                                         Padding(
@@ -394,57 +420,62 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                               20.0,
                                                                               0.0),
                                                                           child:
-                                                                          Text(
+                                                                              Text(
                                                                             getJsonField(
                                                                               locationListItem,
                                                                               r'''$.address''',
                                                                             ).toString().maybeHandleOverflow(maxChars: 15),
-                                                                            maxLines: 1,
+                                                                            maxLines:
+                                                                                1,
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                              fontFamily: 'Heebo Regular',
-                                                                              fontSize: 13.0,
-                                                                              fontWeight: FontWeight.normal,
-                                                                              useGoogleFonts: false,
-                                                                            ),
+                                                                                  fontFamily: 'Heebo Regular',
+                                                                                  fontSize: 13.0,
+                                                                                  fontWeight: FontWeight.normal,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
                                                                           ),
                                                                         ),
                                                                       ],
                                                                     ),
                                                                   ),
-                                                                  onTap: () async{
-                                                                    if(getJsonField(
-                                                                      locationListItem,
-                                                                      r'''$.link''',
-                                                                    )!=null) {
+                                                                  onTap:
+                                                                      () async {
+                                                                    if (getJsonField(
+                                                                          locationListItem,
+                                                                          r'''$.link''',
+                                                                        ) !=
+                                                                        null) {
                                                                       await launchURL(
                                                                           getJsonField(
-                                                                            locationListItem,
-                                                                            r'''$.link''',
-                                                                          )
-                                                                              .toString());
+                                                                        locationListItem,
+                                                                        r'''$.link''',
+                                                                      ).toString());
                                                                     }
                                                                   },
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                                                      15.0,
-                                                                      0.0,
-                                                                      15.0,
-                                                                      15.0),
-                                                                  child:
-                                                                  Row(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          15.0,
+                                                                          0.0,
+                                                                          15.0,
+                                                                          15.0),
+                                                                  child: Row(
                                                                     mainAxisSize:
-                                                                    MainAxisSize.max,
+                                                                        MainAxisSize
+                                                                            .max,
                                                                     mainAxisAlignment:
-                                                                    MainAxisAlignment.start,
+                                                                        MainAxisAlignment
+                                                                            .start,
                                                                     children: [
                                                                       ClipRRect(
                                                                         borderRadius:
-                                                                        BorderRadius.circular(0.0),
-                                                                        child:
-                                                                        SvgPicture.asset(
+                                                                            BorderRadius.circular(0.0),
+                                                                        child: SvgPicture
+                                                                            .asset(
                                                                           'assets/images/Group_70654.svg',
-                                                                          fit: BoxFit.cover,
+                                                                          fit: BoxFit
+                                                                              .cover,
                                                                         ),
                                                                       ),
                                                                       Padding(
@@ -454,12 +485,17 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                             20.0,
                                                                             0.0),
                                                                         child:
-                                                                        InkWell(
-                                                                          splashColor: Colors.transparent,
-                                                                          focusColor: Colors.transparent,
-                                                                          hoverColor: Colors.transparent,
-                                                                          highlightColor: Colors.transparent,
-                                                                          onTap: () async {
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
                                                                             await launchUrl(Uri(
                                                                               scheme: 'tel',
                                                                               path: getJsonField(
@@ -468,17 +504,18 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                               ).toString(),
                                                                             ));
                                                                           },
-                                                                          child: Text(
+                                                                          child:
+                                                                              Text(
                                                                             getJsonField(
                                                                               locationListItem,
                                                                               r'''$.phone''',
                                                                             ).toString(),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                              fontFamily: 'Heebo Regular',
-                                                                              fontSize: 13.0,
-                                                                              fontWeight: FontWeight.normal,
-                                                                              useGoogleFonts: false,
-                                                                            ),
+                                                                                  fontFamily: 'Heebo Regular',
+                                                                                  fontSize: 13.0,
+                                                                                  fontWeight: FontWeight.normal,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
                                                                           ),
                                                                         ),
                                                                       ),
@@ -486,58 +523,68 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                                                      15.0,
-                                                                      0.0,
-                                                                      15.0,
-                                                                      15.0),
-                                                                  child:
-                                                                  Row(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          15.0,
+                                                                          0.0,
+                                                                          15.0,
+                                                                          15.0),
+                                                                  child: Row(
                                                                     mainAxisSize:
-                                                                    MainAxisSize.max,
+                                                                        MainAxisSize
+                                                                            .max,
                                                                     mainAxisAlignment:
-                                                                    MainAxisAlignment.start,
+                                                                        MainAxisAlignment
+                                                                            .start,
                                                                     children: [
                                                                       ClipRRect(
                                                                         borderRadius:
-                                                                        BorderRadius.circular(0.0),
-                                                                        child:
-                                                                        SvgPicture.asset(
+                                                                            BorderRadius.circular(0.0),
+                                                                        child: SvgPicture
+                                                                            .asset(
                                                                           'assets/images/Group_72886.svg',
-                                                                          fit: BoxFit.cover,
+                                                                          fit: BoxFit
+                                                                              .cover,
                                                                         ),
                                                                       ),
                                                                       Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional
+                                                                            .fromSTEB(
                                                                             20.0,
                                                                             0.0,
                                                                             20.0,
                                                                             0.0),
                                                                         child:
-                                                                        InkWell(
-                                                                          splashColor: Colors.transparent,
-                                                                          focusColor: Colors.transparent,
-                                                                          hoverColor: Colors.transparent,
-                                                                          highlightColor: Colors.transparent,
-                                                                          onTap: () async {
+                                                                            InkWell(
+                                                                          splashColor:
+                                                                              Colors.transparent,
+                                                                          focusColor:
+                                                                              Colors.transparent,
+                                                                          hoverColor:
+                                                                              Colors.transparent,
+                                                                          highlightColor:
+                                                                              Colors.transparent,
+                                                                          onTap:
+                                                                              () async {
                                                                             await actions.navigateToLink(
                                                                               getJsonField(
                                                                                 locationListItem,
-                                                                                r'''$.whatsapp_phone''',
+                                                                                r'''$.whatsapp_phone_number''',
                                                                               ).toString(),
                                                                             );
                                                                           },
-                                                                          child: Text(
+                                                                          child:
+                                                                              Text(
                                                                             getJsonField(
                                                                               locationListItem,
                                                                               r'''$.whatsapp_phone_number''',
                                                                             ).toString(),
                                                                             style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                              fontFamily: 'Heebo Regular',
-                                                                              fontSize: 13.0,
-                                                                              fontWeight: FontWeight.normal,
-                                                                              useGoogleFonts: false,
-                                                                            ),
+                                                                                  fontFamily: 'Heebo Regular',
+                                                                                  fontSize: 13.0,
+                                                                                  fontWeight: FontWeight.normal,
+                                                                                  useGoogleFonts: false,
+                                                                                ),
                                                                           ),
                                                                         ),
                                                                       ),
@@ -545,38 +592,46 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                   ),
                                                                 ),
                                                                 Padding(
-                                                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                                                      15.0,
-                                                                      0.0,
-                                                                      15.0,
-                                                                      15.0),
-                                                                  child:
-                                                                  Row(
+                                                                  padding: EdgeInsetsDirectional
+                                                                      .fromSTEB(
+                                                                          15.0,
+                                                                          0.0,
+                                                                          15.0,
+                                                                          15.0),
+                                                                  child: Row(
                                                                     mainAxisSize:
-                                                                    MainAxisSize.max,
+                                                                        MainAxisSize
+                                                                            .max,
                                                                     mainAxisAlignment:
-                                                                    MainAxisAlignment.start,
+                                                                        MainAxisAlignment
+                                                                            .start,
                                                                     children: [
                                                                       ClipRRect(
                                                                         borderRadius:
-                                                                        BorderRadius.circular(0.0),
-                                                                        child:
-                                                                        SvgPicture.asset(
+                                                                            BorderRadius.circular(0.0),
+                                                                        child: SvgPicture
+                                                                            .asset(
                                                                           'assets/images/Group_71483.svg',
-                                                                          fit: BoxFit.cover,
+                                                                          fit: BoxFit
+                                                                              .cover,
                                                                         ),
                                                                       ),
                                                                       Column(
                                                                         mainAxisSize:
-                                                                        MainAxisSize.max,
+                                                                            MainAxisSize.max,
                                                                         mainAxisAlignment:
-                                                                        MainAxisAlignment.start,
+                                                                            MainAxisAlignment.start,
                                                                         crossAxisAlignment:
-                                                                        CrossAxisAlignment.start,
+                                                                            CrossAxisAlignment.start,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 5.0),
-                                                                            child: Text(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                20.0,
+                                                                                0.0,
+                                                                                20.0,
+                                                                                5.0),
+                                                                            child:
+                                                                                Text(
                                                                               functions.formatTimeRange(
                                                                                   getJsonField(
                                                                                     locationListItem,
@@ -587,27 +642,32 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                                     r'''$.end_time''',
                                                                                   ).toString()),
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                fontFamily: 'Heebo Regular',
-                                                                                fontSize: 13.0,
-                                                                                fontWeight: FontWeight.normal,
-                                                                                useGoogleFonts: false,
-                                                                              ),
+                                                                                    fontFamily: 'Heebo Regular',
+                                                                                    fontSize: 13.0,
+                                                                                    fontWeight: FontWeight.normal,
+                                                                                    useGoogleFonts: false,
+                                                                                  ),
                                                                             ),
                                                                           ),
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(20.0, 5.0, 20.0, 0.0),
-                                                                            child: Text(
+                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                                20.0,
+                                                                                5.0,
+                                                                                20.0,
+                                                                                0.0),
+                                                                            child:
+                                                                                Text(
                                                                               getJsonField(
                                                                                 locationListItem,
                                                                                 r'''$.days''',
                                                                               ).toString(),
                                                                               maxLines: 2,
                                                                               style: FlutterFlowTheme.of(context).bodyMedium.override(
-                                                                                fontFamily: 'Heebo Regular',
-                                                                                fontSize: 13.0,
-                                                                                fontWeight: FontWeight.normal,
-                                                                                useGoogleFonts: false,
-                                                                              ),
+                                                                                    fontFamily: 'Heebo Regular',
+                                                                                    fontSize: 13.0,
+                                                                                    fontWeight: FontWeight.normal,
+                                                                                    useGoogleFonts: false,
+                                                                                  ),
                                                                             ),
                                                                           ),
                                                                         ],
@@ -622,100 +682,107 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                       ),
                                                     ),
                                                   if (FFAppState()
-                                                      .listOfOpendItems[
-                                                  locationListIndex] ==
+                                                              .listOfOpendItems[
+                                                          locationListIndex] ==
                                                       false)
                                                     Padding(
                                                       padding:
-                                                      EdgeInsetsDirectional
-                                                          .fromSTEB(
-                                                          0.0,
-                                                          5.0,
-                                                          0.0,
-                                                          0.0),
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  0.0,
+                                                                  5.0,
+                                                                  0.0,
+                                                                  0.0),
                                                       child: InkWell(
-                                                        splashColor: Colors
-                                                            .transparent,
-                                                        focusColor: Colors
-                                                            .transparent,
-                                                        hoverColor: Colors
-                                                            .transparent,
+                                                        splashColor:
+                                                            Colors.transparent,
+                                                        focusColor:
+                                                            Colors.transparent,
+                                                        hoverColor:
+                                                            Colors.transparent,
                                                         highlightColor:
-                                                        Colors
-                                                            .transparent,
+                                                            Colors.transparent,
                                                         onTap: () async {
                                                           setState(() {
                                                             FFAppState().listOfOpendItems = functions
                                                                 .updateAtIndexAndClearOthers(
-                                                                FFAppState()
-                                                                    .listOfOpendItems
-                                                                    .toList(),
-                                                                locationListIndex)
+                                                                    FFAppState()
+                                                                        .listOfOpendItems
+                                                                        .toList(),
+                                                                    locationListIndex)
                                                                 .toList()
-                                                                .cast<
-                                                                bool>();
+                                                                .cast<bool>();
                                                           });
                                                         },
                                                         child: Container(
                                                           height: 33.0,
                                                           decoration:
-                                                          BoxDecoration(
-                                                            color: FlutterFlowTheme.of(
-                                                                context)
+                                                              BoxDecoration(
+                                                            color: FlutterFlowTheme
+                                                                    .of(context)
                                                                 .secondaryBackground,
                                                             borderRadius:
-                                                            BorderRadius
-                                                                .circular(
-                                                                5.0),
+                                                                BorderRadius
+                                                                    .circular(
+                                                                        5.0),
                                                           ),
                                                           child: Row(
                                                             mainAxisSize:
-                                                            MainAxisSize
-                                                                .max,
+                                                                MainAxisSize
+                                                                    .max,
                                                             children: [
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
-                                                                    .fromSTEB(
-                                                                    10.0,
-                                                                    0.0,
-                                                                    10.0,
-                                                                    0.0),
+                                                                padding:
+                                                                    const EdgeInsetsDirectional
+                                                                        .fromSTEB(
+                                                                        10.0,
+                                                                        0.0,
+                                                                        10.0,
+                                                                        0.0),
                                                                 child:
-                                                                Container(
+                                                                    Container(
                                                                   decoration:
-                                                                  BoxDecoration(),
+                                                                      BoxDecoration(),
                                                                   alignment:
-                                                                  const AlignmentDirectional(
-                                                                      -1.0,
-                                                                      0.0),
-                                                                  child:
-                                                                  Stack(
+                                                                      const AlignmentDirectional(
+                                                                          -1.0,
+                                                                          0.0),
+                                                                  child: Stack(
                                                                     children: [
                                                                       ClipRRect(
                                                                         borderRadius:
-                                                                        BorderRadius.circular(50.0),
+                                                                            BorderRadius.circular(50.0),
                                                                         child:
-                                                                        CachedNetworkImage(
-                                                                          fadeInDuration: Duration(milliseconds: 500),
-                                                                          fadeOutDuration: Duration(milliseconds: 500),
-                                                                          imageUrl: getJsonField(
+                                                                            CachedNetworkImage(
+                                                                          fadeInDuration:
+                                                                              Duration(milliseconds: 500),
+                                                                          fadeOutDuration:
+                                                                              Duration(milliseconds: 500),
+                                                                          imageUrl:
+                                                                              getJsonField(
                                                                             locationListItem,
                                                                             r'''$.full_icon''',
                                                                           ).toString(),
-                                                                          width: 24.0,
-                                                                          height: 24.0,
-                                                                          fit: BoxFit.contain,
+                                                                          width:
+                                                                              24.0,
+                                                                          height:
+                                                                              24.0,
+                                                                          fit: BoxFit
+                                                                              .contain,
                                                                         ),
                                                                       ),
                                                                       ClipRRect(
                                                                         borderRadius:
-                                                                        BorderRadius.circular(0.0),
-                                                                        child:
-                                                                        SvgPicture.asset(
+                                                                            BorderRadius.circular(0.0),
+                                                                        child: SvgPicture
+                                                                            .asset(
                                                                           'assets/images/Group_72992.svg',
-                                                                          width: 24.0,
-                                                                          height: 24.0,
-                                                                          fit: BoxFit.cover,
+                                                                          width:
+                                                                              24.0,
+                                                                          height:
+                                                                              24.0,
+                                                                          fit: BoxFit
+                                                                              .cover,
                                                                         ),
                                                                       ),
                                                                     ],
@@ -726,26 +793,29 @@ class _LocationPageWidgetState extends State<LocationPageWidget> {
                                                                 getJsonField(
                                                                   locationListItem,
                                                                   r'''$.name''',
-                                                                ).toString().maybeHandleOverflow(
-                                                                    maxChars:
-                                                                    25),
+                                                                )
+                                                                    .toString()
+                                                                    .maybeHandleOverflow(
+                                                                        maxChars:
+                                                                            25),
                                                                 textAlign:
-                                                                TextAlign
-                                                                    .start,
+                                                                    TextAlign
+                                                                        .start,
                                                                 maxLines: 1,
                                                                 style: FlutterFlowTheme.of(
-                                                                    context)
+                                                                        context)
                                                                     .bodyMedium
                                                                     .override(
-                                                                  fontFamily:
-                                                                  'HeeboBold',
-                                                                  color:
-                                                                  Color(0xFF3D6398),
-                                                                  fontWeight:
-                                                                  FontWeight.bold,
-                                                                  useGoogleFonts:
-                                                                  false,
-                                                                ),
+                                                                      fontFamily:
+                                                                          'HeeboBold',
+                                                                      color: Color(
+                                                                          0xFF3D6398),
+                                                                      fontWeight:
+                                                                          FontWeight
+                                                                              .bold,
+                                                                      useGoogleFonts:
+                                                                          false,
+                                                                    ),
                                                               ),
                                                             ],
                                                           ),

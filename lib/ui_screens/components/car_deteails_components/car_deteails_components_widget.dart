@@ -353,7 +353,7 @@ class _CarDeteailsComponentsWidgetState
                           Stack(
                             children: [
                               if (FFAppState().listOfCatalogOpendBool[1])
-                                Padding(
+                                const Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       15.0, 0.0, 15.0, 0.0),
                                   child: Icon(
@@ -362,7 +362,7 @@ class _CarDeteailsComponentsWidgetState
                                     size: 24.0,
                                   ),
                                 ),
-                              Padding(
+                              const Padding(
                                 padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 0.0, 15.0, 0.0),
                                 child: Icon(
