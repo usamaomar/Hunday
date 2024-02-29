@@ -1047,8 +1047,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'w66lu1y3': {
       'en':
           'If you are a Hyundai car owner Login, Sign up or continue as a guest',
-      'ar':
-          'إذا كنت مالك سيارة Hyundai، قم بتسجيل الدخول أو قم بالتسجيل أو الاستمرار كضيف',
+      'ar': 'رخصة المركبة',
     },
     'tak69zzg': {
       'en': 'Login',
@@ -1517,6 +1516,13 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'p2kvejv5': {
       'en': 'Delete Account',
       'ar': 'حذف الحساب',
+    },
+  },
+  // AnimationCardTween
+  {
+    '7m6vzx4p': {
+      'en': 'Vehicle License',
+      'ar': 'رخصة المركبة',
     },
   },
   // Miscellaneous

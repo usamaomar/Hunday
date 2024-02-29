@@ -6,7 +6,6 @@ import '/ui_screens/components/verify_forget_password_bottom_dialog/verify_forge
 import 'forget_password_component_widget.dart'
     show ForgetPasswordComponentWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

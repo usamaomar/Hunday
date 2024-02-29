@@ -6,7 +6,6 @@ import '/ui_screens/components/hynday_app_bar/hynday_app_bar_widget.dart';
 import 'car_model_details_pdf_viewr_widget.dart'
     show CarModelDetailsPdfViewrWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';

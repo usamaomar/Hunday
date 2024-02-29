@@ -8,7 +8,6 @@ import '/ui_screens/nav_home_pakage/empty_list_component/empty_list_component_wi
 import 'car_model_details_widget.dart' show CarModelDetailsWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';

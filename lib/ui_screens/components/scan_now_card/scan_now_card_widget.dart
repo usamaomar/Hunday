@@ -7,7 +7,6 @@ import '/ui_screens/components/list_of_string_items_component/list_of_string_ite
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
