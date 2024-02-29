@@ -12,7 +12,6 @@ import '/flutter_flow/custom_functions.dart' as functions;
 import 'cart_bottom_sheet_widget.dart' show CartBottomSheetWidget;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';

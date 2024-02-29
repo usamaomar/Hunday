@@ -8,7 +8,6 @@ import '/ui_screens/components/modal06_basic_information/modal06_basic_informati
 import 'dart:ui';
 import 'scan_now_card_widget.dart' show ScanNowCardWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:google_fonts/google_fonts.dart';
