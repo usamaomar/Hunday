@@ -1,5 +1,6 @@
 import UIKit
-
+// import FirebaseMessaging
+// import Firebase
 import Flutter
 
 @UIApplicationMain
@@ -9,7 +10,7 @@ import Flutter
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
-      
+//       FirebaseApp.configure()
       let controller : FlutterViewController = window?.rootViewController as! FlutterViewController
       let paymentChannel = FlutterMethodChannel(name:"com.comc.hyundai/paymentMethod", binaryMessenger: controller.binaryMessenger)
       
@@ -30,6 +31,9 @@ import Flutter
       })
       
     GeneratedPluginRegistrant.register(with: self)
+//     if #available(iOS 10.0, *) {
+//            UNUserNotificationCenter.current().delegate = self as? UNUserNotificationCenterDelegate
+//      }
     return super.application(application, didFinishLaunchingWithOptions: launchOptions)
   }
 
