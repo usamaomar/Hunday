@@ -1536,6 +1536,26 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'من المصادر',
     },
   },
+  // UploadePhotoComponent
+  {
+    'za5fnk3f': {
+      'en': 'Change Photo',
+      'ar': '',
+    },
+    'tnijsrkv': {
+      'en':
+          'Upload a new photo below in order to change your avatar seen by others.',
+      'ar': '',
+    },
+    'qrsoamh0': {
+      'en': 'Upload Image',
+      'ar': '',
+    },
+    'a0oruvfc': {
+      'en': 'Save Changes',
+      'ar': '',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {
