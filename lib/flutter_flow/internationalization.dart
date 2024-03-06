@@ -1540,7 +1540,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'wk94cq4d': {
       'en': 'Take Photo',
-      'ar': 'التقظ صورة',
+      'ar': 'التقط صورة',
     },
     'g71us9q3': {
       'en': 'From Media',

@@ -1,9 +1,13 @@
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:get/utils.dart';
+import 'package:hyundai/ui_screens/components/select_image_or_take/select_image_or_take_widget.dart';
+import '../../../flutter_flow/flutter_flow_animations.dart';
 import '../../../flutter_flow/flutter_flow_icon_button.dart';
 import '../../../flutter_flow/upload_data.dart';
+import '../../components/select_image_or_take/select_image_or_take_model.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +31,21 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
   String _displayedDate = "";
   int mainValue = 0;
   FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  final animationsMap = {
+    'newsBottomSheetComponentOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 100.ms,
+          duration: 500.ms,
+          begin: const Offset(0.0, 700.0),
+          end: const Offset(0.0, 0.0),
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
@@ -208,13 +227,14 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                           ? Stack(
                               children: [
                                 Visibility(
-                                  visible:hasPassedAll(_model.mapValue[index]) ,
+                                  visible: hasPassedAll(_model.mapValue[index]),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        margin: EdgeInsets.fromLTRB(0, 15, 0, 0),
+                                        margin:
+                                            EdgeInsets.fromLTRB(0, 15, 0, 0),
                                         decoration: BoxDecoration(
                                           color: Color(0xFF092853),
                                           borderRadius: BorderRadius.only(
@@ -224,7 +244,8 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                             topRight: Radius.circular(50.0),
                                           ),
                                         ),
-                                        padding: EdgeInsets.fromLTRB(20, 5, 20, 5),
+                                        padding:
+                                            EdgeInsets.fromLTRB(20, 5, 20, 5),
                                         alignment: Alignment.center,
                                         child: Text(
                                           '${getDatea()}',
@@ -446,8 +467,26 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                         mainAxisSize: MainAxisSize.max,
                         children: [
                           InkWell(
-                            onTap: (){
-                              attachFile();
+                            onTap: () async {
+                              await showModalBottomSheet(
+                                isScrollControlled: true,
+                                backgroundColor: Colors.transparent,
+                                enableDrag: false,
+                                context: context,
+                                builder: (context) {
+                                  return Padding(
+                                    padding: MediaQuery.viewInsetsOf(context),
+                                    child: SelectImageOrTakeWidget(
+                                      onPressedFromCamera: () {
+                                        attachFile(context);
+                                      },
+                                      onPressedFromGallary: () {
+                                        fromGallary(context);
+                                      },
+                                    ),
+                                  );
+                                },
+                              ).then((value) => safeSetState(() {}));
                             },
                             child: Transform.rotate(
                               angle: 0.6632,
@@ -491,35 +530,76 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
     );
   }
 
-  void attachFile() async{
+  void attachFile(BuildContext contextBuild) async {
     final selectedMedia = await selectMedia(
       multiImage: false,
     );
     if (selectedMedia != null &&
-        selectedMedia.every((m) =>
-            validateFileFormat(
-                m.storagePath, context))) {
-      setState(
-              () => _model.isDataUploading1 = true);
-      var selectedUploadedFiles =
-      <FFUploadedFile>[];
-
+        selectedMedia
+            .every((m) => validateFileFormat(m.storagePath, context))) {
+      setState(() => _model.isDataUploading1 = true);
+      var selectedUploadedFiles = <FFUploadedFile>[];
       try {
         selectedUploadedFiles = selectedMedia
             .map((m) => FFUploadedFile(
-          name:
-          m.storagePath.split('/').last,
-          bytes: m.bytes,
-          height: m.dimensions?.height,
-          width: m.dimensions?.width,
-          blurHash: m.blurHash,
-        ))
+                  name: m.storagePath.split('/').last,
+                  bytes: m.bytes,
+                  height: m.dimensions?.height,
+                  width: m.dimensions?.width,
+                  blurHash: m.blurHash,
+                ))
             .toList();
       } finally {
         _model.isDataUploading1 = false;
       }
+      if (selectedUploadedFiles.length == selectedMedia.length) {
+        setState(() {
+          _model.uploadedLocalFile1 = selectedUploadedFiles.first;
+        });
+      } else {
+        setState(() {});
+        return;
+      }
+    }
+
+    if (_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false) {
+      Navigator.pop(contextBuild);
+      // setState(() {
+      //   _model.frontFaceImage =
+      //       _model.uploadedLocalFile1;
+      // });
+      // setState(() {
+      //   _model.isFrontFaceAdded = true;
+      // });
+    }
+  }
+
+
+  void fromGallary(BuildContext contextBuild) async{
+    final selectedFiles = await selectFiles(
+      multiFile: false,
+    );
+    if (selectedFiles != null) {
+      setState(() =>
+      _model.isDataUploading1 = true);
+      var selectedUploadedFiles =
+      <FFUploadedFile>[];
+
+      try {
+        selectedUploadedFiles =
+            selectedFiles
+                .map((m) => FFUploadedFile(
+              name: m.storagePath
+                  .split('/')
+                  .last,
+              bytes: m.bytes,
+            ))
+                .toList();
+      } finally {
+        _model.isDataUploading1 = false;
+      }
       if (selectedUploadedFiles.length ==
-          selectedMedia.length) {
+          selectedFiles.length) {
         setState(() {
           _model.uploadedLocalFile1 =
               selectedUploadedFiles.first;
@@ -529,28 +609,10 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
         return;
       }
     }
-
-    if (_model
-        .uploadedLocalFile1.bytes?.isNotEmpty ??
-        false) {
-      // setState(() {
-      //   _model.frontFaceImage =
-      //       _model.uploadedLocalFile1;
-      // });
-      // setState(() {
-      //   _model.isFrontFaceAdded = true;
-      // });
+    if (_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false) {
+      Navigator.pop(contextBuild);
     }
-
-
-
-
-
-
-
   }
-
-
 
   String? key = '';
 
@@ -630,7 +692,6 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
       mainValue = int.parse(mapValue['time'].toString());
       return true;
     }
-
   }
 
   String getDatea() {
