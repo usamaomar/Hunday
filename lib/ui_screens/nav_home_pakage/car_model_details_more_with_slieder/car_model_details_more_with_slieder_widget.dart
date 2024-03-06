@@ -150,10 +150,18 @@ class _CarModelDetailsMoreWithSliederWidgetState
                     child: Column(
                       mainAxisSize: MainAxisSize.max,
                       children: [
-                        Padding(
+                         Padding(
                           padding:
                           EdgeInsetsDirectional.fromSTEB(0.0, 0, 0.0, 0.0),
-                          child: Builder(
+                          child:getJsonField(
+                            (widget.carJsonItem ?? ''),
+                            r'''$.full_slider''',
+                            true,
+                          )==null ? Container(width: 300,height: 200) : getJsonField(
+                            (widget.carJsonItem ?? ''),
+                            r'''$.full_slider''',
+                            true,
+                          ).length > 0 ? (Builder(
                             builder: (context) {
                               final listOfImages =getJsonField(
                                 (widget.carJsonItem ?? ''),
@@ -190,19 +198,19 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                           CarouselController(),
                                       options: CarouselOptions(
                                         initialPage: min(1, listOfImages.length - 1),
-                                        viewportFraction: 1.0,
+                                        viewportFraction: 1.1,
                                         disableCenter: true,
                                         pageSnapping: true,
                                         enlargeCenterPage: true,
                                         enlargeFactor: 1.0,
                                         enableInfiniteScroll: true,
-                                        scrollDirection: Axis.horizontal,
                                         autoPlay: true,
+                                        scrollDirection: Axis.horizontal,
                                         autoPlayAnimationDuration:
-                                        Duration(milliseconds: 200),
+                                        Duration(milliseconds: 1000),
                                         autoPlayInterval:
-                                        Duration(milliseconds: (200 + 4000)),
-                                        autoPlayCurve: Curves.easeInToLinear,
+                                        Duration(milliseconds: (1000 + 1000)),
+                                        autoPlayCurve: Curves.linear,
                                         pauseAutoPlayInFiniteScroll: true,
                                         onPageChanged: (index, _) =>
                                         _model.carouselCurrentIndex = index,
@@ -228,7 +236,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                 ],
                               );
                             },
-                          ),
+                          )) : Container(width: 300,height: 200,),
                         ),
                         Expanded(
                           child: Container(
@@ -245,6 +253,7 @@ class _CarModelDetailsMoreWithSliederWidgetState
                                         30.0, 20.0, 30.0, 40.0),
                                     child: GridView(
                                       padding: EdgeInsets.zero,
+                                      physics: const NeverScrollableScrollPhysics(),
                                       gridDelegate:
                                       SliverGridDelegateWithFixedCrossAxisCount(
                                         crossAxisCount: 3,

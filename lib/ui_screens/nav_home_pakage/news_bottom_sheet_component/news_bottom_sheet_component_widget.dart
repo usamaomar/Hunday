@@ -30,14 +30,12 @@ class _NewsBottomSheetComponentWidgetState
   void initState() {
     super.initState();
     _model = createModel(context, () => NewsBottomSheetComponentModel());
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
   void dispose() {
     _model.maybeDispose();
-
     super.dispose();
   }
 
@@ -73,7 +71,7 @@ class _NewsBottomSheetComponentWidgetState
               final listOfNewsItems =
                   FFAppState().newsModelJsonList.map((e) => e).toList();
               return ListView.builder(
-                padding: EdgeInsets.fromLTRB(
+                padding: const EdgeInsets.fromLTRB(
                   0,
                   0,
                   0,
@@ -86,7 +84,7 @@ class _NewsBottomSheetComponentWidgetState
                       listOfNewsItems[listOfNewsItemsIndex];
                   return Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 10.0),
+                        const EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 10.0),
                     child: InkWell(
                       splashColor: Colors.transparent,
                       focusColor: Colors.transparent,
@@ -109,7 +107,7 @@ class _NewsBottomSheetComponentWidgetState
                             ),
                           }.withoutNulls,
                           extra: <String, dynamic>{
-                            kTransitionInfoKey: TransitionInfo(
+                            kTransitionInfoKey: const TransitionInfo(
                               hasTransition: true,
                               transitionType: PageTransitionType.fade,
                               duration: Duration(milliseconds: 0),

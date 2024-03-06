@@ -77,7 +77,7 @@ class _ErrorNetwokDialogComponentWidgetState
                           child: Text(
                             FFLocalizations.of(context).getVariableText(
                               enText: 'Error',
-                              arText: 'مشكلة بالخادم',
+                              arText: 'خطأ',
                             ),
                             textAlign: TextAlign.center,
                             style: FlutterFlowTheme.of(context)

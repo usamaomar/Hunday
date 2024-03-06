@@ -33,6 +33,18 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
 
   @override
   void initState() {
+
+    // FirebaseMessaging.instance.onTokenRefresh.listen((fbToken) {
+    //   FFAppState().FCM = fbToken ?? 'null';
+    // }).onError((handleError){
+    //   print('');
+    // });
+    //
+    // FirebaseMessaging.instance.getToken().then((fbToken) {
+    //   FFAppState().FCM = fbToken ?? 'null';
+    // }).catchError((onError){
+    //   print('');
+    // });
     super.initState();
     // SchedulerBinding.instance.addPostFrameCallback((_) async {
     //   if(widget.deepLinkId!=null) {
@@ -49,9 +61,7 @@ class _SplashPageWidgetState extends State<SplashPageWidget> {
     //   }
     // });
     _model = createModel(context, () => SplashPageModel());
-    FirebaseMessaging.instance.getToken().then((fbToken) {
-      FFAppState().FCM = fbToken ?? 'null';
-    });
+
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
       if (widget.deepLinkId == null) {

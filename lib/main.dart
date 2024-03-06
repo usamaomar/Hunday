@@ -38,7 +38,8 @@ void showNotification(RemoteMessage? message) async {
   try {
     await Firebase.initializeApp();
     FlutterLocalNotificationsPlugin? fltNotification;
-    var androidInit = const AndroidInitializationSettings('@mipmap/ic_launcher');
+    var androidInit =
+        const AndroidInitializationSettings('@mipmap/ic_launcher');
     var iosInit = const DarwinInitializationSettings(
       requestAlertPermission: true,
       requestBadgePermission: true,
@@ -91,19 +92,32 @@ void main() async {
   String version = packageInfo.version;
   FFAppState().versionNumber = version;
   final appState = FFAppState();
-  stateCase(true);
+  stateCase(false);
   usePathUrlStrategy();
 
-  if (Platform.isIOS) {
-    await Firebase.initializeApp(
-        options: const FirebaseOptions(
-            apiKey: "AIzaSyBXCycCdO_1va9JT98V_gAeXi6_S9szxYg",
-            appId: "1:779673897933:ios:5905b34966b0810185d284",
-            messagingSenderId: "779673897933",
-            projectId: "com.comc.hyundai"));
-  } else {
-    await Firebase.initializeApp();
+  try {
+    if (Platform.isIOS) {
+      await Firebase.initializeApp(
+          options: const FirebaseOptions(
+              apiKey: "AIzaSyBXCycCdO_1va9JT98V_gAeXi6_S9szxYg",
+              appId: "1:779673897933:ios:5905b34966b0810185d284",
+              messagingSenderId: "779673897933",
+              projectId: "com.comc.hyundai"))
+          .then((value) {
+        print('object');
+      }).catchError((onError){
+        print('object');
+      });
+    } else {
+      await Firebase.initializeApp();
+    }
+
+    await FirebaseMessaging.instance.requestPermission();
+  } on FirebaseException {
+    print('object');
   }
+
+
 
   await appState.initializePersistedState().then((value) => {});
   FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
@@ -170,7 +184,6 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     handleInAppMessage();
-
     FirebaseMessaging.instance.getToken().then((fbToken) {
       FFAppState().FCM = fbToken ?? 'null';
     });
@@ -359,8 +372,7 @@ class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
     WidgetsBinding.instance.addObserver(this);
 
     FBroadcast.instance().register('Key_msg', (value, callback) {
-      setState(() {
-      });
+      setState(() {});
     });
 
     super.initState();
@@ -402,8 +414,7 @@ class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
   Widget build(BuildContext context) {
     final tabs = {
       'HomeScreen': HomeScreenWidget(),
-      // if(!FFAppState().isGust)
-      // 'ChatPage': ChatPageWidget(),
+      if (!FFAppState().isGust) 'ChatPage': ChatPageWidget(),
       'CartPage': CartPageWidget(),
       'MyVehiclesPage': MyVehiclesPageWidget(),
       'MorePage': MorePageWidget(),
@@ -441,15 +452,15 @@ class _NavBarPageState extends State<NavBarPage> with WidgetsBindingObserver {
               fit: BoxFit.contain,
             ),
           ),
-          // if(!FFAppState().isGust)
-          // CustomNavigationBarItem(
-          //   icon: SvgPicture.asset(
-          //     'assets/images/Group_71272.svg',
-          //     width: 20.0,
-          //     height: 20.0,
-          //     fit: BoxFit.contain,
-          //   ),
-          // ),
+          if (!FFAppState().isGust)
+            CustomNavigationBarItem(
+              icon: SvgPicture.asset(
+                'assets/images/Group_71272.svg',
+                width: 20.0,
+                height: 20.0,
+                fit: BoxFit.contain,
+              ),
+            ),
           // CustomNavigationBarItem(
           //   icon: Stack(
           //     children: [

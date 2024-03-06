@@ -4,8 +4,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'modal06_basic_information_model.dart';
 export 'modal06_basic_information_model.dart';
@@ -53,20 +51,20 @@ class _Modal06BasicInformationWidgetState
     context.watch<FFAppState>();
 
     return Padding(
-      padding: EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 0.0),
+      padding: const EdgeInsetsDirectional.fromSTEB(25.0, 0.0, 25.0, 0.0),
       child: Container(
         height: 350.0,
-        decoration: BoxDecoration(),
+        decoration: const BoxDecoration(),
         child: Align(
           alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: double.infinity,
-            constraints: BoxConstraints(
+            constraints: const BoxConstraints(
               maxWidth: 700.0,
             ),
             decoration: BoxDecoration(
               color: Colors.white,
-              boxShadow: [
+              boxShadow: const [
                 BoxShadow(
                   blurRadius: 12.0,
                   color: Color(0x33000000),
@@ -112,7 +110,7 @@ class _Modal06BasicInformationWidgetState
                           borderRadius: 30.0,
                           borderWidth: 1.0,
                           buttonSize: 44.0,
-                          icon: Icon(
+                          icon: const Icon(
                             Icons.close_rounded,
                             color: Color(0xFF57636C),
                             size: 24.0,
@@ -132,7 +130,7 @@ class _Modal06BasicInformationWidgetState
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 8.0, 0.0, 0.0),
                               child: Text(
                                 functions.convertJsonToString(widget.body!),
@@ -154,13 +152,13 @@ class _Modal06BasicInformationWidgetState
                   ),
                   Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 12.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 12.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: [
                         Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 16.0, 0.0),
                           child: FFButtonWidget(
                             onPressed: () async {
@@ -170,20 +168,20 @@ class _Modal06BasicInformationWidgetState
                               '5ayz050s' /* Cancel */,
                             ),
                             options: FFButtonOptions(
-                              padding: EdgeInsets.all(24.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsets.all(24.0),
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: Colors.white,
                               textStyle: FlutterFlowTheme.of(context)
                                   .labelLarge
                                   .override(
                                     fontFamily: 'Plus Jakarta Sans',
-                                    color: Color(0xFF57636C),
+                                    color: const Color(0xFF57636C),
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.w500,
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Color(0xFFE0E3E7),
                                 width: 2.0,
                               ),

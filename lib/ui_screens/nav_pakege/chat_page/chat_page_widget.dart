@@ -3,6 +3,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
 import 'package:get/utils.dart';
 import '../../../flutter_flow/flutter_flow_icon_button.dart';
+import '../../../flutter_flow/upload_data.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -444,12 +445,17 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         children: [
-                          Transform.rotate(
-                            angle: 0.6632,
-                            child: Icon(
-                              Icons.attach_file,
-                              color: Color(0xFF3D6398),
-                              size: 24.0,
+                          InkWell(
+                            onTap: (){
+                              attachFile();
+                            },
+                            child: Transform.rotate(
+                              angle: 0.6632,
+                              child: Icon(
+                                Icons.attach_file,
+                                color: Color(0xFF3D6398),
+                                size: 24.0,
+                              ),
                             ),
                           ),
                           Padding(
@@ -484,6 +490,67 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
       ),
     );
   }
+
+  void attachFile() async{
+    final selectedMedia = await selectMedia(
+      multiImage: false,
+    );
+    if (selectedMedia != null &&
+        selectedMedia.every((m) =>
+            validateFileFormat(
+                m.storagePath, context))) {
+      setState(
+              () => _model.isDataUploading1 = true);
+      var selectedUploadedFiles =
+      <FFUploadedFile>[];
+
+      try {
+        selectedUploadedFiles = selectedMedia
+            .map((m) => FFUploadedFile(
+          name:
+          m.storagePath.split('/').last,
+          bytes: m.bytes,
+          height: m.dimensions?.height,
+          width: m.dimensions?.width,
+          blurHash: m.blurHash,
+        ))
+            .toList();
+      } finally {
+        _model.isDataUploading1 = false;
+      }
+      if (selectedUploadedFiles.length ==
+          selectedMedia.length) {
+        setState(() {
+          _model.uploadedLocalFile1 =
+              selectedUploadedFiles.first;
+        });
+      } else {
+        setState(() {});
+        return;
+      }
+    }
+
+    if (_model
+        .uploadedLocalFile1.bytes?.isNotEmpty ??
+        false) {
+      // setState(() {
+      //   _model.frontFaceImage =
+      //       _model.uploadedLocalFile1;
+      // });
+      // setState(() {
+      //   _model.isFrontFaceAdded = true;
+      // });
+    }
+
+
+
+
+
+
+
+  }
+
+
 
   String? key = '';
 

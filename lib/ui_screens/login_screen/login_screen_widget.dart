@@ -542,7 +542,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                                     .getVariableText(
                                                               enText: 'Error',
                                                               arText:
-                                                                  'مشكلة خادم',
+                                                                  'خطأ',
                                                             )),
                                                             content: Text(
                                                                 FFLocalizations.of(
@@ -901,7 +901,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                                   context)
                                                               .getVariableText(
                                                         enText: 'Error',
-                                                        arText: 'مشكلة خادم',
+                                                        arText: 'خطأ',
                                                       )),
                                                       content: Text(
                                                           FFLocalizations.of(

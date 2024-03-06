@@ -1,3 +1,5 @@
+import 'package:flutter/foundation.dart';
+
 import '../blur_card_animation_component/blur_card_animation_component_widget.dart';
 import '/backend/api_requests/api_calls.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -423,9 +425,8 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                               );
                               _shouldSetState = true;
                               if ((_model.apiResultixl?.succeeded ?? true)) {
-
-
-                                if (getJsonField(
+                                if (!kDebugMode)
+                                  if (getJsonField(
                                   (_model.apiResultixl?.jsonBody ?? ''),
                                   r'''$.info.is_hyundai''',
                                 ) ==
@@ -458,9 +459,6 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                                   ).then((value) => setState(() {}));
                                   return;
                                 }
-
-
-
                                 await showModalBottomSheet(
                                   isScrollControlled: true,
                                   backgroundColor: Color(0x0E000000),

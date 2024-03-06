@@ -1,3 +1,5 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
+
 import '../../../main.dart';
 import '../../components/modal06_basic_information/modal06_basic_information_widget.dart';
 import '/backend/api_requests/api_calls.dart';
@@ -194,7 +196,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                                     useGoogleFonts: false,
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -214,17 +216,20 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                         Expanded(
                           child: FFButtonWidget(
                             onPressed: () async {
-                              _model.apiResult1zf =
-                                  await GuestRegisterApiCall.call(
-                                appVersion: FFAppState().versionNumber ?? '1.0.0',
-                                lang: FFAppState().currentLanguge.isEmpty ? Localizations.localeOf(context).languageCode : FFAppState().currentLanguge,
-                                fcm: FFAppState().FCM,
-                              );
-                              if ((_model.apiResult1zf?.succeeded ?? true)) {
+                              FirebaseMessaging.instance.getToken().then((fbToken) async{
+                                FFAppState().FCM = fbToken ?? 'null';
                                 FFAppState().isGust = true;
-                                context.pushNamed('HomeScreen');
-                              }else{
-                                await showDialog(
+                                FFAppState().userModel.token = fbToken;
+                                _model.apiResult1zf =
+                                    await GuestRegisterApiCall.call(
+                                  appVersion: FFAppState().versionNumber ?? '1.0.0',
+                                  lang: FFAppState().currentLanguge.isEmpty ? Localizations.localeOf(context).languageCode : FFAppState().currentLanguge,
+                                  fcm: FFAppState().FCM,
+                                );
+                                if ((_model.apiResult1zf?.succeeded ?? true)) {
+                                  context.pushReplacementNamed('HomeScreen');
+                                }else{
+                                  await showDialog(
                                   context: context,
                                   builder: (dialogContext) {
                                     return Dialog(
@@ -260,9 +265,10 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                                       ),
                                     );
                                   },
-                                ).then((value) =>
-                                    setState(() {}));
-                              }
+                                  ).then((value) =>
+                                      setState(() {}));
+                                }
+                              });
                             },
                             text: FFLocalizations.of(context).getText(
                               '6po5rtz9' /* Continue as a guest */,

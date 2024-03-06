@@ -8,9 +8,7 @@ import '/ui_screens/components/list_of_string_items_component/list_of_string_ite
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'scan_now_card_model.dart';
 export 'scan_now_card_model.dart';
@@ -70,13 +68,13 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(20.0, 0.0, 20.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,7 +111,7 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                           ],
                         ),
                       ),
-                      Divider(
+                      const Divider(
                         thickness: 1.0,
                         color: Color(0xFF3D6398),
                       ),
@@ -122,7 +120,7 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                 ),
                 Padding(
                   padding:
-                      EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
+                      const EdgeInsetsDirectional.fromSTEB(30.0, 20.0, 30.0, 0.0),
                   child: Row(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -139,7 +137,7 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                             ),
                       ),
                       Stack(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         children: [
                           if (_model.isFrontFaceAdded == false)
                             FFButtonWidget(

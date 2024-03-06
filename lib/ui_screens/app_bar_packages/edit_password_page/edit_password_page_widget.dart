@@ -448,7 +448,7 @@ class _EditPasswordPageWidgetState extends State<EditPasswordPageWidget> {
                                                   FFLocalizations.of(context)
                                                       .getVariableText(
                                                 enText: 'Error',
-                                                arText: 'مشكلة خادم',
+                                                arText: 'خطأ',
                                               )),
                                               content: Text(getJsonField(
                                                 (_model.apiResetPasswordInter

@@ -18,7 +18,7 @@
 
     <application
         android:icon="@mipmap/ic_launcher"
-        android:label="hyundai"
+        android:label="Hyundai"
         android:requestLegacyExternalStorage="true"
         tools:replace="android:label">
 

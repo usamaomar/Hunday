@@ -1,3 +1,4 @@
+import 'package:hyundai/ui_screens/components/animation_card_tween/animation_card_tween_widget.dart';
 import 'package:hyundai/ui_screens/components/progress_component/progress_component_widget.dart';
 
 import '../../components/login_card_animation_component/login_card_animation_component_widget.dart';
@@ -243,7 +244,6 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         ),
       );
     }
-
     context.watch<FFAppState>();
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -328,29 +328,32 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                   Padding(
                                     padding:
                                         const EdgeInsetsDirectional.fromSTEB(
-                                            30.0, 10.0, 30.0, 5.0),
-                                    child: Text(
-                                      functions.getNameByLanguge(
-                                          getJsonField(
-                                            sliderSlideListItem,
-                                            r'''$.slogan_en''',
-                                          ).toString(),
-                                          getJsonField(
-                                            sliderSlideListItem,
-                                            r'''$.slogan_ar''',
-                                          ).toString(),
-                                          FFAppState().currentLanguge),
-                                      textAlign: TextAlign.center,
-                                      maxLines: 2,
-                                      style: FlutterFlowTheme.of(context)
-                                          .bodyMedium
-                                          .override(
-                                            fontFamily: 'HeeboBold',
-                                            color: const Color(0xFF212427),
-                                            fontSize: 16.0,
-                                            fontWeight: FontWeight.bold,
-                                            useGoogleFonts: false,
-                                          ),
+                                            40.0, 10.0, 40.0, 5.0),
+                                    child: Container(
+                                      margin: const EdgeInsets.fromLTRB(20, 0, 20, 10),
+                                      child: Text(
+                                        functions.getNameByLanguge(
+                                            getJsonField(
+                                              sliderSlideListItem,
+                                              r'''$.slogan_en''',
+                                            ).toString(),
+                                            getJsonField(
+                                              sliderSlideListItem,
+                                              r'''$.slogan_ar''',
+                                            ).toString(),
+                                            FFAppState().currentLanguge),
+                                        textAlign: TextAlign.center,
+                                        maxLines: 2,
+                                        style: FlutterFlowTheme.of(context)
+                                            .bodyMedium
+                                            .override(
+                                              fontFamily: 'HeeboBold',
+                                              color: const Color(0xFF212427),
+                                              fontSize: 16.0,
+                                              fontWeight: FontWeight.bold,
+                                              useGoogleFonts: false,
+                                            ),
+                                      ),
                                     ),
                                   ),
                                 ],
@@ -368,9 +371,9 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                               scrollDirection: Axis.horizontal,
                               autoPlay: true,
                               autoPlayAnimationDuration:
-                                  Duration(milliseconds: 1000),
+                                  const Duration(milliseconds: 1000),
                               autoPlayInterval:
-                                  Duration(milliseconds: (1000 + 1000)),
+                                  const Duration(milliseconds: (1000 + 1000)),
                               autoPlayCurve: Curves.linear,
                               pauseAutoPlayInFiniteScroll: true,
                               onPageChanged: (index, _) =>
@@ -435,14 +438,12 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                   clickValue(gridOfCarModelsItemIndex);
                                 },
                                 child: Column(
-                                  crossAxisAlignment:
-                                      CrossAxisAlignment.center,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsets.fromLTRB(
-                                          5, 5, 5, 5),
+                                      padding:
+                                          const EdgeInsets.fromLTRB(5, 5, 5, 5),
                                       child: AspectRatio(
                                         aspectRatio: 1.8,
                                         child: getImageWidget(
@@ -453,8 +454,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                                       thickness: 1.0,
                                       indent: 25.0,
                                       endIndent: 25.0,
-                                      color: FlutterFlowTheme.of(context)
-                                          .accent4,
+                                      color:
+                                          FlutterFlowTheme.of(context).accent4,
                                     ),
                                     Text(
                                       FFLocalizations.of(context).getText(
@@ -531,6 +532,16 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         } else {
           await showDialog(
             barrierColor: Colors.transparent,
+            barrierDismissible: false,
+            context: context,
+            builder: (dialogContext) {
+              return const Dialog(
+                child: AnimationCardTweenWidget(),
+              );
+            },
+          ).then((isDone) async{
+            await showDialog(
+            barrierColor: Colors.transparent,
             barrierDismissible: true,
             context: context,
             builder: (dialogContext) {
@@ -538,7 +549,8 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
                 child: ScannedCardAnimationComponentWidget(),
               );
             },
-          ).then((value) => setState(() {}));
+            ).then((value) => setState(() {}));
+          });
         }
       }
       setState(() {});
@@ -583,14 +595,25 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         } else {
           await showDialog(
             barrierColor: Colors.transparent,
-            barrierDismissible: true,
+            barrierDismissible: false,
             context: context,
             builder: (dialogContext) {
-              return Dialog(
-                child: ScannedCardAnimationComponentWidget(),
+              return const Dialog(
+                child: AnimationCardTweenWidget(),
               );
             },
-          ).then((value) => setState(() {}));
+          ).then((isDone) async{
+            await showDialog(
+              barrierColor: Colors.transparent,
+              barrierDismissible: true,
+              context: context,
+              builder: (dialogContext) {
+                return Dialog(
+                  child: ScannedCardAnimationComponentWidget(),
+                );
+              },
+            ).then((value) => setState(() {}));
+          });
         }
       }
       setState(() {});

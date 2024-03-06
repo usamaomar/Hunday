@@ -1,4 +1,5 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter/services.dart';
 import 'package:hyperpay_plugin/flutter_hyperpay.dart';
 import 'package:hyperpay_plugin/model/custom_ui.dart';
 import 'package:hyperpay_plugin/model/ready_ui.dart';
@@ -119,7 +120,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
             return AlertDialog(
               title: Text(FFLocalizations.of(context).getVariableText(
                 enText: 'Error',
-                arText: 'مشكلة خادم',
+                arText: 'خطأ',
               )),
               content: Text(FFLocalizations.of(context).getVariableText(
                 enText: 'Issue With Payment Method',
@@ -992,7 +993,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
     );
   }
 
-  static const platform = const MethodChannel("com.comc.hyundai/paymentMethod");
+  static const platform = MethodChannel("com.comc.hyundai/paymentMethod");
 
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
@@ -1050,7 +1051,7 @@ class _SheckOutPagePageWidgetState extends State<SheckOutPagePageWidget>
                 return AlertDialog(
                   title: Text(FFLocalizations.of(context).getVariableText(
                     enText: 'Error',
-                    arText: 'مشكلة خادم',
+                    arText: 'خطأ',
                   )),
                   content: Text(FFLocalizations.of(context).getVariableText(
                     enText: 'Issue With Payment Method',

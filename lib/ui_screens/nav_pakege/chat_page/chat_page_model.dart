@@ -17,7 +17,9 @@ class ChatPageModel extends FlutterFlowModel<ChatPageWidget> {
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
-
+  bool isDataUploading1 = false;
+  FFUploadedFile uploadedLocalFile1 =
+  FFUploadedFile(bytes: Uint8List.fromList([]));
   /// Initialization and disposal methods.
 
   @override

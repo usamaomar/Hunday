@@ -78,16 +78,19 @@ class GuestRegisterApiCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'GuestRegisterApi',
-      apiUrl: 'https://hyundai.completechaintech.com/api/guest/register',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/guest/register',
       callType: ApiCallType.POST,
-      headers: {},
+      headers: {
+        'Accept': 'application/json',
+      },
       params: {
         "lang": "${lang}",
         "app_version": "${appVersion}",
         "fcmID": "${fcm}"
       },
-      body: ffApiRequestBody,
-      bodyType: BodyType.JSON,
+      // body: ffApiRequestBody,
+      bodyType: BodyType.X_WWW_FORM_URL_ENCODED,
+      // bodyType: BodyType.JSON,
       returnBody: true,
       encodeBodyUtf8: false,
       decodeUtf8: false,

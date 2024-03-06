@@ -267,7 +267,7 @@ class _ResetPasswordComponentWidgetState
                                   title: Text(FFLocalizations.of(context)
                                       .getVariableText(
                                     enText: 'Error',
-                                    arText: 'مشكلة خادم',
+                                    arText: 'خطأ',
                                   )),
                                   content: Text(
                                       (_model.apiResetPassword?.bodyText ??

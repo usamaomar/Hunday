@@ -117,6 +117,18 @@ class _CarDeteailsComponentsWidgetState
             .toList()
             .cast<String>();
       });
+      setState(() {
+        _model.listOfDimensions = functions
+            .specifcationsFunction(
+                getJsonField(
+                  _model.carModel,
+                  r'''$.dimension''',
+                ),
+                FFLocalizations.of(context).languageCode,
+                'dimension')
+            .toList()
+            .cast<String>();
+      });
     });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -282,6 +294,7 @@ class _CarDeteailsComponentsWidgetState
                   builder: (context) {
                     final performances = _model.listOfPerformances.toList();
                     return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
@@ -402,6 +415,7 @@ class _CarDeteailsComponentsWidgetState
                   builder: (context) {
                     final safty = _model.listOfSafety.toList();
                     return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
@@ -521,6 +535,7 @@ class _CarDeteailsComponentsWidgetState
                   builder: (context) {
                     final interior = _model.listOfInteriors.toList();
                     return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: EdgeInsets.zero,
                       shrinkWrap: true,
                       scrollDirection: Axis.vertical,
@@ -640,8 +655,9 @@ class _CarDeteailsComponentsWidgetState
                   builder: (context) {
                     final performances = _model.listOfExteriors.toList();
                     return ListView.builder(
-                      padding: EdgeInsets.zero,
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
+                      padding: EdgeInsets.zero,
                       scrollDirection: Axis.vertical,
                       itemCount: performances.length,
                       itemBuilder: (context, performancesIndex) {
@@ -670,6 +686,127 @@ class _CarDeteailsComponentsWidgetState
                                       fontWeight: FontWeight.normal,
                                       useGoogleFonts: false,
                                     ),
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ClipRRect(
+                borderRadius: BorderRadius.circular(0.0),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: Color(0xFFE3E3E3),
+                    borderRadius: BorderRadius.circular(0.0),
+                  ),
+                  child: Visibility(
+                    visible: functions
+                        .convertNullLists(_model.listOfDimensions.toList())
+                        .length >
+                        0,
+                    child: InkWell(
+                      splashColor: Colors.transparent,
+                      focusColor: Colors.transparent,
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () async {
+                        setState(() {
+                          FFAppState().listOfCatalogOpendBool = functions
+                              .updateAtIndexAndClearOthers(
+                              FFAppState().listOfCatalogOpendBool.toList(),
+                              4)
+                              .toList()
+                              .cast<bool>();
+                        });
+                      },
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Stack(
+                            children: [
+                              if (FFAppState().listOfCatalogOpendBool[4])
+                                const Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      15.0, 0.0, 15.0, 0.0),
+                                  child: Icon(
+                                    Icons.do_not_disturb_on_rounded,
+                                    color: Color(0xFF092853),
+                                    size: 24.0,
+                                  ),
+                                ),
+                              const Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 0.0, 15.0, 0.0),
+                                child: Icon(
+                                  Icons.add_circle_rounded,
+                                  color: Color(0xFF092853),
+                                  size: 24.0,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0.0, 15.0, 0.0, 15.0),
+                            child: Text(
+                              FFLocalizations.of(context).getText(
+                                'ekqa9og1dimension' /* ekqa9og1dimensionس */,
+                              ),
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                fontFamily: 'HeeboBold',
+                                color: Color(0xFF092853),
+                                fontSize: 16.0,
+                                fontWeight: FontWeight.bold,
+                                useGoogleFonts: false,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              if (FFAppState().listOfCatalogOpendBool[4] == true)
+                Builder(
+                  builder: (context) {
+                    final performances = _model.listOfDimensions.toList();
+                    return ListView.builder(
+                      physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      scrollDirection: Axis.vertical,
+                      itemCount: performances.length,
+                      itemBuilder: (context, performancesIndex) {
+                        final performancesItem =
+                        performances[performancesIndex];
+                        return ClipRRect(
+                          borderRadius: BorderRadius.circular(0.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: performancesIndex == 0
+                                  ? const Color(0xFFF9F9F9)
+                                  : const Color(0xFFF1F1F1),
+                              borderRadius: BorderRadius.circular(0.0),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(15.0),
+                              child: Text(
+                                performancesItem,
+                                maxLines: 2,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                  fontFamily: 'Heebo Regular',
+                                  color: const Color(0xFF363636),
+                                  fontSize: 14.0,
+                                  fontWeight: FontWeight.normal,
+                                  useGoogleFonts: false,
+                                ),
                               ),
                             ),
                           ),

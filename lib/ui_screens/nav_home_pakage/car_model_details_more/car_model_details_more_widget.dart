@@ -232,6 +232,8 @@ class _CarModelDetailsMoreWidgetState extends State<CarModelDetailsMoreWidget>
                                             30.0, 20.0, 30.0, 40.0),
                                         child: GridView(
                                           padding: EdgeInsets.zero,
+                                          physics: const NeverScrollableScrollPhysics(),
+
                                           gridDelegate:
                                               SliverGridDelegateWithFixedCrossAxisCount(
                                             crossAxisCount: 3,

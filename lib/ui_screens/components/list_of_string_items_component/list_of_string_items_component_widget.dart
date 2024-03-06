@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -750,100 +752,103 @@ class _ListOfStringItemsComponentWidgetState
                           ),
                         ],
                       ),
-                      Column(
-                        mainAxisSize: MainAxisSize.min,
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                0.0, 10.0, 0.0, 10.0),
-                            child: Text(
-                              FFLocalizations.of(context).getText(
-                                'g1uqeq5j' /* Engine Cpacity */,
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Poppins',
-                                    color: Color(0xFF3D6398),
-                                  ),
-                            ),
-                          ),
-                          Container(
-                            height: 40.0,
-                            decoration: BoxDecoration(),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Expanded(
-                                  child: TextFormField(
-                                    controller:
-                                        _model.textFieldCapacityController,
-                                    focusNode:
-                                        _model.textFieldCapacityFocusNode,
-                                    textInputAction: TextInputAction.next,
-                                    obscureText: false,
-                                    decoration: InputDecoration(
-                                      labelText:
-                                          FFLocalizations.of(context).getText(
-                                        '188vcdas' /*  */,
-                                      ),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium,
-                                      hintStyle: FlutterFlowTheme.of(context)
-                                          .labelMedium
-                                          .override(
-                                            fontFamily: 'Heebo Regular',
-                                            color: Color(0xFF747474),
-                                            useGoogleFonts: false,
-                                          ),
-                                      enabledBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFFE1E1E1),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      focusedBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: Color(0xFF3D6398),
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      errorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                      focusedErrorBorder: OutlineInputBorder(
-                                        borderSide: BorderSide(
-                                          color: FlutterFlowTheme.of(context)
-                                              .error,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius:
-                                            BorderRadius.circular(5.0),
-                                      ),
-                                    ),
-                                    style:
-                                        FlutterFlowTheme.of(context).bodyMedium,
-                                    keyboardType: TextInputType.number,
-                                    validator: _model
-                                        .textFieldCapacityControllerValidator
-                                        .asValidator(context),
-                                  ),
+                      Visibility(
+                        visible: (_model.selectedFuelType?.id ?? 0) != 4,
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  0.0, 10.0, 0.0, 10.0),
+                              child: Text(
+                                FFLocalizations.of(context).getText(
+                                  'g1uqeq5j' /* Engine Cpacity */,
                                 ),
-                              ],
+                                style: FlutterFlowTheme.of(context)
+                                    .bodyMedium
+                                    .override(
+                                      fontFamily: 'Poppins',
+                                      color: Color(0xFF3D6398),
+                                    ),
+                              ),
                             ),
-                          ),
-                        ],
+                            Container(
+                              height: 40.0,
+                              decoration: BoxDecoration(),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Expanded(
+                                    child: TextFormField(
+                                      controller:
+                                          _model.textFieldCapacityController,
+                                      focusNode:
+                                          _model.textFieldCapacityFocusNode,
+                                      textInputAction: TextInputAction.next,
+                                      obscureText: false,
+                                      decoration: InputDecoration(
+                                        labelText:
+                                            FFLocalizations.of(context).getText(
+                                          '188vcdas' /*  */,
+                                        ),
+                                        labelStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium,
+                                        hintStyle: FlutterFlowTheme.of(context)
+                                            .labelMedium
+                                            .override(
+                                              fontFamily: 'Heebo Regular',
+                                              color: Color(0xFF747474),
+                                              useGoogleFonts: false,
+                                            ),
+                                        enabledBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0xFFE1E1E1),
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        focusedBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: Color(0xFF3D6398),
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        errorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                        focusedErrorBorder: OutlineInputBorder(
+                                          borderSide: BorderSide(
+                                            color: FlutterFlowTheme.of(context)
+                                                .error,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius:
+                                              BorderRadius.circular(5.0),
+                                        ),
+                                      ),
+                                      style:
+                                          FlutterFlowTheme.of(context).bodyMedium,
+                                      keyboardType: TextInputType.number,
+                                      validator: _model
+                                          .textFieldCapacityControllerValidator
+                                          .asValidator(context),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Column(
                         mainAxisSize: MainAxisSize.min,
@@ -1095,8 +1100,6 @@ class _ListOfStringItemsComponentWidgetState
                                     );
                                     return;
                                   }
-
-
                                   if(_model.textController2.text.isEmpty){
                                     await showDialog(
                                       context: context,
@@ -1129,9 +1132,7 @@ class _ListOfStringItemsComponentWidgetState
                                     );
                                     return;
                                   }
-
-
-                                  if(_model.textFieldCapacityController.text.isEmpty){
+                                  if(_model.textController2.text.length != 17){
                                     await showDialog(
                                       context: context,
                                       builder: (alertDialogContext) {
@@ -1144,8 +1145,8 @@ class _ListOfStringItemsComponentWidgetState
                                           content: Text(
                                               FFLocalizations.of(context)
                                                   .getVariableText(
-                                                enText: 'Add Engine Capacity',
-                                                arText: 'قم بأضافة سعة المحرك',
+                                                enText: 'Vin Number Must Be 17 Character',
+                                                arText: 'يجب أن يتكون رقم Vin من 17 حرفًا',
                                               )),
                                           actions: [
                                             TextButton(
@@ -1162,6 +1163,44 @@ class _ListOfStringItemsComponentWidgetState
                                       },
                                     );
                                     return;
+                                  }
+                                  if(_model.selectedFuelType?.id != 4) {
+                                    if (_model.textFieldCapacityController.text
+                                        .isEmpty) {
+                                      await showDialog(
+                                        context: context,
+                                        builder: (alertDialogContext) {
+                                          return AlertDialog(
+                                            title: Text(
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                                  enText: 'ALERT',
+                                                  arText: 'تنبيه',
+                                                )),
+                                            content: Text(
+                                                FFLocalizations.of(context)
+                                                    .getVariableText(
+                                                  enText: 'Add Engine Capacity',
+                                                  arText: 'قم بأضافة سعة المحرك',
+                                                )),
+                                            actions: [
+                                              TextButton(
+                                                onPressed: () =>
+                                                    Navigator.pop(
+                                                        alertDialogContext),
+                                                child: Text(
+                                                    FFLocalizations.of(context)
+                                                        .getVariableText(
+                                                      enText: 'Ok',
+                                                      arText: 'حسنا',
+                                                    )),
+                                              ),
+                                            ],
+                                          );
+                                        },
+                                      );
+                                      return;
+                                    }
                                   }
                                   if((_model.selectedFuelType?.id??0) ==0){
                                     await showDialog(

@@ -1,3 +1,8 @@
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/painting.dart';
+import 'package:flutter/widgets.dart';
+import 'package:get/get.dart';
+
 import '/backend/api_requests/api_calls.dart';
 import '/backend/schema/structs/index.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -106,24 +111,23 @@ class _VerifyBottomDialogWidgetState extends State<VerifyBottomDialogWidget> {
               ),
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 5.0, 0.0, 0.0),
-              child: Row(
-                mainAxisSize: MainAxisSize.max,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    FFLocalizations.of(context).getText(
-                      'a7wt5e6q' /* Check your sms and enter 4 dig... */,
-                    ),
-                    style: FlutterFlowTheme.of(context).bodyMedium.override(
-                          fontFamily: 'Heebo Regular',
-                          color: Color(0xFF092853),
-                          fontSize: 16.0,
-                          fontWeight: FontWeight.normal,
-                          useGoogleFonts: false,
-                        ),
+              padding:
+              EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 10.0),
+              child: Align(
+                alignment: Alignment.center,
+                child: Text(
+                  FFLocalizations.of(context).getText(
+                    'a7wt5e6q' /* Check your sms and enter 4 dig... */,
                   ),
-                ],
+                  textAlign: TextAlign.center,
+                  style: FlutterFlowTheme.of(context).bodyMedium.override(
+                    fontFamily: 'Heebo Regular',
+                    color: Color(0xFF092853),
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.normal,
+                    useGoogleFonts: false,
+                  ),
+                ),
               ),
             ),
             Row(

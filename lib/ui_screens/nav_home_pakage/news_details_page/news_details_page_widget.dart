@@ -122,14 +122,14 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                 alignment: AlignmentDirectional(0.0, 1.0),
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         5.0, 0.0, 5.0, 0.0),
                                     child: Container(
                                       width: double.infinity,
                                       height: 30.0,
                                       decoration: BoxDecoration(
                                         color: FlutterFlowTheme.of(context).white,
-                                        borderRadius: BorderRadius.only(
+                                        borderRadius: const BorderRadius.only(
                                           bottomLeft: Radius.circular(0.0),
                                           bottomRight: Radius.circular(0.0),
                                           topLeft: Radius.circular(20.0),
@@ -143,9 +143,9 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                     ),
                                   ),
                                   Align(
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           40.0, 0.0, 40.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.min,
@@ -159,7 +159,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                               borderRadius:
                                                   BorderRadius.circular(20.0),
                                               child: Container(
-                                                constraints: BoxConstraints(
+                                                constraints: const BoxConstraints(
                                                   maxHeight: 202.0,
                                                 ),
                                                 decoration: BoxDecoration(
@@ -181,7 +181,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                             widget.itemIndex!],
                                                         r'''$.full_listing_image''',
                                                       ).toString(),
-                                                      fit: BoxFit.contain,
+                                                      fit: BoxFit.cover,
                                                       errorBuilder: (context, error,
                                                               stackTrace) =>
                                                           Image.asset(
@@ -215,65 +215,65 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                         color: FlutterFlowTheme.of(context).white,
                                       ),
                                     ),
-                                    child: Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
-                                          20.0, 0.0, 20.0, 0.0),
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceAround,
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            functions.newsFormatDateFunction(
-                                                getJsonField(
-                                              FFAppState().newsModelJsonList[
-                                                  widget.itemIndex!],
-                                              r'''$.date''',
-                                            ).toString()),
-                                            style: FlutterFlowTheme.of(context)
-                                                .bodyMedium
-                                                .override(
-                                                  fontFamily: 'Poppins',
-                                                  color: Color(0xFF4E4E4E),
-                                                  fontSize: 10.0,
-                                                ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 15.0, 0.0, 0.0),
-                                            child: Text(
-                                              getJsonField(
+                                    child: SingleChildScrollView(
+                                      child: Padding(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                            20.0, 0.0, 20.0, 0.0),
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceAround,
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              functions.newsFormatDateFunction(
+                                                  getJsonField(
                                                 FFAppState().newsModelJsonList[
                                                     widget.itemIndex!],
-                                                r'''$.title''',
-                                              ).toString(),
+                                                r'''$.date''',
+                                              ).toString()),
                                               style: FlutterFlowTheme.of(context)
                                                   .bodyMedium
                                                   .override(
-                                                    fontFamily: 'HeeboBold',
-                                                    color: Color(0xFF3D6398),
-                                                    fontWeight: FontWeight.bold,
-                                                    useGoogleFonts: false,
+                                                    fontFamily: 'Poppins',
+                                                    color: const Color(0xFF4E4E4E),
+                                                    fontSize: 10.0,
                                                   ),
                                             ),
-                                          ),
-                                          Container(
-                                            width: double.infinity,
-                                            decoration: BoxDecoration(
-                                              color: FlutterFlowTheme.of(context)
-                                                  .secondaryBackground,
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsetsDirectional.fromSTEB(
+                                                      0.0, 15.0, 0.0, 0.0),
+                                              child: Text(
+                                                getJsonField(
+                                                  FFAppState().newsModelJsonList[
+                                                      widget.itemIndex!],
+                                                  r'''$.title''',
+                                                ).toString(),
+                                                style: FlutterFlowTheme.of(context)
+                                                    .bodyMedium
+                                                    .override(
+                                                      fontFamily: 'HeeboBold',
+                                                      color: Color(0xFF3D6398),
+                                                      fontWeight: FontWeight.bold,
+                                                      useGoogleFonts: false,
+                                                    ),
+                                              ),
                                             ),
-                                            child: SingleChildScrollView(
+                                            Container(
+                                              width: double.infinity,
+                                              decoration: BoxDecoration(
+                                                color: FlutterFlowTheme.of(context)
+                                                    .secondaryBackground,
+                                              ),
                                               child: Column(
                                                 mainAxisSize: MainAxisSize.max,
                                                 crossAxisAlignment:
                                                     CrossAxisAlignment.start,
                                                 children: [
                                                   Padding(
-                                                    padding: EdgeInsetsDirectional
+                                                    padding: const EdgeInsetsDirectional
                                                         .fromSTEB(
                                                             0.0, 15.0, 0.0, 0.0),
                                                     child: Text(
@@ -297,102 +297,102 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                 ],
                                               ),
                                             ),
-                                          ),
-                                          Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    1.0, 0.0, 1.0, 0.0),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment.center,
-                                              children: [
-                                                Expanded(
-                                                  child: Container(
-                                                    width: 100.0,
-                                                    height: 100.0,
-                                                    decoration: BoxDecoration(
-                                                      color: FlutterFlowTheme.of(
-                                                              context)
-                                                          .secondaryBackground,
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              25.0),
-                                                    ),
-                                                    child: Builder(
-                                                      builder: (context) {
-                                                        final imagesList = _model
-                                                            .listOfGallaryImages
-                                                            .toList();
-                                                        if (imagesList.isEmpty) {
-                                                          return EmptyListComponentWidget();
-                                                        }
-                                                        return ListView.builder(
-                                                          padding:
-                                                              EdgeInsets.zero,
-                                                          shrinkWrap: true,
-                                                          scrollDirection:
-                                                              Axis.horizontal,
-                                                          itemCount:
-                                                              imagesList.length,
-                                                          itemBuilder: (context,
-                                                              imagesListIndex) {
-                                                            final imagesListItem =
-                                                                imagesList[
-                                                                    imagesListIndex];
-                                                            return Padding(
+                                            Padding(
+                                              padding:
+                                                  EdgeInsetsDirectional.fromSTEB(
+                                                      1.0, 0.0, 1.0, 0.0),
+                                              child: Row(
+                                                mainAxisSize: MainAxisSize.min,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                children: [
+                                                  Expanded(
+                                                    child: Container(
+                                                      width: 100.0,
+                                                      height: 100.0,
+                                                      decoration: BoxDecoration(
+                                                        color: FlutterFlowTheme.of(
+                                                                context)
+                                                            .secondaryBackground,
+                                                        borderRadius:
+                                                            BorderRadius.circular(
+                                                                25.0),
+                                                      ),
+                                                      child: Builder(
+                                                        builder: (context) {
+                                                          final imagesList = _model
+                                                              .listOfGallaryImages
+                                                              .toList();
+                                                          return Visibility(
+                                                            visible: !imagesList.isEmpty,
+                                                            child: ListView.builder(
                                                               padding:
-                                                                  const EdgeInsetsDirectional
-                                                                      .fromSTEB(
-                                                                          0.0,
-                                                                          5.0,
-                                                                          10.0,
-                                                                          0.0),
-                                                              child: Container(
-                                                                width: 110.0,
-                                                                height: 95.0,
-                                                                decoration:
-                                                                    BoxDecoration(
-                                                                  color: const Color(
-                                                                      0xFFF5F0F0),
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
+                                                                  EdgeInsets.zero,
+                                                              shrinkWrap: true,
+                                                              scrollDirection:
+                                                                  Axis.horizontal,
+                                                              itemCount:
+                                                                  imagesList.length,
+                                                              itemBuilder: (context,
+                                                                  imagesListIndex) {
+                                                                final imagesListItem =
+                                                                    imagesList[
+                                                                        imagesListIndex];
+                                                                return Padding(
+                                                                  padding:
+                                                                      const EdgeInsetsDirectional
+                                                                          .fromSTEB(
+                                                                              0.0,
+                                                                              5.0,
+                                                                              10.0,
                                                                               0.0),
-                                                                ),
-                                                                child: ClipRRect(
-                                                                  borderRadius:
-                                                                      BorderRadius
-                                                                          .circular(
-                                                                              8.0),
-                                                                  child: Image
-                                                                      .network(
-                                                                    imagesListItem,
-                                                                    fit: BoxFit
-                                                                        .contain,
-                                                                    errorBuilder: (context,
-                                                                            error,
-                                                                            stackTrace) =>
-                                                                        Image
-                                                                            .asset(
-                                                                      'assets/images/error_image.png',
-                                                                      fit: BoxFit
-                                                                          .contain,
+                                                                  child: Container(
+                                                                    width: 110.0,
+                                                                    height: 95.0,
+                                                                    decoration:
+                                                                        BoxDecoration(
+                                                                      color: const Color(
+                                                                          0xFFF5F0F0),
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .circular(
+                                                                                  0.0),
+                                                                    ),
+                                                                    child: ClipRRect(
+                                                                      borderRadius:
+                                                                          BorderRadius
+                                                                              .circular(
+                                                                                  8.0),
+                                                                      child: Image
+                                                                          .network(
+                                                                        imagesListItem,
+                                                                        fit: BoxFit
+                                                                            .cover,
+                                                                        errorBuilder: (context,
+                                                                                error,
+                                                                                stackTrace) =>
+                                                                            Image
+                                                                                .asset(
+                                                                          'assets/images/error_image.png',
+                                                                          fit: BoxFit
+                                                                              .contain,
+                                                                        ),
+                                                                      ),
                                                                     ),
                                                                   ),
-                                                                ),
-                                                              ),
-                                                            );
-                                                          },
-                                                        );
-                                                      },
+                                                                );
+                                                              },
+                                                            ),
+                                                          );
+                                                        },
+                                                      ),
                                                     ),
                                                   ),
-                                                ),
-                                              ],
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        ]
+                                          ]
+                                        ),
                                       ),
                                     ),
                                   ),

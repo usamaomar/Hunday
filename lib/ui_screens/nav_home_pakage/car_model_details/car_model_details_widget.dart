@@ -244,14 +244,17 @@ class _CarModelDetailsWidgetState extends State<CarModelDetailsWidget>
                                                           (_model.responceFromGetCarDetails
                                                                   ?.jsonBody ??
                                                               ''),
-                                                          r'''$.car.slider_image''',
+                                                          r'''$.car.full_slider''',
                                                           true,
-                                                        )[0] ==
-                                                        null
-                                                    ? false
-                                                    : jsonDecode(getJsonField((_model.responceFromGetCarDetails?.jsonBody ?? ''), r'''$.car.slider_image''', true,)[0])
-                                                            .length >
-                                                        0) {
+                                                        )!=
+                                                        null && getJsonField(
+                                                  (_model.responceFromGetCarDetails
+                                                      ?.jsonBody ??
+                                                      ''),
+                                                  r'''$.car.full_slider''',
+                                                  true,
+                                                ).length > 0
+                                                ) {
                                                   context.pushNamed(
                                                     'CarModelDetailsMoreWithSlieder',
                                                     queryParameters: {

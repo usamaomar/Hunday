@@ -380,7 +380,7 @@ class FFAppState extends ChangeNotifier {
     _isDarkMode = _value;
   }
 
-  List<bool> _listOfCatalogOpendBool = [true, false, false, false];
+  List<bool> _listOfCatalogOpendBool = [true, false, false, false, false];
 
   List<bool> get listOfCatalogOpendBool => _listOfCatalogOpendBool;
 

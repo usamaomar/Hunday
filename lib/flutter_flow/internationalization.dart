@@ -1053,9 +1053,8 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   // startPage
   {
     'w66lu1y3': {
-      'en':
-          'If you are a Hyundai car owner Login, Sign up or continue as a guest',
-      'ar': 'رخصة المركبة',
+      'en': 'If you are a Hyundai car owner Login, Sign up or continue as a guest',
+      'ar': 'إذا كنت مالك لسيارة من هونداي قم بالدخول أو سجل الآن أو اكمل كضيف',
     },
     'tak69zzg': {
       'en': 'Login',
@@ -1311,7 +1310,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
   {
     'p305q9up': {
       'en': 'Error',
-      'ar': 'مشكلة في الخادم',
+      'ar': 'خطأ',
     },
     '5ayz050s': {
       'en': 'Cancel',
@@ -1399,6 +1398,10 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     'ekqa9og1': {
       'en': 'Exterior',
       'ar': 'الخارج',
+    },
+    'ekqa9og1dimension': {
+      'en': 'Dimensions',
+      'ar': 'الابعاد',
     },
   },
   // testDriveComponent

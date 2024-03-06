@@ -15,6 +15,16 @@ class CarDeteailsComponentsModel
 
   dynamic carModel;
 
+  List<String> listOfDimensions = [];
+  void addToListOfDimensions(String item) => listOfDimensions.add(item);
+  void removeFromListOfDimensions(String item) => listOfDimensions.remove(item);
+  void removeAtIndexFromListOfDimensions(int index) =>
+      listOfDimensions.removeAt(index);
+  void insertAtIndexInListOfDimensions(int index, String item) =>
+      listOfDimensions.insert(index, item);
+  void updateListOfDimensionsAtIndex(int index, Function(String) updateFn) =>
+      listOfDimensions[index] = updateFn(listOfDimensions[index]);
+
   List<String> listOfExteriors = [];
   void addToListOfExteriors(String item) => listOfExteriors.add(item);
   void removeFromListOfExteriors(String item) => listOfExteriors.remove(item);
