@@ -1525,6 +1525,17 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
       'ar': 'رخصة المركبة',
     },
   },
+  // SelectImageOrTake
+  {
+    'wk94cq4d': {
+      'en': 'Take Photo',
+      'ar': 'التقظ صورة',
+    },
+    'g71us9q3': {
+      'en': 'From Media',
+      'ar': 'من المصادر',
+    },
+  },
   // Miscellaneous
   {
     '6hathkzr': {
