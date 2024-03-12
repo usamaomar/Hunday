@@ -288,6 +288,32 @@ class ChangePasswordApiCall {
       );
 }
 
+class UploadFileApiCall {
+  static Future<ApiCallResponse> call({
+    FFUploadedFile? file,
+    String? token = '',
+  }) async {
+    return ApiManager.instance.makeApiCall(
+      callName: 'uploadFileApiCall',
+      apiUrl: '${FFAppState().stateCaseModel.baseUrl}/api/uploadFile',
+      callType: ApiCallType.POST,
+      headers: {
+        'Authorization': 'Bearer ${token}',
+        'Accept': 'application/json',
+      },
+      params: {
+        'file': file
+      },
+      bodyType: BodyType.MULTIPART,
+      returnBody: true,
+      encodeBodyUtf8: false,
+      decodeUtf8: false,
+      cache: false,
+      alwaysAllowBody: false,
+    );
+  }
+}
+
 class LicenseScanApiCall {
   static Future<ApiCallResponse> call({
     FFUploadedFile? firstImage,

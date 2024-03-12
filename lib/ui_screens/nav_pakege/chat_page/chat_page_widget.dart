@@ -1,13 +1,15 @@
+import 'dart:io';
+
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_chat_bubble/chat_bubble.dart';
-import 'package:get/utils.dart';
 import 'package:hyundai/ui_screens/components/select_image_or_take/select_image_or_take_widget.dart';
 import '../../../flutter_flow/flutter_flow_animations.dart';
 import '../../../flutter_flow/flutter_flow_icon_button.dart';
 import '../../../flutter_flow/upload_data.dart';
-import '../../components/select_image_or_take/select_image_or_take_model.dart';
+import '../../components/uploade_photo_component/uploade_photo_component_widget.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
@@ -224,7 +226,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                     shrinkWrap: true,
                     itemBuilder: (context, index) {
                       return _model.mapValue[index]['is_admin'] == false
-                          ? Stack(
+                          ? Column(
                               children: [
                                 Visibility(
                                   visible: hasPassedAll(_model.mapValue[index]),
@@ -302,8 +304,8 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                       margin: EdgeInsets.only(top: 20),
                                       backGroundColor: Color(0xffECF3FB),
                                       child: Container(
-                                        margin:
-                                            EdgeInsets.fromLTRB(30, 10, 30, 0),
+                                        margin: EdgeInsets.fromLTRB(30, 10, 30, 0)
+                                             ,
                                         constraints: BoxConstraints(
                                           maxWidth: MediaQuery.of(context)
                                                   .size
@@ -318,10 +320,38 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                             topRight: Radius.circular(50.0),
                                           ),
                                         ),
-                                        child: Text(
-                                          "${_model.mapValue[index]['body']}",
-                                          style: TextStyle(color: Colors.black),
-                                        ),
+                                        child: _model.mapValue[index]['type'] ==
+                                                'text'
+                                            ? Text(
+                                                "${_model.mapValue[index]['body']}",
+                                                style: TextStyle(
+                                                    color: Colors.black),
+                                              )
+                                            : ClipRRect(
+                                                borderRadius:
+                                                    BorderRadius.circular(5.0),
+                                                child: CachedNetworkImage(
+                                                  width: 125,
+                                                  height: 125,
+                                                  fadeInDuration:
+                                                      const Duration(
+                                                          milliseconds: 200),
+                                                  fadeOutDuration:
+                                                      const Duration(
+                                                          milliseconds: 200),
+                                                  imageUrl: _model
+                                                      .mapValue[index]['body']
+                                                      .toString(),
+                                                  fit: BoxFit.cover,
+                                                  errorWidget: (context, error,
+                                                          stackTrace) =>
+                                                      Image.asset(
+                                                    'assets/images/error_image.png',
+                                                    width: double.infinity,
+                                                    fit: BoxFit.cover,
+                                                  ),
+                                                ),
+                                              ),
                                       ),
                                     ),
                                   ],
@@ -362,17 +392,43 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                   clipper: ChatBubbleClipper5(
                                       type: BubbleType.receiverBubble),
                                   backGroundColor: Color(0xffC1D6EF),
-                                  margin: EdgeInsets.only(top: 20),
+                                  margin:  EdgeInsets.fromLTRB(30, 10, 30, 0) ,
                                   child: Container(
                                     constraints: BoxConstraints(
                                       maxWidth:
                                           MediaQuery.of(context).size.width *
                                               0.7,
                                     ),
-                                    child: Text(
-                                      "${_model.mapValue[index]['body']}",
-                                      style: TextStyle(color: Colors.black),
-                                    ),
+                                    child: _model.mapValue[index]['type'] ==
+                                            'text'
+                                        ? Text(
+                                            "${_model.mapValue[index]['body']}",
+                                            style:
+                                                TextStyle(color: Colors.black),
+                                          )
+                                        : ClipRRect(
+                                            borderRadius:
+                                                BorderRadius.circular(5.0),
+                                            child: CachedNetworkImage(
+                                              width: 125,
+                                              height: 125,
+                                              fadeInDuration: const Duration(
+                                                  milliseconds: 200),
+                                              fadeOutDuration: const Duration(
+                                                  milliseconds: 200),
+                                              imageUrl: _model.mapValue[index]
+                                                      ['body']
+                                                  .toString(),
+                                              fit: BoxFit.cover,
+                                              errorWidget: (context, error,
+                                                      stackTrace) =>
+                                                  Image.asset(
+                                                'assets/images/error_image.png',
+                                                width: double.infinity,
+                                                fit: BoxFit.cover,
+                                              ),
+                                            ),
+                                          ),
                                   ),
                                 ),
                               ],
@@ -382,7 +438,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(30.0, 10.0, 30.0, 20.0),
                 child: Container(
-                  decoration: BoxDecoration(
+                  decoration: const BoxDecoration(
                     color: Color(0xFFECECEC),
                     borderRadius: BorderRadius.only(
                       bottomLeft: Radius.circular(50.0),
@@ -513,7 +569,8 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                 size: 24.0,
                               ),
                               onPressed: () {
-                                _sendMessage();
+                                _sendMessage(
+                                    _model.textController.text, 'text');
                               },
                             ),
                           ),
@@ -530,6 +587,8 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
     );
   }
 
+  File? file;
+
   void attachFile(BuildContext contextBuild) async {
     final selectedMedia = await selectMedia(
       multiImage: false,
@@ -537,6 +596,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
     if (selectedMedia != null &&
         selectedMedia
             .every((m) => validateFileFormat(m.storagePath, context))) {
+      file = File(selectedMedia[0].filePath ?? "");
       setState(() => _model.isDataUploading1 = true);
       var selectedUploadedFiles = <FFUploadedFile>[];
       try {
@@ -564,45 +624,46 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
 
     if (_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false) {
       Navigator.pop(contextBuild);
-      // setState(() {
-      //   _model.frontFaceImage =
-      //       _model.uploadedLocalFile1;
-      // });
-      // setState(() {
-      //   _model.isFrontFaceAdded = true;
-      // });
+      await showDialog(
+        context: context,
+        builder: (_) => Dialog(
+          child: UploadePhotoComponentWidget(
+            ffUploadedFile: _model.uploadedLocalFile1,
+            fileImage: file,
+          ),
+        ),
+      ).then((value) {
+        if (value != null) {
+          _sendMessage(
+              value,
+              'image');
+        }
+      });
     }
   }
 
-
-  void fromGallary(BuildContext contextBuild) async{
+  void fromGallary(BuildContext contextBuild) async {
     final selectedFiles = await selectFiles(
       multiFile: false,
     );
     if (selectedFiles != null) {
-      setState(() =>
-      _model.isDataUploading1 = true);
-      var selectedUploadedFiles =
-      <FFUploadedFile>[];
+      file = File(selectedFiles[0].filePath ?? "");
+      setState(() => _model.isDataUploading1 = true);
+      var selectedUploadedFiles = <FFUploadedFile>[];
 
       try {
-        selectedUploadedFiles =
-            selectedFiles
-                .map((m) => FFUploadedFile(
-              name: m.storagePath
-                  .split('/')
-                  .last,
-              bytes: m.bytes,
-            ))
-                .toList();
+        selectedUploadedFiles = selectedFiles
+            .map((m) => FFUploadedFile(
+                  name: m.storagePath.split('/').last,
+                  bytes: m.bytes,
+                ))
+            .toList();
       } finally {
         _model.isDataUploading1 = false;
       }
-      if (selectedUploadedFiles.length ==
-          selectedFiles.length) {
+      if (selectedUploadedFiles.length == selectedFiles.length) {
         setState(() {
-          _model.uploadedLocalFile1 =
-              selectedUploadedFiles.first;
+          _model.uploadedLocalFile1 = selectedUploadedFiles.first;
         });
       } else {
         setState(() {});
@@ -611,14 +672,29 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
     }
     if (_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false) {
       Navigator.pop(contextBuild);
+      await showDialog(
+        context: context,
+        builder: (_) => Dialog(
+          child: UploadePhotoComponentWidget(
+            ffUploadedFile: _model.uploadedLocalFile1,
+            fileImage: file,
+          ),
+        ),
+      ).then((value) {
+        if (value != null) {
+          _sendMessage(
+              value,
+              'image');
+        }
+      });
     }
   }
 
   String? key = '';
 
-  void _sendMessage() async {
-    final text = _model.textController.text;
-    if (text.isNotEmpty) {
+  void _sendMessage(String? textValue, String messageType) async {
+    final text = textValue;
+    if (text?.isNotEmpty == true) {
       Map<String, dynamic> mapValue = {};
       mapValue['admin_unread'] =
           _model.adminUnRead = (_model.adminUnRead ?? 0) + 1;
@@ -630,7 +706,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
 
       Map<dynamic, dynamic> keyMap = {};
       keyMap['body'] = text;
-      keyMap['type'] = 'text';
+      keyMap['type'] = messageType;
       keyMap['time'] = DateTime.now().millisecondsSinceEpoch.toString();
       keyMap['is_admin'] = false;
       keyMap['read'] = false;
@@ -643,8 +719,11 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
           .push();
       key = vmm.key;
       vmm.set(keyMap);
+
       setState(() {
-        _model.textController.text = '';
+        if (messageType == 'text') {
+          _model.textController.text = '';
+        }
       });
 
       Map<String, dynamic> mapValues = {};

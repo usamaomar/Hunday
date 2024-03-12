@@ -1,3 +1,4 @@
+import '../../../backend/api_requests/api_manager.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -10,6 +11,7 @@ import 'package:provider/provider.dart';
 class UploadePhotoComponentModel
     extends FlutterFlowModel<UploadePhotoComponentWidget> {
   /// Initialization and disposal methods.
+  ApiCallResponse? apiResultixl;
 
   @override
   void initState(BuildContext context) {}

@@ -179,7 +179,7 @@ class _NewsDetailsPageWidgetState extends State<NewsDetailsPageWidget>
                                                         FFAppState()
                                                                 .newsModelJsonList[
                                                             widget.itemIndex!],
-                                                        r'''$.full_listing_image''',
+                                                        r'''$.full_node_image''',
                                                       ).toString(),
                                                       fit: BoxFit.cover,
                                                       errorBuilder: (context, error,

@@ -11,7 +11,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
-	<string>hyundai</string>
+	<string>Hyundai</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -24,7 +24,7 @@
 		<string>ar</string>
 	</array>
 	<key>CFBundleName</key>
-	<string>hyundai</string>
+	<string>Hyundai</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
@@ -65,7 +65,7 @@
 	<key>NSFaceIDUsageDescription</key>
 	<string>This app requires permissions to perform a biometric verification.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>We hope you're enjoying our app! To provide you with the best experience, we require access to your device's microphone. This allows us to offer features like voice commands, audio recording, and other exciting functionalities.</string>
+	<string>We hope you&apos;re enjoying our app! To provide you with the best experience, we require access to your device&apos;s microphone. This allows us to offer features like voice commands, audio recording, and other exciting functionalities.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>In order to upload data, this app requires permission to access the photo library.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
