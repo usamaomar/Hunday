@@ -86,7 +86,7 @@ class _ShopPageWidgetState extends State<ShopPageWidget> {
                   child: HyndayAppBarWidget(
                     appBarTitle: FFLocalizations.of(context).getVariableText(
                       enText: 'Shop',
-                      arText: 'محل',
+                      arText: 'المتجر',
                     ),
                     isMyProfileOpend: false,
                   ),

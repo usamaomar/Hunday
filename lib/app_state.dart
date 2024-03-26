@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -243,6 +244,11 @@ class FFAppState extends ChangeNotifier {
     _newsModelJsonList = _value;
     prefs.setStringList(
         'ff_newsModelJsonList', _value.map((x) => jsonEncode(x)).toList());
+  }
+
+
+  bool isLight(BuildContext context){
+    return Theme.of(context).brightness == Brightness.light;
   }
 
   void addToNewsModelJsonList(dynamic _value) {

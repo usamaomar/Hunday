@@ -115,10 +115,7 @@ class _ShopListItemComponentWidgetState
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 5.0, 0.0, 0.0),
                               child: Text(
-                                widget.description!.maybeHandleOverflow(
-                                  maxChars: 20,
-                                  replacement: '…',
-                                ),
+                                widget.description??'',
                                 textAlign: TextAlign.start,
                                 maxLines: 2,
                                 style: FlutterFlowTheme.of(context)

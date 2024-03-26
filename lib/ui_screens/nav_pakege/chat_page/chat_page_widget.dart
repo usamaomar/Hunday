@@ -16,7 +16,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'chat_page_model.dart';
-export 'chat_page_model.dart';
 
 class ChatPageWidget extends StatefulWidget {
   const ChatPageWidget({super.key});
@@ -33,6 +32,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
   String _displayedDate = "";
   int mainValue = 0;
   FirebaseMessaging messaging = FirebaseMessaging.instance;
+  late FocusNode? _cvcFocusNode;
 
   final animationsMap = {
     'newsBottomSheetComponentOnPageLoadAnimation': AnimationInfo(
@@ -53,9 +53,13 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => ChatPageModel());
-    _model.unfocusNode?.addListener(_onCvcFormFieldFocusChanged);
+    // _model.textFieldFocusNode ??= FocusNode();
+    // _model.textFieldFocusNode?.addListener(_onCvcFormFieldFocusChanged);
+    // _model.unfocusNode?.addListener(_onCvcFormFieldFocusChanged);
+    _cvcFocusNode = FocusNode();
+    _cvcFocusNode?.addListener(_onCvcFormFieldFocusChanged);
     _model.textController ??= TextEditingController();
-    _model.textFieldFocusNode ??= FocusNode();
+
     _controller.addListener(_scrollListener);
 
     mainRef
@@ -87,7 +91,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
         .child("chat")
         .child('${FFAppState().userModel.id}')
         .once();
-    Map<dynamic, dynamic> mapValue = {};
+    Map<String, dynamic> mapValue = {};
     prefs.then((value) => {
           if (value.snapshot.exists)
             {
@@ -100,51 +104,59 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
           else
             {
               mapValue['name'] = FFAppState().userModel.name,
-              mapValue['admin'] = 0,
               mapValue['admin_unread'] = 0,
+              mapValue['admin'] = 0,
               mapValue['admin_unread_key'] = '',
               mapValue['user_unread'] = 0,
               mapValue['user_unread_key'] = '',
               mainRef
                   .ref()
                   .child("chat")
-                  .set({"${FFAppState().userModel.id}": mapValue}),
+                  .child("${FFAppState().userModel.id}")
+                  .update(mapValue),
             }
         });
 
-    mainRef
-        .ref()
-        .child("chat")
-        .child('${FFAppState().userModel.id}')
-        .child("messages")
-        .onValue
-        .listen((event) {
-      if (event.snapshot.exists) {
-        _model.mapValue.clear();
-        Map<dynamic, dynamic> maps =
-            event.snapshot.value as Map<Object?, Object?>;
-        maps.forEach((key, value) {
-          _model.mapValue.add(value as Map<Object?, Object?>);
-        });
-        _model.mapValue.sort(
-            (a, b) => a['time'].toString().compareTo(b['time'].toString()));
-        _model.mapValue = _model.mapValue.reversed.toList();
-        setState(() {});
-      }
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      mainRef
+          .ref()
+          .child("chat")
+          .child('${FFAppState().userModel.id}')
+          .child("messages")
+          .onValue
+          .listen((event) {
+        if (event.snapshot.exists) {
+          _model.mapValue.clear();
+          Map<dynamic, dynamic> maps =
+          event.snapshot.value as Map<Object?, Object?>;
+          maps.forEach((key, value) {
+            _model.mapValue.add(value as Map<Object?, Object?>);
+          });
+          _model.mapValue.sort(
+                  (a, b) => a['time'].toString().compareTo(b['time'].toString()));
+          _model.mapValue = _model.mapValue.reversed.toList();
+          if (mounted) {
+            setState(() {});
+          }
+        }
+      });
     });
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   void _onCvcFormFieldFocusChanged() {
-    setState(() => (_model.unfocusNode?.hasFocus ?? false) ? true : false);
+    setState(() => (_cvcFocusNode?.hasFocus ?? false) ? true : false);
   }
 
   @override
   void dispose() {
     _model.dispose();
-    _model.unfocusNode?.removeListener(_onCvcFormFieldFocusChanged);
-    _model.unfocusNode?.dispose();
-    _model.unfocusNode = null;
+    // _model.unfocusNode?.removeListener(_onCvcFormFieldFocusChanged);
+    // _model.unfocusNode?.dispose();
+    // _model.unfocusNode = null;
+    _cvcFocusNode?.removeListener(_onCvcFormFieldFocusChanged);
+    _cvcFocusNode?.dispose();
+    _cvcFocusNode = null;
     _controller.removeListener(_scrollListener);
     _controller.dispose();
     super.dispose();
@@ -204,9 +216,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
     }
     context.watch<FFAppState>();
     return GestureDetector(
-      onTap: () => _model.unfocusNode?.canRequestFocus ?? false
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => _cvcFocusNode?.unfocus(),
       child: Scaffold(
         // key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).white,
@@ -237,7 +247,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                       Container(
                                         margin:
                                             EdgeInsets.fromLTRB(0, 15, 0, 0),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           color: Color(0xFF092853),
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(50.0),
@@ -251,7 +261,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                         alignment: Alignment.center,
                                         child: Text(
                                           '${getDatea()}',
-                                          style: TextStyle(
+                                          style: const TextStyle(
                                               fontSize: 12.0,
                                               fontWeight: FontWeight.normal,
                                               color: Colors.white),
@@ -268,9 +278,9 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                       child: Padding(
                                         child: Row(
                                           mainAxisAlignment:
-                                              MainAxisAlignment.start,
+                                              MainAxisAlignment.end,
                                           crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                                              CrossAxisAlignment.end,
                                           children: [
                                             Text(
                                               convertToAmBmFormat(_model
@@ -312,7 +322,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                                   .width *
                                               0.7,
                                         ),
-                                        decoration: BoxDecoration(
+                                        decoration: const BoxDecoration(
                                           borderRadius: BorderRadius.only(
                                             bottomLeft: Radius.circular(50.0),
                                             bottomRight: Radius.circular(50.0),
@@ -364,9 +374,9 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                                   visible: hasNextUser(_model.mapValue, index),
                                   child: Padding(
                                     child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.end,
+                                          CrossAxisAlignment.start,
                                       children: [
                                         Text(
                                           convertToAmBmFormat(_model
@@ -457,7 +467,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
                               5.0, 0.0, 5.0, 0.0),
                           child: TextFormField(
                             controller: _model.textController,
-                            focusNode: _model.textFieldFocusNode,
+                            focusNode: _cvcFocusNode,
                             textInputAction: TextInputAction.send,
                             obscureText: false,
                             decoration: InputDecoration(
@@ -593,6 +603,7 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
     final selectedMedia = await selectMedia(
       multiImage: false,
     );
+
     if (selectedMedia != null &&
         selectedMedia
             .every((m) => validateFileFormat(m.storagePath, context))) {
@@ -642,51 +653,82 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
     }
   }
 
+
+  String getFileExtension(String fileName) {
+    return ".${fileName.split('.').last}".toLowerCase();
+  }
+
+
   void fromGallary(BuildContext contextBuild) async {
     final selectedFiles = await selectFiles(
       multiFile: false,
     );
-    if (selectedFiles != null) {
-      file = File(selectedFiles[0].filePath ?? "");
-      setState(() => _model.isDataUploading1 = true);
-      var selectedUploadedFiles = <FFUploadedFile>[];
+    if(getFileExtension(selectedFiles?[0].storagePath ?? '').toLowerCase() == '.png' || getFileExtension(selectedFiles?[0].storagePath?? '').toLowerCase() == '.jpg') {
+      if (selectedFiles != null) {
+        file = File(selectedFiles[0].filePath ?? "");
+        setState(() => _model.isDataUploading1 = true);
+        var selectedUploadedFiles = <FFUploadedFile>[];
 
-      try {
-        selectedUploadedFiles = selectedFiles
-            .map((m) => FFUploadedFile(
-                  name: m.storagePath.split('/').last,
-                  bytes: m.bytes,
-                ))
-            .toList();
-      } finally {
-        _model.isDataUploading1 = false;
-      }
-      if (selectedUploadedFiles.length == selectedFiles.length) {
-        setState(() {
-          _model.uploadedLocalFile1 = selectedUploadedFiles.first;
-        });
-      } else {
-        setState(() {});
-        return;
-      }
-    }
-    if (_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false) {
-      Navigator.pop(contextBuild);
-      await showDialog(
-        context: context,
-        builder: (_) => Dialog(
-          child: UploadePhotoComponentWidget(
-            ffUploadedFile: _model.uploadedLocalFile1,
-            fileImage: file,
-          ),
-        ),
-      ).then((value) {
-        if (value != null) {
-          _sendMessage(
-              value,
-              'image');
+        try {
+          selectedUploadedFiles = selectedFiles
+              .map((m) =>
+              FFUploadedFile(
+                name: m.storagePath
+                    .split('/')
+                    .last,
+                bytes: m.bytes,
+              ))
+              .toList();
+        } finally {
+          _model.isDataUploading1 = false;
         }
-      });
+        if (selectedUploadedFiles.length == selectedFiles.length) {
+          setState(() {
+            _model.uploadedLocalFile1 = selectedUploadedFiles.first;
+          });
+        } else {
+          setState(() {});
+          return;
+        }
+      }
+      if (_model.uploadedLocalFile1.bytes?.isNotEmpty ?? false) {
+        Navigator.pop(contextBuild);
+        await showDialog(
+          context: context,
+          builder: (_) =>
+              Dialog(
+                child: UploadePhotoComponentWidget(
+                  ffUploadedFile: _model.uploadedLocalFile1,
+                  fileImage: file,
+                ),
+              ),
+        ).then((value) {
+          if (value != null) {
+            _sendMessage(
+                value,
+                'image');
+          }
+        });
+      }
+    }else{
+      Navigator.pop(contextBuild);
+      ScaffoldMessenger.of(contextBuild).showSnackBar(
+        SnackBar(
+          content: Text(
+            FFLocalizations.of(contextBuild).getVariableText(
+              enText: 'Extension Is Not Supported',
+              arText: 'الامتداد غير مدعوم',
+            ),
+            style: TextStyle(
+              color: FlutterFlowTheme.of(contextBuild).primaryText,
+            ),
+          ),
+          duration: const Duration(milliseconds: 4000),
+          backgroundColor:
+          FlutterFlowTheme.of(contextBuild).secondary,
+        ),
+      );
+      return;
     }
   }
 
@@ -703,11 +745,10 @@ class _ChatPageWidgetState extends State<ChatPageWidget> {
           .child("chat")
           .child('${FFAppState().userModel.id}')
           .update(mapValue);
-
       Map<dynamic, dynamic> keyMap = {};
       keyMap['body'] = text;
       keyMap['type'] = messageType;
-      keyMap['time'] = DateTime.now().millisecondsSinceEpoch.toString();
+      keyMap['time'] = ServerValue.timestamp;
       keyMap['is_admin'] = false;
       keyMap['read'] = false;
 

@@ -170,7 +170,7 @@ class _UploadePhotoComponentWidgetState
                                         return;
                                       });
                                     }
-                                    context.pop();
+                                    // context.pop();
                                   },
                                   text: FFLocalizations.of(context).getText(
                                     'qrsoamh0' /* Save Changes */,

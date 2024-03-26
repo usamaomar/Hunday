@@ -196,8 +196,7 @@ class _MyAppState extends State<MyApp> {
 
   void handleInAppMessage() {
     FirebaseMessaging.instance.getInitialMessage().then((message) => {
-          if (message != null)
-            {
+          if (message != null){
               print("getInitialMessage"),
               _firebaseMessagingInAppHandler(message)
             }

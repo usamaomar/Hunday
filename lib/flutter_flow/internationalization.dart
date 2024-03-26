@@ -1144,7 +1144,7 @@ final kTranslationsMap = <Map<String, Map<String, String>>>[
     },
     'utqibc5w': {
       'en': 'Phone Number',
-      'ar': '',
+      'ar': 'رقم الهاتف',
     },
     '902lootp': {
       'en': 'Send',

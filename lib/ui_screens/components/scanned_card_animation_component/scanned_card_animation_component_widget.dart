@@ -1,3 +1,5 @@
+import 'package:flutter/cupertino.dart';
+
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
@@ -56,11 +58,27 @@ class _ScannedCardAnimationComponentWidgetState
             sigmaY: 10.0,
           ),
           child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(0.0, 40.0, 0.0, 20.0),
+            padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 0.0, 20.0),
             child: Column(
               mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
+                InkWell(
+                  onTap: (){
+                    Navigator.pop(context);
+                  },
+                  child: const Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(10.0, 5.0, 10.0, 5.0),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.close,
+                          color: Colors.black,
+                        )
+                      ],
+                    ),
+                  ),
+                ),
                 Flexible(
                   child: Padding(
                     padding:

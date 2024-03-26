@@ -42,7 +42,7 @@ class CarModelDetailsMoreWithSliederModel
   // State field(s) for Carousel widget.
   CarouselController? carouselController;
 
-  int carouselCurrentIndex = 1;
+  int carouselCurrentIndex = 0;
 
   // Model for HyndayAppBar component.
   late HyndayAppBarModel hyndayAppBarModel;

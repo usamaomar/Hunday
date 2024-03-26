@@ -131,24 +131,27 @@ class _HomeScreenWidgetState extends State<HomeScreenWidget> {
         token: FFAppState().userModel.token,
       );
       if ((_model.locationsApiResponce?.succeeded ?? true)) {
-        setState(() {
-          FFAppState().sharedLocationsJsonList =
-              LocationApiCall.apiLocationsJsonList(
-            (_model.locationsApiResponce?.jsonBody ?? ''),
-          )!
-                  .toList()
-                  .cast<dynamic>();
-          FFAppState().listOfOpendItems = functions
-              .addFalseValuesToList(LocationApiCall.apiLocationsJsonList(
-                (_model.locationsApiResponce?.jsonBody ?? ''),
-              )!
-                  .length)
-              .toList()
-              .cast<bool>();
-        });
-        setState(() {
-          _model.listOfJsons = FFAppState().sliderList.toList().cast<dynamic>();
-        });
+        if (mounted) {
+          setState(() {
+            FFAppState().sharedLocationsJsonList =
+                LocationApiCall.apiLocationsJsonList(
+                  (_model.locationsApiResponce?.jsonBody ?? ''),
+                )!
+                    .toList()
+                    .cast<dynamic>();
+            FFAppState().listOfOpendItems = functions
+                .addFalseValuesToList(LocationApiCall.apiLocationsJsonList(
+              (_model.locationsApiResponce?.jsonBody ?? ''),
+            )!
+                .length)
+                .toList()
+                .cast<bool>();
+          });
+          setState(() {
+            _model.listOfJsons =
+                FFAppState().sliderList.toList().cast<dynamic>();
+          });
+        }
       }
       _model.apiResultSlider = await SliderApiCall.call(
         token: FFAppState().userModel.token,

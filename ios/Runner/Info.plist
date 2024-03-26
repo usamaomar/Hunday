@@ -65,7 +65,7 @@
 	<key>NSFaceIDUsageDescription</key>
 	<string>This app requires permissions to perform a biometric verification.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>We hope you&apos;re enjoying our app! To provide you with the best experience, we require access to your device&apos;s microphone. This allows us to offer features like voice commands, audio recording, and other exciting functionalities.</string>
+	<string>We hope you're enjoying our app! To provide you with the best experience, we require access to your device's microphone. This allows us to offer features like voice commands, audio recording, and other exciting functionalities.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>In order to upload data, this app requires permission to access the photo library.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
@@ -82,15 +82,13 @@
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationLandscapeLeft</string>
-		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>

@@ -83,7 +83,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
             top: true,
             child: Align(
               alignment: AlignmentDirectional(0.0, 0.0),
-              child: Container(
+              child: SizedBox(
                 width: double.infinity,
                 height: double.infinity,
                 child: Stack(
@@ -95,7 +95,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           image: Image.asset(
                             'assets/images/oness.png',
                           ).image,
@@ -104,12 +104,12 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                       ),
                     ),
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
+                      alignment: const AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         height: double.infinity,
                         decoration: BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
@@ -140,7 +140,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                         ),
                                         style: TextStyle(
                                           fontFamily: 'Seagoe Ui Bold',
-                                          color: Colors.black,
+                                          color: FlutterFlowTheme.of(context).primaryText,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 30.0,
                                         ),

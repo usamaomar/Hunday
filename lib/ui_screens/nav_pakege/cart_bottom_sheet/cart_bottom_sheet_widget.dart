@@ -25,18 +25,14 @@ import 'cart_bottom_sheet_model.dart';
 export 'cart_bottom_sheet_model.dart';
 
 class CartBottomSheetWidget extends StatefulWidget {
-
   Function()? updateBadgeValue;
+  bool? isComponentView;
 
-
-    CartBottomSheetWidget({
+  CartBottomSheetWidget({
     Key? key,
-    bool? isComponentView,
+    this.isComponentView,
     this.updateBadgeValue,
-  })  : this.isComponentView = isComponentView ?? true,
-        super(key: key);
-
-  final bool isComponentView;
+  }) : super(key: key);
 
   @override
   _CartBottomSheetWidgetState createState() => _CartBottomSheetWidgetState();
@@ -69,7 +65,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
 
   @override
   void initState() {
-
     super.initState();
 
     _model = createModel(context, () => CartBottomSheetModel());
@@ -105,13 +100,14 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
           });
           FFAppState().update(() {
             FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
-            FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
-
+            FBroadcast.instance()
+                .broadcast('Key_msg', value: FFAppState().badgeCount);
           });
         } else {
           FFAppState().update(() {
             FFAppState().badgeCount = 0;
-            FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
+            FBroadcast.instance()
+                .broadcast('Key_msg', value: FFAppState().badgeCount);
           });
         }
       }
@@ -130,7 +126,6 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
   @override
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
-
     return Align(
       alignment: AlignmentDirectional(0.0, 1.0),
       child: Container(
@@ -179,7 +174,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                                   useGoogleFonts: false,
                                 ),
                           ),
-                          if (widget.isComponentView)
+                          if (widget.isComponentView ??false)
                             InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
@@ -203,7 +198,7 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                       endIndent: 35.0,
                       color: Color(0xFF092853),
                     ),
-                    if (widget.isComponentView)
+                    if (widget.isComponentView ?? false)
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(
                             30.0, 10.0, 30.0, 0.0),
@@ -229,20 +224,18 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                                       ) as List)
                                           .isNotEmpty) {
                                     context.pushNamed('ShopPage');
-                                  }else{
+                                  } else {
                                     await showDialog(
-                                      barrierColor:
-                                      Colors.transparent,
+                                      barrierColor: Colors.transparent,
                                       barrierDismissible: false,
                                       context: context,
                                       builder: (dialogContext) {
                                         return Dialog(
                                           child:
-                                          ScannedCardAnimationComponentWidget(),
+                                              ScannedCardAnimationComponentWidget(),
                                         );
                                       },
-                                    ).then(
-                                            (value) => setState(() {}));
+                                    ).then((value) => setState(() {}));
                                   }
                                 }
                               },
@@ -762,11 +755,13 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                                                                                 ))
                                                                                 .subTotal;
                                                                           });
-                                                                          SchedulerBinding.instance.addPostFrameCallback((_) async {
+                                                                          SchedulerBinding
+                                                                              .instance
+                                                                              .addPostFrameCallback((_) async {
                                                                             StoreProvider.of<dynamic>(context).dispatch("Update");
                                                                             FFAppState().update(() {
                                                                               FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
-                                                                              FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
+                                                                              FBroadcast.instance().broadcast('Key_msg', value: FFAppState().badgeCount);
                                                                               widget.updateBadgeValue?.call();
                                                                             });
                                                                           });
@@ -955,15 +950,25 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                                                                             .isNotEmpty) {
                                                                           _model
                                                                               .updateListOfCartItemsLocalAtIndex(
-                                                                            seedCartListIndex == _model.listOfCartItemsLocal.length ? seedCartListIndex - 1 : seedCartListIndex,
+                                                                            seedCartListIndex == _model.listOfCartItemsLocal.length
+                                                                                ? seedCartListIndex - 1
+                                                                                : seedCartListIndex,
                                                                             (e) => e
                                                                               ..isLoading = false,
                                                                           );
                                                                         }
                                                                       });
-                                                                      SchedulerBinding.instance.addPostFrameCallback((_) async {
-                                                                        FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
-                                                                        FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
+                                                                      SchedulerBinding
+                                                                          .instance
+                                                                          .addPostFrameCallback(
+                                                                              (_) async {
+                                                                        FFAppState().badgeCount = _model
+                                                                            .listOfCartItemsLocal
+                                                                            .length;
+                                                                        FBroadcast.instance().broadcast(
+                                                                            'Key_msg',
+                                                                            value:
+                                                                                FFAppState().badgeCount);
                                                                         // StoreProvider.of<dynamic>(context).dispatch("Update");
                                                                         // FFAppState().update(() {
                                                                         //   FFAppState().badgeCount = _model.listOfCartItemsLocal.length;
@@ -1121,13 +1126,22 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                                                                             r'''$.cart''',
                                                                           ))
                                                                           .subTotal;
-                                                                      StoreProvider.of<dynamic>(context).dispatch("action");
-                                                                      FFAppState().badgeCount =  _model.listOfCartItemsLocal.length;
-                                                                      FBroadcast.instance().broadcast('Key_msg',value: FFAppState().badgeCount);
+                                                                      StoreProvider.of<dynamic>(
+                                                                              context)
+                                                                          .dispatch(
+                                                                              "action");
+                                                                      FFAppState()
+                                                                              .badgeCount =
+                                                                          _model
+                                                                              .listOfCartItemsLocal
+                                                                              .length;
+                                                                      FBroadcast.instance().broadcast(
+                                                                          'Key_msg',
+                                                                          value:
+                                                                              FFAppState().badgeCount);
                                                                     });
                                                                   }
                                                                 }
-
                                                               } else {
                                                                 await showDialog(
                                                                   context:
@@ -1180,7 +1194,14 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                                                           .listOfCartItemsLocal
                                                           .isNotEmpty) {
                                                         _model
-                                                            .updateListOfCartItemsLocalAtIndex(seedCartListIndex == _model.listOfCartItemsLocal.length ? seedCartListIndex - 1 : seedCartListIndex,
+                                                            .updateListOfCartItemsLocalAtIndex(
+                                                          seedCartListIndex ==
+                                                                  _model
+                                                                      .listOfCartItemsLocal
+                                                                      .length
+                                                              ? seedCartListIndex -
+                                                                  1
+                                                              : seedCartListIndex,
                                                           (e) => e
                                                             ..isLoading = false,
                                                         );
@@ -1345,10 +1366,9 @@ class _CartBottomSheetWidgetState extends State<CartBottomSheetWidget> {
                     ),
                   ],
                 ),
-              ]
-                  .addToStart(SizedBox(
+              ].addToStart(SizedBox(
                       height: widget.isComponentView == true ? 30.0 : 0.0))
-                  .addToEnd(SizedBox(height: 50.0)),
+                  .addToEnd(SizedBox(height: widget.isComponentView == true ? 50.0 : 0.0)),
             ),
           ),
         ),

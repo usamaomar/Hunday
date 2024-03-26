@@ -134,16 +134,16 @@ List<bool> updateAtIndexAndClearOthers(
   return updatedList;
 }
 
-String formatPhoneNumber(String input) {
+String formatPhoneNumber(String input, String lang) {
   if (input.length < 10) {
     return input;
   }
-  String countryCode = "+962";
+  String countryCode = "962";
   String firstPart = input.substring(0, 4);
   String secondPart = input.substring(4, 7);
   String thirdPart = input.substring(7, 10);
 
-  return '$countryCode $firstPart $secondPart $thirdPart';
+  return lang == "en" ?  '+$countryCode $firstPart $secondPart $thirdPart' :  '$thirdPart $secondPart $firstPart $countryCode+';
 }
 
 List<MyVehicleModelStruct> fromJsonArrayToMyVycalesList(dynamic jsonObject) {

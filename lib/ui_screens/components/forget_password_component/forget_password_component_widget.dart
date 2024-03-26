@@ -77,7 +77,7 @@ class _ForgetPasswordComponentWidgetState
                   '50yxbv27' /* Forget Password */,
                 ),
                 textAlign: TextAlign.center,
-                style: TextStyle(
+                style: const TextStyle(
                   fontFamily: 'HeeboBold',
                   fontWeight: FontWeight.bold,
                   fontSize: 25.0,

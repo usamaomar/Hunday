@@ -345,7 +345,7 @@ class _PersonalInformationPageWidgetState
                                     ),
                                     Text(
                                       functions.formatPhoneNumber(
-                                          FFAppState().userModel.phone),
+                                          FFAppState().userModel.phone,FFAppState().currentLanguge),
                                       style: FlutterFlowTheme.of(context)
                                           .bodyMedium
                                           .override(

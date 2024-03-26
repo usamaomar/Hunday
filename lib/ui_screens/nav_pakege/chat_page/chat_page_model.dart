@@ -12,12 +12,12 @@ import 'package:provider/provider.dart';
 class ChatPageModel extends FlutterFlowModel<ChatPageWidget> {
   ///  State fields for stateful widgets in this page.
 
-  late   FocusNode? unfocusNode = FocusNode();
+  // late   FocusNode? unfocusNode = FocusNode();
   List<Map<Object?, Object?>> mapValue = [];
   int? adminUnRead = 0;
   String? adminUnReadKey = '';
   // bool? hasBeenTriggered = false;
-  FocusNode? textFieldFocusNode;
+  // FocusNode? textFieldFocusNode;
   TextEditingController? textController;
   String? Function(BuildContext, String?)? textControllerValidator;
   bool isDataUploading1 = false;
@@ -35,8 +35,8 @@ class ChatPageModel extends FlutterFlowModel<ChatPageWidget> {
 
   @override
   void dispose() {
-    unfocusNode?.dispose();
-    textFieldFocusNode?.dispose();
+    // unfocusNode?.dispose();
+    // textFieldFocusNode?.dispose();
     textController?.dispose();
     newsBottomSheetComponentModel.dispose();
   }

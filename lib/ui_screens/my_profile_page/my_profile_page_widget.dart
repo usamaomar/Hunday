@@ -148,7 +148,7 @@ class _MyProfilePageWidgetState extends State<MyProfilePageWidget>
                                                     functions.formatPhoneNumber(
                                                         FFAppState()
                                                             .userModel
-                                                            .phone),
+                                                            .phone,FFAppState().currentLanguge),
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .bodyMedium

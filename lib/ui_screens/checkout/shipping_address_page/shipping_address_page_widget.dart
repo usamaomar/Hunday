@@ -596,7 +596,7 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                     .labelMedium,
                                                 enabledBorder:
                                                 OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFF646464),
                                                     width: 1,
                                                   ),
@@ -605,7 +605,7 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                 ),
                                                 focusedBorder:
                                                 OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFF646464),
                                                     width: 1,
                                                   ),
@@ -650,7 +650,7 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                           ),
                                           Padding(
                                             padding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 30, 20, 30, 0),
                                             child: TextFormField(
                                               controller:
@@ -674,7 +674,7 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                     .labelMedium,
                                                 enabledBorder:
                                                 OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFF646464),
                                                     width: 1,
                                                   ),
@@ -683,7 +683,7 @@ class _ShippingAddressPageWidgetState extends State<ShippingAddressPageWidget>
                                                 ),
                                                 focusedBorder:
                                                 OutlineInputBorder(
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Color(0xFF646464),
                                                     width: 1,
                                                   ),
