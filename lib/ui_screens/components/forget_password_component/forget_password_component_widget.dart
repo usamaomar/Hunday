@@ -58,7 +58,7 @@ class _ForgetPasswordComponentWidgetState
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(
-          color: Color(0xFFC1D6EF),
+          color:FlutterFlowTheme.ofD(context) ? Color(0xFF313747) :  Color(0xFFC1D6EF),
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(0.0),
             bottomRight: Radius.circular(0.0),
@@ -77,9 +77,10 @@ class _ForgetPasswordComponentWidgetState
                   '50yxbv27' /* Forget Password */,
                 ),
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style:   TextStyle(
                   fontFamily: 'HeeboBold',
                   fontWeight: FontWeight.bold,
+                  color: FlutterFlowTheme.ofD(context) ? Color(0xFFFFFFFF) : Color(0xFF000000) ,
                   fontSize: 25.0,
                 ),
               ),
@@ -93,7 +94,7 @@ class _ForgetPasswordComponentWidgetState
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontFamily: 'Heebo Regular',
-                  color: Color(0xFF092853),
+                  color: FlutterFlowTheme.ofD(context) ? Color(0xFFFFFFFF) : Color(0xFF092853),
                   fontWeight: FontWeight.w500,
                   fontSize: 16.0,
                 ),
@@ -213,7 +214,7 @@ class _ForgetPasswordComponentWidgetState
                               0.0, 0.0, 0.0, 0.0),
                           iconPadding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 0.0),
-                          color: FlutterFlowTheme.of(context).ahayundai,
+                          color: FlutterFlowTheme.ofD(context) ? Color(0xFF1B1C21) : FlutterFlowTheme.of(context).ahayundai,
                           textStyle:
                               FlutterFlowTheme.of(context).titleSmall.override(
                                     fontFamily: 'Poppins',

@@ -9,15 +9,12 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import '/ui_screens/components/edit_text_values/edit_text_values_widget.dart';
 import '/ui_screens/components/forget_password_component/forget_password_component_widget.dart';
 import '/ui_screens/components/modal06_basic_information/modal06_basic_information_widget.dart';
-import '/backend/schema/structs/index.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:provider/provider.dart';
 import 'login_screen_model.dart';
@@ -91,7 +88,10 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                     Container(
                       width: double.infinity,
                       height: double.infinity,
-                      decoration: BoxDecoration(
+                      decoration:FlutterFlowTheme.ofD(context) ?   BoxDecoration(
+                        color: Colors.black,
+                        shape: BoxShape.rectangle,
+                      ) : BoxDecoration(
                         color: FlutterFlowTheme.of(context).secondaryBackground,
                         image: DecorationImage(
                           fit: BoxFit.cover,
@@ -120,9 +120,13 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    SvgPicture.asset(
+                                    FlutterFlowTheme.ofD(context) ? SvgPicture.asset(
                                       'assets/images/Group_70060.svg',
-                                      fit: BoxFit.fitWidth,
+                                      fit: BoxFit.cover,
+                                      color: Colors.white,
+                                    ) : SvgPicture.asset(
+                                      'assets/images/Group_70060.svg',
+                                      fit: BoxFit.cover,
                                     ),
                                   ],
                                 ),
@@ -140,7 +144,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                         ),
                                         style: TextStyle(
                                           fontFamily: 'Seagoe Ui Bold',
-                                          color: FlutterFlowTheme.of(context).primaryText,
+                                          color:FlutterFlowTheme.ofD(context) ? Colors.white :  FlutterFlowTheme.of(context).primaryText,
                                           fontWeight: FontWeight.bold,
                                           fontSize: 30.0,
                                         ),
@@ -162,7 +166,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                         ),
                                         style: TextStyle(
                                           fontFamily: 'Seagoe Ui Bold',
-                                          color: Color(0xFF3D6398),
+                                          color:FlutterFlowTheme.ofD(context) ?  Color(0xFFFFFFFF):Color(0xFF3D6398),
                                           fontWeight: FontWeight.bold,
                                           fontSize: 16.0,
                                         ),
@@ -384,7 +388,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                   .bodyMedium
                                                   .override(
                                                     fontFamily: 'Heebo Regular',
-                                                    color: Color(0xFF3D6398),
+                                                    color:FlutterFlowTheme.ofD(context) ? Colors.white : Color(0xFF3D6398),
                                                     fontWeight:
                                                         FontWeight.normal,
                                                     useGoogleFonts: false,
@@ -720,7 +724,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                               iconPadding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                               color:
-                                                  FlutterFlowTheme.of(context)
+                                              FlutterFlowTheme.ofD(context) ? Color(0xFF313747) : FlutterFlowTheme.of(context)
                                                       .ahayundai,
                                               textStyle:
                                                   FlutterFlowTheme.of(context)
@@ -784,7 +788,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                         .getText(
                                                   'n5n9jw4q' /* Already have an account?   */,
                                                 ),
-                                                style: TextStyle(),
+                                                style: TextStyle(color: FlutterFlowTheme.ofD(context) ? Color(0xFFffffff) : Color(0xFF092853)),
                                               ),
                                               TextSpan(
                                                 text:
@@ -798,7 +802,7 @@ class _LoginScreenWidgetState extends State<LoginScreenWidget> {
                                                         .override(
                                                           fontFamily: 'Poppins',
                                                           color:
-                                                              Color(0xFF092853),
+                                                          FlutterFlowTheme.ofD(context) ? Color(0xFFffffff) : Color(0xFF092853),
                                                           fontWeight:
                                                               FontWeight.bold,
                                                         ),

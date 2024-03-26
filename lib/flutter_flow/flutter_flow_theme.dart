@@ -30,6 +30,15 @@ abstract class FlutterFlowTheme {
         : LightModeTheme();
   }
 
+  static bool ofD(BuildContext context) {
+    var brightness = View.of(context).platformDispatcher.platformBrightness;
+    bool isDarkMode = brightness == Brightness.dark;
+    return isDarkMode;
+    // return Theme.of(context).brightness == Brightness.dark
+    //     ? true
+    //     : false;
+  }
+
   @Deprecated('Use primary instead')
   Color get primaryColor => primary;
   @Deprecated('Use secondary instead')

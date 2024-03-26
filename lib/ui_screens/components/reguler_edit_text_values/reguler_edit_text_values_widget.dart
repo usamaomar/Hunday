@@ -59,7 +59,7 @@ class _RegulerEditTextValuesWidgetState
     context.watch<FFAppState>();
 
     return Opacity(
-      opacity: 0.8,
+      opacity: FlutterFlowTheme.ofD(context) ? 1.0 : 0.8,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -81,7 +81,7 @@ class _RegulerEditTextValuesWidgetState
                         ),
                       ),
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             10.0, 0.0, 10.0, 0.0),
                         child: TextFormField(
                           controller: _model.textController,

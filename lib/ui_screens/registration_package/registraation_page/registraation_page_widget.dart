@@ -104,7 +104,10 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
             child: Container(
               width: double.infinity,
               height: double.infinity,
-              decoration: BoxDecoration(
+              decoration:FlutterFlowTheme.ofD(context) ?  const BoxDecoration(
+                color: Colors.black,
+                shape: BoxShape.rectangle,
+              ) : BoxDecoration(
                 color: Colors.black,
                 image: DecorationImage(
                   fit: BoxFit.cover,
@@ -131,10 +134,16 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                SvgPicture.asset(
-                                  'assets/images/Group_70060.svg',
-                                  fit: BoxFit.none,
-                                ),
+                                FlutterFlowTheme.ofD(context)
+                                    ? SvgPicture.asset(
+                                        'assets/images/Group_70060.svg',
+                                        fit: BoxFit.cover,
+                                        color: Colors.white,
+                                      )
+                                    : SvgPicture.asset(
+                                        'assets/images/Group_70060.svg',
+                                        fit: BoxFit.cover,
+                                      ),
                               ],
                             ),
                           ),
@@ -151,7 +160,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                   ),
                                   style: TextStyle(
                                     fontFamily: 'Seagoe Ui Bold',
-                                    color: Colors.black,
+                                    color: FlutterFlowTheme.ofD(context)
+                                        ? Colors.white
+                                        : Colors.black,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 30.0,
                                   ),
@@ -172,7 +183,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                   ),
                                   style: TextStyle(
                                     fontFamily: 'Seagoe Ui Bold',
-                                    color: Color(0xFF3D6398),
+                                    color: FlutterFlowTheme.ofD(context)
+                                        ? Color(0xFFFFFFFF)
+                                        : Color(0xFF3D6398),
                                     fontWeight: FontWeight.bold,
                                     fontSize: 16.0,
                                   ),
@@ -196,9 +209,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                     ),
                                     isErrorColor: valueOrDefault<Color>(
                                       _model.localNameValid == true
-                                          ? Color(0x00FFFFFF)
+                                          ? (FlutterFlowTheme.ofD(context) ? Color(0x00FFFFFFFF)  : Color(0x00FFFFFF))
                                           : FlutterFlowTheme.of(context).error,
-                                      Color(0x000FFFFF),
+                                      (FlutterFlowTheme.ofD(context) ? Color(0x00FFFFFFFF)  : Color(0x000FFFFF)),
                                     ),
                                   ),
                                 ),
@@ -275,7 +288,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                             child: Stack(
                               children: [
                                 Opacity(
-                                  opacity:0.8,
+                                  opacity:  FlutterFlowTheme.ofD(context) ? 1.0 :0.8,
                                   child: Card(
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
@@ -321,21 +334,25 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                           fontSize: 14.0,
                                                           useGoogleFonts: false,
                                                         ),
-                                                enabledBorder: OutlineInputBorder(
+                                                enabledBorder:
+                                                    OutlineInputBorder(
                                                   borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                  BorderRadius.circular(5.0),
+                                                      BorderRadius.circular(
+                                                          5.0),
                                                 ),
-                                                focusedBorder: OutlineInputBorder(
+                                                focusedBorder:
+                                                    OutlineInputBorder(
                                                   borderSide: const BorderSide(
                                                     color: Color(0x00000000),
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                  BorderRadius.circular(5.0),
+                                                      BorderRadius.circular(
+                                                          5.0),
                                                 ),
                                                 errorBorder: OutlineInputBorder(
                                                   borderSide: const BorderSide(
@@ -343,7 +360,8 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                  BorderRadius.circular(5.0),
+                                                      BorderRadius.circular(
+                                                          5.0),
                                                 ),
                                                 focusedErrorBorder:
                                                     OutlineInputBorder(
@@ -352,11 +370,13 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                     width: 1.0,
                                                   ),
                                                   borderRadius:
-                                                      BorderRadius.circular(5.0),
+                                                      BorderRadius.circular(
+                                                          5.0),
                                                 ),
                                               ),
-                                              style: FlutterFlowTheme.of(context)
-                                                  .titleSmall,
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .titleSmall,
                                               keyboardType:
                                                   TextInputType.emailAddress,
                                               validator: _model
@@ -466,8 +486,8 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                         ),
                                       ),
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
-                                            10.0, 15.0, 10.0, 0.0),
+                                        padding: const EdgeInsetsDirectional
+                                            .fromSTEB(10.0, 15.0, 10.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
@@ -478,12 +498,12 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                             if (_model.localPhoneNumberValid ==
                                                 false)
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     1.0, 0.0),
                                                 child: AlignedTooltip(
                                                   content: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   5.0,
                                                                   10.0,
@@ -504,7 +524,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                               color: _model
                                                                           .localPhoneNumberValid ==
                                                                       true
-                                                                  ? Color(
+                                                                  ? const Color(
                                                                       0x3EFFFFFF)
                                                                   : FlutterFlowTheme.of(
                                                                           context)
@@ -522,9 +542,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                   elevation: 4.0,
                                                   tailBaseWidth: 24.0,
                                                   tailLength: 12.0,
-                                                  waitDuration: Duration(
+                                                  waitDuration: const Duration(
                                                       milliseconds: 100),
-                                                  showDuration: Duration(
+                                                  showDuration: const Duration(
                                                       milliseconds: 1500),
                                                   triggerMode:
                                                       TooltipTriggerMode.tap,
@@ -566,17 +586,19 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                     children: [
                                       Flexible(
                                         child: Opacity(
-                                          opacity: 0.8,
+                                          opacity:  FlutterFlowTheme.ofD(context) ? 1.0 :0.8,
                                           child: Padding(
-                                            padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
-                                                    0.0, 0.0, 0.0, 0.0),
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0.0, 0.0, 0.0, 0.0),
                                             child: Card(
                                               shape: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(5),
+                                                borderRadius:
+                                                    BorderRadius.circular(5),
                                               ),
-                                              clipBehavior: Clip.antiAliasWithSaveLayer,
-                                              child: FlutterFlowDropDown<String>(
+                                              clipBehavior:
+                                                  Clip.antiAliasWithSaveLayer,
+                                              child:
+                                                  FlutterFlowDropDown<String>(
                                                 controller: _model
                                                         .dropDownValueController ??=
                                                     FormFieldController<String>(
@@ -591,11 +613,15 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                     '8tmgnkrr' /* Female */,
                                                   )
                                                 ],
-                                                onChanged: (val) => setState(() =>
-                                                    _model.dropDownValue = val),
-                                                textStyle:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium.copyWith(color:  Color(0xFFAAAAAA)),
+                                                onChanged: (val) => setState(
+                                                    () => _model.dropDownValue =
+                                                        val),
+                                                textStyle: FlutterFlowTheme.of(
+                                                        context)
+                                                    .bodyMedium
+                                                    .copyWith(
+                                                        color:
+                                                            Color(0xFFAAAAAA)),
                                                 hintText:
                                                     FFLocalizations.of(context)
                                                         .getText(
@@ -604,18 +630,20 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 icon: Icon(
                                                   Icons
                                                       .keyboard_arrow_down_rounded,
-                                                  color:
-                                                      FlutterFlowTheme.of(context)
-                                                          .secondaryText,
+                                                  color: FlutterFlowTheme.of(
+                                                          context)
+                                                      .secondaryText,
                                                   size: 24.0,
                                                 ),
-                                                fillColor: const Color(0xB8FFFEFE),
+                                                fillColor:
+                                                FlutterFlowTheme.ofD(context) ? Color(0xFFFFFFFF) : Color(0xB8FFFEFE),
                                                 elevation: 0.0,
                                                 borderColor: Colors.transparent,
                                                 borderWidth: 0.0,
                                                 borderRadius: 3.0,
-                                                margin: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                margin:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         10.0, 0.0, 10.0, 0.0),
                                                 hidesUnderline: true,
                                                 isSearchable: false,
@@ -631,40 +659,49 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                             final _datePickedDate =
                                                 await showDatePicker(
                                               context: context,
-                                              initialDate:
-                                                  getCurrentTimestamp,
+                                              initialDate: getCurrentTimestamp,
                                               firstDate: DateTime(1900),
                                               lastDate: getCurrentTimestamp,
-                                                  builder: (context, child) {
-                                                    return wrapInMaterialDatePickerTheme(
-                                                      context,
-                                                      child!,
-                                                      headerBackgroundColor:
-                                                      FlutterFlowTheme.of(context).white,
-                                                      headerForegroundColor:
-                                                      FlutterFlowTheme.of(context).info,
-                                                      headerTextStyle:
-                                                      FlutterFlowTheme.of(context)
+                                              builder: (context, child) {
+                                                return wrapInMaterialDatePickerTheme(
+                                                  context,
+                                                  child!,
+                                                  headerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .white,
+                                                  headerForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
+                                                          .info,
+                                                  headerTextStyle:
+                                                      FlutterFlowTheme.of(
+                                                              context)
                                                           .headlineLarge
                                                           .override(
-                                                        fontFamily: 'Poppins',
-                                                        fontSize: 32.0,
-                                                        fontWeight: FontWeight.w600,
-                                                      ),
-                                                      pickerBackgroundColor:
-                                                      FlutterFlowTheme.of(context)
+                                                            fontFamily:
+                                                                'Poppins',
+                                                            fontSize: 32.0,
+                                                            fontWeight:
+                                                                FontWeight.w600,
+                                                          ),
+                                                  pickerBackgroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
                                                           .secondaryBackground,
-                                                      pickerForegroundColor:
+                                                  pickerForegroundColor:
                                                       Colors.black,
-                                                      selectedDateTimeBackgroundColor:Colors.white,
-                                                      selectedDateTimeForegroundColor:
+                                                  selectedDateTimeBackgroundColor:
+                                                      Colors.white,
+                                                  selectedDateTimeForegroundColor:
                                                       Colors.black,
-                                                      actionButtonForegroundColor:
-                                                      FlutterFlowTheme.of(context)
+                                                  actionButtonForegroundColor:
+                                                      FlutterFlowTheme.of(
+                                                              context)
                                                           .primaryText,
-                                                      iconSize: 24.0,
-                                                    );
-                                                  },
+                                                  iconSize: 24.0,
+                                                );
+                                              },
                                             );
 
                                             if (_datePickedDate != null) {
@@ -681,8 +718,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                     .secondsSinceEpoch)) {
                                               await showDialog(
                                                 context: context,
-                                                builder:
-                                                    (alertDialogContext) {
+                                                builder: (alertDialogContext) {
                                                   return AlertDialog(
                                                     title: Text(
                                                         FFLocalizations.of(
@@ -721,20 +757,17 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                             }
                                             setState(() {
                                               _model.localDateOfBirth =
-                                                  functions
-                                                      .formatDateTimeDrop(
-                                                          _model.datePicked!);
+                                                  functions.formatDateTimeDrop(
+                                                      _model.datePicked!);
                                             });
                                           },
                                           child: Opacity(
-                                            opacity: 0.8,
+                                            opacity: FlutterFlowTheme.ofD(context) ? 1.0 : 0.8,
                                             child: Card(
-
-                                            elevation: 0.0,
+                                              elevation: 0.0,
                                               shape: RoundedRectangleBorder(
                                                 borderRadius:
                                                     BorderRadius.circular(5.0),
-
                                               ),
                                               child: Row(
                                                 mainAxisSize: MainAxisSize.max,
@@ -816,8 +849,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 ),
                                               ),
                                               Padding(
-                                                padding: const EdgeInsetsDirectional
-                                                    .fromSTEB(
+                                                padding:
+                                                    const EdgeInsetsDirectional
+                                                        .fromSTEB(
                                                         4.0, 18.0, 4.0, 0.0),
                                                 child: Row(
                                                   mainAxisSize:
@@ -839,10 +873,10 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                               padding:
                                                                   const EdgeInsetsDirectional
                                                                       .fromSTEB(
-                                                                          5.0,
-                                                                          10.0,
-                                                                          5.0,
-                                                                          10.0),
+                                                                      5.0,
+                                                                      10.0,
+                                                                      5.0,
+                                                                      10.0),
                                                               child: Text(
                                                                 FFLocalizations.of(
                                                                         context)
@@ -879,11 +913,11 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                           tailBaseWidth: 24.0,
                                                           tailLength: 12.0,
                                                           waitDuration:
-                                                              Duration(
+                                                              const Duration(
                                                                   milliseconds:
                                                                       100),
                                                           showDuration:
-                                                              Duration(
+                                                              const Duration(
                                                                   milliseconds:
                                                                       1500),
                                                           triggerMode:
@@ -979,18 +1013,20 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 arText:
                                                     'من خلال إنشاء هذا الحساب، فإنك تقر بأنك قد قرأت وفهمت',
                                               ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily:
-                                                            'Heebo Regular',
-                                                        color: Colors.black,
-                                                        fontSize: 13.0,
-                                                        fontWeight:
-                                                            FontWeight.normal,
-                                                        useGoogleFonts: false,
-                                                      ),
+                                              style: FlutterFlowTheme.of(
+                                                      context)
+                                                  .bodyMedium
+                                                  .override(
+                                                    fontFamily: 'Heebo Regular',
+                                                    color: FlutterFlowTheme.ofD(
+                                                            context)
+                                                        ? Colors.white
+                                                        : Colors.black,
+                                                    fontSize: 13.0,
+                                                    fontWeight:
+                                                        FontWeight.normal,
+                                                    useGoogleFonts: false,
+                                                  ),
                                             ),
                                             TextSpan(
                                               text: FFLocalizations.of(context)
@@ -1003,7 +1039,10 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                   .labelLarge
                                                   .override(
                                                     fontFamily: 'Heebo Regular',
-                                                    color: Color(0xFF3D6398),
+                                                    color: FlutterFlowTheme.ofD(
+                                                            context)
+                                                        ? Color(0xFF8CB7E2)
+                                                        : Color(0xFF3D6398),
                                                     decoration: TextDecoration
                                                         .underline,
                                                     useGoogleFonts: false,
@@ -1012,12 +1051,15 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                             TextSpan(
                                               text: FFLocalizations.of(context)
                                                   .getVariableText(
-                                                enText: 'and',
-                                                arText: 'و',
+                                                enText: ' and ',
+                                                arText: ' و ',
                                               ),
                                               style: TextStyle(
                                                 fontFamily: 'Heebo Regular',
-                                                color: Colors.black,
+                                                color: FlutterFlowTheme.ofD(
+                                                        context)
+                                                    ? Colors.white
+                                                    : Colors.black,
                                                 fontSize: 13.0,
                                               ),
                                             ),
@@ -1029,7 +1071,10 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                               ),
                                               style: TextStyle(
                                                 fontFamily: 'Heebo Regular',
-                                                color: Color(0xFF3D6398),
+                                                color: FlutterFlowTheme.ofD(
+                                                        context)
+                                                    ? Color(0xFF8CB7E2)
+                                                    : Color(0xFF3D6398),
                                                 fontWeight: FontWeight.w500,
                                                 fontSize: 14.0,
                                                 decoration:
@@ -1041,7 +1086,10 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                               .bodyMedium
                                               .override(
                                                 fontFamily: 'Poppins',
-                                                color: Colors.black,
+                                                color: FlutterFlowTheme.ofD(
+                                                        context)
+                                                    ? Colors.white
+                                                    : Colors.black,
                                               ),
                                         ),
                                         textAlign: TextAlign.start,
@@ -1054,7 +1102,7 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                             ),
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 30.0, 10.0, 30.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -1065,6 +1113,15 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(4.0),
+
+                                      ),
+                                      side: !FlutterFlowTheme.ofD(context)
+                                          ?   const BorderSide(
+                                        color: Colors.black87,
+                                        width: 2,
+                                      ) :   const BorderSide(
+                                        color: Colors.white,
+                                        width: 2,
                                       ),
                                     ),
                                     unselectedWidgetColor: _model.privacyOne ==
@@ -1107,7 +1164,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 'نعم، لقد قرأت الشروط والأحكام ووافقت عليها',
                                           ),
                                           style: TextStyle(
-                                            color: Color(0xFF000508),
+                                            color: FlutterFlowTheme.ofD(context)
+                                                ? Colors.white
+                                                : Color(0xFF000508),
                                           ),
                                         )
                                       ],
@@ -1134,12 +1193,22 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Theme(
+                                  //FlutterFlowTheme.ofD(context) ?  Color(0xFFFFFFFF)  :
                                   data: ThemeData(
                                     checkboxTheme: CheckboxThemeData(
                                       shape: RoundedRectangleBorder(
                                         borderRadius:
                                             BorderRadius.circular(4.0),
                                       ),
+                                      side: !FlutterFlowTheme.ofD(context)
+                                          ? const BorderSide(
+                                              color: Colors.black87,
+                                              width: 2,
+                                            )
+                                          : const BorderSide(
+                                              color: Colors.white,
+                                              width: 2,
+                                            ),
                                     ),
                                     unselectedWidgetColor:
                                         FlutterFlowTheme.of(context).accent2,
@@ -1169,7 +1238,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                           ),
                                           style: TextStyle(
                                             fontFamily: 'Heebo Regular',
-                                            color: Color(0xFF060000),
+                                            color: FlutterFlowTheme.ofD(context)
+                                                ? Colors.white
+                                                : Color(0xFF060000),
                                           ),
                                         ),
                                         TextSpan(
@@ -1180,7 +1251,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                           ),
                                           style: GoogleFonts.getFont(
                                             'Open Sans',
-                                            color: Color(0xFF0F0000),
+                                            color: FlutterFlowTheme.ofD(context)
+                                                ? Colors.white
+                                                : Color(0xFF0F0000),
                                             fontWeight: FontWeight.w900,
                                             fontSize: 14.0,
                                           ),
@@ -1193,7 +1266,9 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                           ),
                                           style: TextStyle(
                                             fontFamily: 'Heebo Regular',
-                                            color: Color(0xFF020000),
+                                            color: FlutterFlowTheme.ofD(context)
+                                                ? Colors.white
+                                                : Color(0xFF020000),
                                           ),
                                         )
                                       ],
@@ -1224,28 +1299,25 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                   child: Builder(
                                     builder: (context) => FFButtonWidget(
                                       onPressed: () async {
-                                        if(_model.datePicked == null){
+                                        if (_model.datePicked == null) {
                                           await showDialog(
                                             context: context,
-                                            builder:
-                                                (alertDialogContext) {
+                                            builder: (alertDialogContext) {
                                               return AlertDialog(
                                                 title: Text(
-                                                    FFLocalizations.of(
-                                                        context)
+                                                    FFLocalizations.of(context)
                                                         .getVariableText(
-                                                      enText: 'Error',
-                                                      arText: 'خطأ',
-                                                    )),
+                                                  enText: 'Error',
+                                                  arText: 'خطأ',
+                                                )),
                                                 content: Text(
-                                                    FFLocalizations.of(
-                                                        context)
+                                                    FFLocalizations.of(context)
                                                         .getVariableText(
-                                                      enText:
+                                                  enText:
                                                       'Please Select the Date Of Birth',
-                                                      arText:
+                                                  arText:
                                                       'الرجاء تحديد تاريخ الميلاد',
-                                                    )),
+                                                )),
                                                 actions: [
                                                   TextButton(
                                                     onPressed: () =>
@@ -1253,11 +1325,11 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                             alertDialogContext),
                                                     child: Text(
                                                         FFLocalizations.of(
-                                                            context)
+                                                                context)
                                                             .getVariableText(
-                                                          enText: 'ok',
-                                                          arText: 'حسنا',
-                                                        )),
+                                                      enText: 'ok',
+                                                      arText: 'حسنا',
+                                                    )),
                                                   ),
                                                 ],
                                               );
@@ -1341,14 +1413,14 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                               setState(() {
                                                 _model.localPhoneNumber = functions
                                                     .checkNumberAndValidate(
-                                                    replaceArabicNumerals( _model
-                                                        .phoneEditTextValuesModel
-                                                        .textController
-                                                        .text)
-                                                   );
+                                                        replaceArabicNumerals(_model
+                                                            .phoneEditTextValuesModel
+                                                            .textController
+                                                            .text));
                                               });
                                               if (functions.checkNumberCount(
-                                                  replaceArabicNumerals(_model.localPhoneNumber)) !=
+                                                      replaceArabicNumerals(_model
+                                                          .localPhoneNumber)) !=
                                                   true) {
                                                 setState(() {
                                                   _model.localPhoneNumberValid =
@@ -1465,8 +1537,8 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                 }
                                                 _model.apiResult7h5 =
                                                     await RegisterApiCall.call(
-                                                  phone:
-                                                        replaceArabicNumerals(_model.localPhoneNumber),
+                                                  phone: replaceArabicNumerals(
+                                                      _model.localPhoneNumber),
                                                   name: _model
                                                       .regulerEditTextValuesModel
                                                       .textController
@@ -1530,15 +1602,19 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                                           child: Container(
                                                             height: 400.0,
                                                             child:
-                                                                VerifyBottomDialogWidget(password: _model
-                                                                    .passwordEditTextValuesModel1
-                                                                    .textController
-                                                                    .text,phoneNumber: getJsonField(
-                                                                  (_model.apiResult7h5
-                                                                      ?.jsonBody ??
-                                                                      ''),
-                                                                  r'''$.user.phone''',
-                                                                ),),
+                                                                VerifyBottomDialogWidget(
+                                                              password: _model
+                                                                  .passwordEditTextValuesModel1
+                                                                  .textController
+                                                                  .text,
+                                                              phoneNumber:
+                                                                  getJsonField(
+                                                                (_model.apiResult7h5
+                                                                        ?.jsonBody ??
+                                                                    ''),
+                                                                r'''$.user.phone''',
+                                                              ),
+                                                            ),
                                                           ),
                                                         ),
                                                       );
@@ -1629,8 +1705,10 @@ class _RegistraationPageWidgetState extends State<RegistraationPageWidget> {
                                         iconPadding:
                                             EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
-                                        color: FlutterFlowTheme.of(context)
-                                            .ahayundai,
+                                        color: FlutterFlowTheme.ofD(context)
+                                            ? Color(0xFF313747)
+                                            : FlutterFlowTheme.of(context)
+                                                .ahayundai,
                                         textStyle: FlutterFlowTheme.of(context)
                                             .titleSmall
                                             .override(

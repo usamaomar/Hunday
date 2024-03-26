@@ -59,7 +59,7 @@ class _PasswordEditTextValuesWidgetState
     context.watch<FFAppState>();
 
     return Opacity(
-      opacity: 0.8,
+      opacity:  FlutterFlowTheme.ofD(context) ? 1.0 :0.8,
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [

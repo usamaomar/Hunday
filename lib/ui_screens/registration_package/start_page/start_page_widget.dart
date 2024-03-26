@@ -12,7 +12,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:provider/provider.dart';
 import 'start_page_model.dart';
 export 'start_page_model.dart';
-import 'dart:io' show Platform;
 
 class StartPageWidget extends StatefulWidget {
   const StartPageWidget({super.key});
@@ -62,14 +61,18 @@ class _StartPageWidgetState extends State<StartPageWidget> {
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Container(
           height: double.infinity,
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFFC1D6EF), Color(0x0FFFFFFF)],
-              stops: [0.0, 1.0],
-              begin: AlignmentDirectional(0.0, -1.0),
-              end: AlignmentDirectional(0, 1.0),
-            ),
-          ),
+          decoration: FlutterFlowTheme.ofD(context)
+              ? const BoxDecoration(
+                  color: Colors.black,
+                )
+              : const BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [Color(0xFFC1D6EF), Color(0x0FFFFFFF)],
+                    stops: [0.0, 1.0],
+                    begin: AlignmentDirectional(0.0, -1.0),
+                    end: AlignmentDirectional(0, 1.0),
+                  ),
+                ),
           child: Column(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -83,7 +86,11 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                   children: [
                     ClipRRect(
                       borderRadius: BorderRadius.circular(8.0),
-                      child: SvgPicture.asset(
+                      child: FlutterFlowTheme.ofD(context) ? SvgPicture.asset(
+                        'assets/images/Group_70060.svg',
+                        fit: BoxFit.cover,
+                        color: Colors.white,
+                      ) : SvgPicture.asset(
                         'assets/images/Group_70060.svg',
                         fit: BoxFit.cover,
                       ),
@@ -91,7 +98,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                   ],
                 ),
               ),
-              Align(
+              FlutterFlowTheme.ofD(context) ?  Container(height: 150,) :Align(
                 alignment: Alignment.centerRight,
                 child: SvgPicture.asset(
                   'assets/images/Mask_Group_70091.svg',
@@ -111,7 +118,9 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                         textAlign: TextAlign.center,
                         style: FlutterFlowTheme.of(context).bodyMedium.override(
                               fontFamily: 'HeeboBold',
-                              color: Color(0xFF212427),
+                              color: FlutterFlowTheme.ofD(context)
+                                  ? Color(0xFFFFFFFF)
+                                  : Color(0xFF212427),
                               fontSize: 16.0,
                               fontWeight: FontWeight.bold,
                               useGoogleFonts: false,
@@ -141,11 +150,13 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                             ),
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFF3D6398),
+                              color: FlutterFlowTheme.ofD(context)
+                                  ? Color(0xFF313747)
+                                  : Color(0xFF3D6398),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
@@ -154,7 +165,7 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                                     fontSize: 16.0,
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -181,16 +192,20 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                             ),
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
-                              color: Color(0xFFC1D6EF),
+                              color: FlutterFlowTheme.ofD(context)
+                                  ? const Color(0xFF7D8AAF)
+                                  : Color(0xFFC1D6EF),
                               textStyle: FlutterFlowTheme.of(context)
                                   .titleSmall
                                   .override(
                                     fontFamily: 'HeeboBold',
-                                    color: Color(0xFF092853),
+                                    color: FlutterFlowTheme.ofD(context)
+                                        ? Color(0xFFFFFFFF)
+                                        : Color(0xFF092853),
                                     fontSize: 16.0,
                                     fontWeight: FontWeight.w600,
                                     useGoogleFonts: false,
@@ -216,57 +231,52 @@ class _StartPageWidgetState extends State<StartPageWidget> {
                         Expanded(
                           child: FFButtonWidget(
                             onPressed: () async {
-                              FirebaseMessaging.instance.getToken().then((fbToken) async{
+                              FirebaseMessaging.instance
+                                  .getToken()
+                                  .then((fbToken) async {
                                 FFAppState().FCM = fbToken ?? 'null';
                                 FFAppState().isGust = true;
                                 FFAppState().userModel.token = fbToken;
                                 _model.apiResult1zf =
                                     await GuestRegisterApiCall.call(
-                                  appVersion: FFAppState().versionNumber ?? '1.0.0',
-                                  lang: FFAppState().currentLanguge.isEmpty ? Localizations.localeOf(context).languageCode : FFAppState().currentLanguge,
+                                  appVersion:
+                                      FFAppState().versionNumber ?? '1.0.0',
+                                  lang: FFAppState().currentLanguge.isEmpty
+                                      ? Localizations.localeOf(context)
+                                          .languageCode
+                                      : FFAppState().currentLanguge,
                                   fcm: FFAppState().FCM,
                                 );
                                 if ((_model.apiResult1zf?.succeeded ?? true)) {
                                   context.pushReplacementNamed('HomeScreen');
-                                }else{
+                                } else {
                                   await showDialog(
-                                  context: context,
-                                  builder: (dialogContext) {
-                                    return Dialog(
-                                      insetPadding:
-                                      EdgeInsets.zero,
-                                      backgroundColor:
-                                      Colors.transparent,
-                                      alignment:
-                                      AlignmentDirectional(
-                                          0.0, 0.0)
-                                          .resolve(
-                                          Directionality.of(
-                                              context)),
-                                      child: GestureDetector(
-                                        onTap: () => _model
-                                            .unfocusNode
-                                            .canRequestFocus
-                                            ? FocusScope.of(
-                                            context)
-                                            .requestFocus(
-                                            _model
-                                                .unfocusNode)
-                                            : FocusScope.of(
-                                            context)
-                                            .unfocus(),
-                                        child:
-                                        Modal06BasicInformationWidget(
-                                          body: (_model
-                                              .apiResult1zf
-                                              ?.bodyText ??
-                                              ''),
+                                    context: context,
+                                    builder: (dialogContext) {
+                                      return Dialog(
+                                        insetPadding: EdgeInsets.zero,
+                                        backgroundColor: Colors.transparent,
+                                        alignment:
+                                            AlignmentDirectional(0.0, 0.0)
+                                                .resolve(
+                                                    Directionality.of(context)),
+                                        child: GestureDetector(
+                                          onTap: () => _model
+                                                  .unfocusNode.canRequestFocus
+                                              ? FocusScope.of(context)
+                                                  .requestFocus(
+                                                      _model.unfocusNode)
+                                              : FocusScope.of(context)
+                                                  .unfocus(),
+                                          child: Modal06BasicInformationWidget(
+                                            body: (_model
+                                                    .apiResult1zf?.bodyText ??
+                                                ''),
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                  ).then((value) =>
-                                      setState(() {}));
+                                      );
+                                    },
+                                  ).then((value) => setState(() {}));
                                 }
                               });
                             },
