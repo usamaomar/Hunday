@@ -405,35 +405,56 @@ class _ScanNowCardWidgetState extends State<ScanNowCardWidget> {
                                               enText: 'Ok',
                                               arText: 'حسنا',
                                             ),
-                                            actionOk: () {
+                                            actionOk: () async{
                                               Navigator.pop(context);
+                                              await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor: Color(0x0E000000),
+                                              barrierColor: Color(0x0E000000),
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                  child: Container(
+                                                    height: double.infinity,
+                                                    child: ListOfStringItemsComponentWidget(
+                                                      jsonData:
+                                                      (_model.apiResultixl1?.jsonBody ??
+                                                          ''),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              ).then((value) => safeSetState(() {}));
                                             }),
                                       );
                                     },
                                   ).then((value) => setState(() {}));
                                   return;
-                                }
-
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Color(0x0E000000),
-                                  barrierColor: Color(0x0E000000),
-                                  enableDrag: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: Container(
-                                        height: double.infinity,
-                                        child: ListOfStringItemsComponentWidget(
-                                          jsonData:
-                                              (_model.apiResultixl1?.jsonBody ??
-                                                  ''),
+                                }else{
+                                  await showModalBottomSheet(
+                                    isScrollControlled: true,
+                                    backgroundColor: Color(0x0E000000),
+                                    barrierColor: Color(0x0E000000),
+                                    enableDrag: false,
+                                    context: context,
+                                    builder: (context) {
+                                      return Padding(
+                                        padding: MediaQuery.viewInsetsOf(context),
+                                        child: Container(
+                                          height: double.infinity,
+                                          child: ListOfStringItemsComponentWidget(
+                                            jsonData:
+                                            (_model.apiResultixl1?.jsonBody ??
+                                                ''),
+                                          ),
                                         ),
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => safeSetState(() {}));
+                                      );
+                                    },
+                                  ).then((value) => safeSetState(() {}));
+
+                                }
                               } else {
                                 await showDialog(
                                   context: context,

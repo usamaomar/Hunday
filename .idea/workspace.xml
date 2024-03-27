@@ -6,27 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="cc2c0c66-02c3-4417-9749-a6e5dfc3ecb7" name="Changes" comment="x">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Runner/Info.plist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app_state.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app_state.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/custom_functions.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/custom_functions.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/flutter_flow/internationalization.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/checkout/shipping_address_page/shipping_address_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/checkout/shipping_address_page/shipping_address_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/forget_password_component/forget_password_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/forget_password_component/forget_password_component_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/scanned_card_animation_component/scanned_card_animation_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/scanned_card_animation_component/scanned_card_animation_component_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/shop_list_item_component/shop_list_item_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/shop_list_item_component/shop_list_item_component_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/uploade_photo_component/uploade_photo_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/uploade_photo_component/uploade_photo_component_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/login_screen/login_screen_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/my_profile_page/my_profile_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/my_profile_page/my_profile_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/car_model_details_more_with_slieder/car_model_details_more_with_slieder_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/shop_page/shop_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_home_pakage/shop_page/shop_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/cart_bottom_sheet/cart_bottom_sheet_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/chat_page/chat_page_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/chat_page/chat_page_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/chat_page/chat_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/chat_page/chat_page_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/nav_pakege/home_screen/home_screen_widget.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/ui_screens/personal_information_page/personal_information_page_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/personal_information_page/personal_information_page_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/from_galler_card/from_galler_card_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/from_galler_card/from_galler_card_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/list_of_string_items_component/list_of_string_items_component_widget.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +25,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="develop" />
+        <entry key="$PROJECT_DIR$" value="dark" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -316,6 +298,53 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/components/from_galler_card/from_galler_card_widget.dart</url>
+          <line>432</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/components/from_galler_card/from_galler_card_widget.dart</url>
+          <line>434</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/components/from_galler_card/from_galler_card_widget.dart</url>
+          <line>502</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart</url>
+          <line>387</line>
+          <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart</url>
+          <line>382</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart</url>
+          <line>381</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart</url>
+          <line>386</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart</url>
+          <line>383</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/ui_screens/components/scan_now_card/scan_now_card_widget.dart</url>
+          <line>389</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+      </breakpoints>
       <default-breakpoints>
         <breakpoint type="dart-exception" />
         <breakpoint type="python-exception">

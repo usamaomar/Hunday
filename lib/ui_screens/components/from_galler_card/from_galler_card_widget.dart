@@ -425,7 +425,6 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                               );
                               _shouldSetState = true;
                               if ((_model.apiResultixl?.succeeded ?? true)) {
-                                if (!kDebugMode)
                                   if (getJsonField(
                                   (_model.apiResultixl?.jsonBody ?? ''),
                                   r'''$.info.is_hyundai''',
@@ -451,34 +450,55 @@ class _FromGallerCardWidgetState extends State<FromGallerCardWidget> {
                                               enText: 'Ok',
                                               arText: 'حسنا',
                                             ),
-                                            actionOk: () {
+                                            actionOk: () async{
                                               Navigator.pop(context);
+                                              await showModalBottomSheet(
+                                              isScrollControlled: true,
+                                              backgroundColor: Color(0x0E000000),
+                                              barrierColor: Color(0x0E000000),
+                                              enableDrag: false,
+                                              context: context,
+                                              builder: (context) {
+                                                return Padding(
+                                                  padding: MediaQuery.viewInsetsOf(context),
+                                                  child: Container(
+                                                    height: double.infinity,
+                                                    child: ListOfStringItemsComponentWidget(
+                                                      jsonData:
+                                                      (_model.apiResultixl?.jsonBody ??
+                                                          ''),
+                                                    ),
+                                                  ),
+                                                );
+                                              },
+                                              ).then((value) => safeSetState(() {}));
                                             }),
                                       );
                                     },
                                   ).then((value) => setState(() {}));
                                   return;
-                                }
-                                await showModalBottomSheet(
-                                  isScrollControlled: true,
-                                  backgroundColor: Color(0x0E000000),
-                                  barrierColor: Color(0x0E000000),
-                                  enableDrag: false,
-                                  context: context,
-                                  builder: (context) {
-                                    return Padding(
-                                      padding: MediaQuery.viewInsetsOf(context),
-                                      child: Container(
-                                        height: double.infinity,
-                                        child: ListOfStringItemsComponentWidget(
-                                          jsonData:
+                                }else{
+                                    await showModalBottomSheet(
+                                      isScrollControlled: true,
+                                      backgroundColor: Color(0x0E000000),
+                                      barrierColor: Color(0x0E000000),
+                                      enableDrag: false,
+                                      context: context,
+                                      builder: (context) {
+                                        return Padding(
+                                          padding: MediaQuery.viewInsetsOf(context),
+                                          child: Container(
+                                            height: double.infinity,
+                                            child: ListOfStringItemsComponentWidget(
+                                              jsonData:
                                               (_model.apiResultixl?.jsonBody ??
                                                   ''),
-                                        ),
-                                      ),
-                                    );
-                                  },
-                                ).then((value) => safeSetState(() {}));
+                                            ),
+                                          ),
+                                        );
+                                      },
+                                    ).then((value) => safeSetState(() {}));
+                                  }
                               } else {
                                 await showDialog(
                                   context: context,
